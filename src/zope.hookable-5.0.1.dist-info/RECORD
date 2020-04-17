@@ -1,0 +1,15 @@
+zope.hookable-5.0.1-py3.6-nspkg.pth,sha256=SWEVH-jEWsKYrL0qoC6GBJaStx_iKxGoAY9PQycFVC4,529
+zope.hookable-5.0.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+zope.hookable-5.0.1.dist-info/METADATA,sha256=461OXQiVVNO5_4Mhmdxp-1CEsObzQR1ihf_-7DZ9gVg,5108
+zope.hookable-5.0.1.dist-info/RECORD,,
+zope.hookable-5.0.1.dist-info/WHEEL,sha256=6qsdB1jNczZt0uWpsegNTq1KITMHdnt6wZgsGus-kwY,112
+zope.hookable-5.0.1.dist-info/namespace_packages.txt,sha256=QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98,5
+zope.hookable-5.0.1.dist-info/top_level.txt,sha256=QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98,5
+zope/hookable/__init__.py,sha256=aSESu7a3bS9ha0BGtTjanFi2wIVQFRPOmwb41BC8boI,2194
+zope/hookable/__pycache__/__init__.cpython-36.pyc,,
+zope/hookable/_zope_hookable.c,sha256=rnXI_8dreoBTWz15HB-WW69WDtcE-4tpODtb-_R0eVQ,7751
+zope/hookable/_zope_hookable.cpython-36m-x86_64-linux-gnu.so,sha256=Ijr3JR4Zue6HoPlH5pUB4eL1nbtWJvm5AmMDYPv4YzE,43120
+zope/hookable/tests/__init__.py,sha256=Z9EJNKBQorYcdV6oaIRTRgF41SMRZEEoLltZCKyVPI8,47
+zope/hookable/tests/__pycache__/__init__.cpython-36.pyc,,
+zope/hookable/tests/__pycache__/test_hookable.cpython-36.pyc,,
+zope/hookable/tests/test_hookable.py,sha256=rVUonwRFQSWErLoJXaa2Wq0QlFy1oMFQSjZl6_UCxh4,6112
