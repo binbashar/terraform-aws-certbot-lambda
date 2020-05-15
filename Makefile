@@ -6,9 +6,9 @@ LOCAL_OS_GIT_CONF_DIR := ~/.gitconfig
 LOCAL_OS_AWS_CONF_DIR := ~/.aws
 
 # localhost aws-iam-profile
-LOCAL_OS_AWS_PROFILE  := bb-shared-deploymaster
+# LOCAL_OS_AWS_PROFILE  := bb-shared-deploymaster
 # ci aws-iam-profile
-#LOCAL_OS_AWS_PROFILE :="bb-dev-deploymaster"
+LOCAL_OS_AWS_PROFILE :="bb-dev-deploymaster"
 LOCAL_OS_AWS_REGION   := us-east-1
 
 TF_PWD_DIR            := $(shell pwd)
