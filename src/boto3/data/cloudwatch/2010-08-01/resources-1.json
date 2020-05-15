@@ -1,334 +1,338 @@
 {
-    "service": {
-        "has": {
-            "Alarm": {
-                "resource": {
-                    "type": "Alarm",
-                    "identifiers": [
-                        {
-                            "target": "Name",
-                            "source": "input"
-                        }
-                    ]
-                }
-            },
-            "Metric": {
-                "resource": {
-                    "type": "Metric",
-                    "identifiers": [
-                        {
-                            "target": "Namespace",
-                            "source": "input"
-                        },
-                        {
-                            "target": "Name",
-                            "source": "input"
-                        }
-                    ]
-                }
-            }
+  "resources": {
+    "Alarm": {
+      "actions": {
+        "Delete": {
+          "request": {
+            "operation": "DeleteAlarms",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[0]"
+              }
+            ]
+          }
         },
-        "hasMany": {
-            "Alarms": {
-                "request": { "operation": "DescribeAlarms" },
-                "resource": {
-                    "type": "Alarm",
-                    "identifiers": [
-                        {
-                            "target": "Name",
-                            "source": "response",
-                            "path": "MetricAlarms[].AlarmName"
-                        }
-                    ],
-                    "path": "MetricAlarms[]"
-                }
-            },
-            "Metrics": {
-                "request": { "operation": "ListMetrics" },
-                "resource": {
-                    "type": "Metric",
-                    "identifiers": [
-                        {
-                            "target": "Namespace",
-                            "source": "response",
-                            "path": "Metrics[].Namespace"
-                        },
-                        {
-                            "target": "Name",
-                            "source": "response",
-                            "path": "Metrics[].MetricName"
-                        }
-                    ],
-                    "path": "Metrics[]"
-                }
-            }
+        "DescribeHistory": {
+          "request": {
+            "operation": "DescribeAlarmHistory",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmName"
+              }
+            ]
+          }
+        },
+        "DisableActions": {
+          "request": {
+            "operation": "DisableAlarmActions",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[0]"
+              }
+            ]
+          }
+        },
+        "EnableActions": {
+          "request": {
+            "operation": "EnableAlarmActions",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[0]"
+              }
+            ]
+          }
+        },
+        "SetState": {
+          "request": {
+            "operation": "SetAlarmState",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmName"
+              }
+            ]
+          }
         }
-    },
-    "resources": {
-        "Alarm": {
-            "identifiers": [
-                {
-                    "name": "Name",
-                    "memberName": "AlarmName"
-                }
-            ],
-            "shape": "MetricAlarm",
-            "load": {
-                "request": {
-                    "operation": "DescribeAlarms",
-                    "params": [
-                        {
-                            "target": "AlarmNames[0]",
-                            "source": "identifier",
-                            "name": "Name"
-                        }
-                    ]
-                },
-                "path": "MetricAlarms[0]"
-            },
-            "actions": {
-                "Delete": {
-                    "request": {
-                        "operation": "DeleteAlarms",
-                        "params": [
-                            {
-                                "target": "AlarmNames[0]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "DescribeHistory": {
-                    "request": {
-                        "operation": "DescribeAlarmHistory",
-                        "params": [
-                            {
-                                "target": "AlarmName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "DisableActions": {
-                    "request": {
-                        "operation": "DisableAlarmActions",
-                        "params": [
-                            {
-                                "target": "AlarmNames[0]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "EnableActions": {
-                    "request": {
-                        "operation": "EnableAlarmActions",
-                        "params": [
-                            {
-                                "target": "AlarmNames[0]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "SetState": {
-                    "request": {
-                        "operation": "SetAlarmState",
-                        "params": [
-                            {
-                                "target": "AlarmName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                }
-            },
-            "batchActions": {
-                "Delete": {
-                    "request": {
-                        "operation": "DeleteAlarms",
-                        "params": [
-                            {
-                                "target": "AlarmNames[]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "DisableActions": {
-                    "request": {
-                        "operation": "DisableAlarmActions",
-                        "params": [
-                            {
-                                "target": "AlarmNames[]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "EnableActions": {
-                    "request": {
-                        "operation": "EnableAlarmActions",
-                        "params": [
-                            {
-                                "target": "AlarmNames[]",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                }
-            },
-            "has": {
-                "Metric": {
-                    "resource": {
-                        "type": "Metric",
-                        "identifiers": [
-                            {
-                                "target": "Namespace",
-                                "source": "data",
-                                "path": "Namespace"
-                            },
-                            {
-                                "target": "Name",
-                                "source": "data",
-                                "path": "MetricName"
-                            }
-                        ]
-                    }
-                }
-            }
+      },
+      "batchActions": {
+        "Delete": {
+          "request": {
+            "operation": "DeleteAlarms",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[]"
+              }
+            ]
+          }
         },
+        "DisableActions": {
+          "request": {
+            "operation": "DisableAlarmActions",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[]"
+              }
+            ]
+          }
+        },
+        "EnableActions": {
+          "request": {
+            "operation": "EnableAlarmActions",
+            "params": [
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "AlarmNames[]"
+              }
+            ]
+          }
+        }
+      },
+      "has": {
         "Metric": {
+          "resource": {
             "identifiers": [
-                {
-                    "name": "Namespace",
-                    "memberName": "Namespace"
-                },
-                {
-                    "name": "Name",
-                    "memberName": "MetricName"
-                }
+              {
+                "path": "Namespace",
+                "source": "data",
+                "target": "Namespace"
+              },
+              {
+                "path": "MetricName",
+                "source": "data",
+                "target": "Name"
+              }
             ],
-            "shape": "Metric",
-            "load": {
-                "request": {
-                    "operation": "ListMetrics",
-                    "params": [
-                        {
-                            "target": "MetricName",
-                            "source": "identifier",
-                            "name": "Name"
-                        },
-                        {
-                            "target": "Namespace",
-                            "source": "identifier",
-                            "name": "Namespace"
-                        }
-                    ]
-                },
-                "path": "Metrics[0]"
-            },
-            "actions": {
-                "GetStatistics": {
-                    "request": {
-                        "operation": "GetMetricStatistics",
-                        "params": [
-                            {
-                                "target": "Namespace",
-                                "source": "identifier",
-                                "name": "Namespace"
-                            },
-                            {
-                                "target": "MetricName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                },
-                "PutAlarm": {
-                    "request": {
-                        "operation": "PutMetricAlarm",
-                        "params": [
-                            {
-                                "target": "Namespace",
-                                "source": "identifier",
-                                "name": "Namespace"
-                            },
-                            {
-                                "target": "MetricName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    },
-                    "resource": {
-                        "type": "Alarm",
-                        "identifiers": [
-                            {
-                                "target": "Name",
-                                "source": "requestParameter",
-                                "path": "AlarmName"
-                            }
-                        ]
-                    }
-                },
-                "PutData": {
-                    "request": {
-                        "operation": "PutMetricData",
-                        "params": [
-                            {
-                                "target": "Namespace",
-                                "source": "identifier",
-                                "name": "Namespace"
-                            },
-                            {
-                                "target": "MetricData[].MetricName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    }
-                }
-            },
-            "hasMany": {
-                "Alarms": {
-                    "request": {
-                        "operation": "DescribeAlarmsForMetric",
-                        "params": [
-                            {
-                                "target": "Namespace",
-                                "source": "identifier",
-                                "name": "Namespace"
-                            },
-                            {
-                                "target": "MetricName",
-                                "source": "identifier",
-                                "name": "Name"
-                            }
-                        ]
-                    },
-                    "resource": {
-                        "type": "Alarm",
-                        "identifiers": [
-                            {
-                                "target": "Name",
-                                "source": "response",
-                                "path": "MetricAlarms[].AlarmName"
-                            }
-                        ],
-                        "path": "MetricAlarms[]"
-                    }
-                }
-            }
+            "type": "Metric"
+          }
         }
+      },
+      "identifiers": [
+        {
+          "memberName": "AlarmName",
+          "name": "Name"
+        }
+      ],
+      "load": {
+        "path": "MetricAlarms[0]",
+        "request": {
+          "operation": "DescribeAlarms",
+          "params": [
+            {
+              "name": "Name",
+              "source": "identifier",
+              "target": "AlarmNames[0]"
+            }
+          ]
+        }
+      },
+      "shape": "MetricAlarm"
+    },
+    "Metric": {
+      "actions": {
+        "GetStatistics": {
+          "request": {
+            "operation": "GetMetricStatistics",
+            "params": [
+              {
+                "name": "Namespace",
+                "source": "identifier",
+                "target": "Namespace"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "MetricName"
+              }
+            ]
+          }
+        },
+        "PutAlarm": {
+          "request": {
+            "operation": "PutMetricAlarm",
+            "params": [
+              {
+                "name": "Namespace",
+                "source": "identifier",
+                "target": "Namespace"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "MetricName"
+              }
+            ]
+          },
+          "resource": {
+            "identifiers": [
+              {
+                "path": "AlarmName",
+                "source": "requestParameter",
+                "target": "Name"
+              }
+            ],
+            "type": "Alarm"
+          }
+        },
+        "PutData": {
+          "request": {
+            "operation": "PutMetricData",
+            "params": [
+              {
+                "name": "Namespace",
+                "source": "identifier",
+                "target": "Namespace"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "MetricData[].MetricName"
+              }
+            ]
+          }
+        }
+      },
+      "hasMany": {
+        "Alarms": {
+          "request": {
+            "operation": "DescribeAlarmsForMetric",
+            "params": [
+              {
+                "name": "Namespace",
+                "source": "identifier",
+                "target": "Namespace"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "MetricName"
+              }
+            ]
+          },
+          "resource": {
+            "identifiers": [
+              {
+                "path": "MetricAlarms[].AlarmName",
+                "source": "response",
+                "target": "Name"
+              }
+            ],
+            "path": "MetricAlarms[]",
+            "type": "Alarm"
+          }
+        }
+      },
+      "identifiers": [
+        {
+          "memberName": "Namespace",
+          "name": "Namespace"
+        },
+        {
+          "memberName": "MetricName",
+          "name": "Name"
+        }
+      ],
+      "load": {
+        "path": "Metrics[0]",
+        "request": {
+          "operation": "ListMetrics",
+          "params": [
+            {
+              "name": "Name",
+              "source": "identifier",
+              "target": "MetricName"
+            },
+            {
+              "name": "Namespace",
+              "source": "identifier",
+              "target": "Namespace"
+            }
+          ]
+        }
+      },
+      "shape": "Metric"
     }
+  },
+  "service": {
+    "has": {
+      "Alarm": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Name"
+            }
+          ],
+          "type": "Alarm"
+        }
+      },
+      "Metric": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Namespace"
+            },
+            {
+              "source": "input",
+              "target": "Name"
+            }
+          ],
+          "type": "Metric"
+        }
+      }
+    },
+    "hasMany": {
+      "Alarms": {
+        "request": {
+          "operation": "DescribeAlarms"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "MetricAlarms[].AlarmName",
+              "source": "response",
+              "target": "Name"
+            }
+          ],
+          "path": "MetricAlarms[]",
+          "type": "Alarm"
+        }
+      },
+      "Metrics": {
+        "request": {
+          "operation": "ListMetrics"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "Metrics[].Namespace",
+              "source": "response",
+              "target": "Namespace"
+            },
+            {
+              "path": "Metrics[].MetricName",
+              "source": "response",
+              "target": "Name"
+            }
+          ],
+          "path": "Metrics[]",
+          "type": "Metric"
+        }
+      }
+    }
+  }
 }

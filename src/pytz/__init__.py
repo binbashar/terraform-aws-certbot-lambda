@@ -1102,7 +1102,7 @@ all_timezones = \
  'Zulu']
 all_timezones = LazyList(
         tz for tz in all_timezones if resource_exists(tz))
-        
+
 all_timezones_set = LazySet(all_timezones)
 common_timezones = \
 ['Africa/Abidjan',
@@ -1547,5 +1547,5 @@ common_timezones = \
  'UTC']
 common_timezones = LazyList(
             tz for tz in common_timezones if tz in all_timezones)
-        
+
 common_timezones_set = LazySet(common_timezones)

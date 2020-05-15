@@ -1,2133 +1,2673 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-07-05",
-    "endpointPrefix":"networkmanager",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"NetworkManager",
-    "serviceFullName":"AWS Network Manager",
-    "serviceId":"NetworkManager",
-    "signatureVersion":"v4",
-    "signingName":"networkmanager",
-    "uid":"networkmanager-2019-07-05"
+  "documentation": "<p>Transit Gateway Network Manager (Network Manager) enables you to create a global network, in which you can monitor your AWS and on-premises networks that are built around transit gateways.</p>",
+  "metadata": {
+    "apiVersion": "2019-07-05",
+    "endpointPrefix": "networkmanager",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "NetworkManager",
+    "serviceFullName": "AWS Network Manager",
+    "serviceId": "NetworkManager",
+    "signatureVersion": "v4",
+    "signingName": "networkmanager",
+    "uid": "networkmanager-2019-07-05"
   },
-  "operations":{
-    "AssociateCustomerGateway":{
-      "name":"AssociateCustomerGateway",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/customer-gateway-associations"
-      },
-      "input":{"shape":"AssociateCustomerGatewayRequest"},
-      "output":{"shape":"AssociateCustomerGatewayResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+  "operations": {
+    "AssociateCustomerGateway": {
+      "documentation": "<p>Associates a customer gateway with a device and optionally, with a link. If you specify a link, it must be associated with the specified device. </p> <p>You can only associate customer gateways that are connected to a VPN attachment on a transit gateway. The transit gateway must be registered in your global network. When you register a transit gateway, customer gateways that are connected to the transit gateway are automatically included in the global network. To list customer gateways that are connected to a transit gateway, use the <a href=\"https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html\">DescribeVpnConnections</a> EC2 API and filter by <code>transit-gateway-id</code>.</p> <p>You cannot associate a customer gateway with more than one device and link. </p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Associates a customer gateway with a device and optionally, with a link. If you specify a link, it must be associated with the specified device. </p> <p>You can only associate customer gateways that are connected to a VPN attachment on a transit gateway. The transit gateway must be registered in your global network. When you register a transit gateway, customer gateways that are connected to the transit gateway are automatically included in the global network. To list customer gateways that are connected to a transit gateway, use the <a href=\"https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html\">DescribeVpnConnections</a> EC2 API and filter by <code>transit-gateway-id</code>.</p> <p>You cannot associate a customer gateway with more than one device and link. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/customer-gateway-associations"
+      },
+      "input": {
+        "shape": "AssociateCustomerGatewayRequest"
+      },
+      "name": "AssociateCustomerGateway",
+      "output": {
+        "shape": "AssociateCustomerGatewayResponse"
+      }
     },
-    "AssociateLink":{
-      "name":"AssociateLink",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/link-associations"
-      },
-      "input":{"shape":"AssociateLinkRequest"},
-      "output":{"shape":"AssociateLinkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "AssociateLink": {
+      "documentation": "<p>Associates a link to a device. A device can be associated to multiple links and a link can be associated to multiple devices. The device and link must be in the same global network and the same site.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Associates a link to a device. A device can be associated to multiple links and a link can be associated to multiple devices. The device and link must be in the same global network and the same site.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/link-associations"
+      },
+      "input": {
+        "shape": "AssociateLinkRequest"
+      },
+      "name": "AssociateLink",
+      "output": {
+        "shape": "AssociateLinkResponse"
+      }
     },
-    "CreateDevice":{
-      "name":"CreateDevice",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/devices"
-      },
-      "input":{"shape":"CreateDeviceRequest"},
-      "output":{"shape":"CreateDeviceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "CreateDevice": {
+      "documentation": "<p>Creates a new device in a global network. If you specify both a site ID and a location, the location of the site is used for visualization in the Network Manager console.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Creates a new device in a global network. If you specify both a site ID and a location, the location of the site is used for visualization in the Network Manager console.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/devices"
+      },
+      "input": {
+        "shape": "CreateDeviceRequest"
+      },
+      "name": "CreateDevice",
+      "output": {
+        "shape": "CreateDeviceResponse"
+      }
     },
-    "CreateGlobalNetwork":{
-      "name":"CreateGlobalNetwork",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks"
-      },
-      "input":{"shape":"CreateGlobalNetworkRequest"},
-      "output":{"shape":"CreateGlobalNetworkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "CreateGlobalNetwork": {
+      "documentation": "<p>Creates a new, empty global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Creates a new, empty global network.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks"
+      },
+      "input": {
+        "shape": "CreateGlobalNetworkRequest"
+      },
+      "name": "CreateGlobalNetwork",
+      "output": {
+        "shape": "CreateGlobalNetworkResponse"
+      }
     },
-    "CreateLink":{
-      "name":"CreateLink",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/links"
-      },
-      "input":{"shape":"CreateLinkRequest"},
-      "output":{"shape":"CreateLinkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "CreateLink": {
+      "documentation": "<p>Creates a new link for a specified site.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Creates a new link for a specified site.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/links"
+      },
+      "input": {
+        "shape": "CreateLinkRequest"
+      },
+      "name": "CreateLink",
+      "output": {
+        "shape": "CreateLinkResponse"
+      }
     },
-    "CreateSite":{
-      "name":"CreateSite",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/sites"
-      },
-      "input":{"shape":"CreateSiteRequest"},
-      "output":{"shape":"CreateSiteResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "CreateSite": {
+      "documentation": "<p>Creates a new site in a global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Creates a new site in a global network.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/sites"
+      },
+      "input": {
+        "shape": "CreateSiteRequest"
+      },
+      "name": "CreateSite",
+      "output": {
+        "shape": "CreateSiteResponse"
+      }
     },
-    "DeleteDevice":{
-      "name":"DeleteDevice",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/devices/{deviceId}"
-      },
-      "input":{"shape":"DeleteDeviceRequest"},
-      "output":{"shape":"DeleteDeviceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DeleteDevice": {
+      "documentation": "<p>Deletes an existing device. You must first disassociate the device from any links and customer gateways.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deletes an existing device. You must first disassociate the device from any links and customer gateways.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/devices/{deviceId}"
+      },
+      "input": {
+        "shape": "DeleteDeviceRequest"
+      },
+      "name": "DeleteDevice",
+      "output": {
+        "shape": "DeleteDeviceResponse"
+      }
     },
-    "DeleteGlobalNetwork":{
-      "name":"DeleteGlobalNetwork",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}"
-      },
-      "input":{"shape":"DeleteGlobalNetworkRequest"},
-      "output":{"shape":"DeleteGlobalNetworkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DeleteGlobalNetwork": {
+      "documentation": "<p>Deletes an existing global network. You must first delete all global network objects (devices, links, and sites) and deregister all transit gateways.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deletes an existing global network. You must first delete all global network objects (devices, links, and sites) and deregister all transit gateways.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}"
+      },
+      "input": {
+        "shape": "DeleteGlobalNetworkRequest"
+      },
+      "name": "DeleteGlobalNetwork",
+      "output": {
+        "shape": "DeleteGlobalNetworkResponse"
+      }
     },
-    "DeleteLink":{
-      "name":"DeleteLink",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/links/{linkId}"
-      },
-      "input":{"shape":"DeleteLinkRequest"},
-      "output":{"shape":"DeleteLinkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DeleteLink": {
+      "documentation": "<p>Deletes an existing link. You must first disassociate the link from any devices and customer gateways.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deletes an existing link. You must first disassociate the link from any devices and customer gateways.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/links/{linkId}"
+      },
+      "input": {
+        "shape": "DeleteLinkRequest"
+      },
+      "name": "DeleteLink",
+      "output": {
+        "shape": "DeleteLinkResponse"
+      }
     },
-    "DeleteSite":{
-      "name":"DeleteSite",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/sites/{siteId}"
-      },
-      "input":{"shape":"DeleteSiteRequest"},
-      "output":{"shape":"DeleteSiteResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DeleteSite": {
+      "documentation": "<p>Deletes an existing site. The site cannot be associated with any device or link.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deletes an existing site. The site cannot be associated with any device or link.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/sites/{siteId}"
+      },
+      "input": {
+        "shape": "DeleteSiteRequest"
+      },
+      "name": "DeleteSite",
+      "output": {
+        "shape": "DeleteSiteResponse"
+      }
     },
-    "DeregisterTransitGateway":{
-      "name":"DeregisterTransitGateway",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/transit-gateway-registrations/{transitGatewayArn}"
-      },
-      "input":{"shape":"DeregisterTransitGatewayRequest"},
-      "output":{"shape":"DeregisterTransitGatewayResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DeregisterTransitGateway": {
+      "documentation": "<p>Deregisters a transit gateway from your global network. This action does not delete your transit gateway, or modify any of its attachments. This action removes any customer gateway associations.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deregisters a transit gateway from your global network. This action does not delete your transit gateway, or modify any of its attachments. This action removes any customer gateway associations.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/transit-gateway-registrations/{transitGatewayArn}"
+      },
+      "input": {
+        "shape": "DeregisterTransitGatewayRequest"
+      },
+      "name": "DeregisterTransitGateway",
+      "output": {
+        "shape": "DeregisterTransitGatewayResponse"
+      }
     },
-    "DescribeGlobalNetworks":{
-      "name":"DescribeGlobalNetworks",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks"
-      },
-      "input":{"shape":"DescribeGlobalNetworksRequest"},
-      "output":{"shape":"DescribeGlobalNetworksResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DescribeGlobalNetworks": {
+      "documentation": "<p>Describes one or more global networks. By default, all global networks are described. To describe the objects in your global network, you must use the appropriate <code>Get*</code> action. For example, to list the transit gateways in your global network, use <a>GetTransitGatewayRegistrations</a>.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Describes one or more global networks. By default, all global networks are described. To describe the objects in your global network, you must use the appropriate <code>Get*</code> action. For example, to list the transit gateways in your global network, use <a>GetTransitGatewayRegistrations</a>.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks"
+      },
+      "input": {
+        "shape": "DescribeGlobalNetworksRequest"
+      },
+      "name": "DescribeGlobalNetworks",
+      "output": {
+        "shape": "DescribeGlobalNetworksResponse"
+      }
     },
-    "DisassociateCustomerGateway":{
-      "name":"DisassociateCustomerGateway",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/customer-gateway-associations/{customerGatewayArn}"
-      },
-      "input":{"shape":"DisassociateCustomerGatewayRequest"},
-      "output":{"shape":"DisassociateCustomerGatewayResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DisassociateCustomerGateway": {
+      "documentation": "<p>Disassociates a customer gateway from a device and a link.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Disassociates a customer gateway from a device and a link.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/customer-gateway-associations/{customerGatewayArn}"
+      },
+      "input": {
+        "shape": "DisassociateCustomerGatewayRequest"
+      },
+      "name": "DisassociateCustomerGateway",
+      "output": {
+        "shape": "DisassociateCustomerGatewayResponse"
+      }
     },
-    "DisassociateLink":{
-      "name":"DisassociateLink",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/global-networks/{globalNetworkId}/link-associations"
-      },
-      "input":{"shape":"DisassociateLinkRequest"},
-      "output":{"shape":"DisassociateLinkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "DisassociateLink": {
+      "documentation": "<p>Disassociates an existing device from a link. You must first disassociate any customer gateways that are associated with the link.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Disassociates an existing device from a link. You must first disassociate any customer gateways that are associated with the link.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/global-networks/{globalNetworkId}/link-associations"
+      },
+      "input": {
+        "shape": "DisassociateLinkRequest"
+      },
+      "name": "DisassociateLink",
+      "output": {
+        "shape": "DisassociateLinkResponse"
+      }
     },
-    "GetCustomerGatewayAssociations":{
-      "name":"GetCustomerGatewayAssociations",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/customer-gateway-associations"
-      },
-      "input":{"shape":"GetCustomerGatewayAssociationsRequest"},
-      "output":{"shape":"GetCustomerGatewayAssociationsResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetCustomerGatewayAssociations": {
+      "documentation": "<p>Gets the association information for customer gateways that are associated with devices and links in your global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets the association information for customer gateways that are associated with devices and links in your global network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/customer-gateway-associations"
+      },
+      "input": {
+        "shape": "GetCustomerGatewayAssociationsRequest"
+      },
+      "name": "GetCustomerGatewayAssociations",
+      "output": {
+        "shape": "GetCustomerGatewayAssociationsResponse"
+      }
     },
-    "GetDevices":{
-      "name":"GetDevices",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/devices"
-      },
-      "input":{"shape":"GetDevicesRequest"},
-      "output":{"shape":"GetDevicesResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetDevices": {
+      "documentation": "<p>Gets information about one or more of your devices in a global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets information about one or more of your devices in a global network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/devices"
+      },
+      "input": {
+        "shape": "GetDevicesRequest"
+      },
+      "name": "GetDevices",
+      "output": {
+        "shape": "GetDevicesResponse"
+      }
     },
-    "GetLinkAssociations":{
-      "name":"GetLinkAssociations",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/link-associations"
-      },
-      "input":{"shape":"GetLinkAssociationsRequest"},
-      "output":{"shape":"GetLinkAssociationsResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetLinkAssociations": {
+      "documentation": "<p>Gets the link associations for a device or a link. Either the device ID or the link ID must be specified.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets the link associations for a device or a link. Either the device ID or the link ID must be specified.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/link-associations"
+      },
+      "input": {
+        "shape": "GetLinkAssociationsRequest"
+      },
+      "name": "GetLinkAssociations",
+      "output": {
+        "shape": "GetLinkAssociationsResponse"
+      }
     },
-    "GetLinks":{
-      "name":"GetLinks",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/links"
-      },
-      "input":{"shape":"GetLinksRequest"},
-      "output":{"shape":"GetLinksResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetLinks": {
+      "documentation": "<p>Gets information about one or more links in a specified global network.</p> <p>If you specify the site ID, you cannot specify the type or provider in the same request. You can specify the type and provider in the same request.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets information about one or more links in a specified global network.</p> <p>If you specify the site ID, you cannot specify the type or provider in the same request. You can specify the type and provider in the same request.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/links"
+      },
+      "input": {
+        "shape": "GetLinksRequest"
+      },
+      "name": "GetLinks",
+      "output": {
+        "shape": "GetLinksResponse"
+      }
     },
-    "GetSites":{
-      "name":"GetSites",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/sites"
-      },
-      "input":{"shape":"GetSitesRequest"},
-      "output":{"shape":"GetSitesResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetSites": {
+      "documentation": "<p>Gets information about one or more of your sites in a global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets information about one or more of your sites in a global network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/sites"
+      },
+      "input": {
+        "shape": "GetSitesRequest"
+      },
+      "name": "GetSites",
+      "output": {
+        "shape": "GetSitesResponse"
+      }
     },
-    "GetTransitGatewayRegistrations":{
-      "name":"GetTransitGatewayRegistrations",
-      "http":{
-        "method":"GET",
-        "requestUri":"/global-networks/{globalNetworkId}/transit-gateway-registrations"
-      },
-      "input":{"shape":"GetTransitGatewayRegistrationsRequest"},
-      "output":{"shape":"GetTransitGatewayRegistrationsResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "GetTransitGatewayRegistrations": {
+      "documentation": "<p>Gets information about the transit gateway registrations in a specified global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Gets information about the transit gateway registrations in a specified global network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/global-networks/{globalNetworkId}/transit-gateway-registrations"
+      },
+      "input": {
+        "shape": "GetTransitGatewayRegistrationsRequest"
+      },
+      "name": "GetTransitGatewayRegistrations",
+      "output": {
+        "shape": "GetTransitGatewayRegistrationsResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/tags/{resourceArn}"
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Lists the tags for a specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Lists the tags for a specified resource.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/tags/{resourceArn}"
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "RegisterTransitGateway":{
-      "name":"RegisterTransitGateway",
-      "http":{
-        "method":"POST",
-        "requestUri":"/global-networks/{globalNetworkId}/transit-gateway-registrations"
-      },
-      "input":{"shape":"RegisterTransitGatewayRequest"},
-      "output":{"shape":"RegisterTransitGatewayResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "RegisterTransitGateway": {
+      "documentation": "<p>Registers a transit gateway in your global network. The transit gateway can be in any AWS Region, but it must be owned by the same AWS account that owns the global network. You cannot register a transit gateway in more than one global network.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Registers a transit gateway in your global network. The transit gateway can be in any AWS Region, but it must be owned by the same AWS account that owns the global network. You cannot register a transit gateway in more than one global network.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/global-networks/{globalNetworkId}/transit-gateway-registrations"
+      },
+      "input": {
+        "shape": "RegisterTransitGatewayRequest"
+      },
+      "name": "RegisterTransitGateway",
+      "output": {
+        "shape": "RegisterTransitGatewayResponse"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tags/{resourceArn}"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "TagResource": {
+      "documentation": "<p>Tags a specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Tags a specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/tags/{resourceArn}"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/tags/{resourceArn}"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "UntagResource": {
+      "documentation": "<p>Removes tags from a specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Removes tags from a specified resource.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/tags/{resourceArn}"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateDevice":{
-      "name":"UpdateDevice",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/global-networks/{globalNetworkId}/devices/{deviceId}"
-      },
-      "input":{"shape":"UpdateDeviceRequest"},
-      "output":{"shape":"UpdateDeviceResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "UpdateDevice": {
+      "documentation": "<p>Updates the details for an existing device. To remove information for any of the parameters, specify an empty string.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates the details for an existing device. To remove information for any of the parameters, specify an empty string.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/global-networks/{globalNetworkId}/devices/{deviceId}"
+      },
+      "input": {
+        "shape": "UpdateDeviceRequest"
+      },
+      "name": "UpdateDevice",
+      "output": {
+        "shape": "UpdateDeviceResponse"
+      }
     },
-    "UpdateGlobalNetwork":{
-      "name":"UpdateGlobalNetwork",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/global-networks/{globalNetworkId}"
-      },
-      "input":{"shape":"UpdateGlobalNetworkRequest"},
-      "output":{"shape":"UpdateGlobalNetworkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "UpdateGlobalNetwork": {
+      "documentation": "<p>Updates an existing global network. To remove information for any of the parameters, specify an empty string.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates an existing global network. To remove information for any of the parameters, specify an empty string.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/global-networks/{globalNetworkId}"
+      },
+      "input": {
+        "shape": "UpdateGlobalNetworkRequest"
+      },
+      "name": "UpdateGlobalNetwork",
+      "output": {
+        "shape": "UpdateGlobalNetworkResponse"
+      }
     },
-    "UpdateLink":{
-      "name":"UpdateLink",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/global-networks/{globalNetworkId}/links/{linkId}"
-      },
-      "input":{"shape":"UpdateLinkRequest"},
-      "output":{"shape":"UpdateLinkResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "UpdateLink": {
+      "documentation": "<p>Updates the details for an existing link. To remove information for any of the parameters, specify an empty string.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates the details for an existing link. To remove information for any of the parameters, specify an empty string.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/global-networks/{globalNetworkId}/links/{linkId}"
+      },
+      "input": {
+        "shape": "UpdateLinkRequest"
+      },
+      "name": "UpdateLink",
+      "output": {
+        "shape": "UpdateLinkResponse"
+      }
     },
-    "UpdateSite":{
-      "name":"UpdateSite",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/global-networks/{globalNetworkId}/sites/{siteId}"
-      },
-      "input":{"shape":"UpdateSiteRequest"},
-      "output":{"shape":"UpdateSiteResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServerException"}
+    "UpdateSite": {
+      "documentation": "<p>Updates the information for an existing site. To remove information for any of the parameters, specify an empty string.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates the information for an existing site. To remove information for any of the parameters, specify an empty string.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/global-networks/{globalNetworkId}/sites/{siteId}"
+      },
+      "input": {
+        "shape": "UpdateSiteRequest"
+      },
+      "name": "UpdateSite",
+      "output": {
+        "shape": "UpdateSiteResponse"
+      }
     }
   },
-  "shapes":{
-    "AccessDeniedException":{
-      "type":"structure",
-      "required":["Message"],
-      "members":{
-        "Message":{"shape":"String"}
+  "shapes": {
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have sufficient access to perform this action.</p>",
+      "error": {
+        "httpStatusCode": 403
       },
-      "documentation":"<p>You do not have sufficient access to perform this action.</p>",
-      "error":{"httpStatusCode":403},
-      "exception":true
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
     },
-    "AssociateCustomerGatewayRequest":{
-      "type":"structure",
-      "required":[
+    "AssociateCustomerGatewayRequest": {
+      "members": {
+        "CustomerGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the customer gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>",
+          "shape": "String"
+        },
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "CustomerGatewayArn",
         "GlobalNetworkId",
         "DeviceId"
       ],
-      "members":{
-        "CustomerGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the customer gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>"
-        },
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "AssociateCustomerGatewayResponse":{
-      "type":"structure",
-      "members":{
-        "CustomerGatewayAssociation":{
-          "shape":"CustomerGatewayAssociation",
-          "documentation":"<p>The customer gateway association.</p>"
+    "AssociateCustomerGatewayResponse": {
+      "members": {
+        "CustomerGatewayAssociation": {
+          "documentation": "<p>The customer gateway association.</p>",
+          "shape": "CustomerGatewayAssociation"
         }
-      }
+      },
+      "type": "structure"
     },
-    "AssociateLinkRequest":{
-      "type":"structure",
-      "required":[
+    "AssociateLinkRequest": {
+      "members": {
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "DeviceId",
         "LinkId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "AssociateLinkResponse":{
-      "type":"structure",
-      "members":{
-        "LinkAssociation":{
-          "shape":"LinkAssociation",
-          "documentation":"<p>The link association.</p>"
-        }
-      }
-    },
-    "Bandwidth":{
-      "type":"structure",
-      "members":{
-        "UploadSpeed":{
-          "shape":"Integer",
-          "documentation":"<p>Upload speed in Mbps.</p>"
-        },
-        "DownloadSpeed":{
-          "shape":"Integer",
-          "documentation":"<p>Download speed in Mbps.</p>"
+    "AssociateLinkResponse": {
+      "members": {
+        "LinkAssociation": {
+          "documentation": "<p>The link association.</p>",
+          "shape": "LinkAssociation"
         }
       },
-      "documentation":"<p>Describes bandwidth information.</p>"
+      "type": "structure"
     },
-    "ConflictException":{
-      "type":"structure",
-      "required":[
+    "Bandwidth": {
+      "documentation": "<p>Describes bandwidth information.</p>",
+      "members": {
+        "DownloadSpeed": {
+          "documentation": "<p>Download speed in Mbps.</p>",
+          "shape": "Integer"
+        },
+        "UploadSpeed": {
+          "documentation": "<p>Upload speed in Mbps.</p>",
+          "shape": "Integer"
+        }
+      },
+      "type": "structure"
+    },
+    "ConflictException": {
+      "documentation": "<p>There was a conflict processing the request. Updating or deleting the resource can cause an inconsistent state.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>The resource type.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "Message",
         "ResourceId",
         "ResourceType"
       ],
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the resource.</p>"
+      "type": "structure"
+    },
+    "CreateDeviceRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the device.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
         },
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>The resource type.</p>"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "Location": {
+          "documentation": "<p>The location of the device.</p>",
+          "shape": "Location"
+        },
+        "Model": {
+          "documentation": "<p>The model of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "SerialNumber": {
+          "documentation": "<p>The serial number of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "shape": "String"
+        },
+        "Tags": {
+          "documentation": "<p>The tags to apply to the resource during creation.</p>",
+          "shape": "TagList"
+        },
+        "Type": {
+          "documentation": "<p>The type of the device.</p>",
+          "shape": "String"
+        },
+        "Vendor": {
+          "documentation": "<p>The vendor of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>There was a conflict processing the request. Updating or deleting the resource can cause an inconsistent state.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
     },
-    "CreateDeviceRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the device.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The type of the device.</p>"
-        },
-        "Vendor":{
-          "shape":"String",
-          "documentation":"<p>The vendor of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Model":{
-          "shape":"String",
-          "documentation":"<p>The model of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "SerialNumber":{
-          "shape":"String",
-          "documentation":"<p>The serial number of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Location":{
-          "shape":"Location",
-          "documentation":"<p>The location of the device.</p>"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to apply to the resource during creation.</p>"
+    "CreateDeviceResponse": {
+      "members": {
+        "Device": {
+          "documentation": "<p>Information about the device.</p>",
+          "shape": "Device"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateDeviceResponse":{
-      "type":"structure",
-      "members":{
-        "Device":{
-          "shape":"Device",
-          "documentation":"<p>Information about the device.</p>"
-        }
-      }
-    },
-    "CreateGlobalNetworkRequest":{
-      "type":"structure",
-      "members":{
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the global network.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
+    "CreateGlobalNetworkRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the global network.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
         },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to apply to the resource during creation.</p>"
+        "Tags": {
+          "documentation": "<p>The tags to apply to the resource during creation.</p>",
+          "shape": "TagList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateGlobalNetworkResponse":{
-      "type":"structure",
-      "members":{
-        "GlobalNetwork":{
-          "shape":"GlobalNetwork",
-          "documentation":"<p>Information about the global network object.</p>"
+    "CreateGlobalNetworkResponse": {
+      "members": {
+        "GlobalNetwork": {
+          "documentation": "<p>Information about the global network object.</p>",
+          "shape": "GlobalNetwork"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateLinkRequest":{
-      "type":"structure",
-      "required":[
+    "CreateLinkRequest": {
+      "members": {
+        "Bandwidth": {
+          "documentation": "<p> The upload speed and download speed in Mbps. </p>",
+          "shape": "Bandwidth"
+        },
+        "Description": {
+          "documentation": "<p>A description of the link.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "Provider": {
+          "documentation": "<p>The provider of the link.</p> <p>Constraints: Cannot include the following characters: | \\ ^</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "shape": "String"
+        },
+        "Tags": {
+          "documentation": "<p>The tags to apply to the resource during creation.</p>",
+          "shape": "TagList"
+        },
+        "Type": {
+          "documentation": "<p>The type of the link.</p> <p>Constraints: Cannot include the following characters: | \\ ^</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "Bandwidth",
         "SiteId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the link.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The type of the link.</p> <p>Constraints: Cannot include the following characters: | \\ ^</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Bandwidth":{
-          "shape":"Bandwidth",
-          "documentation":"<p> The upload speed and download speed in Mbps. </p>"
-        },
-        "Provider":{
-          "shape":"String",
-          "documentation":"<p>The provider of the link.</p> <p>Constraints: Cannot include the following characters: | \\ ^</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to apply to the resource during creation.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateLinkResponse":{
-      "type":"structure",
-      "members":{
-        "Link":{
-          "shape":"Link",
-          "documentation":"<p>Information about the link.</p>"
-        }
-      }
-    },
-    "CreateSiteRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of your site.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Location":{
-          "shape":"Location",
-          "documentation":"<p>The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the site.</p> </li> </ul>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to apply to the resource during creation.</p>"
-        }
-      }
-    },
-    "CreateSiteResponse":{
-      "type":"structure",
-      "members":{
-        "Site":{
-          "shape":"Site",
-          "documentation":"<p>Information about the site.</p>"
-        }
-      }
-    },
-    "CustomerGatewayAssociation":{
-      "type":"structure",
-      "members":{
-        "CustomerGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the customer gateway.</p>"
-        },
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>"
-        },
-        "State":{
-          "shape":"CustomerGatewayAssociationState",
-          "documentation":"<p>The association state.</p>"
+    "CreateLinkResponse": {
+      "members": {
+        "Link": {
+          "documentation": "<p>Information about the link.</p>",
+          "shape": "Link"
         }
       },
-      "documentation":"<p>Describes the association between a customer gateway, a device, and a link.</p>"
+      "type": "structure"
     },
-    "CustomerGatewayAssociationList":{
-      "type":"list",
-      "member":{"shape":"CustomerGatewayAssociation"}
+    "CreateSiteRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of your site.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "Location": {
+          "documentation": "<p>The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the site.</p> </li> </ul>",
+          "shape": "Location"
+        },
+        "Tags": {
+          "documentation": "<p>The tags to apply to the resource during creation.</p>",
+          "shape": "TagList"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
     },
-    "CustomerGatewayAssociationState":{
-      "type":"string",
-      "enum":[
+    "CreateSiteResponse": {
+      "members": {
+        "Site": {
+          "documentation": "<p>Information about the site.</p>",
+          "shape": "Site"
+        }
+      },
+      "type": "structure"
+    },
+    "CustomerGatewayAssociation": {
+      "documentation": "<p>Describes the association between a customer gateway, a device, and a link.</p>",
+      "members": {
+        "CustomerGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the customer gateway.</p>",
+          "shape": "String"
+        },
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "shape": "String"
+        },
+        "State": {
+          "documentation": "<p>The association state.</p>",
+          "shape": "CustomerGatewayAssociationState"
+        }
+      },
+      "type": "structure"
+    },
+    "CustomerGatewayAssociationList": {
+      "member": {
+        "shape": "CustomerGatewayAssociation"
+      },
+      "type": "list"
+    },
+    "CustomerGatewayAssociationState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "DateTime":{"type":"timestamp"},
-    "DeleteDeviceRequest":{
-      "type":"structure",
-      "required":[
+    "DateTime": {
+      "type": "timestamp"
+    },
+    "DeleteDeviceRequest": {
+      "members": {
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "location": "uri",
+          "locationName": "deviceId",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "DeviceId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+      "type": "structure"
+    },
+    "DeleteDeviceResponse": {
+      "members": {
+        "Device": {
+          "documentation": "<p>Information about the device.</p>",
+          "shape": "Device"
+        }
+      },
+      "type": "structure"
+    },
+    "DeleteGlobalNetworkRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "DeleteGlobalNetworkResponse": {
+      "members": {
+        "GlobalNetwork": {
+          "documentation": "<p>Information about the global network.</p>",
+          "shape": "GlobalNetwork"
+        }
+      },
+      "type": "structure"
+    },
+    "DeleteLinkRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
         },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>",
-          "location":"uri",
-          "locationName":"deviceId"
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "location": "uri",
+          "locationName": "linkId",
+          "shape": "String"
         }
-      }
-    },
-    "DeleteDeviceResponse":{
-      "type":"structure",
-      "members":{
-        "Device":{
-          "shape":"Device",
-          "documentation":"<p>Information about the device.</p>"
-        }
-      }
-    },
-    "DeleteGlobalNetworkRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        }
-      }
-    },
-    "DeleteGlobalNetworkResponse":{
-      "type":"structure",
-      "members":{
-        "GlobalNetwork":{
-          "shape":"GlobalNetwork",
-          "documentation":"<p>Information about the global network.</p>"
-        }
-      }
-    },
-    "DeleteLinkRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "GlobalNetworkId",
         "LinkId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+      "type": "structure"
+    },
+    "DeleteLinkResponse": {
+      "members": {
+        "Link": {
+          "documentation": "<p>Information about the link.</p>",
+          "shape": "Link"
+        }
+      },
+      "type": "structure"
+    },
+    "DeleteSiteRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
         },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>",
-          "location":"uri",
-          "locationName":"linkId"
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "location": "uri",
+          "locationName": "siteId",
+          "shape": "String"
         }
-      }
-    },
-    "DeleteLinkResponse":{
-      "type":"structure",
-      "members":{
-        "Link":{
-          "shape":"Link",
-          "documentation":"<p>Information about the link.</p>"
-        }
-      }
-    },
-    "DeleteSiteRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "GlobalNetworkId",
         "SiteId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+      "type": "structure"
+    },
+    "DeleteSiteResponse": {
+      "members": {
+        "Site": {
+          "documentation": "<p>Information about the site.</p>",
+          "shape": "Site"
+        }
+      },
+      "type": "structure"
+    },
+    "DeregisterTransitGatewayRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
         },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>",
-          "location":"uri",
-          "locationName":"siteId"
+        "TransitGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the transit gateway.</p>",
+          "location": "uri",
+          "locationName": "transitGatewayArn",
+          "shape": "String"
         }
-      }
-    },
-    "DeleteSiteResponse":{
-      "type":"structure",
-      "members":{
-        "Site":{
-          "shape":"Site",
-          "documentation":"<p>Information about the site.</p>"
-        }
-      }
-    },
-    "DeregisterTransitGatewayRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "GlobalNetworkId",
         "TransitGatewayArn"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "TransitGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the transit gateway.</p>",
-          "location":"uri",
-          "locationName":"transitGatewayArn"
-        }
-      }
+      "type": "structure"
     },
-    "DeregisterTransitGatewayResponse":{
-      "type":"structure",
-      "members":{
-        "TransitGatewayRegistration":{
-          "shape":"TransitGatewayRegistration",
-          "documentation":"<p>The transit gateway registration information.</p>"
-        }
-      }
-    },
-    "DescribeGlobalNetworksRequest":{
-      "type":"structure",
-      "members":{
-        "GlobalNetworkIds":{
-          "shape":"StringList",
-          "documentation":"<p>The IDs of one or more global networks. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"globalNetworkIds"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "DescribeGlobalNetworksResponse":{
-      "type":"structure",
-      "members":{
-        "GlobalNetworks":{
-          "shape":"GlobalNetworkList",
-          "documentation":"<p>Information about the global networks.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "Device":{
-      "type":"structure",
-      "members":{
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>"
-        },
-        "DeviceArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the device.</p>"
-        },
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the device.</p>"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The device type.</p>"
-        },
-        "Vendor":{
-          "shape":"String",
-          "documentation":"<p>The device vendor.</p>"
-        },
-        "Model":{
-          "shape":"String",
-          "documentation":"<p>The device model.</p>"
-        },
-        "SerialNumber":{
-          "shape":"String",
-          "documentation":"<p>The device serial number.</p>"
-        },
-        "Location":{
-          "shape":"Location",
-          "documentation":"<p>The site location.</p>"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The site ID.</p>"
-        },
-        "CreatedAt":{
-          "shape":"DateTime",
-          "documentation":"<p>The date and time that the site was created.</p>"
-        },
-        "State":{
-          "shape":"DeviceState",
-          "documentation":"<p>The device state.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the device.</p>"
+    "DeregisterTransitGatewayResponse": {
+      "members": {
+        "TransitGatewayRegistration": {
+          "documentation": "<p>The transit gateway registration information.</p>",
+          "shape": "TransitGatewayRegistration"
         }
       },
-      "documentation":"<p>Describes a device.</p>"
+      "type": "structure"
     },
-    "DeviceList":{
-      "type":"list",
-      "member":{"shape":"Device"}
+    "DescribeGlobalNetworksRequest": {
+      "members": {
+        "GlobalNetworkIds": {
+          "documentation": "<p>The IDs of one or more global networks. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "globalNetworkIds",
+          "shape": "StringList"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
     },
-    "DeviceState":{
-      "type":"string",
-      "enum":[
+    "DescribeGlobalNetworksResponse": {
+      "members": {
+        "GlobalNetworks": {
+          "documentation": "<p>Information about the global networks.</p>",
+          "shape": "GlobalNetworkList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "Device": {
+      "documentation": "<p>Describes a device.</p>",
+      "members": {
+        "CreatedAt": {
+          "documentation": "<p>The date and time that the site was created.</p>",
+          "shape": "DateTime"
+        },
+        "Description": {
+          "documentation": "<p>The description of the device.</p>",
+          "shape": "String"
+        },
+        "DeviceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the device.</p>",
+          "shape": "String"
+        },
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
+        },
+        "Location": {
+          "documentation": "<p>The site location.</p>",
+          "shape": "Location"
+        },
+        "Model": {
+          "documentation": "<p>The device model.</p>",
+          "shape": "String"
+        },
+        "SerialNumber": {
+          "documentation": "<p>The device serial number.</p>",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The site ID.</p>",
+          "shape": "String"
+        },
+        "State": {
+          "documentation": "<p>The device state.</p>",
+          "shape": "DeviceState"
+        },
+        "Tags": {
+          "documentation": "<p>The tags for the device.</p>",
+          "shape": "TagList"
+        },
+        "Type": {
+          "documentation": "<p>The device type.</p>",
+          "shape": "String"
+        },
+        "Vendor": {
+          "documentation": "<p>The device vendor.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DeviceList": {
+      "member": {
+        "shape": "Device"
+      },
+      "type": "list"
+    },
+    "DeviceState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "UPDATING"
-      ]
+      ],
+      "type": "string"
     },
-    "DisassociateCustomerGatewayRequest":{
-      "type":"structure",
-      "required":[
+    "DisassociateCustomerGatewayRequest": {
+      "members": {
+        "CustomerGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the customer gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>",
+          "location": "uri",
+          "locationName": "customerGatewayArn",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "CustomerGatewayArn"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+      "type": "structure"
+    },
+    "DisassociateCustomerGatewayResponse": {
+      "members": {
+        "CustomerGatewayAssociation": {
+          "documentation": "<p>Information about the customer gateway association.</p>",
+          "shape": "CustomerGatewayAssociation"
+        }
+      },
+      "type": "structure"
+    },
+    "DisassociateLinkRequest": {
+      "members": {
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "location": "querystring",
+          "locationName": "deviceId",
+          "shape": "String"
         },
-        "CustomerGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the customer gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>",
-          "location":"uri",
-          "locationName":"customerGatewayArn"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "location": "querystring",
+          "locationName": "linkId",
+          "shape": "String"
         }
-      }
-    },
-    "DisassociateCustomerGatewayResponse":{
-      "type":"structure",
-      "members":{
-        "CustomerGatewayAssociation":{
-          "shape":"CustomerGatewayAssociation",
-          "documentation":"<p>Information about the customer gateway association.</p>"
-        }
-      }
-    },
-    "DisassociateLinkRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "GlobalNetworkId",
         "DeviceId",
         "LinkId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>",
-          "location":"querystring",
-          "locationName":"deviceId"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>",
-          "location":"querystring",
-          "locationName":"linkId"
-        }
-      }
+      "type": "structure"
     },
-    "DisassociateLinkResponse":{
-      "type":"structure",
-      "members":{
-        "LinkAssociation":{
-          "shape":"LinkAssociation",
-          "documentation":"<p>Information about the link association.</p>"
-        }
-      }
-    },
-    "GetCustomerGatewayAssociationsRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "CustomerGatewayArns":{
-          "shape":"StringList",
-          "documentation":"<p>One or more customer gateway Amazon Resource Names (ARNs). For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"customerGatewayArns"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetCustomerGatewayAssociationsResponse":{
-      "type":"structure",
-      "members":{
-        "CustomerGatewayAssociations":{
-          "shape":"CustomerGatewayAssociationList",
-          "documentation":"<p>The customer gateway associations.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GetDevicesRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceIds":{
-          "shape":"StringList",
-          "documentation":"<p>One or more device IDs. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"deviceIds"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>",
-          "location":"querystring",
-          "locationName":"siteId"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetDevicesResponse":{
-      "type":"structure",
-      "members":{
-        "Devices":{
-          "shape":"DeviceList",
-          "documentation":"<p>The devices.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GetLinkAssociationsRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>",
-          "location":"querystring",
-          "locationName":"deviceId"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>",
-          "location":"querystring",
-          "locationName":"linkId"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetLinkAssociationsResponse":{
-      "type":"structure",
-      "members":{
-        "LinkAssociations":{
-          "shape":"LinkAssociationList",
-          "documentation":"<p>The link associations.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GetLinksRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "LinkIds":{
-          "shape":"StringList",
-          "documentation":"<p>One or more link IDs. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"linkIds"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>",
-          "location":"querystring",
-          "locationName":"siteId"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The link type.</p>",
-          "location":"querystring",
-          "locationName":"type"
-        },
-        "Provider":{
-          "shape":"String",
-          "documentation":"<p>The link provider.</p>",
-          "location":"querystring",
-          "locationName":"provider"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetLinksResponse":{
-      "type":"structure",
-      "members":{
-        "Links":{
-          "shape":"LinkList",
-          "documentation":"<p>The links.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GetSitesRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "SiteIds":{
-          "shape":"StringList",
-          "documentation":"<p>One or more site IDs. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"siteIds"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetSitesResponse":{
-      "type":"structure",
-      "members":{
-        "Sites":{
-          "shape":"SiteList",
-          "documentation":"<p>The sites.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GetTransitGatewayRegistrationsRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "TransitGatewayArns":{
-          "shape":"StringList",
-          "documentation":"<p>The Amazon Resource Names (ARNs) of one or more transit gateways. The maximum is 10.</p>",
-          "location":"querystring",
-          "locationName":"transitGatewayArns"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "GetTransitGatewayRegistrationsResponse":{
-      "type":"structure",
-      "members":{
-        "TransitGatewayRegistrations":{
-          "shape":"TransitGatewayRegistrationList",
-          "documentation":"<p>The transit gateway registrations.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>The token for the next page of results.</p>"
-        }
-      }
-    },
-    "GlobalNetwork":{
-      "type":"structure",
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
-        },
-        "GlobalNetworkArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the global network.</p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the global network.</p>"
-        },
-        "CreatedAt":{
-          "shape":"DateTime",
-          "documentation":"<p>The date and time that the global network was created.</p>"
-        },
-        "State":{
-          "shape":"GlobalNetworkState",
-          "documentation":"<p>The state of the global network.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the global network.</p>"
+    "DisassociateLinkResponse": {
+      "members": {
+        "LinkAssociation": {
+          "documentation": "<p>Information about the link association.</p>",
+          "shape": "LinkAssociation"
         }
       },
-      "documentation":"<p>Describes a global network.</p>"
+      "type": "structure"
     },
-    "GlobalNetworkList":{
-      "type":"list",
-      "member":{"shape":"GlobalNetwork"}
+    "GetCustomerGatewayAssociationsRequest": {
+      "members": {
+        "CustomerGatewayArns": {
+          "documentation": "<p>One or more customer gateway Amazon Resource Names (ARNs). For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "customerGatewayArns",
+          "shape": "StringList"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
     },
-    "GlobalNetworkState":{
-      "type":"string",
-      "enum":[
+    "GetCustomerGatewayAssociationsResponse": {
+      "members": {
+        "CustomerGatewayAssociations": {
+          "documentation": "<p>The customer gateway associations.</p>",
+          "shape": "CustomerGatewayAssociationList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "GetDevicesRequest": {
+      "members": {
+        "DeviceIds": {
+          "documentation": "<p>One or more device IDs. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "deviceIds",
+          "shape": "StringList"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "location": "querystring",
+          "locationName": "siteId",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetDevicesResponse": {
+      "members": {
+        "Devices": {
+          "documentation": "<p>The devices.</p>",
+          "shape": "DeviceList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "GetLinkAssociationsRequest": {
+      "members": {
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "location": "querystring",
+          "locationName": "deviceId",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "location": "querystring",
+          "locationName": "linkId",
+          "shape": "String"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetLinkAssociationsResponse": {
+      "members": {
+        "LinkAssociations": {
+          "documentation": "<p>The link associations.</p>",
+          "shape": "LinkAssociationList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "GetLinksRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkIds": {
+          "documentation": "<p>One or more link IDs. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "linkIds",
+          "shape": "StringList"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        },
+        "Provider": {
+          "documentation": "<p>The link provider.</p>",
+          "location": "querystring",
+          "locationName": "provider",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "location": "querystring",
+          "locationName": "siteId",
+          "shape": "String"
+        },
+        "Type": {
+          "documentation": "<p>The link type.</p>",
+          "location": "querystring",
+          "locationName": "type",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetLinksResponse": {
+      "members": {
+        "Links": {
+          "documentation": "<p>The links.</p>",
+          "shape": "LinkList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "GetSitesRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        },
+        "SiteIds": {
+          "documentation": "<p>One or more site IDs. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "siteIds",
+          "shape": "StringList"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetSitesResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        },
+        "Sites": {
+          "documentation": "<p>The sites.</p>",
+          "shape": "SiteList"
+        }
+      },
+      "type": "structure"
+    },
+    "GetTransitGatewayRegistrationsRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        },
+        "TransitGatewayArns": {
+          "documentation": "<p>The Amazon Resource Names (ARNs) of one or more transit gateways. The maximum is 10.</p>",
+          "location": "querystring",
+          "locationName": "transitGatewayArns",
+          "shape": "StringList"
+        }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetTransitGatewayRegistrationsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The token for the next page of results.</p>",
+          "shape": "String"
+        },
+        "TransitGatewayRegistrations": {
+          "documentation": "<p>The transit gateway registrations.</p>",
+          "shape": "TransitGatewayRegistrationList"
+        }
+      },
+      "type": "structure"
+    },
+    "GlobalNetwork": {
+      "documentation": "<p>Describes a global network.</p>",
+      "members": {
+        "CreatedAt": {
+          "documentation": "<p>The date and time that the global network was created.</p>",
+          "shape": "DateTime"
+        },
+        "Description": {
+          "documentation": "<p>The description of the global network.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the global network.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
+        },
+        "State": {
+          "documentation": "<p>The state of the global network.</p>",
+          "shape": "GlobalNetworkState"
+        },
+        "Tags": {
+          "documentation": "<p>The tags for the global network.</p>",
+          "shape": "TagList"
+        }
+      },
+      "type": "structure"
+    },
+    "GlobalNetworkList": {
+      "member": {
+        "shape": "GlobalNetwork"
+      },
+      "type": "list"
+    },
+    "GlobalNetworkState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "UPDATING"
-      ]
+      ],
+      "type": "string"
     },
-    "Integer":{"type":"integer"},
-    "InternalServerException":{
-      "type":"structure",
-      "required":["Message"],
-      "members":{
-        "Message":{"shape":"String"},
-        "RetryAfterSeconds":{
-          "shape":"RetryAfterSeconds",
-          "documentation":"<p>Indicates when to retry the request.</p>",
-          "location":"header",
-          "locationName":"Retry-After"
+    "Integer": {
+      "type": "integer"
+    },
+    "InternalServerException": {
+      "documentation": "<p>The request has failed due to an internal error.</p>",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "RetryAfterSeconds": {
+          "documentation": "<p>Indicates when to retry the request.</p>",
+          "location": "header",
+          "locationName": "Retry-After",
+          "shape": "RetryAfterSeconds"
         }
       },
-      "documentation":"<p>The request has failed due to an internal error.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true,
-      "fault":true
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
     },
-    "Link":{
-      "type":"structure",
-      "members":{
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>"
+    "Link": {
+      "documentation": "<p>Describes a link.</p>",
+      "members": {
+        "Bandwidth": {
+          "documentation": "<p>The bandwidth for the link.</p>",
+          "shape": "Bandwidth"
         },
-        "LinkArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the link.</p>"
+        "CreatedAt": {
+          "documentation": "<p>The date and time that the link was created.</p>",
+          "shape": "DateTime"
         },
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
+        "Description": {
+          "documentation": "<p>The description of the link.</p>",
+          "shape": "String"
         },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the link.</p>"
+        "LinkArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the link.</p>",
+          "shape": "String"
         },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The type of the link.</p>"
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "shape": "String"
         },
-        "Bandwidth":{
-          "shape":"Bandwidth",
-          "documentation":"<p>The bandwidth for the link.</p>"
+        "Provider": {
+          "documentation": "<p>The provider of the link.</p>",
+          "shape": "String"
         },
-        "Provider":{
-          "shape":"String",
-          "documentation":"<p>The provider of the link.</p>"
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "shape": "String"
         },
-        "CreatedAt":{
-          "shape":"DateTime",
-          "documentation":"<p>The date and time that the link was created.</p>"
+        "State": {
+          "documentation": "<p>The state of the link.</p>",
+          "shape": "LinkState"
         },
-        "State":{
-          "shape":"LinkState",
-          "documentation":"<p>The state of the link.</p>"
+        "Tags": {
+          "documentation": "<p>The tags for the link.</p>",
+          "shape": "TagList"
         },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the link.</p>"
+        "Type": {
+          "documentation": "<p>The type of the link.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes a link.</p>"
+      "type": "structure"
     },
-    "LinkAssociation":{
-      "type":"structure",
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
+    "LinkAssociation": {
+      "documentation": "<p>Describes the association between a device and a link.</p>",
+      "members": {
+        "DeviceId": {
+          "documentation": "<p>The device ID for the link association.</p>",
+          "shape": "String"
         },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The device ID for the link association.</p>"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
         },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>"
+        "LinkAssociationState": {
+          "documentation": "<p>The state of the association.</p>",
+          "shape": "LinkAssociationState"
         },
-        "LinkAssociationState":{
-          "shape":"LinkAssociationState",
-          "documentation":"<p>The state of the association.</p>"
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes the association between a device and a link.</p>"
+      "type": "structure"
     },
-    "LinkAssociationList":{
-      "type":"list",
-      "member":{"shape":"LinkAssociation"}
+    "LinkAssociationList": {
+      "member": {
+        "shape": "LinkAssociation"
+      },
+      "type": "list"
     },
-    "LinkAssociationState":{
-      "type":"string",
-      "enum":[
+    "LinkAssociationState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "LinkList":{
-      "type":"list",
-      "member":{"shape":"Link"}
+    "LinkList": {
+      "member": {
+        "shape": "Link"
+      },
+      "type": "list"
     },
-    "LinkState":{
-      "type":"string",
-      "enum":[
+    "LinkState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "UPDATING"
-      ]
+      ],
+      "type": "string"
     },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
-        }
-      }
-    },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "TagList":{
-          "shape":"TagList",
-          "documentation":"<p>The list of tags.</p>"
-        }
-      }
-    },
-    "Location":{
-      "type":"structure",
-      "members":{
-        "Address":{
-          "shape":"String",
-          "documentation":"<p>The physical address.</p>"
-        },
-        "Latitude":{
-          "shape":"String",
-          "documentation":"<p>The latitude.</p>"
-        },
-        "Longitude":{
-          "shape":"String",
-          "documentation":"<p>The longitude.</p>"
+    "ListTagsForResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "ResourceARN"
         }
       },
-      "documentation":"<p>Describes a location.</p>"
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "MaxResults":{
-      "type":"integer",
-      "max":500,
-      "min":1
+    "ListTagsForResourceResponse": {
+      "members": {
+        "TagList": {
+          "documentation": "<p>The list of tags.</p>",
+          "shape": "TagList"
+        }
+      },
+      "type": "structure"
     },
-    "RegisterTransitGatewayRequest":{
-      "type":"structure",
-      "required":[
+    "Location": {
+      "documentation": "<p>Describes a location.</p>",
+      "members": {
+        "Address": {
+          "documentation": "<p>The physical address.</p>",
+          "shape": "String"
+        },
+        "Latitude": {
+          "documentation": "<p>The latitude.</p>",
+          "shape": "String"
+        },
+        "Longitude": {
+          "documentation": "<p>The longitude.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "MaxResults": {
+      "max": 500,
+      "min": 1,
+      "type": "integer"
+    },
+    "RegisterTransitGatewayRequest": {
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "TransitGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the transit gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "TransitGatewayArn"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+      "type": "structure"
+    },
+    "RegisterTransitGatewayResponse": {
+      "members": {
+        "TransitGatewayRegistration": {
+          "documentation": "<p>Information about the transit gateway registration.</p>",
+          "shape": "TransitGatewayRegistration"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceARN": {
+      "type": "string"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource could not be found.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         },
-        "TransitGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the transit gateway. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies\">Resources Defined by Amazon EC2</a>.</p>"
+        "ResourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>The resource type.</p>",
+          "shape": "String"
         }
-      }
-    },
-    "RegisterTransitGatewayResponse":{
-      "type":"structure",
-      "members":{
-        "TransitGatewayRegistration":{
-          "shape":"TransitGatewayRegistration",
-          "documentation":"<p>Information about the transit gateway registration.</p>"
-        }
-      }
-    },
-    "ResourceARN":{"type":"string"},
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "Message",
         "ResourceId",
         "ResourceType"
       ],
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the resource.</p>"
+      "type": "structure"
+    },
+    "RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "ServiceQuotaExceededException": {
+      "documentation": "<p>A service limit was exceeded.</p>",
+      "error": {
+        "httpStatusCode": 402
+      },
+      "exception": true,
+      "members": {
+        "LimitCode": {
+          "documentation": "<p>The limit code.</p>",
+          "shape": "String"
         },
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>The resource type.</p>"
+        "Message": {
+          "documentation": "<p>The error message.</p>",
+          "shape": "String"
+        },
+        "ResourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>The resource type.</p>",
+          "shape": "String"
+        },
+        "ServiceCode": {
+          "documentation": "<p>The service code.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The specified resource could not be found.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "RetryAfterSeconds":{"type":"integer"},
-    "ServiceQuotaExceededException":{
-      "type":"structure",
-      "required":[
+      "required": [
         "Message",
         "LimitCode",
         "ServiceCode"
       ],
-      "members":{
-        "Message":{
-          "shape":"String",
-          "documentation":"<p>The error message.</p>"
+      "type": "structure"
+    },
+    "Site": {
+      "documentation": "<p>Describes a site.</p>",
+      "members": {
+        "CreatedAt": {
+          "documentation": "<p>The date and time that the site was created.</p>",
+          "shape": "DateTime"
         },
-        "ResourceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the resource.</p>"
+        "Description": {
+          "documentation": "<p>The description of the site.</p>",
+          "shape": "String"
         },
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>The resource type.</p>"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
         },
-        "LimitCode":{
-          "shape":"String",
-          "documentation":"<p>The limit code.</p>"
+        "Location": {
+          "documentation": "<p>The location of the site.</p>",
+          "shape": "Location"
         },
-        "ServiceCode":{
-          "shape":"String",
-          "documentation":"<p>The service code.</p>"
+        "SiteArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the site.</p>",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "shape": "String"
+        },
+        "State": {
+          "documentation": "<p>The state of the site.</p>",
+          "shape": "SiteState"
+        },
+        "Tags": {
+          "documentation": "<p>The tags for the site.</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>A service limit was exceeded.</p>",
-      "error":{"httpStatusCode":402},
-      "exception":true
+      "type": "structure"
     },
-    "Site":{
-      "type":"structure",
-      "members":{
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>"
-        },
-        "SiteArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the site.</p>"
-        },
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the site.</p>"
-        },
-        "Location":{
-          "shape":"Location",
-          "documentation":"<p>The location of the site.</p>"
-        },
-        "CreatedAt":{
-          "shape":"DateTime",
-          "documentation":"<p>The date and time that the site was created.</p>"
-        },
-        "State":{
-          "shape":"SiteState",
-          "documentation":"<p>The state of the site.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the site.</p>"
-        }
+    "SiteList": {
+      "member": {
+        "shape": "Site"
       },
-      "documentation":"<p>Describes a site.</p>"
+      "type": "list"
     },
-    "SiteList":{
-      "type":"list",
-      "member":{"shape":"Site"}
-    },
-    "SiteState":{
-      "type":"string",
-      "enum":[
+    "SiteState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "UPDATING"
-      ]
+      ],
+      "type": "string"
     },
-    "String":{"type":"string"},
-    "StringList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "String": {
+      "type": "string"
     },
-    "Tag":{
-      "type":"structure",
-      "members":{
-        "Key":{
-          "shape":"TagKey",
-          "documentation":"<p>The tag key.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
+    "StringList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "Tag": {
+      "documentation": "<p>Describes a tag.</p>",
+      "members": {
+        "Key": {
+          "documentation": "<p>The tag key.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "TagKey"
         },
-        "Value":{
-          "shape":"TagValue",
-          "documentation":"<p>The tag value.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
+        "Value": {
+          "documentation": "<p>The tag value.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "TagValue"
         }
       },
-      "documentation":"<p>Describes a tag.</p>"
+      "type": "structure"
     },
-    "TagKey":{"type":"string"},
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"}
+    "TagKey": {
+      "type": "string"
     },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"}
+    "TagKeyList": {
+      "member": {
+        "shape": "TagKey"
+      },
+      "type": "list"
     },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "TagList": {
+      "member": {
+        "shape": "Tag"
+      },
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "ResourceARN"
+        },
+        "Tags": {
+          "documentation": "<p>The tags to apply to the specified resource.</p>",
+          "shape": "TagList"
+        }
+      },
+      "required": [
         "ResourceArn",
         "Tags"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagValue": {
+      "type": "string"
+    },
+    "ThrottlingException": {
+      "documentation": "<p>The request was denied due to request throttling.</p>",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to apply to the specified resource.</p>"
-        }
-      }
-    },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagValue":{"type":"string"},
-    "ThrottlingException":{
-      "type":"structure",
-      "required":["Message"],
-      "members":{
-        "Message":{"shape":"String"},
-        "RetryAfterSeconds":{
-          "shape":"RetryAfterSeconds",
-          "documentation":"<p>Indicates when to retry the request.</p>",
-          "location":"header",
-          "locationName":"Retry-After"
+        "RetryAfterSeconds": {
+          "documentation": "<p>Indicates when to retry the request.</p>",
+          "location": "header",
+          "locationName": "Retry-After",
+          "shape": "RetryAfterSeconds"
         }
       },
-      "documentation":"<p>The request was denied due to request throttling.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
     },
-    "TransitGatewayRegistration":{
-      "type":"structure",
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>"
+    "TransitGatewayRegistration": {
+      "documentation": "<p>Describes the registration of a transit gateway to a global network.</p>",
+      "members": {
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "shape": "String"
         },
-        "TransitGatewayArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the transit gateway.</p>"
+        "State": {
+          "documentation": "<p>The state of the transit gateway registration.</p>",
+          "shape": "TransitGatewayRegistrationStateReason"
         },
-        "State":{
-          "shape":"TransitGatewayRegistrationStateReason",
-          "documentation":"<p>The state of the transit gateway registration.</p>"
+        "TransitGatewayArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the transit gateway.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes the registration of a transit gateway to a global network.</p>"
+      "type": "structure"
     },
-    "TransitGatewayRegistrationList":{
-      "type":"list",
-      "member":{"shape":"TransitGatewayRegistration"}
+    "TransitGatewayRegistrationList": {
+      "member": {
+        "shape": "TransitGatewayRegistration"
+      },
+      "type": "list"
     },
-    "TransitGatewayRegistrationState":{
-      "type":"string",
-      "enum":[
+    "TransitGatewayRegistrationState": {
+      "enum": [
         "PENDING",
         "AVAILABLE",
         "DELETING",
         "DELETED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "TransitGatewayRegistrationStateReason":{
-      "type":"structure",
-      "members":{
-        "Code":{
-          "shape":"TransitGatewayRegistrationState",
-          "documentation":"<p>The code for the state reason.</p>"
+    "TransitGatewayRegistrationStateReason": {
+      "documentation": "<p>Describes the status of a transit gateway registration.</p>",
+      "members": {
+        "Code": {
+          "documentation": "<p>The code for the state reason.</p>",
+          "shape": "TransitGatewayRegistrationState"
         },
-        "Message":{
-          "shape":"String",
-          "documentation":"<p>The message for the state reason.</p>"
+        "Message": {
+          "documentation": "<p>The message for the state reason.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes the status of a transit gateway registration.</p>"
+      "type": "structure"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "ResourceARN"
+        },
+        "TagKeys": {
+          "documentation": "<p>The tag keys to remove from the specified resource.</p>",
+          "location": "querystring",
+          "locationName": "tagKeys",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "ResourceArn",
         "TagKeys"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateDeviceRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the device.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
         },
-        "TagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The tag keys to remove from the specified resource.</p>",
-          "location":"querystring",
-          "locationName":"tagKeys"
+        "DeviceId": {
+          "documentation": "<p>The ID of the device.</p>",
+          "location": "uri",
+          "locationName": "deviceId",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "Location": {
+          "shape": "Location"
+        },
+        "Model": {
+          "documentation": "<p>The model of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "SerialNumber": {
+          "documentation": "<p>The serial number of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of the site.</p>",
+          "shape": "String"
+        },
+        "Type": {
+          "documentation": "<p>The type of the device.</p>",
+          "shape": "String"
+        },
+        "Vendor": {
+          "documentation": "<p>The vendor of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
         }
-      }
-    },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateDeviceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "GlobalNetworkId",
         "DeviceId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "DeviceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the device.</p>",
-          "location":"uri",
-          "locationName":"deviceId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the device.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The type of the device.</p>"
-        },
-        "Vendor":{
-          "shape":"String",
-          "documentation":"<p>The vendor of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Model":{
-          "shape":"String",
-          "documentation":"<p>The model of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "SerialNumber":{
-          "shape":"String",
-          "documentation":"<p>The serial number of the device.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Location":{"shape":"Location"},
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the site.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateDeviceResponse":{
-      "type":"structure",
-      "members":{
-        "Device":{
-          "shape":"Device",
-          "documentation":"<p>Information about the device.</p>"
+    "UpdateDeviceResponse": {
+      "members": {
+        "Device": {
+          "documentation": "<p>Information about the device.</p>",
+          "shape": "Device"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateGlobalNetworkRequest":{
-      "type":"structure",
-      "required":["GlobalNetworkId"],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of your global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
+    "UpdateGlobalNetworkRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the global network.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the global network.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of your global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
         }
-      }
+      },
+      "required": [
+        "GlobalNetworkId"
+      ],
+      "type": "structure"
     },
-    "UpdateGlobalNetworkResponse":{
-      "type":"structure",
-      "members":{
-        "GlobalNetwork":{
-          "shape":"GlobalNetwork",
-          "documentation":"<p>Information about the global network object.</p>"
+    "UpdateGlobalNetworkResponse": {
+      "members": {
+        "GlobalNetwork": {
+          "documentation": "<p>Information about the global network object.</p>",
+          "shape": "GlobalNetwork"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateLinkRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateLinkRequest": {
+      "members": {
+        "Bandwidth": {
+          "documentation": "<p>The upload and download speed in Mbps. </p>",
+          "shape": "Bandwidth"
+        },
+        "Description": {
+          "documentation": "<p>A description of the link.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "LinkId": {
+          "documentation": "<p>The ID of the link.</p>",
+          "location": "uri",
+          "locationName": "linkId",
+          "shape": "String"
+        },
+        "Provider": {
+          "documentation": "<p>The provider of the link.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        },
+        "Type": {
+          "documentation": "<p>The type of the link.</p> <p>Length Constraints: Maximum length of 128 characters.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "LinkId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "LinkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the link.</p>",
-          "location":"uri",
-          "locationName":"linkId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the link.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Type":{
-          "shape":"String",
-          "documentation":"<p>The type of the link.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        },
-        "Bandwidth":{
-          "shape":"Bandwidth",
-          "documentation":"<p>The upload and download speed in Mbps. </p>"
-        },
-        "Provider":{
-          "shape":"String",
-          "documentation":"<p>The provider of the link.</p> <p>Length Constraints: Maximum length of 128 characters.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateLinkResponse":{
-      "type":"structure",
-      "members":{
-        "Link":{
-          "shape":"Link",
-          "documentation":"<p>Information about the link.</p>"
+    "UpdateLinkResponse": {
+      "members": {
+        "Link": {
+          "documentation": "<p>Information about the link.</p>",
+          "shape": "Link"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateSiteRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateSiteRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of your site.</p> <p>Length Constraints: Maximum length of 256 characters.</p>",
+          "shape": "String"
+        },
+        "GlobalNetworkId": {
+          "documentation": "<p>The ID of the global network.</p>",
+          "location": "uri",
+          "locationName": "globalNetworkId",
+          "shape": "String"
+        },
+        "Location": {
+          "documentation": "<p>The site location:</p> <ul> <li> <p> <code>Address</code>: The physical address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the site.</p> </li> </ul>",
+          "shape": "Location"
+        },
+        "SiteId": {
+          "documentation": "<p>The ID of your site.</p>",
+          "location": "uri",
+          "locationName": "siteId",
+          "shape": "String"
+        }
+      },
+      "required": [
         "GlobalNetworkId",
         "SiteId"
       ],
-      "members":{
-        "GlobalNetworkId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the global network.</p>",
-          "location":"uri",
-          "locationName":"globalNetworkId"
-        },
-        "SiteId":{
-          "shape":"String",
-          "documentation":"<p>The ID of your site.</p>",
-          "location":"uri",
-          "locationName":"siteId"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of your site.</p> <p>Length Constraints: Maximum length of 256 characters.</p>"
-        },
-        "Location":{
-          "shape":"Location",
-          "documentation":"<p>The site location:</p> <ul> <li> <p> <code>Address</code>: The physical address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the site.</p> </li> </ul>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateSiteResponse":{
-      "type":"structure",
-      "members":{
-        "Site":{
-          "shape":"Site",
-          "documentation":"<p>Information about the site.</p>"
-        }
-      }
-    },
-    "ValidationException":{
-      "type":"structure",
-      "required":["Message"],
-      "members":{
-        "Message":{"shape":"String"},
-        "Reason":{
-          "shape":"ValidationExceptionReason",
-          "documentation":"<p>The reason for the error.</p>"
-        },
-        "Fields":{
-          "shape":"ValidationExceptionFieldList",
-          "documentation":"<p>The fields that caused the error, if applicable.</p>"
+    "UpdateSiteResponse": {
+      "members": {
+        "Site": {
+          "documentation": "<p>Information about the site.</p>",
+          "shape": "Site"
         }
       },
-      "documentation":"<p>The input fails to satisfy the constraints.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
     },
-    "ValidationExceptionField":{
-      "type":"structure",
-      "required":[
+    "ValidationException": {
+      "documentation": "<p>The input fails to satisfy the constraints.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Fields": {
+          "documentation": "<p>The fields that caused the error, if applicable.</p>",
+          "shape": "ValidationExceptionFieldList"
+        },
+        "Message": {
+          "shape": "String"
+        },
+        "Reason": {
+          "documentation": "<p>The reason for the error.</p>",
+          "shape": "ValidationExceptionReason"
+        }
+      },
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
+    },
+    "ValidationExceptionField": {
+      "documentation": "<p>Describes a validation exception for a field.</p>",
+      "members": {
+        "Message": {
+          "documentation": "<p>The message for the field.</p>",
+          "shape": "String"
+        },
+        "Name": {
+          "documentation": "<p>The name of the field.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "Name",
         "Message"
       ],
-      "members":{
-        "Name":{
-          "shape":"String",
-          "documentation":"<p>The name of the field.</p>"
-        },
-        "Message":{
-          "shape":"String",
-          "documentation":"<p>The message for the field.</p>"
-        }
+      "type": "structure"
+    },
+    "ValidationExceptionFieldList": {
+      "member": {
+        "shape": "ValidationExceptionField"
       },
-      "documentation":"<p>Describes a validation exception for a field.</p>"
+      "type": "list"
     },
-    "ValidationExceptionFieldList":{
-      "type":"list",
-      "member":{"shape":"ValidationExceptionField"}
-    },
-    "ValidationExceptionReason":{
-      "type":"string",
-      "enum":[
+    "ValidationExceptionReason": {
+      "enum": [
         "UnknownOperation",
         "CannotParse",
         "FieldValidationFailed",
         "Other"
-      ]
+      ],
+      "type": "string"
     }
   },
-  "documentation":"<p>Transit Gateway Network Manager (Network Manager) enables you to create a global network, in which you can monitor your AWS and on-premises networks that are built around transit gateways.</p>"
+  "version": "2.0"
 }

@@ -30,17 +30,17 @@
       "output_token": "nextToken",
       "result_key": "simulationApplicationSummaries"
     },
+    "ListSimulationJobBatches": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "simulationJobBatchSummaries"
+    },
     "ListSimulationJobs": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
       "output_token": "nextToken",
       "result_key": "simulationJobSummaries"
-    },
-    "ListSimulationJobBatches": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "simulationJobBatchSummaries"
     }
   }
 }

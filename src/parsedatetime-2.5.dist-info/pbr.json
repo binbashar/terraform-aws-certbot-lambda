@@ -1,1 +1,4 @@
-{"is_release": false, "git_version": "e3cf2a1"}
+{
+  "git_version": "e3cf2a1",
+  "is_release": false
+}

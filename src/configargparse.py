@@ -193,7 +193,7 @@ class ConfigparserConfigFileParser(ConfigFileParser):
     def get_syntax_description(self):
         msg = """Uses configparser module to parse an INI file which allows multi-line
         values.
-        
+
         Allowed syntax is that for a ConfigParser with the following options:
 
             allow_no_value = False,
@@ -202,7 +202,7 @@ class ConfigparserConfigFileParser(ConfigFileParser):
             empty_lines_in_values = False
 
         See https://docs.python.org/3/library/configparser.html for details.
-        
+
         Note: INI file sections names are still treated as comments.
         """
         return msg
@@ -366,7 +366,7 @@ class ArgumentParser(argparse.ArgumentParser):
                 configargparse args will be ignored. If false, they will be
                 processed and appended to the commandline like other args, and
                 can be retrieved using parse_known_args() instead of parse_args()
-            config_file_open_func: function used to open a config file for reading 
+            config_file_open_func: function used to open a config file for reading
                 or writing. Needs to return a file-like object.
             config_file_parser_class: configargparse.ConfigFileParser subclass
                 which determines the config file format. configargparse comes

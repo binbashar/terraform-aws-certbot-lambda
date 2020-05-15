@@ -1,26 +1,28 @@
 {
-  "version": "1.0",
   "examples": {
     "DeleteLexicon": [
       {
-        "input": {
-          "Name": "example"
-        },
-        "output": {
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Deletes a specified pronunciation lexicon stored in an AWS Region.",
         "id": "to-delete-a-lexicon-1481922498332",
+        "input": {
+          "Name": "example"
+        },
+        "output": {},
         "title": "To delete a lexicon"
       }
     ],
     "DescribeVoices": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns the list of voices that are available for use when requesting speech synthesis. Displayed languages are those within the specified language code. If no language code is specified, voices for all available languages are displayed.",
+        "id": "to-describe-available-voices-1482180557753",
         "input": {
           "LanguageCode": "en-GB"
         },
@@ -49,19 +51,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns the list of voices that are available for use when requesting speech synthesis. Displayed languages are those within the specified language code. If no language code is specified, voices for all available languages are displayed.",
-        "id": "to-describe-available-voices-1482180557753",
         "title": "To describe available voices"
       }
     ],
     "GetLexicon": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns the content of the specified pronunciation lexicon stored in an AWS Region.",
+        "id": "to-retrieve-a-lexicon-1481912870836",
         "input": {
           "Name": ""
         },
@@ -79,21 +79,18 @@
             "Size": 503
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns the content of the specified pronunciation lexicon stored in an AWS Region.",
-        "id": "to-retrieve-a-lexicon-1481912870836",
         "title": "To retrieve a lexicon"
       }
     ],
     "ListLexicons": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "Returns a list of pronunciation lexicons stored in an AWS Region.",
+        "id": "to-list-all-lexicons-in-a-region-1481842106487",
+        "input": {},
         "output": {
           "Lexicons": [
             {
@@ -109,38 +106,33 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns a list of pronunciation lexicons stored in an AWS Region.",
-        "id": "to-list-all-lexicons-in-a-region-1481842106487",
         "title": "To list all lexicons in a region"
       }
     ],
     "PutLexicon": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Stores a pronunciation lexicon in an AWS Region.",
+        "id": "to-save-a-lexicon-1482272584088",
         "input": {
           "Content": "file://example.pls",
           "Name": "W3C"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Stores a pronunciation lexicon in an AWS Region.",
-        "id": "to-save-a-lexicon-1482272584088",
+        "output": {},
         "title": "To save a lexicon"
       }
     ],
     "SynthesizeSpeech": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Synthesizes plain text or SSML into a file of human-like speech.",
+        "id": "to-synthesize-speech-1482186064046",
         "input": {
           "LexiconNames": [
             "example"
@@ -156,16 +148,9 @@
           "ContentType": "audio/mpeg",
           "RequestCharacters": 37
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Synthesizes plain text or SSML into a file of human-like speech.",
-        "id": "to-synthesize-speech-1482186064046",
         "title": "To synthesize speech"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

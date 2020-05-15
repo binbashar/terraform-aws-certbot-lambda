@@ -1,539 +1,600 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2018-10-05",
-    "endpointPrefix":"api.tunneling.iot",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceFullName":"AWS IoT Secure Tunneling",
-    "serviceId":"IoTSecureTunneling",
-    "signatureVersion":"v4",
-    "signingName":"IoTSecuredTunneling",
-    "targetPrefix":"IoTSecuredTunneling",
-    "uid":"iotsecuretunneling-2018-10-05"
+  "documentation": "<fullname>AWS IoT Secure Tunneling</fullname> <p>AWS IoT Secure Tunnling enables you to create remote connections to devices deployed in the field.</p> <p>For more information about how AWS IoT Secure Tunneling works, see the <a href=\"https://docs.aws.amazon.com/secure-tunneling/latest/ug/what-is-secure-tunneling.html\">User Guide</a>.</p>",
+  "metadata": {
+    "apiVersion": "2018-10-05",
+    "endpointPrefix": "api.tunneling.iot",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceFullName": "AWS IoT Secure Tunneling",
+    "serviceId": "IoTSecureTunneling",
+    "signatureVersion": "v4",
+    "signingName": "IoTSecuredTunneling",
+    "targetPrefix": "IoTSecuredTunneling",
+    "uid": "iotsecuretunneling-2018-10-05"
   },
-  "operations":{
-    "CloseTunnel":{
-      "name":"CloseTunnel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CloseTunnelRequest"},
-      "output":{"shape":"CloseTunnelResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+  "operations": {
+    "CloseTunnel": {
+      "documentation": "<p>Closes a tunnel identified by the unique tunnel id. When a <code>CloseTunnel</code> request is received, we close the WebSocket connections between the client and proxy server so no data can be transmitted.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Closes a tunnel identified by the unique tunnel id. When a <code>CloseTunnel</code> request is received, we close the WebSocket connections between the client and proxy server so no data can be transmitted.</p>"
-    },
-    "DescribeTunnel":{
-      "name":"DescribeTunnel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeTunnelRequest"},
-      "output":{"shape":"DescribeTunnelResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": {
+        "shape": "CloseTunnelRequest"
+      },
+      "name": "CloseTunnel",
+      "output": {
+        "shape": "CloseTunnelResponse"
+      }
+    },
+    "DescribeTunnel": {
+      "documentation": "<p>Gets information about a tunnel identified by the unique tunnel id.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets information about a tunnel identified by the unique tunnel id.</p>"
-    },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": {
+        "shape": "DescribeTunnelRequest"
+      },
+      "name": "DescribeTunnel",
+      "output": {
+        "shape": "DescribeTunnelResponse"
+      }
+    },
+    "ListTagsForResource": {
+      "documentation": "<p>Lists the tags for the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Lists the tags for the specified resource.</p>"
-    },
-    "ListTunnels":{
-      "name":"ListTunnels",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListTunnelsRequest"},
-      "output":{"shape":"ListTunnelsResponse"},
-      "documentation":"<p>List all tunnels for an AWS account. Tunnels are listed by creation time in descending order, newer tunnels will be listed before older tunnels.</p>"
-    },
-    "OpenTunnel":{
-      "name":"OpenTunnel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "input": {
+        "shape": "ListTagsForResourceRequest"
       },
-      "input":{"shape":"OpenTunnelRequest"},
-      "output":{"shape":"OpenTunnelResponse"},
-      "errors":[
-        {"shape":"LimitExceededException"}
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
+    },
+    "ListTunnels": {
+      "documentation": "<p>List all tunnels for an AWS account. Tunnels are listed by creation time in descending order, newer tunnels will be listed before older tunnels.</p>",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListTunnelsRequest"
+      },
+      "name": "ListTunnels",
+      "output": {
+        "shape": "ListTunnelsResponse"
+      }
+    },
+    "OpenTunnel": {
+      "documentation": "<p>Creates a new tunnel, and returns two client access tokens for clients to use to connect to the AWS IoT Secure Tunneling proxy server. .</p>",
+      "errors": [
+        {
+          "shape": "LimitExceededException"
+        }
       ],
-      "documentation":"<p>Creates a new tunnel, and returns two client access tokens for clients to use to connect to the AWS IoT Secure Tunneling proxy server. .</p>"
-    },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
-      ],
-      "documentation":"<p>A resource tag.</p>"
-    },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "input": {
+        "shape": "OpenTunnelRequest"
       },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "name": "OpenTunnel",
+      "output": {
+        "shape": "OpenTunnelResponse"
+      }
+    },
+    "TagResource": {
+      "documentation": "<p>A resource tag.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Removes a tag from a resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
+    },
+    "UntagResource": {
+      "documentation": "<p>Removes a tag from a resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
+      ],
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     }
   },
-  "shapes":{
-    "AmazonResourceName":{
-      "type":"string",
-      "max":1011,
-      "min":1
+  "shapes": {
+    "AmazonResourceName": {
+      "max": 1011,
+      "min": 1,
+      "type": "string"
     },
-    "ClientAccessToken":{
-      "type":"string",
-      "sensitive":true
+    "ClientAccessToken": {
+      "sensitive": true,
+      "type": "string"
     },
-    "CloseTunnelRequest":{
-      "type":"structure",
-      "required":["tunnelId"],
-      "members":{
-        "tunnelId":{
-          "shape":"TunnelId",
-          "documentation":"<p>The ID of the tunnel to close.</p>"
+    "CloseTunnelRequest": {
+      "members": {
+        "delete": {
+          "box": true,
+          "documentation": "<p>When set to true, AWS IoT Secure Tunneling deletes the tunnel data immediately.</p>",
+          "shape": "DeleteFlag"
         },
-        "delete":{
-          "shape":"DeleteFlag",
-          "documentation":"<p>When set to true, AWS IoT Secure Tunneling deletes the tunnel data immediately.</p>",
-          "box":true
-        }
-      }
-    },
-    "CloseTunnelResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "ConnectionState":{
-      "type":"structure",
-      "members":{
-        "status":{
-          "shape":"ConnectionStatus",
-          "documentation":"<p>The connection status of the tunnel. Valid values are <code>CONNECTED</code> and <code>DISCONNECTED</code>.</p>"
-        },
-        "lastUpdatedAt":{
-          "shape":"DateType",
-          "documentation":"<p>The last time the connection status was updated.</p>"
+        "tunnelId": {
+          "documentation": "<p>The ID of the tunnel to close.</p>",
+          "shape": "TunnelId"
         }
       },
-      "documentation":"<p>The state of a connection.</p>"
+      "required": [
+        "tunnelId"
+      ],
+      "type": "structure"
     },
-    "ConnectionStatus":{
-      "type":"string",
-      "enum":[
+    "CloseTunnelResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "ConnectionState": {
+      "documentation": "<p>The state of a connection.</p>",
+      "members": {
+        "lastUpdatedAt": {
+          "documentation": "<p>The last time the connection status was updated.</p>",
+          "shape": "DateType"
+        },
+        "status": {
+          "documentation": "<p>The connection status of the tunnel. Valid values are <code>CONNECTED</code> and <code>DISCONNECTED</code>.</p>",
+          "shape": "ConnectionStatus"
+        }
+      },
+      "type": "structure"
+    },
+    "ConnectionStatus": {
+      "enum": [
         "CONNECTED",
         "DISCONNECTED"
-      ]
+      ],
+      "type": "string"
     },
-    "DateType":{"type":"timestamp"},
-    "DeleteFlag":{"type":"boolean"},
-    "DescribeTunnelRequest":{
-      "type":"structure",
-      "required":["tunnelId"],
-      "members":{
-        "tunnelId":{
-          "shape":"TunnelId",
-          "documentation":"<p>The tunnel to describe.</p>"
+    "DateType": {
+      "type": "timestamp"
+    },
+    "DeleteFlag": {
+      "type": "boolean"
+    },
+    "DescribeTunnelRequest": {
+      "members": {
+        "tunnelId": {
+          "documentation": "<p>The tunnel to describe.</p>",
+          "shape": "TunnelId"
         }
-      }
+      },
+      "required": [
+        "tunnelId"
+      ],
+      "type": "structure"
     },
-    "DescribeTunnelResponse":{
-      "type":"structure",
-      "members":{
-        "tunnel":{
-          "shape":"Tunnel",
-          "documentation":"<p>The tunnel being described.</p>"
+    "DescribeTunnelResponse": {
+      "members": {
+        "tunnel": {
+          "documentation": "<p>The tunnel being described.</p>",
+          "shape": "Tunnel"
         }
-      }
+      },
+      "type": "structure"
     },
-    "Description":{
-      "type":"string",
-      "pattern":"[^\\p{C}]{1,2048}"
+    "Description": {
+      "pattern": "[^\\p{C}]{1,2048}",
+      "type": "string"
     },
-    "DestinationConfig":{
-      "type":"structure",
-      "required":[
+    "DestinationConfig": {
+      "documentation": "<p>The destination configuration.</p>",
+      "members": {
+        "services": {
+          "documentation": "<p>A list of service names that identity the target application. Currently, you can only specify a single name. The AWS IoT client running on the destination device reads this value and uses it to look up a port or an IP address and a port. The AWS IoT client instantiates the local proxy which uses this information to connect to the destination application.</p>",
+          "shape": "ServiceList"
+        },
+        "thingName": {
+          "documentation": "<p>The name of the IoT thing to which you want to connect.</p>",
+          "shape": "ThingName"
+        }
+      },
+      "required": [
         "thingName",
         "services"
       ],
-      "members":{
-        "thingName":{
-          "shape":"ThingName",
-          "documentation":"<p>The name of the IoT thing to which you want to connect.</p>"
-        },
-        "services":{
-          "shape":"ServiceList",
-          "documentation":"<p>A list of service names that identity the target application. Currently, you can only specify a single name. The AWS IoT client running on the destination device reads this value and uses it to look up a port or an IP address and a port. The AWS IoT client instantiates the local proxy which uses this information to connect to the destination application.</p>"
+      "type": "structure"
+    },
+    "ErrorMessage": {
+      "type": "string"
+    },
+    "LimitExceededException": {
+      "documentation": "<p>Thrown when a tunnel limit is exceeded.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>The destination configuration.</p>"
+      "type": "structure"
     },
-    "ErrorMessage":{"type":"string"},
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ListTagsForResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "AmazonResourceName"
+        }
       },
-      "documentation":"<p>Thrown when a tunnel limit is exceeded.</p>",
-      "exception":true
+      "required": [
+        "resourceArn"
+      ],
+      "type": "structure"
     },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["resourceArn"],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The resource ARN.</p>"
+    "ListTagsForResourceResponse": {
+      "members": {
+        "tags": {
+          "documentation": "<p>The tags for the specified resource.</p>",
+          "shape": "TagList"
         }
-      }
-    },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the specified resource.</p>"
-        }
-      }
-    },
-    "ListTunnelsRequest":{
-      "type":"structure",
-      "members":{
-        "thingName":{
-          "shape":"ThingName",
-          "documentation":"<p>The name of the IoT thing associated with the destination device.</p>"
-        },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return at once.</p>",
-          "box":true
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to retrieve the next set of results.</p>"
-        }
-      }
-    },
-    "ListTunnelsResponse":{
-      "type":"structure",
-      "members":{
-        "tunnelSummaries":{
-          "shape":"TunnelSummaryList",
-          "documentation":"<p>A short description of the tunnels in an AWS account.</p>"
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to used to retrieve the next set of results.</p>"
-        }
-      }
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":100,
-      "min":1
-    },
-    "NextToken":{
-      "type":"string",
-      "pattern":"[a-zA-Z0-9_=-]{1,4096}"
-    },
-    "OpenTunnelRequest":{
-      "type":"structure",
-      "members":{
-        "description":{
-          "shape":"Description",
-          "documentation":"<p>A short text description of the tunnel. </p>"
-        },
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>A collection of tag metadata.</p>"
-        },
-        "destinationConfig":{
-          "shape":"DestinationConfig",
-          "documentation":"<p>The destination configuration for the OpenTunnel request.</p>"
-        },
-        "timeoutConfig":{
-          "shape":"TimeoutConfig",
-          "documentation":"<p>Timeout configuration for a tunnel.</p>"
-        }
-      }
-    },
-    "OpenTunnelResponse":{
-      "type":"structure",
-      "members":{
-        "tunnelId":{
-          "shape":"TunnelId",
-          "documentation":"<p>A unique alpha-numeric tunnel ID.</p>"
-        },
-        "tunnelArn":{
-          "shape":"TunnelArn",
-          "documentation":"<p>The Amazon Resource Name for the tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>"
-        },
-        "sourceAccessToken":{
-          "shape":"ClientAccessToken",
-          "documentation":"<p>The access token the source local proxy uses to connect to AWS IoT Secure Tunneling.</p>"
-        },
-        "destinationAccessToken":{
-          "shape":"ClientAccessToken",
-          "documentation":"<p>The access token the destination local proxy uses to connect to AWS IoT Secure Tunneling.</p>"
-        }
-      }
-    },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
       },
-      "documentation":"<p>Thrown when an operation is attempted on a resource that does not exist.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "Service":{
-      "type":"string",
-      "max":8,
-      "min":1,
-      "pattern":"[a-zA-Z0-9:_-]+"
+    "ListTunnelsRequest": {
+      "members": {
+        "maxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of results to return at once.</p>",
+          "shape": "MaxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>A token to retrieve the next set of results.</p>",
+          "shape": "NextToken"
+        },
+        "thingName": {
+          "documentation": "<p>The name of the IoT thing associated with the destination device.</p>",
+          "shape": "ThingName"
+        }
+      },
+      "type": "structure"
     },
-    "ServiceList":{
-      "type":"list",
-      "member":{"shape":"Service"},
-      "max":1,
-      "min":1
+    "ListTunnelsResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>A token to used to retrieve the next set of results.</p>",
+          "shape": "NextToken"
+        },
+        "tunnelSummaries": {
+          "documentation": "<p>A short description of the tunnels in an AWS account.</p>",
+          "shape": "TunnelSummaryList"
+        }
+      },
+      "type": "structure"
     },
-    "Tag":{
-      "type":"structure",
-      "required":[
+    "MaxResults": {
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "NextToken": {
+      "pattern": "[a-zA-Z0-9_=-]{1,4096}",
+      "type": "string"
+    },
+    "OpenTunnelRequest": {
+      "members": {
+        "description": {
+          "documentation": "<p>A short text description of the tunnel. </p>",
+          "shape": "Description"
+        },
+        "destinationConfig": {
+          "documentation": "<p>The destination configuration for the OpenTunnel request.</p>",
+          "shape": "DestinationConfig"
+        },
+        "tags": {
+          "documentation": "<p>A collection of tag metadata.</p>",
+          "shape": "TagList"
+        },
+        "timeoutConfig": {
+          "documentation": "<p>Timeout configuration for a tunnel.</p>",
+          "shape": "TimeoutConfig"
+        }
+      },
+      "type": "structure"
+    },
+    "OpenTunnelResponse": {
+      "members": {
+        "destinationAccessToken": {
+          "documentation": "<p>The access token the destination local proxy uses to connect to AWS IoT Secure Tunneling.</p>",
+          "shape": "ClientAccessToken"
+        },
+        "sourceAccessToken": {
+          "documentation": "<p>The access token the source local proxy uses to connect to AWS IoT Secure Tunneling.</p>",
+          "shape": "ClientAccessToken"
+        },
+        "tunnelArn": {
+          "documentation": "<p>The Amazon Resource Name for the tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>",
+          "shape": "TunnelArn"
+        },
+        "tunnelId": {
+          "documentation": "<p>A unique alpha-numeric tunnel ID.</p>",
+          "shape": "TunnelId"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>Thrown when an operation is attempted on a resource that does not exist.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "Service": {
+      "max": 8,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9:_-]+",
+      "type": "string"
+    },
+    "ServiceList": {
+      "max": 1,
+      "member": {
+        "shape": "Service"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "Tag": {
+      "documentation": "<p>An arbitary key/value pair used to add searchable metadata to secure tunnel resources.</p>",
+      "members": {
+        "key": {
+          "documentation": "<p>The key of the tag.</p>",
+          "shape": "TagKey"
+        },
+        "value": {
+          "documentation": "<p>The value of the tag.</p>",
+          "shape": "TagValue"
+        }
+      },
+      "required": [
         "key",
         "value"
       ],
-      "members":{
-        "key":{
-          "shape":"TagKey",
-          "documentation":"<p>The key of the tag.</p>"
+      "type": "structure"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+      "type": "string"
+    },
+    "TagKeyList": {
+      "max": 200,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagList": {
+      "max": 200,
+      "member": {
+        "shape": "Tag"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource.</p>",
+          "shape": "AmazonResourceName"
         },
-        "value":{
-          "shape":"TagValue",
-          "documentation":"<p>The value of the tag.</p>"
+        "tags": {
+          "documentation": "<p>The tags for the resource.</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>An arbitary key/value pair used to add searchable metadata to secure tunnel resources.</p>"
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
-    },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":200,
-      "min":0
-    },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"},
-      "max":200,
-      "min":1
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "tags"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the resource.</p>"
-        },
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags for the resource.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":0,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
+    "TagValue": {
+      "max": 256,
+      "min": 0,
+      "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+      "type": "string"
     },
-    "ThingName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[a-zA-Z0-9:_-]+"
+    "ThingName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9:_-]+",
+      "type": "string"
     },
-    "TimeoutConfig":{
-      "type":"structure",
-      "members":{
-        "maxLifetimeTimeoutMinutes":{
-          "shape":"TimeoutInMin",
-          "documentation":"<p>The maximum amount of time (in minutes) a tunnel can remain open. If not specified, maxLifetimeTimeoutMinutes defaults to 720 minutes. Valid values are from 1 minute to 12 hours (720 minutes) </p>",
-          "box":true
+    "TimeoutConfig": {
+      "documentation": "<p>Tunnel timeout configuration.</p>",
+      "members": {
+        "maxLifetimeTimeoutMinutes": {
+          "box": true,
+          "documentation": "<p>The maximum amount of time (in minutes) a tunnel can remain open. If not specified, maxLifetimeTimeoutMinutes defaults to 720 minutes. Valid values are from 1 minute to 12 hours (720 minutes) </p>",
+          "shape": "TimeoutInMin"
         }
       },
-      "documentation":"<p>Tunnel timeout configuration.</p>"
+      "type": "structure"
     },
-    "TimeoutInMin":{
-      "type":"integer",
-      "max":720,
-      "min":1
+    "TimeoutInMin": {
+      "max": 720,
+      "min": 1,
+      "type": "integer"
     },
-    "Tunnel":{
-      "type":"structure",
-      "members":{
-        "tunnelId":{
-          "shape":"TunnelId",
-          "documentation":"<p>A unique alpha-numeric ID that identifies a tunnel.</p>"
+    "Tunnel": {
+      "documentation": "<p>A connection between a source computer and a destination device.</p>",
+      "members": {
+        "createdAt": {
+          "documentation": "<p>The time when the tunnel was created.</p>",
+          "shape": "DateType"
         },
-        "tunnelArn":{
-          "shape":"TunnelArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of a tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>"
+        "description": {
+          "documentation": "<p>A description of the tunnel.</p>",
+          "shape": "Description"
         },
-        "status":{
-          "shape":"TunnelStatus",
-          "documentation":"<p>The status of a tunnel. Valid values are: Open and Closed.</p>"
+        "destinationConfig": {
+          "documentation": "<p>The destination configuration that specifies the thing name of the destination device and a service name that the local proxy uses to connect to the destination application.</p>",
+          "shape": "DestinationConfig"
         },
-        "sourceConnectionState":{
-          "shape":"ConnectionState",
-          "documentation":"<p>The connection state of the source application.</p>"
+        "destinationConnectionState": {
+          "documentation": "<p>The connection state of the destination application.</p>",
+          "shape": "ConnectionState"
         },
-        "destinationConnectionState":{
-          "shape":"ConnectionState",
-          "documentation":"<p>The connection state of the destination application.</p>"
+        "lastUpdatedAt": {
+          "documentation": "<p>The last time the tunnel was updated.</p>",
+          "shape": "DateType"
         },
-        "description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the tunnel.</p>"
+        "sourceConnectionState": {
+          "documentation": "<p>The connection state of the source application.</p>",
+          "shape": "ConnectionState"
         },
-        "destinationConfig":{
-          "shape":"DestinationConfig",
-          "documentation":"<p>The destination configuration that specifies the thing name of the destination device and a service name that the local proxy uses to connect to the destination application.</p>"
+        "status": {
+          "documentation": "<p>The status of a tunnel. Valid values are: Open and Closed.</p>",
+          "shape": "TunnelStatus"
         },
-        "timeoutConfig":{
-          "shape":"TimeoutConfig",
-          "documentation":"<p>Timeout configuration for the tunnel.</p>"
+        "tags": {
+          "documentation": "<p>A list of tag metadata associated with the secure tunnel.</p>",
+          "shape": "TagList"
         },
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of tag metadata associated with the secure tunnel.</p>"
+        "timeoutConfig": {
+          "documentation": "<p>Timeout configuration for the tunnel.</p>",
+          "shape": "TimeoutConfig"
         },
-        "createdAt":{
-          "shape":"DateType",
-          "documentation":"<p>The time when the tunnel was created.</p>"
+        "tunnelArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of a tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>",
+          "shape": "TunnelArn"
         },
-        "lastUpdatedAt":{
-          "shape":"DateType",
-          "documentation":"<p>The last time the tunnel was updated.</p>"
+        "tunnelId": {
+          "documentation": "<p>A unique alpha-numeric ID that identifies a tunnel.</p>",
+          "shape": "TunnelId"
         }
       },
-      "documentation":"<p>A connection between a source computer and a destination device.</p>"
+      "type": "structure"
     },
-    "TunnelArn":{
-      "type":"string",
-      "max":1600,
-      "min":1
+    "TunnelArn": {
+      "max": 1600,
+      "min": 1,
+      "type": "string"
     },
-    "TunnelId":{
-      "type":"string",
-      "pattern":"[a-zA-Z0-9_\\-+=:]{1,128}"
+    "TunnelId": {
+      "pattern": "[a-zA-Z0-9_\\-+=:]{1,128}",
+      "type": "string"
     },
-    "TunnelStatus":{
-      "type":"string",
-      "enum":[
+    "TunnelStatus": {
+      "enum": [
         "OPEN",
         "CLOSED"
-      ]
+      ],
+      "type": "string"
     },
-    "TunnelSummary":{
-      "type":"structure",
-      "members":{
-        "tunnelId":{
-          "shape":"TunnelId",
-          "documentation":"<p>The unique alpha-numeric identifier for the tunnel.</p>"
+    "TunnelSummary": {
+      "documentation": "<p>Information about the tunnel.</p>",
+      "members": {
+        "createdAt": {
+          "documentation": "<p>The time the tunnel was created.</p>",
+          "shape": "DateType"
         },
-        "tunnelArn":{
-          "shape":"TunnelArn",
-          "documentation":"<p>The Amazon Resource Name of the tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>"
+        "description": {
+          "documentation": "<p>A description of the tunnel.</p>",
+          "shape": "Description"
         },
-        "status":{
-          "shape":"TunnelStatus",
-          "documentation":"<p>The status of a tunnel. Valid values are: Open and Closed.</p>"
+        "lastUpdatedAt": {
+          "documentation": "<p>The time the tunnel was last updated.</p>",
+          "shape": "DateType"
         },
-        "description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the tunnel.</p>"
+        "status": {
+          "documentation": "<p>The status of a tunnel. Valid values are: Open and Closed.</p>",
+          "shape": "TunnelStatus"
         },
-        "createdAt":{
-          "shape":"DateType",
-          "documentation":"<p>The time the tunnel was created.</p>"
+        "tunnelArn": {
+          "documentation": "<p>The Amazon Resource Name of the tunnel. The tunnel ARN format is <code>arn:aws:tunnel:&lt;region&gt;:&lt;account-id&gt;:tunnel/&lt;tunnel-id&gt;</code> </p>",
+          "shape": "TunnelArn"
         },
-        "lastUpdatedAt":{
-          "shape":"DateType",
-          "documentation":"<p>The time the tunnel was last updated.</p>"
+        "tunnelId": {
+          "documentation": "<p>The unique alpha-numeric identifier for the tunnel.</p>",
+          "shape": "TunnelId"
         }
       },
-      "documentation":"<p>Information about the tunnel.</p>"
+      "type": "structure"
     },
-    "TunnelSummaryList":{
-      "type":"list",
-      "member":{"shape":"TunnelSummary"}
+    "TunnelSummaryList": {
+      "member": {
+        "shape": "TunnelSummary"
+      },
+      "type": "list"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UntagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "AmazonResourceName"
+        },
+        "tagKeys": {
+          "documentation": "<p>The keys of the tags to remove.</p>",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "resourceArn",
         "tagKeys"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The resource ARN.</p>"
-        },
-        "tagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The keys of the tags to remove.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
     }
   },
-  "documentation":"<fullname>AWS IoT Secure Tunneling</fullname> <p>AWS IoT Secure Tunnling enables you to create remote connections to devices deployed in the field.</p> <p>For more information about how AWS IoT Secure Tunneling works, see the <a href=\"https://docs.aws.amazon.com/secure-tunneling/latest/ug/what-is-secure-tunneling.html\">User Guide</a>.</p>"
+  "version": "2.0"
 }

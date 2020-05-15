@@ -1,447 +1,547 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-09-19",
-    "endpointPrefix":"codeguru-reviewer",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"CodeGuruReviewer",
-    "serviceFullName":"Amazon CodeGuru Reviewer",
-    "serviceId":"CodeGuru Reviewer",
-    "signatureVersion":"v4",
-    "signingName":"codeguru-reviewer",
-    "uid":"codeguru-reviewer-2019-09-19"
+  "documentation": "<p>This section provides documentation for the Amazon CodeGuru Reviewer API operations.</p>",
+  "metadata": {
+    "apiVersion": "2019-09-19",
+    "endpointPrefix": "codeguru-reviewer",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "CodeGuruReviewer",
+    "serviceFullName": "Amazon CodeGuru Reviewer",
+    "serviceId": "CodeGuru Reviewer",
+    "signatureVersion": "v4",
+    "signingName": "codeguru-reviewer",
+    "uid": "codeguru-reviewer-2019-09-19"
   },
-  "operations":{
-    "AssociateRepository":{
-      "name":"AssociateRepository",
-      "http":{
-        "method":"POST",
-        "requestUri":"/associations"
-      },
-      "input":{"shape":"AssociateRepositoryRequest"},
-      "output":{"shape":"AssociateRepositoryResponse"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"}
+  "operations": {
+    "AssociateRepository": {
+      "documentation": "<p>Associates an AWS CodeCommit repository with Amazon CodeGuru Reviewer. When you associate an AWS CodeCommit repository with Amazon CodeGuru Reviewer, Amazon CodeGuru Reviewer will provide recommendations for each pull request. You can view recommendations in the AWS CodeCommit repository.</p> <p>You can associate a GitHub repository using the Amazon CodeGuru Reviewer console.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Associates an AWS CodeCommit repository with Amazon CodeGuru Reviewer. When you associate an AWS CodeCommit repository with Amazon CodeGuru Reviewer, Amazon CodeGuru Reviewer will provide recommendations for each pull request. You can view recommendations in the AWS CodeCommit repository.</p> <p>You can associate a GitHub repository using the Amazon CodeGuru Reviewer console.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/associations"
+      },
+      "input": {
+        "shape": "AssociateRepositoryRequest"
+      },
+      "name": "AssociateRepository",
+      "output": {
+        "shape": "AssociateRepositoryResponse"
+      }
     },
-    "DescribeRepositoryAssociation":{
-      "name":"DescribeRepositoryAssociation",
-      "http":{
-        "method":"GET",
-        "requestUri":"/associations/{AssociationArn}"
-      },
-      "input":{"shape":"DescribeRepositoryAssociationRequest"},
-      "output":{"shape":"DescribeRepositoryAssociationResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"}
+    "DescribeRepositoryAssociation": {
+      "documentation": "<p>Describes a repository association.</p>",
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Describes a repository association.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/associations/{AssociationArn}"
+      },
+      "input": {
+        "shape": "DescribeRepositoryAssociationRequest"
+      },
+      "name": "DescribeRepositoryAssociation",
+      "output": {
+        "shape": "DescribeRepositoryAssociationResponse"
+      }
     },
-    "DisassociateRepository":{
-      "name":"DisassociateRepository",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/associations/{AssociationArn}"
-      },
-      "input":{"shape":"DisassociateRepositoryRequest"},
-      "output":{"shape":"DisassociateRepositoryResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ValidationException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ConflictException"},
-        {"shape":"ThrottlingException"}
+    "DisassociateRepository": {
+      "documentation": "<p>Removes the association between Amazon CodeGuru Reviewer and a repository.</p>",
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Removes the association between Amazon CodeGuru Reviewer and a repository.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/associations/{AssociationArn}"
+      },
+      "input": {
+        "shape": "DisassociateRepositoryRequest"
+      },
+      "name": "DisassociateRepository",
+      "output": {
+        "shape": "DisassociateRepositoryResponse"
+      }
     },
-    "ListRepositoryAssociations":{
-      "name":"ListRepositoryAssociations",
-      "http":{
-        "method":"GET",
-        "requestUri":"/associations"
-      },
-      "input":{"shape":"ListRepositoryAssociationsRequest"},
-      "output":{"shape":"ListRepositoryAssociationsResponse"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"ValidationException"},
-        {"shape":"ThrottlingException"}
+    "ListRepositoryAssociations": {
+      "documentation": "<p>Lists repository associations. You can optionally filter on one or more of the following recommendation properties: provider types, states, names, and owners.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Lists repository associations. You can optionally filter on one or more of the following recommendation properties: provider types, states, names, and owners.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/associations"
+      },
+      "input": {
+        "shape": "ListRepositoryAssociationsRequest"
+      },
+      "name": "ListRepositoryAssociations",
+      "output": {
+        "shape": "ListRepositoryAssociationsResponse"
+      }
     }
   },
-  "shapes":{
-    "AccessDeniedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+  "shapes": {
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have sufficient access to perform this action.</p>",
+      "error": {
+        "httpStatusCode": 403
       },
-      "documentation":"<p>You do not have sufficient access to perform this action.</p>",
-      "error":{"httpStatusCode":403},
-      "exception":true
-    },
-    "Arn":{
-      "type":"string",
-      "max":1600,
-      "min":1,
-      "pattern":"^arn:aws[^:\\s]*:codeguru-reviewer:[^:\\s]+:[\\d]{12}:[a-z]+:[\\w-]+$"
-    },
-    "AssociateRepositoryRequest":{
-      "type":"structure",
-      "required":["Repository"],
-      "members":{
-        "Repository":{
-          "shape":"Repository",
-          "documentation":"<p>The repository to associate.</p>"
-        },
-        "ClientRequestToken":{
-          "shape":"ClientRequestToken",
-          "documentation":"<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.</p> <p>If you want to add a new repository association, this parameter specifies a unique identifier for the new repository association that helps ensure idempotency.</p> <p>If you use the AWS CLI or one of the AWS SDK to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes that in the request. If you don't use the SDK and instead generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a ClientRequestToken yourself for new versions and include that value in the request.</p> <p>You typically only need to interact with this value if you implement your own retry logic and want to ensure that a given repository association is not created twice. We recommend that you generate a UUID-type value to ensure uniqueness within the specified repository association.</p> <p>Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate repository associations if there are failures and retries. </p>",
-          "idempotencyToken":true
-        }
-      }
-    },
-    "AssociateRepositoryResponse":{
-      "type":"structure",
-      "members":{
-        "RepositoryAssociation":{
-          "shape":"RepositoryAssociation",
-          "documentation":"<p>Information about the repository association.</p>"
-        }
-      }
-    },
-    "AssociationId":{
-      "type":"string",
-      "max":64,
-      "min":1
-    },
-    "ClientRequestToken":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"^[\\w-]+$"
-    },
-    "CodeCommitRepository":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the AWS CodeCommit repository.</p>"
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>Information about an AWS CodeCommit repository.</p>"
+      "type": "structure"
     },
-    "ConflictException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "Arn": {
+      "max": 1600,
+      "min": 1,
+      "pattern": "^arn:aws[^:\\s]*:codeguru-reviewer:[^:\\s]+:[\\d]{12}:[a-z]+:[\\w-]+$",
+      "type": "string"
+    },
+    "AssociateRepositoryRequest": {
+      "members": {
+        "ClientRequestToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.</p> <p>If you want to add a new repository association, this parameter specifies a unique identifier for the new repository association that helps ensure idempotency.</p> <p>If you use the AWS CLI or one of the AWS SDK to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes that in the request. If you don't use the SDK and instead generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a ClientRequestToken yourself for new versions and include that value in the request.</p> <p>You typically only need to interact with this value if you implement your own retry logic and want to ensure that a given repository association is not created twice. We recommend that you generate a UUID-type value to ensure uniqueness within the specified repository association.</p> <p>Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate repository associations if there are failures and retries. </p>",
+          "idempotencyToken": true,
+          "shape": "ClientRequestToken"
+        },
+        "Repository": {
+          "documentation": "<p>The repository to associate.</p>",
+          "shape": "Repository"
+        }
       },
-      "documentation":"<p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request. </p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "required": [
+        "Repository"
+      ],
+      "type": "structure"
     },
-    "DescribeRepositoryAssociationRequest":{
-      "type":"structure",
-      "required":["AssociationArn"],
-      "members":{
-        "AssociationArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) identifying the association.</p>",
-          "location":"uri",
-          "locationName":"AssociationArn"
+    "AssociateRepositoryResponse": {
+      "members": {
+        "RepositoryAssociation": {
+          "documentation": "<p>Information about the repository association.</p>",
+          "shape": "RepositoryAssociation"
         }
-      }
-    },
-    "DescribeRepositoryAssociationResponse":{
-      "type":"structure",
-      "members":{
-        "RepositoryAssociation":{
-          "shape":"RepositoryAssociation",
-          "documentation":"<p>Information about the repository association.</p>"
-        }
-      }
-    },
-    "DisassociateRepositoryRequest":{
-      "type":"structure",
-      "required":["AssociationArn"],
-      "members":{
-        "AssociationArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) identifying the association.</p>",
-          "location":"uri",
-          "locationName":"AssociationArn"
-        }
-      }
-    },
-    "DisassociateRepositoryResponse":{
-      "type":"structure",
-      "members":{
-        "RepositoryAssociation":{
-          "shape":"RepositoryAssociation",
-          "documentation":"<p>Information about the disassociated repository.</p>"
-        }
-      }
-    },
-    "ErrorMessage":{"type":"string"},
-    "InternalServerException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
       },
-      "documentation":"<p>The server encountered an internal error and is unable to complete the request.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true,
-      "fault":true
+      "type": "structure"
     },
-    "ListRepositoryAssociationsRequest":{
-      "type":"structure",
-      "members":{
-        "ProviderTypes":{
-          "shape":"ProviderTypes",
-          "documentation":"<p>List of provider types to use as a filter.</p>",
-          "location":"querystring",
-          "locationName":"ProviderType"
-        },
-        "States":{
-          "shape":"RepositoryAssociationStates",
-          "documentation":"<p>List of states to use as a filter.</p>",
-          "location":"querystring",
-          "locationName":"State"
-        },
-        "Names":{
-          "shape":"Names",
-          "documentation":"<p>List of names to use as a filter.</p>",
-          "location":"querystring",
-          "locationName":"Name"
-        },
-        "Owners":{
-          "shape":"Owners",
-          "documentation":"<p>List of owners to use as a filter. For AWS CodeCommit, the owner is the AWS account id. For GitHub, it is the GitHub account name.</p>",
-          "location":"querystring",
-          "locationName":"Owner"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of repository association results returned by <code>ListRepositoryAssociations</code> in paginated output. When this parameter is used, <code>ListRepositoryAssociations</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListRepositoryAssociations</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListRepositoryAssociations</code> returns up to 100 results and a <code>nextToken</code> value if applicable. </p>",
-          "location":"querystring",
-          "locationName":"MaxResults"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The <code>nextToken</code> value returned from a previous paginated <code>ListRepositoryAssociations</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>",
-          "location":"querystring",
-          "locationName":"NextToken"
+    "AssociationId": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "ClientRequestToken": {
+      "max": 64,
+      "min": 1,
+      "pattern": "^[\\w-]+$",
+      "type": "string"
+    },
+    "CodeCommitRepository": {
+      "documentation": "<p>Information about an AWS CodeCommit repository.</p>",
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the AWS CodeCommit repository.</p>",
+          "shape": "Name"
         }
-      }
-    },
-    "ListRepositoryAssociationsResponse":{
-      "type":"structure",
-      "members":{
-        "RepositoryAssociationSummaries":{
-          "shape":"RepositoryAssociationSummaries",
-          "documentation":"<p>A list of repository associations that meet the criteria of the request.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The <code>nextToken</code> value to include in a future <code>ListRecommendations</code> request. When the results of a <code>ListRecommendations</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. </p>"
-        }
-      }
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":100,
-      "min":1
-    },
-    "Name":{
-      "type":"string",
-      "max":100,
-      "min":1
-    },
-    "Names":{
-      "type":"list",
-      "member":{"shape":"Name"},
-      "max":3,
-      "min":1
-    },
-    "NextToken":{
-      "type":"string",
-      "max":2048,
-      "min":1
-    },
-    "NotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
       },
-      "documentation":"<p>The resource specified in the request was not found.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "Owner":{
-      "type":"string",
-      "max":100,
-      "min":1
+    "ConflictException": {
+      "documentation": "<p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request. </p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
     },
-    "Owners":{
-      "type":"list",
-      "member":{"shape":"Owner"},
-      "max":3,
-      "min":1
+    "DescribeRepositoryAssociationRequest": {
+      "members": {
+        "AssociationArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) identifying the association.</p>",
+          "location": "uri",
+          "locationName": "AssociationArn",
+          "shape": "Arn"
+        }
+      },
+      "required": [
+        "AssociationArn"
+      ],
+      "type": "structure"
     },
-    "ProviderType":{
-      "type":"string",
-      "enum":[
+    "DescribeRepositoryAssociationResponse": {
+      "members": {
+        "RepositoryAssociation": {
+          "documentation": "<p>Information about the repository association.</p>",
+          "shape": "RepositoryAssociation"
+        }
+      },
+      "type": "structure"
+    },
+    "DisassociateRepositoryRequest": {
+      "members": {
+        "AssociationArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) identifying the association.</p>",
+          "location": "uri",
+          "locationName": "AssociationArn",
+          "shape": "Arn"
+        }
+      },
+      "required": [
+        "AssociationArn"
+      ],
+      "type": "structure"
+    },
+    "DisassociateRepositoryResponse": {
+      "members": {
+        "RepositoryAssociation": {
+          "documentation": "<p>Information about the disassociated repository.</p>",
+          "shape": "RepositoryAssociation"
+        }
+      },
+      "type": "structure"
+    },
+    "ErrorMessage": {
+      "type": "string"
+    },
+    "InternalServerException": {
+      "documentation": "<p>The server encountered an internal error and is unable to complete the request.</p>",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ListRepositoryAssociationsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of repository association results returned by <code>ListRepositoryAssociations</code> in paginated output. When this parameter is used, <code>ListRepositoryAssociations</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListRepositoryAssociations</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListRepositoryAssociations</code> returns up to 100 results and a <code>nextToken</code> value if applicable. </p>",
+          "location": "querystring",
+          "locationName": "MaxResults",
+          "shape": "MaxResults"
+        },
+        "Names": {
+          "documentation": "<p>List of names to use as a filter.</p>",
+          "location": "querystring",
+          "locationName": "Name",
+          "shape": "Names"
+        },
+        "NextToken": {
+          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated <code>ListRepositoryAssociations</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>",
+          "location": "querystring",
+          "locationName": "NextToken",
+          "shape": "NextToken"
+        },
+        "Owners": {
+          "documentation": "<p>List of owners to use as a filter. For AWS CodeCommit, the owner is the AWS account id. For GitHub, it is the GitHub account name.</p>",
+          "location": "querystring",
+          "locationName": "Owner",
+          "shape": "Owners"
+        },
+        "ProviderTypes": {
+          "documentation": "<p>List of provider types to use as a filter.</p>",
+          "location": "querystring",
+          "locationName": "ProviderType",
+          "shape": "ProviderTypes"
+        },
+        "States": {
+          "documentation": "<p>List of states to use as a filter.</p>",
+          "location": "querystring",
+          "locationName": "State",
+          "shape": "RepositoryAssociationStates"
+        }
+      },
+      "type": "structure"
+    },
+    "ListRepositoryAssociationsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListRecommendations</code> request. When the results of a <code>ListRecommendations</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. </p>",
+          "shape": "NextToken"
+        },
+        "RepositoryAssociationSummaries": {
+          "documentation": "<p>A list of repository associations that meet the criteria of the request.</p>",
+          "shape": "RepositoryAssociationSummaries"
+        }
+      },
+      "type": "structure"
+    },
+    "MaxResults": {
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "Name": {
+      "max": 100,
+      "min": 1,
+      "type": "string"
+    },
+    "Names": {
+      "max": 3,
+      "member": {
+        "shape": "Name"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "NextToken": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
+    },
+    "NotFoundException": {
+      "documentation": "<p>The resource specified in the request was not found.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "Owner": {
+      "max": 100,
+      "min": 1,
+      "type": "string"
+    },
+    "Owners": {
+      "max": 3,
+      "member": {
+        "shape": "Owner"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "ProviderType": {
+      "enum": [
         "CodeCommit",
         "GitHub"
-      ]
+      ],
+      "type": "string"
     },
-    "ProviderTypes":{
-      "type":"list",
-      "member":{"shape":"ProviderType"},
-      "max":3,
-      "min":1
+    "ProviderTypes": {
+      "max": 3,
+      "member": {
+        "shape": "ProviderType"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "Repository":{
-      "type":"structure",
-      "members":{
-        "CodeCommit":{
-          "shape":"CodeCommitRepository",
-          "documentation":"<p>Information about an AWS CodeCommit repository.</p>"
+    "Repository": {
+      "documentation": "<p>Information about a repository.</p>",
+      "members": {
+        "CodeCommit": {
+          "documentation": "<p>Information about an AWS CodeCommit repository.</p>",
+          "shape": "CodeCommitRepository"
         }
       },
-      "documentation":"<p>Information about a repository.</p>"
+      "type": "structure"
     },
-    "RepositoryAssociation":{
-      "type":"structure",
-      "members":{
-        "AssociationId":{
-          "shape":"AssociationId",
-          "documentation":"<p>The id of the repository association.</p>"
+    "RepositoryAssociation": {
+      "documentation": "<p>Information about a repository association.</p>",
+      "members": {
+        "AssociationArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) identifying the repository association.</p>",
+          "shape": "Arn"
         },
-        "AssociationArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) identifying the repository association.</p>"
+        "AssociationId": {
+          "documentation": "<p>The id of the repository association.</p>",
+          "shape": "AssociationId"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the repository.</p>"
+        "CreatedTimeStamp": {
+          "documentation": "<p>The time, in milliseconds since the epoch, when the repository association was created.</p>",
+          "shape": "TimeStamp"
         },
-        "Owner":{
-          "shape":"Owner",
-          "documentation":"<p>The owner of the repository.</p>"
+        "LastUpdatedTimeStamp": {
+          "documentation": "<p>The time, in milliseconds since the epoch, when the repository association was last updated.</p>",
+          "shape": "TimeStamp"
         },
-        "ProviderType":{
-          "shape":"ProviderType",
-          "documentation":"<p>The provider type of the repository association.</p>"
+        "Name": {
+          "documentation": "<p>The name of the repository.</p>",
+          "shape": "Name"
         },
-        "State":{
-          "shape":"RepositoryAssociationState",
-          "documentation":"<p>The state of the repository association.</p>"
+        "Owner": {
+          "documentation": "<p>The owner of the repository.</p>",
+          "shape": "Owner"
         },
-        "StateReason":{
-          "shape":"StateReason",
-          "documentation":"<p>A description of why the repository association is in the current state.</p>"
+        "ProviderType": {
+          "documentation": "<p>The provider type of the repository association.</p>",
+          "shape": "ProviderType"
         },
-        "LastUpdatedTimeStamp":{
-          "shape":"TimeStamp",
-          "documentation":"<p>The time, in milliseconds since the epoch, when the repository association was last updated.</p>"
+        "State": {
+          "documentation": "<p>The state of the repository association.</p>",
+          "shape": "RepositoryAssociationState"
         },
-        "CreatedTimeStamp":{
-          "shape":"TimeStamp",
-          "documentation":"<p>The time, in milliseconds since the epoch, when the repository association was created.</p>"
+        "StateReason": {
+          "documentation": "<p>A description of why the repository association is in the current state.</p>",
+          "shape": "StateReason"
         }
       },
-      "documentation":"<p>Information about a repository association.</p>"
+      "type": "structure"
     },
-    "RepositoryAssociationState":{
-      "type":"string",
-      "enum":[
+    "RepositoryAssociationState": {
+      "enum": [
         "Associated",
         "Associating",
         "Failed",
         "Disassociating"
-      ]
+      ],
+      "type": "string"
     },
-    "RepositoryAssociationStates":{
-      "type":"list",
-      "member":{"shape":"RepositoryAssociationState"},
-      "max":3,
-      "min":1
+    "RepositoryAssociationStates": {
+      "max": 3,
+      "member": {
+        "shape": "RepositoryAssociationState"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "RepositoryAssociationSummaries":{
-      "type":"list",
-      "member":{"shape":"RepositoryAssociationSummary"}
+    "RepositoryAssociationSummaries": {
+      "member": {
+        "shape": "RepositoryAssociationSummary"
+      },
+      "type": "list"
     },
-    "RepositoryAssociationSummary":{
-      "type":"structure",
-      "members":{
-        "AssociationArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) identifying the repository association.</p>"
+    "RepositoryAssociationSummary": {
+      "documentation": "<p>Information about a repository association.</p>",
+      "members": {
+        "AssociationArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) identifying the repository association.</p>",
+          "shape": "Arn"
         },
-        "LastUpdatedTimeStamp":{
-          "shape":"TimeStamp",
-          "documentation":"<p>The time, in milliseconds since the epoch, since the repository association was last updated. </p>"
+        "AssociationId": {
+          "documentation": "<p>The repository association ID.</p>",
+          "shape": "AssociationId"
         },
-        "AssociationId":{
-          "shape":"AssociationId",
-          "documentation":"<p>The repository association ID.</p>"
+        "LastUpdatedTimeStamp": {
+          "documentation": "<p>The time, in milliseconds since the epoch, since the repository association was last updated. </p>",
+          "shape": "TimeStamp"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the repository association.</p>"
+        "Name": {
+          "documentation": "<p>The name of the repository association.</p>",
+          "shape": "Name"
         },
-        "Owner":{
-          "shape":"Owner",
-          "documentation":"<p>The owner of the repository association.</p>"
+        "Owner": {
+          "documentation": "<p>The owner of the repository association.</p>",
+          "shape": "Owner"
         },
-        "ProviderType":{
-          "shape":"ProviderType",
-          "documentation":"<p>The provider type of the repository association.</p>"
+        "ProviderType": {
+          "documentation": "<p>The provider type of the repository association.</p>",
+          "shape": "ProviderType"
         },
-        "State":{
-          "shape":"RepositoryAssociationState",
-          "documentation":"<p>The state of the repository association.</p> <dl> <dt>Associated</dt> <dd> <p>Amazon CodeGuru Reviewer is associated with the repository. </p> </dd> <dt>Associating</dt> <dd> <p>The association is in progress. </p> </dd> <dt>Failed</dt> <dd> <p>The association failed. For more information about troubleshooting (or why it failed), see [troubleshooting topic]. </p> </dd> <dt>Disassociating</dt> <dd> <p>Amazon CodeGuru Reviewer is in the process of disassociating with the repository. </p> </dd> </dl>"
+        "State": {
+          "documentation": "<p>The state of the repository association.</p> <dl> <dt>Associated</dt> <dd> <p>Amazon CodeGuru Reviewer is associated with the repository. </p> </dd> <dt>Associating</dt> <dd> <p>The association is in progress. </p> </dd> <dt>Failed</dt> <dd> <p>The association failed. For more information about troubleshooting (or why it failed), see [troubleshooting topic]. </p> </dd> <dt>Disassociating</dt> <dd> <p>Amazon CodeGuru Reviewer is in the process of disassociating with the repository. </p> </dd> </dl>",
+          "shape": "RepositoryAssociationState"
         }
       },
-      "documentation":"<p>Information about a repository association.</p>"
+      "type": "structure"
     },
-    "StateReason":{
-      "type":"string",
-      "max":256,
-      "min":0
+    "StateReason": {
+      "max": 256,
+      "min": 0,
+      "type": "string"
     },
-    "ThrottlingException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ThrottlingException": {
+      "documentation": "<p>The request was denied due to request throttling.</p>",
+      "error": {
+        "httpStatusCode": 429
       },
-      "documentation":"<p>The request was denied due to request throttling.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
-    },
-    "TimeStamp":{"type":"timestamp"},
-    "ValidationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
       },
-      "documentation":"<p>The input fails to satisfy the specified constraints.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
+    },
+    "TimeStamp": {
+      "type": "timestamp"
+    },
+    "ValidationException": {
+      "documentation": "<p>The input fails to satisfy the specified constraints.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
     }
   },
-  "documentation":"<p>This section provides documentation for the Amazon CodeGuru Reviewer API operations.</p>"
+  "version": "2.0"
 }

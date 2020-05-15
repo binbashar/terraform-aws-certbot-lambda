@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "AcceptHandshake": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Bill is the owner of an organization, and he invites Juan's account (222222222222) to join his organization. The following example shows Juan's account accepting the handshake and thus agreeing to the invitation.",
+        "id": "to-accept-a-handshake-from-another-account-1472500561150",
         "input": {
           "HandshakeId": "h-examplehandshakeid111"
         },
@@ -50,51 +55,45 @@
             "State": "ACCEPTED"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Bill is the owner of an organization, and he invites Juan's account (222222222222) to join his organization. The following example shows Juan's account accepting the handshake and thus agreeing to the invitation.",
-        "id": "to-accept-a-handshake-from-another-account-1472500561150",
         "title": "To accept a handshake from another account"
       }
     ],
     "AttachPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to attach a service control policy (SCP) to an OU:\n",
+        "id": "to-attach-a-policy-to-an-ou",
         "input": {
           "PolicyId": "p-examplepolicyid111",
           "TargetId": "ou-examplerootid111-exampleouid111"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to attach a service control policy (SCP) to an OU:\n",
-        "id": "to-attach-a-policy-to-an-ou",
         "title": "To attach a policy to an OU"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to attach a service control policy (SCP) to an account:\n",
+        "id": "to-attach-a-policy-to-an-account",
         "input": {
           "PolicyId": "p-examplepolicyid111",
           "TargetId": "333333333333"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to attach a service control policy (SCP) to an account:\n",
-        "id": "to-attach-a-policy-to-an-account",
         "title": "To attach a policy to an account"
       }
     ],
     "CancelHandshake": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Bill previously sent an invitation to Susan's account to join his organization. He changes his mind and decides to cancel the invitation before Susan accepts it. The following example shows Bill's cancellation:\n",
+        "id": "to-cancel-a-handshake-sent-to-a-member-account-1472501320506",
         "input": {
           "HandshakeId": "h-examplehandshakeid111"
         },
@@ -146,19 +145,17 @@
             "State": "CANCELED"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Bill previously sent an invitation to Susan's account to join his organization. He changes his mind and decides to cancel the invitation before Susan accepts it. The following example shows Bill's cancellation:\n",
-        "id": "to-cancel-a-handshake-sent-to-a-member-account-1472501320506",
         "title": "To cancel a handshake sent to a member account"
       }
     ],
     "CreateAccount": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The owner of an organization creates a member account in the organization. The following example shows that when the organization owner creates the member account, the account is preconfigured with the name \"Production Account\" and an owner email address of susan@example.com.  An IAM role is automatically created using the default name because the roleName parameter is not used. AWS Organizations sends Susan a \"Welcome to AWS\" email:\n\n",
+        "id": "to-create-a-new-account-that-is-automatically-part-of-the-organization-1472501463507",
         "input": {
           "AccountName": "Production Account",
           "Email": "susan@example.com"
@@ -169,21 +166,18 @@
             "State": "IN_PROGRESS"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The owner of an organization creates a member account in the organization. The following example shows that when the organization owner creates the member account, the account is preconfigured with the name \"Production Account\" and an owner email address of susan@example.com.  An IAM role is automatically created using the default name because the roleName parameter is not used. AWS Organizations sends Susan a \"Welcome to AWS\" email:\n\n",
-        "id": "to-create-a-new-account-that-is-automatically-part-of-the-organization-1472501463507",
         "title": "To create a new account that is automatically part of the organization"
       }
     ],
     "CreateOrganization": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "Bill wants to create an organization using credentials from account 111111111111. The following example shows that the account becomes the master account in the new organization. Because he does not specify a feature set, the new organization defaults to all features enabled and service control policies enabled on the root:\n\n",
+        "id": "to-create-a-new-organization-with-all-features enabled",
+        "input": {},
         "output": {
           "Organization": {
             "Arn": "arn:aws:organizations::111111111111:organization/o-exampleorgid",
@@ -200,26 +194,22 @@
             "MasterAccountId": "111111111111"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Bill wants to create an organization using credentials from account 111111111111. The following example shows that the account becomes the master account in the new organization. Because he does not specify a feature set, the new organization defaults to all features enabled and service control policies enabled on the root:\n\n",
-        "id": "to-create-a-new-organization-with-all-features enabled",
         "title": "To create a new organization with all features enabled"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "In the following example, Bill creates an organization using credentials from account 111111111111, and configures the organization to support only the consolidated billing feature set:\n\n",
+        "id": "to-create-a-new-organization-with-consolidated-billing-features-only",
         "input": {
           "FeatureSet": "CONSOLIDATED_BILLING"
         },
         "output": {
           "Organization": {
             "Arn": "arn:aws:organizations::111111111111:organization/o-exampleorgid",
-            "AvailablePolicyTypes": [
-
-            ],
+            "AvailablePolicyTypes": [],
             "FeatureSet": "CONSOLIDATED_BILLING",
             "Id": "o-exampleorgid",
             "MasterAccountArn": "arn:aws:organizations::111111111111:account/o-exampleorgid/111111111111",
@@ -227,19 +217,17 @@
             "MasterAccountId": "111111111111"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "In the following example, Bill creates an organization using credentials from account 111111111111, and configures the organization to support only the consolidated billing feature set:\n\n",
-        "id": "to-create-a-new-organization-with-consolidated-billing-features-only",
         "title": "To create a new organization with consolidated billing features only"
       }
     ],
     "CreateOrganizationalUnit": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to create an OU that is named AccountingOU. The new OU is directly under the root.:\n\n",
+        "id": "to-create-a-new-organizational-unit",
         "input": {
           "Name": "AccountingOU",
           "ParentId": "r-examplerootid111"
@@ -251,19 +239,17 @@
             "Name": "AccountingOU"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to create an OU that is named AccountingOU. The new OU is directly under the root.:\n\n",
-        "id": "to-create-a-new-organizational-unit",
         "title": "To create a new organization unit"
       }
     ],
     "CreatePolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to create a service control policy (SCP) that is named AllowAllS3Actions. The JSON string in the content parameter specifies the content in the policy. The parameter string is escaped with backslashes to ensure that the embedded double quotes in the JSON policy are treated as literals in the parameter, which itself is surrounded by double quotes:\n\n",
+        "id": "to-create-a-service-control-policy",
         "input": {
           "Content": "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"s3:*\\\"}}",
           "Description": "Enables admins of attached accounts to delegate all S3 permissions",
@@ -281,19 +267,17 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to create a service control policy (SCP) that is named AllowAllS3Actions. The JSON string in the content parameter specifies the content in the policy. The parameter string is escaped with backslashes to ensure that the embedded double quotes in the JSON policy are treated as literals in the parameter, which itself is surrounded by double quotes:\n\n",
-        "id": "to-create-a-service-control-policy",
         "title": "To create a service control policy"
       }
     ],
     "DeclineHandshake": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows Susan declining an invitation to join Bill's organization. The DeclineHandshake operation returns a handshake object, showing that the state is now DECLINED:",
+        "id": "to-decline-a-handshake-sent-from-the-master-account-1472502666967",
         "input": {
           "HandshakeId": "h-examplehandshakeid111"
         },
@@ -341,51 +325,45 @@
             "State": "DECLINED"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows Susan declining an invitation to join Bill's organization. The DeclineHandshake operation returns a handshake object, showing that the state is now DECLINED:",
-        "id": "to-decline-a-handshake-sent-from-the-master-account-1472502666967",
         "title": "To decline a handshake sent from the master account"
       }
     ],
     "DeleteOrganizationalUnit": [
       {
-        "input": {
-          "OrganizationalUnitId": "ou-examplerootid111-exampleouid111"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example shows how to delete an OU. The example assumes that you previously removed all accounts and other OUs from the OU:\n\n",
         "id": "to-delete-an-organizational-unit",
+        "input": {
+          "OrganizationalUnitId": "ou-examplerootid111-exampleouid111"
+        },
         "title": "To delete an organization unit"
       }
     ],
     "DeletePolicy": [
       {
-        "input": {
-          "PolicyId": "p-examplepolicyid111"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example shows how to delete a policy from an organization. The example assumes that you previously detached the policy from all entities:\n\n",
         "id": "to-delete-a-policy",
+        "input": {
+          "PolicyId": "p-examplepolicyid111"
+        },
         "title": "To delete a policy"
       }
     ],
     "DescribeAccount": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows a user in the master account (111111111111) asking for details about account 555555555555:",
+        "id": "to-get-the-details-about-an-account-1472503166868",
         "input": {
           "AccountId": "555555555555"
         },
@@ -397,19 +375,17 @@
             "Name": "Beta Account"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows a user in the master account (111111111111) asking for details about account 555555555555:",
-        "id": "to-get-the-details-about-an-account-1472503166868",
         "title": "To get the details about an account"
       }
     ],
     "DescribeCreateAccountStatus": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request the status about a previous request to create an account in an organization. This operation can be called only by a principal from the organization's master account. In the example, the specified \"createAccountRequestId\" comes from the response of the original call to \"CreateAccount\":",
+        "id": "to-get-information-about-a-request-to-create-an-account-1472503727223",
         "input": {
           "CreateAccountRequestId": "car-exampleaccountcreationrequestid"
         },
@@ -420,19 +396,17 @@
             "State": "SUCCEEDED"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request the status about a previous request to create an account in an organization. This operation can be called only by a principal from the organization's master account. In the example, the specified \"createAccountRequestId\" comes from the response of the original call to \"CreateAccount\":",
-        "id": "to-get-information-about-a-request-to-create-an-account-1472503727223",
         "title": "To get information about a request to create an account"
       }
     ],
     "DescribeHandshake": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows you how to request details about a handshake. The handshake ID comes either from the original call to \"InviteAccountToOrganization\", or from a call to \"ListHandshakesForAccount\" or \"ListHandshakesForOrganization\":",
+        "id": "to-get-information-about-a-handshake-1472503400505",
         "input": {
           "HandshakeId": "h-examplehandshakeid111"
         },
@@ -476,19 +450,17 @@
             "State": "OPEN"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows you how to request details about a handshake. The handshake ID comes either from the original call to \"InviteAccountToOrganization\", or from a call to \"ListHandshakesForAccount\" or \"ListHandshakesForOrganization\":",
-        "id": "to-get-information-about-a-handshake-1472503400505",
         "title": "To get information about a handshake"
       }
     ],
     "DescribeOrganization": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request information about the current user's organization:/n/n",
+        "id": "to-get-information-about-an-organization-1472503400505",
         "output": {
           "Organization": {
             "Arn": "arn:aws:organizations::111111111111:organization/o-exampleorgid",
@@ -504,19 +476,17 @@
             "MasterAccountEmail": "bill@example.com"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request information about the current user's organization:/n/n",
-        "id": "to-get-information-about-an-organization-1472503400505",
         "title": "To get information about an organization"
       }
     ],
     "DescribeOrganizationalUnit": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request details about an OU:/n/n",
+        "id": "to-get-information-about-an-organizational-unit",
         "input": {
           "OrganizationalUnitId": "ou-examplerootid111-exampleouid111"
         },
@@ -527,19 +497,17 @@
             "Name": "Accounting Group"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request details about an OU:/n/n",
-        "id": "to-get-information-about-an-organizational-unit",
         "title": "To get information about an organizational unit"
       }
     ],
     "DescribePolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request information about a policy:/n/n",
+        "id": "to-get-information-about-a-policy",
         "input": {
           "PolicyId": "p-examplepolicyid111"
         },
@@ -556,36 +524,32 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request information about a policy:/n/n",
-        "id": "to-get-information-about-a-policy",
         "title": "To get information about a policy"
       }
     ],
     "DetachPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to detach a policy from an OU:/n/n",
+        "id": "to-detach-a-policy-from-a-root-ou-or-account",
         "input": {
           "PolicyId": "p-examplepolicyid111",
           "TargetId": "ou-examplerootid111-exampleouid111"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to detach a policy from an OU:/n/n",
-        "id": "to-detach-a-policy-from-a-root-ou-or-account",
         "title": "To detach a policy from a root, OU, or account"
       }
     ],
     "DisablePolicyType": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to disable the service control policy (SCP) policy type in a root. The response shows that the PolicyTypes response element no longer includes SERVICE_CONTROL_POLICY:/n/n",
+        "id": "to-disable-a-policy-type-in-a-root",
         "input": {
           "PolicyType": "SERVICE_CONTROL_POLICY",
           "RootId": "r-examplerootid111"
@@ -595,26 +559,21 @@
             "Arn": "arn:aws:organizations::111111111111:root/o-exampleorgid/r-examplerootid111",
             "Id": "r-examplerootid111",
             "Name": "Root",
-            "PolicyTypes": [
-
-            ]
+            "PolicyTypes": []
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to disable the service control policy (SCP) policy type in a root. The response shows that the PolicyTypes response element no longer includes SERVICE_CONTROL_POLICY:/n/n",
-        "id": "to-disable-a-policy-type-in-a-root",
         "title": "To disable a policy type in a root"
       }
     ],
     "EnableAllFeatures": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "This example shows the administrator asking all the invited accounts in the organization to approve enabling all features in the organization. AWS Organizations sends an email to the address that is registered with every invited member account asking the owner to approve the change by accepting the handshake that is sent. After all invited member accounts accept the handshake, the organization administrator can finalize the change to enable all features, and those with appropriate permissions can create policies and apply them to roots, OUs, and accounts:/n/n",
+        "id": "to-enable-all-features-in-an-organization",
+        "input": {},
         "output": {
           "Handshake": {
             "Action": "ENABLE_ALL_FEATURES",
@@ -637,19 +596,17 @@
             "State": "REQUESTED"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows the administrator asking all the invited accounts in the organization to approve enabling all features in the organization. AWS Organizations sends an email to the address that is registered with every invited member account asking the owner to approve the change by accepting the handshake that is sent. After all invited member accounts accept the handshake, the organization administrator can finalize the change to enable all features, and those with appropriate permissions can create policies and apply them to roots, OUs, and accounts:/n/n",
-        "id": "to-enable-all-features-in-an-organization",
         "title": "To enable all features in an organization"
       }
     ],
     "EnablePolicyType": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to enable the service control policy (SCP) policy type in a root. The output shows a root object with a PolicyTypes response element showing that SCPs are now enabled:/n/n",
+        "id": "to-enable-a-policy-type-in-a-root",
         "input": {
           "PolicyType": "SERVICE_CONTROL_POLICY",
           "RootId": "r-examplerootid111"
@@ -667,19 +624,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to enable the service control policy (SCP) policy type in a root. The output shows a root object with a PolicyTypes response element showing that SCPs are now enabled:/n/n",
-        "id": "to-enable-a-policy-type-in-a-root",
         "title": "To enable a policy type in a root"
       }
     ],
     "InviteAccountToOrganization": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows the admin of the master account owned by bill@example.com inviting the account owned by juan@example.com to join an organization.",
+        "id": "to-invite-an-account-to-join-an-organization-1472508594110",
         "input": {
           "Notes": "This is a request for Juan's account to join Bill's organization",
           "Target": {
@@ -731,24 +686,14 @@
             "State": "OPEN"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows the admin of the master account owned by bill@example.com inviting the account owned by juan@example.com to join an organization.",
-        "id": "to-invite-an-account-to-join-an-organization-1472508594110",
         "title": "To invite an account to join an organization"
       }
     ],
     "LeaveOrganization": [
       {
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "TThe following example shows how to remove your member account from an organization:",
         "id": "to-leave-an-organization-as-a-member-account-1472508784736",
@@ -757,8 +702,13 @@
     ],
     "ListAccounts": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "The following example shows you how to request a list of the accounts in an organization:",
+        "id": "to-retrieve-a-list-of-all-of-the-accounts-in-an-organization-1472509590974",
+        "input": {},
         "output": {
           "Accounts": [
             {
@@ -799,19 +749,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows you how to request a list of the accounts in an organization:",
-        "id": "to-retrieve-a-list-of-all-of-the-accounts-in-an-organization-1472509590974",
         "title": "To retrieve a list of all of the accounts in an organization"
       }
     ],
     "ListAccountsForParent": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request a list of the accounts in an OU:/n/n",
+        "id": "to-retrieve-a-list-of-all-of-the-accounts-in-a-root-or-ou-1472509590974",
         "input": {
           "ParentId": "ou-examplerootid111-exampleouid111"
         },
@@ -837,19 +785,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request a list of the accounts in an OU:/n/n",
-        "id": "to-retrieve-a-list-of-all-of-the-accounts-in-a-root-or-ou-1472509590974",
         "title": "To retrieve a list of all of the accounts in a root or OU"
       }
     ],
     "ListChildren": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to request a list of the child OUs in a parent root or OU:/n/n",
+        "id": "to-retrieve-a-list-of-all-of-the-child-accounts-and-OUs-in-a-parent-container",
         "input": {
           "ChildType": "ORGANIZATIONAL_UNIT",
           "ParentId": "ou-examplerootid111-exampleouid111"
@@ -866,19 +812,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to request a list of the child OUs in a parent root or OU:/n/n",
-        "id": "to-retrieve-a-list-of-all-of-the-child-accounts-and-OUs-in-a-parent-container",
         "title": "To retrieve a list of all of the child accounts and OUs in a parent root or OU"
       }
     ],
     "ListCreateAccountStatus": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows a user requesting a list of only the completed account creation requests made for the current organization:",
+        "id": "to-get-a-list-of-completed-account-creation-requests-made-in-the-organization",
         "input": {
           "States": [
             "SUCCEEDED"
@@ -896,17 +840,15 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows a user requesting a list of only the completed account creation requests made for the current organization:",
-        "id": "to-get-a-list-of-completed-account-creation-requests-made-in-the-organization",
         "title": "To get a list of completed account creation requests made in the organization"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows a user requesting a list of only the in-progress account creation requests made for the current organization:",
+        "id": "to-get-a-list-of-all-account-creation-requests-made-in-the-organization-1472509174532",
         "input": {
           "States": [
             "IN_PROGRESS"
@@ -922,19 +864,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows a user requesting a list of only the in-progress account creation requests made for the current organization:",
-        "id": "to-get-a-list-of-all-account-creation-requests-made-in-the-organization-1472509174532",
         "title": "To get a list of all account creation requests made in the organization"
       }
     ],
     "ListHandshakesForAccount": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows you how to get a list of handshakes that are associated with the account of the credentials used to call the operation:",
+        "id": "to-retrieve-a-list-of-the-handshakes-sent-to-an-account-1472510214747",
         "output": {
           "Handshakes": [
             {
@@ -981,19 +921,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows you how to get a list of handshakes that are associated with the account of the credentials used to call the operation:",
-        "id": "to-retrieve-a-list-of-the-handshakes-sent-to-an-account-1472510214747",
         "title": "To retrieve a list of the handshakes sent to an account"
       }
     ],
     "ListHandshakesForOrganization": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows you how to get a list of handshakes associated with the current organization:",
+        "id": "to-retrieve-a-list-of-the-handshakes-associated-with-an-organization-1472511206653",
         "output": {
           "Handshakes": [
             {
@@ -1082,19 +1020,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows you how to get a list of handshakes associated with the current organization:",
-        "id": "to-retrieve-a-list-of-the-handshakes-associated-with-an-organization-1472511206653",
         "title": "To retrieve a list of the handshakes associated with an organization"
       }
     ],
     "ListOrganizationalUnitsForParent": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to get a list of OUs in a specified root:/n/n",
+        "id": "to-retrieve-a-list-of-all-of-the-OUs-in-a-parent-container",
         "input": {
           "ParentId": "r-examplerootid111"
         },
@@ -1112,19 +1048,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to get a list of OUs in a specified root:/n/n",
-        "id": "to-retrieve-a-list-of-all-of-the-OUs-in-a-parent-container",
         "title": "To retrieve a list of all of the child OUs in a parent root or OU"
       }
     ],
     "ListParents": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to list the root or OUs that contain account 444444444444:/n/n",
+        "id": "to-retrieve-a-list-of-all-of-the-parents-of-a-child-ou-or-account",
         "input": {
           "ChildId": "444444444444"
         },
@@ -1136,19 +1070,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to list the root or OUs that contain account 444444444444:/n/n",
-        "id": "to-retrieve-a-list-of-all-of-the-parents-of-a-child-ou-or-account",
         "title": "To retrieve a list of all of the parents of a child OU or account"
       }
     ],
     "ListPolicies": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to get a list of service control policies (SCPs):/n/n",
+        "id": "to-retrieve-a-list-of--policies-in-the-organization",
         "input": {
           "Filter": "SERVICE_CONTROL_POLICY"
         },
@@ -1180,19 +1112,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to get a list of service control policies (SCPs):/n/n",
-        "id": "to-retrieve-a-list-of--policies-in-the-organization",
         "title": "To retrieve a list policies in the organization"
       }
     ],
     "ListPoliciesForTarget": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to get a list of all service control policies (SCPs) of the type specified by the Filter parameter, that are directly attached to an account. The returned list does not include policies that apply to the account because of inheritance from its location in an OU hierarchy:/n/n",
+        "id": "to-retrieve-a-list-of-policies-attached-to-a-root-ou-or-account",
         "input": {
           "Filter": "SERVICE_CONTROL_POLICY",
           "TargetId": "444444444444"
@@ -1209,21 +1139,18 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to get a list of all service control policies (SCPs) of the type specified by the Filter parameter, that are directly attached to an account. The returned list does not include policies that apply to the account because of inheritance from its location in an OU hierarchy:/n/n",
-        "id": "to-retrieve-a-list-of-policies-attached-to-a-root-ou-or-account",
         "title": "To retrieve a list policies attached to a root, OU, or account"
       }
     ],
     "ListRoots": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "The following example shows how to get the list of the roots in the current organization:/n/n",
+        "id": "to-retrieve-a-list-of-roots-in-the-organization",
+        "input": {},
         "output": {
           "Roots": [
             {
@@ -1239,19 +1166,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to get the list of the roots in the current organization:/n/n",
-        "id": "to-retrieve-a-list-of-roots-in-the-organization",
         "title": "To retrieve a list of roots in the organization"
       }
     ],
     "ListTargetsForPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to get the list of roots, OUs, and accounts to which the specified policy is attached:/n/n",
+        "id": "to-retrieve-a-list-of-roots-ous-and-accounts-to-which-a-policy-is-attached",
         "input": {
           "PolicyId": "p-FullAWSAccess"
         },
@@ -1277,53 +1202,47 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to get the list of roots, OUs, and accounts to which the specified policy is attached:/n/n",
-        "id": "to-retrieve-a-list-of-roots-ous-and-accounts-to-which-a-policy-is-attached",
         "title": "To retrieve a list of roots, OUs, and accounts to which a policy is attached"
       }
     ],
     "MoveAccount": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to move a member account from the root to an OU:/n/n",
+        "id": "to-move-an-ou-or-account-to-another-ou-or-the-root",
         "input": {
           "AccountId": "333333333333",
           "DestinationParentId": "ou-examplerootid111-exampleouid111",
           "SourceParentId": "r-examplerootid111"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to move a member account from the root to an OU:/n/n",
-        "id": "to-move-an-ou-or-account-to-another-ou-or-the-root",
         "title": "To move an OU or account to another OU or the root"
       }
     ],
     "RemoveAccountFromOrganization": [
       {
-        "input": {
-          "AccountId": "333333333333"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example shows you how to remove an account from an organization:",
         "id": "to-remove-an-account-from-an-organization-as-the-master-account",
+        "input": {
+          "AccountId": "333333333333"
+        },
         "title": "To remove an account from an organization as the master account"
       }
     ],
     "UpdateOrganizationalUnit": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to rename an OU. The output confirms the new name:/n/n",
+        "id": "to-rename-an-organizational-unit",
         "input": {
           "Name": "AccountingOU",
           "OrganizationalUnitId": "ou-examplerootid111-exampleouid111"
@@ -1335,19 +1254,17 @@
             "Name": "AccountingOU"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to rename an OU. The output confirms the new name:/n/n",
-        "id": "to-rename-an-organizational-unit",
         "title": "To rename an organizational unit"
       }
     ],
     "UpdatePolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to rename a policy and give it a new description and new content. The output confirms the new name and description text:/n/n",
+        "id": "to-update-the-details-of-a-policy",
         "input": {
           "Description": "This description replaces the original.",
           "Name": "Renamed-Policy",
@@ -1366,17 +1283,15 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to rename a policy and give it a new description and new content. The output confirms the new name and description text:/n/n",
-        "id": "to-update-the-details-of-a-policy",
         "title": "To update the details of a policy"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example shows how to replace the JSON text of the SCP from the preceding example with a new JSON policy text string that allows S3 actions instead of EC2 actions:/n/n",
+        "id": "to-update-the-content-of-a-policy",
         "input": {
           "Content": "{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": {\\\"Effect\\\": \\\"Allow\\\", \\\"Action\\\": \\\"s3:*\\\", \\\"Resource\\\": \\\"*\\\" } }",
           "PolicyId": "p-examplepolicyid111"
@@ -1394,16 +1309,9 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example shows how to replace the JSON text of the SCP from the preceding example with a new JSON policy text string that allows S3 actions instead of EC2 actions:/n/n",
-        "id": "to-update-the-content-of-a-policy",
         "title": "To update the content of a policy"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

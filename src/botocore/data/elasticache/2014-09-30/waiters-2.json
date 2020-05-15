@@ -2,46 +2,43 @@
   "version": 2,
   "waiters": {
     "CacheClusterAvailable": {
-      "delay": 30,
-      "operation": "DescribeCacheClusters",
-      "maxAttempts": 60,
       "acceptors": [
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "success"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "deleted",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "deleting",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "incompatible-network",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "restore-failed",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeCacheClusters"
     },
     "CacheClusterDeleted": {
-      "delay": 30,
-      "operation": "DescribeCacheClusters",
-      "maxAttempts": 60,
       "acceptors": [
         {
           "expected": "CacheClusterNotFound",
@@ -49,66 +46,66 @@
           "state": "success"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "creating",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "modifying",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "CacheClusters[].CacheClusterStatus",
           "expected": "rebooting",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CacheClusters[].CacheClusterStatus"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeCacheClusters"
     },
     "ReplicationGroupAvailable": {
-      "delay": 30,
-      "operation": "DescribeReplicationGroups",
-      "maxAttempts": 60,
       "acceptors": [
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "ReplicationGroups[].Status"
+          "state": "success"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "deleted",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "deleting",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "incompatible-network",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "restore-failed",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeReplicationGroups"
     },
     "ReplicationGroupDeleted": {
-      "delay": 30,
-      "operation": "DescribeReplicationGroups",
-      "maxAttempts": 60,
       "acceptors": [
         {
           "expected": "ReplicationGroupNotFoundFault",
@@ -116,24 +113,27 @@
           "state": "success"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "creating",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "modifying",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         },
         {
+          "argument": "ReplicationGroups[].Status",
           "expected": "rebooting",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ReplicationGroups[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeReplicationGroups"
     }
   }
 }

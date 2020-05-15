@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "documentation": "<p>AWS App Mesh is a service mesh based on the Envoy proxy that makes it easy to monitor and\n         control containerized microservices. App Mesh standardizes how your microservices\n         communicate, giving you end-to-end visibility and helping to ensure high-availability for\n         your applications.</p>\n         <p>App Mesh gives you consistent visibility and network traffic controls for every\n         microservice in an application. You can use App Mesh with Amazon ECS\n         (using the Amazon EC2 launch type), Amazon EKS, and Kubernetes on AWS.</p>\n         <note>\n            <p>App Mesh supports containerized microservice applications that use service discovery\n            naming for their components. To use App Mesh, you must have a containerized application\n            running on Amazon EC2 instances, hosted in either Amazon ECS, Amazon EKS, or Kubernetes on AWS. For\n            more information about service discovery on Amazon ECS, see <a href=\"http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html\">Service Discovery</a> in the\n               <i>Amazon Elastic Container Service Developer Guide</i>. Kubernetes <code>kube-dns</code> is supported.\n            For more information, see <a href=\"https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/\">DNS\n               for Services and Pods</a> in the Kubernetes documentation.</p>\n         </note>",
   "metadata": {
     "apiVersion": "2018-10-01",
     "endpointPrefix": "appmesh",
@@ -11,21 +11,51 @@
     "signingName": "appmesh",
     "uid": "appmesh-2018-10-01"
   },
-  "documentation": "<p>AWS App Mesh is a service mesh based on the Envoy proxy that makes it easy to monitor and\n         control containerized microservices. App Mesh standardizes how your microservices\n         communicate, giving you end-to-end visibility and helping to ensure high-availability for\n         your applications.</p>\n         <p>App Mesh gives you consistent visibility and network traffic controls for every\n         microservice in an application. You can use App Mesh with Amazon ECS\n         (using the Amazon EC2 launch type), Amazon EKS, and Kubernetes on AWS.</p>\n         <note>\n            <p>App Mesh supports containerized microservice applications that use service discovery\n            naming for their components. To use App Mesh, you must have a containerized application\n            running on Amazon EC2 instances, hosted in either Amazon ECS, Amazon EKS, or Kubernetes on AWS. For\n            more information about service discovery on Amazon ECS, see <a href=\"http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html\">Service Discovery</a> in the\n               <i>Amazon Elastic Container Service Developer Guide</i>. Kubernetes <code>kube-dns</code> is supported.\n            For more information, see <a href=\"https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/\">DNS\n               for Services and Pods</a> in the Kubernetes documentation.</p>\n         </note>",
   "operations": {
     "CreateMesh": {
-      "name": "CreateMesh",
+      "documentation": "<p>Creates a new service mesh. A service mesh is a logical boundary for network traffic\n         between the services that reside within it.</p>\n         <p>After you create your service mesh, you can create virtual nodes, virtual routers, and\n         routes to distribute traffic between the applications in your mesh.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "PUT",
         "requestUri": "/meshes",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "CreateMeshInput"
       },
+      "name": "CreateMesh",
       "output": {
         "shape": "CreateMeshOutput"
-      },
+      }
+    },
+    "CreateRoute": {
+      "documentation": "<p>Creates a new route that is associated with a virtual router.</p>\n         <p>You can use the <code>prefix</code> parameter in your route specification for path-based\n         routing of requests. For example, if your virtual router service name is\n            <code>my-service.local</code>, and you want the route to match requests to\n            <code>my-service.local/metrics</code>, then your prefix should be\n         <code>/metrics</code>.</p>\n         <p>If your route matches a request, you can distribute traffic to one or more target\n         virtual nodes with relative weighting.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -52,22 +82,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Creates a new service mesh. A service mesh is a logical boundary for network traffic\n         between the services that reside within it.</p>\n         <p>After you create your service mesh, you can create virtual nodes, virtual routers, and\n         routes to distribute traffic between the applications in your mesh.</p>",
-      "idempotent": true
-    },
-    "CreateRoute": {
-      "name": "CreateRoute",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "CreateRouteInput"
       },
+      "name": "CreateRoute",
       "output": {
         "shape": "CreateRouteOutput"
-      },
+      }
+    },
+    "CreateVirtualNode": {
+      "documentation": "<p>Creates a new virtual node within a service mesh.</p>\n         <p>A virtual node acts as logical pointer to a particular task group, such as an Amazon ECS\n         service or a Kubernetes deployment. When you create a virtual node, you must specify the\n         DNS service discovery name for your task group.</p>\n         <p>Any inbound traffic that your virtual node expects should be specified as a\n            <code>listener</code>. Any outbound traffic that your virtual node expects to reach\n         should be specified as a <code>backend</code>.</p>\n         <p>The response metadata for your new virtual node contains the <code>arn</code> that is\n         associated with the virtual node. Set this value (either the full ARN or the truncated\n         resource name, for example, <code>mesh/default/virtualNode/simpleapp</code>, as the\n            <code>APPMESH_VIRTUAL_NODE_NAME</code> environment variable for your task group's Envoy\n         proxy container in your task definition or pod spec. This is then mapped to the\n            <code>node.id</code> and <code>node.cluster</code> Envoy parameters.</p>\n         <note>\n            <p>If you require your Envoy stats or tracing to use a different name, you can override\n            the <code>node.cluster</code> value that is set by\n               <code>APPMESH_VIRTUAL_NODE_NAME</code> with the\n               <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.</p>\n         </note>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -94,22 +124,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Creates a new route that is associated with a virtual router.</p>\n         <p>You can use the <code>prefix</code> parameter in your route specification for path-based\n         routing of requests. For example, if your virtual router service name is\n            <code>my-service.local</code>, and you want the route to match requests to\n            <code>my-service.local/metrics</code>, then your prefix should be\n         <code>/metrics</code>.</p>\n         <p>If your route matches a request, you can distribute traffic to one or more target\n         virtual nodes with relative weighting.</p>",
-      "idempotent": true
-    },
-    "CreateVirtualNode": {
-      "name": "CreateVirtualNode",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualNodes",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "CreateVirtualNodeInput"
       },
+      "name": "CreateVirtualNode",
       "output": {
         "shape": "CreateVirtualNodeOutput"
-      },
+      }
+    },
+    "CreateVirtualRouter": {
+      "documentation": "<p>Creates a new virtual router within a service mesh.</p>\n         <p>Virtual routers handle traffic for one or more service names within your mesh. After you\n         create your virtual router, create and associate routes for your virtual router that direct\n         incoming requests to different virtual nodes.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -136,28 +166,25 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Creates a new virtual node within a service mesh.</p>\n         <p>A virtual node acts as logical pointer to a particular task group, such as an Amazon ECS\n         service or a Kubernetes deployment. When you create a virtual node, you must specify the\n         DNS service discovery name for your task group.</p>\n         <p>Any inbound traffic that your virtual node expects should be specified as a\n            <code>listener</code>. Any outbound traffic that your virtual node expects to reach\n         should be specified as a <code>backend</code>.</p>\n         <p>The response metadata for your new virtual node contains the <code>arn</code> that is\n         associated with the virtual node. Set this value (either the full ARN or the truncated\n         resource name, for example, <code>mesh/default/virtualNode/simpleapp</code>, as the\n            <code>APPMESH_VIRTUAL_NODE_NAME</code> environment variable for your task group's Envoy\n         proxy container in your task definition or pod spec. This is then mapped to the\n            <code>node.id</code> and <code>node.cluster</code> Envoy parameters.</p>\n         <note>\n            <p>If you require your Envoy stats or tracing to use a different name, you can override\n            the <code>node.cluster</code> value that is set by\n               <code>APPMESH_VIRTUAL_NODE_NAME</code> with the\n               <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.</p>\n         </note>",
-      "idempotent": true
-    },
-    "CreateVirtualRouter": {
-      "name": "CreateVirtualRouter",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualRouters",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "CreateVirtualRouterInput"
       },
+      "name": "CreateVirtualRouter",
       "output": {
         "shape": "CreateVirtualRouterOutput"
-      },
+      }
+    },
+    "DeleteMesh": {
+      "documentation": "<p>Deletes an existing service mesh.</p>\n         <p>You must delete all resources (routes, virtual routers, virtual nodes) in the service\n         mesh before you can delete the mesh itself.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
-        },
-        {
-          "shape": "ConflictException"
         },
         {
           "shape": "ForbiddenException"
@@ -166,10 +193,10 @@
           "shape": "InternalServerErrorException"
         },
         {
-          "shape": "LimitExceededException"
+          "shape": "NotFoundException"
         },
         {
-          "shape": "NotFoundException"
+          "shape": "ResourceInUseException"
         },
         {
           "shape": "ServiceUnavailableException"
@@ -178,22 +205,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Creates a new virtual router within a service mesh.</p>\n         <p>Virtual routers handle traffic for one or more service names within your mesh. After you\n         create your virtual router, create and associate routes for your virtual router that direct\n         incoming requests to different virtual nodes.</p>",
-      "idempotent": true
-    },
-    "DeleteMesh": {
-      "name": "DeleteMesh",
       "http": {
         "method": "DELETE",
         "requestUri": "/meshes/{meshName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "DeleteMeshInput"
       },
+      "name": "DeleteMesh",
       "output": {
         "shape": "DeleteMeshOutput"
-      },
+      }
+    },
+    "DeleteRoute": {
+      "documentation": "<p>Deletes an existing route.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -217,22 +244,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Deletes an existing service mesh.</p>\n         <p>You must delete all resources (routes, virtual routers, virtual nodes) in the service\n         mesh before you can delete the mesh itself.</p>",
-      "idempotent": true
-    },
-    "DeleteRoute": {
-      "name": "DeleteRoute",
       "http": {
         "method": "DELETE",
         "requestUri": "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "DeleteRouteInput"
       },
+      "name": "DeleteRoute",
       "output": {
         "shape": "DeleteRouteOutput"
-      },
+      }
+    },
+    "DeleteVirtualNode": {
+      "documentation": "<p>Deletes an existing virtual node.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -256,22 +283,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Deletes an existing route.</p>",
-      "idempotent": true
-    },
-    "DeleteVirtualNode": {
-      "name": "DeleteVirtualNode",
       "http": {
         "method": "DELETE",
         "requestUri": "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "DeleteVirtualNodeInput"
       },
+      "name": "DeleteVirtualNode",
       "output": {
         "shape": "DeleteVirtualNodeOutput"
-      },
+      }
+    },
+    "DeleteVirtualRouter": {
+      "documentation": "<p>Deletes an existing virtual router.</p>\n         <p>You must delete any routes associated with the virtual router before you can delete the\n         router itself.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -295,22 +322,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Deletes an existing virtual node.</p>",
-      "idempotent": true
-    },
-    "DeleteVirtualRouter": {
-      "name": "DeleteVirtualRouter",
       "http": {
         "method": "DELETE",
         "requestUri": "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "DeleteVirtualRouterInput"
       },
+      "name": "DeleteVirtualRouter",
       "output": {
         "shape": "DeleteVirtualRouterOutput"
-      },
+      }
+    },
+    "DescribeMesh": {
+      "documentation": "<p>Describes an existing service mesh.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -325,20 +352,12 @@
           "shape": "NotFoundException"
         },
         {
-          "shape": "ResourceInUseException"
-        },
-        {
           "shape": "ServiceUnavailableException"
         },
         {
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Deletes an existing virtual router.</p>\n         <p>You must delete any routes associated with the virtual router before you can delete the\n         router itself.</p>",
-      "idempotent": true
-    },
-    "DescribeMesh": {
-      "name": "DescribeMesh",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}",
@@ -347,9 +366,13 @@
       "input": {
         "shape": "DescribeMeshInput"
       },
+      "name": "DescribeMesh",
       "output": {
         "shape": "DescribeMeshOutput"
-      },
+      }
+    },
+    "DescribeRoute": {
+      "documentation": "<p>Describes an existing route.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -370,10 +393,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Describes an existing service mesh.</p>"
-    },
-    "DescribeRoute": {
-      "name": "DescribeRoute",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
@@ -382,9 +401,13 @@
       "input": {
         "shape": "DescribeRouteInput"
       },
+      "name": "DescribeRoute",
       "output": {
         "shape": "DescribeRouteOutput"
-      },
+      }
+    },
+    "DescribeVirtualNode": {
+      "documentation": "<p>Describes an existing virtual node.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -405,10 +428,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Describes an existing route.</p>"
-    },
-    "DescribeVirtualNode": {
-      "name": "DescribeVirtualNode",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
@@ -417,9 +436,13 @@
       "input": {
         "shape": "DescribeVirtualNodeInput"
       },
+      "name": "DescribeVirtualNode",
       "output": {
         "shape": "DescribeVirtualNodeOutput"
-      },
+      }
+    },
+    "DescribeVirtualRouter": {
+      "documentation": "<p>Describes an existing virtual router.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -440,10 +463,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Describes an existing virtual node.</p>"
-    },
-    "DescribeVirtualRouter": {
-      "name": "DescribeVirtualRouter",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
@@ -452,9 +471,13 @@
       "input": {
         "shape": "DescribeVirtualRouterInput"
       },
+      "name": "DescribeVirtualRouter",
       "output": {
         "shape": "DescribeVirtualRouterOutput"
-      },
+      }
+    },
+    "ListMeshes": {
+      "documentation": "<p>Returns a list of existing service meshes.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -475,10 +498,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Describes an existing virtual router.</p>"
-    },
-    "ListMeshes": {
-      "name": "ListMeshes",
       "http": {
         "method": "GET",
         "requestUri": "/meshes",
@@ -487,9 +506,13 @@
       "input": {
         "shape": "ListMeshesInput"
       },
+      "name": "ListMeshes",
       "output": {
         "shape": "ListMeshesOutput"
-      },
+      }
+    },
+    "ListRoutes": {
+      "documentation": "<p>Returns a list of existing routes in a service mesh.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -510,10 +533,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Returns a list of existing service meshes.</p>"
-    },
-    "ListRoutes": {
-      "name": "ListRoutes",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
@@ -522,9 +541,13 @@
       "input": {
         "shape": "ListRoutesInput"
       },
+      "name": "ListRoutes",
       "output": {
         "shape": "ListRoutesOutput"
-      },
+      }
+    },
+    "ListVirtualNodes": {
+      "documentation": "<p>Returns a list of existing virtual nodes.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -545,10 +568,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Returns a list of existing routes in a service mesh.</p>"
-    },
-    "ListVirtualNodes": {
-      "name": "ListVirtualNodes",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualNodes",
@@ -557,9 +576,13 @@
       "input": {
         "shape": "ListVirtualNodesInput"
       },
+      "name": "ListVirtualNodes",
       "output": {
         "shape": "ListVirtualNodesOutput"
-      },
+      }
+    },
+    "ListVirtualRouters": {
+      "documentation": "<p>Returns a list of existing virtual routers in a service mesh.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -580,10 +603,6 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Returns a list of existing virtual nodes.</p>"
-    },
-    "ListVirtualRouters": {
-      "name": "ListVirtualRouters",
       "http": {
         "method": "GET",
         "requestUri": "/meshes/{meshName}/virtualRouters",
@@ -592,18 +611,28 @@
       "input": {
         "shape": "ListVirtualRoutersInput"
       },
+      "name": "ListVirtualRouters",
       "output": {
         "shape": "ListVirtualRoutersOutput"
-      },
+      }
+    },
+    "UpdateRoute": {
+      "documentation": "<p>Updates an existing route for a specified service mesh and virtual router.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
+        },
+        {
+          "shape": "ConflictException"
         },
         {
           "shape": "ForbiddenException"
         },
         {
           "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "LimitExceededException"
         },
         {
           "shape": "NotFoundException"
@@ -615,21 +644,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Returns a list of existing virtual routers in a service mesh.</p>"
-    },
-    "UpdateRoute": {
-      "name": "UpdateRoute",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "UpdateRouteInput"
       },
+      "name": "UpdateRoute",
       "output": {
         "shape": "UpdateRouteOutput"
-      },
+      }
+    },
+    "UpdateVirtualNode": {
+      "documentation": "<p>Updates an existing virtual node in a specified service mesh.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -656,22 +686,22 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Updates an existing route for a specified service mesh and virtual router.</p>",
-      "idempotent": true
-    },
-    "UpdateVirtualNode": {
-      "name": "UpdateVirtualNode",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "UpdateVirtualNodeInput"
       },
+      "name": "UpdateVirtualNode",
       "output": {
         "shape": "UpdateVirtualNodeOutput"
-      },
+      }
+    },
+    "UpdateVirtualRouter": {
+      "documentation": "<p>Updates an existing virtual router in a specified service mesh.</p>",
       "errors": [
         {
           "shape": "BadRequestException"
@@ -698,1209 +728,547 @@
           "shape": "TooManyRequestsException"
         }
       ],
-      "documentation": "<p>Updates an existing virtual node in a specified service mesh.</p>",
-      "idempotent": true
-    },
-    "UpdateVirtualRouter": {
-      "name": "UpdateVirtualRouter",
       "http": {
         "method": "PUT",
         "requestUri": "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
         "responseCode": 200
       },
+      "idempotent": true,
       "input": {
         "shape": "UpdateVirtualRouterInput"
       },
+      "name": "UpdateVirtualRouter",
       "output": {
         "shape": "UpdateVirtualRouterOutput"
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException"
-        },
-        {
-          "shape": "ConflictException"
-        },
-        {
-          "shape": "ForbiddenException"
-        },
-        {
-          "shape": "InternalServerErrorException"
-        },
-        {
-          "shape": "LimitExceededException"
-        },
-        {
-          "shape": "NotFoundException"
-        },
-        {
-          "shape": "ServiceUnavailableException"
-        },
-        {
-          "shape": "TooManyRequestsException"
-        }
-      ],
-      "documentation": "<p>Updates an existing virtual router in a specified service mesh.</p>",
-      "idempotent": true
+      }
     }
   },
   "shapes": {
-    "ServiceName": {
+    "Arn": {
       "type": "string"
     },
-    "InternalServerErrorException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
+    "Backends": {
+      "member": {
+        "shape": "ServiceName"
       },
-      "documentation": "<p>The request processing has failed because of an unknown error, exception, or failure.</p>",
-      "exception": true,
+      "type": "list"
+    },
+    "BadRequestException": {
+      "documentation": "<p>The request syntax was malformed. Check your request syntax and try again.</p>",
       "error": {
-        "code": "InternalServerErrorException",
-        "httpStatusCode": 500,
-        "fault": true
-      }
-    },
-    "HealthCheckThreshold": {
-      "type": "integer",
-      "min": 2,
-      "max": 10
-    },
-    "DeleteMeshOutput": {
-      "type": "structure",
-      "members": {
-        "mesh": {
-          "shape": "MeshData",
-          "documentation": "<p>The service mesh that was deleted.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "mesh"
-    },
-    "Long": {
-      "type": "long",
-      "box": true
-    },
-    "ForbiddenException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
-      "documentation": "<p>You do not have permissions to perform this action.</p>",
-      "exception": true,
-      "error": {
-        "code": "ForbiddenException",
-        "httpStatusCode": 403,
+        "code": "BadRequestException",
+        "httpStatusCode": 400,
         "senderFault": true
-      }
-    },
-    "UpdateVirtualRouterOutput": {
-      "type": "structure",
+      },
+      "exception": true,
       "members": {
-        "virtualRouter": {
-          "shape": "VirtualRouterData",
-          "documentation": "<p>A full description of the virtual router that was updated.</p>"
+        "message": {
+          "shape": "String"
         }
       },
-      "documentation": "",
-      "payload": "virtualRouter"
-    },
-    "MeshStatusCode": {
-      "type": "string",
-      "enum": [
-        "ACTIVE",
-        "DELETED",
-        "INACTIVE"
-      ]
-    },
-    "PortNumber": {
-      "type": "integer",
-      "min": 1,
-      "max": 65535
-    },
-    "WeightedTarget": {
-      "type": "structure",
-      "members": {
-        "virtualNode": {
-          "shape": "ResourceName",
-          "documentation": "<p>The virtual node to associate with the weighted target.</p>"
-        },
-        "weight": {
-          "shape": "PercentInt",
-          "documentation": "<p>The relative weight of the weighted target.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a target and its relative weight. Traffic is distributed across\n         targets according to their relative weight. For example, a weighted target with a relative\n         weight of 50 receives five times as much traffic as one with a relative weight of\n         10.</p>"
-    },
-    "VirtualNodeList": {
-      "type": "list",
-      "member": {
-        "shape": "VirtualNodeRef"
-      }
-    },
-    "CreateRouteOutput": {
-      "type": "structure",
-      "members": {
-        "route": {
-          "shape": "RouteData",
-          "documentation": "<p>The full description of your mesh following the create call.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "route"
-    },
-    "RouteList": {
-      "type": "list",
-      "member": {
-        "shape": "RouteRef"
-      }
-    },
-    "DeleteVirtualNodeInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualNodeName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to delete the virtual node.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual node to delete.</p>",
-          "location": "uri",
-          "locationName": "virtualNodeName"
-        }
-      },
-      "documentation": ""
-    },
-    "ListVirtualRoutersLimit": {
-      "type": "integer",
-      "box": true,
-      "min": 1,
-      "max": 100
-    },
-    "DnsServiceDiscovery": {
-      "type": "structure",
-      "members": {
-        "serviceName": {
-          "shape": "ServiceName",
-          "documentation": "<p>The DNS service name for your virtual node.</p>"
-        }
-      },
-      "documentation": "<p>The DNS service discovery information for your virtual node.</p>"
+      "type": "structure"
     },
     "ConflictException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
       "documentation": "<p>The request contains a client token that was used for a previous update resource call\n         with different specifications. Try the request again with a new client token.</p>",
-      "exception": true,
       "error": {
         "code": "ConflictException",
         "httpStatusCode": 409,
         "senderFault": true
-      }
-    },
-    "HealthCheckIntervalMillis": {
-      "type": "long",
-      "box": true,
-      "min": 5000,
-      "max": 300000
-    },
-    "VirtualNodeRef": {
-      "type": "structure",
-      "members": {
-        "arn": {
-          "shape": "Arn",
-          "documentation": "<p>The full Amazon Resource Name (ARN) for the virtual node.</p>"
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual node.</p>"
-        }
       },
-      "documentation": "<p>An object representing a virtual node returned by a list operation.</p>"
-    },
-    "DescribeRouteOutput": {
-      "type": "structure",
-      "members": {
-        "route": {
-          "shape": "RouteData",
-          "documentation": "<p>The full description of your route.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "route"
-    },
-    "ServiceDiscovery": {
-      "type": "structure",
-      "members": {
-        "dns": {
-          "shape": "DnsServiceDiscovery",
-          "documentation": "<p>Specifies the DNS service name for the virtual node.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the service discovery information for a virtual node.</p>"
-    },
-    "MeshStatus": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "shape": "MeshStatusCode",
-          "documentation": "<p>The current mesh status.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the status of a service mesh.</p>"
-    },
-    "VirtualNodeData": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualNodeName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>"
-        },
-        "metadata": {
-          "shape": "ResourceMetadata",
-          "documentation": "<p>The associated metadata for the virtual node.</p>"
-        },
-        "spec": {
-          "shape": "VirtualNodeSpec",
-          "documentation": "<p>The specifications of the virtual node.</p>"
-        },
-        "status": {
-          "shape": "VirtualNodeStatus",
-          "documentation": "<p>The current status for the virtual node.</p>"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual node.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a virtual node returned by a describe operation.</p>"
-    },
-    "VirtualNodeSpec": {
-      "type": "structure",
-      "members": {
-        "backends": {
-          "shape": "Backends",
-          "documentation": "<p>The backends to which the virtual node is expected to send outbound traffic.</p>"
-        },
-        "listeners": {
-          "shape": "Listeners",
-          "documentation": "<p>The listeners from which the virtual node is expected to receive inbound traffic.</p>"
-        },
-        "serviceDiscovery": {
-          "shape": "ServiceDiscovery",
-          "documentation": "<p>The service discovery information for the virtual node.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the specification of a virtual node.</p>"
-    },
-    "ServiceNames": {
-      "type": "list",
-      "member": {
-        "shape": "ServiceName"
-      },
-      "max": 10
-    },
-    "MeshRef": {
-      "type": "structure",
-      "members": {
-        "arn": {
-          "shape": "Arn",
-          "documentation": "<p>The full Amazon Resource Name (ARN) of the service mesh.</p>"
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a service mesh returned by a list operation.</p>"
-    },
-    "DescribeVirtualRouterInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router to describe.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
-        }
-      },
-      "documentation": ""
-    },
-    "DescribeVirtualRouterOutput": {
-      "type": "structure",
-      "members": {
-        "virtualRouter": {
-          "shape": "VirtualRouterData",
-          "documentation": "<p>The full description of your virtual router.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualRouter"
-    },
-    "LimitExceededException": {
-      "type": "structure",
+      "exception": true,
       "members": {
         "message": {
           "shape": "String"
         }
       },
-      "documentation": "<p>You have exceeded a service limit for your account. For more information, see <a href=\"https://docs.aws.amazon.com/app-mesh/latest/userguide/service_limits.html\">Service Limits</a> in the <i>AWS App Mesh User Guide</i>.</p>",
-      "exception": true,
-      "error": {
-        "code": "LimitExceededException",
-        "httpStatusCode": 400,
-        "senderFault": true
-      }
-    },
-    "UpdateRouteOutput": {
-      "type": "structure",
-      "members": {
-        "route": {
-          "shape": "RouteData",
-          "documentation": "<p>A full description of the route that was updated.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "route"
-    },
-    "HttpRouteAction": {
-      "type": "structure",
-      "members": {
-        "weightedTargets": {
-          "shape": "WeightedTargets",
-          "documentation": "<p>The targets that traffic is routed to when a request matches the route. You can specify\n         one or more targets and their relative weights with which to distribute traffic.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the traffic distribution requirements for matched HTTP\n         requests.</p>"
-    },
-    "CreateVirtualRouterOutput": {
-      "type": "structure",
-      "members": {
-        "virtualRouter": {
-          "shape": "VirtualRouterData",
-          "documentation": "<p>The full description of your virtual router following the create call.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualRouter"
-    },
-    "HealthCheckTimeoutMillis": {
-      "type": "long",
-      "box": true,
-      "min": 2000,
-      "max": 60000
-    },
-    "CreateVirtualRouterInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "spec",
-        "virtualRouterName"
-      ],
-      "members": {
-        "clientToken": {
-          "shape": "String",
-          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to create the virtual router.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "spec": {
-          "shape": "VirtualRouterSpec",
-          "documentation": "<p>The virtual router specification to apply.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name to use for the virtual router.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "RouteStatus": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "shape": "RouteStatusCode",
-          "documentation": "<p>The current status for the route.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the current status of a route.</p>"
-    },
-    "ListMeshesInput": {
-      "type": "structure",
-      "members": {
-        "limit": {
-          "shape": "ListMeshesLimit",
-          "documentation": "<p>The maximum number of mesh results returned by <code>ListMeshes</code> in paginated\n         output. When this parameter is used, <code>ListMeshes</code> only returns\n            <code>limit</code> results in a single page along with a <code>nextToken</code> response\n         element. The remaining results of the initial request can be seen by sending another\n            <code>ListMeshes</code> request with the returned <code>nextToken</code> value. This\n         value can be between 1 and 100. If this parameter is not\n         used, then <code>ListMeshes</code> returns up to 100 results and a\n            <code>nextToken</code> value if applicable.</p>",
-          "location": "querystring",
-          "locationName": "limit"
-        },
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListMeshes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>\n         <note>\n            <p>This token should be treated as an opaque identifier that is only used to\n                retrieve the next items in a list and not for other programmatic purposes.</p>\n        </note>",
-          "location": "querystring",
-          "locationName": "nextToken"
-        }
-      },
-      "documentation": ""
-    },
-    "VirtualRouterStatus": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "shape": "VirtualRouterStatusCode",
-          "documentation": "<p>The current status of the virtual router.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the status of a virtual router. </p>"
-    },
-    "TooManyRequestsException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
-      "documentation": "<p>The maximum request rate permitted by the App Mesh APIs has been exceeded for your\n         account. For best results, use an increasing or variable sleep interval between requests.</p>",
-      "exception": true,
-      "error": {
-        "code": "TooManyRequestsException",
-        "httpStatusCode": 429,
-        "senderFault": true
-      }
-    },
-    "ListMeshesOutput": {
-      "type": "structure",
-      "required": [
-        "meshes"
-      ],
-      "members": {
-        "meshes": {
-          "shape": "MeshList",
-          "documentation": "<p>The list of existing service meshes.</p>"
-        },
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListMeshes</code>\n         request. When the results of a <code>ListMeshes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "DescribeVirtualNodeOutput": {
-      "type": "structure",
-      "members": {
-        "virtualNode": {
-          "shape": "VirtualNodeData",
-          "documentation": "<p>The full description of your virtual node.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualNode"
-    },
-    "CreateMeshOutput": {
-      "type": "structure",
-      "members": {
-        "mesh": {
-          "shape": "MeshData",
-          "documentation": "<p>The full description of your service mesh following the create call.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "mesh"
-    },
-    "ResourceName": {
-      "type": "string",
-      "min": 1,
-      "max": 255
-    },
-    "RouteData": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "routeName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the route resides.</p>"
-        },
-        "metadata": {
-          "shape": "ResourceMetadata",
-          "documentation": "<p>The associated metadata for the route.</p>"
-        },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the route.</p>"
-        },
-        "spec": {
-          "shape": "RouteSpec",
-          "documentation": "<p>The specifications of the route.</p>"
-        },
-        "status": {
-          "shape": "RouteStatus",
-          "documentation": "<p>The status of the route.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The virtual router with which the route is associated.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a route returned by a describe operation.</p>"
-    },
-    "Arn": {
-      "type": "string"
-    },
-    "NotFoundException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
-      "documentation": "<p>The specified resource does not exist. Check your request syntax and try again.</p>",
-      "exception": true,
-      "error": {
-        "code": "NotFoundException",
-        "httpStatusCode": 404,
-        "senderFault": true
-      }
-    },
-    "UpdateVirtualNodeInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "spec",
-        "virtualNodeName"
-      ],
-      "members": {
-        "clientToken": {
-          "shape": "String",
-          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "spec": {
-          "shape": "VirtualNodeSpec",
-          "documentation": "<p>The new virtual node specification to apply. This overwrites the existing data.</p>"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual node to update.</p>",
-          "location": "uri",
-          "locationName": "virtualNodeName"
-        }
-      },
-      "documentation": ""
-    },
-    "DeleteRouteInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "routeName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to delete the route.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the route to delete.</p>",
-          "location": "uri",
-          "locationName": "routeName"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router in which to delete the route.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
-        }
-      },
-      "documentation": ""
-    },
-    "ServiceUnavailableException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
-      "documentation": "<p>The request has failed due to a temporary failure of the service.</p>",
-      "exception": true,
-      "error": {
-        "code": "ServiceUnavailableException",
-        "httpStatusCode": 503,
-        "fault": true
-      }
-    },
-    "Listeners": {
-      "type": "list",
-      "member": {
-        "shape": "Listener"
-      }
-    },
-    "ListRoutesInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "limit": {
-          "shape": "ListRoutesLimit",
-          "documentation": "<p>The maximum number of mesh results returned by <code>ListRoutes</code> in paginated\n         output. When this parameter is used, <code>ListRoutes</code> only returns\n            <code>limit</code> results in a single page along with a <code>nextToken</code> response\n         element. The remaining results of the initial request can be seen by sending another\n            <code>ListRoutes</code> request with the returned <code>nextToken</code> value. This\n         value can be between 1 and 100. If this parameter is not\n         used, then <code>ListRoutes</code> returns up to 100 results and a\n            <code>nextToken</code> value if applicable.</p>",
-          "location": "querystring",
-          "locationName": "limit"
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to list routes.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListRoutes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
-          "location": "querystring",
-          "locationName": "nextToken"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router in which to list routes.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
-        }
-      },
-      "documentation": ""
-    },
-    "HttpRoute": {
-      "type": "structure",
-      "members": {
-        "action": {
-          "shape": "HttpRouteAction",
-          "documentation": "<p>The action to take if a match is determined.</p>"
-        },
-        "match": {
-          "shape": "HttpRouteMatch",
-          "documentation": "<p>The criteria for determining an HTTP request match.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the HTTP routing specification for a route.</p>"
-    },
-    "Timestamp": {
-      "type": "timestamp"
-    },
-    "ListRoutesOutput": {
-      "type": "structure",
-      "required": [
-        "routes"
-      ],
-      "members": {
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListRoutes</code>\n         request. When the results of a <code>ListRoutes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>"
-        },
-        "routes": {
-          "shape": "RouteList",
-          "documentation": "<p>The list of existing routes for the specified service mesh and virtual router.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "RouteSpec": {
-      "type": "structure",
-      "members": {
-        "httpRoute": {
-          "shape": "HttpRoute",
-          "documentation": "<p>The HTTP routing information for the route.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the specification of a route.</p>"
-    },
-    "DescribeVirtualNodeInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualNodeName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual node to describe.</p>",
-          "location": "uri",
-          "locationName": "virtualNodeName"
-        }
-      },
-      "documentation": ""
-    },
-    "VirtualRouterRef": {
-      "type": "structure",
-      "members": {
-        "arn": {
-          "shape": "Arn",
-          "documentation": "<p>The full Amazon Resource Name (ARN) for the virtual router.</p>"
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a virtual router returned by a list operation.</p>"
-    },
-    "VirtualRouterStatusCode": {
-      "type": "string",
-      "enum": [
-        "ACTIVE",
-        "DELETED",
-        "INACTIVE"
-      ]
-    },
-    "ListVirtualNodesOutput": {
-      "type": "structure",
-      "required": [
-        "virtualNodes"
-      ],
-      "members": {
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListVirtualNodes</code>\n         request. When the results of a <code>ListVirtualNodes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>"
-        },
-        "virtualNodes": {
-          "shape": "VirtualNodeList",
-          "documentation": "<p>The list of existing virtual nodes for the specified service mesh.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "DeleteVirtualNodeOutput": {
-      "type": "structure",
-      "members": {
-        "virtualNode": {
-          "shape": "VirtualNodeData",
-          "documentation": "<p>The virtual node that was deleted.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualNode"
-    },
-    "UpdateVirtualRouterInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "spec",
-        "virtualRouterName"
-      ],
-      "members": {
-        "clientToken": {
-          "shape": "String",
-          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "spec": {
-          "shape": "VirtualRouterSpec",
-          "documentation": "<p>The new virtual router specification to apply. This overwrites the existing data.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router to update.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
-        }
-      },
-      "documentation": ""
-    },
-    "ResourceInUseException": {
-      "type": "structure",
-      "members": {
-        "message": {
-          "shape": "String"
-        }
-      },
-      "documentation": "<p>You cannot delete the specified resource because it is in use or required by another resource.</p>",
-      "exception": true,
-      "error": {
-        "code": "ResourceInUseException",
-        "httpStatusCode": 409,
-        "senderFault": true
-      }
-    },
-    "DescribeRouteInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "routeName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the route to describe.</p>",
-          "location": "uri",
-          "locationName": "routeName"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router with which the route is associated.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
-        }
-      },
-      "documentation": ""
-    },
-    "ListVirtualRoutersOutput": {
-      "type": "structure",
-      "required": [
-        "virtualRouters"
-      ],
-      "members": {
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListVirtualRouters</code>\n         request. When the results of a <code>ListVirtualRouters</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>"
-        },
-        "virtualRouters": {
-          "shape": "VirtualRouterList",
-          "documentation": "<p>The list of existing virtual routers for the specified service mesh.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "CreateVirtualNodeOutput": {
-      "type": "structure",
-      "members": {
-        "virtualNode": {
-          "shape": "VirtualNodeData",
-          "documentation": "<p>The full description of your virtual node following the create call.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualNode"
-    },
-    "DeleteVirtualRouterOutput": {
-      "type": "structure",
-      "members": {
-        "virtualRouter": {
-          "shape": "VirtualRouterData",
-          "documentation": "<p>The virtual router that was deleted.</p>"
-        }
-      },
-      "documentation": "",
-      "payload": "virtualRouter"
-    },
-    "ListRoutesLimit": {
-      "type": "integer",
-      "box": true,
-      "min": 1,
-      "max": 100
-    },
-    "PortProtocol": {
-      "type": "string",
-      "enum": [
-        "http",
-        "tcp"
-      ]
-    },
-    "MeshList": {
-      "type": "list",
-      "member": {
-        "shape": "MeshRef"
-      }
-    },
-    "ResourceMetadata": {
-      "type": "structure",
-      "members": {
-        "arn": {
-          "shape": "Arn",
-          "documentation": "<p>The full Amazon Resource Name (ARN) for the resource.</p>\n         <note>\n            <p>After you create a virtual node, set this value (either the full ARN or the\n            truncated resource name, for example, <code>mesh/default/virtualNode/simpleapp</code>,\n            as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment variable for your task group's\n            Envoy proxy container in your task definition or pod spec. This is then mapped to the\n               <code>node.id</code> and <code>node.cluster</code> Envoy parameters.</p>\n            <p>If you require your Envoy stats or tracing to use a different name, you can override\n            the <code>node.cluster</code> value that is set by\n               <code>APPMESH_VIRTUAL_NODE_NAME</code> with the\n               <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.</p>\n         </note>"
-        },
-        "createdAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The Unix epoch timestamp in seconds for when the resource was created.</p>"
-        },
-        "lastUpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The Unix epoch timestamp in seconds for when the resource was last updated.</p>"
-        },
-        "uid": {
-          "shape": "String",
-          "documentation": "<p>The unique identifier for the resource.</p>"
-        },
-        "version": {
-          "shape": "Long",
-          "documentation": "<p>The version of the resource. Resources are created at version 1, and this version is\n         incremented each time they are updated.</p>"
-        }
-      },
-      "documentation": "<p>An object representing metadata for a resource.</p>"
+      "type": "structure"
     },
     "CreateMeshInput": {
-      "type": "structure",
+      "documentation": "",
+      "members": {
+        "clientToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "meshName": {
+          "documentation": "<p>The name to use for the service mesh.</p>",
+          "shape": "ResourceName"
+        }
+      },
       "required": [
         "meshName"
       ],
+      "type": "structure"
+    },
+    "CreateMeshOutput": {
+      "documentation": "",
+      "members": {
+        "mesh": {
+          "documentation": "<p>The full description of your service mesh following the create call.</p>",
+          "shape": "MeshData"
+        }
+      },
+      "payload": "mesh",
+      "type": "structure"
+    },
+    "CreateRouteInput": {
+      "documentation": "",
       "members": {
         "clientToken": {
-          "shape": "String",
           "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
+          "idempotencyToken": true,
+          "shape": "String"
         },
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name to use for the service mesh.</p>"
-        }
-      },
-      "documentation": ""
-    },
-    "PortMapping": {
-      "type": "structure",
-      "members": {
-        "port": {
-          "shape": "PortNumber",
-          "documentation": "<p>The port used for the port mapping.</p>"
-        },
-        "protocol": {
-          "shape": "PortProtocol",
-          "documentation": "<p>The protocol used for the port mapping.</p>"
-        }
-      },
-      "documentation": "<p>An object representing a virtual node listener port mapping.</p>"
-    },
-    "VirtualNodeStatusCode": {
-      "type": "string",
-      "enum": [
-        "ACTIVE",
-        "DELETED",
-        "INACTIVE"
-      ]
-    },
-    "DeleteVirtualRouterInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "virtualRouterName"
-      ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to delete the virtual router.</p>",
+          "documentation": "<p>The name of the service mesh in which to create the route.</p>",
           "location": "uri",
-          "locationName": "meshName"
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "routeName": {
+          "documentation": "<p>The name to use for the route.</p>",
+          "shape": "ResourceName"
+        },
+        "spec": {
+          "documentation": "<p>The route specification to apply.</p>",
+          "shape": "RouteSpec"
         },
         "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router to delete.</p>",
+          "documentation": "<p>The name of the virtual router in which to create the route.</p>",
           "location": "uri",
-          "locationName": "virtualRouterName"
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
         }
       },
-      "documentation": ""
-    },
-    "VirtualRouterSpec": {
-      "type": "structure",
-      "members": {
-        "serviceNames": {
-          "shape": "ServiceNames",
-          "documentation": "<p>The service mesh service names to associate with the virtual router.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the specification of a virtual router.</p>"
-    },
-    "UpdateRouteInput": {
-      "type": "structure",
       "required": [
         "meshName",
         "routeName",
         "spec",
         "virtualRouterName"
       ],
+      "type": "structure"
+    },
+    "CreateRouteOutput": {
+      "documentation": "",
       "members": {
-        "clientToken": {
-          "shape": "String",
-          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the route to update.</p>",
-          "location": "uri",
-          "locationName": "routeName"
-        },
-        "spec": {
-          "shape": "RouteSpec",
-          "documentation": "<p>The new route specification to apply. This overwrites the existing data.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router with which the route is associated.</p>",
-          "location": "uri",
-          "locationName": "virtualRouterName"
+        "route": {
+          "documentation": "<p>The full description of your mesh following the create call.</p>",
+          "shape": "RouteData"
         }
       },
-      "documentation": ""
+      "payload": "route",
+      "type": "structure"
     },
-    "PercentInt": {
-      "type": "integer",
-      "min": 0,
-      "max": 100
+    "CreateVirtualNodeInput": {
+      "documentation": "",
+      "members": {
+        "clientToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to create the virtual node.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "spec": {
+          "documentation": "<p>The virtual node specification to apply.</p>",
+          "shape": "VirtualNodeSpec"
+        },
+        "virtualNodeName": {
+          "documentation": "<p>The name to use for the virtual node.</p>",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "spec",
+        "virtualNodeName"
+      ],
+      "type": "structure"
     },
-    "ListMeshesLimit": {
-      "type": "integer",
-      "box": true,
-      "min": 1,
-      "max": 100
+    "CreateVirtualNodeOutput": {
+      "documentation": "",
+      "members": {
+        "virtualNode": {
+          "documentation": "<p>The full description of your virtual node following the create call.</p>",
+          "shape": "VirtualNodeData"
+        }
+      },
+      "payload": "virtualNode",
+      "type": "structure"
     },
-    "DescribeMeshInput": {
-      "type": "structure",
+    "CreateVirtualRouterInput": {
+      "documentation": "",
+      "members": {
+        "clientToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to create the virtual router.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "spec": {
+          "documentation": "<p>The virtual router specification to apply.</p>",
+          "shape": "VirtualRouterSpec"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name to use for the virtual router.</p>",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "spec",
+        "virtualRouterName"
+      ],
+      "type": "structure"
+    },
+    "CreateVirtualRouterOutput": {
+      "documentation": "",
+      "members": {
+        "virtualRouter": {
+          "documentation": "<p>The full description of your virtual router following the create call.</p>",
+          "shape": "VirtualRouterData"
+        }
+      },
+      "payload": "virtualRouter",
+      "type": "structure"
+    },
+    "DeleteMeshInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh to delete.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        }
+      },
       "required": [
         "meshName"
       ],
-      "members": {
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh to describe.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        }
-      },
-      "documentation": ""
+      "type": "structure"
     },
-    "DescribeMeshOutput": {
-      "type": "structure",
+    "DeleteMeshOutput": {
+      "documentation": "",
       "members": {
         "mesh": {
-          "shape": "MeshData",
-          "documentation": "<p>The full description of your service mesh.</p>"
+          "documentation": "<p>The service mesh that was deleted.</p>",
+          "shape": "MeshData"
         }
       },
-      "documentation": "",
-      "payload": "mesh"
+      "payload": "mesh",
+      "type": "structure"
     },
-    "VirtualRouterData": {
-      "type": "structure",
+    "DeleteRouteInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to delete the route.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "routeName": {
+          "documentation": "<p>The name of the route to delete.</p>",
+          "location": "uri",
+          "locationName": "routeName",
+          "shape": "ResourceName"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router in which to delete the route.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "routeName",
+        "virtualRouterName"
+      ],
+      "type": "structure"
+    },
+    "DeleteRouteOutput": {
+      "documentation": "",
+      "members": {
+        "route": {
+          "documentation": "<p>The route that was deleted.</p>",
+          "shape": "RouteData"
+        }
+      },
+      "payload": "route",
+      "type": "structure"
+    },
+    "DeleteVirtualNodeInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to delete the virtual node.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "virtualNodeName": {
+          "documentation": "<p>The name of the virtual node to delete.</p>",
+          "location": "uri",
+          "locationName": "virtualNodeName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "virtualNodeName"
+      ],
+      "type": "structure"
+    },
+    "DeleteVirtualNodeOutput": {
+      "documentation": "",
+      "members": {
+        "virtualNode": {
+          "documentation": "<p>The virtual node that was deleted.</p>",
+          "shape": "VirtualNodeData"
+        }
+      },
+      "payload": "virtualNode",
+      "type": "structure"
+    },
+    "DeleteVirtualRouterInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to delete the virtual router.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router to delete.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
+        }
+      },
       "required": [
         "meshName",
         "virtualRouterName"
       ],
+      "type": "structure"
+    },
+    "DeleteVirtualRouterOutput": {
+      "documentation": "",
+      "members": {
+        "virtualRouter": {
+          "documentation": "<p>The virtual router that was deleted.</p>",
+          "shape": "VirtualRouterData"
+        }
+      },
+      "payload": "virtualRouter",
+      "type": "structure"
+    },
+    "DescribeMeshInput": {
+      "documentation": "",
       "members": {
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>"
+          "documentation": "<p>The name of the service mesh to describe.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName"
+      ],
+      "type": "structure"
+    },
+    "DescribeMeshOutput": {
+      "documentation": "",
+      "members": {
+        "mesh": {
+          "documentation": "<p>The full description of your service mesh.</p>",
+          "shape": "MeshData"
+        }
+      },
+      "payload": "mesh",
+      "type": "structure"
+    },
+    "DescribeRouteInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
         },
-        "metadata": {
-          "shape": "ResourceMetadata",
-          "documentation": "<p>The associated metadata for the virtual router.</p>"
-        },
-        "spec": {
-          "shape": "VirtualRouterSpec",
-          "documentation": "<p>The specifications of the virtual router.</p>"
-        },
-        "status": {
-          "shape": "VirtualRouterStatus",
-          "documentation": "<p>The current status of the virtual router.</p>"
+        "routeName": {
+          "documentation": "<p>The name of the route to describe.</p>",
+          "location": "uri",
+          "locationName": "routeName",
+          "shape": "ResourceName"
         },
         "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router.</p>"
+          "documentation": "<p>The name of the virtual router with which the route is associated.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
         }
       },
-      "documentation": "<p>An object representing a virtual router returned by a describe operation.</p>"
+      "required": [
+        "meshName",
+        "routeName",
+        "virtualRouterName"
+      ],
+      "type": "structure"
     },
-    "VirtualRouterList": {
-      "type": "list",
-      "member": {
-        "shape": "VirtualRouterRef"
-      }
-    },
-    "Listener": {
-      "type": "structure",
+    "DescribeRouteOutput": {
+      "documentation": "",
       "members": {
-        "healthCheck": {
-          "shape": "HealthCheckPolicy",
-          "documentation": "<p>The health check information for the listener.</p>"
-        },
-        "portMapping": {
-          "shape": "PortMapping",
-          "documentation": "<p>The port mapping information for the listener.</p>"
+        "route": {
+          "documentation": "<p>The full description of your route.</p>",
+          "shape": "RouteData"
         }
       },
-      "documentation": "<p>An object representing a listener for a virtual node.</p>"
+      "payload": "route",
+      "type": "structure"
     },
-    "String": {
-      "type": "string"
+    "DescribeVirtualNodeInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "virtualNodeName": {
+          "documentation": "<p>The name of the virtual node to describe.</p>",
+          "location": "uri",
+          "locationName": "virtualNodeName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "virtualNodeName"
+      ],
+      "type": "structure"
+    },
+    "DescribeVirtualNodeOutput": {
+      "documentation": "",
+      "members": {
+        "virtualNode": {
+          "documentation": "<p>The full description of your virtual node.</p>",
+          "shape": "VirtualNodeData"
+        }
+      },
+      "payload": "virtualNode",
+      "type": "structure"
+    },
+    "DescribeVirtualRouterInput": {
+      "documentation": "",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router to describe.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "virtualRouterName"
+      ],
+      "type": "structure"
+    },
+    "DescribeVirtualRouterOutput": {
+      "documentation": "",
+      "members": {
+        "virtualRouter": {
+          "documentation": "<p>The full description of your virtual router.</p>",
+          "shape": "VirtualRouterData"
+        }
+      },
+      "payload": "virtualRouter",
+      "type": "structure"
+    },
+    "DnsServiceDiscovery": {
+      "documentation": "<p>The DNS service discovery information for your virtual node.</p>",
+      "members": {
+        "serviceName": {
+          "documentation": "<p>The DNS service name for your virtual node.</p>",
+          "shape": "ServiceName"
+        }
+      },
+      "type": "structure"
+    },
+    "ForbiddenException": {
+      "documentation": "<p>You do not have permissions to perform this action.</p>",
+      "error": {
+        "code": "ForbiddenException",
+        "httpStatusCode": 403,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "HealthCheckIntervalMillis": {
+      "box": true,
+      "max": 300000,
+      "min": 5000,
+      "type": "long"
     },
     "HealthCheckPolicy": {
-      "type": "structure",
+      "documentation": "<p>An object representing the health check policy for a virtual node's listener.</p>",
+      "members": {
+        "healthyThreshold": {
+          "documentation": "<p>The number of consecutive successful health checks that must occur before declaring\n         listener healthy.</p>",
+          "shape": "HealthCheckThreshold"
+        },
+        "intervalMillis": {
+          "documentation": "<p>The time period in milliseconds between each health check execution.</p>",
+          "shape": "HealthCheckIntervalMillis"
+        },
+        "path": {
+          "documentation": "<p>The destination path for the health check request. This is only required if the\n         specified protocol is HTTP; if the protocol is TCP, then this parameter is ignored.</p>",
+          "shape": "String"
+        },
+        "port": {
+          "documentation": "<p>The destination port for the health check request. This port must match the port defined\n         in the <a>PortMapping</a> for the listener.</p>",
+          "shape": "PortNumber"
+        },
+        "protocol": {
+          "documentation": "<p>The protocol for the health check request.</p>",
+          "shape": "PortProtocol"
+        },
+        "timeoutMillis": {
+          "documentation": "<p>The amount of time to wait when receiving a response from the health check, in\n         milliseconds.</p>",
+          "shape": "HealthCheckTimeoutMillis"
+        },
+        "unhealthyThreshold": {
+          "documentation": "<p>The number of consecutive failed health checks that must occur before declaring a\n         virtual node unhealthy. </p>",
+          "shape": "HealthCheckThreshold"
+        }
+      },
       "required": [
         "healthyThreshold",
         "intervalMillis",
@@ -1908,300 +1276,932 @@
         "timeoutMillis",
         "unhealthyThreshold"
       ],
+      "type": "structure"
+    },
+    "HealthCheckThreshold": {
+      "max": 10,
+      "min": 2,
+      "type": "integer"
+    },
+    "HealthCheckTimeoutMillis": {
+      "box": true,
+      "max": 60000,
+      "min": 2000,
+      "type": "long"
+    },
+    "HttpRoute": {
+      "documentation": "<p>An object representing the HTTP routing specification for a route.</p>",
       "members": {
-        "healthyThreshold": {
-          "shape": "HealthCheckThreshold",
-          "documentation": "<p>The number of consecutive successful health checks that must occur before declaring\n         listener healthy.</p>"
+        "action": {
+          "documentation": "<p>The action to take if a match is determined.</p>",
+          "shape": "HttpRouteAction"
         },
-        "intervalMillis": {
-          "shape": "HealthCheckIntervalMillis",
-          "documentation": "<p>The time period in milliseconds between each health check execution.</p>"
-        },
-        "path": {
-          "shape": "String",
-          "documentation": "<p>The destination path for the health check request. This is only required if the\n         specified protocol is HTTP; if the protocol is TCP, then this parameter is ignored.</p>"
-        },
-        "port": {
-          "shape": "PortNumber",
-          "documentation": "<p>The destination port for the health check request. This port must match the port defined\n         in the <a>PortMapping</a> for the listener.</p>"
-        },
-        "protocol": {
-          "shape": "PortProtocol",
-          "documentation": "<p>The protocol for the health check request.</p>"
-        },
-        "timeoutMillis": {
-          "shape": "HealthCheckTimeoutMillis",
-          "documentation": "<p>The amount of time to wait when receiving a response from the health check, in\n         milliseconds.</p>"
-        },
-        "unhealthyThreshold": {
-          "shape": "HealthCheckThreshold",
-          "documentation": "<p>The number of consecutive failed health checks that must occur before declaring a\n         virtual node unhealthy. </p>"
+        "match": {
+          "documentation": "<p>The criteria for determining an HTTP request match.</p>",
+          "shape": "HttpRouteMatch"
         }
       },
-      "documentation": "<p>An object representing the health check policy for a virtual node's listener.</p>"
+      "type": "structure"
     },
-    "ListVirtualRoutersInput": {
-      "type": "structure",
-      "required": [
-        "meshName"
-      ],
+    "HttpRouteAction": {
+      "documentation": "<p>An object representing the traffic distribution requirements for matched HTTP\n         requests.</p>",
       "members": {
-        "limit": {
-          "shape": "ListVirtualRoutersLimit",
-          "documentation": "<p>The maximum number of mesh results returned by <code>ListVirtualRouters</code> in\n         paginated output. When this parameter is used, <code>ListVirtualRouters</code> only returns\n         <code>limit</code> results in a single page along with a <code>nextToken</code>\n         response element. The remaining results of the initial request can be seen by sending\n         another <code>ListVirtualRouters</code> request with the returned <code>nextToken</code>\n         value. This value can be between 1 and 100. If this\n         parameter is not used, then <code>ListVirtualRouters</code> returns up to\n         100 results and a <code>nextToken</code> value if applicable.</p>",
-          "location": "querystring",
-          "locationName": "limit"
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to list virtual routers.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListVirtualRouters</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
-          "location": "querystring",
-          "locationName": "nextToken"
+        "weightedTargets": {
+          "documentation": "<p>The targets that traffic is routed to when a request matches the route. You can specify\n         one or more targets and their relative weights with which to distribute traffic.</p>",
+          "shape": "WeightedTargets"
         }
       },
-      "documentation": ""
+      "type": "structure"
     },
-    "CreateVirtualNodeInput": {
-      "type": "structure",
-      "required": [
-        "meshName",
-        "spec",
-        "virtualNodeName"
-      ],
+    "HttpRouteMatch": {
+      "documentation": "<p>An object representing the requirements for a route to match HTTP requests for a virtual\n         router.</p>",
       "members": {
-        "clientToken": {
-          "shape": "String",
-          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
-        },
-        "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to create the virtual node.</p>",
-          "location": "uri",
-          "locationName": "meshName"
-        },
-        "spec": {
-          "shape": "VirtualNodeSpec",
-          "documentation": "<p>The virtual node specification to apply.</p>"
-        },
-        "virtualNodeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name to use for the virtual node.</p>"
+        "prefix": {
+          "documentation": "<p>Specifies the path with which to match requests. This parameter must always start with\n            <code>/</code>, which by itself matches all requests to the virtual router service name.\n         You can also match for path-based routing of requests. For example, if your virtual router\n         service name is <code>my-service.local</code>, and you want the route to match requests to\n            <code>my-service.local/metrics</code>, then your prefix should be\n         <code>/metrics</code>.</p>",
+          "shape": "String"
         }
       },
-      "documentation": ""
+      "type": "structure"
     },
-    "BadRequestException": {
-      "type": "structure",
+    "InternalServerErrorException": {
+      "documentation": "<p>The request processing has failed because of an unknown error, exception, or failure.</p>",
+      "error": {
+        "code": "InternalServerErrorException",
+        "fault": true,
+        "httpStatusCode": 500
+      },
+      "exception": true,
       "members": {
         "message": {
           "shape": "String"
         }
       },
-      "documentation": "<p>The request syntax was malformed. Check your request syntax and try again.</p>",
-      "exception": true,
+      "type": "structure"
+    },
+    "LimitExceededException": {
+      "documentation": "<p>You have exceeded a service limit for your account. For more information, see <a href=\"https://docs.aws.amazon.com/app-mesh/latest/userguide/service_limits.html\">Service Limits</a> in the <i>AWS App Mesh User Guide</i>.</p>",
       "error": {
-        "code": "BadRequestException",
+        "code": "LimitExceededException",
         "httpStatusCode": 400,
         "senderFault": true
-      }
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ListMeshesInput": {
+      "documentation": "",
+      "members": {
+        "limit": {
+          "documentation": "<p>The maximum number of mesh results returned by <code>ListMeshes</code> in paginated\n         output. When this parameter is used, <code>ListMeshes</code> only returns\n            <code>limit</code> results in a single page along with a <code>nextToken</code> response\n         element. The remaining results of the initial request can be seen by sending another\n            <code>ListMeshes</code> request with the returned <code>nextToken</code> value. This\n         value can be between 1 and 100. If this parameter is not\n         used, then <code>ListMeshes</code> returns up to 100 results and a\n            <code>nextToken</code> value if applicable.</p>",
+          "location": "querystring",
+          "locationName": "limit",
+          "shape": "ListMeshesLimit"
+        },
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListMeshes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>\n         <note>\n            <p>This token should be treated as an opaque identifier that is only used to\n                retrieve the next items in a list and not for other programmatic purposes.</p>\n        </note>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ListMeshesLimit": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "ListMeshesOutput": {
+      "documentation": "",
+      "members": {
+        "meshes": {
+          "documentation": "<p>The list of existing service meshes.</p>",
+          "shape": "MeshList"
+        },
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListMeshes</code>\n         request. When the results of a <code>ListMeshes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "meshes"
+      ],
+      "type": "structure"
+    },
+    "ListRoutesInput": {
+      "documentation": "",
+      "members": {
+        "limit": {
+          "documentation": "<p>The maximum number of mesh results returned by <code>ListRoutes</code> in paginated\n         output. When this parameter is used, <code>ListRoutes</code> only returns\n            <code>limit</code> results in a single page along with a <code>nextToken</code> response\n         element. The remaining results of the initial request can be seen by sending another\n            <code>ListRoutes</code> request with the returned <code>nextToken</code> value. This\n         value can be between 1 and 100. If this parameter is not\n         used, then <code>ListRoutes</code> returns up to 100 results and a\n            <code>nextToken</code> value if applicable.</p>",
+          "location": "querystring",
+          "locationName": "limit",
+          "shape": "ListRoutesLimit"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to list routes.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListRoutes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router in which to list routes.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "virtualRouterName"
+      ],
+      "type": "structure"
+    },
+    "ListRoutesLimit": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "ListRoutesOutput": {
+      "documentation": "",
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListRoutes</code>\n         request. When the results of a <code>ListRoutes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>",
+          "shape": "String"
+        },
+        "routes": {
+          "documentation": "<p>The list of existing routes for the specified service mesh and virtual router.</p>",
+          "shape": "RouteList"
+        }
+      },
+      "required": [
+        "routes"
+      ],
+      "type": "structure"
+    },
+    "ListVirtualNodesInput": {
+      "documentation": "",
+      "members": {
+        "limit": {
+          "documentation": "<p>The maximum number of mesh results returned by <code>ListVirtualNodes</code> in\n         paginated output. When this parameter is used, <code>ListVirtualNodes</code> only returns\n         <code>limit</code> results in a single page along with a <code>nextToken</code>\n         response element. The remaining results of the initial request can be seen by sending\n         another <code>ListVirtualNodes</code> request with the returned <code>nextToken</code>\n         value. This value can be between 1 and 100. If this\n         parameter is not used, then <code>ListVirtualNodes</code> returns up to\n         100 results and a <code>nextToken</code> value if applicable.</p>",
+          "location": "querystring",
+          "locationName": "limit",
+          "shape": "ListVirtualNodesLimit"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to list virtual nodes.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListVirtualNodes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "meshName"
+      ],
+      "type": "structure"
+    },
+    "ListVirtualNodesLimit": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "ListVirtualNodesOutput": {
+      "documentation": "",
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListVirtualNodes</code>\n         request. When the results of a <code>ListVirtualNodes</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>",
+          "shape": "String"
+        },
+        "virtualNodes": {
+          "documentation": "<p>The list of existing virtual nodes for the specified service mesh.</p>",
+          "shape": "VirtualNodeList"
+        }
+      },
+      "required": [
+        "virtualNodes"
+      ],
+      "type": "structure"
+    },
+    "ListVirtualRoutersInput": {
+      "documentation": "",
+      "members": {
+        "limit": {
+          "documentation": "<p>The maximum number of mesh results returned by <code>ListVirtualRouters</code> in\n         paginated output. When this parameter is used, <code>ListVirtualRouters</code> only returns\n         <code>limit</code> results in a single page along with a <code>nextToken</code>\n         response element. The remaining results of the initial request can be seen by sending\n         another <code>ListVirtualRouters</code> request with the returned <code>nextToken</code>\n         value. This value can be between 1 and 100. If this\n         parameter is not used, then <code>ListVirtualRouters</code> returns up to\n         100 results and a <code>nextToken</code> value if applicable.</p>",
+          "location": "querystring",
+          "locationName": "limit",
+          "shape": "ListVirtualRoutersLimit"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which to list virtual routers.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListVirtualRouters</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "meshName"
+      ],
+      "type": "structure"
+    },
+    "ListVirtualRoutersLimit": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "ListVirtualRoutersOutput": {
+      "documentation": "",
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The <code>nextToken</code> value to include in a future <code>ListVirtualRouters</code>\n         request. When the results of a <code>ListVirtualRouters</code> request exceed\n         <code>limit</code>, this value can be used to retrieve the next page of\n         results. This value is <code>null</code> when there are no more results to\n         return.</p>",
+          "shape": "String"
+        },
+        "virtualRouters": {
+          "documentation": "<p>The list of existing virtual routers for the specified service mesh.</p>",
+          "shape": "VirtualRouterList"
+        }
+      },
+      "required": [
+        "virtualRouters"
+      ],
+      "type": "structure"
+    },
+    "Listener": {
+      "documentation": "<p>An object representing a listener for a virtual node.</p>",
+      "members": {
+        "healthCheck": {
+          "documentation": "<p>The health check information for the listener.</p>",
+          "shape": "HealthCheckPolicy"
+        },
+        "portMapping": {
+          "documentation": "<p>The port mapping information for the listener.</p>",
+          "shape": "PortMapping"
+        }
+      },
+      "type": "structure"
+    },
+    "Listeners": {
+      "member": {
+        "shape": "Listener"
+      },
+      "type": "list"
+    },
+    "Long": {
+      "box": true,
+      "type": "long"
     },
     "MeshData": {
-      "type": "structure",
+      "documentation": "<p>An object representing a service mesh returned by a describe operation.</p>",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh.</p>",
+          "shape": "ResourceName"
+        },
+        "metadata": {
+          "documentation": "<p>The associated metadata for the service mesh.</p>",
+          "shape": "ResourceMetadata"
+        },
+        "status": {
+          "documentation": "<p>The status of the service mesh.</p>",
+          "shape": "MeshStatus"
+        }
+      },
       "required": [
         "meshName",
         "metadata"
       ],
+      "type": "structure"
+    },
+    "MeshList": {
+      "member": {
+        "shape": "MeshRef"
+      },
+      "type": "list"
+    },
+    "MeshRef": {
+      "documentation": "<p>An object representing a service mesh returned by a list operation.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The full Amazon Resource Name (ARN) of the service mesh.</p>",
+          "shape": "Arn"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh.</p>",
+          "shape": "ResourceName"
+        }
+      },
+      "type": "structure"
+    },
+    "MeshStatus": {
+      "documentation": "<p>An object representing the status of a service mesh.</p>",
+      "members": {
+        "status": {
+          "documentation": "<p>The current mesh status.</p>",
+          "shape": "MeshStatusCode"
+        }
+      },
+      "type": "structure"
+    },
+    "MeshStatusCode": {
+      "enum": [
+        "ACTIVE",
+        "DELETED",
+        "INACTIVE"
+      ],
+      "type": "string"
+    },
+    "NotFoundException": {
+      "documentation": "<p>The specified resource does not exist. Check your request syntax and try again.</p>",
+      "error": {
+        "code": "NotFoundException",
+        "httpStatusCode": 404,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "PercentInt": {
+      "max": 100,
+      "min": 0,
+      "type": "integer"
+    },
+    "PortMapping": {
+      "documentation": "<p>An object representing a virtual node listener port mapping.</p>",
+      "members": {
+        "port": {
+          "documentation": "<p>The port used for the port mapping.</p>",
+          "shape": "PortNumber"
+        },
+        "protocol": {
+          "documentation": "<p>The protocol used for the port mapping.</p>",
+          "shape": "PortProtocol"
+        }
+      },
+      "type": "structure"
+    },
+    "PortNumber": {
+      "max": 65535,
+      "min": 1,
+      "type": "integer"
+    },
+    "PortProtocol": {
+      "enum": [
+        "http",
+        "tcp"
+      ],
+      "type": "string"
+    },
+    "ResourceInUseException": {
+      "documentation": "<p>You cannot delete the specified resource because it is in use or required by another resource.</p>",
+      "error": {
+        "code": "ResourceInUseException",
+        "httpStatusCode": 409,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceMetadata": {
+      "documentation": "<p>An object representing metadata for a resource.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The full Amazon Resource Name (ARN) for the resource.</p>\n         <note>\n            <p>After you create a virtual node, set this value (either the full ARN or the\n            truncated resource name, for example, <code>mesh/default/virtualNode/simpleapp</code>,\n            as the <code>APPMESH_VIRTUAL_NODE_NAME</code> environment variable for your task group's\n            Envoy proxy container in your task definition or pod spec. This is then mapped to the\n               <code>node.id</code> and <code>node.cluster</code> Envoy parameters.</p>\n            <p>If you require your Envoy stats or tracing to use a different name, you can override\n            the <code>node.cluster</code> value that is set by\n               <code>APPMESH_VIRTUAL_NODE_NAME</code> with the\n               <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.</p>\n         </note>",
+          "shape": "Arn"
+        },
+        "createdAt": {
+          "documentation": "<p>The Unix epoch timestamp in seconds for when the resource was created.</p>",
+          "shape": "Timestamp"
+        },
+        "lastUpdatedAt": {
+          "documentation": "<p>The Unix epoch timestamp in seconds for when the resource was last updated.</p>",
+          "shape": "Timestamp"
+        },
+        "uid": {
+          "documentation": "<p>The unique identifier for the resource.</p>",
+          "shape": "String"
+        },
+        "version": {
+          "documentation": "<p>The version of the resource. Resources are created at version 1, and this version is\n         incremented each time they are updated.</p>",
+          "shape": "Long"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceName": {
+      "max": 255,
+      "min": 1,
+      "type": "string"
+    },
+    "RouteData": {
+      "documentation": "<p>An object representing a route returned by a describe operation.</p>",
       "members": {
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh.</p>"
+          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
+          "shape": "ResourceName"
         },
         "metadata": {
-          "shape": "ResourceMetadata",
-          "documentation": "<p>The associated metadata for the service mesh.</p>"
+          "documentation": "<p>The associated metadata for the route.</p>",
+          "shape": "ResourceMetadata"
+        },
+        "routeName": {
+          "documentation": "<p>The name of the route.</p>",
+          "shape": "ResourceName"
+        },
+        "spec": {
+          "documentation": "<p>The specifications of the route.</p>",
+          "shape": "RouteSpec"
         },
         "status": {
-          "shape": "MeshStatus",
-          "documentation": "<p>The status of the service mesh.</p>"
+          "documentation": "<p>The status of the route.</p>",
+          "shape": "RouteStatus"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The virtual router with which the route is associated.</p>",
+          "shape": "ResourceName"
         }
       },
-      "documentation": "<p>An object representing a service mesh returned by a describe operation.</p>"
-    },
-    "ListVirtualNodesLimit": {
-      "type": "integer",
-      "box": true,
-      "min": 1,
-      "max": 100
-    },
-    "WeightedTargets": {
-      "type": "list",
-      "member": {
-        "shape": "WeightedTarget"
-      }
-    },
-    "DeleteMeshInput": {
-      "type": "structure",
       "required": [
-        "meshName"
+        "meshName",
+        "routeName",
+        "virtualRouterName"
       ],
+      "type": "structure"
+    },
+    "RouteList": {
+      "member": {
+        "shape": "RouteRef"
+      },
+      "type": "list"
+    },
+    "RouteRef": {
+      "documentation": "<p>An object representing a route returned by a list operation.</p>",
       "members": {
+        "arn": {
+          "documentation": "<p>The full Amazon Resource Name (ARN) for the route.</p>",
+          "shape": "Arn"
+        },
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh to delete.</p>",
-          "location": "uri",
-          "locationName": "meshName"
+          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
+          "shape": "ResourceName"
+        },
+        "routeName": {
+          "documentation": "<p>The name of the route.</p>",
+          "shape": "ResourceName"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The virtual router with which the route is associated.</p>",
+          "shape": "ResourceName"
         }
       },
-      "documentation": ""
+      "type": "structure"
     },
-    "HttpRouteMatch": {
-      "type": "structure",
+    "RouteSpec": {
+      "documentation": "<p>An object representing the specification of a route.</p>",
       "members": {
-        "prefix": {
-          "shape": "String",
-          "documentation": "<p>Specifies the path with which to match requests. This parameter must always start with\n            <code>/</code>, which by itself matches all requests to the virtual router service name.\n         You can also match for path-based routing of requests. For example, if your virtual router\n         service name is <code>my-service.local</code>, and you want the route to match requests to\n            <code>my-service.local/metrics</code>, then your prefix should be\n         <code>/metrics</code>.</p>"
+        "httpRoute": {
+          "documentation": "<p>The HTTP routing information for the route.</p>",
+          "shape": "HttpRoute"
         }
       },
-      "documentation": "<p>An object representing the requirements for a route to match HTTP requests for a virtual\n         router.</p>"
+      "type": "structure"
     },
-    "DeleteRouteOutput": {
-      "type": "structure",
+    "RouteStatus": {
+      "documentation": "<p>An object representing the current status of a route.</p>",
       "members": {
-        "route": {
-          "shape": "RouteData",
-          "documentation": "<p>The route that was deleted.</p>"
+        "status": {
+          "documentation": "<p>The current status for the route.</p>",
+          "shape": "RouteStatusCode"
         }
       },
-      "documentation": "",
-      "payload": "route"
+      "type": "structure"
     },
-    "Backends": {
-      "type": "list",
+    "RouteStatusCode": {
+      "enum": [
+        "ACTIVE",
+        "DELETED",
+        "INACTIVE"
+      ],
+      "type": "string"
+    },
+    "ServiceDiscovery": {
+      "documentation": "<p>An object representing the service discovery information for a virtual node.</p>",
+      "members": {
+        "dns": {
+          "documentation": "<p>Specifies the DNS service name for the virtual node.</p>",
+          "shape": "DnsServiceDiscovery"
+        }
+      },
+      "type": "structure"
+    },
+    "ServiceName": {
+      "type": "string"
+    },
+    "ServiceNames": {
+      "max": 10,
       "member": {
         "shape": "ServiceName"
-      }
+      },
+      "type": "list"
     },
-    "CreateRouteInput": {
-      "type": "structure",
+    "ServiceUnavailableException": {
+      "documentation": "<p>The request has failed due to a temporary failure of the service.</p>",
+      "error": {
+        "code": "ServiceUnavailableException",
+        "fault": true,
+        "httpStatusCode": 503
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "String": {
+      "type": "string"
+    },
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "TooManyRequestsException": {
+      "documentation": "<p>The maximum request rate permitted by the App Mesh APIs has been exceeded for your\n         account. For best results, use an increasing or variable sleep interval between requests.</p>",
+      "error": {
+        "code": "TooManyRequestsException",
+        "httpStatusCode": 429,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "UpdateRouteInput": {
+      "documentation": "",
+      "members": {
+        "clientToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the route resides.</p>",
+          "location": "uri",
+          "locationName": "meshName",
+          "shape": "ResourceName"
+        },
+        "routeName": {
+          "documentation": "<p>The name of the route to update.</p>",
+          "location": "uri",
+          "locationName": "routeName",
+          "shape": "ResourceName"
+        },
+        "spec": {
+          "documentation": "<p>The new route specification to apply. This overwrites the existing data.</p>",
+          "shape": "RouteSpec"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router with which the route is associated.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
+        }
+      },
       "required": [
         "meshName",
         "routeName",
         "spec",
         "virtualRouterName"
       ],
+      "type": "structure"
+    },
+    "UpdateRouteOutput": {
+      "documentation": "",
+      "members": {
+        "route": {
+          "documentation": "<p>A full description of the route that was updated.</p>",
+          "shape": "RouteData"
+        }
+      },
+      "payload": "route",
+      "type": "structure"
+    },
+    "UpdateVirtualNodeInput": {
+      "documentation": "",
       "members": {
         "clientToken": {
-          "shape": "String",
           "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
-          "idempotencyToken": true
+          "idempotencyToken": true,
+          "shape": "String"
         },
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to create the route.</p>",
+          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
           "location": "uri",
-          "locationName": "meshName"
-        },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name to use for the route.</p>"
+          "locationName": "meshName",
+          "shape": "ResourceName"
         },
         "spec": {
-          "shape": "RouteSpec",
-          "documentation": "<p>The route specification to apply.</p>"
+          "documentation": "<p>The new virtual node specification to apply. This overwrites the existing data.</p>",
+          "shape": "VirtualNodeSpec"
         },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the virtual router in which to create the route.</p>",
+        "virtualNodeName": {
+          "documentation": "<p>The name of the virtual node to update.</p>",
           "location": "uri",
-          "locationName": "virtualRouterName"
+          "locationName": "virtualNodeName",
+          "shape": "ResourceName"
         }
       },
-      "documentation": ""
-    },
-    "VirtualNodeStatus": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "shape": "VirtualNodeStatusCode",
-          "documentation": "<p>The current status of the virtual node.</p>"
-        }
-      },
-      "documentation": "<p>An object representing the current status of the virtual node.</p>"
-    },
-    "ListVirtualNodesInput": {
-      "type": "structure",
       "required": [
-        "meshName"
+        "meshName",
+        "spec",
+        "virtualNodeName"
       ],
+      "type": "structure"
+    },
+    "UpdateVirtualNodeOutput": {
+      "documentation": "",
       "members": {
-        "limit": {
-          "shape": "ListVirtualNodesLimit",
-          "documentation": "<p>The maximum number of mesh results returned by <code>ListVirtualNodes</code> in\n         paginated output. When this parameter is used, <code>ListVirtualNodes</code> only returns\n         <code>limit</code> results in a single page along with a <code>nextToken</code>\n         response element. The remaining results of the initial request can be seen by sending\n         another <code>ListVirtualNodes</code> request with the returned <code>nextToken</code>\n         value. This value can be between 1 and 100. If this\n         parameter is not used, then <code>ListVirtualNodes</code> returns up to\n         100 results and a <code>nextToken</code> value if applicable.</p>",
-          "location": "querystring",
-          "locationName": "limit"
+        "virtualNode": {
+          "documentation": "<p>A full description of the virtual node that was updated.</p>",
+          "shape": "VirtualNodeData"
+        }
+      },
+      "payload": "virtualNode",
+      "type": "structure"
+    },
+    "UpdateVirtualRouterInput": {
+      "documentation": "",
+      "members": {
+        "clientToken": {
+          "documentation": "<p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the\nrequest. Up to 36 letters, numbers, hyphens, and underscores are allowed.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
         },
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which to list virtual nodes.</p>",
+          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
           "location": "uri",
-          "locationName": "meshName"
+          "locationName": "meshName",
+          "shape": "ResourceName"
         },
-        "nextToken": {
-          "shape": "String",
-          "documentation": "<p>The <code>nextToken</code> value returned from a previous paginated\n         <code>ListVirtualNodes</code> request where <code>limit</code> was used and the\n         results exceeded the value of that parameter. Pagination continues from the end of the\n         previous results that returned the <code>nextToken</code> value.</p>",
-          "location": "querystring",
-          "locationName": "nextToken"
+        "spec": {
+          "documentation": "<p>The new virtual router specification to apply. This overwrites the existing data.</p>",
+          "shape": "VirtualRouterSpec"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router to update.</p>",
+          "location": "uri",
+          "locationName": "virtualRouterName",
+          "shape": "ResourceName"
         }
       },
-      "documentation": ""
+      "required": [
+        "meshName",
+        "spec",
+        "virtualRouterName"
+      ],
+      "type": "structure"
     },
-    "RouteRef": {
-      "type": "structure",
+    "UpdateVirtualRouterOutput": {
+      "documentation": "",
+      "members": {
+        "virtualRouter": {
+          "documentation": "<p>A full description of the virtual router that was updated.</p>",
+          "shape": "VirtualRouterData"
+        }
+      },
+      "payload": "virtualRouter",
+      "type": "structure"
+    },
+    "VirtualNodeData": {
+      "documentation": "<p>An object representing a virtual node returned by a describe operation.</p>",
+      "members": {
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
+          "shape": "ResourceName"
+        },
+        "metadata": {
+          "documentation": "<p>The associated metadata for the virtual node.</p>",
+          "shape": "ResourceMetadata"
+        },
+        "spec": {
+          "documentation": "<p>The specifications of the virtual node.</p>",
+          "shape": "VirtualNodeSpec"
+        },
+        "status": {
+          "documentation": "<p>The current status for the virtual node.</p>",
+          "shape": "VirtualNodeStatus"
+        },
+        "virtualNodeName": {
+          "documentation": "<p>The name of the virtual node.</p>",
+          "shape": "ResourceName"
+        }
+      },
+      "required": [
+        "meshName",
+        "virtualNodeName"
+      ],
+      "type": "structure"
+    },
+    "VirtualNodeList": {
+      "member": {
+        "shape": "VirtualNodeRef"
+      },
+      "type": "list"
+    },
+    "VirtualNodeRef": {
+      "documentation": "<p>An object representing a virtual node returned by a list operation.</p>",
       "members": {
         "arn": {
-          "shape": "Arn",
-          "documentation": "<p>The full Amazon Resource Name (ARN) for the route.</p>"
+          "documentation": "<p>The full Amazon Resource Name (ARN) for the virtual node.</p>",
+          "shape": "Arn"
         },
         "meshName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the service mesh in which the route resides.</p>"
+          "documentation": "<p>The name of the service mesh in which the virtual node resides.</p>",
+          "shape": "ResourceName"
         },
-        "routeName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The name of the route.</p>"
-        },
-        "virtualRouterName": {
-          "shape": "ResourceName",
-          "documentation": "<p>The virtual router with which the route is associated.</p>"
+        "virtualNodeName": {
+          "documentation": "<p>The name of the virtual node.</p>",
+          "shape": "ResourceName"
         }
       },
-      "documentation": "<p>An object representing a route returned by a list operation.</p>"
+      "type": "structure"
     },
-    "RouteStatusCode": {
-      "type": "string",
+    "VirtualNodeSpec": {
+      "documentation": "<p>An object representing the specification of a virtual node.</p>",
+      "members": {
+        "backends": {
+          "documentation": "<p>The backends to which the virtual node is expected to send outbound traffic.</p>",
+          "shape": "Backends"
+        },
+        "listeners": {
+          "documentation": "<p>The listeners from which the virtual node is expected to receive inbound traffic.</p>",
+          "shape": "Listeners"
+        },
+        "serviceDiscovery": {
+          "documentation": "<p>The service discovery information for the virtual node.</p>",
+          "shape": "ServiceDiscovery"
+        }
+      },
+      "type": "structure"
+    },
+    "VirtualNodeStatus": {
+      "documentation": "<p>An object representing the current status of the virtual node.</p>",
+      "members": {
+        "status": {
+          "documentation": "<p>The current status of the virtual node.</p>",
+          "shape": "VirtualNodeStatusCode"
+        }
+      },
+      "type": "structure"
+    },
+    "VirtualNodeStatusCode": {
       "enum": [
         "ACTIVE",
         "DELETED",
         "INACTIVE"
-      ]
+      ],
+      "type": "string"
     },
-    "UpdateVirtualNodeOutput": {
-      "type": "structure",
+    "VirtualRouterData": {
+      "documentation": "<p>An object representing a virtual router returned by a describe operation.</p>",
       "members": {
-        "virtualNode": {
-          "shape": "VirtualNodeData",
-          "documentation": "<p>A full description of the virtual node that was updated.</p>"
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
+          "shape": "ResourceName"
+        },
+        "metadata": {
+          "documentation": "<p>The associated metadata for the virtual router.</p>",
+          "shape": "ResourceMetadata"
+        },
+        "spec": {
+          "documentation": "<p>The specifications of the virtual router.</p>",
+          "shape": "VirtualRouterSpec"
+        },
+        "status": {
+          "documentation": "<p>The current status of the virtual router.</p>",
+          "shape": "VirtualRouterStatus"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router.</p>",
+          "shape": "ResourceName"
         }
       },
-      "documentation": "",
-      "payload": "virtualNode"
+      "required": [
+        "meshName",
+        "virtualRouterName"
+      ],
+      "type": "structure"
+    },
+    "VirtualRouterList": {
+      "member": {
+        "shape": "VirtualRouterRef"
+      },
+      "type": "list"
+    },
+    "VirtualRouterRef": {
+      "documentation": "<p>An object representing a virtual router returned by a list operation.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The full Amazon Resource Name (ARN) for the virtual router.</p>",
+          "shape": "Arn"
+        },
+        "meshName": {
+          "documentation": "<p>The name of the service mesh in which the virtual router resides.</p>",
+          "shape": "ResourceName"
+        },
+        "virtualRouterName": {
+          "documentation": "<p>The name of the virtual router.</p>",
+          "shape": "ResourceName"
+        }
+      },
+      "type": "structure"
+    },
+    "VirtualRouterSpec": {
+      "documentation": "<p>An object representing the specification of a virtual router.</p>",
+      "members": {
+        "serviceNames": {
+          "documentation": "<p>The service mesh service names to associate with the virtual router.</p>",
+          "shape": "ServiceNames"
+        }
+      },
+      "type": "structure"
+    },
+    "VirtualRouterStatus": {
+      "documentation": "<p>An object representing the status of a virtual router. </p>",
+      "members": {
+        "status": {
+          "documentation": "<p>The current status of the virtual router.</p>",
+          "shape": "VirtualRouterStatusCode"
+        }
+      },
+      "type": "structure"
+    },
+    "VirtualRouterStatusCode": {
+      "enum": [
+        "ACTIVE",
+        "DELETED",
+        "INACTIVE"
+      ],
+      "type": "string"
+    },
+    "WeightedTarget": {
+      "documentation": "<p>An object representing a target and its relative weight. Traffic is distributed across\n         targets according to their relative weight. For example, a weighted target with a relative\n         weight of 50 receives five times as much traffic as one with a relative weight of\n         10.</p>",
+      "members": {
+        "virtualNode": {
+          "documentation": "<p>The virtual node to associate with the weighted target.</p>",
+          "shape": "ResourceName"
+        },
+        "weight": {
+          "documentation": "<p>The relative weight of the weighted target.</p>",
+          "shape": "PercentInt"
+        }
+      },
+      "type": "structure"
+    },
+    "WeightedTargets": {
+      "member": {
+        "shape": "WeightedTarget"
+      },
+      "type": "list"
     }
-  }
+  },
+  "version": "2.0"
 }

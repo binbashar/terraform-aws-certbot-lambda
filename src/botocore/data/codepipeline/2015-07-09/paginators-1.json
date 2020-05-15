@@ -1,5 +1,11 @@
 {
   "pagination": {
+    "ListActionExecutions": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "actionExecutionDetails"
+    },
     "ListActionTypes": {
       "input_token": "nextToken",
       "output_token": "nextToken",
@@ -16,23 +22,17 @@
       "output_token": "nextToken",
       "result_key": "pipelines"
     },
+    "ListTagsForResource": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "tags"
+    },
     "ListWebhooks": {
       "input_token": "NextToken",
       "limit_key": "MaxResults",
       "output_token": "NextToken",
       "result_key": "webhooks"
-    },
-    "ListActionExecutions": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "actionExecutionDetails"
-    },
-    "ListTagsForResource": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "tags"
     }
   }
 }

@@ -2,28 +2,28 @@
   "version": 2,
   "waiters": {
     "SuccessfulSigningJob": {
-      "delay": 20,
-      "operation": "DescribeSigningJob",
-      "maxAttempts": 25,
       "acceptors": [
         {
+          "argument": "status",
           "expected": "Succeeded",
           "matcher": "path",
-          "state": "success",
-          "argument": "status"
+          "state": "success"
         },
         {
+          "argument": "status",
           "expected": "Failed",
           "matcher": "path",
-          "state": "failure",
-          "argument": "status"
+          "state": "failure"
         },
         {
           "expected": "ResourceNotFoundException",
           "matcher": "error",
           "state": "failure"
         }
-      ]
+      ],
+      "delay": 20,
+      "maxAttempts": 25,
+      "operation": "DescribeSigningJob"
     }
   }
 }

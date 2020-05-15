@@ -2,54 +2,54 @@
   "version": 2,
   "waiters": {
     "FleetStarted": {
-      "delay": 30,
-      "maxAttempts": 40,
-      "operation": "DescribeFleets",
       "acceptors": [
         {
-          "state": "success",
+          "argument": "Fleets[].State",
+          "expected": "ACTIVE",
           "matcher": "pathAll",
-          "argument": "Fleets[].State",
-          "expected": "ACTIVE"
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "Fleets[].State",
-          "expected": "PENDING_DEACTIVATE"
+          "expected": "PENDING_DEACTIVATE",
+          "matcher": "pathAny",
+          "state": "failure"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "Fleets[].State",
-          "expected": "INACTIVE"
+          "expected": "INACTIVE",
+          "matcher": "pathAny",
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 40,
+      "operation": "DescribeFleets"
     },
     "FleetStopped": {
-      "delay": 30,
-      "maxAttempts": 40,
-      "operation": "DescribeFleets",
       "acceptors": [
         {
-          "state": "success",
+          "argument": "Fleets[].State",
+          "expected": "INACTIVE",
           "matcher": "pathAll",
-          "argument": "Fleets[].State",
-          "expected": "INACTIVE"
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "Fleets[].State",
-          "expected": "PENDING_ACTIVATE"
+          "expected": "PENDING_ACTIVATE",
+          "matcher": "pathAny",
+          "state": "failure"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "Fleets[].State",
-          "expected": "ACTIVE"
+          "expected": "ACTIVE",
+          "matcher": "pathAny",
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 40,
+      "operation": "DescribeFleets"
     }
   }
 }

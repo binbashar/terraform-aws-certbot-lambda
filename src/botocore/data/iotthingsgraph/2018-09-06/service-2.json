@@ -1,978 +1,1417 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2018-09-06",
-    "endpointPrefix":"iotthingsgraph",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceFullName":"AWS IoT Things Graph",
-    "serviceId":"IoTThingsGraph",
-    "signatureVersion":"v4",
-    "signingName":"iotthingsgraph",
-    "targetPrefix":"IotThingsGraphFrontEndService",
-    "uid":"iotthingsgraph-2018-09-06"
+  "documentation": "<fullname>AWS IoT Things Graph</fullname> <p>AWS IoT Things Graph provides an integrated set of tools that enable developers to connect devices and services that use different standards, such as units of measure and communication protocols. AWS IoT Things Graph makes it possible to build IoT applications with little to no code by connecting devices and services and defining how they interact at an abstract level.</p> <p>For more information about how AWS IoT Things Graph works, see the <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html\">User Guide</a>.</p>",
+  "metadata": {
+    "apiVersion": "2018-09-06",
+    "endpointPrefix": "iotthingsgraph",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceFullName": "AWS IoT Things Graph",
+    "serviceId": "IoTThingsGraph",
+    "signatureVersion": "v4",
+    "signingName": "iotthingsgraph",
+    "targetPrefix": "IotThingsGraphFrontEndService",
+    "uid": "iotthingsgraph-2018-09-06"
   },
-  "operations":{
-    "AssociateEntityToThing":{
-      "name":"AssociateEntityToThing",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"AssociateEntityToThingRequest"},
-      "output":{"shape":"AssociateEntityToThingResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+  "operations": {
+    "AssociateEntityToThing": {
+      "documentation": "<p>Associates a device with a concrete thing that is in the user's registry.</p> <p>A thing can be associated with only one device at a time. If you associate a thing with a new device id, its previous association will be removed.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Associates a device with a concrete thing that is in the user's registry.</p> <p>A thing can be associated with only one device at a time. If you associate a thing with a new device id, its previous association will be removed.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "AssociateEntityToThingRequest"
+      },
+      "name": "AssociateEntityToThing",
+      "output": {
+        "shape": "AssociateEntityToThingResponse"
+      }
     },
-    "CreateFlowTemplate":{
-      "name":"CreateFlowTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateFlowTemplateRequest"},
-      "output":{"shape":"CreateFlowTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InternalFailureException"}
+    "CreateFlowTemplate": {
+      "documentation": "<p>Creates a workflow template. Workflows can be created only in the user's namespace. (The public namespace contains only entities.) The workflow can contain only entities in the specified namespace. The workflow is validated against the entities in the latest version of the user's namespace unless another namespace version is specified in the request.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Creates a workflow template. Workflows can be created only in the user's namespace. (The public namespace contains only entities.) The workflow can contain only entities in the specified namespace. The workflow is validated against the entities in the latest version of the user's namespace unless another namespace version is specified in the request.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateFlowTemplateRequest"
+      },
+      "name": "CreateFlowTemplate",
+      "output": {
+        "shape": "CreateFlowTemplateResponse"
+      }
     },
-    "CreateSystemInstance":{
-      "name":"CreateSystemInstance",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateSystemInstanceRequest"},
-      "output":{"shape":"CreateSystemInstanceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"LimitExceededException"}
+    "CreateSystemInstance": {
+      "documentation": "<p>Creates a system instance. </p> <p>This action validates the system instance, prepares the deployment-related resources. For Greengrass deployments, it updates the Greengrass group that is specified by the <code>greengrassGroupName</code> parameter. It also adds a file to the S3 bucket specified by the <code>s3BucketName</code> parameter. You need to call <code>DeploySystemInstance</code> after running this action.</p> <p>For Greengrass deployments, since this action modifies and adds resources to a Greengrass group and an S3 bucket on the caller's behalf, the calling identity must have write permissions to both the specified Greengrass group and S3 bucket. Otherwise, the call will fail with an authorization error.</p> <p>For cloud deployments, this action requires a <code>flowActionsRoleArn</code> value. This is an IAM role that has permissions to access AWS services, such as AWS Lambda and AWS IoT, that the flow uses when it executes.</p> <p>If the definition document doesn't specify a version of the user's namespace, the latest version will be used by default.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "LimitExceededException"
+        }
       ],
-      "documentation":"<p>Creates a system instance. </p> <p>This action validates the system instance, prepares the deployment-related resources. For Greengrass deployments, it updates the Greengrass group that is specified by the <code>greengrassGroupName</code> parameter. It also adds a file to the S3 bucket specified by the <code>s3BucketName</code> parameter. You need to call <code>DeploySystemInstance</code> after running this action.</p> <p>For Greengrass deployments, since this action modifies and adds resources to a Greengrass group and an S3 bucket on the caller's behalf, the calling identity must have write permissions to both the specified Greengrass group and S3 bucket. Otherwise, the call will fail with an authorization error.</p> <p>For cloud deployments, this action requires a <code>flowActionsRoleArn</code> value. This is an IAM role that has permissions to access AWS services, such as AWS Lambda and AWS IoT, that the flow uses when it executes.</p> <p>If the definition document doesn't specify a version of the user's namespace, the latest version will be used by default.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateSystemInstanceRequest"
+      },
+      "name": "CreateSystemInstance",
+      "output": {
+        "shape": "CreateSystemInstanceResponse"
+      }
     },
-    "CreateSystemTemplate":{
-      "name":"CreateSystemTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateSystemTemplateRequest"},
-      "output":{"shape":"CreateSystemTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "CreateSystemTemplate": {
+      "documentation": "<p>Creates a system. The system is validated against the entities in the latest version of the user's namespace unless another namespace version is specified in the request.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Creates a system. The system is validated against the entities in the latest version of the user's namespace unless another namespace version is specified in the request.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateSystemTemplateRequest"
+      },
+      "name": "CreateSystemTemplate",
+      "output": {
+        "shape": "CreateSystemTemplateResponse"
+      }
     },
-    "DeleteFlowTemplate":{
-      "name":"DeleteFlowTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteFlowTemplateRequest"},
-      "output":{"shape":"DeleteFlowTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceInUseException"}
+    "DeleteFlowTemplate": {
+      "documentation": "<p>Deletes a workflow. Any new system or deployment that contains this workflow will fail to update or deploy. Existing deployments that contain the workflow will continue to run (since they use a snapshot of the workflow taken at the time of deployment).</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Deletes a workflow. Any new system or deployment that contains this workflow will fail to update or deploy. Existing deployments that contain the workflow will continue to run (since they use a snapshot of the workflow taken at the time of deployment).</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteFlowTemplateRequest"
+      },
+      "name": "DeleteFlowTemplate",
+      "output": {
+        "shape": "DeleteFlowTemplateResponse"
+      }
     },
-    "DeleteNamespace":{
-      "name":"DeleteNamespace",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteNamespaceRequest"},
-      "output":{"shape":"DeleteNamespaceResponse"},
-      "errors":[
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "DeleteNamespace": {
+      "documentation": "<p>Deletes the specified namespace. This action deletes all of the entities in the namespace. Delete the systems and flows that use entities in the namespace before performing this action.</p>",
+      "errors": [
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Deletes the specified namespace. This action deletes all of the entities in the namespace. Delete the systems and flows that use entities in the namespace before performing this action.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteNamespaceRequest"
+      },
+      "name": "DeleteNamespace",
+      "output": {
+        "shape": "DeleteNamespaceResponse"
+      }
     },
-    "DeleteSystemInstance":{
-      "name":"DeleteSystemInstance",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteSystemInstanceRequest"},
-      "output":{"shape":"DeleteSystemInstanceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceInUseException"}
+    "DeleteSystemInstance": {
+      "documentation": "<p>Deletes a system instance. Only system instances that have never been deployed, or that have been undeployed can be deleted.</p> <p>Users can create a new system instance that has the same ID as a deleted system instance.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Deletes a system instance. Only system instances that have never been deployed, or that have been undeployed can be deleted.</p> <p>Users can create a new system instance that has the same ID as a deleted system instance.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteSystemInstanceRequest"
+      },
+      "name": "DeleteSystemInstance",
+      "output": {
+        "shape": "DeleteSystemInstanceResponse"
+      }
     },
-    "DeleteSystemTemplate":{
-      "name":"DeleteSystemTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteSystemTemplateRequest"},
-      "output":{"shape":"DeleteSystemTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceInUseException"}
+    "DeleteSystemTemplate": {
+      "documentation": "<p>Deletes a system. New deployments can't contain the system after its deletion. Existing deployments that contain the system will continue to work because they use a snapshot of the system that is taken when it is deployed.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Deletes a system. New deployments can't contain the system after its deletion. Existing deployments that contain the system will continue to work because they use a snapshot of the system that is taken when it is deployed.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteSystemTemplateRequest"
+      },
+      "name": "DeleteSystemTemplate",
+      "output": {
+        "shape": "DeleteSystemTemplateResponse"
+      }
     },
-    "DeploySystemInstance":{
-      "name":"DeploySystemInstance",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeploySystemInstanceRequest"},
-      "output":{"shape":"DeploySystemInstanceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceInUseException"}
+    "DeploySystemInstance": {
+      "documentation": "<p> <b>Greengrass and Cloud Deployments</b> </p> <p>Deploys the system instance to the target specified in <code>CreateSystemInstance</code>. </p> <p> <b>Greengrass Deployments</b> </p> <p>If the system or any workflows and entities have been updated before this action is called, then the deployment will create a new Amazon Simple Storage Service resource file and then deploy it.</p> <p>Since this action creates a Greengrass deployment on the caller's behalf, the calling identity must have write permissions to the specified Greengrass group. Otherwise, the call will fail with an authorization error.</p> <p>For information about the artifacts that get added to your Greengrass core device when you use this API, see <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-greengrass.html\">AWS IoT Things Graph and AWS IoT Greengrass</a>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p> <b>Greengrass and Cloud Deployments</b> </p> <p>Deploys the system instance to the target specified in <code>CreateSystemInstance</code>. </p> <p> <b>Greengrass Deployments</b> </p> <p>If the system or any workflows and entities have been updated before this action is called, then the deployment will create a new Amazon Simple Storage Service resource file and then deploy it.</p> <p>Since this action creates a Greengrass deployment on the caller's behalf, the calling identity must have write permissions to the specified Greengrass group. Otherwise, the call will fail with an authorization error.</p> <p>For information about the artifacts that get added to your Greengrass core device when you use this API, see <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-greengrass.html\">AWS IoT Things Graph and AWS IoT Greengrass</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeploySystemInstanceRequest"
+      },
+      "name": "DeploySystemInstance",
+      "output": {
+        "shape": "DeploySystemInstanceResponse"
+      }
     },
-    "DeprecateFlowTemplate":{
-      "name":"DeprecateFlowTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeprecateFlowTemplateRequest"},
-      "output":{"shape":"DeprecateFlowTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "DeprecateFlowTemplate": {
+      "documentation": "<p>Deprecates the specified workflow. This action marks the workflow for deletion. Deprecated flows can't be deployed, but existing deployments will continue to run.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Deprecates the specified workflow. This action marks the workflow for deletion. Deprecated flows can't be deployed, but existing deployments will continue to run.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeprecateFlowTemplateRequest"
+      },
+      "name": "DeprecateFlowTemplate",
+      "output": {
+        "shape": "DeprecateFlowTemplateResponse"
+      }
     },
-    "DeprecateSystemTemplate":{
-      "name":"DeprecateSystemTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeprecateSystemTemplateRequest"},
-      "output":{"shape":"DeprecateSystemTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "DeprecateSystemTemplate": {
+      "documentation": "<p>Deprecates the specified system.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Deprecates the specified system.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeprecateSystemTemplateRequest"
+      },
+      "name": "DeprecateSystemTemplate",
+      "output": {
+        "shape": "DeprecateSystemTemplateResponse"
+      }
     },
-    "DescribeNamespace":{
-      "name":"DescribeNamespace",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeNamespaceRequest"},
-      "output":{"shape":"DescribeNamespaceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "DescribeNamespace": {
+      "documentation": "<p>Gets the latest version of the user's namespace and the public version that it is tracking.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets the latest version of the user's namespace and the public version that it is tracking.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeNamespaceRequest"
+      },
+      "name": "DescribeNamespace",
+      "output": {
+        "shape": "DescribeNamespaceResponse"
+      }
     },
-    "DissociateEntityFromThing":{
-      "name":"DissociateEntityFromThing",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DissociateEntityFromThingRequest"},
-      "output":{"shape":"DissociateEntityFromThingResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "DissociateEntityFromThing": {
+      "documentation": "<p>Dissociates a device entity from a concrete thing. The action takes only the type of the entity that you need to dissociate because only one entity of a particular type can be associated with a thing.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Dissociates a device entity from a concrete thing. The action takes only the type of the entity that you need to dissociate because only one entity of a particular type can be associated with a thing.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DissociateEntityFromThingRequest"
+      },
+      "name": "DissociateEntityFromThing",
+      "output": {
+        "shape": "DissociateEntityFromThingResponse"
+      }
     },
-    "GetEntities":{
-      "name":"GetEntities",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetEntitiesRequest"},
-      "output":{"shape":"GetEntitiesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "GetEntities": {
+      "documentation": "<p>Gets definitions of the specified entities. Uses the latest version of the user's namespace by default. This API returns the following TDM entities.</p> <ul> <li> <p>Properties</p> </li> <li> <p>States</p> </li> <li> <p>Events</p> </li> <li> <p>Actions</p> </li> <li> <p>Capabilities</p> </li> <li> <p>Mappings</p> </li> <li> <p>Devices</p> </li> <li> <p>Device Models</p> </li> <li> <p>Services</p> </li> </ul> <p>This action doesn't return definitions for systems, flows, and deployments.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Gets definitions of the specified entities. Uses the latest version of the user's namespace by default. This API returns the following TDM entities.</p> <ul> <li> <p>Properties</p> </li> <li> <p>States</p> </li> <li> <p>Events</p> </li> <li> <p>Actions</p> </li> <li> <p>Capabilities</p> </li> <li> <p>Mappings</p> </li> <li> <p>Devices</p> </li> <li> <p>Device Models</p> </li> <li> <p>Services</p> </li> </ul> <p>This action doesn't return definitions for systems, flows, and deployments.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetEntitiesRequest"
+      },
+      "name": "GetEntities",
+      "output": {
+        "shape": "GetEntitiesResponse"
+      }
     },
-    "GetFlowTemplate":{
-      "name":"GetFlowTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetFlowTemplateRequest"},
-      "output":{"shape":"GetFlowTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "GetFlowTemplate": {
+      "documentation": "<p>Gets the latest version of the <code>DefinitionDocument</code> and <code>FlowTemplateSummary</code> for the specified workflow.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets the latest version of the <code>DefinitionDocument</code> and <code>FlowTemplateSummary</code> for the specified workflow.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetFlowTemplateRequest"
+      },
+      "name": "GetFlowTemplate",
+      "output": {
+        "shape": "GetFlowTemplateResponse"
+      }
     },
-    "GetFlowTemplateRevisions":{
-      "name":"GetFlowTemplateRevisions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetFlowTemplateRevisionsRequest"},
-      "output":{"shape":"GetFlowTemplateRevisionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "GetFlowTemplateRevisions": {
+      "documentation": "<p>Gets revisions of the specified workflow. Only the last 100 revisions are stored. If the workflow has been deprecated, this action will return revisions that occurred before the deprecation. This action won't work for workflows that have been deleted.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets revisions of the specified workflow. Only the last 100 revisions are stored. If the workflow has been deprecated, this action will return revisions that occurred before the deprecation. This action won't work for workflows that have been deleted.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetFlowTemplateRevisionsRequest"
+      },
+      "name": "GetFlowTemplateRevisions",
+      "output": {
+        "shape": "GetFlowTemplateRevisionsResponse"
+      }
     },
-    "GetNamespaceDeletionStatus":{
-      "name":"GetNamespaceDeletionStatus",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetNamespaceDeletionStatusRequest"},
-      "output":{"shape":"GetNamespaceDeletionStatusResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "GetNamespaceDeletionStatus": {
+      "documentation": "<p>Gets the status of a namespace deletion task.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets the status of a namespace deletion task.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetNamespaceDeletionStatusRequest"
+      },
+      "name": "GetNamespaceDeletionStatus",
+      "output": {
+        "shape": "GetNamespaceDeletionStatusResponse"
+      }
     },
-    "GetSystemInstance":{
-      "name":"GetSystemInstance",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetSystemInstanceRequest"},
-      "output":{"shape":"GetSystemInstanceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "GetSystemInstance": {
+      "documentation": "<p>Gets a system instance.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets a system instance.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetSystemInstanceRequest"
+      },
+      "name": "GetSystemInstance",
+      "output": {
+        "shape": "GetSystemInstanceResponse"
+      }
     },
-    "GetSystemTemplate":{
-      "name":"GetSystemTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetSystemTemplateRequest"},
-      "output":{"shape":"GetSystemTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "GetSystemTemplate": {
+      "documentation": "<p>Gets a system.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets a system.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetSystemTemplateRequest"
+      },
+      "name": "GetSystemTemplate",
+      "output": {
+        "shape": "GetSystemTemplateResponse"
+      }
     },
-    "GetSystemTemplateRevisions":{
-      "name":"GetSystemTemplateRevisions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetSystemTemplateRevisionsRequest"},
-      "output":{"shape":"GetSystemTemplateRevisionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "GetSystemTemplateRevisions": {
+      "documentation": "<p>Gets revisions made to the specified system template. Only the previous 100 revisions are stored. If the system has been deprecated, this action will return the revisions that occurred before its deprecation. This action won't work with systems that have been deleted.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Gets revisions made to the specified system template. Only the previous 100 revisions are stored. If the system has been deprecated, this action will return the revisions that occurred before its deprecation. This action won't work with systems that have been deleted.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetSystemTemplateRevisionsRequest"
+      },
+      "name": "GetSystemTemplateRevisions",
+      "output": {
+        "shape": "GetSystemTemplateRevisionsResponse"
+      }
     },
-    "GetUploadStatus":{
-      "name":"GetUploadStatus",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetUploadStatusRequest"},
-      "output":{"shape":"GetUploadStatusResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "GetUploadStatus": {
+      "documentation": "<p>Gets the status of the specified upload.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets the status of the specified upload.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetUploadStatusRequest"
+      },
+      "name": "GetUploadStatus",
+      "output": {
+        "shape": "GetUploadStatusResponse"
+      }
     },
-    "ListFlowExecutionMessages":{
-      "name":"ListFlowExecutionMessages",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListFlowExecutionMessagesRequest"},
-      "output":{"shape":"ListFlowExecutionMessagesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "ListFlowExecutionMessages": {
+      "documentation": "<p>Returns a list of objects that contain information about events in a flow execution.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Returns a list of objects that contain information about events in a flow execution.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListFlowExecutionMessagesRequest"
+      },
+      "name": "ListFlowExecutionMessages",
+      "output": {
+        "shape": "ListFlowExecutionMessagesResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Lists all tags on an AWS IoT Things Graph resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Lists all tags on an AWS IoT Things Graph resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "SearchEntities":{
-      "name":"SearchEntities",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchEntitiesRequest"},
-      "output":{"shape":"SearchEntitiesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "SearchEntities": {
+      "documentation": "<p>Searches for entities of the specified type. You can search for entities in your namespace and the public namespace that you're tracking.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Searches for entities of the specified type. You can search for entities in your namespace and the public namespace that you're tracking.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchEntitiesRequest"
+      },
+      "name": "SearchEntities",
+      "output": {
+        "shape": "SearchEntitiesResponse"
+      }
     },
-    "SearchFlowExecutions":{
-      "name":"SearchFlowExecutions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchFlowExecutionsRequest"},
-      "output":{"shape":"SearchFlowExecutionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"}
+    "SearchFlowExecutions": {
+      "documentation": "<p>Searches for AWS IoT Things Graph workflow execution instances.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Searches for AWS IoT Things Graph workflow execution instances.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchFlowExecutionsRequest"
+      },
+      "name": "SearchFlowExecutions",
+      "output": {
+        "shape": "SearchFlowExecutionsResponse"
+      }
     },
-    "SearchFlowTemplates":{
-      "name":"SearchFlowTemplates",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchFlowTemplatesRequest"},
-      "output":{"shape":"SearchFlowTemplatesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "SearchFlowTemplates": {
+      "documentation": "<p>Searches for summary information about workflows.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Searches for summary information about workflows.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchFlowTemplatesRequest"
+      },
+      "name": "SearchFlowTemplates",
+      "output": {
+        "shape": "SearchFlowTemplatesResponse"
+      }
     },
-    "SearchSystemInstances":{
-      "name":"SearchSystemInstances",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchSystemInstancesRequest"},
-      "output":{"shape":"SearchSystemInstancesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "SearchSystemInstances": {
+      "documentation": "<p>Searches for system instances in the user's account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Searches for system instances in the user's account.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchSystemInstancesRequest"
+      },
+      "name": "SearchSystemInstances",
+      "output": {
+        "shape": "SearchSystemInstancesResponse"
+      }
     },
-    "SearchSystemTemplates":{
-      "name":"SearchSystemTemplates",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchSystemTemplatesRequest"},
-      "output":{"shape":"SearchSystemTemplatesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "SearchSystemTemplates": {
+      "documentation": "<p>Searches for summary information about systems in the user's account. You can filter by the ID of a workflow to return only systems that use the specified workflow.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Searches for summary information about systems in the user's account. You can filter by the ID of a workflow to return only systems that use the specified workflow.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchSystemTemplatesRequest"
+      },
+      "name": "SearchSystemTemplates",
+      "output": {
+        "shape": "SearchSystemTemplatesResponse"
+      }
     },
-    "SearchThings":{
-      "name":"SearchThings",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"SearchThingsRequest"},
-      "output":{"shape":"SearchThingsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "SearchThings": {
+      "documentation": "<p>Searches for things associated with the specified entity. You can search by both device and device model.</p> <p>For example, if two different devices, camera1 and camera2, implement the camera device model, the user can associate thing1 to camera1 and thing2 to camera2. <code>SearchThings(camera2)</code> will return only thing2, but <code>SearchThings(camera)</code> will return both thing1 and thing2.</p> <p>This action searches for exact matches and doesn't perform partial text matching.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Searches for things associated with the specified entity. You can search by both device and device model.</p> <p>For example, if two different devices, camera1 and camera2, implement the camera device model, the user can associate thing1 to camera1 and thing2 to camera2. <code>SearchThings(camera2)</code> will return only thing2, but <code>SearchThings(camera)</code> will return both thing1 and thing2.</p> <p>This action searches for exact matches and doesn't perform partial text matching.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "SearchThingsRequest"
+      },
+      "name": "SearchThings",
+      "output": {
+        "shape": "SearchThingsResponse"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "TagResource": {
+      "documentation": "<p>Creates a tag for the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Creates a tag for the specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UndeploySystemInstance":{
-      "name":"UndeploySystemInstance",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UndeploySystemInstanceRequest"},
-      "output":{"shape":"UndeploySystemInstanceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"}
+    "UndeploySystemInstance": {
+      "documentation": "<p>Removes a system instance from its target (Cloud or Greengrass).</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Removes a system instance from its target (Cloud or Greengrass).</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UndeploySystemInstanceRequest"
+      },
+      "name": "UndeploySystemInstance",
+      "output": {
+        "shape": "UndeploySystemInstanceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "UntagResource": {
+      "documentation": "<p>Removes a tag from the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Removes a tag from the specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateFlowTemplate":{
-      "name":"UpdateFlowTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateFlowTemplateRequest"},
-      "output":{"shape":"UpdateFlowTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "UpdateFlowTemplate": {
+      "documentation": "<p>Updates the specified workflow. All deployed systems and system instances that use the workflow will see the changes in the flow when it is redeployed. If you don't want this behavior, copy the workflow (creating a new workflow with a different ID), and update the copy. The workflow can contain only entities in the specified namespace. </p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Updates the specified workflow. All deployed systems and system instances that use the workflow will see the changes in the flow when it is redeployed. If you don't want this behavior, copy the workflow (creating a new workflow with a different ID), and update the copy. The workflow can contain only entities in the specified namespace. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateFlowTemplateRequest"
+      },
+      "name": "UpdateFlowTemplate",
+      "output": {
+        "shape": "UpdateFlowTemplateResponse"
+      }
     },
-    "UpdateSystemTemplate":{
-      "name":"UpdateSystemTemplate",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateSystemTemplateRequest"},
-      "output":{"shape":"UpdateSystemTemplateResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "UpdateSystemTemplate": {
+      "documentation": "<p>Updates the specified system. You don't need to run this action after updating a workflow. Any deployment that uses the system will see the changes in the system when it is redeployed.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Updates the specified system. You don't need to run this action after updating a workflow. Any deployment that uses the system will see the changes in the system when it is redeployed.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateSystemTemplateRequest"
+      },
+      "name": "UpdateSystemTemplate",
+      "output": {
+        "shape": "UpdateSystemTemplateResponse"
+      }
     },
-    "UploadEntityDefinitions":{
-      "name":"UploadEntityDefinitions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UploadEntityDefinitionsRequest"},
-      "output":{"shape":"UploadEntityDefinitionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ThrottlingException"}
+    "UploadEntityDefinitions": {
+      "documentation": "<p>Asynchronously uploads one or more entity definitions to the user's namespace. The <code>document</code> parameter is required if <code>syncWithPublicNamespace</code> and <code>deleteExistingEntites</code> are false. If the <code>syncWithPublicNamespace</code> parameter is set to <code>true</code>, the user's namespace will synchronize with the latest version of the public namespace. If <code>deprecateExistingEntities</code> is set to true, all entities in the latest version will be deleted before the new <code>DefinitionDocument</code> is uploaded.</p> <p>When a user uploads entity definitions for the first time, the service creates a new namespace for the user. The new namespace tracks the public namespace. Currently users can have only one namespace. The namespace version increments whenever a user uploads entity definitions that are backwards-incompatible and whenever a user sets the <code>syncWithPublicNamespace</code> parameter or the <code>deprecateExistingEntities</code> parameter to <code>true</code>.</p> <p>The IDs for all of the entities should be in URN format. Each entity must be in the user's namespace. Users can't create entities in the public namespace, but entity definitions can refer to entities in the public namespace.</p> <p>Valid entities are <code>Device</code>, <code>DeviceModel</code>, <code>Service</code>, <code>Capability</code>, <code>State</code>, <code>Action</code>, <code>Event</code>, <code>Property</code>, <code>Mapping</code>, <code>Enum</code>. </p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Asynchronously uploads one or more entity definitions to the user's namespace. The <code>document</code> parameter is required if <code>syncWithPublicNamespace</code> and <code>deleteExistingEntites</code> are false. If the <code>syncWithPublicNamespace</code> parameter is set to <code>true</code>, the user's namespace will synchronize with the latest version of the public namespace. If <code>deprecateExistingEntities</code> is set to true, all entities in the latest version will be deleted before the new <code>DefinitionDocument</code> is uploaded.</p> <p>When a user uploads entity definitions for the first time, the service creates a new namespace for the user. The new namespace tracks the public namespace. Currently users can have only one namespace. The namespace version increments whenever a user uploads entity definitions that are backwards-incompatible and whenever a user sets the <code>syncWithPublicNamespace</code> parameter or the <code>deprecateExistingEntities</code> parameter to <code>true</code>.</p> <p>The IDs for all of the entities should be in URN format. Each entity must be in the user's namespace. Users can't create entities in the public namespace, but entity definitions can refer to entities in the public namespace.</p> <p>Valid entities are <code>Device</code>, <code>DeviceModel</code>, <code>Service</code>, <code>Capability</code>, <code>State</code>, <code>Action</code>, <code>Event</code>, <code>Property</code>, <code>Mapping</code>, <code>Enum</code>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UploadEntityDefinitionsRequest"
+      },
+      "name": "UploadEntityDefinitions",
+      "output": {
+        "shape": "UploadEntityDefinitionsResponse"
+      }
     }
   },
-  "shapes":{
-    "Arn":{"type":"string"},
-    "AssociateEntityToThingRequest":{
-      "type":"structure",
-      "required":[
+  "shapes": {
+    "Arn": {
+      "type": "string"
+    },
+    "AssociateEntityToThingRequest": {
+      "members": {
+        "entityId": {
+          "documentation": "<p>The ID of the device to be associated with the thing.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>",
+          "shape": "Urn"
+        },
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>",
+          "shape": "Version"
+        },
+        "thingName": {
+          "documentation": "<p>The name of the thing to which the entity is to be associated.</p>",
+          "shape": "ThingName"
+        }
+      },
+      "required": [
         "thingName",
         "entityId"
       ],
-      "members":{
-        "thingName":{
-          "shape":"ThingName",
-          "documentation":"<p>The name of the thing to which the entity is to be associated.</p>"
+      "type": "structure"
+    },
+    "AssociateEntityToThingResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "CreateFlowTemplateRequest": {
+      "members": {
+        "compatibleNamespaceVersion": {
+          "documentation": "<p>The namespace version in which the workflow is to be created.</p> <p>If no value is specified, the latest version is used by default.</p>",
+          "shape": "Version"
         },
-        "entityId":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the device to be associated with the thing.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>"
+        "definition": {
+          "documentation": "<p>The workflow <code>DefinitionDocument</code>.</p>",
+          "shape": "DefinitionDocument"
+        }
+      },
+      "required": [
+        "definition"
+      ],
+      "type": "structure"
+    },
+    "CreateFlowTemplateResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>The summary object that describes the created workflow.</p>",
+          "shape": "FlowTemplateSummary"
+        }
+      },
+      "type": "structure"
+    },
+    "CreateSystemInstanceRequest": {
+      "members": {
+        "definition": {
+          "shape": "DefinitionDocument"
         },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
-        }
-      }
-    },
-    "AssociateEntityToThingResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "CreateFlowTemplateRequest":{
-      "type":"structure",
-      "required":["definition"],
-      "members":{
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The workflow <code>DefinitionDocument</code>.</p>"
+        "flowActionsRoleArn": {
+          "documentation": "<p>The ARN of the IAM role that AWS IoT Things Graph will assume when it executes the flow. This role must have read and write access to AWS Lambda and AWS IoT and any other AWS services that the flow uses when it executes. This value is required if the value of the <code>target</code> parameter is <code>CLOUD</code>.</p>",
+          "shape": "RoleArn"
         },
-        "compatibleNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The namespace version in which the workflow is to be created.</p> <p>If no value is specified, the latest version is used by default.</p>"
+        "greengrassGroupName": {
+          "documentation": "<p>The name of the Greengrass group where the system instance will be deployed. This value is required if the value of the <code>target</code> parameter is <code>GREENGRASS</code>.</p>",
+          "shape": "GroupName"
+        },
+        "metricsConfiguration": {
+          "shape": "MetricsConfiguration"
+        },
+        "s3BucketName": {
+          "documentation": "<p>The name of the Amazon Simple Storage Service bucket that will be used to store and deploy the system instance's resource file. This value is required if the value of the <code>target</code> parameter is <code>GREENGRASS</code>.</p>",
+          "shape": "S3BucketName"
+        },
+        "tags": {
+          "documentation": "<p>Metadata, consisting of key-value pairs, that can be used to categorize your system instances.</p>",
+          "shape": "TagList"
+        },
+        "target": {
+          "documentation": "<p>The target type of the deployment. Valid values are <code>GREENGRASS</code> and <code>CLOUD</code>.</p>",
+          "shape": "DeploymentTarget"
         }
-      }
-    },
-    "CreateFlowTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"FlowTemplateSummary",
-          "documentation":"<p>The summary object that describes the created workflow.</p>"
-        }
-      }
-    },
-    "CreateSystemInstanceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "definition",
         "target"
       ],
-      "members":{
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>Metadata, consisting of key-value pairs, that can be used to categorize your system instances.</p>"
-        },
-        "definition":{"shape":"DefinitionDocument"},
-        "target":{
-          "shape":"DeploymentTarget",
-          "documentation":"<p>The target type of the deployment. Valid values are <code>GREENGRASS</code> and <code>CLOUD</code>.</p>"
-        },
-        "greengrassGroupName":{
-          "shape":"GroupName",
-          "documentation":"<p>The name of the Greengrass group where the system instance will be deployed. This value is required if the value of the <code>target</code> parameter is <code>GREENGRASS</code>.</p>"
-        },
-        "s3BucketName":{
-          "shape":"S3BucketName",
-          "documentation":"<p>The name of the Amazon Simple Storage Service bucket that will be used to store and deploy the system instance's resource file. This value is required if the value of the <code>target</code> parameter is <code>GREENGRASS</code>.</p>"
-        },
-        "metricsConfiguration":{"shape":"MetricsConfiguration"},
-        "flowActionsRoleArn":{
-          "shape":"RoleArn",
-          "documentation":"<p>The ARN of the IAM role that AWS IoT Things Graph will assume when it executes the flow. This role must have read and write access to AWS Lambda and AWS IoT and any other AWS services that the flow uses when it executes. This value is required if the value of the <code>target</code> parameter is <code>CLOUD</code>.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateSystemInstanceResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemInstanceSummary",
-          "documentation":"<p>The summary object that describes the new system instance.</p>"
+    "CreateSystemInstanceResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>The summary object that describes the new system instance.</p>",
+          "shape": "SystemInstanceSummary"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateSystemTemplateRequest":{
-      "type":"structure",
-      "required":["definition"],
-      "members":{
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The <code>DefinitionDocument</code> used to create the system.</p>"
+    "CreateSystemTemplateRequest": {
+      "members": {
+        "compatibleNamespaceVersion": {
+          "documentation": "<p>The namespace version in which the system is to be created.</p> <p>If no value is specified, the latest version is used by default.</p>",
+          "shape": "Version"
         },
-        "compatibleNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The namespace version in which the system is to be created.</p> <p>If no value is specified, the latest version is used by default.</p>"
+        "definition": {
+          "documentation": "<p>The <code>DefinitionDocument</code> used to create the system.</p>",
+          "shape": "DefinitionDocument"
         }
-      }
+      },
+      "required": [
+        "definition"
+      ],
+      "type": "structure"
     },
-    "CreateSystemTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemTemplateSummary",
-          "documentation":"<p>The summary object that describes the created system.</p>"
+    "CreateSystemTemplateResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>The summary object that describes the created system.</p>",
+          "shape": "SystemTemplateSummary"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DefinitionDocument":{
-      "type":"structure",
-      "required":[
+    "DefinitionDocument": {
+      "documentation": "<p>A document that defines an entity. </p>",
+      "members": {
+        "language": {
+          "documentation": "<p>The language used to define the entity. <code>GRAPHQL</code> is the only valid value.</p>",
+          "shape": "DefinitionLanguage"
+        },
+        "text": {
+          "documentation": "<p>The GraphQL text that defines the entity.</p>",
+          "shape": "DefinitionText"
+        }
+      },
+      "required": [
         "language",
         "text"
       ],
-      "members":{
-        "language":{
-          "shape":"DefinitionLanguage",
-          "documentation":"<p>The language used to define the entity. <code>GRAPHQL</code> is the only valid value.</p>"
-        },
-        "text":{
-          "shape":"DefinitionText",
-          "documentation":"<p>The GraphQL text that defines the entity.</p>"
+      "type": "structure"
+    },
+    "DefinitionLanguage": {
+      "enum": [
+        "GRAPHQL"
+      ],
+      "type": "string"
+    },
+    "DefinitionText": {
+      "max": 1048576,
+      "type": "string"
+    },
+    "DeleteFlowTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the workflow to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>",
+          "shape": "Urn"
         }
       },
-      "documentation":"<p>A document that defines an entity. </p>"
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "DefinitionLanguage":{
-      "type":"string",
-      "enum":["GRAPHQL"]
+    "DeleteFlowTemplateResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "DefinitionText":{
-      "type":"string",
-      "max":1048576
+    "DeleteNamespaceRequest": {
+      "members": {},
+      "type": "structure"
     },
-    "DeleteFlowTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>"
-        }
-      }
-    },
-    "DeleteFlowTemplateResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteNamespaceRequest":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteNamespaceResponse":{
-      "type":"structure",
-      "members":{
-        "namespaceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the namespace to be deleted.</p>"
+    "DeleteNamespaceResponse": {
+      "members": {
+        "namespaceArn": {
+          "documentation": "<p>The ARN of the namespace to be deleted.</p>",
+          "shape": "Arn"
         },
-        "namespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the namespace to be deleted.</p>"
-        }
-      }
-    },
-    "DeleteSystemInstanceRequest":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance to be deleted.</p>"
-        }
-      }
-    },
-    "DeleteSystemInstanceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteSystemTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>"
-        }
-      }
-    },
-    "DeleteSystemTemplateResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DependencyRevision":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow or system.</p>"
-        },
-        "revisionNumber":{
-          "shape":"Version",
-          "documentation":"<p>The revision number of the workflow or system.</p>"
+        "namespaceName": {
+          "documentation": "<p>The name of the namespace to be deleted.</p>",
+          "shape": "NamespaceName"
         }
       },
-      "documentation":"<p>An object that contains the ID and revision number of a workflow or system that is part of a deployment.</p>"
+      "type": "structure"
     },
-    "DependencyRevisions":{
-      "type":"list",
-      "member":{"shape":"DependencyRevision"}
-    },
-    "DeploySystemInstanceRequest":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance. This value is returned by the <code>CreateSystemInstance</code> action.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME</code> </p>"
+    "DeleteSystemInstanceRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system instance to be deleted.</p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeploySystemInstanceResponse":{
-      "type":"structure",
-      "required":["summary"],
-      "members":{
-        "summary":{
-          "shape":"SystemInstanceSummary",
-          "documentation":"<p>An object that contains summary information about a system instance that was deployed. </p>"
+    "DeleteSystemInstanceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteSystemTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>",
+          "shape": "Urn"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
+    },
+    "DeleteSystemTemplateResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DependencyRevision": {
+      "documentation": "<p>An object that contains the ID and revision number of a workflow or system that is part of a deployment.</p>",
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the workflow or system.</p>",
+          "shape": "Urn"
         },
-        "greengrassDeploymentId":{
-          "shape":"GreengrassDeploymentId",
-          "documentation":"<p>The ID of the Greengrass deployment used to deploy the system instance.</p>"
+        "revisionNumber": {
+          "documentation": "<p>The revision number of the workflow or system.</p>",
+          "shape": "Version"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeploymentTarget":{
-      "type":"string",
-      "enum":[
+    "DependencyRevisions": {
+      "member": {
+        "shape": "DependencyRevision"
+      },
+      "type": "list"
+    },
+    "DeploySystemInstanceRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system instance. This value is returned by the <code>CreateSystemInstance</code> action.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME</code> </p>",
+          "shape": "Urn"
+        }
+      },
+      "type": "structure"
+    },
+    "DeploySystemInstanceResponse": {
+      "members": {
+        "greengrassDeploymentId": {
+          "documentation": "<p>The ID of the Greengrass deployment used to deploy the system instance.</p>",
+          "shape": "GreengrassDeploymentId"
+        },
+        "summary": {
+          "documentation": "<p>An object that contains summary information about a system instance that was deployed. </p>",
+          "shape": "SystemInstanceSummary"
+        }
+      },
+      "required": [
+        "summary"
+      ],
+      "type": "structure"
+    },
+    "DeploymentTarget": {
+      "enum": [
         "GREENGRASS",
         "CLOUD"
-      ]
+      ],
+      "type": "string"
     },
-    "DeprecateExistingEntities":{"type":"boolean"},
-    "DeprecateFlowTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>"
+    "DeprecateExistingEntities": {
+      "type": "boolean"
+    },
+    "DeprecateFlowTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the workflow to be deleted.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "DeprecateFlowTemplateResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "DeprecateFlowTemplateResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "DeprecateSystemTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system to delete.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>"
+    "DeprecateSystemTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system to delete.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "DeprecateSystemTemplateResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "DeprecateSystemTemplateResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "DescribeNamespaceRequest":{
-      "type":"structure",
-      "members":{
-        "namespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the user's namespace. Set this to <code>aws</code> to get the public namespace.</p>"
+    "DescribeNamespaceRequest": {
+      "members": {
+        "namespaceName": {
+          "documentation": "<p>The name of the user's namespace. Set this to <code>aws</code> to get the public namespace.</p>",
+          "shape": "NamespaceName"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeNamespaceResponse":{
-      "type":"structure",
-      "members":{
-        "namespaceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the namespace.</p>"
+    "DescribeNamespaceResponse": {
+      "members": {
+        "namespaceArn": {
+          "documentation": "<p>The ARN of the namespace.</p>",
+          "shape": "Arn"
         },
-        "namespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the namespace.</p>"
+        "namespaceName": {
+          "documentation": "<p>The name of the namespace.</p>",
+          "shape": "NamespaceName"
         },
-        "trackingNamespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the public namespace that the latest namespace version is tracking.</p>"
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace to describe.</p>",
+          "shape": "Version"
         },
-        "trackingNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the public namespace that the latest version is tracking.</p>"
+        "trackingNamespaceName": {
+          "documentation": "<p>The name of the public namespace that the latest namespace version is tracking.</p>",
+          "shape": "NamespaceName"
         },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace to describe.</p>"
+        "trackingNamespaceVersion": {
+          "documentation": "<p>The version of the public namespace that the latest version is tracking.</p>",
+          "shape": "Version"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DissociateEntityFromThingRequest":{
-      "type":"structure",
-      "required":[
+    "DissociateEntityFromThingRequest": {
+      "members": {
+        "entityType": {
+          "documentation": "<p>The entity type from which to disassociate the thing.</p>",
+          "shape": "EntityType"
+        },
+        "thingName": {
+          "documentation": "<p>The name of the thing to disassociate.</p>",
+          "shape": "ThingName"
+        }
+      },
+      "required": [
         "thingName",
         "entityType"
       ],
-      "members":{
-        "thingName":{
-          "shape":"ThingName",
-          "documentation":"<p>The name of the thing to disassociate.</p>"
-        },
-        "entityType":{
-          "shape":"EntityType",
-          "documentation":"<p>The entity type from which to disassociate the thing.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DissociateEntityFromThingResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "DissociateEntityFromThingResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "Enabled":{"type":"boolean"},
-    "EntityDescription":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The entity ID.</p>"
+    "Enabled": {
+      "type": "boolean"
+    },
+    "EntityDescription": {
+      "documentation": "<p>Describes the properties of an entity.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The entity ARN.</p>",
+          "shape": "Arn"
         },
-        "arn":{
-          "shape":"Arn",
-          "documentation":"<p>The entity ARN.</p>"
+        "createdAt": {
+          "documentation": "<p>The time at which the entity was created.</p>",
+          "shape": "Timestamp"
         },
-        "type":{
-          "shape":"EntityType",
-          "documentation":"<p>The entity type.</p>"
+        "definition": {
+          "documentation": "<p>The definition document of the entity.</p>",
+          "shape": "DefinitionDocument"
         },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the entity was created.</p>"
+        "id": {
+          "documentation": "<p>The entity ID.</p>",
+          "shape": "Urn"
         },
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The definition document of the entity.</p>"
+        "type": {
+          "documentation": "<p>The entity type.</p>",
+          "shape": "EntityType"
         }
       },
-      "documentation":"<p>Describes the properties of an entity.</p>"
+      "type": "structure"
     },
-    "EntityDescriptions":{
-      "type":"list",
-      "member":{"shape":"EntityDescription"}
+    "EntityDescriptions": {
+      "member": {
+        "shape": "EntityDescription"
+      },
+      "type": "list"
     },
-    "EntityFilter":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"EntityFilterName",
-          "documentation":"<p>The name of the entity search filter field. <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, you can filter on the ID of a property that is used in a state.</p>"
+    "EntityFilter": {
+      "documentation": "<p>An object that filters an entity search. Multiple filters function as OR criteria in the search. For example a search that includes a <code>NAMESPACE</code> and a <code>REFERENCED_ENTITY_ID</code> filter searches for entities in the specified namespace that use the entity specified by the value of <code>REFERENCED_ENTITY_ID</code>.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the entity search filter field. <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, you can filter on the ID of a property that is used in a state.</p>",
+          "shape": "EntityFilterName"
         },
-        "value":{
-          "shape":"EntityFilterValues",
-          "documentation":"<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>"
+        "value": {
+          "documentation": "<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>",
+          "shape": "EntityFilterValues"
         }
       },
-      "documentation":"<p>An object that filters an entity search. Multiple filters function as OR criteria in the search. For example a search that includes a <code>NAMESPACE</code> and a <code>REFERENCED_ENTITY_ID</code> filter searches for entities in the specified namespace that use the entity specified by the value of <code>REFERENCED_ENTITY_ID</code>.</p>"
+      "type": "structure"
     },
-    "EntityFilterName":{
-      "type":"string",
-      "enum":[
+    "EntityFilterName": {
+      "enum": [
         "NAME",
         "NAMESPACE",
         "SEMANTIC_TYPE_PATH",
         "REFERENCED_ENTITY_ID"
-      ]
+      ],
+      "type": "string"
     },
-    "EntityFilterValue":{"type":"string"},
-    "EntityFilterValues":{
-      "type":"list",
-      "member":{"shape":"EntityFilterValue"}
+    "EntityFilterValue": {
+      "type": "string"
     },
-    "EntityFilters":{
-      "type":"list",
-      "member":{"shape":"EntityFilter"}
+    "EntityFilterValues": {
+      "member": {
+        "shape": "EntityFilterValue"
+      },
+      "type": "list"
     },
-    "EntityType":{
-      "type":"string",
-      "enum":[
+    "EntityFilters": {
+      "member": {
+        "shape": "EntityFilter"
+      },
+      "type": "list"
+    },
+    "EntityType": {
+      "enum": [
         "DEVICE",
         "SERVICE",
         "DEVICE_MODEL",
@@ -983,19 +1422,21 @@
         "PROPERTY",
         "MAPPING",
         "ENUM"
-      ]
+      ],
+      "type": "string"
     },
-    "EntityTypes":{
-      "type":"list",
-      "member":{"shape":"EntityType"}
+    "EntityTypes": {
+      "member": {
+        "shape": "EntityType"
+      },
+      "type": "list"
     },
-    "ErrorMessage":{
-      "type":"string",
-      "max":2048
+    "ErrorMessage": {
+      "max": 2048,
+      "type": "string"
     },
-    "FlowExecutionEventType":{
-      "type":"string",
-      "enum":[
+    "FlowExecutionEventType": {
+      "enum": [
         "EXECUTION_STARTED",
         "EXECUTION_FAILED",
         "EXECUTION_ABORTED",
@@ -1013,764 +1454,837 @@
         "THING_ACTION_TASK_FAILED",
         "THING_ACTION_TASK_SUCCEEDED",
         "ACKNOWLEDGE_TASK_MESSAGE"
-      ]
+      ],
+      "type": "string"
     },
-    "FlowExecutionId":{"type":"string"},
-    "FlowExecutionMessage":{
-      "type":"structure",
-      "members":{
-        "messageId":{
-          "shape":"FlowExecutionMessageId",
-          "documentation":"<p>The unique identifier of the message.</p>"
+    "FlowExecutionId": {
+      "type": "string"
+    },
+    "FlowExecutionMessage": {
+      "documentation": "<p>An object that contains information about a flow event.</p>",
+      "members": {
+        "eventType": {
+          "documentation": "<p>The type of flow event .</p>",
+          "shape": "FlowExecutionEventType"
         },
-        "eventType":{
-          "shape":"FlowExecutionEventType",
-          "documentation":"<p>The type of flow event .</p>"
+        "messageId": {
+          "documentation": "<p>The unique identifier of the message.</p>",
+          "shape": "FlowExecutionMessageId"
         },
-        "timestamp":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when the message was last updated.</p>"
+        "payload": {
+          "documentation": "<p>A string containing information about the flow event.</p>",
+          "shape": "FlowExecutionMessagePayload"
         },
-        "payload":{
-          "shape":"FlowExecutionMessagePayload",
-          "documentation":"<p>A string containing information about the flow event.</p>"
+        "timestamp": {
+          "documentation": "<p>The date and time when the message was last updated.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation":"<p>An object that contains information about a flow event.</p>"
+      "type": "structure"
     },
-    "FlowExecutionMessageId":{"type":"string"},
-    "FlowExecutionMessagePayload":{"type":"string"},
-    "FlowExecutionMessages":{
-      "type":"list",
-      "member":{"shape":"FlowExecutionMessage"}
+    "FlowExecutionMessageId": {
+      "type": "string"
     },
-    "FlowExecutionStatus":{
-      "type":"string",
-      "enum":[
+    "FlowExecutionMessagePayload": {
+      "type": "string"
+    },
+    "FlowExecutionMessages": {
+      "member": {
+        "shape": "FlowExecutionMessage"
+      },
+      "type": "list"
+    },
+    "FlowExecutionStatus": {
+      "enum": [
         "RUNNING",
         "ABORTED",
         "SUCCEEDED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "FlowExecutionSummaries":{
-      "type":"list",
-      "member":{"shape":"FlowExecutionSummary"}
+    "FlowExecutionSummaries": {
+      "member": {
+        "shape": "FlowExecutionSummary"
+      },
+      "type": "list"
     },
-    "FlowExecutionSummary":{
-      "type":"structure",
-      "members":{
-        "flowExecutionId":{
-          "shape":"FlowExecutionId",
-          "documentation":"<p>The ID of the flow execution.</p>"
+    "FlowExecutionSummary": {
+      "documentation": "<p>An object that contains summary information about a flow execution.</p>",
+      "members": {
+        "createdAt": {
+          "documentation": "<p>The date and time when the flow execution summary was created.</p>",
+          "shape": "Timestamp"
         },
-        "status":{
-          "shape":"FlowExecutionStatus",
-          "documentation":"<p>The current status of the flow execution.</p>"
+        "flowExecutionId": {
+          "documentation": "<p>The ID of the flow execution.</p>",
+          "shape": "FlowExecutionId"
         },
-        "systemInstanceId":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance that contains the flow.</p>"
+        "flowTemplateId": {
+          "documentation": "<p>The ID of the flow.</p>",
+          "shape": "Urn"
         },
-        "flowTemplateId":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the flow.</p>"
+        "status": {
+          "documentation": "<p>The current status of the flow execution.</p>",
+          "shape": "FlowExecutionStatus"
         },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when the flow execution summary was created.</p>"
+        "systemInstanceId": {
+          "documentation": "<p>The ID of the system instance that contains the flow.</p>",
+          "shape": "Urn"
         },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when the flow execution summary was last updated.</p>"
+        "updatedAt": {
+          "documentation": "<p>The date and time when the flow execution summary was last updated.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation":"<p>An object that contains summary information about a flow execution.</p>"
+      "type": "structure"
     },
-    "FlowTemplateDescription":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"FlowTemplateSummary",
-          "documentation":"<p>An object that contains summary information about a workflow.</p>"
+    "FlowTemplateDescription": {
+      "documentation": "<p>An object that contains a workflow's definition and summary information.</p>",
+      "members": {
+        "definition": {
+          "documentation": "<p>A workflow's definition document.</p>",
+          "shape": "DefinitionDocument"
         },
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>A workflow's definition document.</p>"
+        "summary": {
+          "documentation": "<p>An object that contains summary information about a workflow.</p>",
+          "shape": "FlowTemplateSummary"
         },
-        "validatedNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace against which the workflow was validated. Use this value in your system instance.</p>"
+        "validatedNamespaceVersion": {
+          "documentation": "<p>The version of the user's namespace against which the workflow was validated. Use this value in your system instance.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that contains a workflow's definition and summary information.</p>"
+      "type": "structure"
     },
-    "FlowTemplateFilter":{
-      "type":"structure",
-      "required":[
+    "FlowTemplateFilter": {
+      "documentation": "<p>An object that filters a workflow search.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the search filter field.</p>",
+          "shape": "FlowTemplateFilterName"
+        },
+        "value": {
+          "documentation": "<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>",
+          "shape": "FlowTemplateFilterValues"
+        }
+      },
+      "required": [
         "name",
         "value"
       ],
-      "members":{
-        "name":{
-          "shape":"FlowTemplateFilterName",
-          "documentation":"<p>The name of the search filter field.</p>"
+      "type": "structure"
+    },
+    "FlowTemplateFilterName": {
+      "enum": [
+        "DEVICE_MODEL_ID"
+      ],
+      "type": "string"
+    },
+    "FlowTemplateFilterValue": {
+      "pattern": "^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$",
+      "type": "string"
+    },
+    "FlowTemplateFilterValues": {
+      "member": {
+        "shape": "FlowTemplateFilterValue"
+      },
+      "type": "list"
+    },
+    "FlowTemplateFilters": {
+      "member": {
+        "shape": "FlowTemplateFilter"
+      },
+      "type": "list"
+    },
+    "FlowTemplateSummaries": {
+      "member": {
+        "shape": "FlowTemplateSummary"
+      },
+      "type": "list"
+    },
+    "FlowTemplateSummary": {
+      "documentation": "<p>An object that contains summary information about a workflow.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The ARN of the workflow.</p>",
+          "shape": "Arn"
         },
-        "value":{
-          "shape":"FlowTemplateFilterValues",
-          "documentation":"<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>"
+        "createdAt": {
+          "documentation": "<p>The date when the workflow was created.</p>",
+          "shape": "Timestamp"
+        },
+        "id": {
+          "documentation": "<p>The ID of the workflow.</p>",
+          "shape": "Urn"
+        },
+        "revisionNumber": {
+          "documentation": "<p>The revision number of the workflow.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that filters a workflow search.</p>"
+      "type": "structure"
     },
-    "FlowTemplateFilterName":{
-      "type":"string",
-      "enum":["DEVICE_MODEL_ID"]
-    },
-    "FlowTemplateFilterValue":{
-      "type":"string",
-      "pattern":"^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$"
-    },
-    "FlowTemplateFilterValues":{
-      "type":"list",
-      "member":{"shape":"FlowTemplateFilterValue"}
-    },
-    "FlowTemplateFilters":{
-      "type":"list",
-      "member":{"shape":"FlowTemplateFilter"}
-    },
-    "FlowTemplateSummaries":{
-      "type":"list",
-      "member":{"shape":"FlowTemplateSummary"}
-    },
-    "FlowTemplateSummary":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow.</p>"
+    "GetEntitiesRequest": {
+      "members": {
+        "ids": {
+          "documentation": "<p>An array of entity IDs.</p> <p>The IDs should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>",
+          "shape": "Urns"
         },
-        "arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the workflow.</p>"
-        },
-        "revisionNumber":{
-          "shape":"Version",
-          "documentation":"<p>The revision number of the workflow.</p>"
-        },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date when the workflow was created.</p>"
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that contains summary information about a workflow.</p>"
+      "required": [
+        "ids"
+      ],
+      "type": "structure"
     },
-    "GetEntitiesRequest":{
-      "type":"structure",
-      "required":["ids"],
-      "members":{
-        "ids":{
-          "shape":"Urns",
-          "documentation":"<p>An array of entity IDs.</p> <p>The IDs should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>"
+    "GetEntitiesResponse": {
+      "members": {
+        "descriptions": {
+          "documentation": "<p>An array of descriptions for the specified entities.</p>",
+          "shape": "EntityDescriptions"
+        }
+      },
+      "type": "structure"
+    },
+    "GetFlowTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the workflow.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>",
+          "shape": "Urn"
         },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
+        "revisionNumber": {
+          "documentation": "<p>The number of the workflow revision to retrieve.</p>",
+          "shape": "Version"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "GetEntitiesResponse":{
-      "type":"structure",
-      "members":{
-        "descriptions":{
-          "shape":"EntityDescriptions",
-          "documentation":"<p>An array of descriptions for the specified entities.</p>"
+    "GetFlowTemplateResponse": {
+      "members": {
+        "description": {
+          "documentation": "<p>The object that describes the specified workflow.</p>",
+          "shape": "FlowTemplateDescription"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetFlowTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>"
+    "GetFlowTemplateRevisionsRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the workflow.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>",
+          "shape": "Urn"
         },
-        "revisionNumber":{
-          "shape":"Version",
-          "documentation":"<p>The number of the workflow revision to retrieve.</p>"
-        }
-      }
-    },
-    "GetFlowTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "description":{
-          "shape":"FlowTemplateDescription",
-          "documentation":"<p>The object that describes the specified workflow.</p>"
-        }
-      }
-    },
-    "GetFlowTemplateRevisionsRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
-        },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "GetFlowTemplateRevisionsResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"FlowTemplateSummaries",
-          "documentation":"<p>An array of objects that provide summary data about each revision.</p>"
+    "GetFlowTemplateRevisionsResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that provide summary data about each revision.</p>",
+          "shape": "FlowTemplateSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetNamespaceDeletionStatusRequest":{
-      "type":"structure",
-      "members":{
-      }
+    "GetNamespaceDeletionStatusRequest": {
+      "members": {},
+      "type": "structure"
     },
-    "GetNamespaceDeletionStatusResponse":{
-      "type":"structure",
-      "members":{
-        "namespaceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the namespace that is being deleted.</p>"
+    "GetNamespaceDeletionStatusResponse": {
+      "members": {
+        "errorCode": {
+          "documentation": "<p>An error code returned by the namespace deletion task.</p>",
+          "shape": "NamespaceDeletionStatusErrorCodes"
         },
-        "namespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the namespace that is being deleted.</p>"
+        "errorMessage": {
+          "documentation": "<p>An error code returned by the namespace deletion task.</p>",
+          "shape": "String"
         },
-        "status":{
-          "shape":"NamespaceDeletionStatus",
-          "documentation":"<p>The status of the deletion request.</p>"
+        "namespaceArn": {
+          "documentation": "<p>The ARN of the namespace that is being deleted.</p>",
+          "shape": "Arn"
         },
-        "errorCode":{
-          "shape":"NamespaceDeletionStatusErrorCodes",
-          "documentation":"<p>An error code returned by the namespace deletion task.</p>"
+        "namespaceName": {
+          "documentation": "<p>The name of the namespace that is being deleted.</p>",
+          "shape": "NamespaceName"
         },
-        "errorMessage":{
-          "shape":"String",
-          "documentation":"<p>An error code returned by the namespace deletion task.</p>"
+        "status": {
+          "documentation": "<p>The status of the deletion request.</p>",
+          "shape": "NamespaceDeletionStatus"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetSystemInstanceRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system deployment instance. This value is returned by <code>CreateSystemInstance</code>.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME</code> </p>"
+    "GetSystemInstanceRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system deployment instance. This value is returned by <code>CreateSystemInstance</code>.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME</code> </p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "GetSystemInstanceResponse":{
-      "type":"structure",
-      "members":{
-        "description":{
-          "shape":"SystemInstanceDescription",
-          "documentation":"<p>An object that describes the system instance.</p>"
+    "GetSystemInstanceResponse": {
+      "members": {
+        "description": {
+          "documentation": "<p>An object that describes the system instance.</p>",
+          "shape": "SystemInstanceDescription"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetSystemTemplateRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system to get. This ID must be in the user's namespace.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>"
+    "GetSystemTemplateRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system to get. This ID must be in the user's namespace.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>",
+          "shape": "Urn"
         },
-        "revisionNumber":{
-          "shape":"Version",
-          "documentation":"<p>The number that specifies the revision of the system to get.</p>"
+        "revisionNumber": {
+          "documentation": "<p>The number that specifies the revision of the system to get.</p>",
+          "shape": "Version"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "GetSystemTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "description":{
-          "shape":"SystemTemplateDescription",
-          "documentation":"<p>An object that contains summary data about the system.</p>"
+    "GetSystemTemplateResponse": {
+      "members": {
+        "description": {
+          "documentation": "<p>An object that contains summary data about the system.</p>",
+          "shape": "SystemTemplateDescription"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetSystemTemplateRevisionsRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system template.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>"
+    "GetSystemTemplateRevisionsRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system template.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>",
+          "shape": "Urn"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "structure"
     },
-    "GetSystemTemplateRevisionsResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"SystemTemplateSummaries",
-          "documentation":"<p>An array of objects that contain summary data about the system template revisions.</p>"
+    "GetSystemTemplateRevisionsResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that contain summary data about the system template revisions.</p>",
+          "shape": "SystemTemplateSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetUploadStatusRequest":{
-      "type":"structure",
-      "required":["uploadId"],
-      "members":{
-        "uploadId":{
-          "shape":"UploadId",
-          "documentation":"<p>The ID of the upload. This value is returned by the <code>UploadEntityDefinitions</code> action.</p>"
+    "GetUploadStatusRequest": {
+      "members": {
+        "uploadId": {
+          "documentation": "<p>The ID of the upload. This value is returned by the <code>UploadEntityDefinitions</code> action.</p>",
+          "shape": "UploadId"
         }
-      }
+      },
+      "required": [
+        "uploadId"
+      ],
+      "type": "structure"
     },
-    "GetUploadStatusResponse":{
-      "type":"structure",
-      "required":[
+    "GetUploadStatusResponse": {
+      "members": {
+        "createdDate": {
+          "documentation": "<p>The date at which the upload was created.</p>",
+          "shape": "Timestamp"
+        },
+        "failureReason": {
+          "documentation": "<p>The reason for an upload failure.</p>",
+          "shape": "StringList"
+        },
+        "namespaceArn": {
+          "documentation": "<p>The ARN of the upload.</p>",
+          "shape": "Arn"
+        },
+        "namespaceName": {
+          "documentation": "<p>The name of the upload's namespace.</p>",
+          "shape": "NamespaceName"
+        },
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>",
+          "shape": "Version"
+        },
+        "uploadId": {
+          "documentation": "<p>The ID of the upload.</p>",
+          "shape": "UploadId"
+        },
+        "uploadStatus": {
+          "documentation": "<p>The status of the upload. The initial status is <code>IN_PROGRESS</code>. The response show all validation failures if the upload fails.</p>",
+          "shape": "UploadStatus"
+        }
+      },
+      "required": [
         "uploadId",
         "uploadStatus",
         "createdDate"
       ],
-      "members":{
-        "uploadId":{
-          "shape":"UploadId",
-          "documentation":"<p>The ID of the upload.</p>"
-        },
-        "uploadStatus":{
-          "shape":"UploadStatus",
-          "documentation":"<p>The status of the upload. The initial status is <code>IN_PROGRESS</code>. The response show all validation failures if the upload fails.</p>"
-        },
-        "namespaceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the upload.</p>"
-        },
-        "namespaceName":{
-          "shape":"NamespaceName",
-          "documentation":"<p>The name of the upload's namespace.</p>"
-        },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
-        },
-        "failureReason":{
-          "shape":"StringList",
-          "documentation":"<p>The reason for an upload failure.</p>"
-        },
-        "createdDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date at which the upload was created.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GreengrassDeploymentId":{"type":"string"},
-    "GreengrassGroupId":{"type":"string"},
-    "GreengrassGroupVersionId":{"type":"string"},
-    "GroupName":{"type":"string"},
-    "InternalFailureException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p/>",
-      "exception":true,
-      "fault":true
+    "GreengrassDeploymentId": {
+      "type": "string"
     },
-    "InvalidRequestException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p/>",
-      "exception":true
+    "GreengrassGroupId": {
+      "type": "string"
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p/>",
-      "exception":true
+    "GreengrassGroupVersionId": {
+      "type": "string"
     },
-    "ListFlowExecutionMessagesRequest":{
-      "type":"structure",
-      "required":["flowExecutionId"],
-      "members":{
-        "flowExecutionId":{
-          "shape":"FlowExecutionId",
-          "documentation":"<p>The ID of the flow execution.</p>"
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
-        },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
-        }
-      }
+    "GroupName": {
+      "type": "string"
     },
-    "ListFlowExecutionMessagesResponse":{
-      "type":"structure",
-      "members":{
-        "messages":{
-          "shape":"FlowExecutionMessages",
-          "documentation":"<p>A list of objects that contain information about events in the specified flow execution.</p>"
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
-        }
-      }
-    },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["resourceArn"],
-      "members":{
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of tags to return.</p>"
-        },
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource whose tags are to be returned.</p>"
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token that specifies the next page of results to return.</p>"
-        }
-      }
-    },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>List of tags returned by the <code>ListTagsForResource</code> operation.</p>"
-        },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token that specifies the next page of results to return.</p>"
-        }
-      }
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":250,
-      "min":1
-    },
-    "MetricsConfiguration":{
-      "type":"structure",
-      "members":{
-        "cloudMetricEnabled":{
-          "shape":"Enabled",
-          "documentation":"<p>A Boolean that specifies whether cloud metrics are collected.</p>"
-        },
-        "metricRuleRoleArn":{
-          "shape":"RoleArn",
-          "documentation":"<p>The ARN of the role that is used to collect cloud metrics.</p>"
+    "InternalFailureException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>An object that specifies whether cloud metrics are collected in a deployment and, if so, what role is used to collect metrics.</p>"
+      "type": "structure"
     },
-    "NamespaceDeletionStatus":{
-      "type":"string",
-      "enum":[
+    "InvalidRequestException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "LimitExceededException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ListFlowExecutionMessagesRequest": {
+      "members": {
+        "flowExecutionId": {
+          "documentation": "<p>The ID of the flow execution.</p>",
+          "shape": "FlowExecutionId"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
+        }
+      },
+      "required": [
+        "flowExecutionId"
+      ],
+      "type": "structure"
+    },
+    "ListFlowExecutionMessagesResponse": {
+      "members": {
+        "messages": {
+          "documentation": "<p>A list of objects that contain information about events in the specified flow execution.</p>",
+          "shape": "FlowExecutionMessages"
+        },
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForResourceRequest": {
+      "members": {
+        "maxResults": {
+          "documentation": "<p>The maximum number of tags to return.</p>",
+          "shape": "MaxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>The token that specifies the next page of results to return.</p>",
+          "shape": "NextToken"
+        },
+        "resourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource whose tags are to be returned.</p>",
+          "shape": "ResourceArn"
+        }
+      },
+      "required": [
+        "resourceArn"
+      ],
+      "type": "structure"
+    },
+    "ListTagsForResourceResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The token that specifies the next page of results to return.</p>",
+          "shape": "NextToken"
+        },
+        "tags": {
+          "documentation": "<p>List of tags returned by the <code>ListTagsForResource</code> operation.</p>",
+          "shape": "TagList"
+        }
+      },
+      "type": "structure"
+    },
+    "MaxResults": {
+      "max": 250,
+      "min": 1,
+      "type": "integer"
+    },
+    "MetricsConfiguration": {
+      "documentation": "<p>An object that specifies whether cloud metrics are collected in a deployment and, if so, what role is used to collect metrics.</p>",
+      "members": {
+        "cloudMetricEnabled": {
+          "documentation": "<p>A Boolean that specifies whether cloud metrics are collected.</p>",
+          "shape": "Enabled"
+        },
+        "metricRuleRoleArn": {
+          "documentation": "<p>The ARN of the role that is used to collect cloud metrics.</p>",
+          "shape": "RoleArn"
+        }
+      },
+      "type": "structure"
+    },
+    "NamespaceDeletionStatus": {
+      "enum": [
         "IN_PROGRESS",
         "SUCCEEDED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "NamespaceDeletionStatusErrorCodes":{
-      "type":"string",
-      "enum":["VALIDATION_FAILED"]
+    "NamespaceDeletionStatusErrorCodes": {
+      "enum": [
+        "VALIDATION_FAILED"
+      ],
+      "type": "string"
     },
-    "NamespaceName":{
-      "type":"string",
-      "max":128
+    "NamespaceName": {
+      "max": 128,
+      "type": "string"
     },
-    "NextToken":{"type":"string"},
-    "ResourceAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "NextToken": {
+      "type": "string"
+    },
+    "ResourceAlreadyExistsException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
       },
-      "documentation":"<p/>",
-      "exception":true
+      "type": "structure"
     },
-    "ResourceArn":{
-      "type":"string",
-      "max":2048,
-      "min":1
+    "ResourceArn": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
     },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ResourceInUseException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
       },
-      "documentation":"<p/>",
-      "exception":true
+      "type": "structure"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ResourceNotFoundException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
       },
-      "documentation":"<p/>",
-      "exception":true
+      "type": "structure"
     },
-    "RoleArn":{
-      "type":"string",
-      "max":2048,
-      "min":20
+    "RoleArn": {
+      "max": 2048,
+      "min": 20,
+      "type": "string"
     },
-    "S3BucketName":{"type":"string"},
-    "SearchEntitiesRequest":{
-      "type":"structure",
-      "required":["entityTypes"],
-      "members":{
-        "entityTypes":{
-          "shape":"EntityTypes",
-          "documentation":"<p>The entity types for which to search.</p>"
+    "S3BucketName": {
+      "type": "string"
+    },
+    "SearchEntitiesRequest": {
+      "members": {
+        "entityTypes": {
+          "documentation": "<p>The entity types for which to search.</p>",
+          "shape": "EntityTypes"
         },
-        "filters":{
-          "shape":"EntityFilters",
-          "documentation":"<p>Optional filter to apply to the search. Valid filters are <code>NAME</code> <code>NAMESPACE</code>, <code>SEMANTIC_TYPE_PATH</code> and <code>REFERENCED_ENTITY_ID</code>. <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, you can filter on the ID of a property that is used in a state.</p> <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>"
+        "filters": {
+          "documentation": "<p>Optional filter to apply to the search. Valid filters are <code>NAME</code> <code>NAMESPACE</code>, <code>SEMANTIC_TYPE_PATH</code> and <code>REFERENCED_ENTITY_ID</code>. <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, you can filter on the ID of a property that is used in a state.</p> <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>",
+          "shape": "EntityFilters"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>",
+          "shape": "Version"
         },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "entityTypes"
+      ],
+      "type": "structure"
     },
-    "SearchEntitiesResponse":{
-      "type":"structure",
-      "members":{
-        "descriptions":{
-          "shape":"EntityDescriptions",
-          "documentation":"<p>An array of descriptions for each entity returned in the search result.</p>"
+    "SearchEntitiesResponse": {
+      "members": {
+        "descriptions": {
+          "documentation": "<p>An array of descriptions for each entity returned in the search result.</p>",
+          "shape": "EntityDescriptions"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchFlowExecutionsRequest":{
-      "type":"structure",
-      "required":["systemInstanceId"],
-      "members":{
-        "systemInstanceId":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance that contains the flow.</p>"
+    "SearchFlowExecutionsRequest": {
+      "members": {
+        "endTime": {
+          "documentation": "<p>The date and time of the latest flow execution to return.</p>",
+          "shape": "Timestamp"
         },
-        "flowExecutionId":{
-          "shape":"FlowExecutionId",
-          "documentation":"<p>The ID of a flow execution.</p>"
+        "flowExecutionId": {
+          "documentation": "<p>The ID of a flow execution.</p>",
+          "shape": "FlowExecutionId"
         },
-        "startTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time of the earliest flow execution to return.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "endTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time of the latest flow execution to return.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "startTime": {
+          "documentation": "<p>The date and time of the earliest flow execution to return.</p>",
+          "shape": "Timestamp"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "systemInstanceId": {
+          "documentation": "<p>The ID of the system instance that contains the flow.</p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "required": [
+        "systemInstanceId"
+      ],
+      "type": "structure"
     },
-    "SearchFlowExecutionsResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"FlowExecutionSummaries",
-          "documentation":"<p>An array of objects that contain summary information about each workflow execution in the result set.</p>"
+    "SearchFlowExecutionsResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that contain summary information about each workflow execution in the result set.</p>",
+          "shape": "FlowExecutionSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchFlowTemplatesRequest":{
-      "type":"structure",
-      "members":{
-        "filters":{
-          "shape":"FlowTemplateFilters",
-          "documentation":"<p>An array of objects that limit the result set. The only valid filter is <code>DEVICE_MODEL_ID</code>.</p>"
+    "SearchFlowTemplatesRequest": {
+      "members": {
+        "filters": {
+          "documentation": "<p>An array of objects that limit the result set. The only valid filter is <code>DEVICE_MODEL_ID</code>.</p>",
+          "shape": "FlowTemplateFilters"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchFlowTemplatesResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"FlowTemplateSummaries",
-          "documentation":"<p>An array of objects that contain summary information about each workflow in the result set.</p>"
+    "SearchFlowTemplatesResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that contain summary information about each workflow in the result set.</p>",
+          "shape": "FlowTemplateSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchSystemInstancesRequest":{
-      "type":"structure",
-      "members":{
-        "filters":{
-          "shape":"SystemInstanceFilters",
-          "documentation":"<p>Optional filter to apply to the search. Valid filters are <code>SYSTEM_TEMPLATE_ID</code>, <code>STATUS</code>, and <code>GREENGRASS_GROUP_NAME</code>.</p> <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>"
+    "SearchSystemInstancesRequest": {
+      "members": {
+        "filters": {
+          "documentation": "<p>Optional filter to apply to the search. Valid filters are <code>SYSTEM_TEMPLATE_ID</code>, <code>STATUS</code>, and <code>GREENGRASS_GROUP_NAME</code>.</p> <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>",
+          "shape": "SystemInstanceFilters"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchSystemInstancesResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"SystemInstanceSummaries",
-          "documentation":"<p>An array of objects that contain summary data abour the system instances in the result set.</p>"
+    "SearchSystemInstancesResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that contain summary data abour the system instances in the result set.</p>",
+          "shape": "SystemInstanceSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchSystemTemplatesRequest":{
-      "type":"structure",
-      "members":{
-        "filters":{
-          "shape":"SystemTemplateFilters",
-          "documentation":"<p>An array of filters that limit the result set. The only valid filter is <code>FLOW_TEMPLATE_ID</code>.</p>"
+    "SearchSystemTemplatesRequest": {
+      "members": {
+        "filters": {
+          "documentation": "<p>An array of filters that limit the result set. The only valid filter is <code>FLOW_TEMPLATE_ID</code>.</p>",
+          "shape": "SystemTemplateFilters"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchSystemTemplatesResponse":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"SystemTemplateSummaries",
-          "documentation":"<p>An array of objects that contain summary information about each system deployment in the result set.</p>"
+    "SearchSystemTemplatesResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that contain summary information about each system deployment in the result set.</p>",
+          "shape": "SystemTemplateSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "SearchThingsRequest":{
-      "type":"structure",
-      "required":["entityId"],
-      "members":{
-        "entityId":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the entity to which the things are associated.</p> <p>The IDs should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>"
+    "SearchThingsRequest": {
+      "members": {
+        "entityId": {
+          "documentation": "<p>The ID of the entity to which the things are associated.</p> <p>The IDs should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME</code> </p>",
+          "shape": "Urn"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string that specifies the next page of results. Use this when you're paginating results.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
+        "namespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>",
+          "shape": "Version"
         },
-        "namespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
+        "nextToken": {
+          "documentation": "<p>The string that specifies the next page of results. Use this when you're paginating results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "entityId"
+      ],
+      "type": "structure"
     },
-    "SearchThingsResponse":{
-      "type":"structure",
-      "members":{
-        "things":{
-          "shape":"Things",
-          "documentation":"<p>An array of things in the result set.</p>"
+    "SearchThingsResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>",
+          "shape": "NextToken"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
+        "things": {
+          "documentation": "<p>An array of things in the result set.</p>",
+          "shape": "Things"
         }
-      }
+      },
+      "type": "structure"
     },
-    "String":{"type":"string"},
-    "StringList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "String": {
+      "type": "string"
     },
-    "SyncWithPublicNamespace":{"type":"boolean"},
-    "SystemInstanceDeploymentStatus":{
-      "type":"string",
-      "enum":[
+    "StringList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "SyncWithPublicNamespace": {
+      "type": "boolean"
+    },
+    "SystemInstanceDeploymentStatus": {
+      "enum": [
         "NOT_DEPLOYED",
         "BOOTSTRAP",
         "DEPLOY_IN_PROGRESS",
@@ -1779,440 +2293,477 @@
         "FAILED",
         "PENDING_DELETE",
         "DELETED_IN_TARGET"
-      ]
+      ],
+      "type": "string"
     },
-    "SystemInstanceDescription":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemInstanceSummary",
-          "documentation":"<p>An object that contains summary information about a system instance.</p>"
+    "SystemInstanceDescription": {
+      "documentation": "<p>An object that contains a system instance definition and summary information.</p>",
+      "members": {
+        "definition": {
+          "shape": "DefinitionDocument"
         },
-        "definition":{"shape":"DefinitionDocument"},
-        "s3BucketName":{
-          "shape":"S3BucketName",
-          "documentation":"<p>The Amazon Simple Storage Service bucket where information about a system instance is stored.</p>"
+        "flowActionsRoleArn": {
+          "documentation": "<p>The AWS Identity and Access Management (IAM) role that AWS IoT Things Graph assumes during flow execution in a cloud deployment. This role must have read and write permissionss to AWS Lambda and AWS IoT and to any other AWS services that the flow uses.</p>",
+          "shape": "RoleArn"
         },
-        "metricsConfiguration":{"shape":"MetricsConfiguration"},
-        "validatedNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace against which the system instance was validated.</p>"
+        "metricsConfiguration": {
+          "shape": "MetricsConfiguration"
         },
-        "validatedDependencyRevisions":{
-          "shape":"DependencyRevisions",
-          "documentation":"<p>A list of objects that contain all of the IDs and revision numbers of workflows and systems that are used in a system instance.</p>"
+        "s3BucketName": {
+          "documentation": "<p>The Amazon Simple Storage Service bucket where information about a system instance is stored.</p>",
+          "shape": "S3BucketName"
         },
-        "flowActionsRoleArn":{
-          "shape":"RoleArn",
-          "documentation":"<p>The AWS Identity and Access Management (IAM) role that AWS IoT Things Graph assumes during flow execution in a cloud deployment. This role must have read and write permissionss to AWS Lambda and AWS IoT and to any other AWS services that the flow uses.</p>"
+        "summary": {
+          "documentation": "<p>An object that contains summary information about a system instance.</p>",
+          "shape": "SystemInstanceSummary"
+        },
+        "validatedDependencyRevisions": {
+          "documentation": "<p>A list of objects that contain all of the IDs and revision numbers of workflows and systems that are used in a system instance.</p>",
+          "shape": "DependencyRevisions"
+        },
+        "validatedNamespaceVersion": {
+          "documentation": "<p>The version of the user's namespace against which the system instance was validated.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that contains a system instance definition and summary information.</p>"
+      "type": "structure"
     },
-    "SystemInstanceFilter":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"SystemInstanceFilterName",
-          "documentation":"<p>The name of the search filter field.</p>"
+    "SystemInstanceFilter": {
+      "documentation": "<p>An object that filters a system instance search. Multiple filters function as OR criteria in the search. For example a search that includes a GREENGRASS_GROUP_NAME and a STATUS filter searches for system instances in the specified Greengrass group that have the specified status.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the search filter field.</p>",
+          "shape": "SystemInstanceFilterName"
         },
-        "value":{
-          "shape":"SystemInstanceFilterValues",
-          "documentation":"<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search. </p>"
+        "value": {
+          "documentation": "<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search. </p>",
+          "shape": "SystemInstanceFilterValues"
         }
       },
-      "documentation":"<p>An object that filters a system instance search. Multiple filters function as OR criteria in the search. For example a search that includes a GREENGRASS_GROUP_NAME and a STATUS filter searches for system instances in the specified Greengrass group that have the specified status.</p>"
+      "type": "structure"
     },
-    "SystemInstanceFilterName":{
-      "type":"string",
-      "enum":[
+    "SystemInstanceFilterName": {
+      "enum": [
         "SYSTEM_TEMPLATE_ID",
         "STATUS",
         "GREENGRASS_GROUP_NAME"
-      ]
+      ],
+      "type": "string"
     },
-    "SystemInstanceFilterValue":{"type":"string"},
-    "SystemInstanceFilterValues":{
-      "type":"list",
-      "member":{"shape":"SystemInstanceFilterValue"}
+    "SystemInstanceFilterValue": {
+      "type": "string"
     },
-    "SystemInstanceFilters":{
-      "type":"list",
-      "member":{"shape":"SystemInstanceFilter"}
+    "SystemInstanceFilterValues": {
+      "member": {
+        "shape": "SystemInstanceFilterValue"
+      },
+      "type": "list"
     },
-    "SystemInstanceSummaries":{
-      "type":"list",
-      "member":{"shape":"SystemInstanceSummary"}
+    "SystemInstanceFilters": {
+      "member": {
+        "shape": "SystemInstanceFilter"
+      },
+      "type": "list"
     },
-    "SystemInstanceSummary":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance.</p>"
+    "SystemInstanceSummaries": {
+      "member": {
+        "shape": "SystemInstanceSummary"
+      },
+      "type": "list"
+    },
+    "SystemInstanceSummary": {
+      "documentation": "<p>An object that contains summary information about a system instance.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The ARN of the system instance.</p>",
+          "shape": "Arn"
         },
-        "arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the system instance.</p>"
+        "createdAt": {
+          "documentation": "<p>The date when the system instance was created.</p>",
+          "shape": "Timestamp"
         },
-        "status":{
-          "shape":"SystemInstanceDeploymentStatus",
-          "documentation":"<p>The status of the system instance.</p>"
+        "greengrassGroupId": {
+          "documentation": "<p>The ID of the Greengrass group where the system instance is deployed.</p>",
+          "shape": "GreengrassGroupId"
         },
-        "target":{
-          "shape":"DeploymentTarget",
-          "documentation":"<p>The target of the system instance.</p>"
+        "greengrassGroupName": {
+          "documentation": "<p>The ID of the Greengrass group where the system instance is deployed.</p>",
+          "shape": "GroupName"
         },
-        "greengrassGroupName":{
-          "shape":"GroupName",
-          "documentation":"<p>The ID of the Greengrass group where the system instance is deployed.</p>"
+        "greengrassGroupVersionId": {
+          "documentation": "<p>The version of the Greengrass group where the system instance is deployed.</p>",
+          "shape": "GreengrassGroupVersionId"
         },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date when the system instance was created.</p>"
+        "id": {
+          "documentation": "<p>The ID of the system instance.</p>",
+          "shape": "Urn"
         },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p> The date and time when the system instance was last updated.</p>"
+        "status": {
+          "documentation": "<p>The status of the system instance.</p>",
+          "shape": "SystemInstanceDeploymentStatus"
         },
-        "greengrassGroupId":{
-          "shape":"GreengrassGroupId",
-          "documentation":"<p>The ID of the Greengrass group where the system instance is deployed.</p>"
+        "target": {
+          "documentation": "<p>The target of the system instance.</p>",
+          "shape": "DeploymentTarget"
         },
-        "greengrassGroupVersionId":{
-          "shape":"GreengrassGroupVersionId",
-          "documentation":"<p>The version of the Greengrass group where the system instance is deployed.</p>"
+        "updatedAt": {
+          "documentation": "<p> The date and time when the system instance was last updated.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation":"<p>An object that contains summary information about a system instance.</p>"
+      "type": "structure"
     },
-    "SystemTemplateDescription":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemTemplateSummary",
-          "documentation":"<p>An object that contains summary information about a system.</p>"
+    "SystemTemplateDescription": {
+      "documentation": "<p>An object that contains a system's definition document and summary information.</p>",
+      "members": {
+        "definition": {
+          "documentation": "<p>The definition document of a system.</p>",
+          "shape": "DefinitionDocument"
         },
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The definition document of a system.</p>"
+        "summary": {
+          "documentation": "<p>An object that contains summary information about a system.</p>",
+          "shape": "SystemTemplateSummary"
         },
-        "validatedNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The namespace version against which the system was validated. Use this value in your system instance.</p>"
+        "validatedNamespaceVersion": {
+          "documentation": "<p>The namespace version against which the system was validated. Use this value in your system instance.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that contains a system's definition document and summary information.</p>"
+      "type": "structure"
     },
-    "SystemTemplateFilter":{
-      "type":"structure",
-      "required":[
+    "SystemTemplateFilter": {
+      "documentation": "<p>An object that filters a system search.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the system search filter field.</p>",
+          "shape": "SystemTemplateFilterName"
+        },
+        "value": {
+          "documentation": "<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>",
+          "shape": "SystemTemplateFilterValues"
+        }
+      },
+      "required": [
         "name",
         "value"
       ],
-      "members":{
-        "name":{
-          "shape":"SystemTemplateFilterName",
-          "documentation":"<p>The name of the system search filter field.</p>"
+      "type": "structure"
+    },
+    "SystemTemplateFilterName": {
+      "enum": [
+        "FLOW_TEMPLATE_ID"
+      ],
+      "type": "string"
+    },
+    "SystemTemplateFilterValue": {
+      "pattern": "^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$",
+      "type": "string"
+    },
+    "SystemTemplateFilterValues": {
+      "member": {
+        "shape": "SystemTemplateFilterValue"
+      },
+      "type": "list"
+    },
+    "SystemTemplateFilters": {
+      "member": {
+        "shape": "SystemTemplateFilter"
+      },
+      "type": "list"
+    },
+    "SystemTemplateSummaries": {
+      "member": {
+        "shape": "SystemTemplateSummary"
+      },
+      "type": "list"
+    },
+    "SystemTemplateSummary": {
+      "documentation": "<p>An object that contains information about a system.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The ARN of the system.</p>",
+          "shape": "Arn"
         },
-        "value":{
-          "shape":"SystemTemplateFilterValues",
-          "documentation":"<p>An array of string values for the search filter field. Multiple values function as AND criteria in the search.</p>"
+        "createdAt": {
+          "documentation": "<p>The date when the system was created.</p>",
+          "shape": "Timestamp"
+        },
+        "id": {
+          "documentation": "<p>The ID of the system.</p>",
+          "shape": "Urn"
+        },
+        "revisionNumber": {
+          "documentation": "<p>The revision number of the system.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object that filters a system search.</p>"
+      "type": "structure"
     },
-    "SystemTemplateFilterName":{
-      "type":"string",
-      "enum":["FLOW_TEMPLATE_ID"]
-    },
-    "SystemTemplateFilterValue":{
-      "type":"string",
-      "pattern":"^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$"
-    },
-    "SystemTemplateFilterValues":{
-      "type":"list",
-      "member":{"shape":"SystemTemplateFilterValue"}
-    },
-    "SystemTemplateFilters":{
-      "type":"list",
-      "member":{"shape":"SystemTemplateFilter"}
-    },
-    "SystemTemplateSummaries":{
-      "type":"list",
-      "member":{"shape":"SystemTemplateSummary"}
-    },
-    "SystemTemplateSummary":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system.</p>"
+    "Tag": {
+      "documentation": "<p>Metadata assigned to an AWS IoT Things Graph resource consisting of a key-value pair.</p>",
+      "members": {
+        "key": {
+          "documentation": "<p>The required name of the tag. The string value can be from 1 to 128 Unicode characters in length.</p>",
+          "shape": "TagKey"
         },
-        "arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the system.</p>"
-        },
-        "revisionNumber":{
-          "shape":"Version",
-          "documentation":"<p>The revision number of the system.</p>"
-        },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date when the system was created.</p>"
+        "value": {
+          "documentation": "<p>The optional value of the tag. The string value can be from 1 to 256 Unicode characters in length.</p>",
+          "shape": "TagValue"
         }
       },
-      "documentation":"<p>An object that contains information about a system.</p>"
-    },
-    "Tag":{
-      "type":"structure",
-      "required":[
+      "required": [
         "key",
         "value"
       ],
-      "members":{
-        "key":{
-          "shape":"TagKey",
-          "documentation":"<p>The required name of the tag. The string value can be from 1 to 128 Unicode characters in length.</p>"
+      "type": "structure"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+      "type": "string"
+    },
+    "TagKeyList": {
+      "max": 50,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "TagList": {
+      "max": 50,
+      "member": {
+        "shape": "Tag"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource whose tags are returned.</p>",
+          "shape": "ResourceArn"
         },
-        "value":{
-          "shape":"TagValue",
-          "documentation":"<p>The optional value of the tag. The string value can be from 1 to 256 Unicode characters in length.</p>"
+        "tags": {
+          "documentation": "<p>A list of tags to add to the resource.&gt;</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>Metadata assigned to an AWS IoT Things Graph resource consisting of a key-value pair.</p>"
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
-    },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":50,
-      "min":1
-    },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"},
-      "max":50,
-      "min":0
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "tags"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource whose tags are returned.</p>"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagValue": {
+      "max": 256,
+      "min": 1,
+      "type": "string"
+    },
+    "Thing": {
+      "documentation": "<p>An AWS IoT thing.</p>",
+      "members": {
+        "thingArn": {
+          "documentation": "<p>The ARN of the thing.</p>",
+          "shape": "ThingArn"
         },
-        "tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of tags to add to the resource.&gt;</p>"
-        }
-      }
-    },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":1
-    },
-    "Thing":{
-      "type":"structure",
-      "members":{
-        "thingArn":{
-          "shape":"ThingArn",
-          "documentation":"<p>The ARN of the thing.</p>"
-        },
-        "thingName":{
-          "shape":"ThingName",
-          "documentation":"<p>The name of the thing.</p>"
+        "thingName": {
+          "documentation": "<p>The name of the thing.</p>",
+          "shape": "ThingName"
         }
       },
-      "documentation":"<p>An AWS IoT thing.</p>"
+      "type": "structure"
     },
-    "ThingArn":{"type":"string"},
-    "ThingName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[a-zA-Z0-9:_-]+"
+    "ThingArn": {
+      "type": "string"
     },
-    "Things":{
-      "type":"list",
-      "member":{"shape":"Thing"}
+    "ThingName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9:_-]+",
+      "type": "string"
     },
-    "ThrottlingException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "Things": {
+      "member": {
+        "shape": "Thing"
       },
-      "documentation":"<p/>",
-      "exception":true
+      "type": "list"
     },
-    "Timestamp":{"type":"timestamp"},
-    "UndeploySystemInstanceRequest":{
-      "type":"structure",
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system instance to remove from its target.</p>"
+    "ThrottlingException": {
+      "documentation": "<p/>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UndeploySystemInstanceResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemInstanceSummary",
-          "documentation":"<p>An object that contains summary information about the system instance that was removed from its target.</p>"
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "UndeploySystemInstanceRequest": {
+      "members": {
+        "id": {
+          "documentation": "<p>The ID of the system instance to remove from its target.</p>",
+          "shape": "Urn"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UndeploySystemInstanceResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>An object that contains summary information about the system instance that was removed from its target.</p>",
+          "shape": "SystemInstanceSummary"
+        }
+      },
+      "type": "structure"
+    },
+    "UntagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource whose tags are to be removed.</p>",
+          "shape": "ResourceArn"
+        },
+        "tagKeys": {
+          "documentation": "<p>A list of tag key names to remove from the resource. You don't specify the value. Both the key and its associated value are removed. </p> <p>This parameter to the API requires a JSON text string argument. For information on how to format a JSON parameter for the various command line tool environments, see <a href=\"https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json\">Using JSON for Parameters</a> in the <i>AWS CLI User Guide</i>. </p>",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "resourceArn",
         "tagKeys"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource whose tags are to be removed.</p>"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateFlowTemplateRequest": {
+      "members": {
+        "compatibleNamespaceVersion": {
+          "documentation": "<p>The version of the user's namespace.</p> <p>If no value is specified, the latest version is used by default. Use the <code>GetFlowTemplateRevisions</code> if you want to find earlier revisions of the flow to update.</p>",
+          "shape": "Version"
         },
-        "tagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>A list of tag key names to remove from the resource. You don't specify the value. Both the key and its associated value are removed. </p> <p>This parameter to the API requires a JSON text string argument. For information on how to format a JSON parameter for the various command line tool environments, see <a href=\"https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json\">Using JSON for Parameters</a> in the <i>AWS CLI User Guide</i>. </p>"
+        "definition": {
+          "documentation": "<p>The <code>DefinitionDocument</code> that contains the updated workflow definition.</p>",
+          "shape": "DefinitionDocument"
+        },
+        "id": {
+          "documentation": "<p>The ID of the workflow to be updated.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>",
+          "shape": "Urn"
         }
-      }
-    },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateFlowTemplateRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "id",
         "definition"
       ],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the workflow to be updated.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME</code> </p>"
-        },
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The <code>DefinitionDocument</code> that contains the updated workflow definition.</p>"
-        },
-        "compatibleNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace.</p> <p>If no value is specified, the latest version is used by default. Use the <code>GetFlowTemplateRevisions</code> if you want to find earlier revisions of the flow to update.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateFlowTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"FlowTemplateSummary",
-          "documentation":"<p>An object containing summary information about the updated workflow.</p>"
+    "UpdateFlowTemplateResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>An object containing summary information about the updated workflow.</p>",
+          "shape": "FlowTemplateSummary"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateSystemTemplateRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateSystemTemplateRequest": {
+      "members": {
+        "compatibleNamespaceVersion": {
+          "documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p> <p>If no value is specified, the latest version is used by default.</p>",
+          "shape": "Version"
+        },
+        "definition": {
+          "documentation": "<p>The <code>DefinitionDocument</code> that contains the updated system definition.</p>",
+          "shape": "DefinitionDocument"
+        },
+        "id": {
+          "documentation": "<p>The ID of the system to be updated.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>",
+          "shape": "Urn"
+        }
+      },
+      "required": [
         "id",
         "definition"
       ],
-      "members":{
-        "id":{
-          "shape":"Urn",
-          "documentation":"<p>The ID of the system to be updated.</p> <p>The ID should be in the following format.</p> <p> <code>urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME</code> </p>"
-        },
-        "definition":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The <code>DefinitionDocument</code> that contains the updated system definition.</p>"
-        },
-        "compatibleNamespaceVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p> <p>If no value is specified, the latest version is used by default.</p>"
+      "type": "structure"
+    },
+    "UpdateSystemTemplateResponse": {
+      "members": {
+        "summary": {
+          "documentation": "<p>An object containing summary information about the updated system.</p>",
+          "shape": "SystemTemplateSummary"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateSystemTemplateResponse":{
-      "type":"structure",
-      "members":{
-        "summary":{
-          "shape":"SystemTemplateSummary",
-          "documentation":"<p>An object containing summary information about the updated system.</p>"
-        }
-      }
-    },
-    "UploadEntityDefinitionsRequest":{
-      "type":"structure",
-      "members":{
-        "document":{
-          "shape":"DefinitionDocument",
-          "documentation":"<p>The <code>DefinitionDocument</code> that defines the updated entities.</p>"
+    "UploadEntityDefinitionsRequest": {
+      "members": {
+        "deprecateExistingEntities": {
+          "documentation": "<p>A Boolean that specifies whether to deprecate all entities in the latest version before uploading the new <code>DefinitionDocument</code>. If set to <code>true</code>, the upload will create a new namespace version.</p>",
+          "shape": "DeprecateExistingEntities"
         },
-        "syncWithPublicNamespace":{
-          "shape":"SyncWithPublicNamespace",
-          "documentation":"<p>A Boolean that specifies whether to synchronize with the latest version of the public namespace. If set to <code>true</code>, the upload will create a new namespace version.</p>"
+        "document": {
+          "documentation": "<p>The <code>DefinitionDocument</code> that defines the updated entities.</p>",
+          "shape": "DefinitionDocument"
         },
-        "deprecateExistingEntities":{
-          "shape":"DeprecateExistingEntities",
-          "documentation":"<p>A Boolean that specifies whether to deprecate all entities in the latest version before uploading the new <code>DefinitionDocument</code>. If set to <code>true</code>, the upload will create a new namespace version.</p>"
+        "syncWithPublicNamespace": {
+          "documentation": "<p>A Boolean that specifies whether to synchronize with the latest version of the public namespace. If set to <code>true</code>, the upload will create a new namespace version.</p>",
+          "shape": "SyncWithPublicNamespace"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UploadEntityDefinitionsResponse":{
-      "type":"structure",
-      "required":["uploadId"],
-      "members":{
-        "uploadId":{
-          "shape":"UploadId",
-          "documentation":"<p>The ID that specifies the upload action. You can use this to track the status of the upload.</p>"
+    "UploadEntityDefinitionsResponse": {
+      "members": {
+        "uploadId": {
+          "documentation": "<p>The ID that specifies the upload action. You can use this to track the status of the upload.</p>",
+          "shape": "UploadId"
         }
-      }
+      },
+      "required": [
+        "uploadId"
+      ],
+      "type": "structure"
     },
-    "UploadId":{
-      "type":"string",
-      "max":40,
-      "min":1
+    "UploadId": {
+      "max": 40,
+      "min": 1,
+      "type": "string"
     },
-    "UploadStatus":{
-      "type":"string",
-      "enum":[
+    "UploadStatus": {
+      "enum": [
         "IN_PROGRESS",
         "SUCCEEDED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "Urn":{
-      "type":"string",
-      "max":160,
-      "pattern":"^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$"
+    "Urn": {
+      "max": 160,
+      "pattern": "^urn:tdm:(([a-z]{2}-(gov-)?[a-z]{4,9}-[0-9]{1,3}/[0-9]+/)*[\\p{Alnum}_]+(/[\\p{Alnum}_]+)*):([\\p{Alpha}]*):([\\p{Alnum}_]+(/[\\p{Alnum}_]+)*)$",
+      "type": "string"
     },
-    "Urns":{
-      "type":"list",
-      "member":{"shape":"Urn"},
-      "max":25,
-      "min":0
+    "Urns": {
+      "max": 25,
+      "member": {
+        "shape": "Urn"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "Version":{"type":"long"}
+    "Version": {
+      "type": "long"
+    }
   },
-  "documentation":"<fullname>AWS IoT Things Graph</fullname> <p>AWS IoT Things Graph provides an integrated set of tools that enable developers to connect devices and services that use different standards, such as units of measure and communication protocols. AWS IoT Things Graph makes it possible to build IoT applications with little to no code by connecting devices and services and defining how they interact at an abstract level.</p> <p>For more information about how AWS IoT Things Graph works, see the <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html\">User Guide</a>.</p>"
+  "version": "2.0"
 }

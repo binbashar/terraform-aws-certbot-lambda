@@ -6,11 +6,11 @@
       "output_token": "nextToken",
       "result_key": "clusters"
     },
-    "ListUpdates": {
+    "ListFargateProfiles": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
       "output_token": "nextToken",
-      "result_key": "updateIds"
+      "result_key": "fargateProfileNames"
     },
     "ListNodegroups": {
       "input_token": "nextToken",
@@ -18,11 +18,11 @@
       "output_token": "nextToken",
       "result_key": "nodegroups"
     },
-    "ListFargateProfiles": {
+    "ListUpdates": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
       "output_token": "nextToken",
-      "result_key": "fargateProfileNames"
+      "result_key": "updateIds"
     }
   }
 }

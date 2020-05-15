@@ -2,44 +2,44 @@
   "pagination": {
     "DescribeGlobalNetworks": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "GlobalNetworks"
     },
     "GetCustomerGatewayAssociations": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "CustomerGatewayAssociations"
     },
     "GetDevices": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "Devices"
     },
     "GetLinkAssociations": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "LinkAssociations"
     },
     "GetLinks": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "Links"
     },
     "GetSites": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "Sites"
     },
     "GetTransitGatewayRegistrations": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "TransitGatewayRegistrations"
     }
   }

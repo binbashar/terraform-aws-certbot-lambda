@@ -1,45 +1,45 @@
 {
-    "version": 2,
-    "waiters": {
-        "ProjectVersionTrainingCompleted": {
-            "description": "Wait until the ProjectVersion training completes.",
-            "operation": "DescribeProjectVersions",
-            "delay": 120,
-            "maxAttempts": 360,
-            "acceptors": [
-                {
-                    "state": "success",
-                    "matcher": "pathAll",
-                    "argument": "ProjectVersionDescriptions[].Status",
-                    "expected": "TRAINING_COMPLETED"
-                },
-                {
-                    "state": "failure",
-                    "matcher": "pathAny",
-                    "argument": "ProjectVersionDescriptions[].Status",
-                    "expected": "TRAINING_FAILED"
-                }
-            ]
+  "version": 2,
+  "waiters": {
+    "ProjectVersionRunning": {
+      "acceptors": [
+        {
+          "argument": "ProjectVersionDescriptions[].Status",
+          "expected": "RUNNING",
+          "matcher": "pathAll",
+          "state": "success"
         },
-        "ProjectVersionRunning": {
-            "description": "Wait until the ProjectVersion is running.",
-            "delay": 30,
-            "maxAttempts": 40,
-            "operation": "DescribeProjectVersions",
-            "acceptors": [
-                {
-                    "state": "success",
-                    "matcher": "pathAll",
-                    "argument": "ProjectVersionDescriptions[].Status",
-                    "expected": "RUNNING"
-                },
-                {
-                    "state": "failure",
-                    "matcher": "pathAny",
-                    "argument": "ProjectVersionDescriptions[].Status",
-                    "expected": "FAILED"
-                }
-            ]
+        {
+          "argument": "ProjectVersionDescriptions[].Status",
+          "expected": "FAILED",
+          "matcher": "pathAny",
+          "state": "failure"
         }
+      ],
+      "delay": 30,
+      "description": "Wait until the ProjectVersion is running.",
+      "maxAttempts": 40,
+      "operation": "DescribeProjectVersions"
+    },
+    "ProjectVersionTrainingCompleted": {
+      "acceptors": [
+        {
+          "argument": "ProjectVersionDescriptions[].Status",
+          "expected": "TRAINING_COMPLETED",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "ProjectVersionDescriptions[].Status",
+          "expected": "TRAINING_FAILED",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 120,
+      "description": "Wait until the ProjectVersion training completes.",
+      "maxAttempts": 360,
+      "operation": "DescribeProjectVersions"
     }
+  }
 }

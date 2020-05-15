@@ -2,46 +2,46 @@
   "version": 2,
   "waiters": {
     "DistributionDeployed": {
-      "delay": 60,
-      "operation": "GetDistribution",
-      "maxAttempts": 25,
-      "description": "Wait until a distribution is deployed.",
       "acceptors": [
         {
+          "argument": "Distribution.Status",
           "expected": "Deployed",
           "matcher": "path",
-          "state": "success",
-          "argument": "Distribution.Status"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 60,
+      "description": "Wait until a distribution is deployed.",
+      "maxAttempts": 25,
+      "operation": "GetDistribution"
     },
     "InvalidationCompleted": {
-      "delay": 20,
-      "operation": "GetInvalidation",
-      "maxAttempts": 60,
-      "description": "Wait until an invalidation has completed.",
       "acceptors": [
         {
+          "argument": "Invalidation.Status",
           "expected": "Completed",
           "matcher": "path",
-          "state": "success",
-          "argument": "Invalidation.Status"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 20,
+      "description": "Wait until an invalidation has completed.",
+      "maxAttempts": 60,
+      "operation": "GetInvalidation"
     },
     "StreamingDistributionDeployed": {
-      "delay": 60,
-      "operation": "GetStreamingDistribution",
-      "maxAttempts": 25,
-      "description": "Wait until a streaming distribution is deployed.",
       "acceptors": [
         {
+          "argument": "StreamingDistribution.Status",
           "expected": "Deployed",
           "matcher": "path",
-          "state": "success",
-          "argument": "StreamingDistribution.Status"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 60,
+      "description": "Wait until a streaming distribution is deployed.",
+      "maxAttempts": 25,
+      "operation": "GetStreamingDistribution"
     }
   }
 }

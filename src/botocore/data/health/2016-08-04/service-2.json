@@ -1,1285 +1,1475 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2016-08-04",
-    "endpointPrefix":"health",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"AWSHealth",
-    "serviceFullName":"AWS Health APIs and Notifications",
-    "serviceId":"Health",
-    "signatureVersion":"v4",
-    "targetPrefix":"AWSHealth_20160804",
-    "uid":"health-2016-08-04"
+  "documentation": "<fullname>AWS Health</fullname> <p>The AWS Health API provides programmatic access to the AWS Health information that is presented in the <a href=\"https://phd.aws.amazon.com/phd/home#/\">AWS Personal Health Dashboard</a>. You can get information about events that affect your AWS resources:</p> <ul> <li> <p> <a>DescribeEvents</a>: Summary information about events.</p> </li> <li> <p> <a>DescribeEventDetails</a>: Detailed information about one or more events.</p> </li> <li> <p> <a>DescribeAffectedEntities</a>: Information about AWS resources that are affected by one or more events.</p> </li> </ul> <p>In addition, these operations provide information about event types and summary counts of events or affected entities:</p> <ul> <li> <p> <a>DescribeEventTypes</a>: Information about the kinds of events that AWS Health tracks.</p> </li> <li> <p> <a>DescribeEventAggregates</a>: A count of the number of events that meet specified criteria.</p> </li> <li> <p> <a>DescribeEntityAggregates</a>: A count of the number of affected entities that meet specified criteria.</p> </li> </ul> <p>AWS Health integrates with AWS Organizations to provide a centralized view of AWS Health events across all accounts in your organization.</p> <ul> <li> <p> <a>DescribeEventsForOrganization</a>: Summary information about events across the organization.</p> </li> <li> <p> <a>DescribeAffectedAccountsForOrganization</a>: List of accounts in your organization impacted by an event.</p> </li> <li> <p> <a>DescribeEventDetailsForOrganization</a>: Detailed information about events in your organization.</p> </li> <li> <p> <a>DescribeAffectedEntitiesForOrganization</a>: Information about AWS resources in your organization that are affected by events.</p> </li> </ul> <p>You can use the following operations to enable or disable AWS Health from working with AWS Organizations.</p> <ul> <li> <p> <a>EnableHealthServiceAccessForOrganization</a>: Enables AWS Health to work with AWS Organizations.</p> </li> <li> <p> <a>DisableHealthServiceAccessForOrganization</a>: Disables AWS Health from working with AWS Organizations.</p> </li> <li> <p> <a>DescribeHealthServiceStatusForOrganization</a>: Status information about enabling or disabling AWS Health from working with AWS Organizations.</p> </li> </ul> <p>The Health API requires a Business or Enterprise support plan from <a href=\"http://aws.amazon.com/premiumsupport/\">AWS Support</a>. Calling the Health API from an account that does not have a Business or Enterprise support plan causes a <code>SubscriptionRequiredException</code>.</p> <p>For authentication of requests, AWS Health uses the <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Signature Version 4 Signing Process</a>.</p> <p>See the <a href=\"https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html\">AWS Health User Guide</a> for information about how to use the API.</p> <p> <b>Service Endpoint</b> </p> <p>The HTTP endpoint for the AWS Health API is:</p> <ul> <li> <p>https://health.us-east-1.amazonaws.com </p> </li> </ul>",
+  "metadata": {
+    "apiVersion": "2016-08-04",
+    "endpointPrefix": "health",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "AWSHealth",
+    "serviceFullName": "AWS Health APIs and Notifications",
+    "serviceId": "Health",
+    "signatureVersion": "v4",
+    "targetPrefix": "AWSHealth_20160804",
+    "uid": "health-2016-08-04"
   },
-  "operations":{
-    "DescribeAffectedAccountsForOrganization":{
-      "name":"DescribeAffectedAccountsForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeAffectedAccountsForOrganizationRequest"},
-      "output":{"shape":"DescribeAffectedAccountsForOrganizationResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"}
+  "operations": {
+    "DescribeAffectedAccountsForOrganization": {
+      "documentation": "<p>Returns a list of accounts in the organization from AWS Organizations that are affected by the provided event.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        }
       ],
-      "documentation":"<p>Returns a list of accounts in the organization from AWS Organizations that are affected by the provided event.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
-      "idempotent":true
-    },
-    "DescribeAffectedEntities":{
-      "name":"DescribeAffectedEntities",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeAffectedEntitiesRequest"},
-      "output":{"shape":"DescribeAffectedEntitiesResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"},
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeAffectedAccountsForOrganizationRequest"
+      },
+      "name": "DescribeAffectedAccountsForOrganization",
+      "output": {
+        "shape": "DescribeAffectedAccountsForOrganizationResponse"
+      }
+    },
+    "DescribeAffectedEntities": {
+      "documentation": "<p>Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.</p> <p>At least one event ARN is required. Results are sorted by the <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        },
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.</p> <p>At least one event ARN is required. Results are sorted by the <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p>",
-      "idempotent":true
-    },
-    "DescribeAffectedEntitiesForOrganization":{
-      "name":"DescribeAffectedEntitiesForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeAffectedEntitiesForOrganizationRequest"},
-      "output":{"shape":"DescribeAffectedEntitiesForOrganizationResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"},
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeAffectedEntitiesRequest"
+      },
+      "name": "DescribeAffectedEntities",
+      "output": {
+        "shape": "DescribeAffectedEntitiesResponse"
+      }
+    },
+    "DescribeAffectedEntitiesForOrganization": {
+      "documentation": "<p>Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in AWS Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service.</p> <p>At least one event ARN and account ID are required. Results are sorted by the <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account. </p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        },
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in AWS Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service.</p> <p>At least one event ARN and account ID are required. Results are sorted by the <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account. </p>",
-      "idempotent":true
-    },
-    "DescribeEntityAggregates":{
-      "name":"DescribeEntityAggregates",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEntityAggregatesRequest"},
-      "output":{"shape":"DescribeEntityAggregatesResponse"},
-      "documentation":"<p>Returns the number of entities that are affected by each of the specified events. If no events are specified, the counts of all affected entities are returned.</p>",
-      "idempotent":true
-    },
-    "DescribeEventAggregates":{
-      "name":"DescribeEventAggregates",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeAffectedEntitiesForOrganizationRequest"
       },
-      "input":{"shape":"DescribeEventAggregatesRequest"},
-      "output":{"shape":"DescribeEventAggregatesResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"}
+      "name": "DescribeAffectedEntitiesForOrganization",
+      "output": {
+        "shape": "DescribeAffectedEntitiesForOrganizationResponse"
+      }
+    },
+    "DescribeEntityAggregates": {
+      "documentation": "<p>Returns the number of entities that are affected by each of the specified events. If no events are specified, the counts of all affected entities are returned.</p>",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEntityAggregatesRequest"
+      },
+      "name": "DescribeEntityAggregates",
+      "output": {
+        "shape": "DescribeEntityAggregatesResponse"
+      }
+    },
+    "DescribeEventAggregates": {
+      "documentation": "<p>Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        }
       ],
-      "documentation":"<p>Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.</p>",
-      "idempotent":true
-    },
-    "DescribeEventDetails":{
-      "name":"DescribeEventDetails",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEventDetailsRequest"},
-      "output":{"shape":"DescribeEventDetailsResponse"},
-      "errors":[
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventAggregatesRequest"
+      },
+      "name": "DescribeEventAggregates",
+      "output": {
+        "shape": "DescribeEventAggregatesResponse"
+      }
+    },
+    "DescribeEventDetails": {
+      "documentation": "<p>Returns detailed information about one or more specified events. Information includes standard event data (region, service, and so on, as returned by <a>DescribeEvents</a>), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the <a>DescribeAffectedEntities</a> operation.</p> <p>If a specified event cannot be retrieved, an error message is returned for that event.</p>",
+      "errors": [
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns detailed information about one or more specified events. Information includes standard event data (region, service, and so on, as returned by <a>DescribeEvents</a>), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the <a>DescribeAffectedEntities</a> operation.</p> <p>If a specified event cannot be retrieved, an error message is returned for that event.</p>",
-      "idempotent":true
-    },
-    "DescribeEventDetailsForOrganization":{
-      "name":"DescribeEventDetailsForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEventDetailsForOrganizationRequest"},
-      "output":{"shape":"DescribeEventDetailsForOrganizationResponse"},
-      "errors":[
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventDetailsRequest"
+      },
+      "name": "DescribeEventDetails",
+      "output": {
+        "shape": "DescribeEventDetailsResponse"
+      }
+    },
+    "DescribeEventDetailsForOrganization": {
+      "documentation": "<p>Returns detailed information about one or more specified events for one or more accounts in your organization. Information includes standard event data (Region, service, and so on, as returned by <a>DescribeEventsForOrganization</a>, a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the <a>DescribeAffectedEntitiesForOrganization</a> operation.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
+      "errors": [
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns detailed information about one or more specified events for one or more accounts in your organization. Information includes standard event data (Region, service, and so on, as returned by <a>DescribeEventsForOrganization</a>, a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the <a>DescribeAffectedEntitiesForOrganization</a> operation.</p> <p>Before you can call this operation, you must first enable AWS Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
-      "idempotent":true
-    },
-    "DescribeEventTypes":{
-      "name":"DescribeEventTypes",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEventTypesRequest"},
-      "output":{"shape":"DescribeEventTypesResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"},
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventDetailsForOrganizationRequest"
+      },
+      "name": "DescribeEventDetailsForOrganization",
+      "output": {
+        "shape": "DescribeEventDetailsForOrganizationResponse"
+      }
+    },
+    "DescribeEventTypes": {
+      "documentation": "<p>Returns the event types that meet the specified filter criteria. If no filter criteria are specified, all event types are returned, in no particular order.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        },
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns the event types that meet the specified filter criteria. If no filter criteria are specified, all event types are returned, in no particular order.</p>",
-      "idempotent":true
-    },
-    "DescribeEvents":{
-      "name":"DescribeEvents",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEventsRequest"},
-      "output":{"shape":"DescribeEventsResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"},
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventTypesRequest"
+      },
+      "name": "DescribeEventTypes",
+      "output": {
+        "shape": "DescribeEventTypesResponse"
+      }
+    },
+    "DescribeEvents": {
+      "documentation": "<p>Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the <a>DescribeEventDetails</a> and <a>DescribeAffectedEntities</a> operations.</p> <p>If no filter criteria are specified, all events are returned. Results are sorted by <code>lastModifiedTime</code>, starting with the most recent.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        },
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the <a>DescribeEventDetails</a> and <a>DescribeAffectedEntities</a> operations.</p> <p>If no filter criteria are specified, all events are returned. Results are sorted by <code>lastModifiedTime</code>, starting with the most recent.</p>",
-      "idempotent":true
-    },
-    "DescribeEventsForOrganization":{
-      "name":"DescribeEventsForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeEventsForOrganizationRequest"},
-      "output":{"shape":"DescribeEventsForOrganizationResponse"},
-      "errors":[
-        {"shape":"InvalidPaginationToken"},
-        {"shape":"UnsupportedLocale"}
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventsRequest"
+      },
+      "name": "DescribeEvents",
+      "output": {
+        "shape": "DescribeEventsResponse"
+      }
+    },
+    "DescribeEventsForOrganization": {
+      "documentation": "<p>Returns information about events across your organization in AWS Organizations, meeting the specified filter criteria. Events are returned in a summary form and do not include the accounts impacted, detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the <a>DescribeAffectedAccountsForOrganization</a>, <a>DescribeEventDetailsForOrganization</a>, and <a>DescribeAffectedEntitiesForOrganization</a> operations.</p> <p>If no filter criteria are specified, all events across your organization are returned. Results are sorted by <code>lastModifiedTime</code>, starting with the most recent.</p> <p>Before you can call this operation, you must first enable Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPaginationToken"
+        },
+        {
+          "shape": "UnsupportedLocale"
+        }
       ],
-      "documentation":"<p>Returns information about events across your organization in AWS Organizations, meeting the specified filter criteria. Events are returned in a summary form and do not include the accounts impacted, detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the <a>DescribeAffectedAccountsForOrganization</a>, <a>DescribeEventDetailsForOrganization</a>, and <a>DescribeAffectedEntitiesForOrganization</a> operations.</p> <p>If no filter criteria are specified, all events across your organization are returned. Results are sorted by <code>lastModifiedTime</code>, starting with the most recent.</p> <p>Before you can call this operation, you must first enable Health to work with AWS Organizations. To do this, call the <a>EnableHealthServiceAccessForOrganization</a> operation from your organization's master account.</p>",
-      "idempotent":true
-    },
-    "DescribeHealthServiceStatusForOrganization":{
-      "name":"DescribeHealthServiceStatusForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "output":{"shape":"DescribeHealthServiceStatusForOrganizationResponse"},
-      "documentation":"<p>This operation provides status information on enabling or disabling AWS Health to work with your organization. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
-      "idempotent":true
-    },
-    "DisableHealthServiceAccessForOrganization":{
-      "name":"DisableHealthServiceAccessForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeEventsForOrganizationRequest"
       },
-      "errors":[
-        {"shape":"ConcurrentModificationException"}
+      "name": "DescribeEventsForOrganization",
+      "output": {
+        "shape": "DescribeEventsForOrganizationResponse"
+      }
+    },
+    "DescribeHealthServiceStatusForOrganization": {
+      "documentation": "<p>This operation provides status information on enabling or disabling AWS Health to work with your organization. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "name": "DescribeHealthServiceStatusForOrganization",
+      "output": {
+        "shape": "DescribeHealthServiceStatusForOrganizationResponse"
+      }
+    },
+    "DisableHealthServiceAccessForOrganization": {
+      "documentation": "<p>Calling this operation disables Health from working with AWS Organizations. This does not remove the Service Linked Role (SLR) from the the master account in your organization. Use the IAM console, API, or AWS CLI to remove the SLR if desired. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
+      "errors": [
+        {
+          "shape": "ConcurrentModificationException"
+        }
       ],
-      "documentation":"<p>Calling this operation disables Health from working with AWS Organizations. This does not remove the Service Linked Role (SLR) from the the master account in your organization. Use the IAM console, API, or AWS CLI to remove the SLR if desired. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
-      "idempotent":true
-    },
-    "EnableHealthServiceAccessForOrganization":{
-      "name":"EnableHealthServiceAccessForOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "errors":[
-        {"shape":"ConcurrentModificationException"}
+      "idempotent": true,
+      "name": "DisableHealthServiceAccessForOrganization"
+    },
+    "EnableHealthServiceAccessForOrganization": {
+      "documentation": "<p>Calling this operation enables AWS Health to work with AWS Organizations. This applies a Service Linked Role (SLR) to the master account in the organization. To learn more about the steps in this process, visit enabling service access for AWS Health in AWS Organizations. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
+      "errors": [
+        {
+          "shape": "ConcurrentModificationException"
+        }
       ],
-      "documentation":"<p>Calling this operation enables AWS Health to work with AWS Organizations. This applies a Service Linked Role (SLR) to the master account in the organization. To learn more about the steps in this process, visit enabling service access for AWS Health in AWS Organizations. To call this operation, you must sign in as an IAM user, assume an IAM role, or sign in as the root user (not recommended) in the organization's master account.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "name": "EnableHealthServiceAccessForOrganization"
     }
   },
-  "shapes":{
-    "AffectedEntity":{
-      "type":"structure",
-      "members":{
-        "entityArn":{
-          "shape":"entityArn",
-          "documentation":"<p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>"
+  "shapes": {
+    "AffectedEntity": {
+      "documentation": "<p>Information about an entity that is affected by a Health event.</p>",
+      "members": {
+        "awsAccountId": {
+          "documentation": "<p>The 12-digit AWS account number that contains the affected entity.</p>",
+          "shape": "accountId"
         },
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+        "entityArn": {
+          "documentation": "<p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>",
+          "shape": "entityArn"
         },
-        "entityValue":{
-          "shape":"entityValue",
-          "documentation":"<p>The ID of the affected entity.</p>"
+        "entityUrl": {
+          "documentation": "<p>The URL of the affected entity.</p>",
+          "shape": "entityUrl"
         },
-        "entityUrl":{
-          "shape":"entityUrl",
-          "documentation":"<p>The URL of the affected entity.</p>"
+        "entityValue": {
+          "documentation": "<p>The ID of the affected entity.</p>",
+          "shape": "entityValue"
         },
-        "awsAccountId":{
-          "shape":"accountId",
-          "documentation":"<p>The 12-digit AWS account number that contains the affected entity.</p>"
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         },
-        "lastUpdatedTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The most recent time that the entity was updated.</p>"
+        "lastUpdatedTime": {
+          "documentation": "<p>The most recent time that the entity was updated.</p>",
+          "shape": "timestamp"
         },
-        "statusCode":{
-          "shape":"entityStatusCode",
-          "documentation":"<p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>"
+        "statusCode": {
+          "documentation": "<p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>",
+          "shape": "entityStatusCode"
         },
-        "tags":{
-          "shape":"tagSet",
-          "documentation":"<p>A map of entity tags attached to the affected entity.</p>"
+        "tags": {
+          "documentation": "<p>A map of entity tags attached to the affected entity.</p>",
+          "shape": "tagSet"
         }
       },
-      "documentation":"<p>Information about an entity that is affected by a Health event.</p>"
+      "type": "structure"
     },
-    "ConcurrentModificationException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"string"}
-      },
-      "documentation":"<p> <a>EnableHealthServiceAccessForOrganization</a> is already in progress. Wait for the action to complete before trying again. To get the current status, use the <a>DescribeHealthServiceStatusForOrganization</a> operation.</p>",
-      "exception":true
-    },
-    "DateTimeRange":{
-      "type":"structure",
-      "members":{
-        "from":{
-          "shape":"timestamp",
-          "documentation":"<p>The starting date and time of a time range.</p>"
-        },
-        "to":{
-          "shape":"timestamp",
-          "documentation":"<p>The ending date and time of a time range.</p>"
+    "ConcurrentModificationException": {
+      "documentation": "<p> <a>EnableHealthServiceAccessForOrganization</a> is already in progress. Wait for the action to complete before trying again. To get the current status, use the <a>DescribeHealthServiceStatusForOrganization</a> operation.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "string"
         }
       },
-      "documentation":"<p>A range of dates and times that is used by the <a>EventFilter</a> and <a>EntityFilter</a> objects. If <code>from</code> is set and <code>to</code> is set: match items where the timestamp (<code>startTime</code>, <code>endTime</code>, or <code>lastUpdatedTime</code>) is between <code>from</code> and <code>to</code> inclusive. If <code>from</code> is set and <code>to</code> is not set: match items where the timestamp value is equal to or after <code>from</code>. If <code>from</code> is not set and <code>to</code> is set: match items where the timestamp value is equal to or before <code>to</code>.</p>"
+      "type": "structure"
     },
-    "DescribeAffectedAccountsForOrganizationRequest":{
-      "type":"structure",
-      "required":["eventArn"],
-      "members":{
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+    "DateTimeRange": {
+      "documentation": "<p>A range of dates and times that is used by the <a>EventFilter</a> and <a>EntityFilter</a> objects. If <code>from</code> is set and <code>to</code> is set: match items where the timestamp (<code>startTime</code>, <code>endTime</code>, or <code>lastUpdatedTime</code>) is between <code>from</code> and <code>to</code> inclusive. If <code>from</code> is set and <code>to</code> is not set: match items where the timestamp value is equal to or after <code>from</code>. If <code>from</code> is not set and <code>to</code> is set: match items where the timestamp value is equal to or before <code>to</code>.</p>",
+      "members": {
+        "from": {
+          "documentation": "<p>The starting date and time of a time range.</p>",
+          "shape": "timestamp"
         },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        }
-      }
-    },
-    "DescribeAffectedAccountsForOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "affectedAccounts":{
-          "shape":"affectedAccountsList",
-          "documentation":"<p>A JSON set of elements of the affected accounts.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeAffectedEntitiesForOrganizationFailedSet":{
-      "type":"list",
-      "member":{"shape":"OrganizationAffectedEntitiesErrorItem"}
-    },
-    "DescribeAffectedEntitiesForOrganizationRequest":{
-      "type":"structure",
-      "required":["organizationEntityFilters"],
-      "members":{
-        "organizationEntityFilters":{
-          "shape":"OrganizationEntityFiltersList",
-          "documentation":"<p>A JSON set of elements including the <code>awsAccountId</code> and the <code>eventArn</code>.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        }
-      }
-    },
-    "DescribeAffectedEntitiesForOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "entities":{
-          "shape":"EntityList",
-          "documentation":"<p>A JSON set of elements including the <code>awsAccountId</code> and its <code>entityArn</code>, <code>entityValue</code> and its <code>entityArn</code>, <code>lastUpdatedTime</code>, <code>statusCode</code>, and <code>tags</code>.</p>"
-        },
-        "failedSet":{
-          "shape":"DescribeAffectedEntitiesForOrganizationFailedSet",
-          "documentation":"<p>A JSON set of elements of the failed response, including the <code>awsAccountId</code>, <code>errorMessage</code>, <code>errorName</code>, and <code>eventArn</code>.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeAffectedEntitiesRequest":{
-      "type":"structure",
-      "required":["filter"],
-      "members":{
-        "filter":{
-          "shape":"EntityFilter",
-          "documentation":"<p>Values to narrow the results returned. At least one event ARN is required.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        }
-      }
-    },
-    "DescribeAffectedEntitiesResponse":{
-      "type":"structure",
-      "members":{
-        "entities":{
-          "shape":"EntityList",
-          "documentation":"<p>The entities that match the filter criteria.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeEntityAggregatesRequest":{
-      "type":"structure",
-      "members":{
-        "eventArns":{
-          "shape":"EventArnsList",
-          "documentation":"<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>"
-        }
-      }
-    },
-    "DescribeEntityAggregatesResponse":{
-      "type":"structure",
-      "members":{
-        "entityAggregates":{
-          "shape":"EntityAggregateList",
-          "documentation":"<p>The number of entities that are affected by each of the specified events.</p>"
-        }
-      }
-    },
-    "DescribeEventAggregatesRequest":{
-      "type":"structure",
-      "required":["aggregateField"],
-      "members":{
-        "filter":{
-          "shape":"EventFilter",
-          "documentation":"<p>Values to narrow the results returned.</p>"
-        },
-        "aggregateField":{
-          "shape":"eventAggregateField",
-          "documentation":"<p>The only currently supported value is <code>eventTypeCategory</code>.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeEventAggregatesResponse":{
-      "type":"structure",
-      "members":{
-        "eventAggregates":{
-          "shape":"EventAggregateList",
-          "documentation":"<p>The number of events in each category that meet the optional filter criteria.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeEventDetailsFailedSet":{
-      "type":"list",
-      "member":{"shape":"EventDetailsErrorItem"}
-    },
-    "DescribeEventDetailsForOrganizationFailedSet":{
-      "type":"list",
-      "member":{"shape":"OrganizationEventDetailsErrorItem"}
-    },
-    "DescribeEventDetailsForOrganizationRequest":{
-      "type":"structure",
-      "required":["organizationEventDetailFilters"],
-      "members":{
-        "organizationEventDetailFilters":{
-          "shape":"OrganizationEventDetailFiltersList",
-          "documentation":"<p>A set of JSON elements that includes the <code>awsAccountId</code> and the <code>eventArn</code>.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        }
-      }
-    },
-    "DescribeEventDetailsForOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "successfulSet":{
-          "shape":"DescribeEventDetailsForOrganizationSuccessfulSet",
-          "documentation":"<p>Information about the events that could be retrieved.</p>"
-        },
-        "failedSet":{
-          "shape":"DescribeEventDetailsForOrganizationFailedSet",
-          "documentation":"<p>Error messages for any events that could not be retrieved.</p>"
-        }
-      }
-    },
-    "DescribeEventDetailsForOrganizationSuccessfulSet":{
-      "type":"list",
-      "member":{"shape":"OrganizationEventDetails"}
-    },
-    "DescribeEventDetailsRequest":{
-      "type":"structure",
-      "required":["eventArns"],
-      "members":{
-        "eventArns":{
-          "shape":"eventArnList",
-          "documentation":"<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        }
-      }
-    },
-    "DescribeEventDetailsResponse":{
-      "type":"structure",
-      "members":{
-        "successfulSet":{
-          "shape":"DescribeEventDetailsSuccessfulSet",
-          "documentation":"<p>Information about the events that could be retrieved.</p>"
-        },
-        "failedSet":{
-          "shape":"DescribeEventDetailsFailedSet",
-          "documentation":"<p>Error messages for any events that could not be retrieved.</p>"
-        }
-      }
-    },
-    "DescribeEventDetailsSuccessfulSet":{
-      "type":"list",
-      "member":{"shape":"EventDetails"}
-    },
-    "DescribeEventTypesRequest":{
-      "type":"structure",
-      "members":{
-        "filter":{
-          "shape":"EventTypeFilter",
-          "documentation":"<p>Values to narrow the results returned.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        }
-      }
-    },
-    "DescribeEventTypesResponse":{
-      "type":"structure",
-      "members":{
-        "eventTypes":{
-          "shape":"EventTypeList",
-          "documentation":"<p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeEventsForOrganizationRequest":{
-      "type":"structure",
-      "members":{
-        "filter":{
-          "shape":"OrganizationEventFilter",
-          "documentation":"<p>Values to narrow the results returned.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        }
-      }
-    },
-    "DescribeEventsForOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "events":{
-          "shape":"OrganizationEventList",
-          "documentation":"<p>The events that match the specified filter criteria.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeEventsRequest":{
-      "type":"structure",
-      "members":{
-        "filter":{
-          "shape":"EventFilter",
-          "documentation":"<p>Values to narrow the results returned.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        },
-        "maxResults":{
-          "shape":"maxResults",
-          "documentation":"<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>"
-        },
-        "locale":{
-          "shape":"locale",
-          "documentation":"<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>"
-        }
-      }
-    },
-    "DescribeEventsResponse":{
-      "type":"structure",
-      "members":{
-        "events":{
-          "shape":"EventList",
-          "documentation":"<p>The events that match the specified filter criteria.</p>"
-        },
-        "nextToken":{
-          "shape":"nextToken",
-          "documentation":"<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>"
-        }
-      }
-    },
-    "DescribeHealthServiceStatusForOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "healthServiceAccessStatusForOrganization":{
-          "shape":"healthServiceAccessStatusForOrganization",
-          "documentation":"<p>Information about the status of enabling or disabling AWS Health Organizational View in your organization.</p> <p>Valid values are <code>ENABLED | DISABLED | PENDING</code>. </p>"
-        }
-      }
-    },
-    "EntityAggregate":{
-      "type":"structure",
-      "members":{
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
-        },
-        "count":{
-          "shape":"count",
-          "documentation":"<p>The number entities that match the criteria for the specified events.</p>"
+        "to": {
+          "documentation": "<p>The ending date and time of a time range.</p>",
+          "shape": "timestamp"
         }
       },
-      "documentation":"<p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>"
+      "type": "structure"
     },
-    "EntityAggregateList":{
-      "type":"list",
-      "member":{"shape":"EntityAggregate"}
-    },
-    "EntityFilter":{
-      "type":"structure",
-      "required":["eventArns"],
-      "members":{
-        "eventArns":{
-          "shape":"eventArnList",
-          "documentation":"<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>"
+    "DescribeAffectedAccountsForOrganizationRequest": {
+      "members": {
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         },
-        "entityArns":{
-          "shape":"entityArnList",
-          "documentation":"<p>A list of entity ARNs (unique identifiers).</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
         },
-        "entityValues":{
-          "shape":"entityValueList",
-          "documentation":"<p>A list of IDs for affected entities.</p>"
-        },
-        "lastUpdatedTimes":{
-          "shape":"dateTimeRangeList",
-          "documentation":"<p>A list of the most recent dates and times that the entity was updated.</p>"
-        },
-        "tags":{
-          "shape":"tagFilter",
-          "documentation":"<p>A map of entity tags attached to the affected entity.</p>"
-        },
-        "statusCodes":{
-          "shape":"entityStatusCodeList",
-          "documentation":"<p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>"
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
         }
       },
-      "documentation":"<p>The values to use to filter results from the <a>DescribeAffectedEntities</a> operation.</p>"
+      "required": [
+        "eventArn"
+      ],
+      "type": "structure"
     },
-    "EntityList":{
-      "type":"list",
-      "member":{"shape":"AffectedEntity"}
-    },
-    "Event":{
-      "type":"structure",
-      "members":{
-        "arn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+    "DescribeAffectedAccountsForOrganizationResponse": {
+      "members": {
+        "affectedAccounts": {
+          "documentation": "<p>A JSON set of elements of the affected accounts.</p>",
+          "shape": "affectedAccountsList"
         },
-        "service":{
-          "shape":"service",
-          "documentation":"<p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>"
-        },
-        "eventTypeCode":{
-          "shape":"eventTypeCode",
-          "documentation":"<p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>"
-        },
-        "eventTypeCategory":{
-          "shape":"eventTypeCategory",
-          "documentation":"<p>The category of the event. Possible values are <code>issue</code>, <code>scheduledChange</code>, and <code>accountNotification</code>.</p>"
-        },
-        "region":{
-          "shape":"region",
-          "documentation":"<p>The AWS region name of the event.</p>"
-        },
-        "availabilityZone":{
-          "shape":"availabilityZone",
-          "documentation":"<p>The AWS Availability Zone of the event. For example, us-east-1a.</p>"
-        },
-        "startTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The date and time that the event began.</p>"
-        },
-        "endTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The date and time that the event ended.</p>"
-        },
-        "lastUpdatedTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The most recent date and time that the event was updated.</p>"
-        },
-        "statusCode":{
-          "shape":"eventStatusCode",
-          "documentation":"<p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>"
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
         }
       },
-      "documentation":"<p>Summary information about an AWS Health event.</p>"
+      "type": "structure"
     },
-    "EventAccountFilter":{
-      "type":"structure",
-      "required":[
+    "DescribeAffectedEntitiesForOrganizationFailedSet": {
+      "member": {
+        "shape": "OrganizationAffectedEntitiesErrorItem"
+      },
+      "type": "list"
+    },
+    "DescribeAffectedEntitiesForOrganizationRequest": {
+      "members": {
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        },
+        "organizationEntityFilters": {
+          "documentation": "<p>A JSON set of elements including the <code>awsAccountId</code> and the <code>eventArn</code>.</p>",
+          "shape": "OrganizationEntityFiltersList"
+        }
+      },
+      "required": [
+        "organizationEntityFilters"
+      ],
+      "type": "structure"
+    },
+    "DescribeAffectedEntitiesForOrganizationResponse": {
+      "members": {
+        "entities": {
+          "documentation": "<p>A JSON set of elements including the <code>awsAccountId</code> and its <code>entityArn</code>, <code>entityValue</code> and its <code>entityArn</code>, <code>lastUpdatedTime</code>, <code>statusCode</code>, and <code>tags</code>.</p>",
+          "shape": "EntityList"
+        },
+        "failedSet": {
+          "documentation": "<p>A JSON set of elements of the failed response, including the <code>awsAccountId</code>, <code>errorMessage</code>, <code>errorName</code>, and <code>eventArn</code>.</p>",
+          "shape": "DescribeAffectedEntitiesForOrganizationFailedSet"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeAffectedEntitiesRequest": {
+      "members": {
+        "filter": {
+          "documentation": "<p>Values to narrow the results returned. At least one event ARN is required.</p>",
+          "shape": "EntityFilter"
+        },
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "required": [
+        "filter"
+      ],
+      "type": "structure"
+    },
+    "DescribeAffectedEntitiesResponse": {
+      "members": {
+        "entities": {
+          "documentation": "<p>The entities that match the filter criteria.</p>",
+          "shape": "EntityList"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEntityAggregatesRequest": {
+      "members": {
+        "eventArns": {
+          "documentation": "<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>",
+          "shape": "EventArnsList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEntityAggregatesResponse": {
+      "members": {
+        "entityAggregates": {
+          "documentation": "<p>The number of entities that are affected by each of the specified events.</p>",
+          "shape": "EntityAggregateList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventAggregatesRequest": {
+      "members": {
+        "aggregateField": {
+          "documentation": "<p>The only currently supported value is <code>eventTypeCategory</code>.</p>",
+          "shape": "eventAggregateField"
+        },
+        "filter": {
+          "documentation": "<p>Values to narrow the results returned.</p>",
+          "shape": "EventFilter"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "required": [
+        "aggregateField"
+      ],
+      "type": "structure"
+    },
+    "DescribeEventAggregatesResponse": {
+      "members": {
+        "eventAggregates": {
+          "documentation": "<p>The number of events in each category that meet the optional filter criteria.</p>",
+          "shape": "EventAggregateList"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventDetailsFailedSet": {
+      "member": {
+        "shape": "EventDetailsErrorItem"
+      },
+      "type": "list"
+    },
+    "DescribeEventDetailsForOrganizationFailedSet": {
+      "member": {
+        "shape": "OrganizationEventDetailsErrorItem"
+      },
+      "type": "list"
+    },
+    "DescribeEventDetailsForOrganizationRequest": {
+      "members": {
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "organizationEventDetailFilters": {
+          "documentation": "<p>A set of JSON elements that includes the <code>awsAccountId</code> and the <code>eventArn</code>.</p>",
+          "shape": "OrganizationEventDetailFiltersList"
+        }
+      },
+      "required": [
+        "organizationEventDetailFilters"
+      ],
+      "type": "structure"
+    },
+    "DescribeEventDetailsForOrganizationResponse": {
+      "members": {
+        "failedSet": {
+          "documentation": "<p>Error messages for any events that could not be retrieved.</p>",
+          "shape": "DescribeEventDetailsForOrganizationFailedSet"
+        },
+        "successfulSet": {
+          "documentation": "<p>Information about the events that could be retrieved.</p>",
+          "shape": "DescribeEventDetailsForOrganizationSuccessfulSet"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventDetailsForOrganizationSuccessfulSet": {
+      "member": {
+        "shape": "OrganizationEventDetails"
+      },
+      "type": "list"
+    },
+    "DescribeEventDetailsRequest": {
+      "members": {
+        "eventArns": {
+          "documentation": "<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>",
+          "shape": "eventArnList"
+        },
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        }
+      },
+      "required": [
+        "eventArns"
+      ],
+      "type": "structure"
+    },
+    "DescribeEventDetailsResponse": {
+      "members": {
+        "failedSet": {
+          "documentation": "<p>Error messages for any events that could not be retrieved.</p>",
+          "shape": "DescribeEventDetailsFailedSet"
+        },
+        "successfulSet": {
+          "documentation": "<p>Information about the events that could be retrieved.</p>",
+          "shape": "DescribeEventDetailsSuccessfulSet"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventDetailsSuccessfulSet": {
+      "member": {
+        "shape": "EventDetails"
+      },
+      "type": "list"
+    },
+    "DescribeEventTypesRequest": {
+      "members": {
+        "filter": {
+          "documentation": "<p>Values to narrow the results returned.</p>",
+          "shape": "EventTypeFilter"
+        },
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventTypesResponse": {
+      "members": {
+        "eventTypes": {
+          "documentation": "<p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>",
+          "shape": "EventTypeList"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsForOrganizationRequest": {
+      "members": {
+        "filter": {
+          "documentation": "<p>Values to narrow the results returned.</p>",
+          "shape": "OrganizationEventFilter"
+        },
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsForOrganizationResponse": {
+      "members": {
+        "events": {
+          "documentation": "<p>The events that match the specified filter criteria.</p>",
+          "shape": "OrganizationEventList"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsRequest": {
+      "members": {
+        "filter": {
+          "documentation": "<p>Values to narrow the results returned.</p>",
+          "shape": "EventFilter"
+        },
+        "locale": {
+          "documentation": "<p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>",
+          "shape": "locale"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>",
+          "shape": "maxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsResponse": {
+      "members": {
+        "events": {
+          "documentation": "<p>The events that match the specified filter criteria.</p>",
+          "shape": "EventList"
+        },
+        "nextToken": {
+          "documentation": "<p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>",
+          "shape": "nextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeHealthServiceStatusForOrganizationResponse": {
+      "members": {
+        "healthServiceAccessStatusForOrganization": {
+          "documentation": "<p>Information about the status of enabling or disabling AWS Health Organizational View in your organization.</p> <p>Valid values are <code>ENABLED | DISABLED | PENDING</code>. </p>",
+          "shape": "healthServiceAccessStatusForOrganization"
+        }
+      },
+      "type": "structure"
+    },
+    "EntityAggregate": {
+      "documentation": "<p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>",
+      "members": {
+        "count": {
+          "documentation": "<p>The number entities that match the criteria for the specified events.</p>",
+          "shape": "count"
+        },
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
+        }
+      },
+      "type": "structure"
+    },
+    "EntityAggregateList": {
+      "member": {
+        "shape": "EntityAggregate"
+      },
+      "type": "list"
+    },
+    "EntityFilter": {
+      "documentation": "<p>The values to use to filter results from the <a>DescribeAffectedEntities</a> operation.</p>",
+      "members": {
+        "entityArns": {
+          "documentation": "<p>A list of entity ARNs (unique identifiers).</p>",
+          "shape": "entityArnList"
+        },
+        "entityValues": {
+          "documentation": "<p>A list of IDs for affected entities.</p>",
+          "shape": "entityValueList"
+        },
+        "eventArns": {
+          "documentation": "<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>",
+          "shape": "eventArnList"
+        },
+        "lastUpdatedTimes": {
+          "documentation": "<p>A list of the most recent dates and times that the entity was updated.</p>",
+          "shape": "dateTimeRangeList"
+        },
+        "statusCodes": {
+          "documentation": "<p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>",
+          "shape": "entityStatusCodeList"
+        },
+        "tags": {
+          "documentation": "<p>A map of entity tags attached to the affected entity.</p>",
+          "shape": "tagFilter"
+        }
+      },
+      "required": [
+        "eventArns"
+      ],
+      "type": "structure"
+    },
+    "EntityList": {
+      "member": {
+        "shape": "AffectedEntity"
+      },
+      "type": "list"
+    },
+    "Event": {
+      "documentation": "<p>Summary information about an AWS Health event.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
+        },
+        "availabilityZone": {
+          "documentation": "<p>The AWS Availability Zone of the event. For example, us-east-1a.</p>",
+          "shape": "availabilityZone"
+        },
+        "endTime": {
+          "documentation": "<p>The date and time that the event ended.</p>",
+          "shape": "timestamp"
+        },
+        "eventTypeCategory": {
+          "documentation": "<p>The category of the event. Possible values are <code>issue</code>, <code>scheduledChange</code>, and <code>accountNotification</code>.</p>",
+          "shape": "eventTypeCategory"
+        },
+        "eventTypeCode": {
+          "documentation": "<p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>",
+          "shape": "eventTypeCode"
+        },
+        "lastUpdatedTime": {
+          "documentation": "<p>The most recent date and time that the event was updated.</p>",
+          "shape": "timestamp"
+        },
+        "region": {
+          "documentation": "<p>The AWS region name of the event.</p>",
+          "shape": "region"
+        },
+        "service": {
+          "documentation": "<p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>",
+          "shape": "service"
+        },
+        "startTime": {
+          "documentation": "<p>The date and time that the event began.</p>",
+          "shape": "timestamp"
+        },
+        "statusCode": {
+          "documentation": "<p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>",
+          "shape": "eventStatusCode"
+        }
+      },
+      "type": "structure"
+    },
+    "EventAccountFilter": {
+      "documentation": "<p>The values used to filter results from the <a>DescribeEventDetailsForOrganization</a> and <a>DescribeAffectedEntitiesForOrganization</a> operations.</p>",
+      "members": {
+        "awsAccountId": {
+          "documentation": "<p>The 12-digit AWS account numbers that contains the affected entities.</p>",
+          "shape": "accountId"
+        },
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
+        }
+      },
+      "required": [
         "eventArn",
         "awsAccountId"
       ],
-      "members":{
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+      "type": "structure"
+    },
+    "EventAggregate": {
+      "documentation": "<p>The number of events of each issue type. Returned by the <a>DescribeEventAggregates</a> operation.</p>",
+      "members": {
+        "aggregateValue": {
+          "documentation": "<p>The issue type for the associated count.</p>",
+          "shape": "aggregateValue"
         },
-        "awsAccountId":{
-          "shape":"accountId",
-          "documentation":"<p>The 12-digit AWS account numbers that contains the affected entities.</p>"
+        "count": {
+          "documentation": "<p>The number of events of the associated issue type.</p>",
+          "shape": "count"
         }
       },
-      "documentation":"<p>The values used to filter results from the <a>DescribeEventDetailsForOrganization</a> and <a>DescribeAffectedEntitiesForOrganization</a> operations.</p>"
+      "type": "structure"
     },
-    "EventAggregate":{
-      "type":"structure",
-      "members":{
-        "aggregateValue":{
-          "shape":"aggregateValue",
-          "documentation":"<p>The issue type for the associated count.</p>"
-        },
-        "count":{
-          "shape":"count",
-          "documentation":"<p>The number of events of the associated issue type.</p>"
+    "EventAggregateList": {
+      "member": {
+        "shape": "EventAggregate"
+      },
+      "type": "list"
+    },
+    "EventArnsList": {
+      "max": 50,
+      "member": {
+        "shape": "eventArn"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "EventDescription": {
+      "documentation": "<p>The detailed description of the event. Included in the information returned by the <a>DescribeEventDetails</a> operation.</p>",
+      "members": {
+        "latestDescription": {
+          "documentation": "<p>The most recent description of the event.</p>",
+          "shape": "eventDescription"
         }
       },
-      "documentation":"<p>The number of events of each issue type. Returned by the <a>DescribeEventAggregates</a> operation.</p>"
+      "type": "structure"
     },
-    "EventAggregateList":{
-      "type":"list",
-      "member":{"shape":"EventAggregate"}
-    },
-    "EventArnsList":{
-      "type":"list",
-      "member":{"shape":"eventArn"},
-      "max":50,
-      "min":1
-    },
-    "EventDescription":{
-      "type":"structure",
-      "members":{
-        "latestDescription":{
-          "shape":"eventDescription",
-          "documentation":"<p>The most recent description of the event.</p>"
+    "EventDetails": {
+      "documentation": "<p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetails</a> operation.</p>",
+      "members": {
+        "event": {
+          "documentation": "<p>Summary information about the event.</p>",
+          "shape": "Event"
+        },
+        "eventDescription": {
+          "documentation": "<p>The most recent description of the event.</p>",
+          "shape": "EventDescription"
+        },
+        "eventMetadata": {
+          "documentation": "<p>Additional metadata about the event.</p>",
+          "shape": "eventMetadata"
         }
       },
-      "documentation":"<p>The detailed description of the event. Included in the information returned by the <a>DescribeEventDetails</a> operation.</p>"
+      "type": "structure"
     },
-    "EventDetails":{
-      "type":"structure",
-      "members":{
-        "event":{
-          "shape":"Event",
-          "documentation":"<p>Summary information about the event.</p>"
+    "EventDetailsErrorItem": {
+      "documentation": "<p>Error information returned when a <a>DescribeEventDetails</a> operation cannot find a specified event.</p>",
+      "members": {
+        "errorMessage": {
+          "documentation": "<p>A message that describes the error.</p>",
+          "shape": "string"
         },
-        "eventDescription":{
-          "shape":"EventDescription",
-          "documentation":"<p>The most recent description of the event.</p>"
+        "errorName": {
+          "documentation": "<p>The name of the error.</p>",
+          "shape": "string"
         },
-        "eventMetadata":{
-          "shape":"eventMetadata",
-          "documentation":"<p>Additional metadata about the event.</p>"
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         }
       },
-      "documentation":"<p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetails</a> operation.</p>"
+      "type": "structure"
     },
-    "EventDetailsErrorItem":{
-      "type":"structure",
-      "members":{
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+    "EventFilter": {
+      "documentation": "<p>The values to use to filter results from the <a>DescribeEvents</a> and <a>DescribeEventAggregates</a> operations.</p>",
+      "members": {
+        "availabilityZones": {
+          "documentation": "<p>A list of AWS availability zones.</p>",
+          "shape": "availabilityZones"
         },
-        "errorName":{
-          "shape":"string",
-          "documentation":"<p>The name of the error.</p>"
+        "endTimes": {
+          "documentation": "<p>A list of dates and times that the event ended.</p>",
+          "shape": "dateTimeRangeList"
         },
-        "errorMessage":{
-          "shape":"string",
-          "documentation":"<p>A message that describes the error.</p>"
+        "entityArns": {
+          "documentation": "<p>A list of entity ARNs (unique identifiers).</p>",
+          "shape": "entityArnList"
+        },
+        "entityValues": {
+          "documentation": "<p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>",
+          "shape": "entityValueList"
+        },
+        "eventArns": {
+          "documentation": "<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>",
+          "shape": "eventArnList"
+        },
+        "eventStatusCodes": {
+          "documentation": "<p>A list of event status codes.</p>",
+          "shape": "eventStatusCodeList"
+        },
+        "eventTypeCategories": {
+          "documentation": "<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>",
+          "shape": "eventTypeCategoryList"
+        },
+        "eventTypeCodes": {
+          "documentation": "<p>A list of unique identifiers for event types. For example, <code>\"AWS_EC2_SYSTEM_MAINTENANCE_EVENT\",\"AWS_RDS_MAINTENANCE_SCHEDULED\".</code> </p>",
+          "shape": "eventTypeList"
+        },
+        "lastUpdatedTimes": {
+          "documentation": "<p>A list of dates and times that the event was last updated.</p>",
+          "shape": "dateTimeRangeList"
+        },
+        "regions": {
+          "documentation": "<p>A list of AWS regions.</p>",
+          "shape": "regionList"
+        },
+        "services": {
+          "documentation": "<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>",
+          "shape": "serviceList"
+        },
+        "startTimes": {
+          "documentation": "<p>A list of dates and times that the event began.</p>",
+          "shape": "dateTimeRangeList"
+        },
+        "tags": {
+          "documentation": "<p>A map of entity tags attached to the affected entity.</p>",
+          "shape": "tagFilter"
         }
       },
-      "documentation":"<p>Error information returned when a <a>DescribeEventDetails</a> operation cannot find a specified event.</p>"
+      "type": "structure"
     },
-    "EventFilter":{
-      "type":"structure",
-      "members":{
-        "eventArns":{
-          "shape":"eventArnList",
-          "documentation":"<p>A list of event ARNs (unique identifiers). For example: <code>\"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456\", \"arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101\"</code> </p>"
+    "EventList": {
+      "member": {
+        "shape": "Event"
+      },
+      "type": "list"
+    },
+    "EventType": {
+      "documentation": "<p>Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, <code>issue</code>), the service (for example, <code>EC2</code>), and the event type code (for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>",
+      "members": {
+        "category": {
+          "documentation": "<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>",
+          "shape": "eventTypeCategory"
         },
-        "eventTypeCodes":{
-          "shape":"eventTypeList",
-          "documentation":"<p>A list of unique identifiers for event types. For example, <code>\"AWS_EC2_SYSTEM_MAINTENANCE_EVENT\",\"AWS_RDS_MAINTENANCE_SCHEDULED\".</code> </p>"
+        "code": {
+          "documentation": "<p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>",
+          "shape": "eventTypeCode"
         },
-        "services":{
-          "shape":"serviceList",
-          "documentation":"<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>"
-        },
-        "regions":{
-          "shape":"regionList",
-          "documentation":"<p>A list of AWS regions.</p>"
-        },
-        "availabilityZones":{
-          "shape":"availabilityZones",
-          "documentation":"<p>A list of AWS availability zones.</p>"
-        },
-        "startTimes":{
-          "shape":"dateTimeRangeList",
-          "documentation":"<p>A list of dates and times that the event began.</p>"
-        },
-        "endTimes":{
-          "shape":"dateTimeRangeList",
-          "documentation":"<p>A list of dates and times that the event ended.</p>"
-        },
-        "lastUpdatedTimes":{
-          "shape":"dateTimeRangeList",
-          "documentation":"<p>A list of dates and times that the event was last updated.</p>"
-        },
-        "entityArns":{
-          "shape":"entityArnList",
-          "documentation":"<p>A list of entity ARNs (unique identifiers).</p>"
-        },
-        "entityValues":{
-          "shape":"entityValueList",
-          "documentation":"<p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>"
-        },
-        "eventTypeCategories":{
-          "shape":"eventTypeCategoryList",
-          "documentation":"<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>"
-        },
-        "tags":{
-          "shape":"tagFilter",
-          "documentation":"<p>A map of entity tags attached to the affected entity.</p>"
-        },
-        "eventStatusCodes":{
-          "shape":"eventStatusCodeList",
-          "documentation":"<p>A list of event status codes.</p>"
+        "service": {
+          "documentation": "<p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>",
+          "shape": "service"
         }
       },
-      "documentation":"<p>The values to use to filter results from the <a>DescribeEvents</a> and <a>DescribeEventAggregates</a> operations.</p>"
+      "type": "structure"
     },
-    "EventList":{
-      "type":"list",
-      "member":{"shape":"Event"}
+    "EventTypeCategoryList": {
+      "max": 10,
+      "member": {
+        "shape": "eventTypeCategory"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "EventType":{
-      "type":"structure",
-      "members":{
-        "service":{
-          "shape":"service",
-          "documentation":"<p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>"
+    "EventTypeCodeList": {
+      "max": 10,
+      "member": {
+        "shape": "eventTypeCode"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "EventTypeFilter": {
+      "documentation": "<p>The values to use to filter results from the <a>DescribeEventTypes</a> operation.</p>",
+      "members": {
+        "eventTypeCategories": {
+          "documentation": "<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>",
+          "shape": "EventTypeCategoryList"
         },
-        "code":{
-          "shape":"eventTypeCode",
-          "documentation":"<p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>"
+        "eventTypeCodes": {
+          "documentation": "<p>A list of event type codes.</p>",
+          "shape": "EventTypeCodeList"
         },
-        "category":{
-          "shape":"eventTypeCategory",
-          "documentation":"<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>"
+        "services": {
+          "documentation": "<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>",
+          "shape": "serviceList"
         }
       },
-      "documentation":"<p>Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, <code>issue</code>), the service (for example, <code>EC2</code>), and the event type code (for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>"
+      "type": "structure"
     },
-    "EventTypeCategoryList":{
-      "type":"list",
-      "member":{"shape":"eventTypeCategory"},
-      "max":10,
-      "min":1
+    "EventTypeList": {
+      "member": {
+        "shape": "EventType"
+      },
+      "type": "list"
     },
-    "EventTypeCodeList":{
-      "type":"list",
-      "member":{"shape":"eventTypeCode"},
-      "max":10,
-      "min":1
-    },
-    "EventTypeFilter":{
-      "type":"structure",
-      "members":{
-        "eventTypeCodes":{
-          "shape":"EventTypeCodeList",
-          "documentation":"<p>A list of event type codes.</p>"
-        },
-        "services":{
-          "shape":"serviceList",
-          "documentation":"<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>"
-        },
-        "eventTypeCategories":{
-          "shape":"EventTypeCategoryList",
-          "documentation":"<p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>"
+    "InvalidPaginationToken": {
+      "documentation": "<p>The specified pagination token (<code>nextToken</code>) is not valid.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "string"
         }
       },
-      "documentation":"<p>The values to use to filter results from the <a>DescribeEventTypes</a> operation.</p>"
+      "type": "structure"
     },
-    "EventTypeList":{
-      "type":"list",
-      "member":{"shape":"EventType"}
-    },
-    "InvalidPaginationToken":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"string"}
-      },
-      "documentation":"<p>The specified pagination token (<code>nextToken</code>) is not valid.</p>",
-      "exception":true
-    },
-    "OrganizationAffectedEntitiesErrorItem":{
-      "type":"structure",
-      "members":{
-        "awsAccountId":{
-          "shape":"accountId",
-          "documentation":"<p>The 12-digit AWS account numbers that contains the affected entities.</p>"
+    "OrganizationAffectedEntitiesErrorItem": {
+      "documentation": "<p>Error information returned when a <a>DescribeAffectedEntitiesForOrganization</a> operation cannot find or process a specific entity.</p>",
+      "members": {
+        "awsAccountId": {
+          "documentation": "<p>The 12-digit AWS account numbers that contains the affected entities.</p>",
+          "shape": "accountId"
         },
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+        "errorMessage": {
+          "documentation": "<p>The unique identifier for the event type. The format is <code>AWS_SERVICE_DESCRIPTION</code>. For example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>",
+          "shape": "string"
         },
-        "errorName":{
-          "shape":"string",
-          "documentation":"<p>The name of the error.</p>"
+        "errorName": {
+          "documentation": "<p>The name of the error.</p>",
+          "shape": "string"
         },
-        "errorMessage":{
-          "shape":"string",
-          "documentation":"<p>The unique identifier for the event type. The format is <code>AWS_SERVICE_DESCRIPTION</code>. For example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>"
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         }
       },
-      "documentation":"<p>Error information returned when a <a>DescribeAffectedEntitiesForOrganization</a> operation cannot find or process a specific entity.</p>"
+      "type": "structure"
     },
-    "OrganizationEntityFiltersList":{
-      "type":"list",
-      "member":{"shape":"EventAccountFilter"},
-      "max":10,
-      "min":1
+    "OrganizationEntityFiltersList": {
+      "max": 10,
+      "member": {
+        "shape": "EventAccountFilter"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "OrganizationEvent":{
-      "type":"structure",
-      "members":{
-        "arn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+    "OrganizationEvent": {
+      "documentation": "<p>Summary information about an event, returned by the <a>DescribeEventsForOrganization</a> operation.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         },
-        "service":{
-          "shape":"service",
-          "documentation":"<p>The AWS service that is affected by the event. For example, EC2, RDS.</p>"
+        "endTime": {
+          "documentation": "<p>The date and time that the event ended.</p>",
+          "shape": "timestamp"
         },
-        "eventTypeCode":{
-          "shape":"eventTypeCode",
-          "documentation":"<p>The unique identifier for the event type. The format is <code>AWS_SERVICE_DESCRIPTION</code>. For example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>"
+        "eventTypeCategory": {
+          "documentation": "<p>The category of the event type.</p>",
+          "shape": "eventTypeCategory"
         },
-        "eventTypeCategory":{
-          "shape":"eventTypeCategory",
-          "documentation":"<p>The category of the event type.</p>"
+        "eventTypeCode": {
+          "documentation": "<p>The unique identifier for the event type. The format is <code>AWS_SERVICE_DESCRIPTION</code>. For example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>",
+          "shape": "eventTypeCode"
         },
-        "region":{
-          "shape":"region",
-          "documentation":"<p>The AWS Region name of the event.</p>"
+        "lastUpdatedTime": {
+          "documentation": "<p>The most recent date and time that the event was updated.</p>",
+          "shape": "timestamp"
         },
-        "startTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The date and time that the event began.</p>"
+        "region": {
+          "documentation": "<p>The AWS Region name of the event.</p>",
+          "shape": "region"
         },
-        "endTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The date and time that the event ended.</p>"
+        "service": {
+          "documentation": "<p>The AWS service that is affected by the event. For example, EC2, RDS.</p>",
+          "shape": "service"
         },
-        "lastUpdatedTime":{
-          "shape":"timestamp",
-          "documentation":"<p>The most recent date and time that the event was updated.</p>"
+        "startTime": {
+          "documentation": "<p>The date and time that the event began.</p>",
+          "shape": "timestamp"
         },
-        "statusCode":{
-          "shape":"eventStatusCode",
-          "documentation":"<p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>"
+        "statusCode": {
+          "documentation": "<p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>",
+          "shape": "eventStatusCode"
         }
       },
-      "documentation":"<p>Summary information about an event, returned by the <a>DescribeEventsForOrganization</a> operation.</p>"
+      "type": "structure"
     },
-    "OrganizationEventDetailFiltersList":{
-      "type":"list",
-      "member":{"shape":"EventAccountFilter"},
-      "max":10,
-      "min":1
+    "OrganizationEventDetailFiltersList": {
+      "max": 10,
+      "member": {
+        "shape": "EventAccountFilter"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "OrganizationEventDetails":{
-      "type":"structure",
-      "members":{
-        "awsAccountId":{
-          "shape":"accountId",
-          "documentation":"<p>The 12-digit AWS account numbers that contains the affected entities.</p>"
+    "OrganizationEventDetails": {
+      "documentation": "<p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetailsForOrganization</a> operation.</p>",
+      "members": {
+        "awsAccountId": {
+          "documentation": "<p>The 12-digit AWS account numbers that contains the affected entities.</p>",
+          "shape": "accountId"
         },
-        "event":{"shape":"Event"},
-        "eventDescription":{"shape":"EventDescription"},
-        "eventMetadata":{
-          "shape":"eventMetadata",
-          "documentation":"<p>Additional metadata about the event.</p>"
+        "event": {
+          "shape": "Event"
+        },
+        "eventDescription": {
+          "shape": "EventDescription"
+        },
+        "eventMetadata": {
+          "documentation": "<p>Additional metadata about the event.</p>",
+          "shape": "eventMetadata"
         }
       },
-      "documentation":"<p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetailsForOrganization</a> operation.</p>"
+      "type": "structure"
     },
-    "OrganizationEventDetailsErrorItem":{
-      "type":"structure",
-      "members":{
-        "awsAccountId":{
-          "shape":"accountId",
-          "documentation":"<p>Error information returned when a <a>DescribeEventDetailsForOrganization</a> operation cannot find a specified event.</p>"
+    "OrganizationEventDetailsErrorItem": {
+      "documentation": "<p>Error information returned when a <a>DescribeEventDetailsForOrganization</a> operation cannot find a specified event.</p>",
+      "members": {
+        "awsAccountId": {
+          "documentation": "<p>Error information returned when a <a>DescribeEventDetailsForOrganization</a> operation cannot find a specified event.</p>",
+          "shape": "accountId"
         },
-        "eventArn":{
-          "shape":"eventArn",
-          "documentation":"<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>"
+        "errorMessage": {
+          "documentation": "<p>A message that describes the error.</p>",
+          "shape": "string"
         },
-        "errorName":{
-          "shape":"string",
-          "documentation":"<p>The name of the error.</p>"
+        "errorName": {
+          "documentation": "<p>The name of the error.</p>",
+          "shape": "string"
         },
-        "errorMessage":{
-          "shape":"string",
-          "documentation":"<p>A message that describes the error.</p>"
+        "eventArn": {
+          "documentation": "<p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code> </p>",
+          "shape": "eventArn"
         }
       },
-      "documentation":"<p>Error information returned when a <a>DescribeEventDetailsForOrganization</a> operation cannot find a specified event.</p>"
+      "type": "structure"
     },
-    "OrganizationEventFilter":{
-      "type":"structure",
-      "members":{
-        "eventTypeCodes":{
-          "shape":"eventTypeList",
-          "documentation":"<p>A list of unique identifiers for event types. For example, <code>\"AWS_EC2_SYSTEM_MAINTENANCE_EVENT\",\"AWS_RDS_MAINTENANCE_SCHEDULED\".</code> </p>"
+    "OrganizationEventFilter": {
+      "documentation": "<p>The values to filter results from the <a>DescribeEventsForOrganization</a> operation.</p>",
+      "members": {
+        "awsAccountIds": {
+          "documentation": "<p>A list of 12-digit AWS account numbers that contains the affected entities.</p>",
+          "shape": "awsAccountIdsList"
         },
-        "awsAccountIds":{
-          "shape":"awsAccountIdsList",
-          "documentation":"<p>A list of 12-digit AWS account numbers that contains the affected entities.</p>"
+        "endTime": {
+          "shape": "DateTimeRange"
         },
-        "services":{
-          "shape":"serviceList",
-          "documentation":"<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>"
+        "entityArns": {
+          "documentation": "<p>REPLACEME</p>",
+          "shape": "entityArnList"
         },
-        "regions":{
-          "shape":"regionList",
-          "documentation":"<p>A list of AWS Regions.</p>"
+        "entityValues": {
+          "documentation": "<p>A list of entity identifiers, such as EC2 instance IDs (i-34ab692e) or EBS volumes (vol-426ab23e).</p>",
+          "shape": "entityValueList"
         },
-        "startTime":{"shape":"DateTimeRange"},
-        "endTime":{"shape":"DateTimeRange"},
-        "lastUpdatedTime":{"shape":"DateTimeRange"},
-        "entityArns":{
-          "shape":"entityArnList",
-          "documentation":"<p>REPLACEME</p>"
+        "eventStatusCodes": {
+          "documentation": "<p>A list of event status codes.</p>",
+          "shape": "eventStatusCodeList"
         },
-        "entityValues":{
-          "shape":"entityValueList",
-          "documentation":"<p>A list of entity identifiers, such as EC2 instance IDs (i-34ab692e) or EBS volumes (vol-426ab23e).</p>"
+        "eventTypeCategories": {
+          "documentation": "<p>REPLACEME</p>",
+          "shape": "eventTypeCategoryList"
         },
-        "eventTypeCategories":{
-          "shape":"eventTypeCategoryList",
-          "documentation":"<p>REPLACEME</p>"
+        "eventTypeCodes": {
+          "documentation": "<p>A list of unique identifiers for event types. For example, <code>\"AWS_EC2_SYSTEM_MAINTENANCE_EVENT\",\"AWS_RDS_MAINTENANCE_SCHEDULED\".</code> </p>",
+          "shape": "eventTypeList"
         },
-        "eventStatusCodes":{
-          "shape":"eventStatusCodeList",
-          "documentation":"<p>A list of event status codes.</p>"
+        "lastUpdatedTime": {
+          "shape": "DateTimeRange"
+        },
+        "regions": {
+          "documentation": "<p>A list of AWS Regions.</p>",
+          "shape": "regionList"
+        },
+        "services": {
+          "documentation": "<p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>",
+          "shape": "serviceList"
+        },
+        "startTime": {
+          "shape": "DateTimeRange"
         }
       },
-      "documentation":"<p>The values to filter results from the <a>DescribeEventsForOrganization</a> operation.</p>"
+      "type": "structure"
     },
-    "OrganizationEventList":{
-      "type":"list",
-      "member":{"shape":"OrganizationEvent"}
-    },
-    "UnsupportedLocale":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"string"}
+    "OrganizationEventList": {
+      "member": {
+        "shape": "OrganizationEvent"
       },
-      "documentation":"<p>The specified locale is not supported.</p>",
-      "exception":true
+      "type": "list"
     },
-    "accountId":{
-      "type":"string",
-      "max":12,
-      "pattern":"^\\S+$"
+    "UnsupportedLocale": {
+      "documentation": "<p>The specified locale is not supported.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "string"
+        }
+      },
+      "type": "structure"
     },
-    "affectedAccountsList":{
-      "type":"list",
-      "member":{"shape":"accountId"}
+    "accountId": {
+      "max": 12,
+      "pattern": "^\\S+$",
+      "type": "string"
     },
-    "aggregateValue":{"type":"string"},
-    "availabilityZone":{
-      "type":"string",
-      "max":18,
-      "min":6,
-      "pattern":"[a-z]{2}\\-[0-9a-z\\-]{4,16}"
+    "affectedAccountsList": {
+      "member": {
+        "shape": "accountId"
+      },
+      "type": "list"
     },
-    "availabilityZones":{
-      "type":"list",
-      "member":{"shape":"availabilityZone"}
+    "aggregateValue": {
+      "type": "string"
     },
-    "awsAccountIdsList":{
-      "type":"list",
-      "member":{"shape":"accountId"},
-      "max":50,
-      "min":1
+    "availabilityZone": {
+      "max": 18,
+      "min": 6,
+      "pattern": "[a-z]{2}\\-[0-9a-z\\-]{4,16}",
+      "type": "string"
     },
-    "count":{"type":"integer"},
-    "dateTimeRangeList":{
-      "type":"list",
-      "member":{"shape":"DateTimeRange"},
-      "max":10,
-      "min":1
+    "availabilityZones": {
+      "member": {
+        "shape": "availabilityZone"
+      },
+      "type": "list"
     },
-    "entityArn":{
-      "type":"string",
-      "max":1600,
-      "pattern":".{0,1600}"
+    "awsAccountIdsList": {
+      "max": 50,
+      "member": {
+        "shape": "accountId"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "entityArnList":{
-      "type":"list",
-      "member":{"shape":"entityArn"},
-      "max":100,
-      "min":1
+    "count": {
+      "type": "integer"
     },
-    "entityStatusCode":{
-      "type":"string",
-      "enum":[
+    "dateTimeRangeList": {
+      "max": 10,
+      "member": {
+        "shape": "DateTimeRange"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "entityArn": {
+      "max": 1600,
+      "pattern": ".{0,1600}",
+      "type": "string"
+    },
+    "entityArnList": {
+      "max": 100,
+      "member": {
+        "shape": "entityArn"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "entityStatusCode": {
+      "enum": [
         "IMPAIRED",
         "UNIMPAIRED",
         "UNKNOWN"
-      ]
+      ],
+      "type": "string"
     },
-    "entityStatusCodeList":{
-      "type":"list",
-      "member":{"shape":"entityStatusCode"},
-      "max":3,
-      "min":1
+    "entityStatusCodeList": {
+      "max": 3,
+      "member": {
+        "shape": "entityStatusCode"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "entityUrl":{"type":"string"},
-    "entityValue":{
-      "type":"string",
-      "max":256,
-      "pattern":".{0,256}"
+    "entityUrl": {
+      "type": "string"
     },
-    "entityValueList":{
-      "type":"list",
-      "member":{"shape":"entityValue"},
-      "max":100,
-      "min":1
+    "entityValue": {
+      "max": 256,
+      "pattern": ".{0,256}",
+      "type": "string"
     },
-    "eventAggregateField":{
-      "type":"string",
-      "enum":["eventTypeCategory"]
+    "entityValueList": {
+      "max": 100,
+      "member": {
+        "shape": "entityValue"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "eventArn":{
-      "type":"string",
-      "max":1600,
-      "pattern":"arn:aws(-[a-z]+(-[a-z]+)?)?:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"
+    "eventAggregateField": {
+      "enum": [
+        "eventTypeCategory"
+      ],
+      "type": "string"
     },
-    "eventArnList":{
-      "type":"list",
-      "member":{"shape":"eventArn"},
-      "max":10,
-      "min":1
+    "eventArn": {
+      "max": 1600,
+      "pattern": "arn:aws(-[a-z]+(-[a-z]+)?)?:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}",
+      "type": "string"
     },
-    "eventDescription":{"type":"string"},
-    "eventMetadata":{
-      "type":"map",
-      "key":{"shape":"metadataKey"},
-      "value":{"shape":"metadataValue"}
+    "eventArnList": {
+      "max": 10,
+      "member": {
+        "shape": "eventArn"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "eventStatusCode":{
-      "type":"string",
-      "enum":[
+    "eventDescription": {
+      "type": "string"
+    },
+    "eventMetadata": {
+      "key": {
+        "shape": "metadataKey"
+      },
+      "type": "map",
+      "value": {
+        "shape": "metadataValue"
+      }
+    },
+    "eventStatusCode": {
+      "enum": [
         "open",
         "closed",
         "upcoming"
-      ]
+      ],
+      "type": "string"
     },
-    "eventStatusCodeList":{
-      "type":"list",
-      "member":{"shape":"eventStatusCode"},
-      "max":6,
-      "min":1
+    "eventStatusCodeList": {
+      "max": 6,
+      "member": {
+        "shape": "eventStatusCode"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "eventType":{
-      "type":"string",
-      "max":100,
-      "min":3,
-      "pattern":"[^:/]{3,100}"
+    "eventType": {
+      "max": 100,
+      "min": 3,
+      "pattern": "[^:/]{3,100}",
+      "type": "string"
     },
-    "eventTypeCategory":{
-      "type":"string",
-      "enum":[
+    "eventTypeCategory": {
+      "enum": [
         "issue",
         "accountNotification",
         "scheduledChange",
         "investigation"
       ],
-      "max":255,
-      "min":3
+      "max": 255,
+      "min": 3,
+      "type": "string"
     },
-    "eventTypeCategoryList":{
-      "type":"list",
-      "member":{"shape":"eventTypeCategory"},
-      "max":10,
-      "min":1
+    "eventTypeCategoryList": {
+      "max": 10,
+      "member": {
+        "shape": "eventTypeCategory"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "eventTypeCode":{
-      "type":"string",
-      "max":100,
-      "min":3,
-      "pattern":"[a-zA-Z0-9\\_\\-]{3,100}"
+    "eventTypeCode": {
+      "max": 100,
+      "min": 3,
+      "pattern": "[a-zA-Z0-9\\_\\-]{3,100}",
+      "type": "string"
     },
-    "eventTypeList":{
-      "type":"list",
-      "member":{"shape":"eventType"},
-      "max":10,
-      "min":1
+    "eventTypeList": {
+      "max": 10,
+      "member": {
+        "shape": "eventType"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "healthServiceAccessStatusForOrganization":{"type":"string"},
-    "locale":{
-      "type":"string",
-      "max":256,
-      "min":2,
-      "pattern":".{2,256}"
+    "healthServiceAccessStatusForOrganization": {
+      "type": "string"
     },
-    "maxResults":{
-      "type":"integer",
-      "max":100,
-      "min":10
+    "locale": {
+      "max": 256,
+      "min": 2,
+      "pattern": ".{2,256}",
+      "type": "string"
     },
-    "metadataKey":{"type":"string"},
-    "metadataValue":{
-      "type":"string",
-      "max":10240
+    "maxResults": {
+      "max": 100,
+      "min": 10,
+      "type": "integer"
     },
-    "nextToken":{
-      "type":"string",
-      "max":10000,
-      "min":4,
-      "pattern":"[a-zA-Z0-9=/+_.-]{4,10000}"
+    "metadataKey": {
+      "type": "string"
     },
-    "region":{
-      "type":"string",
-      "max":25,
-      "min":2,
-      "pattern":"[^:/]{2,25}"
+    "metadataValue": {
+      "max": 10240,
+      "type": "string"
     },
-    "regionList":{
-      "type":"list",
-      "member":{"shape":"region"},
-      "max":10,
-      "min":1
+    "nextToken": {
+      "max": 10000,
+      "min": 4,
+      "pattern": "[a-zA-Z0-9=/+_.-]{4,10000}",
+      "type": "string"
     },
-    "service":{
-      "type":"string",
-      "max":30,
-      "min":2,
-      "pattern":"[^:/]{2,30}"
+    "region": {
+      "max": 25,
+      "min": 2,
+      "pattern": "[^:/]{2,25}",
+      "type": "string"
     },
-    "serviceList":{
-      "type":"list",
-      "member":{"shape":"service"},
-      "max":10,
-      "min":1
+    "regionList": {
+      "max": 10,
+      "member": {
+        "shape": "region"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "string":{"type":"string"},
-    "tagFilter":{
-      "type":"list",
-      "member":{"shape":"tagSet"},
-      "max":50
+    "service": {
+      "max": 30,
+      "min": 2,
+      "pattern": "[^:/]{2,30}",
+      "type": "string"
     },
-    "tagKey":{
-      "type":"string",
-      "max":127,
-      "pattern":".{0,127}"
+    "serviceList": {
+      "max": 10,
+      "member": {
+        "shape": "service"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "tagSet":{
-      "type":"map",
-      "key":{"shape":"tagKey"},
-      "value":{"shape":"tagValue"},
-      "max":50
+    "string": {
+      "type": "string"
     },
-    "tagValue":{
-      "type":"string",
-      "max":255,
-      "pattern":".{0,255}"
+    "tagFilter": {
+      "max": 50,
+      "member": {
+        "shape": "tagSet"
+      },
+      "type": "list"
     },
-    "timestamp":{"type":"timestamp"}
+    "tagKey": {
+      "max": 127,
+      "pattern": ".{0,127}",
+      "type": "string"
+    },
+    "tagSet": {
+      "key": {
+        "shape": "tagKey"
+      },
+      "max": 50,
+      "type": "map",
+      "value": {
+        "shape": "tagValue"
+      }
+    },
+    "tagValue": {
+      "max": 255,
+      "pattern": ".{0,255}",
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "timestamp"
+    }
   },
-  "documentation":"<fullname>AWS Health</fullname> <p>The AWS Health API provides programmatic access to the AWS Health information that is presented in the <a href=\"https://phd.aws.amazon.com/phd/home#/\">AWS Personal Health Dashboard</a>. You can get information about events that affect your AWS resources:</p> <ul> <li> <p> <a>DescribeEvents</a>: Summary information about events.</p> </li> <li> <p> <a>DescribeEventDetails</a>: Detailed information about one or more events.</p> </li> <li> <p> <a>DescribeAffectedEntities</a>: Information about AWS resources that are affected by one or more events.</p> </li> </ul> <p>In addition, these operations provide information about event types and summary counts of events or affected entities:</p> <ul> <li> <p> <a>DescribeEventTypes</a>: Information about the kinds of events that AWS Health tracks.</p> </li> <li> <p> <a>DescribeEventAggregates</a>: A count of the number of events that meet specified criteria.</p> </li> <li> <p> <a>DescribeEntityAggregates</a>: A count of the number of affected entities that meet specified criteria.</p> </li> </ul> <p>AWS Health integrates with AWS Organizations to provide a centralized view of AWS Health events across all accounts in your organization.</p> <ul> <li> <p> <a>DescribeEventsForOrganization</a>: Summary information about events across the organization.</p> </li> <li> <p> <a>DescribeAffectedAccountsForOrganization</a>: List of accounts in your organization impacted by an event.</p> </li> <li> <p> <a>DescribeEventDetailsForOrganization</a>: Detailed information about events in your organization.</p> </li> <li> <p> <a>DescribeAffectedEntitiesForOrganization</a>: Information about AWS resources in your organization that are affected by events.</p> </li> </ul> <p>You can use the following operations to enable or disable AWS Health from working with AWS Organizations.</p> <ul> <li> <p> <a>EnableHealthServiceAccessForOrganization</a>: Enables AWS Health to work with AWS Organizations.</p> </li> <li> <p> <a>DisableHealthServiceAccessForOrganization</a>: Disables AWS Health from working with AWS Organizations.</p> </li> <li> <p> <a>DescribeHealthServiceStatusForOrganization</a>: Status information about enabling or disabling AWS Health from working with AWS Organizations.</p> </li> </ul> <p>The Health API requires a Business or Enterprise support plan from <a href=\"http://aws.amazon.com/premiumsupport/\">AWS Support</a>. Calling the Health API from an account that does not have a Business or Enterprise support plan causes a <code>SubscriptionRequiredException</code>.</p> <p>For authentication of requests, AWS Health uses the <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Signature Version 4 Signing Process</a>.</p> <p>See the <a href=\"https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html\">AWS Health User Guide</a> for information about how to use the API.</p> <p> <b>Service Endpoint</b> </p> <p>The HTTP endpoint for the AWS Health API is:</p> <ul> <li> <p>https://health.us-east-1.amazonaws.com </p> </li> </ul>"
+  "version": "2.0"
 }

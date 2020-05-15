@@ -1,28 +1,32 @@
 {
   "version": 2,
   "waiters": {
-    "StackExists": {
-      "delay": 5,
-      "operation": "DescribeStacks",
-      "maxAttempts": 20,
+    "ChangeSetCreateComplete": {
       "acceptors": [
         {
-          "matcher": "status",
-          "expected": 200,
+          "argument": "Status",
+          "expected": "CREATE_COMPLETE",
+          "matcher": "path",
           "state": "success"
         },
         {
-          "matcher": "error",
+          "argument": "Status",
+          "expected": "FAILED",
+          "matcher": "path",
+          "state": "failure"
+        },
+        {
           "expected": "ValidationError",
-          "state": "retry"
+          "matcher": "error",
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "description": "Wait until change set status is CREATE_COMPLETE.",
+      "maxAttempts": 120,
+      "operation": "DescribeChangeSet"
     },
     "StackCreateComplete": {
-      "delay": 30,
-      "operation": "DescribeStacks",
-      "maxAttempts": 120,
-      "description": "Wait until stack status is CREATE_COMPLETE.",
       "acceptors": [
         {
           "argument": "Stacks[].StackStatus",
@@ -65,13 +69,13 @@
           "matcher": "error",
           "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "description": "Wait until stack status is CREATE_COMPLETE.",
+      "maxAttempts": 120,
+      "operation": "DescribeStacks"
     },
     "StackDeleteComplete": {
-      "delay": 30,
-      "operation": "DescribeStacks",
-      "maxAttempts": 120,
-      "description": "Wait until stack status is DELETE_COMPLETE.",
       "acceptors": [
         {
           "argument": "Stacks[].StackStatus",
@@ -120,50 +124,30 @@
           "matcher": "pathAny",
           "state": "failure"
         }
-      ]
-    },
-    "StackUpdateComplete": {
+      ],
       "delay": 30,
+      "description": "Wait until stack status is DELETE_COMPLETE.",
       "maxAttempts": 120,
-      "operation": "DescribeStacks",
-      "description": "Wait until stack status is UPDATE_COMPLETE.",
+      "operation": "DescribeStacks"
+    },
+    "StackExists": {
       "acceptors": [
         {
-          "argument": "Stacks[].StackStatus",
-          "expected": "UPDATE_COMPLETE",
-          "matcher": "pathAll",
+          "expected": 200,
+          "matcher": "status",
           "state": "success"
-        },
-        {
-          "expected": "UPDATE_FAILED",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Stacks[].StackStatus"
-        },
-        {
-          "argument": "Stacks[].StackStatus",
-          "expected": "UPDATE_ROLLBACK_FAILED",
-          "matcher": "pathAny",
-          "state": "failure"
-        },
-        {
-          "expected": "UPDATE_ROLLBACK_COMPLETE",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Stacks[].StackStatus"
         },
         {
           "expected": "ValidationError",
           "matcher": "error",
-          "state": "failure"
+          "state": "retry"
         }
-      ]
+      ],
+      "delay": 5,
+      "maxAttempts": 20,
+      "operation": "DescribeStacks"
     },
     "StackImportComplete": {
-      "delay": 30,
-      "maxAttempts": 120,
-      "operation": "DescribeStacks",
-      "description": "Wait until stack status is IMPORT_COMPLETE.",
       "acceptors": [
         {
           "argument": "Stacks[].StackStatus",
@@ -172,16 +156,16 @@
           "state": "success"
         },
         {
+          "argument": "Stacks[].StackStatus",
           "expected": "ROLLBACK_COMPLETE",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Stacks[].StackStatus"
+          "state": "failure"
         },
         {
+          "argument": "Stacks[].StackStatus",
           "expected": "ROLLBACK_FAILED",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Stacks[].StackStatus"
+          "state": "failure"
         },
         {
           "argument": "Stacks[].StackStatus",
@@ -196,34 +180,46 @@
           "state": "failure"
         },
         {
+          "argument": "Stacks[].StackStatus",
           "expected": "IMPORT_ROLLBACK_COMPLETE",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Stacks[].StackStatus"
+          "state": "failure"
         },
         {
           "expected": "ValidationError",
           "matcher": "error",
           "state": "failure"
         }
-      ]
-    },
-    "ChangeSetCreateComplete": {
+      ],
       "delay": 30,
-      "operation": "DescribeChangeSet",
+      "description": "Wait until stack status is IMPORT_COMPLETE.",
       "maxAttempts": 120,
-      "description": "Wait until change set status is CREATE_COMPLETE.",
+      "operation": "DescribeStacks"
+    },
+    "StackUpdateComplete": {
       "acceptors": [
         {
-          "argument": "Status",
-          "expected": "CREATE_COMPLETE",
-          "matcher": "path",
+          "argument": "Stacks[].StackStatus",
+          "expected": "UPDATE_COMPLETE",
+          "matcher": "pathAll",
           "state": "success"
         },
         {
-          "argument": "Status",
-          "expected": "FAILED",
-          "matcher": "path",
+          "argument": "Stacks[].StackStatus",
+          "expected": "UPDATE_FAILED",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Stacks[].StackStatus",
+          "expected": "UPDATE_ROLLBACK_FAILED",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Stacks[].StackStatus",
+          "expected": "UPDATE_ROLLBACK_COMPLETE",
+          "matcher": "pathAny",
           "state": "failure"
         },
         {
@@ -231,13 +227,13 @@
           "matcher": "error",
           "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "description": "Wait until stack status is UPDATE_COMPLETE.",
+      "maxAttempts": 120,
+      "operation": "DescribeStacks"
     },
     "TypeRegistrationComplete": {
-      "delay": 30,
-      "operation": "DescribeTypeRegistration",
-      "maxAttempts": 120,
-      "description": "Wait until type registration is COMPLETE.",
       "acceptors": [
         {
           "argument": "ProgressStatus",
@@ -251,7 +247,11 @@
           "matcher": "path",
           "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "description": "Wait until type registration is COMPLETE.",
+      "maxAttempts": 120,
+      "operation": "DescribeTypeRegistration"
     }
   }
 }

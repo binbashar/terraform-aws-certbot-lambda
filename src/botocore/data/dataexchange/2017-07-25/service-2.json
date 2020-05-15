@@ -1,18 +1,59 @@
 {
+  "authorizers": {
+    "create_job_authorizer": {
+      "name": "create_job_authorizer",
+      "placement": {
+        "location": "header",
+        "name": "Authorization"
+      },
+      "type": "provided"
+    },
+    "start_cancel_get_job_authorizer": {
+      "name": "start_cancel_get_job_authorizer",
+      "placement": {
+        "location": "header",
+        "name": "Authorization"
+      },
+      "type": "provided"
+    }
+  },
+  "documentation": "<p>AWS Data Exchange is a service that makes it easy for AWS customers to exchange data in the cloud. You can use the AWS Data Exchange APIs to create, update, manage, and access file-based data set in the AWS Cloud.</p><p>As a subscriber, you can view and access the data sets that you have an entitlement to through a subscription. You can use the APIS to download or copy your entitled data sets to Amazon S3 for use across a variety of AWS analytics and machine learning services.</p><p>As a provider, you can create and manage your data sets that you would like to publish to a product. Being able to package and provide your data sets into products requires a few steps to determine eligibility. For more information, visit the AWS Data Exchange User Guide.</p><p>A data set is a collection of data that can be changed or updated over time. Data sets can be updated using revisions, which represent a new version or incremental change to a data set.  A revision contains one or more assets. An asset in AWS Data Exchange is a piece of data that can be stored as an Amazon S3 object. The asset can be a structured data file, an image file, or some other data file. Jobs are asynchronous import or export operations used to create or copy assets.</p>",
   "metadata": {
     "apiVersion": "2017-07-25",
     "endpointPrefix": "dataexchange",
-    "signingName": "dataexchange",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
     "serviceFullName": "AWS Data Exchange",
     "serviceId": "DataExchange",
-    "protocol": "rest-json",
-    "jsonVersion": "1.1",
-    "uid": "dataexchange-2017-07-25",
-    "signatureVersion": "v4"
+    "signatureVersion": "v4",
+    "signingName": "dataexchange",
+    "uid": "dataexchange-2017-07-25"
   },
   "operations": {
     "CancelJob": {
-      "name": "CancelJob",
+      "documentation": "<p>This operation cancels a job. Jobs can be cancelled only when they are in the WAITING state.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/jobs/{JobId}",
@@ -21,32 +62,32 @@
       "input": {
         "shape": "CancelJobRequest"
       },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation cancels a job. Jobs can be cancelled only when they are in the WAITING state.</p>"
+      "name": "CancelJob"
     },
     "CreateDataSet": {
-      "name": "CreateDataSet",
+      "documentation": "<p>This operation creates a data set.</p>",
+      "errors": [
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>402 response</p>",
+          "shape": "ServiceLimitExceededException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/data-sets",
@@ -55,36 +96,36 @@
       "input": {
         "shape": "CreateDataSetRequest"
       },
+      "name": "CreateDataSet",
       "output": {
-        "shape": "CreateDataSetResponse",
-        "documentation": "<p>201 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "ServiceLimitExceededException",
-          "documentation": "<p>402 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation creates a data set.</p>"
+        "documentation": "<p>201 response</p>",
+        "shape": "CreateDataSetResponse"
+      }
     },
     "CreateJob": {
-      "name": "CreateJob",
+      "documentation": "<p>This operation creates a job.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/jobs",
@@ -93,36 +134,36 @@
       "input": {
         "shape": "CreateJobRequest"
       },
+      "name": "CreateJob",
       "output": {
-        "shape": "CreateJobResponse",
-        "documentation": "<p>201 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation creates a job.</p>"
+        "documentation": "<p>201 response</p>",
+        "shape": "CreateJobResponse"
+      }
     },
     "CreateRevision": {
-      "name": "CreateRevision",
+      "documentation": "<p>This operation creates a revision for a data set.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions",
@@ -131,36 +172,40 @@
       "input": {
         "shape": "CreateRevisionRequest"
       },
+      "name": "CreateRevision",
       "output": {
-        "shape": "CreateRevisionResponse",
-        "documentation": "<p>201 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation creates a revision for a data set.</p>"
+        "documentation": "<p>201 response</p>",
+        "shape": "CreateRevisionResponse"
+      }
     },
     "DeleteAsset": {
-      "name": "DeleteAsset",
+      "documentation": "<p>This operation deletes an asset.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets/{AssetId}",
@@ -169,36 +214,36 @@
       "input": {
         "shape": "DeleteAssetRequest"
       },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation deletes an asset.</p>"
+      "name": "DeleteAsset"
     },
     "DeleteDataSet": {
-      "name": "DeleteDataSet",
+      "documentation": "<p>This operation deletes a data set.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/data-sets/{DataSetId}",
@@ -207,36 +252,36 @@
       "input": {
         "shape": "DeleteDataSetRequest"
       },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation deletes a data set.</p>"
+      "name": "DeleteDataSet"
     },
     "DeleteRevision": {
-      "name": "DeleteRevision",
+      "documentation": "<p>This operation deletes a revision.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}",
@@ -245,36 +290,28 @@
       "input": {
         "shape": "DeleteRevisionRequest"
       },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation deletes a revision.</p>"
+      "name": "DeleteRevision"
     },
     "GetAsset": {
-      "name": "GetAsset",
+      "documentation": "<p>This operation returns information about an asset.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets/{AssetId}",
@@ -283,32 +320,32 @@
       "input": {
         "shape": "GetAssetRequest"
       },
+      "name": "GetAsset",
       "output": {
-        "shape": "GetAssetResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation returns information about an asset.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "GetAssetResponse"
+      }
     },
     "GetDataSet": {
-      "name": "GetDataSet",
+      "documentation": "<p>This operation returns information about a data set.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets/{DataSetId}",
@@ -317,32 +354,32 @@
       "input": {
         "shape": "GetDataSetRequest"
       },
+      "name": "GetDataSet",
       "output": {
-        "shape": "GetDataSetResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation returns information about a data set.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "GetDataSetResponse"
+      }
     },
     "GetJob": {
-      "name": "GetJob",
+      "documentation": "<p>This operation returns information about a job.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/jobs/{JobId}",
@@ -351,32 +388,32 @@
       "input": {
         "shape": "GetJobRequest"
       },
+      "name": "GetJob",
       "output": {
-        "shape": "GetJobResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation returns information about a job.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "GetJobResponse"
+      }
     },
     "GetRevision": {
-      "name": "GetRevision",
+      "documentation": "<p>This operation returns information about a revision.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}",
@@ -385,32 +422,32 @@
       "input": {
         "shape": "GetRevisionRequest"
       },
+      "name": "GetRevision",
       "output": {
-        "shape": "GetRevisionResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation returns information about a revision.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "GetRevisionResponse"
+      }
     },
     "ListDataSetRevisions": {
-      "name": "ListDataSetRevisions",
+      "documentation": "<p>This operation lists a data set's revisions sorted by CreatedAt in descending order.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions",
@@ -419,32 +456,32 @@
       "input": {
         "shape": "ListDataSetRevisionsRequest"
       },
+      "name": "ListDataSetRevisions",
       "output": {
-        "shape": "ListDataSetRevisionsResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation lists a data set's revisions sorted by CreatedAt in descending order.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "ListDataSetRevisionsResponse"
+      }
     },
     "ListDataSets": {
-      "name": "ListDataSets",
+      "documentation": "<p>This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt in descending order. When listing by origin ENTITLED, there is no order and the maxResults parameter is ignored.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets",
@@ -453,32 +490,32 @@
       "input": {
         "shape": "ListDataSetsRequest"
       },
+      "name": "ListDataSets",
       "output": {
-        "shape": "ListDataSetsResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt in descending order. When listing by origin ENTITLED, there is no order and the maxResults parameter is ignored.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "ListDataSetsResponse"
+      }
     },
     "ListJobs": {
-      "name": "ListJobs",
+      "documentation": "<p>This operation lists your jobs sorted by CreatedAt in descending order.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/jobs",
@@ -487,32 +524,32 @@
       "input": {
         "shape": "ListJobsRequest"
       },
+      "name": "ListJobs",
       "output": {
-        "shape": "ListJobsResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation lists your jobs sorted by CreatedAt in descending order.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "ListJobsResponse"
+      }
     },
     "ListRevisionAssets": {
-      "name": "ListRevisionAssets",
+      "documentation": "<p>This operation lists a revision's assets sorted alphabetically in descending order.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets",
@@ -521,32 +558,15 @@
       "input": {
         "shape": "ListRevisionAssetsRequest"
       },
+      "name": "ListRevisionAssets",
       "output": {
-        "shape": "ListRevisionAssetsResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation lists a revision's assets sorted alphabetically in descending order.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "ListRevisionAssetsResponse"
+      }
     },
     "ListTagsForResource": {
-      "name": "ListTagsForResource",
+      "documentation": "<p>This operation lists the tags on the resource.</p>",
+      "errors": [],
       "http": {
         "method": "GET",
         "requestUri": "/tags/{resource-arn}",
@@ -555,15 +575,40 @@
       "input": {
         "shape": "ListTagsForResourceRequest"
       },
+      "name": "ListTagsForResource",
       "output": {
-        "shape": "ListTagsForResourceResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [],
-      "documentation": "<p>This operation lists the tags on the resource.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "ListTagsForResourceResponse"
+      }
     },
     "StartJob": {
-      "name": "StartJob",
+      "documentation": "<p>This operation starts a job.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "PATCH",
         "requestUri": "/v1/jobs/{JobId}",
@@ -572,40 +617,15 @@
       "input": {
         "shape": "StartJobRequest"
       },
+      "name": "StartJob",
       "output": {
-        "shape": "StartJobResponse",
-        "documentation": "<p>202 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation starts a job.</p>"
+        "documentation": "<p>202 response</p>",
+        "shape": "StartJobResponse"
+      }
     },
     "TagResource": {
-      "name": "TagResource",
+      "documentation": "<p>This operation tags a resource.</p>",
+      "errors": [],
       "http": {
         "method": "POST",
         "requestUri": "/tags/{resource-arn}",
@@ -614,11 +634,11 @@
       "input": {
         "shape": "TagResourceRequest"
       },
-      "errors": [],
-      "documentation": "<p>This operation tags a resource.</p>"
+      "name": "TagResource"
     },
     "UntagResource": {
-      "name": "UntagResource",
+      "documentation": "<p>This operation removes one or more tags from a resource.</p>",
+      "errors": [],
       "http": {
         "method": "DELETE",
         "requestUri": "/tags/{resource-arn}",
@@ -627,11 +647,36 @@
       "input": {
         "shape": "UntagResourceRequest"
       },
-      "errors": [],
-      "documentation": "<p>This operation removes one or more tags from a resource.</p>"
+      "name": "UntagResource"
     },
     "UpdateAsset": {
-      "name": "UpdateAsset",
+      "documentation": "<p>This operation updates an asset.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "PATCH",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets/{AssetId}",
@@ -640,40 +685,36 @@
       "input": {
         "shape": "UpdateAssetRequest"
       },
+      "name": "UpdateAsset",
       "output": {
-        "shape": "UpdateAssetResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation updates an asset.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "UpdateAssetResponse"
+      }
     },
     "UpdateDataSet": {
-      "name": "UpdateDataSet",
+      "documentation": "<p>This operation updates a data set.</p>",
+      "errors": [
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        }
+      ],
       "http": {
         "method": "PATCH",
         "requestUri": "/v1/data-sets/{DataSetId}",
@@ -682,36 +723,40 @@
       "input": {
         "shape": "UpdateDataSetRequest"
       },
+      "name": "UpdateDataSet",
       "output": {
-        "shape": "UpdateDataSetResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation updates a data set.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "UpdateDataSetResponse"
+      }
     },
     "UpdateRevision": {
-      "name": "UpdateRevision",
+      "documentation": "<p>This operation updates a revision.</p>",
+      "errors": [
+        {
+          "documentation": "<p>400 response</p>",
+          "shape": "ValidationException"
+        },
+        {
+          "documentation": "<p>500 response</p>",
+          "shape": "InternalServerException"
+        },
+        {
+          "documentation": "<p>403 response</p>",
+          "shape": "AccessDeniedException"
+        },
+        {
+          "documentation": "<p>404 response</p>",
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "documentation": "<p>429 response</p>",
+          "shape": "ThrottlingException"
+        },
+        {
+          "documentation": "<p>409 response</p>",
+          "shape": "ConflictException"
+        }
+      ],
       "http": {
         "method": "PATCH",
         "requestUri": "/v1/data-sets/{DataSetId}/revisions/{RevisionId}",
@@ -720,136 +765,109 @@
       "input": {
         "shape": "UpdateRevisionRequest"
       },
+      "name": "UpdateRevision",
       "output": {
-        "shape": "UpdateRevisionResponse",
-        "documentation": "<p>200 response</p>"
-      },
-      "errors": [
-        {
-          "shape": "ValidationException",
-          "documentation": "<p>400 response</p>"
-        },
-        {
-          "shape": "InternalServerException",
-          "documentation": "<p>500 response</p>"
-        },
-        {
-          "shape": "AccessDeniedException",
-          "documentation": "<p>403 response</p>"
-        },
-        {
-          "shape": "ResourceNotFoundException",
-          "documentation": "<p>404 response</p>"
-        },
-        {
-          "shape": "ThrottlingException",
-          "documentation": "<p>429 response</p>"
-        },
-        {
-          "shape": "ConflictException",
-          "documentation": "<p>409 response</p>"
-        }
-      ],
-      "documentation": "<p>This operation updates a revision.</p>"
+        "documentation": "<p>200 response</p>",
+        "shape": "UpdateRevisionResponse"
+      }
     }
   },
   "shapes": {
     "AccessDeniedException": {
-      "type": "structure",
+      "documentation": "<p>Access to the resource is denied.</p>",
+      "error": {
+        "httpStatusCode": 403
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
-          "documentation": "<p>Access to the resource is denied.</p>"
+          "documentation": "<p>Access to the resource is denied.</p>",
+          "shape": "__string"
         }
       },
-      "documentation": "<p>Access to the resource is denied.</p>",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 403
-      }
+      "type": "structure"
     },
     "Arn": {
-      "type": "string",
-      "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>"
+      "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>",
+      "type": "string"
     },
     "AssetDestinationEntry": {
-      "type": "structure",
+      "documentation": "<p>The destination for the asset.</p>",
       "members": {
         "AssetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset.</p>"
+          "documentation": "<p>The unique identifier for the asset.</p>",
+          "shape": "Id"
         },
         "Bucket": {
-          "shape": "__string",
-          "documentation": "<p>The S3 bucket that is the destination for the asset.</p>"
+          "documentation": "<p>The S3 bucket that is the destination for the asset.</p>",
+          "shape": "__string"
         },
         "Key": {
-          "shape": "__string",
-          "documentation": "<p>The name of the object in Amazon S3 for the asset.</p>"
+          "documentation": "<p>The name of the object in Amazon S3 for the asset.</p>",
+          "shape": "__string"
         }
       },
-      "documentation": "<p>The destination for the asset.</p>",
       "required": [
         "Bucket",
         "AssetId"
-      ]
+      ],
+      "type": "structure"
     },
     "AssetDetails": {
-      "type": "structure",
       "members": {
         "S3SnapshotAsset": {
           "shape": "S3SnapshotAsset"
         }
-      }
+      },
+      "type": "structure"
     },
     "AssetEntry": {
-      "type": "structure",
+      "documentation": "<p>An asset in AWS Data Exchange is a piece of data that can be stored as an S3 object. The asset can be a structured data file, an image file, or some other data file. When you create an import job for your files, you create an asset in AWS Data Exchange for each of those files.</p>",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the asset.</p>"
+          "documentation": "<p>The ARN for the asset.</p>",
+          "shape": "Arn"
         },
         "AssetDetails": {
-          "shape": "AssetDetails",
-          "documentation": "<p>Information about the asset, including its size.</p>"
+          "documentation": "<p>Information about the asset, including its size.</p>",
+          "shape": "AssetDetails"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>",
+          "shape": "Id"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset.</p>"
+          "documentation": "<p>The unique identifier for the asset.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "AssetName",
-          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>"
+          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>",
+          "shape": "AssetName"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>"
+          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation": "<p>An asset in AWS Data Exchange is a piece of data that can be stored as an S3 object. The asset can be a structured data file, an image file, or some other data file. When you create an import job for your files, you create an asset in AWS Data Exchange for each of those files.</p>",
       "required": [
         "AssetType",
         "CreatedAt",
@@ -860,53 +878,53 @@
         "UpdatedAt",
         "RevisionId",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "AssetName": {
-      "type": "string",
-      "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>"
+      "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>",
+      "type": "string"
     },
     "AssetSourceEntry": {
-      "type": "structure",
+      "documentation": "<p>The source of the assets.</p>",
       "members": {
         "Bucket": {
-          "shape": "__string",
-          "documentation": "<p>The S3 bucket that's part of the source of the asset.</p>"
+          "documentation": "<p>The S3 bucket that's part of the source of the asset.</p>",
+          "shape": "__string"
         },
         "Key": {
-          "shape": "__string",
-          "documentation": "<p>The name of the object in Amazon S3 for the asset.</p>"
+          "documentation": "<p>The name of the object in Amazon S3 for the asset.</p>",
+          "shape": "__string"
         }
       },
-      "documentation": "<p>The source of the assets.</p>",
       "required": [
         "Bucket",
         "Key"
-      ]
+      ],
+      "type": "structure"
     },
     "AssetType": {
-      "type": "string",
       "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
       "enum": [
         "S3_SNAPSHOT"
-      ]
+      ],
+      "type": "string"
     },
     "CancelJobRequest": {
-      "type": "structure",
       "members": {
         "JobId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a job.</p>",
           "location": "uri",
           "locationName": "JobId",
-          "documentation": "<p>The unique identifier for a job.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "JobId"
-      ]
+      ],
+      "type": "structure"
     },
     "Code": {
-      "type": "string",
       "enum": [
         "ACCESS_DENIED_EXCEPTION",
         "INTERNAL_SERVER_EXCEPTION",
@@ -915,273 +933,273 @@
         "SERVICE_QUOTA_EXCEEDED_EXCEPTION",
         "VALIDATION_EXCEPTION",
         "MALWARE_SCAN_ENCRYPTED_FILE"
-      ]
+      ],
+      "type": "string"
     },
     "ConflictException": {
-      "type": "structure",
+      "documentation": "<p>The request couldn't be completed because it conflicted with the current state of the resource.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
-          "documentation": "<p>The request couldn't be completed because it conflicted with the current state of the resource.</p>"
+          "documentation": "<p>The request couldn't be completed because it conflicted with the current state of the resource.</p>",
+          "shape": "__string"
         },
         "ResourceId": {
-          "shape": "__string",
-          "documentation": "<p>The unique identifier for the resource with the conflict.</p>"
+          "documentation": "<p>The unique identifier for the resource with the conflict.</p>",
+          "shape": "__string"
         },
         "ResourceType": {
-          "shape": "ResourceType",
-          "documentation": "<p>The type of the resource with the conflict.</p>"
+          "documentation": "<p>The type of the resource with the conflict.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation": "<p>The request couldn't be completed because it conflicted with the current state of the resource.</p>",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 409
-      }
+      "type": "structure"
     },
     "CreateDataSetRequest": {
-      "type": "structure",
+      "documentation": "<p>The request body for CreateDataSet.</p>",
       "members": {
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "Description": {
-          "shape": "Description",
-          "documentation": "<p>A description for the data set. This value can be up to 16,348 characters long.</p>"
+          "documentation": "<p>A description for the data set. This value can be up to 16,348 characters long.</p>",
+          "shape": "Description"
         },
         "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>A data set tag is an optional label that you can assign to a data set when you create it. Each tag consists of a key and an optional value, both of which you define. When you use tagging, you can also use tag-based access control in IAM policies to control access to these data sets and revisions.</p>"
+          "documentation": "<p>A data set tag is an optional label that you can assign to a data set when you create it. Each tag consists of a key and an optional value, both of which you define. When you use tagging, you can also use tag-based access control in IAM policies to control access to these data sets and revisions.</p>",
+          "shape": "MapOf__string"
         }
       },
-      "documentation": "<p>The request body for CreateDataSet.</p>",
       "required": [
         "AssetType",
         "Description",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "CreateDataSetResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the data set.</p>"
+          "documentation": "<p>The ARN for the data set.</p>",
+          "shape": "Arn"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Description": {
-          "shape": "Description",
-          "documentation": "<p>The description for the data set.</p>"
+          "documentation": "<p>The description for the data set.</p>",
+          "shape": "Description"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set.</p>"
+          "documentation": "<p>The unique identifier for the data set.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
         },
         "Origin": {
-          "shape": "Origin",
-          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>"
+          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>",
+          "shape": "Origin"
         },
         "OriginDetails": {
-          "shape": "OriginDetails",
-          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>"
+          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>",
+          "shape": "OriginDetails"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>"
+          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>",
+          "shape": "Id"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>The tags for the data set.</p>"
+          "documentation": "<p>The tags for the data set.</p>",
+          "shape": "MapOf__string"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>"
-        }
-      }
-    },
-    "CreateJobRequest": {
-      "type": "structure",
-      "members": {
-        "Details": {
-          "shape": "RequestDetails",
-          "documentation": "<p>The details for the CreateJob request.</p>"
-        },
-        "Type": {
-          "shape": "Type",
-          "documentation": "<p>The type of job to be created.</p>"
+          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
+      "type": "structure"
+    },
+    "CreateJobRequest": {
       "documentation": "<p>The request body for CreateJob.</p>",
+      "members": {
+        "Details": {
+          "documentation": "<p>The details for the CreateJob request.</p>",
+          "shape": "RequestDetails"
+        },
+        "Type": {
+          "documentation": "<p>The type of job to be created.</p>",
+          "shape": "Type"
+        }
+      },
       "required": [
         "Type",
         "Details"
-      ]
+      ],
+      "type": "structure"
     },
     "CreateJobResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the job.</p>"
+          "documentation": "<p>The ARN for the job.</p>",
+          "shape": "Arn"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Details": {
-          "shape": "ResponseDetails",
-          "documentation": "<p>Details about the job.</p>"
+          "documentation": "<p>Details about the job.</p>",
+          "shape": "ResponseDetails"
         },
         "Errors": {
-          "shape": "ListOfJobError",
-          "documentation": "<p>The errors associated with jobs.</p>"
+          "documentation": "<p>The errors associated with jobs.</p>",
+          "shape": "ListOfJobError"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the job.</p>"
+          "documentation": "<p>The unique identifier for the job.</p>",
+          "shape": "Id"
         },
         "State": {
-          "shape": "State",
-          "documentation": "<p>The state of the job.</p>"
+          "documentation": "<p>The state of the job.</p>",
+          "shape": "State"
         },
         "Type": {
-          "shape": "Type",
-          "documentation": "<p>The job type.</p>"
+          "documentation": "<p>The job type.</p>",
+          "shape": "Type"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "CreateRevisionRequest": {
-      "type": "structure",
+      "documentation": "<p>The request body for CreateRevision.</p>",
       "members": {
         "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
         },
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>A revision tag is an optional label that you can assign to a revision when you create it. Each tag consists of a key and an optional value, both of which you define. When you use tagging, you can also use tag-based access control in IAM policies to control access to these data sets and revisions.</p>"
+          "documentation": "<p>A revision tag is an optional label that you can assign to a revision when you create it. Each tag consists of a key and an optional value, both of which you define. When you use tagging, you can also use tag-based access control in IAM policies to control access to these data sets and revisions.</p>",
+          "shape": "MapOf__string"
         }
       },
-      "documentation": "<p>The request body for CreateRevision.</p>",
       "required": [
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "CreateRevisionResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the revision</p>"
+          "documentation": "<p>The ARN for the revision</p>",
+          "shape": "Arn"
         },
         "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>",
+          "shape": "Id"
         },
         "Finalized": {
-          "shape": "__boolean",
-          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>"
+          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>",
+          "shape": "__boolean"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision.</p>"
+          "documentation": "<p>The unique identifier for the revision.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>"
+          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>",
+          "shape": "Id"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>The tags for the revision.</p>"
+          "documentation": "<p>The tags for the revision.</p>",
+          "shape": "MapOf__string"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>"
-        }
-      }
-    },
-    "DataSetEntry": {
-      "type": "structure",
-      "members": {
-        "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the data set.</p>"
-        },
-        "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
-        },
-        "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>"
-        },
-        "Description": {
-          "shape": "Description",
-          "documentation": "<p>The description for the data set.</p>"
-        },
-        "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set.</p>"
-        },
-        "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
-        },
-        "Origin": {
-          "shape": "Origin",
-          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>"
-        },
-        "OriginDetails": {
-          "shape": "OriginDetails",
-          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>"
-        },
-        "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>"
-        },
-        "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
+      "type": "structure"
+    },
+    "DataSetEntry": {
       "documentation": "<p>A data set is an AWS resource with one or more revisions.</p>",
+      "members": {
+        "Arn": {
+          "documentation": "<p>The ARN for the data set.</p>",
+          "shape": "Arn"
+        },
+        "AssetType": {
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
+        },
+        "CreatedAt": {
+          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
+        },
+        "Description": {
+          "documentation": "<p>The description for the data set.</p>",
+          "shape": "Description"
+        },
+        "Id": {
+          "documentation": "<p>The unique identifier for the data set.</p>",
+          "shape": "Id"
+        },
+        "Name": {
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
+        },
+        "Origin": {
+          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>",
+          "shape": "Origin"
+        },
+        "OriginDetails": {
+          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>",
+          "shape": "OriginDetails"
+        },
+        "SourceId": {
+          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>",
+          "shape": "Id"
+        },
+        "UpdatedAt": {
+          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
+        }
+      },
       "required": [
         "Origin",
         "AssetType",
@@ -1191,77 +1209,77 @@
         "Arn",
         "UpdatedAt",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "DeleteAssetRequest": {
-      "type": "structure",
       "members": {
         "AssetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for an asset.</p>",
           "location": "uri",
           "locationName": "AssetId",
-          "documentation": "<p>The unique identifier for an asset.</p>"
+          "shape": "__string"
         },
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "RevisionId",
         "AssetId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "DeleteDataSetRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "DeleteRevisionRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "RevisionId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "Description": {
-      "type": "string",
-      "documentation": "<p>A description of a resource.</p>"
+      "documentation": "<p>A description of a resource.</p>",
+      "type": "string"
     },
     "Details": {
-      "type": "structure",
       "members": {
         "ImportAssetFromSignedUrlJobErrorDetails": {
           "shape": "ImportAssetFromSignedUrlJobErrorDetails"
@@ -1269,363 +1287,363 @@
         "ImportAssetsFromS3JobErrorDetails": {
           "shape": "ListOfAssetSourceEntry"
         }
-      }
+      },
+      "type": "structure"
     },
     "ExportAssetToSignedUrlRequestDetails": {
-      "type": "structure",
+      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "members": {
         "AssetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset that is exported to a signed URL.</p>"
+          "documentation": "<p>The unique identifier for the asset that is exported to a signed URL.</p>",
+          "shape": "Id"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this export request.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this export request.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "required": [
         "DataSetId",
         "AssetId",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "ExportAssetToSignedUrlResponseDetails": {
-      "type": "structure",
+      "documentation": "<p>The details of the export to signed URL response.</p>",
       "members": {
         "AssetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset associated with this export job.</p>"
+          "documentation": "<p>The unique identifier for the asset associated with this export job.</p>",
+          "shape": "Id"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this export response.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this export response.</p>",
+          "shape": "Id"
         },
         "SignedUrl": {
-          "shape": "__string",
-          "documentation": "<p>The signed URL for the export request.</p>"
+          "documentation": "<p>The signed URL for the export request.</p>",
+          "shape": "__string"
         },
         "SignedUrlExpiresAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the signed URL expires, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the signed URL expires, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation": "<p>The details of the export to signed URL response.</p>",
       "required": [
         "DataSetId",
         "AssetId",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "ExportAssetsToS3RequestDetails": {
-      "type": "structure",
+      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "members": {
         "AssetDestinations": {
-          "shape": "ListOfAssetDestinationEntry",
-          "documentation": "<p>The destination for the asset.</p>"
+          "documentation": "<p>The destination for the asset.</p>",
+          "shape": "ListOfAssetDestinationEntry"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this export request.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this export request.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "required": [
         "AssetDestinations",
         "DataSetId",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "ExportAssetsToS3ResponseDetails": {
-      "type": "structure",
+      "documentation": "<p>Details about the export to Amazon S3 response.</p>",
       "members": {
         "AssetDestinations": {
-          "shape": "ListOfAssetDestinationEntry",
-          "documentation": "<p>The destination in Amazon S3 where the asset is exported.</p>"
+          "documentation": "<p>The destination in Amazon S3 where the asset is exported.</p>",
+          "shape": "ListOfAssetDestinationEntry"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this export job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this export response.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this export response.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details about the export to Amazon S3 response.</p>",
       "required": [
         "AssetDestinations",
         "DataSetId",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "GetAssetRequest": {
-      "type": "structure",
       "members": {
         "AssetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for an asset.</p>",
           "location": "uri",
           "locationName": "AssetId",
-          "documentation": "<p>The unique identifier for an asset.</p>"
+          "shape": "__string"
         },
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "RevisionId",
         "AssetId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "GetAssetResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the asset.</p>"
+          "documentation": "<p>The ARN for the asset.</p>",
+          "shape": "Arn"
         },
         "AssetDetails": {
-          "shape": "AssetDetails",
-          "documentation": "<p>Information about the asset, including its size.</p>"
+          "documentation": "<p>Information about the asset, including its size.</p>",
+          "shape": "AssetDetails"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>",
+          "shape": "Id"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset.</p>"
+          "documentation": "<p>The unique identifier for the asset.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "AssetName",
-          "documentation": "<p>The name of the asset When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>"
+          "documentation": "<p>The name of the asset When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>",
+          "shape": "AssetName"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>"
+          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "GetDataSetRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "GetDataSetResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the data set.</p>"
+          "documentation": "<p>The ARN for the data set.</p>",
+          "shape": "Arn"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Description": {
-          "shape": "Description",
-          "documentation": "<p>The description for the data set.</p>"
+          "documentation": "<p>The description for the data set.</p>",
+          "shape": "Description"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set.</p>"
+          "documentation": "<p>The unique identifier for the data set.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
         },
         "Origin": {
-          "shape": "Origin",
-          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>"
+          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>",
+          "shape": "Origin"
         },
         "OriginDetails": {
-          "shape": "OriginDetails",
-          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>"
+          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>",
+          "shape": "OriginDetails"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>"
+          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>",
+          "shape": "Id"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>The tags for the data set.</p>"
+          "documentation": "<p>The tags for the data set.</p>",
+          "shape": "MapOf__string"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "GetJobRequest": {
-      "type": "structure",
       "members": {
         "JobId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a job.</p>",
           "location": "uri",
           "locationName": "JobId",
-          "documentation": "<p>The unique identifier for a job.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "JobId"
-      ]
+      ],
+      "type": "structure"
     },
     "GetJobResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the job.</p>"
+          "documentation": "<p>The ARN for the job.</p>",
+          "shape": "Arn"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Details": {
-          "shape": "ResponseDetails",
-          "documentation": "<p>Details about the job.</p>"
+          "documentation": "<p>Details about the job.</p>",
+          "shape": "ResponseDetails"
         },
         "Errors": {
-          "shape": "ListOfJobError",
-          "documentation": "<p>The errors associated with jobs.</p>"
+          "documentation": "<p>The errors associated with jobs.</p>",
+          "shape": "ListOfJobError"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the job.</p>"
+          "documentation": "<p>The unique identifier for the job.</p>",
+          "shape": "Id"
         },
         "State": {
-          "shape": "State",
-          "documentation": "<p>The state of the job.</p>"
+          "documentation": "<p>The state of the job.</p>",
+          "shape": "State"
         },
         "Type": {
-          "shape": "Type",
-          "documentation": "<p>The job type.</p>"
+          "documentation": "<p>The job type.</p>",
+          "shape": "Type"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "GetRevisionRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "RevisionId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "GetRevisionResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the revision</p>"
+          "documentation": "<p>The ARN for the revision</p>",
+          "shape": "Arn"
         },
         "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>",
+          "shape": "Id"
         },
         "Finalized": {
-          "shape": "__boolean",
-          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>"
+          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>",
+          "shape": "__boolean"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision.</p>"
+          "documentation": "<p>The unique identifier for the revision.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>"
+          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>",
+          "shape": "Id"
         },
         "Tags": {
-          "shape": "MapOf__string",
-          "documentation": "<p>The tags for the revision.</p>"
+          "documentation": "<p>The tags for the revision.</p>",
+          "shape": "MapOf__string"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "Id": {
-      "type": "string",
-      "documentation": "<p>A unique identifier.</p>"
+      "documentation": "<p>A unique identifier.</p>",
+      "type": "string"
     },
     "ImportAssetFromSignedUrlJobErrorDetails": {
-      "type": "structure",
       "members": {
         "AssetName": {
           "shape": "AssetName"
@@ -1633,171 +1651,171 @@
       },
       "required": [
         "AssetName"
-      ]
+      ],
+      "type": "structure"
     },
     "ImportAssetFromSignedUrlRequestDetails": {
-      "type": "structure",
+      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "members": {
         "AssetName": {
-          "shape": "AssetName",
-          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name.</p>"
+          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name.</p>",
+          "shape": "AssetName"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>",
+          "shape": "Id"
         },
         "Md5Hash": {
-          "shape": "__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093",
-          "documentation": "<p>The Base64-encoded Md5 hash for the asset, used to ensure the integrity of the file at that location.</p>"
+          "documentation": "<p>The Base64-encoded Md5 hash for the asset, used to ensure the integrity of the file at that location.</p>",
+          "shape": "__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this import request.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this import request.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "required": [
         "DataSetId",
         "Md5Hash",
         "RevisionId",
         "AssetName"
-      ]
+      ],
+      "type": "structure"
     },
     "ImportAssetFromSignedUrlResponseDetails": {
-      "type": "structure",
+      "documentation": "<p>The details in the response for an import request, including the signed URL and other information.</p>",
       "members": {
         "AssetName": {
-          "shape": "AssetName",
-          "documentation": "<p>The name for the asset associated with this import response.</p>"
+          "documentation": "<p>The name for the asset associated with this import response.</p>",
+          "shape": "AssetName"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>",
+          "shape": "Id"
         },
         "Md5Hash": {
-          "shape": "__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093",
-          "documentation": "<p>The Base64-encoded Md5 hash for the asset, used to ensure the integrity of the file at that location.</p>"
+          "documentation": "<p>The Base64-encoded Md5 hash for the asset, used to ensure the integrity of the file at that location.</p>",
+          "shape": "__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this import response.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this import response.</p>",
+          "shape": "Id"
         },
         "SignedUrl": {
-          "shape": "__string",
-          "documentation": "<p>The signed URL.</p>"
+          "documentation": "<p>The signed URL.</p>",
+          "shape": "__string"
         },
         "SignedUrlExpiresAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The time and date at which the signed URL expires, in ISO 8601 format.</p>"
+          "documentation": "<p>The time and date at which the signed URL expires, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation": "<p>The details in the response for an import request, including the signed URL and other information.</p>",
       "required": [
         "DataSetId",
         "AssetName",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "ImportAssetsFromS3RequestDetails": {
-      "type": "structure",
+      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "members": {
         "AssetSources": {
-          "shape": "ListOfAssetSourceEntry",
-          "documentation": "<p>Is a list of S3 bucket and object key pairs.</p>"
+          "documentation": "<p>Is a list of S3 bucket and object key pairs.</p>",
+          "shape": "ListOfAssetSourceEntry"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this import request.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this import request.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details of the operation to be performed by the job.</p>",
       "required": [
         "DataSetId",
         "AssetSources",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "ImportAssetsFromS3ResponseDetails": {
-      "type": "structure",
+      "documentation": "<p>Details from an import from Amazon S3 response.</p>",
       "members": {
         "AssetSources": {
-          "shape": "ListOfAssetSourceEntry",
-          "documentation": "<p>Is a list of Amazon S3 bucket and object key pairs.</p>"
+          "documentation": "<p>Is a list of Amazon S3 bucket and object key pairs.</p>",
+          "shape": "ListOfAssetSourceEntry"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this import job.</p>",
+          "shape": "Id"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this import response.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this import response.</p>",
+          "shape": "Id"
         }
       },
-      "documentation": "<p>Details from an import from Amazon S3 response.</p>",
       "required": [
         "DataSetId",
         "AssetSources",
         "RevisionId"
-      ]
+      ],
+      "type": "structure"
     },
     "InternalServerException": {
-      "type": "structure",
+      "documentation": "An exception occurred with the service.",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
-          "documentation": "The message identifying the service exception that occurred."
+          "documentation": "The message identifying the service exception that occurred.",
+          "shape": "__string"
         }
       },
-      "documentation": "An exception occurred with the service.",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 500
-      }
+      "type": "structure"
     },
     "JobEntry": {
-      "type": "structure",
+      "documentation": "AWS Data Exchange Jobs are asynchronous import or export operations used to create or copy assets. A data set owner can both import and export as they see fit. Someone with an entitlement to a data set can only export. Jobs are deleted 90 days after they are created.",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the job.</p>"
+          "documentation": "<p>The ARN for the job.</p>",
+          "shape": "Arn"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Details": {
-          "shape": "ResponseDetails",
-          "documentation": "<p>Details of the operation to be performed by the job, such as export destination details or import source details.</p>"
+          "documentation": "<p>Details of the operation to be performed by the job, such as export destination details or import source details.</p>",
+          "shape": "ResponseDetails"
         },
         "Errors": {
-          "shape": "ListOfJobError",
-          "documentation": "<p>Errors for jobs.</p>"
+          "documentation": "<p>Errors for jobs.</p>",
+          "shape": "ListOfJobError"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the job.</p>"
+          "documentation": "<p>The unique identifier for the job.</p>",
+          "shape": "Id"
         },
         "State": {
-          "shape": "State",
-          "documentation": "<p>The state of the job.</p>"
+          "documentation": "<p>The state of the job.</p>",
+          "shape": "State"
         },
         "Type": {
-          "shape": "Type",
-          "documentation": "<p>The job type.</p>"
+          "documentation": "<p>The job type.</p>",
+          "shape": "Type"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the job was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation": "AWS Data Exchange Jobs are asynchronous import or export operations used to create or copy assets. A data set owner can both import and export as they see fit. Someone with an entitlement to a data set can only export. Jobs are deleted 90 days after they are created.",
       "required": [
         "Type",
         "Details",
@@ -1806,63 +1824,63 @@
         "Id",
         "Arn",
         "UpdatedAt"
-      ]
+      ],
+      "type": "structure"
     },
     "JobError": {
-      "type": "structure",
+      "documentation": "An error that occurred with the job request.",
       "members": {
         "Code": {
-          "shape": "Code",
-          "documentation": "The code for the job error."
+          "documentation": "The code for the job error.",
+          "shape": "Code"
         },
         "Details": {
           "shape": "Details"
         },
         "LimitName": {
-          "shape": "JobErrorLimitName",
-          "documentation": "<p>The name of the limit that was reached.</p>"
+          "documentation": "<p>The name of the limit that was reached.</p>",
+          "shape": "JobErrorLimitName"
         },
         "LimitValue": {
-          "shape": "__double",
-          "documentation": "The value of the exceeded limit."
+          "documentation": "The value of the exceeded limit.",
+          "shape": "__double"
         },
         "Message": {
-          "shape": "__string",
-          "documentation": "The message related to the job error."
+          "documentation": "The message related to the job error.",
+          "shape": "__string"
         },
         "ResourceId": {
-          "shape": "__string",
-          "documentation": "The unqiue identifier for the resource related to the error."
+          "documentation": "The unqiue identifier for the resource related to the error.",
+          "shape": "__string"
         },
         "ResourceType": {
-          "shape": "JobErrorResourceTypes",
-          "documentation": "The type of resource related to the error."
+          "documentation": "The type of resource related to the error.",
+          "shape": "JobErrorResourceTypes"
         }
       },
-      "documentation": "An error that occurred with the job request.",
       "required": [
         "Message",
         "Code"
-      ]
+      ],
+      "type": "structure"
     },
     "JobErrorLimitName": {
-      "type": "string",
       "documentation": "The name of the limit that was reached.",
       "enum": [
         "Assets per revision",
         "Asset size in GB"
-      ]
+      ],
+      "type": "string"
     },
     "JobErrorResourceTypes": {
-      "type": "string",
       "documentation": "The types of resource which the job error can apply to.",
       "enum": [
         "REVISION",
         "ASSET"
-      ]
+      ],
+      "type": "string"
     },
     "LimitName": {
-      "type": "string",
       "enum": [
         "Products per account",
         "Data sets per account",
@@ -1876,232 +1894,277 @@
         "Concurrent in progress jobs to import assets from a signed URL",
         "Concurrent in progress jobs to export assets to Amazon S3",
         "Concurrent in progress jobs to export assets to a signed URL"
-      ]
+      ],
+      "type": "string"
     },
     "ListDataSetRevisionsRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "<p>The maximum number of results returned by a single call.</p>",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "<p>The maximum number of results returned by a single call.</p>"
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "ListDataSetRevisionsResponse": {
-      "type": "structure",
       "members": {
         "NextToken": {
-          "shape": "NextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
+          "shape": "NextToken"
         },
         "Revisions": {
-          "shape": "ListOfRevisionEntry",
-          "documentation": "<p>The asset objects listed by the request.</p>"
+          "documentation": "<p>The asset objects listed by the request.</p>",
+          "shape": "ListOfRevisionEntry"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListDataSetsRequest": {
-      "type": "structure",
       "members": {
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "<p>The maximum number of results returned by a single call.</p>",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "<p>The maximum number of results returned by a single call.</p>"
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "shape": "__string"
         },
         "Origin": {
-          "shape": "__string",
+          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>",
           "location": "querystring",
           "locationName": "origin",
-          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>"
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListDataSetsResponse": {
-      "type": "structure",
       "members": {
         "DataSets": {
-          "shape": "ListOfDataSetEntry",
-          "documentation": "<p>The data set objects listed by the request.</p>"
+          "documentation": "<p>The data set objects listed by the request.</p>",
+          "shape": "ListOfDataSetEntry"
         },
         "NextToken": {
-          "shape": "NextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListJobsRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "querystring",
           "locationName": "dataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "<p>The maximum number of results returned by a single call.</p>",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "<p>The maximum number of results returned by a single call.</p>"
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "querystring",
           "locationName": "revisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListJobsResponse": {
-      "type": "structure",
       "members": {
         "Jobs": {
-          "shape": "ListOfJobEntry",
-          "documentation": "<p>The jobs listed by the request.</p>"
+          "documentation": "<p>The jobs listed by the request.</p>",
+          "shape": "ListOfJobEntry"
         },
         "NextToken": {
-          "shape": "NextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListOfAssetDestinationEntry": {
-      "type": "list",
       "documentation": "<p>The destination where the assets will be exported.</p>",
       "member": {
         "shape": "AssetDestinationEntry"
-      }
+      },
+      "type": "list"
+    },
+    "ListOfAssetEntry": {
+      "member": {
+        "shape": "AssetEntry"
+      },
+      "type": "list"
     },
     "ListOfAssetSourceEntry": {
-      "type": "list",
       "documentation": "<p>The list of sources for the assets.</p>",
       "member": {
         "shape": "AssetSourceEntry"
-      }
+      },
+      "type": "list"
+    },
+    "ListOfDataSetEntry": {
+      "member": {
+        "shape": "DataSetEntry"
+      },
+      "type": "list"
+    },
+    "ListOfJobEntry": {
+      "member": {
+        "shape": "JobEntry"
+      },
+      "type": "list"
+    },
+    "ListOfJobError": {
+      "member": {
+        "shape": "JobError"
+      },
+      "type": "list"
+    },
+    "ListOfRevisionEntry": {
+      "member": {
+        "shape": "RevisionEntry"
+      },
+      "type": "list"
+    },
+    "ListOf__string": {
+      "member": {
+        "shape": "__string"
+      },
+      "type": "list"
     },
     "ListRevisionAssetsRequest": {
-      "type": "structure",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "<p>The maximum number of results returned by a single call.</p>",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "<p>The maximum number of results returned by a single call.</p>"
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "shape": "__string"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "RevisionId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "ListRevisionAssetsResponse": {
-      "type": "structure",
       "members": {
         "Assets": {
-          "shape": "ListOfAssetEntry",
-          "documentation": "<p>The asset objects listed by the request.</p>"
+          "documentation": "<p>The asset objects listed by the request.</p>",
+          "shape": "ListOfAssetEntry"
         },
         "NextToken": {
-          "shape": "NextToken",
-          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+          "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListTagsForResourceRequest": {
-      "type": "structure",
       "members": {
         "ResourceArn": {
-          "shape": "__string",
+          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>",
           "location": "uri",
           "locationName": "resource-arn",
-          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "ResourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "ListTagsForResourceResponse": {
-      "type": "structure",
       "members": {
         "Tags": {
-          "shape": "MapOf__string",
+          "documentation": "A label that consists of a customer-defined key and an optional value.",
           "locationName": "tags",
-          "documentation": "A label that consists of a customer-defined key and an optional value."
+          "shape": "MapOf__string"
         }
+      },
+      "type": "structure"
+    },
+    "MapOf__string": {
+      "key": {
+        "shape": "__string"
+      },
+      "type": "map",
+      "value": {
+        "shape": "__string"
       }
     },
     "MaxResults": {
-      "type": "integer",
+      "max": 25,
       "min": 1,
-      "max": 25
+      "type": "integer"
     },
     "Name": {
-      "type": "string",
-      "documentation": "The name of the model."
+      "documentation": "The name of the model.",
+      "type": "string"
     },
     "NextToken": {
-      "type": "string",
-      "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>"
+      "documentation": "<p>The token value retrieved from a previous call to access the next page of results.</p>",
+      "type": "string"
     },
     "Origin": {
-      "type": "string",
       "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers). When an owned data set is published in a product, AWS Data Exchange creates a copy of the data set. Subscribers can access that copy of the data set as an entitled data set.</p>",
       "enum": [
         "OWNED",
         "ENTITLED"
-      ]
+      ],
+      "type": "string"
     },
     "OriginDetails": {
-      "type": "structure",
       "members": {
         "ProductId": {
           "shape": "__string"
@@ -2109,189 +2172,189 @@
       },
       "required": [
         "ProductId"
-      ]
+      ],
+      "type": "structure"
     },
     "RequestDetails": {
-      "type": "structure",
+      "documentation": "<p>The details for the request.</p>",
       "members": {
         "ExportAssetToSignedUrl": {
-          "shape": "ExportAssetToSignedUrlRequestDetails",
-          "documentation": "<p>Details about the export to signed URL request.</p>"
+          "documentation": "<p>Details about the export to signed URL request.</p>",
+          "shape": "ExportAssetToSignedUrlRequestDetails"
         },
         "ExportAssetsToS3": {
-          "shape": "ExportAssetsToS3RequestDetails",
-          "documentation": "<p>Details about the export to Amazon S3 request.</p>"
+          "documentation": "<p>Details about the export to Amazon S3 request.</p>",
+          "shape": "ExportAssetsToS3RequestDetails"
         },
         "ImportAssetFromSignedUrl": {
-          "shape": "ImportAssetFromSignedUrlRequestDetails",
-          "documentation": "<p>Details about the import from signed URL request.</p>"
+          "documentation": "<p>Details about the import from signed URL request.</p>",
+          "shape": "ImportAssetFromSignedUrlRequestDetails"
         },
         "ImportAssetsFromS3": {
-          "shape": "ImportAssetsFromS3RequestDetails",
-          "documentation": "<p>Details about the import from Amazon S3 request.</p>"
+          "documentation": "<p>Details about the import from Amazon S3 request.</p>",
+          "shape": "ImportAssetsFromS3RequestDetails"
         }
       },
-      "documentation": "<p>The details for the request.</p>"
+      "type": "structure"
     },
     "ResourceNotFoundException": {
-      "type": "structure",
+      "documentation": "<p>The resource couldn't be found.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
-          "documentation": "<p>The resource couldn't be found.</p>"
+          "documentation": "<p>The resource couldn't be found.</p>",
+          "shape": "__string"
         },
         "ResourceId": {
-          "shape": "__string",
-          "documentation": "<p>The unique identifier for the resource that couldn't be found.</p>"
+          "documentation": "<p>The unique identifier for the resource that couldn't be found.</p>",
+          "shape": "__string"
         },
         "ResourceType": {
-          "shape": "ResourceType",
-          "documentation": "<p>The type of resource that couldn't be found.</p>"
+          "documentation": "<p>The type of resource that couldn't be found.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation": "<p>The resource couldn't be found.</p>",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 404
-      }
+      "type": "structure"
     },
     "ResourceType": {
-      "type": "string",
       "enum": [
         "DATA_SET",
         "REVISION",
         "ASSET",
         "JOB"
-      ]
+      ],
+      "type": "string"
     },
     "ResponseDetails": {
-      "type": "structure",
+      "documentation": "<p>Details for the response.</p>",
       "members": {
         "ExportAssetToSignedUrl": {
-          "shape": "ExportAssetToSignedUrlResponseDetails",
-          "documentation": "<p>Details for the export to signed URL response.</p>"
+          "documentation": "<p>Details for the export to signed URL response.</p>",
+          "shape": "ExportAssetToSignedUrlResponseDetails"
         },
         "ExportAssetsToS3": {
-          "shape": "ExportAssetsToS3ResponseDetails",
-          "documentation": "<p>Details for the export to Amazon S3 response.</p>"
+          "documentation": "<p>Details for the export to Amazon S3 response.</p>",
+          "shape": "ExportAssetsToS3ResponseDetails"
         },
         "ImportAssetFromSignedUrl": {
-          "shape": "ImportAssetFromSignedUrlResponseDetails",
-          "documentation": "<p>Details for the import from signed URL response.</p>"
+          "documentation": "<p>Details for the import from signed URL response.</p>",
+          "shape": "ImportAssetFromSignedUrlResponseDetails"
         },
         "ImportAssetsFromS3": {
-          "shape": "ImportAssetsFromS3ResponseDetails",
-          "documentation": "<p>Details for the import from Amazon S3 response.</p>"
+          "documentation": "<p>Details for the import from Amazon S3 response.</p>",
+          "shape": "ImportAssetsFromS3ResponseDetails"
         }
       },
-      "documentation": "<p>Details for the response.</p>"
+      "type": "structure"
     },
     "RevisionEntry": {
-      "type": "structure",
+      "documentation": "<p>A revision is a container for one or more assets.</p>",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the revision.</p>"
+          "documentation": "<p>The ARN for the revision.</p>",
+          "shape": "Arn"
         },
         "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>",
+          "shape": "Id"
         },
         "Finalized": {
-          "shape": "__boolean",
-          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>"
+          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>",
+          "shape": "__boolean"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision.</p>"
+          "documentation": "<p>The unique identifier for the revision.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>"
+          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation": "<p>A revision is a container for one or more assets.</p>",
       "required": [
         "CreatedAt",
         "DataSetId",
         "Id",
         "Arn",
         "UpdatedAt"
-      ]
+      ],
+      "type": "structure"
     },
     "S3SnapshotAsset": {
-      "type": "structure",
+      "documentation": "<p>The S3 object that is the asset.</p>",
       "members": {
         "Size": {
-          "shape": "__doubleMin0",
-          "documentation": "<p>The size of the S3 object that is the object.</p>"
+          "documentation": "<p>The size of the S3 object that is the object.</p>",
+          "shape": "__doubleMin0"
         }
       },
-      "documentation": "<p>The S3 object that is the asset.</p>",
       "required": [
         "Size"
-      ]
+      ],
+      "type": "structure"
     },
     "ServiceLimitExceededException": {
-      "type": "structure",
+      "documentation": "<p>The request has exceeded the quotas imposed by the service.</p>",
+      "error": {
+        "httpStatusCode": 402
+      },
+      "exception": true,
       "members": {
         "LimitName": {
-          "shape": "LimitName",
-          "documentation": "<p>The name of the quota that was exceeded.</p>"
+          "documentation": "<p>The name of the quota that was exceeded.</p>",
+          "shape": "LimitName"
         },
         "LimitValue": {
-          "shape": "__double",
-          "documentation": "<p>The maximum value for the service-specific limit.</p>"
+          "documentation": "<p>The maximum value for the service-specific limit.</p>",
+          "shape": "__double"
         },
         "Message": {
-          "shape": "__string",
-          "documentation": "<p>The request has exceeded the quotas imposed by the service.</p>"
+          "documentation": "<p>The request has exceeded the quotas imposed by the service.</p>",
+          "shape": "__string"
         }
       },
-      "documentation": "<p>The request has exceeded the quotas imposed by the service.</p>",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 402
-      }
+      "type": "structure"
     },
     "StartJobRequest": {
-      "type": "structure",
       "members": {
         "JobId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a job.</p>",
           "location": "uri",
           "locationName": "JobId",
-          "documentation": "<p>The unique identifier for a job.</p>"
+          "shape": "__string"
         }
       },
       "required": [
         "JobId"
-      ]
+      ],
+      "type": "structure"
     },
     "StartJobResponse": {
-      "type": "structure",
-      "members": {}
+      "members": {},
+      "type": "structure"
     },
     "State": {
-      "type": "string",
       "enum": [
         "WAITING",
         "IN_PROGRESS",
@@ -2299,311 +2362,312 @@
         "COMPLETED",
         "CANCELLED",
         "TIMED_OUT"
-      ]
+      ],
+      "type": "string"
     },
     "TagResourceRequest": {
-      "type": "structure",
+      "documentation": "<p>The request body for TagResource.</p>",
       "members": {
         "ResourceArn": {
-          "shape": "__string",
+          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>",
           "location": "uri",
           "locationName": "resource-arn",
-          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>"
+          "shape": "__string"
         },
         "Tags": {
-          "shape": "MapOf__string",
+          "documentation": "A label that consists of a customer-defined key and an optional value.",
           "locationName": "tags",
-          "documentation": "A label that consists of a customer-defined key and an optional value."
+          "shape": "MapOf__string"
         }
       },
-      "documentation": "<p>The request body for TagResource.</p>",
       "required": [
         "ResourceArn",
         "Tags"
-      ]
+      ],
+      "type": "structure"
     },
     "ThrottlingException": {
-      "type": "structure",
+      "documentation": "<p>The limit on the number of requests per second was exceeded.</p>",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
-          "documentation": "<p>The limit on the number of requests per second was exceeded.</p>"
+          "documentation": "<p>The limit on the number of requests per second was exceeded.</p>",
+          "shape": "__string"
         }
       },
-      "documentation": "<p>The limit on the number of requests per second was exceeded.</p>",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 429
-      }
+      "type": "structure"
     },
     "Timestamp": {
-      "type": "timestamp",
       "documentation": "<p>Dates and times in AWS Data Exchange are recorded in ISO 8601 format.</p>",
-      "timestampFormat": "iso8601"
+      "timestampFormat": "iso8601",
+      "type": "timestamp"
     },
     "Type": {
-      "type": "string",
       "enum": [
         "IMPORT_ASSETS_FROM_S3",
         "IMPORT_ASSET_FROM_SIGNED_URL",
         "EXPORT_ASSETS_TO_S3",
         "EXPORT_ASSET_TO_SIGNED_URL"
-      ]
+      ],
+      "type": "string"
     },
     "UntagResourceRequest": {
-      "type": "structure",
       "members": {
         "ResourceArn": {
-          "shape": "__string",
+          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>",
           "location": "uri",
           "locationName": "resource-arn",
-          "documentation": "<p>An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.</p>"
+          "shape": "__string"
         },
         "TagKeys": {
-          "shape": "ListOf__string",
+          "documentation": "The key tags.",
           "location": "querystring",
           "locationName": "tagKeys",
-          "documentation": "The key tags."
+          "shape": "ListOf__string"
         }
       },
       "required": [
         "TagKeys",
         "ResourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateAssetRequest": {
-      "type": "structure",
+      "documentation": "<p>The request body for UpdateAsset.</p>",
       "members": {
         "AssetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for an asset.</p>",
           "location": "uri",
           "locationName": "AssetId",
-          "documentation": "<p>The unique identifier for an asset.</p>"
+          "shape": "__string"
         },
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "Name": {
-          "shape": "AssetName",
-          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>"
+          "documentation": "<p>The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>",
+          "shape": "AssetName"
         },
         "RevisionId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a revision.</p>",
           "location": "uri",
           "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "shape": "__string"
         }
       },
-      "documentation": "<p>The request body for UpdateAsset.</p>",
       "required": [
         "RevisionId",
         "AssetId",
         "DataSetId",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateAssetResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the asset.</p>"
+          "documentation": "<p>The ARN for the asset.</p>",
+          "shape": "Arn"
         },
         "AssetDetails": {
-          "shape": "AssetDetails",
-          "documentation": "<p>Information about the asset, including its size.</p>"
+          "documentation": "<p>Information about the asset, including its size.</p>",
+          "shape": "AssetDetails"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this asset.</p>",
+          "shape": "Id"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the asset.</p>"
+          "documentation": "<p>The unique identifier for the asset.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "AssetName",
-          "documentation": "<p>The name of the asset When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>"
+          "documentation": "<p>The name of the asset When importing from Amazon S3, the S3 object key is used as the asset name. When exporting to Amazon S3, the asset name is used as default target S3 object key.</p>",
+          "shape": "AssetName"
         },
         "RevisionId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>"
+          "documentation": "<p>The unique identifier for the revision associated with this asset.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>"
+          "documentation": "<p>The asset ID of the owned asset corresponding to the entitled asset being viewed. This parameter is returned when an asset owner is viewing the entitled copy of its owned asset.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the asset was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
-      }
+      },
+      "type": "structure"
     },
     "UpdateDataSetRequest": {
-      "type": "structure",
+      "documentation": "<p>The request body for UpdateDataSet.</p>",
       "members": {
         "DataSetId": {
-          "shape": "__string",
+          "documentation": "<p>The unique identifier for a data set.</p>",
           "location": "uri",
           "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
+          "shape": "__string"
         },
         "Description": {
-          "shape": "Description",
-          "documentation": "<p>The description for the data set.</p>"
+          "documentation": "<p>The description for the data set.</p>",
+          "shape": "Description"
         },
         "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
         }
       },
-      "documentation": "<p>The request body for UpdateDataSet.</p>",
       "required": [
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateDataSetResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the data set.</p>"
+          "documentation": "<p>The ARN for the data set.</p>",
+          "shape": "Arn"
         },
         "AssetType": {
-          "shape": "AssetType",
-          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>"
+          "documentation": "<p>The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.</p>",
+          "shape": "AssetType"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the data set was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "Description": {
-          "shape": "Description",
-          "documentation": "<p>The description for the data set.</p>"
+          "documentation": "<p>The description for the data set.</p>",
+          "shape": "Description"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set.</p>"
+          "documentation": "<p>The unique identifier for the data set.</p>",
+          "shape": "Id"
         },
         "Name": {
-          "shape": "Name",
-          "documentation": "<p>The name of the data set.</p>"
+          "documentation": "<p>The name of the data set.</p>",
+          "shape": "Name"
         },
         "Origin": {
-          "shape": "Origin",
-          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>"
+          "documentation": "<p>A property that defines the data set as OWNED by the account (for providers) or ENTITLED to the account (for subscribers).</p>",
+          "shape": "Origin"
         },
         "OriginDetails": {
-          "shape": "OriginDetails",
-          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>"
+          "documentation": "<p>If the origin of this data set is ENTITLED, includes the details for the product on AWS Marketplace.</p>",
+          "shape": "OriginDetails"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>"
+          "documentation": "<p>The data set ID of the owned data set corresponding to the entitled data set being viewed. This parameter is returned when a data set owner is viewing the entitled copy of its owned data set.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>"
-        }
-      }
-    },
-    "UpdateRevisionRequest": {
-      "type": "structure",
-      "members": {
-        "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
-        },
-        "DataSetId": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "DataSetId",
-          "documentation": "<p>The unique identifier for a data set.</p>"
-        },
-        "Finalized": {
-          "shape": "__boolean",
-          "documentation": "<p>Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p>"
-        },
-        "RevisionId": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "RevisionId",
-          "documentation": "<p>The unique identifier for a revision.</p>"
+          "documentation": "<p>The date and time that the data set was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
+      "type": "structure"
+    },
+    "UpdateRevisionRequest": {
       "documentation": "<p>The request body for UpdateRevision.</p>",
+      "members": {
+        "Comment": {
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
+        },
+        "DataSetId": {
+          "documentation": "<p>The unique identifier for a data set.</p>",
+          "location": "uri",
+          "locationName": "DataSetId",
+          "shape": "__string"
+        },
+        "Finalized": {
+          "documentation": "<p>Finalizing a revision tells AWS Data Exchange that your changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p>",
+          "shape": "__boolean"
+        },
+        "RevisionId": {
+          "documentation": "<p>The unique identifier for a revision.</p>",
+          "location": "uri",
+          "locationName": "RevisionId",
+          "shape": "__string"
+        }
+      },
       "required": [
         "RevisionId",
         "DataSetId"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateRevisionResponse": {
-      "type": "structure",
       "members": {
         "Arn": {
-          "shape": "Arn",
-          "documentation": "<p>The ARN for the revision.</p>"
+          "documentation": "<p>The ARN for the revision.</p>",
+          "shape": "Arn"
         },
         "Comment": {
-          "shape": "__stringMin0Max16384",
-          "documentation": "<p>An optional comment about the revision.</p>"
+          "documentation": "<p>An optional comment about the revision.</p>",
+          "shape": "__stringMin0Max16384"
         },
         "CreatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>"
+          "documentation": "<p>The date and time that the revision was created, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         },
         "DataSetId": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>"
+          "documentation": "<p>The unique identifier for the data set associated with this revision.</p>",
+          "shape": "Id"
         },
         "Finalized": {
-          "shape": "__boolean",
-          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>"
+          "documentation": "<p>To publish a revision to a data set in a product, the revision must first be finalized. Finalizing a revision tells AWS Data Exchange that changes to the assets in the revision are complete. After it's in this read-only state, you can publish the revision to your products.</p> <p>Finalized revisions can be published through the AWS Data Exchange console or the AWS Marketplace Catalog API, using the StartChangeSet AWS Marketplace Catalog API action. When using the API, revisions are uniquely identified by their ARN.</p>",
+          "shape": "__boolean"
         },
         "Id": {
-          "shape": "Id",
-          "documentation": "<p>The unique identifier for the revision.</p>"
+          "documentation": "<p>The unique identifier for the revision.</p>",
+          "shape": "Id"
         },
         "SourceId": {
-          "shape": "Id",
-          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>"
+          "documentation": "<p>The revision ID of the owned revision corresponding to the entitled revision being viewed. This parameter is returned when a revision owner is viewing the entitled copy of its owned revision.</p>",
+          "shape": "Id"
         },
         "UpdatedAt": {
-          "shape": "Timestamp",
-          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>"
-        }
-      }
-    },
-    "ValidationException": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "documentation": "<p>The message that informs you about what was invalid about the request.</p>"
+          "documentation": "<p>The date and time that the revision was last updated, in ISO 8601 format.</p>",
+          "shape": "Timestamp"
         }
       },
+      "type": "structure"
+    },
+    "ValidationException": {
       "documentation": "<p>The request was invalid.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>The message that informs you about what was invalid about the request.</p>",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 400
-      }
+      "type": "structure"
     },
     "__boolean": {
       "type": "boolean"
@@ -2614,83 +2678,19 @@
     "__doubleMin0": {
       "type": "double"
     },
-    "ListOfAssetEntry": {
-      "type": "list",
-      "member": {
-        "shape": "AssetEntry"
-      }
-    },
-    "ListOfDataSetEntry": {
-      "type": "list",
-      "member": {
-        "shape": "DataSetEntry"
-      }
-    },
-    "ListOfJobEntry": {
-      "type": "list",
-      "member": {
-        "shape": "JobEntry"
-      }
-    },
-    "ListOfJobError": {
-      "type": "list",
-      "member": {
-        "shape": "JobError"
-      }
-    },
-    "ListOfRevisionEntry": {
-      "type": "list",
-      "member": {
-        "shape": "RevisionEntry"
-      }
-    },
-    "ListOf__string": {
-      "type": "list",
-      "member": {
-        "shape": "__string"
-      }
-    },
-    "MapOf__string": {
-      "type": "map",
-      "key": {
-        "shape": "__string"
-      },
-      "value": {
-        "shape": "__string"
-      }
-    },
     "__string": {
       "type": "string"
     },
     "__stringMin0Max16384": {
-      "type": "string",
+      "max": 16384,
       "min": 0,
-      "max": 16384
+      "type": "string"
     },
     "__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093": {
-      "type": "string",
-      "min": 24,
       "max": 24,
-      "pattern": "/^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$/"
+      "min": 24,
+      "pattern": "/^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$/",
+      "type": "string"
     }
-  },
-  "authorizers": {
-    "create_job_authorizer": {
-      "name": "create_job_authorizer",
-      "type": "provided",
-      "placement": {
-        "location": "header",
-        "name": "Authorization"
-      }
-    },
-    "start_cancel_get_job_authorizer": {
-      "name": "start_cancel_get_job_authorizer",
-      "type": "provided",
-      "placement": {
-        "location": "header",
-        "name": "Authorization"
-      }
-    }
-  },
-  "documentation": "<p>AWS Data Exchange is a service that makes it easy for AWS customers to exchange data in the cloud. You can use the AWS Data Exchange APIs to create, update, manage, and access file-based data set in the AWS Cloud.</p><p>As a subscriber, you can view and access the data sets that you have an entitlement to through a subscription. You can use the APIS to download or copy your entitled data sets to Amazon S3 for use across a variety of AWS analytics and machine learning services.</p><p>As a provider, you can create and manage your data sets that you would like to publish to a product. Being able to package and provide your data sets into products requires a few steps to determine eligibility. For more information, visit the AWS Data Exchange User Guide.</p><p>A data set is a collection of data that can be changed or updated over time. Data sets can be updated using revisions, which represent a new version or incremental change to a data set.  A revision contains one or more assets. An asset in AWS Data Exchange is a piece of data that can be stored as an Amazon S3 object. The asset can be a structured data file, an image file, or some other data file. Jobs are asynchronous import or export operations used to create or copy assets.</p>"
+  }
 }

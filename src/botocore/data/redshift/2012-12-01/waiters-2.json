@@ -2,33 +2,30 @@
   "version": 2,
   "waiters": {
     "ClusterAvailable": {
-      "delay": 60,
-      "operation": "DescribeClusters",
-      "maxAttempts": 30,
       "acceptors": [
         {
+          "argument": "Clusters[].ClusterStatus",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Clusters[].ClusterStatus"
+          "state": "success"
         },
         {
+          "argument": "Clusters[].ClusterStatus",
           "expected": "deleting",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Clusters[].ClusterStatus"
+          "state": "failure"
         },
         {
           "expected": "ClusterNotFound",
           "matcher": "error",
           "state": "retry"
         }
-      ]
+      ],
+      "delay": 60,
+      "maxAttempts": 30,
+      "operation": "DescribeClusters"
     },
     "ClusterDeleted": {
-      "delay": 60,
-      "operation": "DescribeClusters",
-      "maxAttempts": 30,
       "acceptors": [
         {
           "expected": "ClusterNotFound",
@@ -36,62 +33,65 @@
           "state": "success"
         },
         {
+          "argument": "Clusters[].ClusterStatus",
           "expected": "creating",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Clusters[].ClusterStatus"
+          "state": "failure"
         },
         {
+          "argument": "Clusters[].ClusterStatus",
           "expected": "modifying",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Clusters[].ClusterStatus"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 60,
+      "maxAttempts": 30,
+      "operation": "DescribeClusters"
     },
     "ClusterRestored": {
-      "operation": "DescribeClusters",
-      "maxAttempts": 30,
-      "delay": 60,
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "pathAll",
           "argument": "Clusters[].RestoreStatus.Status",
-          "expected": "completed"
+          "expected": "completed",
+          "matcher": "pathAll",
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "Clusters[].ClusterStatus",
-          "expected": "deleting"
+          "expected": "deleting",
+          "matcher": "pathAny",
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 60,
+      "maxAttempts": 30,
+      "operation": "DescribeClusters"
     },
     "SnapshotAvailable": {
-      "delay": 15,
-      "operation": "DescribeClusterSnapshots",
-      "maxAttempts": 20,
       "acceptors": [
         {
+          "argument": "Snapshots[].Status",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Snapshots[].Status"
+          "state": "success"
         },
         {
+          "argument": "Snapshots[].Status",
           "expected": "failed",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Snapshots[].Status"
+          "state": "failure"
         },
         {
+          "argument": "Snapshots[].Status",
           "expected": "deleted",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Snapshots[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 20,
+      "operation": "DescribeClusterSnapshots"
     }
   }
 }

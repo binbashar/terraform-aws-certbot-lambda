@@ -1,124 +1,38 @@
 {
-  "service": {
-    "actions": {
-      "CreatePlatformApplication": {
-        "request": { "operation": "CreatePlatformApplication" },
-        "resource": {
-          "type": "PlatformApplication",
-          "identifiers": [
-            { "target": "Arn", "source": "response", "path": "PlatformApplicationArn" }
-          ]
-        }
-      },
-      "CreateTopic": {
-        "request": { "operation": "CreateTopic" },
-        "resource": {
-          "type": "Topic",
-          "identifiers": [
-            { "target": "Arn", "source": "response", "path": "TopicArn" }
-          ]
-        }
-      }
-    },
-    "has": {
-      "PlatformApplication": {
-        "resource": {
-          "type": "PlatformApplication",
-          "identifiers": [
-            { "target": "Arn", "source": "input" }
-          ]
-        }
-      },
-      "PlatformEndpoint": {
-        "resource": {
-          "type": "PlatformEndpoint",
-          "identifiers": [
-            { "target": "Arn", "source": "input" }
-          ]
-        }
-      },
-      "Subscription": {
-        "resource": {
-          "type": "Subscription",
-          "identifiers": [
-            { "target": "Arn", "source": "input" }
-          ]
-        }
-      },
-      "Topic": {
-        "resource": {
-          "type": "Topic",
-          "identifiers": [
-            { "target": "Arn", "source": "input" }
-          ]
-        }
-      }
-    },
-    "hasMany": {
-      "PlatformApplications": {
-        "request": { "operation": "ListPlatformApplications" },
-        "resource": {
-          "type": "PlatformApplication",
-          "identifiers": [
-            { "target": "Arn", "source": "response", "path": "PlatformApplications[].PlatformApplicationArn" }
-          ]
-        }
-      },
-      "Subscriptions": {
-        "request": { "operation": "ListSubscriptions" },
-        "resource": {
-          "type": "Subscription",
-          "identifiers": [
-            { "target": "Arn", "source": "response", "path": "Subscriptions[].SubscriptionArn" }
-          ]
-        }
-      },
-      "Topics": {
-        "request": { "operation": "ListTopics" },
-        "resource": {
-          "type": "Topic",
-          "identifiers": [
-            { "target": "Arn", "source": "response", "path": "Topics[].TopicArn" }
-          ]
-        }
-      }
-    }
-  },
   "resources": {
     "PlatformApplication": {
-      "identifiers": [
-        { "name": "Arn" }
-      ],
-      "shape": "GetPlatformApplicationAttributesResponse",
-      "load": {
-        "request": {
-          "operation": "GetPlatformApplicationAttributes",
-          "params": [
-            { "target": "PlatformApplicationArn", "source": "identifier", "name": "Arn" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "CreatePlatformEndpoint": {
           "request": {
             "operation": "CreatePlatformEndpoint",
             "params": [
-              { "target": "PlatformApplicationArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "PlatformApplicationArn"
+              }
             ]
           },
           "resource": {
-            "type": "PlatformEndpoint",
             "identifiers": [
-              { "target": "Arn", "source": "response", "path": "EndpointArn" }
-            ]
+              {
+                "path": "EndpointArn",
+                "source": "response",
+                "target": "Arn"
+              }
+            ],
+            "type": "PlatformEndpoint"
           }
         },
         "Delete": {
           "request": {
             "operation": "DeletePlatformApplication",
             "params": [
-              { "target": "PlatformApplicationArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "PlatformApplicationArn"
+              }
             ]
           }
         },
@@ -126,7 +40,11 @@
           "request": {
             "operation": "SetPlatformApplicationAttributes",
             "params": [
-              { "target": "PlatformApplicationArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "PlatformApplicationArn"
+              }
             ]
           }
         }
@@ -136,38 +54,56 @@
           "request": {
             "operation": "ListEndpointsByPlatformApplication",
             "params": [
-              { "target": "PlatformApplicationArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "PlatformApplicationArn"
+              }
             ]
           },
           "resource": {
-            "type": "PlatformEndpoint",
             "identifiers": [
-              { "target": "Arn", "source": "response", "path": "Endpoints[].EndpointArn" }
-            ]
+              {
+                "path": "Endpoints[].EndpointArn",
+                "source": "response",
+                "target": "Arn"
+              }
+            ],
+            "type": "PlatformEndpoint"
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "Arn"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "GetPlatformApplicationAttributes",
+          "params": [
+            {
+              "name": "Arn",
+              "source": "identifier",
+              "target": "PlatformApplicationArn"
+            }
+          ]
+        }
+      },
+      "shape": "GetPlatformApplicationAttributesResponse"
     },
     "PlatformEndpoint": {
-      "identifiers": [
-        { "name": "Arn" }
-      ],
-      "shape": "GetEndpointAttributesResponse",
-      "load": {
-        "request": {
-          "operation": "GetEndpointAttributes",
-          "params": [
-            { "target": "EndpointArn", "source": "identifier", "name": "Arn" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "Delete": {
           "request": {
             "operation": "DeleteEndpoint",
             "params": [
-              { "target": "EndpointArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "EndpointArn"
+              }
             ]
           }
         },
@@ -175,7 +111,11 @@
           "request": {
             "operation": "Publish",
             "params": [
-              { "target": "TargetArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TargetArn"
+              }
             ]
           }
         },
@@ -183,32 +123,46 @@
           "request": {
             "operation": "SetEndpointAttributes",
             "params": [
-              { "target": "EndpointArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "EndpointArn"
+              }
             ]
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "Arn"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "GetEndpointAttributes",
+          "params": [
+            {
+              "name": "Arn",
+              "source": "identifier",
+              "target": "EndpointArn"
+            }
+          ]
+        }
+      },
+      "shape": "GetEndpointAttributesResponse"
     },
     "Subscription": {
-      "identifiers": [
-        { "name": "Arn" }
-      ],
-      "shape": "GetSubscriptionAttributesResponse",
-      "load": {
-        "request": {
-          "operation": "GetSubscriptionAttributes",
-          "params": [
-            { "target": "SubscriptionArn", "source": "identifier", "name": "Arn" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "Delete": {
           "request": {
             "operation": "Unsubscribe",
             "params": [
-              { "target": "SubscriptionArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "SubscriptionArn"
+              }
             ]
           }
         },
@@ -216,32 +170,46 @@
           "request": {
             "operation": "SetSubscriptionAttributes",
             "params": [
-              { "target": "SubscriptionArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "SubscriptionArn"
+              }
             ]
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "Arn"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "GetSubscriptionAttributes",
+          "params": [
+            {
+              "name": "Arn",
+              "source": "identifier",
+              "target": "SubscriptionArn"
+            }
+          ]
+        }
+      },
+      "shape": "GetSubscriptionAttributesResponse"
     },
     "Topic": {
-      "identifiers": [
-        { "name": "Arn" }
-      ],
-      "shape": "GetTopicAttributesResponse",
-      "load": {
-        "request": {
-          "operation": "GetTopicAttributes",
-          "params": [
-            { "target": "TopicArn", "source": "identifier", "name": "Arn" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "AddPermission": {
           "request": {
             "operation": "AddPermission",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           }
         },
@@ -249,21 +217,33 @@
           "request": {
             "operation": "ConfirmSubscription",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           },
           "resource": {
-            "type": "Subscription",
             "identifiers": [
-              { "target": "Arn", "source": "response", "path": "SubscriptionArn" }
-            ]
+              {
+                "path": "SubscriptionArn",
+                "source": "response",
+                "target": "Arn"
+              }
+            ],
+            "type": "Subscription"
           }
         },
         "Delete": {
           "request": {
             "operation": "DeleteTopic",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           }
         },
@@ -271,7 +251,11 @@
           "request": {
             "operation": "Publish",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           }
         },
@@ -279,7 +263,11 @@
           "request": {
             "operation": "RemovePermission",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           }
         },
@@ -287,7 +275,11 @@
           "request": {
             "operation": "SetTopicAttributes",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           }
         },
@@ -295,14 +287,22 @@
           "request": {
             "operation": "Subscribe",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           },
           "resource": {
-            "type": "Subscription",
             "identifiers": [
-              { "target": "Arn", "source": "response", "path": "SubscriptionArn" }
-            ]
+              {
+                "path": "SubscriptionArn",
+                "source": "response",
+                "target": "Arn"
+              }
+            ],
+            "type": "Subscription"
           }
         }
       },
@@ -311,15 +311,169 @@
           "request": {
             "operation": "ListSubscriptionsByTopic",
             "params": [
-              { "target": "TopicArn", "source": "identifier", "name": "Arn" }
+              {
+                "name": "Arn",
+                "source": "identifier",
+                "target": "TopicArn"
+              }
             ]
           },
           "resource": {
-            "type": "Subscription",
             "identifiers": [
-              { "target": "Arn", "source": "response", "path": "Subscriptions[].SubscriptionArn" }
-            ]
+              {
+                "path": "Subscriptions[].SubscriptionArn",
+                "source": "response",
+                "target": "Arn"
+              }
+            ],
+            "type": "Subscription"
           }
+        }
+      },
+      "identifiers": [
+        {
+          "name": "Arn"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "GetTopicAttributes",
+          "params": [
+            {
+              "name": "Arn",
+              "source": "identifier",
+              "target": "TopicArn"
+            }
+          ]
+        }
+      },
+      "shape": "GetTopicAttributesResponse"
+    }
+  },
+  "service": {
+    "actions": {
+      "CreatePlatformApplication": {
+        "request": {
+          "operation": "CreatePlatformApplication"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "PlatformApplicationArn",
+              "source": "response",
+              "target": "Arn"
+            }
+          ],
+          "type": "PlatformApplication"
+        }
+      },
+      "CreateTopic": {
+        "request": {
+          "operation": "CreateTopic"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "TopicArn",
+              "source": "response",
+              "target": "Arn"
+            }
+          ],
+          "type": "Topic"
+        }
+      }
+    },
+    "has": {
+      "PlatformApplication": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Arn"
+            }
+          ],
+          "type": "PlatformApplication"
+        }
+      },
+      "PlatformEndpoint": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Arn"
+            }
+          ],
+          "type": "PlatformEndpoint"
+        }
+      },
+      "Subscription": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Arn"
+            }
+          ],
+          "type": "Subscription"
+        }
+      },
+      "Topic": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Arn"
+            }
+          ],
+          "type": "Topic"
+        }
+      }
+    },
+    "hasMany": {
+      "PlatformApplications": {
+        "request": {
+          "operation": "ListPlatformApplications"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "PlatformApplications[].PlatformApplicationArn",
+              "source": "response",
+              "target": "Arn"
+            }
+          ],
+          "type": "PlatformApplication"
+        }
+      },
+      "Subscriptions": {
+        "request": {
+          "operation": "ListSubscriptions"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "Subscriptions[].SubscriptionArn",
+              "source": "response",
+              "target": "Arn"
+            }
+          ],
+          "type": "Subscription"
+        }
+      },
+      "Topics": {
+        "request": {
+          "operation": "ListTopics"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "Topics[].TopicArn",
+              "source": "response",
+              "target": "Arn"
+            }
+          ],
+          "type": "Topic"
         }
       }
     }

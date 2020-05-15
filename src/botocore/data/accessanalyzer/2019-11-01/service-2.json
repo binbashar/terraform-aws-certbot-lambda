@@ -1,366 +1,660 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-11-01",
-    "endpointPrefix":"access-analyzer",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceFullName":"Access Analyzer",
-    "serviceId":"AccessAnalyzer",
-    "signatureVersion":"v4",
-    "signingName":"access-analyzer",
-    "uid":"accessanalyzer-2019-11-01"
+  "documentation": "<p>AWS IAM Access Analyzer helps identify potential resource-access risks by enabling you to identify any policies that grant access to an external principal. It does this by using logic-based reasoning to analyze resource-based policies in your AWS environment. An external principal can be another AWS account, a root user, an IAM user or role, a federated user, an AWS service, or an anonymous user. This guide describes the AWS IAM Access Analyzer operations that you can call programmatically. For general information about Access Analyzer, see the <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html\">AWS IAM Access Analyzer section of the IAM User Guide</a>.</p> <p>To start using Access Analyzer, you first need to create an analyzer.</p>",
+  "metadata": {
+    "apiVersion": "2019-11-01",
+    "endpointPrefix": "access-analyzer",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceFullName": "Access Analyzer",
+    "serviceId": "AccessAnalyzer",
+    "signatureVersion": "v4",
+    "signingName": "access-analyzer",
+    "uid": "accessanalyzer-2019-11-01"
   },
-  "operations":{
-    "CreateAnalyzer":{
-      "name":"CreateAnalyzer",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/analyzer",
-        "responseCode":200
-      },
-      "input":{"shape":"CreateAnalyzerRequest"},
-      "output":{"shape":"CreateAnalyzerResponse"},
-      "errors":[
-        {"shape":"ConflictException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+  "operations": {
+    "CreateAnalyzer": {
+      "documentation": "<p>Creates an analyzer for your account.</p>",
+      "errors": [
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Creates an analyzer for your account.</p>",
-      "idempotent":true
+      "http": {
+        "method": "PUT",
+        "requestUri": "/analyzer",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateAnalyzerRequest"
+      },
+      "name": "CreateAnalyzer",
+      "output": {
+        "shape": "CreateAnalyzerResponse"
+      }
     },
-    "CreateArchiveRule":{
-      "name":"CreateArchiveRule",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/analyzer/{analyzerName}/archive-rule",
-        "responseCode":200
-      },
-      "input":{"shape":"CreateArchiveRuleRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceQuotaExceededException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "CreateArchiveRule": {
+      "documentation": "<p>Creates an archive rule for the specified analyzer. Archive rules automatically archive findings that meet the criteria you define when you create the rule.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceQuotaExceededException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Creates an archive rule for the specified analyzer. Archive rules automatically archive findings that meet the criteria you define when you create the rule.</p>",
-      "idempotent":true
+      "http": {
+        "method": "PUT",
+        "requestUri": "/analyzer/{analyzerName}/archive-rule",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateArchiveRuleRequest"
+      },
+      "name": "CreateArchiveRule"
     },
-    "DeleteAnalyzer":{
-      "name":"DeleteAnalyzer",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/analyzer/{analyzerName}",
-        "responseCode":200
-      },
-      "input":{"shape":"DeleteAnalyzerRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "DeleteAnalyzer": {
+      "documentation": "<p>Deletes the specified analyzer. When you delete an analyzer, Access Analyzer is disabled for the account in the current or specific Region. All findings that were generated by the analyzer are deleted. You cannot undo this action.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Deletes the specified analyzer. When you delete an analyzer, Access Analyzer is disabled for the account in the current or specific Region. All findings that were generated by the analyzer are deleted. You cannot undo this action.</p>",
-      "idempotent":true
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/analyzer/{analyzerName}",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteAnalyzerRequest"
+      },
+      "name": "DeleteAnalyzer"
     },
-    "DeleteArchiveRule":{
-      "name":"DeleteArchiveRule",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/analyzer/{analyzerName}/archive-rule/{ruleName}",
-        "responseCode":200
-      },
-      "input":{"shape":"DeleteArchiveRuleRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "DeleteArchiveRule": {
+      "documentation": "<p>Deletes the specified archive rule.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Deletes the specified archive rule.</p>",
-      "idempotent":true
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteArchiveRuleRequest"
+      },
+      "name": "DeleteArchiveRule"
     },
-    "GetAnalyzedResource":{
-      "name":"GetAnalyzedResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/analyzed-resource",
-        "responseCode":200
-      },
-      "input":{"shape":"GetAnalyzedResourceRequest"},
-      "output":{"shape":"GetAnalyzedResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "GetAnalyzedResource": {
+      "documentation": "<p>Retrieves information about a resource that was analyzed.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves information about a resource that was analyzed.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/analyzed-resource",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetAnalyzedResourceRequest"
+      },
+      "name": "GetAnalyzedResource",
+      "output": {
+        "shape": "GetAnalyzedResourceResponse"
+      }
     },
-    "GetAnalyzer":{
-      "name":"GetAnalyzer",
-      "http":{
-        "method":"GET",
-        "requestUri":"/analyzer/{analyzerName}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetAnalyzerRequest"},
-      "output":{"shape":"GetAnalyzerResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "GetAnalyzer": {
+      "documentation": "<p>Retrieves information about the specified analyzer.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves information about the specified analyzer.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/analyzer/{analyzerName}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetAnalyzerRequest"
+      },
+      "name": "GetAnalyzer",
+      "output": {
+        "shape": "GetAnalyzerResponse"
+      }
     },
-    "GetArchiveRule":{
-      "name":"GetArchiveRule",
-      "http":{
-        "method":"GET",
-        "requestUri":"/analyzer/{analyzerName}/archive-rule/{ruleName}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetArchiveRuleRequest"},
-      "output":{"shape":"GetArchiveRuleResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "GetArchiveRule": {
+      "documentation": "<p>Retrieves information about an archive rule.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves information about an archive rule.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetArchiveRuleRequest"
+      },
+      "name": "GetArchiveRule",
+      "output": {
+        "shape": "GetArchiveRuleResponse"
+      }
     },
-    "GetFinding":{
-      "name":"GetFinding",
-      "http":{
-        "method":"GET",
-        "requestUri":"/finding/{id}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetFindingRequest"},
-      "output":{"shape":"GetFindingResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "GetFinding": {
+      "documentation": "<p>Retrieves information about the specified finding.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves information about the specified finding.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/finding/{id}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetFindingRequest"
+      },
+      "name": "GetFinding",
+      "output": {
+        "shape": "GetFindingResponse"
+      }
     },
-    "ListAnalyzedResources":{
-      "name":"ListAnalyzedResources",
-      "http":{
-        "method":"POST",
-        "requestUri":"/analyzed-resource",
-        "responseCode":200
-      },
-      "input":{"shape":"ListAnalyzedResourcesRequest"},
-      "output":{"shape":"ListAnalyzedResourcesResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "ListAnalyzedResources": {
+      "documentation": "<p>Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer..</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer..</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/analyzed-resource",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListAnalyzedResourcesRequest"
+      },
+      "name": "ListAnalyzedResources",
+      "output": {
+        "shape": "ListAnalyzedResourcesResponse"
+      }
     },
-    "ListAnalyzers":{
-      "name":"ListAnalyzers",
-      "http":{
-        "method":"GET",
-        "requestUri":"/analyzer",
-        "responseCode":200
-      },
-      "input":{"shape":"ListAnalyzersRequest"},
-      "output":{"shape":"ListAnalyzersResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "ListAnalyzers": {
+      "documentation": "<p>Retrieves a list of analyzers.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves a list of analyzers.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/analyzer",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListAnalyzersRequest"
+      },
+      "name": "ListAnalyzers",
+      "output": {
+        "shape": "ListAnalyzersResponse"
+      }
     },
-    "ListArchiveRules":{
-      "name":"ListArchiveRules",
-      "http":{
-        "method":"GET",
-        "requestUri":"/analyzer/{analyzerName}/archive-rule",
-        "responseCode":200
-      },
-      "input":{"shape":"ListArchiveRulesRequest"},
-      "output":{"shape":"ListArchiveRulesResponse"},
-      "errors":[
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "ListArchiveRules": {
+      "documentation": "<p>Retrieves a list of archive rules created for the specified analyzer.</p>",
+      "errors": [
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves a list of archive rules created for the specified analyzer.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/analyzer/{analyzerName}/archive-rule",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListArchiveRulesRequest"
+      },
+      "name": "ListArchiveRules",
+      "output": {
+        "shape": "ListArchiveRulesResponse"
+      }
     },
-    "ListFindings":{
-      "name":"ListFindings",
-      "http":{
-        "method":"POST",
-        "requestUri":"/finding",
-        "responseCode":200
-      },
-      "input":{"shape":"ListFindingsRequest"},
-      "output":{"shape":"ListFindingsResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "ListFindings": {
+      "documentation": "<p>Retrieves a list of findings generated by the specified analyzer.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves a list of findings generated by the specified analyzer.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/finding",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListFindingsRequest"
+      },
+      "name": "ListFindings",
+      "output": {
+        "shape": "ListFindingsResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/tags/{resourceArn}",
-        "responseCode":200
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Retrieves a list of tags applied to the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Retrieves a list of tags applied to the specified resource.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/tags/{resourceArn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "StartResourceScan":{
-      "name":"StartResourceScan",
-      "http":{
-        "method":"POST",
-        "requestUri":"/resource/scan",
-        "responseCode":200
-      },
-      "input":{"shape":"StartResourceScanRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "StartResourceScan": {
+      "documentation": "<p>Immediately starts a scan of the policies applied to the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Immediately starts a scan of the policies applied to the specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/resource/scan",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "StartResourceScanRequest"
+      },
+      "name": "StartResourceScan"
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tags/{resourceArn}",
-        "responseCode":200
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "TagResource": {
+      "documentation": "<p>Adds a tag to the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Adds a tag to the specified resource.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/tags/{resourceArn}",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/tags/{resourceArn}",
-        "responseCode":200
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "UntagResource": {
+      "documentation": "<p>Removes a tag from the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Removes a tag from the specified resource.</p>",
-      "idempotent":true
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/tags/{resourceArn}",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateArchiveRule":{
-      "name":"UpdateArchiveRule",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/analyzer/{analyzerName}/archive-rule/{ruleName}",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateArchiveRuleRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "UpdateArchiveRule": {
+      "documentation": "<p>Updates the criteria and values for the specified archive rule.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Updates the criteria and values for the specified archive rule.</p>",
-      "idempotent":true
+      "http": {
+        "method": "PUT",
+        "requestUri": "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UpdateArchiveRuleRequest"
+      },
+      "name": "UpdateArchiveRule"
     },
-    "UpdateFindings":{
-      "name":"UpdateFindings",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/finding",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateFindingsRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"AccessDeniedException"}
+    "UpdateFindings": {
+      "documentation": "<p>Updates the status for the specified findings.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ValidationException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Updates the status for the specified findings.</p>",
-      "idempotent":true
+      "http": {
+        "method": "PUT",
+        "requestUri": "/finding",
+        "responseCode": 200
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UpdateFindingsRequest"
+      },
+      "name": "UpdateFindings"
     }
   },
-  "shapes":{
-    "AccessDeniedException":{
-      "type":"structure",
-      "required":["message"],
-      "members":{
-        "message":{"shape":"String"}
+  "shapes": {
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have sufficient access to perform this action.</p>",
+      "error": {
+        "httpStatusCode": 403,
+        "senderFault": true
       },
-      "documentation":"<p>You do not have sufficient access to perform this action.</p>",
-      "error":{
-        "httpStatusCode":403,
-        "senderFault":true
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        }
       },
-      "exception":true
+      "required": [
+        "message"
+      ],
+      "type": "structure"
     },
-    "ActionList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "ActionList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
     },
-    "AnalyzedResource":{
-      "type":"structure",
-      "required":[
+    "AnalyzedResource": {
+      "documentation": "<p>Contains details about the analyzed resource.</p>",
+      "members": {
+        "actions": {
+          "documentation": "<p>The actions that an external principal is granted permission to use by the policy that generated the finding.</p>",
+          "shape": "ActionList"
+        },
+        "analyzedAt": {
+          "documentation": "<p>The time at which the resource was analyzed.</p>",
+          "shape": "Timestamp"
+        },
+        "createdAt": {
+          "documentation": "<p>The time at which the finding was created.</p>",
+          "shape": "Timestamp"
+        },
+        "error": {
+          "documentation": "<p>An error message.</p>",
+          "shape": "String"
+        },
+        "isPublic": {
+          "documentation": "<p>Indicates whether the policy that generated the finding grants public access to the resource.</p>",
+          "shape": "Boolean"
+        },
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource that was analyzed.</p>",
+          "shape": "ResourceArn"
+        },
+        "resourceOwnerAccount": {
+          "documentation": "<p>The AWS account ID that owns the resource.</p>",
+          "shape": "String"
+        },
+        "resourceType": {
+          "documentation": "<p>The type of the resource that was analyzed.</p>",
+          "shape": "ResourceType"
+        },
+        "sharedVia": {
+          "documentation": "<p>Indicates how the access that generated the finding is granted.</p>",
+          "shape": "SharedViaList"
+        },
+        "status": {
+          "documentation": "<p>The current status of the finding generated from the analyzed resource.</p>",
+          "shape": "FindingStatus"
+        },
+        "updatedAt": {
+          "documentation": "<p>The time at which the finding was updated.</p>",
+          "shape": "Timestamp"
+        }
+      },
+      "required": [
         "analyzedAt",
         "createdAt",
         "isPublic",
@@ -369,363 +663,389 @@
         "resourceType",
         "updatedAt"
       ],
-      "members":{
-        "actions":{
-          "shape":"ActionList",
-          "documentation":"<p>The actions that an external principal is granted permission to use by the policy that generated the finding.</p>"
+      "type": "structure"
+    },
+    "AnalyzedResourceSummary": {
+      "documentation": "<p>Contains the ARN of the analyzed resource.</p>",
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the analyzed resource.</p>",
+          "shape": "ResourceArn"
         },
-        "analyzedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the resource was analyzed.</p>"
+        "resourceOwnerAccount": {
+          "documentation": "<p>The AWS account ID that owns the resource.</p>",
+          "shape": "String"
         },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was created.</p>"
-        },
-        "error":{
-          "shape":"String",
-          "documentation":"<p>An error message.</p>"
-        },
-        "isPublic":{
-          "shape":"Boolean",
-          "documentation":"<p>Indicates whether the policy that generated the finding grants public access to the resource.</p>"
-        },
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The ARN of the resource that was analyzed.</p>"
-        },
-        "resourceOwnerAccount":{
-          "shape":"String",
-          "documentation":"<p>The AWS account ID that owns the resource.</p>"
-        },
-        "resourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the resource that was analyzed.</p>"
-        },
-        "sharedVia":{
-          "shape":"SharedViaList",
-          "documentation":"<p>Indicates how the access that generated the finding is granted.</p>"
-        },
-        "status":{
-          "shape":"FindingStatus",
-          "documentation":"<p>The current status of the finding generated from the analyzed resource.</p>"
-        },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was updated.</p>"
+        "resourceType": {
+          "documentation": "<p>The type of resource that was analyzed.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation":"<p>Contains details about the analyzed resource.</p>"
-    },
-    "AnalyzedResourceSummary":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "resourceOwnerAccount",
         "resourceType"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The ARN of the analyzed resource.</p>"
-        },
-        "resourceOwnerAccount":{
-          "shape":"String",
-          "documentation":"<p>The AWS account ID that owns the resource.</p>"
-        },
-        "resourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource that was analyzed.</p>"
-        }
+      "type": "structure"
+    },
+    "AnalyzedResourcesList": {
+      "member": {
+        "shape": "AnalyzedResourceSummary"
       },
-      "documentation":"<p>Contains the ARN of the analyzed resource.</p>"
+      "type": "list"
     },
-    "AnalyzedResourcesList":{
-      "type":"list",
-      "member":{"shape":"AnalyzedResourceSummary"}
+    "AnalyzerArn": {
+      "pattern": "^[^:]*:[^:]*:[^:]*:[^:]*:[^:]*:analyzer/.{1,255}$",
+      "type": "string"
     },
-    "AnalyzerArn":{
-      "type":"string",
-      "pattern":"^[^:]*:[^:]*:[^:]*:[^:]*:[^:]*:analyzer/.{1,255}$"
-    },
-    "AnalyzerStatus":{
-      "type":"string",
-      "enum":[
+    "AnalyzerStatus": {
+      "enum": [
         "ACTIVE",
         "CREATING",
         "DISABLED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "AnalyzerSummary":{
-      "type":"structure",
-      "required":[
+    "AnalyzerSummary": {
+      "documentation": "<p>Contains information about the analyzer.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The ARN of the analyzer.</p>",
+          "shape": "AnalyzerArn"
+        },
+        "createdAt": {
+          "documentation": "<p>A timestamp for the time at which the analyzer was created.</p>",
+          "shape": "Timestamp"
+        },
+        "lastResourceAnalyzed": {
+          "documentation": "<p>The resource that was most recently analyzed by the analyzer.</p>",
+          "shape": "String"
+        },
+        "lastResourceAnalyzedAt": {
+          "documentation": "<p>The time at which the most recently analyzed resource was analyzed.</p>",
+          "shape": "Timestamp"
+        },
+        "name": {
+          "documentation": "<p>The name of the analyzer.</p>",
+          "shape": "Name"
+        },
+        "status": {
+          "documentation": "<p>The status of the analyzer. An <code>Active</code> analyzer successfully monitors supported resources and generates new findings. The analyzer is <code>Disabled</code> when a user action, such as removing trusted access for IAM Access Analyzer from AWS Organizations, causes the analyzer to stop generating new findings. The status is <code>Creating</code> when the analyzer creation is in progress and <code>Failed</code> when the analyzer creation has failed. </p>",
+          "shape": "AnalyzerStatus"
+        },
+        "statusReason": {
+          "documentation": "<p>The <code>statusReason</code> provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a <code>Failed</code> status is displayed. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the AWS organization.</p>",
+          "shape": "StatusReason"
+        },
+        "tags": {
+          "documentation": "<p>The tags added to the analyzer.</p>",
+          "shape": "TagsMap"
+        },
+        "type": {
+          "documentation": "<p>The type of analyzer, which corresponds to the zone of trust chosen for the analyzer.</p>",
+          "shape": "Type"
+        }
+      },
+      "required": [
         "arn",
         "createdAt",
         "name",
         "status",
         "type"
       ],
-      "members":{
-        "arn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer.</p>"
+      "type": "structure"
+    },
+    "AnalyzersList": {
+      "member": {
+        "shape": "AnalyzerSummary"
+      },
+      "type": "list"
+    },
+    "ArchiveRuleSummary": {
+      "documentation": "<p>Contains information about an archive rule.</p>",
+      "members": {
+        "createdAt": {
+          "documentation": "<p>The time at which the archive rule was created.</p>",
+          "shape": "Timestamp"
         },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>A timestamp for the time at which the analyzer was created.</p>"
+        "filter": {
+          "documentation": "<p>A filter used to define the archive rule.</p>",
+          "shape": "FilterCriteriaMap"
         },
-        "lastResourceAnalyzed":{
-          "shape":"String",
-          "documentation":"<p>The resource that was most recently analyzed by the analyzer.</p>"
+        "ruleName": {
+          "documentation": "<p>The name of the archive rule.</p>",
+          "shape": "Name"
         },
-        "lastResourceAnalyzedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the most recently analyzed resource was analyzed.</p>"
-        },
-        "name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer.</p>"
-        },
-        "status":{
-          "shape":"AnalyzerStatus",
-          "documentation":"<p>The status of the analyzer. An <code>Active</code> analyzer successfully monitors supported resources and generates new findings. The analyzer is <code>Disabled</code> when a user action, such as removing trusted access for IAM Access Analyzer from AWS Organizations, causes the analyzer to stop generating new findings. The status is <code>Creating</code> when the analyzer creation is in progress and <code>Failed</code> when the analyzer creation has failed. </p>"
-        },
-        "statusReason":{
-          "shape":"StatusReason",
-          "documentation":"<p>The <code>statusReason</code> provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a <code>Failed</code> status is displayed. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the AWS organization.</p>"
-        },
-        "tags":{
-          "shape":"TagsMap",
-          "documentation":"<p>The tags added to the analyzer.</p>"
-        },
-        "type":{
-          "shape":"Type",
-          "documentation":"<p>The type of analyzer, which corresponds to the zone of trust chosen for the analyzer.</p>"
+        "updatedAt": {
+          "documentation": "<p>The time at which the archive rule was last updated.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation":"<p>Contains information about the analyzer.</p>"
-    },
-    "AnalyzersList":{
-      "type":"list",
-      "member":{"shape":"AnalyzerSummary"}
-    },
-    "ArchiveRuleSummary":{
-      "type":"structure",
-      "required":[
+      "required": [
         "createdAt",
         "filter",
         "ruleName",
         "updatedAt"
       ],
-      "members":{
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the archive rule was created.</p>"
+      "type": "structure"
+    },
+    "ArchiveRulesList": {
+      "member": {
+        "shape": "ArchiveRuleSummary"
+      },
+      "type": "list"
+    },
+    "Boolean": {
+      "box": true,
+      "type": "boolean"
+    },
+    "ConditionKeyMap": {
+      "key": {
+        "shape": "String"
+      },
+      "type": "map",
+      "value": {
+        "shape": "String"
+      }
+    },
+    "ConflictException": {
+      "documentation": "<p>A conflict exception error.</p>",
+      "error": {
+        "httpStatusCode": 409,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
         },
-        "filter":{
-          "shape":"FilterCriteriaMap",
-          "documentation":"<p>A filter used to define the archive rule.</p>"
+        "resourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "String"
         },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the archive rule.</p>"
-        },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the archive rule was last updated.</p>"
+        "resourceType": {
+          "documentation": "<p>The resource type.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Contains information about an archive rule.</p>"
-    },
-    "ArchiveRulesList":{
-      "type":"list",
-      "member":{"shape":"ArchiveRuleSummary"}
-    },
-    "Boolean":{
-      "type":"boolean",
-      "box":true
-    },
-    "ConditionKeyMap":{
-      "type":"map",
-      "key":{"shape":"String"},
-      "value":{"shape":"String"}
-    },
-    "ConflictException":{
-      "type":"structure",
-      "required":[
+      "required": [
         "message",
         "resourceId",
         "resourceType"
       ],
-      "members":{
-        "message":{"shape":"String"},
-        "resourceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the resource.</p>"
+      "type": "structure"
+    },
+    "CreateAnalyzerRequest": {
+      "documentation": "<p>Creates an analyzer.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer to create.</p>",
+          "shape": "Name"
         },
-        "resourceType":{
-          "shape":"String",
-          "documentation":"<p>The resource type.</p>"
+        "archiveRules": {
+          "documentation": "<p>Specifies the archive rules to add for the analyzer. Archive rules automatically archive findings that meet the criteria you define for the rule.</p>",
+          "shape": "InlineArchiveRulesList"
+        },
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "tags": {
+          "documentation": "<p>The tags to apply to the analyzer.</p>",
+          "shape": "TagsMap"
+        },
+        "type": {
+          "documentation": "<p>The type of analyzer to create. Only ACCOUNT analyzers are supported. You can create only one analyzer per account per Region.</p>",
+          "shape": "Type"
         }
       },
-      "documentation":"<p>A conflict exception error.</p>",
-      "error":{
-        "httpStatusCode":409,
-        "senderFault":true
-      },
-      "exception":true
-    },
-    "CreateAnalyzerRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerName",
         "type"
       ],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer to create.</p>"
-        },
-        "archiveRules":{
-          "shape":"InlineArchiveRulesList",
-          "documentation":"<p>Specifies the archive rules to add for the analyzer. Archive rules automatically archive findings that meet the criteria you define for the rule.</p>"
-        },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true
-        },
-        "tags":{
-          "shape":"TagsMap",
-          "documentation":"<p>The tags to apply to the analyzer.</p>"
-        },
-        "type":{
-          "shape":"Type",
-          "documentation":"<p>The type of analyzer to create. Only ACCOUNT analyzers are supported. You can create only one analyzer per account per Region.</p>"
+      "type": "structure"
+    },
+    "CreateAnalyzerResponse": {
+      "documentation": "<p>The response to the request to create an analyzer.</p>",
+      "members": {
+        "arn": {
+          "documentation": "<p>The ARN of the analyzer that was created by the request.</p>",
+          "shape": "AnalyzerArn"
         }
       },
-      "documentation":"<p>Creates an analyzer.</p>"
+      "type": "structure"
     },
-    "CreateAnalyzerResponse":{
-      "type":"structure",
-      "members":{
-        "arn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer that was created by the request.</p>"
+    "CreateArchiveRuleRequest": {
+      "documentation": "<p>Creates an archive rule.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the created analyzer.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
+        },
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "filter": {
+          "documentation": "<p>The criteria for the rule.</p>",
+          "shape": "FilterCriteriaMap"
+        },
+        "ruleName": {
+          "documentation": "<p>The name of the rule to create.</p>",
+          "shape": "Name"
         }
       },
-      "documentation":"<p>The response to the request to create an analyzer.</p>"
-    },
-    "CreateArchiveRuleRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerName",
         "filter",
         "ruleName"
       ],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the created analyzer.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
+      "type": "structure"
+    },
+    "Criterion": {
+      "documentation": "<p>The criteria to use in the filter that defines the archive rule.</p>",
+      "members": {
+        "contains": {
+          "documentation": "<p>A \"contains\" operator to match for the filter used to create the rule.</p>",
+          "shape": "ValueList"
         },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true
+        "eq": {
+          "documentation": "<p>An \"equals\" operator to match for the filter used to create the rule.</p>",
+          "shape": "ValueList"
         },
-        "filter":{
-          "shape":"FilterCriteriaMap",
-          "documentation":"<p>The criteria for the rule.</p>"
+        "exists": {
+          "documentation": "<p>An \"exists\" operator to match for the filter used to create the rule. </p>",
+          "shape": "Boolean"
         },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the rule to create.</p>"
+        "neq": {
+          "documentation": "<p>A \"not equals\" operator to match for the filter used to create the rule.</p>",
+          "shape": "ValueList"
         }
       },
-      "documentation":"<p>Creates an archive rule.</p>"
+      "type": "structure"
     },
-    "Criterion":{
-      "type":"structure",
-      "members":{
-        "contains":{
-          "shape":"ValueList",
-          "documentation":"<p>A \"contains\" operator to match for the filter used to create the rule.</p>"
+    "DeleteAnalyzerRequest": {
+      "documentation": "<p>Deletes an analyzer.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer to delete.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
         },
-        "eq":{
-          "shape":"ValueList",
-          "documentation":"<p>An \"equals\" operator to match for the filter used to create the rule.</p>"
-        },
-        "exists":{
-          "shape":"Boolean",
-          "documentation":"<p>An \"exists\" operator to match for the filter used to create the rule. </p>"
-        },
-        "neq":{
-          "shape":"ValueList",
-          "documentation":"<p>A \"not equals\" operator to match for the filter used to create the rule.</p>"
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "location": "querystring",
+          "locationName": "clientToken",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The criteria to use in the filter that defines the archive rule.</p>"
+      "required": [
+        "analyzerName"
+      ],
+      "type": "structure"
     },
-    "DeleteAnalyzerRequest":{
-      "type":"structure",
-      "required":["analyzerName"],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer to delete.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
+    "DeleteArchiveRuleRequest": {
+      "documentation": "<p>Deletes an archive rule.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer that associated with the archive rule to delete.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
         },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true,
-          "location":"querystring",
-          "locationName":"clientToken"
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "location": "querystring",
+          "locationName": "clientToken",
+          "shape": "String"
+        },
+        "ruleName": {
+          "documentation": "<p>The name of the rule to delete.</p>",
+          "location": "uri",
+          "locationName": "ruleName",
+          "shape": "Name"
         }
       },
-      "documentation":"<p>Deletes an analyzer.</p>"
-    },
-    "DeleteArchiveRuleRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerName",
         "ruleName"
       ],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer that associated with the archive rule to delete.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
+      "type": "structure"
+    },
+    "FilterCriteriaMap": {
+      "key": {
+        "shape": "String"
+      },
+      "type": "map",
+      "value": {
+        "shape": "Criterion"
+      }
+    },
+    "Finding": {
+      "documentation": "<p>Contains information about a finding.</p>",
+      "members": {
+        "action": {
+          "documentation": "<p>The action in the analyzed policy statement that an external principal has permission to use.</p>",
+          "shape": "ActionList"
         },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true,
-          "location":"querystring",
-          "locationName":"clientToken"
+        "analyzedAt": {
+          "documentation": "<p>The time at which the resource was analyzed.</p>",
+          "shape": "Timestamp"
         },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the rule to delete.</p>",
-          "location":"uri",
-          "locationName":"ruleName"
+        "condition": {
+          "documentation": "<p>The condition in the analyzed policy statement that resulted in a finding.</p>",
+          "shape": "ConditionKeyMap"
+        },
+        "createdAt": {
+          "documentation": "<p>The time at which the finding was generated.</p>",
+          "shape": "Timestamp"
+        },
+        "error": {
+          "documentation": "<p>An error.</p>",
+          "shape": "String"
+        },
+        "id": {
+          "documentation": "<p>The ID of the finding.</p>",
+          "shape": "FindingId"
+        },
+        "isPublic": {
+          "documentation": "<p>Indicates whether the policy that generated the finding allows public access to the resource.</p>",
+          "shape": "Boolean"
+        },
+        "principal": {
+          "documentation": "<p>The external principal that access to a resource within the zone of trust.</p>",
+          "shape": "PrincipalMap"
+        },
+        "resource": {
+          "documentation": "<p>The resource that an external principal has access to.</p>",
+          "shape": "String"
+        },
+        "resourceOwnerAccount": {
+          "documentation": "<p>The AWS account ID that owns the resource.</p>",
+          "shape": "String"
+        },
+        "resourceType": {
+          "documentation": "<p>The type of the resource reported in the finding.</p>",
+          "shape": "ResourceType"
+        },
+        "status": {
+          "documentation": "<p>The current status of the finding.</p>",
+          "shape": "FindingStatus"
+        },
+        "updatedAt": {
+          "documentation": "<p>The time at which the finding was updated.</p>",
+          "shape": "Timestamp"
         }
       },
-      "documentation":"<p>Deletes an archive rule.</p>"
-    },
-    "FilterCriteriaMap":{
-      "type":"map",
-      "key":{"shape":"String"},
-      "value":{"shape":"Criterion"}
-    },
-    "Finding":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzedAt",
         "condition",
         "createdAt",
@@ -735,85 +1055,89 @@
         "status",
         "updatedAt"
       ],
-      "members":{
-        "action":{
-          "shape":"ActionList",
-          "documentation":"<p>The action in the analyzed policy statement that an external principal has permission to use.</p>"
-        },
-        "analyzedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the resource was analyzed.</p>"
-        },
-        "condition":{
-          "shape":"ConditionKeyMap",
-          "documentation":"<p>The condition in the analyzed policy statement that resulted in a finding.</p>"
-        },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was generated.</p>"
-        },
-        "error":{
-          "shape":"String",
-          "documentation":"<p>An error.</p>"
-        },
-        "id":{
-          "shape":"FindingId",
-          "documentation":"<p>The ID of the finding.</p>"
-        },
-        "isPublic":{
-          "shape":"Boolean",
-          "documentation":"<p>Indicates whether the policy that generated the finding allows public access to the resource.</p>"
-        },
-        "principal":{
-          "shape":"PrincipalMap",
-          "documentation":"<p>The external principal that access to a resource within the zone of trust.</p>"
-        },
-        "resource":{
-          "shape":"String",
-          "documentation":"<p>The resource that an external principal has access to.</p>"
-        },
-        "resourceOwnerAccount":{
-          "shape":"String",
-          "documentation":"<p>The AWS account ID that owns the resource.</p>"
-        },
-        "resourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the resource reported in the finding.</p>"
-        },
-        "status":{
-          "shape":"FindingStatus",
-          "documentation":"<p>The current status of the finding.</p>"
-        },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was updated.</p>"
-        }
+      "type": "structure"
+    },
+    "FindingId": {
+      "type": "string"
+    },
+    "FindingIdList": {
+      "member": {
+        "shape": "FindingId"
       },
-      "documentation":"<p>Contains information about a finding.</p>"
+      "type": "list"
     },
-    "FindingId":{"type":"string"},
-    "FindingIdList":{
-      "type":"list",
-      "member":{"shape":"FindingId"}
-    },
-    "FindingStatus":{
-      "type":"string",
-      "enum":[
+    "FindingStatus": {
+      "enum": [
         "ACTIVE",
         "ARCHIVED",
         "RESOLVED"
-      ]
+      ],
+      "type": "string"
     },
-    "FindingStatusUpdate":{
-      "type":"string",
-      "enum":[
+    "FindingStatusUpdate": {
+      "enum": [
         "ACTIVE",
         "ARCHIVED"
-      ]
+      ],
+      "type": "string"
     },
-    "FindingSummary":{
-      "type":"structure",
-      "required":[
+    "FindingSummary": {
+      "documentation": "<p>Contains information about a finding.</p>",
+      "members": {
+        "action": {
+          "documentation": "<p>The action in the analyzed policy statement that an external principal has permission to use.</p>",
+          "shape": "ActionList"
+        },
+        "analyzedAt": {
+          "documentation": "<p>The time at which the resource-based policy that generated the finding was analyzed.</p>",
+          "shape": "Timestamp"
+        },
+        "condition": {
+          "documentation": "<p>The condition in the analyzed policy statement that resulted in a finding.</p>",
+          "shape": "ConditionKeyMap"
+        },
+        "createdAt": {
+          "documentation": "<p>The time at which the finding was created.</p>",
+          "shape": "Timestamp"
+        },
+        "error": {
+          "documentation": "<p>The error that resulted in an Error finding.</p>",
+          "shape": "String"
+        },
+        "id": {
+          "documentation": "<p>The ID of the finding.</p>",
+          "shape": "FindingId"
+        },
+        "isPublic": {
+          "documentation": "<p>Indicates whether the finding reports a resource that has a policy that allows public access.</p>",
+          "shape": "Boolean"
+        },
+        "principal": {
+          "documentation": "<p>The external principal that has access to a resource within the zone of trust.</p>",
+          "shape": "PrincipalMap"
+        },
+        "resource": {
+          "documentation": "<p>The resource that the external principal has access to.</p>",
+          "shape": "String"
+        },
+        "resourceOwnerAccount": {
+          "documentation": "<p>The AWS account ID that owns the resource.</p>",
+          "shape": "String"
+        },
+        "resourceType": {
+          "documentation": "<p>The type of the resource that the external principal has access to.</p>",
+          "shape": "ResourceType"
+        },
+        "status": {
+          "documentation": "<p>The status of the finding.</p>",
+          "shape": "FindingStatus"
+        },
+        "updatedAt": {
+          "documentation": "<p>The time at which the finding was most recently updated.</p>",
+          "shape": "Timestamp"
+        }
+      },
+      "required": [
         "analyzedAt",
         "condition",
         "createdAt",
@@ -823,767 +1147,777 @@
         "status",
         "updatedAt"
       ],
-      "members":{
-        "action":{
-          "shape":"ActionList",
-          "documentation":"<p>The action in the analyzed policy statement that an external principal has permission to use.</p>"
+      "type": "structure"
+    },
+    "FindingsList": {
+      "member": {
+        "shape": "FindingSummary"
+      },
+      "type": "list"
+    },
+    "GetAnalyzedResourceRequest": {
+      "documentation": "<p>Retrieves an analyzed resource.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer to retrieve information from.</p>",
+          "location": "querystring",
+          "locationName": "analyzerArn",
+          "shape": "AnalyzerArn"
         },
-        "analyzedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the resource-based policy that generated the finding was analyzed.</p>"
-        },
-        "condition":{
-          "shape":"ConditionKeyMap",
-          "documentation":"<p>The condition in the analyzed policy statement that resulted in a finding.</p>"
-        },
-        "createdAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was created.</p>"
-        },
-        "error":{
-          "shape":"String",
-          "documentation":"<p>The error that resulted in an Error finding.</p>"
-        },
-        "id":{
-          "shape":"FindingId",
-          "documentation":"<p>The ID of the finding.</p>"
-        },
-        "isPublic":{
-          "shape":"Boolean",
-          "documentation":"<p>Indicates whether the finding reports a resource that has a policy that allows public access.</p>"
-        },
-        "principal":{
-          "shape":"PrincipalMap",
-          "documentation":"<p>The external principal that has access to a resource within the zone of trust.</p>"
-        },
-        "resource":{
-          "shape":"String",
-          "documentation":"<p>The resource that the external principal has access to.</p>"
-        },
-        "resourceOwnerAccount":{
-          "shape":"String",
-          "documentation":"<p>The AWS account ID that owns the resource.</p>"
-        },
-        "resourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the resource that the external principal has access to.</p>"
-        },
-        "status":{
-          "shape":"FindingStatus",
-          "documentation":"<p>The status of the finding.</p>"
-        },
-        "updatedAt":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the finding was most recently updated.</p>"
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource to retrieve information about.</p>",
+          "location": "querystring",
+          "locationName": "resourceArn",
+          "shape": "ResourceArn"
         }
       },
-      "documentation":"<p>Contains information about a finding.</p>"
-    },
-    "FindingsList":{
-      "type":"list",
-      "member":{"shape":"FindingSummary"}
-    },
-    "GetAnalyzedResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerArn",
         "resourceArn"
       ],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer to retrieve information from.</p>",
-          "location":"querystring",
-          "locationName":"analyzerArn"
+      "type": "structure"
+    },
+    "GetAnalyzedResourceResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "resource": {
+          "documentation": "<p>An <code>AnalyedResource</code> object that contains information that Access Analyzer found when it analyzed the resource.</p>",
+          "shape": "AnalyzedResource"
+        }
+      },
+      "type": "structure"
+    },
+    "GetAnalyzerRequest": {
+      "documentation": "<p>Retrieves an analyzer.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer retrieved.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
+        }
+      },
+      "required": [
+        "analyzerName"
+      ],
+      "type": "structure"
+    },
+    "GetAnalyzerResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "analyzer": {
+          "documentation": "<p>An <code>AnalyzerSummary</code> object that contains information about the analyzer.</p>",
+          "shape": "AnalyzerSummary"
+        }
+      },
+      "required": [
+        "analyzer"
+      ],
+      "type": "structure"
+    },
+    "GetArchiveRuleRequest": {
+      "documentation": "<p>Retrieves an archive rule.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer to retrieve rules from.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
         },
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The ARN of the resource to retrieve information about.</p>",
-          "location":"querystring",
-          "locationName":"resourceArn"
+        "ruleName": {
+          "documentation": "<p>The name of the rule to retrieve.</p>",
+          "location": "uri",
+          "locationName": "ruleName",
+          "shape": "Name"
         }
       },
-      "documentation":"<p>Retrieves an analyzed resource.</p>"
-    },
-    "GetAnalyzedResourceResponse":{
-      "type":"structure",
-      "members":{
-        "resource":{
-          "shape":"AnalyzedResource",
-          "documentation":"<p>An <code>AnalyedResource</code> object that contains information that Access Analyzer found when it analyzed the resource.</p>"
-        }
-      },
-      "documentation":"<p>The response to the request.</p>"
-    },
-    "GetAnalyzerRequest":{
-      "type":"structure",
-      "required":["analyzerName"],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer retrieved.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
-        }
-      },
-      "documentation":"<p>Retrieves an analyzer.</p>"
-    },
-    "GetAnalyzerResponse":{
-      "type":"structure",
-      "required":["analyzer"],
-      "members":{
-        "analyzer":{
-          "shape":"AnalyzerSummary",
-          "documentation":"<p>An <code>AnalyzerSummary</code> object that contains information about the analyzer.</p>"
-        }
-      },
-      "documentation":"<p>The response to the request.</p>"
-    },
-    "GetArchiveRuleRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerName",
         "ruleName"
       ],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer to retrieve rules from.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
-        },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the rule to retrieve.</p>",
-          "location":"uri",
-          "locationName":"ruleName"
+      "type": "structure"
+    },
+    "GetArchiveRuleResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "archiveRule": {
+          "shape": "ArchiveRuleSummary"
         }
       },
-      "documentation":"<p>Retrieves an archive rule.</p>"
+      "required": [
+        "archiveRule"
+      ],
+      "type": "structure"
     },
-    "GetArchiveRuleResponse":{
-      "type":"structure",
-      "required":["archiveRule"],
-      "members":{
-        "archiveRule":{"shape":"ArchiveRuleSummary"}
+    "GetFindingRequest": {
+      "documentation": "<p>Retrieves a finding.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer that generated the finding.</p>",
+          "location": "querystring",
+          "locationName": "analyzerArn",
+          "shape": "AnalyzerArn"
+        },
+        "id": {
+          "documentation": "<p>The ID of the finding to retrieve.</p>",
+          "location": "uri",
+          "locationName": "id",
+          "shape": "FindingId"
+        }
       },
-      "documentation":"<p>The response to the request.</p>"
-    },
-    "GetFindingRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerArn",
         "id"
       ],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer that generated the finding.</p>",
-          "location":"querystring",
-          "locationName":"analyzerArn"
+      "type": "structure"
+    },
+    "GetFindingResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "finding": {
+          "documentation": "<p>A <code>finding</code> object that contains finding details.</p>",
+          "shape": "Finding"
+        }
+      },
+      "type": "structure"
+    },
+    "InlineArchiveRule": {
+      "documentation": "<p>An criterion statement in an archive rule. Each archive rule may have multiple criteria.</p>",
+      "members": {
+        "filter": {
+          "documentation": "<p>The condition and values for a criterion.</p>",
+          "shape": "FilterCriteriaMap"
         },
-        "id":{
-          "shape":"FindingId",
-          "documentation":"<p>The ID of the finding to retrieve.</p>",
-          "location":"uri",
-          "locationName":"id"
+        "ruleName": {
+          "documentation": "<p>The name of the rule.</p>",
+          "shape": "Name"
         }
       },
-      "documentation":"<p>Retrieves a finding.</p>"
-    },
-    "GetFindingResponse":{
-      "type":"structure",
-      "members":{
-        "finding":{
-          "shape":"Finding",
-          "documentation":"<p>A <code>finding</code> object that contains finding details.</p>"
-        }
-      },
-      "documentation":"<p>The response to the request.</p>"
-    },
-    "InlineArchiveRule":{
-      "type":"structure",
-      "required":[
+      "required": [
         "filter",
         "ruleName"
       ],
-      "members":{
-        "filter":{
-          "shape":"FilterCriteriaMap",
-          "documentation":"<p>The condition and values for a criterion.</p>"
+      "type": "structure"
+    },
+    "InlineArchiveRulesList": {
+      "member": {
+        "shape": "InlineArchiveRule"
+      },
+      "type": "list"
+    },
+    "Integer": {
+      "box": true,
+      "type": "integer"
+    },
+    "InternalServerException": {
+      "documentation": "<p>Internal server error.</p>",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "shape": "String"
         },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the rule.</p>"
+        "retryAfterSeconds": {
+          "documentation": "<p>The seconds to wait to retry.</p>",
+          "location": "header",
+          "locationName": "Retry-After",
+          "shape": "Integer"
         }
       },
-      "documentation":"<p>An criterion statement in an archive rule. Each archive rule may have multiple criteria.</p>"
+      "required": [
+        "message"
+      ],
+      "type": "structure"
     },
-    "InlineArchiveRulesList":{
-      "type":"list",
-      "member":{"shape":"InlineArchiveRule"}
-    },
-    "Integer":{
-      "type":"integer",
-      "box":true
-    },
-    "InternalServerException":{
-      "type":"structure",
-      "required":["message"],
-      "members":{
-        "message":{"shape":"String"},
-        "retryAfterSeconds":{
-          "shape":"Integer",
-          "documentation":"<p>The seconds to wait to retry.</p>",
-          "location":"header",
-          "locationName":"Retry-After"
+    "ListAnalyzedResourcesRequest": {
+      "documentation": "<p>Retrieves a list of resources that have been analyzed.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer to retrieve a list of analyzed resources from.</p>",
+          "shape": "AnalyzerArn"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "Integer"
+        },
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
+        },
+        "resourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation":"<p>Internal server error.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true,
-      "fault":true
+      "required": [
+        "analyzerArn"
+      ],
+      "type": "structure"
     },
-    "ListAnalyzedResourcesRequest":{
-      "type":"structure",
-      "required":["analyzerArn"],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer to retrieve a list of analyzed resources from.</p>"
+    "ListAnalyzedResourcesResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "analyzedResources": {
+          "documentation": "<p>A list of resources that were analyzed.</p>",
+          "shape": "AnalyzedResourcesList"
         },
-        "maxResults":{
-          "shape":"Integer",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
-        },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
-        },
-        "resourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
         }
       },
-      "documentation":"<p>Retrieves a list of resources that have been analyzed.</p>"
+      "required": [
+        "analyzedResources"
+      ],
+      "type": "structure"
     },
-    "ListAnalyzedResourcesResponse":{
-      "type":"structure",
-      "required":["analyzedResources"],
-      "members":{
-        "analyzedResources":{
-          "shape":"AnalyzedResourcesList",
-          "documentation":"<p>A list of resources that were analyzed.</p>"
+    "ListAnalyzersRequest": {
+      "documentation": "<p>Retrieves a list of analyzers.</p>",
+      "members": {
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "Integer"
         },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "Token"
+        },
+        "type": {
+          "documentation": "<p>The type of analyzer.</p>",
+          "location": "querystring",
+          "locationName": "type",
+          "shape": "Type"
         }
       },
-      "documentation":"<p>The response to the request.</p>"
+      "type": "structure"
     },
-    "ListAnalyzersRequest":{
-      "type":"structure",
-      "members":{
-        "maxResults":{
-          "shape":"Integer",
-          "documentation":"<p>The maximum number of results to return in the response.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+    "ListAnalyzersResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "analyzers": {
+          "documentation": "<p>The analyzers retrieved.</p>",
+          "shape": "AnalyzersList"
         },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        },
-        "type":{
-          "shape":"Type",
-          "documentation":"<p>The type of analyzer.</p>",
-          "location":"querystring",
-          "locationName":"type"
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
         }
       },
-      "documentation":"<p>Retrieves a list of analyzers.</p>"
+      "required": [
+        "analyzers"
+      ],
+      "type": "structure"
     },
-    "ListAnalyzersResponse":{
-      "type":"structure",
-      "required":["analyzers"],
-      "members":{
-        "analyzers":{
-          "shape":"AnalyzersList",
-          "documentation":"<p>The analyzers retrieved.</p>"
+    "ListArchiveRulesRequest": {
+      "documentation": "<p>Retrieves a list of archive rules created for the specified analyzer.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer to retrieve rules from.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
         },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the request.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "Integer"
+        },
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "Token"
         }
       },
-      "documentation":"<p>The response to the request.</p>"
+      "required": [
+        "analyzerName"
+      ],
+      "type": "structure"
     },
-    "ListArchiveRulesRequest":{
-      "type":"structure",
-      "required":["analyzerName"],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer to retrieve rules from.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
+    "ListArchiveRulesResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "archiveRules": {
+          "documentation": "<p>A list of archive rules created for the specified analyzer.</p>",
+          "shape": "ArchiveRulesList"
         },
-        "maxResults":{
-          "shape":"Integer",
-          "documentation":"<p>The maximum number of results to return in the request.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
         }
       },
-      "documentation":"<p>Retrieves a list of archive rules created for the specified analyzer.</p>"
+      "required": [
+        "archiveRules"
+      ],
+      "type": "structure"
     },
-    "ListArchiveRulesResponse":{
-      "type":"structure",
-      "required":["archiveRules"],
-      "members":{
-        "archiveRules":{
-          "shape":"ArchiveRulesList",
-          "documentation":"<p>A list of archive rules created for the specified analyzer.</p>"
+    "ListFindingsRequest": {
+      "documentation": "<p>Retrieves a list of findings generated by the specified analyzer.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer to retrieve findings from.</p>",
+          "shape": "AnalyzerArn"
         },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
+        "filter": {
+          "documentation": "<p>A filter to match for the findings to return.</p>",
+          "shape": "FilterCriteriaMap"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return in the response.</p>",
+          "shape": "Integer"
+        },
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
+        },
+        "sort": {
+          "documentation": "<p>The sort order for the findings returned.</p>",
+          "shape": "SortCriteria"
         }
       },
-      "documentation":"<p>The response to the request.</p>"
+      "required": [
+        "analyzerArn"
+      ],
+      "type": "structure"
     },
-    "ListFindingsRequest":{
-      "type":"structure",
-      "required":["analyzerArn"],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer to retrieve findings from.</p>"
+    "ListFindingsResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "findings": {
+          "documentation": "<p>A list of findings retrieved from the analyzer that match the filter criteria specified, if any.</p>",
+          "shape": "FindingsList"
         },
-        "filter":{
-          "shape":"FilterCriteriaMap",
-          "documentation":"<p>A filter to match for the findings to return.</p>"
-        },
-        "maxResults":{
-          "shape":"Integer",
-          "documentation":"<p>The maximum number of results to return in the response.</p>"
-        },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
-        },
-        "sort":{
-          "shape":"SortCriteria",
-          "documentation":"<p>The sort order for the findings returned.</p>"
+        "nextToken": {
+          "documentation": "<p>A token used for pagination of results returned.</p>",
+          "shape": "Token"
         }
       },
-      "documentation":"<p>Retrieves a list of findings generated by the specified analyzer.</p>"
+      "required": [
+        "findings"
+      ],
+      "type": "structure"
     },
-    "ListFindingsResponse":{
-      "type":"structure",
-      "required":["findings"],
-      "members":{
-        "findings":{
-          "shape":"FindingsList",
-          "documentation":"<p>A list of findings retrieved from the analyzer that match the filter criteria specified, if any.</p>"
-        },
-        "nextToken":{
-          "shape":"Token",
-          "documentation":"<p>A token used for pagination of results returned.</p>"
+    "ListTagsForResourceRequest": {
+      "documentation": "<p>Retrieves a list of tags applied to the specified resource.</p>",
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource to retrieve tags from.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The response to the request.</p>"
+      "required": [
+        "resourceArn"
+      ],
+      "type": "structure"
     },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["resourceArn"],
-      "members":{
-        "resourceArn":{
-          "shape":"String",
-          "documentation":"<p>The ARN of the resource to retrieve tags from.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+    "ListTagsForResourceResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {
+        "tags": {
+          "documentation": "<p>The tags that are applied to the specified resource.</p>",
+          "shape": "TagsMap"
         }
       },
-      "documentation":"<p>Retrieves a list of tags applied to the specified resource.</p>"
+      "type": "structure"
     },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "tags":{
-          "shape":"TagsMap",
-          "documentation":"<p>The tags that are applied to the specified resource.</p>"
-        }
-      },
-      "documentation":"<p>The response to the request.</p>"
+    "Name": {
+      "max": 255,
+      "min": 1,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+      "type": "string"
     },
-    "Name":{
-      "type":"string",
-      "max":255,
-      "min":1,
-      "pattern":"^[A-Za-z][A-Za-z0-9_.-]*$"
-    },
-    "OrderBy":{
-      "type":"string",
-      "enum":[
+    "OrderBy": {
+      "enum": [
         "ASC",
         "DESC"
-      ]
+      ],
+      "type": "string"
     },
-    "PrincipalMap":{
-      "type":"map",
-      "key":{"shape":"String"},
-      "value":{"shape":"String"}
+    "PrincipalMap": {
+      "key": {
+        "shape": "String"
+      },
+      "type": "map",
+      "value": {
+        "shape": "String"
+      }
     },
-    "ReasonCode":{
-      "type":"string",
-      "enum":[
+    "ReasonCode": {
+      "enum": [
         "AWS_SERVICE_ACCESS_DISABLED",
         "DELEGATED_ADMINISTRATOR_DEREGISTERED",
         "ORGANIZATION_DELETED",
         "SERVICE_LINKED_ROLE_CREATION_FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "ResourceArn":{
-      "type":"string",
-      "pattern":"arn:[^:]*:[^:]*:[^:]*:[^:]*:.*$"
+    "ResourceArn": {
+      "pattern": "arn:[^:]*:[^:]*:[^:]*:[^:]*:.*$",
+      "type": "string"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "required":[
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource could not be found.</p>",
+      "error": {
+        "httpStatusCode": 404,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        },
+        "resourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "String"
+        },
+        "resourceType": {
+          "documentation": "<p>The type of the resource.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "message",
         "resourceId",
         "resourceType"
       ],
-      "members":{
-        "message":{"shape":"String"},
-        "resourceId":{
-          "shape":"String",
-          "documentation":"<p>The ID of the resource.</p>"
-        },
-        "resourceType":{
-          "shape":"String",
-          "documentation":"<p>The type of the resource.</p>"
-        }
-      },
-      "documentation":"<p>The specified resource could not be found.</p>",
-      "error":{
-        "httpStatusCode":404,
-        "senderFault":true
-      },
-      "exception":true
+      "type": "structure"
     },
-    "ResourceType":{
-      "type":"string",
-      "enum":[
+    "ResourceType": {
+      "enum": [
         "AWS::IAM::Role",
         "AWS::KMS::Key",
         "AWS::Lambda::Function",
         "AWS::Lambda::LayerVersion",
         "AWS::S3::Bucket",
         "AWS::SQS::Queue"
-      ]
+      ],
+      "type": "string"
     },
-    "ServiceQuotaExceededException":{
-      "type":"structure",
-      "required":[
+    "ServiceQuotaExceededException": {
+      "documentation": "<p>Service quote met error.</p>",
+      "error": {
+        "httpStatusCode": 402,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
+        },
+        "resourceId": {
+          "documentation": "<p>The resource ID.</p>",
+          "shape": "String"
+        },
+        "resourceType": {
+          "documentation": "<p>The resource type.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "message",
         "resourceId",
         "resourceType"
       ],
-      "members":{
-        "message":{"shape":"String"},
-        "resourceId":{
-          "shape":"String",
-          "documentation":"<p>The resource ID.</p>"
+      "type": "structure"
+    },
+    "SharedViaList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "SortCriteria": {
+      "documentation": "<p>The criteria used to sort.</p>",
+      "members": {
+        "attributeName": {
+          "documentation": "<p>The name of the attribute to sort on.</p>",
+          "shape": "String"
         },
-        "resourceType":{
-          "shape":"String",
-          "documentation":"<p>The resource type.</p>"
+        "orderBy": {
+          "documentation": "<p>The sort order, ascending or descending.</p>",
+          "shape": "OrderBy"
         }
       },
-      "documentation":"<p>Service quote met error.</p>",
-      "error":{
-        "httpStatusCode":402,
-        "senderFault":true
-      },
-      "exception":true
+      "type": "structure"
     },
-    "SharedViaList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "SortCriteria":{
-      "type":"structure",
-      "members":{
-        "attributeName":{
-          "shape":"String",
-          "documentation":"<p>The name of the attribute to sort on.</p>"
+    "StartResourceScanRequest": {
+      "documentation": "<p>Starts a scan of the policies applied to the specified resource.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer to use to scan the policies applied to the specified resource.</p>",
+          "shape": "AnalyzerArn"
         },
-        "orderBy":{
-          "shape":"OrderBy",
-          "documentation":"<p>The sort order, ascending or descending.</p>"
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource to scan.</p>",
+          "shape": "ResourceArn"
         }
       },
-      "documentation":"<p>The criteria used to sort.</p>"
-    },
-    "StartResourceScanRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerArn",
         "resourceArn"
       ],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer to use to scan the policies applied to the specified resource.</p>"
+      "type": "structure"
+    },
+    "StatusReason": {
+      "documentation": "<p>Provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a <code>Failed</code> status is displayed. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the AWS organization.</p>",
+      "members": {
+        "code": {
+          "documentation": "<p>The reason code for the current status of the analyzer.</p>",
+          "shape": "ReasonCode"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "type": "structure"
+    },
+    "String": {
+      "type": "string"
+    },
+    "TagKeys": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "documentation": "<p>Adds a tag to the specified resource.</p>",
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource to add the tag to.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "String"
         },
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The ARN of the resource to scan.</p>"
+        "tags": {
+          "documentation": "<p>The tags to add to the resource.</p>",
+          "shape": "TagsMap"
         }
       },
-      "documentation":"<p>Starts a scan of the policies applied to the specified resource.</p>"
-    },
-    "StatusReason":{
-      "type":"structure",
-      "required":["code"],
-      "members":{
-        "code":{
-          "shape":"ReasonCode",
-          "documentation":"<p>The reason code for the current status of the analyzer.</p>"
-        }
-      },
-      "documentation":"<p>Provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a <code>Failed</code> status is displayed. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the AWS organization.</p>"
-    },
-    "String":{"type":"string"},
-    "TagKeys":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "tags"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"String",
-          "documentation":"<p>The ARN of the resource to add the tag to.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {},
+      "type": "structure"
+    },
+    "TagsMap": {
+      "key": {
+        "shape": "String"
+      },
+      "type": "map",
+      "value": {
+        "shape": "String"
+      }
+    },
+    "ThrottlingException": {
+      "documentation": "<p>Throttling limit exceeded error.</p>",
+      "error": {
+        "httpStatusCode": 429,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "String"
         },
-        "tags":{
-          "shape":"TagsMap",
-          "documentation":"<p>The tags to add to the resource.</p>"
+        "retryAfterSeconds": {
+          "documentation": "<p>The seconds to wait to retry.</p>",
+          "location": "header",
+          "locationName": "Retry-After",
+          "shape": "Integer"
         }
       },
-      "documentation":"<p>Adds a tag to the specified resource.</p>"
+      "required": [
+        "message"
+      ],
+      "type": "structure"
     },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The response to the request.</p>"
+    "Timestamp": {
+      "timestampFormat": "iso8601",
+      "type": "timestamp"
     },
-    "TagsMap":{
-      "type":"map",
-      "key":{"shape":"String"},
-      "value":{"shape":"String"}
+    "Token": {
+      "type": "string"
     },
-    "ThrottlingException":{
-      "type":"structure",
-      "required":["message"],
-      "members":{
-        "message":{"shape":"String"},
-        "retryAfterSeconds":{
-          "shape":"Integer",
-          "documentation":"<p>The seconds to wait to retry.</p>",
-          "location":"header",
-          "locationName":"Retry-After"
-        }
-      },
-      "documentation":"<p>Throttling limit exceeded error.</p>",
-      "error":{
-        "httpStatusCode":429,
-        "senderFault":true
-      },
-      "exception":true
-    },
-    "Timestamp":{
-      "type":"timestamp",
-      "timestampFormat":"iso8601"
-    },
-    "Token":{"type":"string"},
-    "Type":{
-      "type":"string",
-      "enum":[
+    "Type": {
+      "enum": [
         "ACCOUNT",
         "ORGANIZATION"
-      ]
+      ],
+      "type": "string"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UntagResourceRequest": {
+      "documentation": "<p>Removes a tag from the specified resource.</p>",
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource to remove the tag from.</p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "String"
+        },
+        "tagKeys": {
+          "documentation": "<p>The key for the tag to add.</p>",
+          "location": "querystring",
+          "locationName": "tagKeys",
+          "shape": "TagKeys"
+        }
+      },
+      "required": [
         "resourceArn",
         "tagKeys"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"String",
-          "documentation":"<p>The ARN of the resource to remove the tag from.</p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "documentation": "<p>The response to the request.</p>",
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateArchiveRuleRequest": {
+      "documentation": "<p>Updates the specified archive rule.</p>",
+      "members": {
+        "analyzerName": {
+          "documentation": "<p>The name of the analyzer to update the archive rules for.</p>",
+          "location": "uri",
+          "locationName": "analyzerName",
+          "shape": "Name"
         },
-        "tagKeys":{
-          "shape":"TagKeys",
-          "documentation":"<p>The key for the tag to add.</p>",
-          "location":"querystring",
-          "locationName":"tagKeys"
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
+        },
+        "filter": {
+          "documentation": "<p>A filter to match for the rules to update. Only rules that match the filter are updated.</p>",
+          "shape": "FilterCriteriaMap"
+        },
+        "ruleName": {
+          "documentation": "<p>The name of the rule to update.</p>",
+          "location": "uri",
+          "locationName": "ruleName",
+          "shape": "Name"
         }
       },
-      "documentation":"<p>Removes a tag from the specified resource.</p>"
-    },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The response to the request.</p>"
-    },
-    "UpdateArchiveRuleRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerName",
         "filter",
         "ruleName"
       ],
-      "members":{
-        "analyzerName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the analyzer to update the archive rules for.</p>",
-          "location":"uri",
-          "locationName":"analyzerName"
+      "type": "structure"
+    },
+    "UpdateFindingsRequest": {
+      "documentation": "<p>Updates findings with the new values provided in the request.</p>",
+      "members": {
+        "analyzerArn": {
+          "documentation": "<p>The ARN of the analyzer that generated the findings to update.</p>",
+          "shape": "AnalyzerArn"
         },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true
+        "clientToken": {
+          "documentation": "<p>A client token.</p>",
+          "idempotencyToken": true,
+          "shape": "String"
         },
-        "filter":{
-          "shape":"FilterCriteriaMap",
-          "documentation":"<p>A filter to match for the rules to update. Only rules that match the filter are updated.</p>"
+        "ids": {
+          "documentation": "<p>The IDs of the findings to update.</p>",
+          "shape": "FindingIdList"
         },
-        "ruleName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the rule to update.</p>",
-          "location":"uri",
-          "locationName":"ruleName"
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource identified in the finding.</p>",
+          "shape": "ResourceArn"
+        },
+        "status": {
+          "documentation": "<p>The state represents the action to take to update the finding Status. Use <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>",
+          "shape": "FindingStatusUpdate"
         }
       },
-      "documentation":"<p>Updates the specified archive rule.</p>"
-    },
-    "UpdateFindingsRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "analyzerArn",
         "status"
       ],
-      "members":{
-        "analyzerArn":{
-          "shape":"AnalyzerArn",
-          "documentation":"<p>The ARN of the analyzer that generated the findings to update.</p>"
+      "type": "structure"
+    },
+    "ValidationException": {
+      "documentation": "<p>Validation exception error.</p>",
+      "error": {
+        "httpStatusCode": 400,
+        "senderFault": true
+      },
+      "exception": true,
+      "members": {
+        "fieldList": {
+          "documentation": "<p>A list of fields that didn't validate.</p>",
+          "shape": "ValidationExceptionFieldList"
         },
-        "clientToken":{
-          "shape":"String",
-          "documentation":"<p>A client token.</p>",
-          "idempotencyToken":true
+        "message": {
+          "shape": "String"
         },
-        "ids":{
-          "shape":"FindingIdList",
-          "documentation":"<p>The IDs of the findings to update.</p>"
-        },
-        "resourceArn":{
-          "shape":"ResourceArn",
-          "documentation":"<p>The ARN of the resource identified in the finding.</p>"
-        },
-        "status":{
-          "shape":"FindingStatusUpdate",
-          "documentation":"<p>The state represents the action to take to update the finding Status. Use <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>"
+        "reason": {
+          "documentation": "<p>The reason for the exception.</p>",
+          "shape": "ValidationExceptionReason"
         }
       },
-      "documentation":"<p>Updates findings with the new values provided in the request.</p>"
-    },
-    "ValidationException":{
-      "type":"structure",
-      "required":[
+      "required": [
         "message",
         "reason"
       ],
-      "members":{
-        "fieldList":{
-          "shape":"ValidationExceptionFieldList",
-          "documentation":"<p>A list of fields that didn't validate.</p>"
+      "type": "structure"
+    },
+    "ValidationExceptionField": {
+      "documentation": "<p>Contains information about a validation exception.</p>",
+      "members": {
+        "message": {
+          "documentation": "<p>A message about the validation exception.</p>",
+          "shape": "String"
         },
-        "message":{"shape":"String"},
-        "reason":{
-          "shape":"ValidationExceptionReason",
-          "documentation":"<p>The reason for the exception.</p>"
+        "name": {
+          "documentation": "<p>The name of the validation exception.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Validation exception error.</p>",
-      "error":{
-        "httpStatusCode":400,
-        "senderFault":true
-      },
-      "exception":true
-    },
-    "ValidationExceptionField":{
-      "type":"structure",
-      "required":[
+      "required": [
         "message",
         "name"
       ],
-      "members":{
-        "message":{
-          "shape":"String",
-          "documentation":"<p>A message about the validation exception.</p>"
-        },
-        "name":{
-          "shape":"String",
-          "documentation":"<p>The name of the validation exception.</p>"
-        }
+      "type": "structure"
+    },
+    "ValidationExceptionFieldList": {
+      "member": {
+        "shape": "ValidationExceptionField"
       },
-      "documentation":"<p>Contains information about a validation exception.</p>"
+      "type": "list"
     },
-    "ValidationExceptionFieldList":{
-      "type":"list",
-      "member":{"shape":"ValidationExceptionField"}
-    },
-    "ValidationExceptionReason":{
-      "type":"string",
-      "enum":[
+    "ValidationExceptionReason": {
+      "enum": [
         "cannotParse",
         "fieldValidationFailed",
         "other",
         "unknownOperation"
-      ]
+      ],
+      "type": "string"
     },
-    "ValueList":{
-      "type":"list",
-      "member":{"shape":"String"},
-      "max":20,
-      "min":1
+    "ValueList": {
+      "max": 20,
+      "member": {
+        "shape": "String"
+      },
+      "min": 1,
+      "type": "list"
     }
   },
-  "documentation":"<p>AWS IAM Access Analyzer helps identify potential resource-access risks by enabling you to identify any policies that grant access to an external principal. It does this by using logic-based reasoning to analyze resource-based policies in your AWS environment. An external principal can be another AWS account, a root user, an IAM user or role, a federated user, an AWS service, or an anonymous user. This guide describes the AWS IAM Access Analyzer operations that you can call programmatically. For general information about Access Analyzer, see the <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html\">AWS IAM Access Analyzer section of the IAM User Guide</a>.</p> <p>To start using Access Analyzer, you first need to create an analyzer.</p>"
+  "version": "2.0"
 }

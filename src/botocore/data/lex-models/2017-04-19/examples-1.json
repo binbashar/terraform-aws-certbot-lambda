@@ -1,15 +1,18 @@
 {
-  "version": "1.0",
   "examples": {
     "GetBot": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get configuration information for a bot.",
+        "id": "to-get-information-about-a-bot-1494431724188",
         "input": {
           "name": "DocOrderPizza",
           "versionOrAlias": "$LATEST"
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocOrderPizzaBot",
           "abortStatement": {
             "messages": [
               {
@@ -48,21 +51,21 @@
           ],
           "lastUpdatedDate": 1494360160.133,
           "locale": "en-US",
-          "status": "NOT_BUILT"
+          "name": "DocOrderPizzaBot",
+          "status": "NOT_BUILT",
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get configuration information for a bot.",
-        "id": "to-get-information-about-a-bot-1494431724188",
         "title": "To get information about a bot"
       }
     ],
     "GetBots": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get a list of all of the bots in your account.",
+        "id": "to-get-a-list-of-bots-1494432220036",
         "input": {
           "maxResults": 5,
           "nextToken": ""
@@ -70,35 +73,31 @@
         "output": {
           "bots": [
             {
-              "version": "$LATEST",
-              "name": "DocOrderPizzaBot",
               "createdDate": 1494360160.133,
               "description": "Orders a pizza from a local pizzeria.",
               "lastUpdatedDate": 1494360160.133,
-              "status": "NOT_BUILT"
+              "name": "DocOrderPizzaBot",
+              "status": "NOT_BUILT",
+              "version": "$LATEST"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get a list of all of the bots in your account.",
-        "id": "to-get-a-list-of-bots-1494432220036",
         "title": "To get a list of bots"
       }
     ],
     "GetIntent": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get information about an intent.",
+        "id": "to-get-a-information-about-an-intent-1494432574147",
         "input": {
-          "version": "$LATEST",
-          "name": "DocOrderPizza"
+          "name": "DocOrderPizza",
+          "version": "$LATEST"
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocOrderPizza",
           "checksum": "ca9bc13d-afc8-4706-bbaf-091f7a5935d6",
           "conclusionStatement": {
             "messages": [
@@ -128,6 +127,7 @@
             "type": "ReturnIntent"
           },
           "lastUpdatedDate": 1494359783.453,
+          "name": "DocOrderPizza",
           "rejectionStatement": {
             "messages": [
               {
@@ -148,8 +148,8 @@
           ],
           "slots": [
             {
-              "name": "Type",
               "description": "The type of pizza to order.",
+              "name": "Type",
               "priority": 1,
               "sampleUtterances": [
                 "Get me a {Type} pizza.",
@@ -178,8 +178,8 @@
               }
             },
             {
-              "name": "Crust",
               "description": "The type of pizza crust to order.",
+              "name": "Crust",
               "priority": 2,
               "sampleUtterances": [
                 "Make it a {Crust} crust.",
@@ -203,8 +203,8 @@
               }
             },
             {
-              "name": "Sauce",
               "description": "The type of sauce to use on the pizza.",
+              "name": "Sauce",
               "priority": 3,
               "sampleUtterances": [
                 "Make it {Sauce} sauce.",
@@ -227,21 +227,20 @@
                 ]
               }
             }
-          ]
+          ],
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get information about an intent.",
-        "id": "to-get-a-information-about-an-intent-1494432574147",
         "title": "To get a information about an intent"
       }
     ],
     "GetIntents": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get a list of all of the intents in your account.",
+        "id": "to-get-a-list-of-intents-1494432416363",
         "input": {
           "maxResults": 10,
           "nextToken": ""
@@ -249,34 +248,30 @@
         "output": {
           "intents": [
             {
-              "version": "$LATEST",
-              "name": "DocOrderPizza",
               "createdDate": 1494359783.453,
               "description": "Order a pizza from a local pizzeria.",
-              "lastUpdatedDate": 1494359783.453
+              "lastUpdatedDate": 1494359783.453,
+              "name": "DocOrderPizza",
+              "version": "$LATEST"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get a list of all of the intents in your account.",
-        "id": "to-get-a-list-of-intents-1494432416363",
         "title": "To get a list of intents"
       }
     ],
     "GetSlotType": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get information about a slot type.",
+        "id": "to-get-information-about-a-slot-type-1494432961004",
         "input": {
-          "version": "$LATEST",
-          "name": "DocPizzaCrustType"
+          "name": "DocPizzaCrustType",
+          "version": "$LATEST"
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocPizzaCrustType",
           "checksum": "210b3d5a-90a3-4b22-ac7e-f50c2c71095f",
           "createdDate": 1494359274.403,
           "description": "Available crust types",
@@ -288,21 +283,21 @@
               "value": "thin"
             }
           ],
-          "lastUpdatedDate": 1494359274.403
+          "lastUpdatedDate": 1494359274.403,
+          "name": "DocPizzaCrustType",
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get information about a slot type.",
-        "id": "to-get-information-about-a-slot-type-1494432961004",
         "title": "To get information about a slot type"
       }
     ],
     "GetSlotTypes": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to get a list of all of the slot types in your account.",
+        "id": "to-get-a-list-of-slot-types-1494432757458",
         "input": {
           "maxResults": 10,
           "nextToken": ""
@@ -310,43 +305,40 @@
         "output": {
           "slotTypes": [
             {
-              "version": "$LATEST",
-              "name": "DocPizzaCrustType",
               "createdDate": 1494359274.403,
               "description": "Available crust types",
-              "lastUpdatedDate": 1494359274.403
+              "lastUpdatedDate": 1494359274.403,
+              "name": "DocPizzaCrustType",
+              "version": "$LATEST"
             },
             {
-              "version": "$LATEST",
-              "name": "DocPizzaSauceType",
               "createdDate": 1494356442.23,
               "description": "Available pizza sauces",
-              "lastUpdatedDate": 1494356442.23
+              "lastUpdatedDate": 1494356442.23,
+              "name": "DocPizzaSauceType",
+              "version": "$LATEST"
             },
             {
-              "version": "$LATEST",
-              "name": "DocPizzaType",
               "createdDate": 1494359198.656,
               "description": "Available pizzas",
-              "lastUpdatedDate": 1494359198.656
+              "lastUpdatedDate": 1494359198.656,
+              "name": "DocPizzaType",
+              "version": "$LATEST"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to get a list of all of the slot types in your account.",
-        "id": "to-get-a-list-of-slot-types-1494432757458",
         "title": "To get a list of slot types"
       }
     ],
     "PutBot": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to create a bot for ordering pizzas.",
+        "id": "to-create-a-bot-1494360003886",
         "input": {
-          "name": "DocOrderPizzaBot",
           "abortStatement": {
             "messages": [
               {
@@ -382,11 +374,10 @@
             }
           ],
           "locale": "en-US",
+          "name": "DocOrderPizzaBot",
           "processBehavior": "SAVE"
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocOrderPizzaBot",
           "abortStatement": {
             "messages": [
               {
@@ -425,23 +416,22 @@
           ],
           "lastUpdatedDate": 1494360160.133,
           "locale": "en-US",
-          "status": "NOT_BUILT"
+          "name": "DocOrderPizzaBot",
+          "status": "NOT_BUILT",
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to create a bot for ordering pizzas.",
-        "id": "to-create-a-bot-1494360003886",
         "title": "To create a bot"
       }
     ],
     "PutIntent": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to create an intent for ordering pizzas.",
+        "id": "to-create-an-intent-1494358144659",
         "input": {
-          "name": "DocOrderPizza",
           "conclusionStatement": {
             "messages": [
               {
@@ -468,6 +458,7 @@
           "fulfillmentActivity": {
             "type": "ReturnIntent"
           },
+          "name": "DocOrderPizza",
           "rejectionStatement": {
             "messages": [
               {
@@ -488,8 +479,8 @@
           ],
           "slots": [
             {
-              "name": "Type",
               "description": "The type of pizza to order.",
+              "name": "Type",
               "priority": 1,
               "sampleUtterances": [
                 "Get me a {Type} pizza.",
@@ -518,8 +509,8 @@
               }
             },
             {
-              "name": "Crust",
               "description": "The type of pizza crust to order.",
+              "name": "Crust",
               "priority": 2,
               "sampleUtterances": [
                 "Make it a {Crust} crust.",
@@ -543,8 +534,8 @@
               }
             },
             {
-              "name": "Sauce",
               "description": "The type of sauce to use on the pizza.",
+              "name": "Sauce",
               "priority": 3,
               "sampleUtterances": [
                 "Make it {Sauce} sauce.",
@@ -570,8 +561,6 @@
           ]
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocOrderPizza",
           "checksum": "ca9bc13d-afc8-4706-bbaf-091f7a5935d6",
           "conclusionStatement": {
             "messages": [
@@ -601,6 +590,7 @@
             "type": "ReturnIntent"
           },
           "lastUpdatedDate": 1494359783.453,
+          "name": "DocOrderPizza",
           "rejectionStatement": {
             "messages": [
               {
@@ -621,8 +611,8 @@
           ],
           "slots": [
             {
-              "name": "Sauce",
               "description": "The type of sauce to use on the pizza.",
+              "name": "Sauce",
               "priority": 3,
               "sampleUtterances": [
                 "Make it {Sauce} sauce.",
@@ -646,8 +636,8 @@
               }
             },
             {
-              "name": "Type",
               "description": "The type of pizza to order.",
+              "name": "Type",
               "priority": 1,
               "sampleUtterances": [
                 "Get me a {Type} pizza.",
@@ -676,8 +666,8 @@
               }
             },
             {
-              "name": "Crust",
               "description": "The type of pizza crust to order.",
+              "name": "Crust",
               "priority": 2,
               "sampleUtterances": [
                 "Make it a {Crust} crust.",
@@ -700,23 +690,21 @@
                 ]
               }
             }
-          ]
+          ],
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to create an intent for ordering pizzas.",
-        "id": "to-create-an-intent-1494358144659",
         "title": "To create an intent"
       }
     ],
     "PutSlotType": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example shows how to create a slot type that describes pizza sauces.",
+        "id": "to-create-a-slot-type-1494357262258",
         "input": {
-          "name": "PizzaSauceType",
           "description": "Available pizza sauces",
           "enumerationValues": [
             {
@@ -725,11 +713,10 @@
             {
               "value": "white"
             }
-          ]
+          ],
+          "name": "PizzaSauceType"
         },
         "output": {
-          "version": "$LATEST",
-          "name": "DocPizzaSauceType",
           "checksum": "cfd00ed1-775d-4357-947c-aca7e73b44ba",
           "createdDate": 1494356442.23,
           "description": "Available pizza sauces",
@@ -741,18 +728,13 @@
               "value": "white"
             }
           ],
-          "lastUpdatedDate": 1494356442.23
+          "lastUpdatedDate": 1494356442.23,
+          "name": "DocPizzaSauceType",
+          "version": "$LATEST"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example shows how to create a slot type that describes pizza sauces.",
-        "id": "to-create-a-slot-type-1494357262258",
         "title": "To Create a Slot Type"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

@@ -1,28 +1,30 @@
 {
-  "version": "1.0",
   "examples": {
     "AbortMultipartUpload": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example aborts a multipart upload.",
+        "id": "to-abort-a-multipart-upload-1481853354987",
         "input": {
           "Bucket": "examplebucket",
           "Key": "bigobject",
           "UploadId": "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example aborts a multipart upload.",
-        "id": "to-abort-a-multipart-upload-1481853354987",
+        "output": {},
         "title": "To abort a multipart upload"
       }
     ],
     "CompleteMultipartUpload": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example completes a multipart upload.",
+        "id": "to-complete-multipart-upload-1481851590483",
         "input": {
           "Bucket": "examplebucket",
           "Key": "bigobject",
@@ -46,19 +48,17 @@
           "Key": "bigobject",
           "Location": "https://examplebucket.s3.amazonaws.com/bigobject"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example completes a multipart upload.",
-        "id": "to-complete-multipart-upload-1481851590483",
         "title": "To complete multipart upload"
       }
     ],
     "CopyObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example copies an object from one bucket to another.",
+        "id": "to-copy-an-object-1481823186878",
         "input": {
           "Bucket": "destinationbucket",
           "CopySource": "/sourcebucket/HappyFacejpg",
@@ -70,19 +70,17 @@
             "LastModified": "2016-12-15T17:38:53.000Z"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example copies an object from one bucket to another.",
-        "id": "to-copy-an-object-1481823186878",
         "title": "To copy an object"
       }
     ],
     "CreateBucket": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates a bucket. The request specifies an AWS region where to create the bucket.",
+        "id": "to-create-a-bucket-in-a-specific-region-1483399072992",
         "input": {
           "Bucket": "examplebucket",
           "CreateBucketConfiguration": {
@@ -92,36 +90,32 @@
         "output": {
           "Location": "http://examplebucket.s3.amazonaws.com/"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates a bucket. The request specifies an AWS region where to create the bucket.",
-        "id": "to-create-a-bucket-in-a-specific-region-1483399072992",
         "title": "To create a bucket in a specific region"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates a bucket.",
+        "id": "to-create-a-bucket--1472851826060",
         "input": {
           "Bucket": "examplebucket"
         },
         "output": {
           "Location": "/examplebucket"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates a bucket.",
-        "id": "to-create-a-bucket--1472851826060",
         "title": "To create a bucket "
       }
     ],
     "CreateMultipartUpload": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example initiates a multipart upload.",
+        "id": "to-initiate-a-multipart-upload-1481836794513",
         "input": {
           "Bucket": "examplebucket",
           "Key": "largeobject"
@@ -131,165 +125,144 @@
           "Key": "largeobject",
           "UploadId": "ibZBv_75gd9r8lH_gqXatLdxMVpAlj6ZQjEs.OwyF3953YdwbcQnMA2BLGn8Lx12fQNICtMw5KyteFeHw.Sjng--"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example initiates a multipart upload.",
-        "id": "to-initiate-a-multipart-upload-1481836794513",
         "title": "To initiate a multipart upload"
       }
     ],
     "DeleteBucket": [
       {
-        "input": {
-          "Bucket": "forrandall2"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes the specified bucket.",
         "id": "to-delete-a-bucket-1473108514262",
+        "input": {
+          "Bucket": "forrandall2"
+        },
         "title": "To delete a bucket"
       }
     ],
     "DeleteBucketCors": [
       {
-        "input": {
-          "Bucket": "examplebucket"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes CORS configuration on a bucket.",
         "id": "to-delete-cors-configuration-on-a-bucket-1483042856112",
+        "input": {
+          "Bucket": "examplebucket"
+        },
         "title": "To delete cors configuration on a bucket."
       }
     ],
     "DeleteBucketLifecycle": [
       {
-        "input": {
-          "Bucket": "examplebucket"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes lifecycle configuration on a bucket.",
         "id": "to-delete-lifecycle-configuration-on-a-bucket-1483043310583",
+        "input": {
+          "Bucket": "examplebucket"
+        },
         "title": "To delete lifecycle configuration on a bucket."
       }
     ],
     "DeleteBucketPolicy": [
       {
-        "input": {
-          "Bucket": "examplebucket"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes bucket policy on the specified bucket.",
         "id": "to-delete-bucket-policy-1483043406577",
+        "input": {
+          "Bucket": "examplebucket"
+        },
         "title": "To delete bucket policy"
       }
     ],
     "DeleteBucketReplication": [
       {
-        "input": {
-          "Bucket": "example"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes replication configuration set on bucket.",
         "id": "to-delete-bucket-replication-configuration-1483043684668",
+        "input": {
+          "Bucket": "example"
+        },
         "title": "To delete bucket replication configuration"
       }
     ],
     "DeleteBucketTagging": [
       {
-        "input": {
-          "Bucket": "examplebucket"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes bucket tags.",
         "id": "to-delete-bucket-tags-1483043846509",
+        "input": {
+          "Bucket": "examplebucket"
+        },
         "title": "To delete bucket tags"
       }
     ],
     "DeleteBucketWebsite": [
       {
-        "input": {
-          "Bucket": "examplebucket"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example deletes bucket website configuration.",
         "id": "to-delete-bucket-website-configuration-1483043937825",
+        "input": {
+          "Bucket": "examplebucket"
+        },
         "title": "To delete bucket website configuration"
       }
     ],
     "DeleteObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an object from an S3 bucket.",
+        "id": "to-delete-an-object-1472850136595",
         "input": {
           "Bucket": "examplebucket",
           "Key": "objectkey.jpg"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an object from an S3 bucket.",
-        "id": "to-delete-an-object-1472850136595",
+        "output": {},
         "title": "To delete an object"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an object from a non-versioned bucket.",
+        "id": "to-delete-an-object-from-a-non-versioned-bucket-1481588533089",
         "input": {
           "Bucket": "ExampleBucket",
           "Key": "HappyFace.jpg"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an object from a non-versioned bucket.",
-        "id": "to-delete-an-object-from-a-non-versioned-bucket-1481588533089",
         "title": "To delete an object (from a non-versioned bucket)"
       }
     ],
     "DeleteObjectTagging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example removes tag set associated with the specified object version. The request specifies both the object key and object version.",
+        "id": "to-remove-tag-set-from-an-object-version-1483145285913",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg",
@@ -298,17 +271,15 @@
         "output": {
           "VersionId": "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example removes tag set associated with the specified object version. The request specifies both the object key and object version.",
-        "id": "to-remove-tag-set-from-an-object-version-1483145285913",
         "title": "To remove tag set from an object version"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example removes tag set associated with the specified object. If the bucket is versioning enabled, the operation removes tag set from the latest object version.",
+        "id": "to-remove-tag-set-from-an-object-1483145342862",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
@@ -316,19 +287,17 @@
         "output": {
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example removes tag set associated with the specified object. If the bucket is versioning enabled, the operation removes tag set from the latest object version.",
-        "id": "to-remove-tag-set-from-an-object-1483145342862",
         "title": "To remove tag set from an object"
       }
     ],
     "DeleteObjects": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes objects from a bucket. The request specifies object versions. S3 deletes specific object versions and returns the key and versions of deleted objects in the response.",
+        "id": "to-delete-multiple-object-versions-from-a-versioned-bucket-1483147087737",
         "input": {
           "Bucket": "examplebucket",
           "Delete": {
@@ -357,17 +326,15 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes objects from a bucket. The request specifies object versions. S3 deletes specific object versions and returns the key and versions of deleted objects in the response.",
-        "id": "to-delete-multiple-object-versions-from-a-versioned-bucket-1483147087737",
         "title": "To delete multiple object versions from a versioned bucket"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes objects from a bucket. The bucket is versioned, and the request does not specify the object version to delete. In this case, all versions remain in the bucket and S3 adds a delete marker.",
+        "id": "to-delete-multiple-objects-from-a-versioned-bucket-1483146248805",
         "input": {
           "Bucket": "examplebucket",
           "Delete": {
@@ -396,19 +363,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes objects from a bucket. The bucket is versioned, and the request does not specify the object version to delete. In this case, all versions remain in the bucket and S3 adds a delete marker.",
-        "id": "to-delete-multiple-objects-from-a-versioned-bucket-1483146248805",
         "title": "To delete multiple objects from a versioned bucket"
       }
     ],
     "GetBucketCors": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns cross-origin resource sharing (CORS) configuration set on a bucket.",
+        "id": "to-get-cors-configuration-set-on-a-bucket-1481596855475",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -428,19 +393,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns cross-origin resource sharing (CORS) configuration set on a bucket.",
-        "id": "to-get-cors-configuration-set-on-a-bucket-1481596855475",
         "title": "To get cors configuration set on a bucket"
       }
     ],
     "GetBucketLifecycle": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example gets ACL on the specified bucket.",
+        "id": "to-get-a-bucket-acl-1474413606503",
         "input": {
           "Bucket": "acl1"
         },
@@ -456,19 +419,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example gets ACL on the specified bucket.",
-        "id": "to-get-a-bucket-acl-1474413606503",
         "title": "To get a bucket acl"
       }
     ],
     "GetBucketLifecycleConfiguration": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves lifecycle configuration on set on a bucket. ",
+        "id": "to-get-lifecycle-configuration-on-a-bucket-1481666063200",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -487,38 +448,34 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves lifecycle configuration on set on a bucket. ",
-        "id": "to-get-lifecycle-configuration-on-a-bucket-1481666063200",
         "title": "To get lifecycle configuration on a bucket"
       }
     ],
     "GetBucketLocation": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns bucket location.",
+        "id": "to-get-bucket-location-1481594573609",
         "input": {
           "Bucket": "examplebucket"
         },
         "output": {
           "LocationConstraint": "us-west-2"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns bucket location.",
-        "id": "to-get-bucket-location-1481594573609",
         "title": "To get bucket location"
       }
     ],
     "GetBucketNotification": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns notification configuration set on a bucket.",
+        "id": "to-get-notification-configuration-set-on-a-bucket-1481594028667",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -540,17 +497,15 @@
             "Topic": "arn:aws:sns:us-east-1:acct-id:S3ObjectCreatedEventTopic"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns notification configuration set on a bucket.",
-        "id": "to-get-notification-configuration-set-on-a-bucket-1481594028667",
         "title": "To get notification configuration set on a bucket"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns notification configuration set on a bucket.",
+        "id": "to-get-notification-configuration-set-on-a-bucket-1481594028667",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -572,38 +527,34 @@
             "Topic": "arn:aws:sns:us-east-1:acct-id:S3ObjectCreatedEventTopic"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns notification configuration set on a bucket.",
-        "id": "to-get-notification-configuration-set-on-a-bucket-1481594028667",
         "title": "To get notification configuration set on a bucket"
       }
     ],
     "GetBucketPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns bucket policy associated with a bucket.",
+        "id": "to-get-bucket-policy-1481595098424",
         "input": {
           "Bucket": "examplebucket"
         },
         "output": {
           "Policy": "{\"Version\":\"2008-10-17\",\"Id\":\"LogPolicy\",\"Statement\":[{\"Sid\":\"Enables the log delivery group to publish logs to your bucket \",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"111122223333\"},\"Action\":[\"s3:GetBucketAcl\",\"s3:GetObjectAcl\",\"s3:PutObject\"],\"Resource\":[\"arn:aws:s3:::policytest1/*\",\"arn:aws:s3:::policytest1\"]}]}"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns bucket policy associated with a bucket.",
-        "id": "to-get-bucket-policy-1481595098424",
         "title": "To get bucket policy"
       }
     ],
     "GetBucketReplication": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns replication configuration set on a bucket.",
+        "id": "to-get-replication-configuration-set-on-a-bucket-1481593597175",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -622,38 +573,34 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns replication configuration set on a bucket.",
-        "id": "to-get-replication-configuration-set-on-a-bucket-1481593597175",
         "title": "To get replication configuration set on a bucket"
       }
     ],
     "GetBucketRequestPayment": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves bucket versioning configuration.",
+        "id": "to-get-bucket-versioning-configuration-1483037183929",
         "input": {
           "Bucket": "examplebucket"
         },
         "output": {
           "Payer": "BucketOwner"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves bucket versioning configuration.",
-        "id": "to-get-bucket-versioning-configuration-1483037183929",
         "title": "To get bucket versioning configuration"
       }
     ],
     "GetBucketTagging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns tag set associated with a bucket",
+        "id": "to-get-tag-set-associated-with-a-bucket-1481593232107",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -669,19 +616,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns tag set associated with a bucket",
-        "id": "to-get-tag-set-associated-with-a-bucket-1481593232107",
         "title": "To get tag set associated with a bucket"
       }
     ],
     "GetBucketVersioning": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves bucket versioning configuration.",
+        "id": "to-get-bucket-versioning-configuration-1483037183929",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -689,19 +634,17 @@
           "MFADelete": "Disabled",
           "Status": "Enabled"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves bucket versioning configuration.",
-        "id": "to-get-bucket-versioning-configuration-1483037183929",
         "title": "To get bucket versioning configuration"
       }
     ],
     "GetBucketWebsite": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves website configuration of a bucket.",
+        "id": "to-get-bucket-website-configuration-1483037016926",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -713,19 +656,17 @@
             "Suffix": "index.html"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves website configuration of a bucket.",
-        "id": "to-get-bucket-website-configuration-1483037016926",
         "title": "To get bucket website configuration"
       }
     ],
     "GetObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves an object for an S3 bucket.",
+        "id": "to-retrieve-an-object-1481827837012",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
@@ -736,22 +677,19 @@
           "ContentType": "image/jpeg",
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "LastModified": "Thu, 15 Dec 2016 01:19:41 GMT",
-          "Metadata": {
-          },
+          "Metadata": {},
           "TagCount": 2,
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves an object for an S3 bucket.",
-        "id": "to-retrieve-an-object-1481827837012",
         "title": "To retrieve an object"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves an object for an S3 bucket. The request specifies the range header to retrieve a specific byte range.",
+        "id": "to-retrieve-a-byte-range-of-an-object--1481832674603",
         "input": {
           "Bucket": "examplebucket",
           "Key": "SampleFile.txt",
@@ -764,23 +702,20 @@
           "ContentType": "text/plain",
           "ETag": "\"0d94420ffd0bc68cd3d152506b97a9cc\"",
           "LastModified": "Thu, 09 Oct 2014 22:57:28 GMT",
-          "Metadata": {
-          },
+          "Metadata": {},
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves an object for an S3 bucket. The request specifies the range header to retrieve a specific byte range.",
-        "id": "to-retrieve-a-byte-range-of-an-object--1481832674603",
         "title": "To retrieve a byte range of an object "
       }
     ],
     "GetObjectAcl": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves access control list (ACL) of an object.",
+        "id": "to-retrieve-object-acl-1481833557740",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
@@ -825,19 +760,17 @@
             "ID": "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves access control list (ACL) of an object.",
-        "id": "to-retrieve-object-acl-1481833557740",
         "title": "To retrieve object ACL"
       }
     ],
     "GetObjectTagging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves tag set of an object.",
+        "id": "to-retrieve-tag-set-of-an-object-1481833847896",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
@@ -855,17 +788,15 @@
           ],
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves tag set of an object.",
-        "id": "to-retrieve-tag-set-of-an-object-1481833847896",
         "title": "To retrieve tag set of an object"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves tag set of an object. The request specifies object version.",
+        "id": "to-retrieve-tag-set-of-a-specific-object-version-1483400283663",
         "input": {
           "Bucket": "examplebucket",
           "Key": "exampleobject",
@@ -880,54 +811,47 @@
           ],
           "VersionId": "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves tag set of an object. The request specifies object version.",
-        "id": "to-retrieve-tag-set-of-a-specific-object-version-1483400283663",
         "title": "To retrieve tag set of a specific object version"
       }
     ],
     "GetObjectTorrent": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves torrent files of an object.",
+        "id": "to-retrieve-torrent-files-for-an-object-1481834115959",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves torrent files of an object.",
-        "id": "to-retrieve-torrent-files-for-an-object-1481834115959",
+        "output": {},
         "title": "To retrieve torrent files for an object"
       }
     ],
     "HeadBucket": [
       {
-        "input": {
-          "Bucket": "acl1"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This operation checks to see if a bucket exists.",
         "id": "to-determine-if-bucket-exists-1473110292262",
+        "input": {
+          "Bucket": "acl1"
+        },
         "title": "To determine if bucket exists"
       }
     ],
     "HeadObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves an object metadata.",
+        "id": "to-retrieve-metadata-of-an-object-without-returning-the-object-itself-1481834820480",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg"
@@ -938,23 +862,20 @@
           "ContentType": "image/jpeg",
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "LastModified": "Thu, 15 Dec 2016 01:19:41 GMT",
-          "Metadata": {
-          },
+          "Metadata": {},
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves an object metadata.",
-        "id": "to-retrieve-metadata-of-an-object-without-returning-the-object-itself-1481834820480",
         "title": "To retrieve metadata of an object without returning the object itself"
       }
     ],
     "ListMultipartUploads": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example lists in-progress multipart uploads on a specific bucket.",
+        "id": "to-list-in-progress-multipart-uploads-on-a-bucket-1481852775260",
         "input": {
           "Bucket": "examplebucket"
         },
@@ -990,17 +911,15 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example lists in-progress multipart uploads on a specific bucket.",
-        "id": "to-list-in-progress-multipart-uploads-on-a-bucket-1481852775260",
         "title": "To list in-progress multipart uploads on a bucket"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example specifies the upload-id-marker and key-marker from previous truncated response to retrieve next setup of multipart uploads.",
+        "id": "list-next-set-of-multipart-uploads-when-previous-result-is-truncated-1482428106748",
         "input": {
           "Bucket": "examplebucket",
           "KeyMarker": "nextkeyfrompreviousresponse",
@@ -1046,19 +965,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example specifies the upload-id-marker and key-marker from previous truncated response to retrieve next setup of multipart uploads.",
-        "id": "list-next-set-of-multipart-uploads-when-previous-result-is-truncated-1482428106748",
         "title": "List next set of multipart uploads when previous result is truncated"
       }
     ],
     "ListObjectVersions": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example return versions of an object with specific key name prefix. The request limits the number of items returned to two. If there are are more than two object version, S3 returns NextToken in the response. You can specify this token value in your next request to fetch next set of object versions.",
+        "id": "to-list-object-versions-1481910996058",
         "input": {
           "Bucket": "examplebucket",
           "Prefix": "HappyFace.jpg"
@@ -1093,19 +1010,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example return versions of an object with specific key name prefix. The request limits the number of items returned to two. If there are are more than two object version, S3 returns NextToken in the response. You can specify this token value in your next request to fetch next set of object versions.",
-        "id": "to-list-object-versions-1481910996058",
         "title": "To list object versions"
       }
     ],
     "ListObjects": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example list two objects in a bucket.",
+        "id": "to-list-objects-in-a-bucket-1473447646507",
         "input": {
           "Bucket": "examplebucket",
           "MaxKeys": "2"
@@ -1137,19 +1052,17 @@
           ],
           "NextMarker": "eyJNYXJrZXIiOiBudWxsLCAiYm90b190cnVuY2F0ZV9hbW91bnQiOiAyfQ=="
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example list two objects in a bucket.",
-        "id": "to-list-objects-in-a-bucket-1473447646507",
         "title": "To list objects in a bucket"
       }
     ],
     "ListObjectsV2": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves object list. The request specifies max keys to limit response to include only 2 object keys. ",
+        "id": "to-get-object-list",
         "input": {
           "Bucket": "examplebucket",
           "MaxKeys": "2"
@@ -1178,19 +1091,17 @@
           "NextContinuationToken": "1w41l63U0xa8q7smH50vCxyTQqdxo69O3EmK28Bi5PcROI4wI/EyIJg==",
           "Prefix": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves object list. The request specifies max keys to limit response to include only 2 object keys. ",
-        "id": "to-get-object-list",
         "title": "To get object list"
       }
     ],
     "ListParts": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example lists parts uploaded for a specific multipart upload.",
+        "id": "to-list-parts-of-a-multipart-upload-1481852006923",
         "input": {
           "Bucket": "examplebucket",
           "Key": "bigobject",
@@ -1221,37 +1132,33 @@
           ],
           "StorageClass": "STANDARD"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example lists parts uploaded for a specific multipart upload.",
-        "id": "to-list-parts-of-a-multipart-upload-1481852006923",
         "title": "To list parts of a multipart upload."
       }
     ],
     "PutBucketAcl": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example replaces existing ACL on a bucket. The ACL grants the bucket owner (specified using the owner ID) and write permission to the LogDelivery group. Because this is a replace operation, you must specify all the grants in your request. To incrementally add or remove ACL grants, you might use the console.",
+        "id": "put-bucket-acl-1482260397033",
         "input": {
           "Bucket": "examplebucket",
           "GrantFullControl": "id=examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484",
           "GrantWrite": "uri=http://acs.amazonaws.com/groups/s3/LogDelivery"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example replaces existing ACL on a bucket. The ACL grants the bucket owner (specified using the owner ID) and write permission to the LogDelivery group. Because this is a replace operation, you must specify all the grants in your request. To incrementally add or remove ACL grants, you might use the console.",
-        "id": "put-bucket-acl-1482260397033",
         "title": "Put bucket acl"
       }
     ],
     "PutBucketCors": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example enables PUT, POST, and DELETE requests from www.example.com, and enables GET requests from any domain.",
+        "id": "to-set-cors-configuration-on-a-bucket-1483037818805",
         "input": {
           "Bucket": "",
           "CORSConfiguration": {
@@ -1289,19 +1196,17 @@
           },
           "ContentMD5": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example enables PUT, POST, and DELETE requests from www.example.com, and enables GET requests from any domain.",
-        "id": "to-set-cors-configuration-on-a-bucket-1483037818805",
         "title": "To set cors configuration on a bucket."
       }
     ],
     "PutBucketLifecycleConfiguration": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example replaces existing lifecycle configuration, if any, on the specified bucket. ",
+        "id": "put-bucket-lifecycle-1482264533092",
         "input": {
           "Bucket": "examplebucket",
           "LifecycleConfiguration": {
@@ -1325,19 +1230,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example replaces existing lifecycle configuration, if any, on the specified bucket. ",
-        "id": "put-bucket-lifecycle-1482264533092",
         "title": "Put bucket lifecycle"
       }
     ],
     "PutBucketLogging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets logging policy on a bucket. For the Log Delivery group to deliver logs to the destination bucket, it needs permission for the READ_ACP action which the policy grants.",
+        "id": "set-logging-configuration-for-a-bucket-1482269119909",
         "input": {
           "Bucket": "sourcebucket",
           "BucketLoggingStatus": {
@@ -1356,19 +1259,17 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets logging policy on a bucket. For the Log Delivery group to deliver logs to the destination bucket, it needs permission for the READ_ACP action which the policy grants.",
-        "id": "set-logging-configuration-for-a-bucket-1482269119909",
         "title": "Set logging configuration for a bucket"
       }
     ],
     "PutBucketNotificationConfiguration": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets notification configuration on a bucket to publish the object created events to an SNS topic.",
+        "id": "set-notification-configuration-for-a-bucket-1482270296426",
         "input": {
           "Bucket": "examplebucket",
           "NotificationConfiguration": {
@@ -1382,36 +1283,32 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets notification configuration on a bucket to publish the object created events to an SNS topic.",
-        "id": "set-notification-configuration-for-a-bucket-1482270296426",
         "title": "Set notification configuration for a bucket"
       }
     ],
     "PutBucketPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets a permission policy on a bucket.",
+        "id": "set-bucket-policy-1482448903302",
         "input": {
           "Bucket": "examplebucket",
           "Policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{ \"Sid\": \"id-1\",\"Effect\": \"Allow\",\"Principal\": {\"AWS\": \"arn:aws:iam::123456789012:root\"}, \"Action\": [ \"s3:PutObject\",\"s3:PutObjectAcl\"], \"Resource\": [\"arn:aws:s3:::acl3/*\" ] } ]}"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets a permission policy on a bucket.",
-        "id": "set-bucket-policy-1482448903302",
         "title": "Set bucket policy"
       }
     ],
     "PutBucketReplication": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets replication configuration on a bucket.",
+        "id": "id-1",
         "input": {
           "Bucket": "examplebucket",
           "ReplicationConfiguration": {
@@ -1428,38 +1325,34 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets replication configuration on a bucket.",
-        "id": "id-1",
         "title": "Set replication configuration on a bucket"
       }
     ],
     "PutBucketRequestPayment": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets request payment configuration on a bucket so that person requesting the download is charged.",
+        "id": "set-request-payment-configuration-on-a-bucket-1482343596680",
         "input": {
           "Bucket": "examplebucket",
           "RequestPaymentConfiguration": {
             "Payer": "Requester"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets request payment configuration on a bucket so that person requesting the download is charged.",
-        "id": "set-request-payment-configuration-on-a-bucket-1482343596680",
         "title": "Set request payment configuration on a bucket."
       }
     ],
     "PutBucketTagging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets tags on a bucket. Any existing tags are replaced.",
+        "id": "set-tags-on-a-bucket-1482346269066",
         "input": {
           "Bucket": "examplebucket",
           "Tagging": {
@@ -1475,19 +1368,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets tags on a bucket. Any existing tags are replaced.",
-        "id": "set-tags-on-a-bucket-1482346269066",
         "title": "Set tags on a bucket"
       }
     ],
     "PutBucketVersioning": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example sets versioning configuration on bucket. The configuration enables versioning on the bucket.",
+        "id": "set-versioning-configuration-on-a-bucket-1482344186279",
         "input": {
           "Bucket": "examplebucket",
           "VersioningConfiguration": {
@@ -1495,19 +1386,17 @@
             "Status": "Enabled"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example sets versioning configuration on bucket. The configuration enables versioning on the bucket.",
-        "id": "set-versioning-configuration-on-a-bucket-1482344186279",
         "title": "Set versioning configuration on a bucket"
       }
     ],
     "PutBucketWebsite": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example adds website configuration to a bucket.",
+        "id": "set-website-configuration-on-a-bucket-1482346836261",
         "input": {
           "Bucket": "examplebucket",
           "ContentMD5": "",
@@ -1520,19 +1409,17 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example adds website configuration to a bucket.",
-        "id": "set-website-configuration-on-a-bucket-1482346836261",
         "title": "Set website configuration on a bucket"
       }
     ],
     "PutObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates an object. If the bucket is versioning enabled, S3 returns version ID in response.",
+        "id": "to-create-an-object-1483147613675",
         "input": {
           "Body": "filetoupload",
           "Bucket": "examplebucket",
@@ -1542,17 +1429,15 @@
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "VersionId": "Bvq0EDKxOcXLJXNo_Lkz37eM3R4pfzyQ"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates an object. If the bucket is versioning enabled, S3 returns version ID in response.",
-        "id": "to-create-an-object-1483147613675",
         "title": "To create an object."
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads an object. The request specifies optional request headers to directs S3 to use specific storage class and use server-side encryption.",
+        "id": "to-upload-an-object-(specify-optional-headers)",
         "input": {
           "Body": "HappyFace.jpg",
           "Bucket": "examplebucket",
@@ -1565,17 +1450,15 @@
           "ServerSideEncryption": "AES256",
           "VersionId": "CG612hodqujkf8FaaNfp8U..FIhLROcp"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads an object. The request specifies optional request headers to directs S3 to use specific storage class and use server-side encryption.",
-        "id": "to-upload-an-object-(specify-optional-headers)",
         "title": "To upload an object (specify optional headers)"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads and object. The request specifies optional canned ACL (access control list) to all READ access to authenticated users. If the bucket is versioning enabled, S3 returns version ID in response.",
+        "id": "to-upload-an-object-and-specify-canned-acl-1483397779571",
         "input": {
           "ACL": "authenticated-read",
           "Body": "filetoupload",
@@ -1586,17 +1469,15 @@
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "VersionId": "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads and object. The request specifies optional canned ACL (access control list) to all READ access to authenticated users. If the bucket is versioning enabled, S3 returns version ID in response.",
-        "id": "to-upload-an-object-and-specify-canned-acl-1483397779571",
         "title": "To upload an object and specify canned ACL."
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads an object to a versioning-enabled bucket. The source file is specified using Windows file syntax. S3 returns VersionId of the newly created object.",
+        "id": "to-upload-an-object-1481760101010",
         "input": {
           "Body": "HappyFace.jpg",
           "Bucket": "examplebucket",
@@ -1606,17 +1487,15 @@
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "VersionId": "tpf3zF08nBplQK1XLOefGskR7mGDwcDk"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads an object to a versioning-enabled bucket. The source file is specified using Windows file syntax. S3 returns VersionId of the newly created object.",
-        "id": "to-upload-an-object-1481760101010",
         "title": "To upload an object"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates an object. The request also specifies optional metadata. If the bucket is versioning enabled, S3 returns version ID in response.",
+        "id": "to-upload-object-and-specify-user-defined-metadata-1483396974757",
         "input": {
           "Body": "filetoupload",
           "Bucket": "examplebucket",
@@ -1630,17 +1509,15 @@
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "VersionId": "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates an object. The request also specifies optional metadata. If the bucket is versioning enabled, S3 returns version ID in response.",
-        "id": "to-upload-object-and-specify-user-defined-metadata-1483396974757",
         "title": "To upload object and specify user-defined metadata"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads an object. The request specifies optional object tags. The bucket is versioned, therefore S3 returns version ID of the newly created object.",
+        "id": "to-upload-an-object-and-specify-optional-tags-1481762310955",
         "input": {
           "Body": "c:\\HappyFace.jpg",
           "Bucket": "examplebucket",
@@ -1651,17 +1528,15 @@
           "ETag": "\"6805f2cfc46c0f04559748bb039d69ae\"",
           "VersionId": "psM2sYY4.o1501dSx8wMvnkOzSBB.V4a"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads an object. The request specifies optional object tags. The bucket is versioned, therefore S3 returns version ID of the newly created object.",
-        "id": "to-upload-an-object-and-specify-optional-tags-1481762310955",
         "title": "To upload an object and specify optional tags"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads and object. The request specifies the optional server-side encryption option. The request also specifies optional object tags. If the bucket is versioning enabled, S3 returns version ID in response.",
+        "id": "to-upload-an-object-and-specify-server-side-encryption-and-object-tags-1483398331831",
         "input": {
           "Body": "filetoupload",
           "Bucket": "examplebucket",
@@ -1674,42 +1549,36 @@
           "ServerSideEncryption": "AES256",
           "VersionId": "Ri.vC6qVlA4dEnjgRV4ZHsHoFIjqEMNt"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads and object. The request specifies the optional server-side encryption option. The request also specifies optional object tags. If the bucket is versioning enabled, S3 returns version ID in response.",
-        "id": "to-upload-an-object-and-specify-server-side-encryption-and-object-tags-1483398331831",
         "title": "To upload an object and specify server-side encryption and object tags"
       }
     ],
     "PutObjectAcl": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example adds grants to an object ACL. The first permission grants user1 and user2 FULL_CONTROL and the AllUsers group READ permission.",
+        "id": "to-grant-permissions-using-object-acl-1481835549285",
         "input": {
-          "AccessControlPolicy": {
-          },
+          "AccessControlPolicy": {},
           "Bucket": "examplebucket",
           "GrantFullControl": "emailaddress=user1@example.com,emailaddress=user2@example.com",
           "GrantRead": "uri=http://acs.amazonaws.com/groups/global/AllUsers",
           "Key": "HappyFace.jpg"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example adds grants to an object ACL. The first permission grants user1 and user2 FULL_CONTROL and the AllUsers group READ permission.",
-        "id": "to-grant-permissions-using-object-acl-1481835549285",
+        "output": {},
         "title": "To grant permissions using object ACL"
       }
     ],
     "PutObjectTagging": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example adds tags to an existing object.",
+        "id": "to-add-tags-to-an-existing-object-1481764668793",
         "input": {
           "Bucket": "examplebucket",
           "Key": "HappyFace.jpg",
@@ -1729,19 +1598,17 @@
         "output": {
           "VersionId": "null"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example adds tags to an existing object.",
-        "id": "to-add-tags-to-an-existing-object-1481764668793",
         "title": "To add tags to an existing object"
       }
     ],
     "RestoreObject": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example restores for one day an archived copy of an object back into Amazon S3 bucket.",
+        "id": "to-restore-an-archived-object-1483049329953",
         "input": {
           "Bucket": "examplebucket",
           "Key": "archivedobjectkey",
@@ -1752,21 +1619,18 @@
             }
           }
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example restores for one day an archived copy of an object back into Amazon S3 bucket.",
-        "id": "to-restore-an-archived-object-1483049329953",
+        "output": {},
         "title": "To restore an archived object"
       }
     ],
     "UploadPart": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads part 1 of a multipart upload. The example specifies a file name for the part data. The Upload ID is same that is returned by the initiate multipart upload.",
+        "id": "to-upload-a-part-1481847914943",
         "input": {
           "Body": "fileToUpload",
           "Bucket": "examplebucket",
@@ -1777,19 +1641,17 @@
         "output": {
           "ETag": "\"d8c2eafd90c266e19ab9dcacc479f8af\""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads part 1 of a multipart upload. The example specifies a file name for the part data. The Upload ID is same that is returned by the initiate multipart upload.",
-        "id": "to-upload-a-part-1481847914943",
         "title": "To upload a part"
       }
     ],
     "UploadPartCopy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads a part of a multipart upload by copying data from an existing object as data source.",
+        "id": "to-upload-a-part-by-copying-data-from-an-existing-object-as-data-source-1483046746348",
         "input": {
           "Bucket": "examplebucket",
           "CopySource": "/bucketname/sourceobjectkey",
@@ -1803,17 +1665,15 @@
             "LastModified": "2016-12-29T21:24:43.000Z"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads a part of a multipart upload by copying data from an existing object as data source.",
-        "id": "to-upload-a-part-by-copying-data-from-an-existing-object-as-data-source-1483046746348",
         "title": "To upload a part by copying data from an existing object as data source"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example uploads a part of a multipart upload by copying a specified byte range from an existing object as data source.",
+        "id": "to-upload-a-part-by-copying-byte-range-from-an-existing-object-as-data-source-1483048068594",
         "input": {
           "Bucket": "examplebucket",
           "CopySource": "/bucketname/sourceobjectkey",
@@ -1828,16 +1688,9 @@
             "LastModified": "2016-12-29T21:44:28.000Z"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example uploads a part of a multipart upload by copying a specified byte range from an existing object as data source.",
-        "id": "to-upload-a-part-by-copying-byte-range-from-an-existing-object-as-data-source-1483048068594",
         "title": "To upload a part by copying byte range from an existing object as data source"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

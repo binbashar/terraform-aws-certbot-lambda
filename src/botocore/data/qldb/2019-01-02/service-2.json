@@ -1,547 +1,720 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-01-02",
-    "endpointPrefix":"qldb",
-    "jsonVersion":"1.0",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"QLDB",
-    "serviceFullName":"Amazon QLDB",
-    "serviceId":"QLDB",
-    "signatureVersion":"v4",
-    "signingName":"qldb",
-    "uid":"qldb-2019-01-02"
+  "documentation": "<p>The control plane for Amazon QLDB</p>",
+  "metadata": {
+    "apiVersion": "2019-01-02",
+    "endpointPrefix": "qldb",
+    "jsonVersion": "1.0",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "QLDB",
+    "serviceFullName": "Amazon QLDB",
+    "serviceId": "QLDB",
+    "signatureVersion": "v4",
+    "signingName": "qldb",
+    "uid": "qldb-2019-01-02"
   },
-  "operations":{
-    "CreateLedger":{
-      "name":"CreateLedger",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ledgers"
-      },
-      "input":{"shape":"CreateLedgerRequest"},
-      "output":{"shape":"CreateLedgerResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ResourceInUseException"}
+  "operations": {
+    "CreateLedger": {
+      "documentation": "<p>Creates a new ledger in your AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Creates a new ledger in your AWS account.</p>"
-    },
-    "DeleteLedger":{
-      "name":"DeleteLedger",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/ledgers/{name}"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ledgers"
       },
-      "input":{"shape":"DeleteLedgerRequest"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourcePreconditionNotMetException"}
+      "input": {
+        "shape": "CreateLedgerRequest"
+      },
+      "name": "CreateLedger",
+      "output": {
+        "shape": "CreateLedgerResponse"
+      }
+    },
+    "DeleteLedger": {
+      "documentation": "<p>Deletes a ledger and all of its contents. This action is irreversible.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ResourcePreconditionNotMetException"
+        }
       ],
-      "documentation":"<p>Deletes a ledger and all of its contents. This action is irreversible.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
-    },
-    "DescribeJournalS3Export":{
-      "name":"DescribeJournalS3Export",
-      "http":{
-        "method":"GET",
-        "requestUri":"/ledgers/{name}/journal-s3-exports/{exportId}"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/ledgers/{name}"
       },
-      "input":{"shape":"DescribeJournalS3ExportRequest"},
-      "output":{"shape":"DescribeJournalS3ExportResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": {
+        "shape": "DeleteLedgerRequest"
+      },
+      "name": "DeleteLedger"
+    },
+    "DescribeJournalS3Export": {
+      "documentation": "<p>Returns information about a journal export job, including the ledger name, export ID, when it was created, current status, and its start and end time export parameters.</p> <p>If the export job with the given <code>ExportId</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p> <p>If the ledger with the given <code>Name</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Returns information about a journal export job, including the ledger name, export ID, when it was created, current status, and its start and end time export parameters.</p> <p>If the export job with the given <code>ExportId</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p> <p>If the ledger with the given <code>Name</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p>"
-    },
-    "DescribeLedger":{
-      "name":"DescribeLedger",
-      "http":{
-        "method":"GET",
-        "requestUri":"/ledgers/{name}"
+      "http": {
+        "method": "GET",
+        "requestUri": "/ledgers/{name}/journal-s3-exports/{exportId}"
       },
-      "input":{"shape":"DescribeLedgerRequest"},
-      "output":{"shape":"DescribeLedgerResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"}
+      "input": {
+        "shape": "DescribeJournalS3ExportRequest"
+      },
+      "name": "DescribeJournalS3Export",
+      "output": {
+        "shape": "DescribeJournalS3ExportResponse"
+      }
+    },
+    "DescribeLedger": {
+      "documentation": "<p>Returns information about a ledger, including its state and when it was created.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Returns information about a ledger, including its state and when it was created.</p>"
-    },
-    "ExportJournalToS3":{
-      "name":"ExportJournalToS3",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ledgers/{name}/journal-s3-exports"
+      "http": {
+        "method": "GET",
+        "requestUri": "/ledgers/{name}"
       },
-      "input":{"shape":"ExportJournalToS3Request"},
-      "output":{"shape":"ExportJournalToS3Response"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourcePreconditionNotMetException"}
+      "input": {
+        "shape": "DescribeLedgerRequest"
+      },
+      "name": "DescribeLedger",
+      "output": {
+        "shape": "DescribeLedgerResponse"
+      }
+    },
+    "ExportJournalToS3": {
+      "documentation": "<p>Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket. The data is written as files in Amazon Ion format.</p> <p>If the ledger with the given <code>Name</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p> <p>If the ledger with the given <code>Name</code> is in <code>CREATING</code> status, then throws <code>ResourcePreconditionNotMetException</code>.</p> <p>You can initiate up to two concurrent journal export requests for each ledger. Beyond this limit, journal export requests throw <code>LimitExceededException</code>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourcePreconditionNotMetException"
+        }
       ],
-      "documentation":"<p>Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket. The data is written as files in Amazon Ion format.</p> <p>If the ledger with the given <code>Name</code> doesn't exist, then throws <code>ResourceNotFoundException</code>.</p> <p>If the ledger with the given <code>Name</code> is in <code>CREATING</code> status, then throws <code>ResourcePreconditionNotMetException</code>.</p> <p>You can initiate up to two concurrent journal export requests for each ledger. Beyond this limit, journal export requests throw <code>LimitExceededException</code>.</p>"
-    },
-    "GetBlock":{
-      "name":"GetBlock",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ledgers/{name}/block"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ledgers/{name}/journal-s3-exports"
       },
-      "input":{"shape":"GetBlockRequest"},
-      "output":{"shape":"GetBlockResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourcePreconditionNotMetException"}
+      "input": {
+        "shape": "ExportJournalToS3Request"
+      },
+      "name": "ExportJournalToS3",
+      "output": {
+        "shape": "ExportJournalToS3Response"
+      }
+    },
+    "GetBlock": {
+      "documentation": "<p>Returns a journal block object at a specified address in a ledger. Also returns a proof of the specified block for verification if <code>DigestTipAddress</code> is provided.</p> <p>If the specified ledger doesn't exist or is in <code>DELETING</code> status, then throws <code>ResourceNotFoundException</code>.</p> <p>If the specified ledger is in <code>CREATING</code> status, then throws <code>ResourcePreconditionNotMetException</code>.</p> <p>If no block exists with the specified address, then throws <code>InvalidParameterException</code>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourcePreconditionNotMetException"
+        }
       ],
-      "documentation":"<p>Returns a journal block object at a specified address in a ledger. Also returns a proof of the specified block for verification if <code>DigestTipAddress</code> is provided.</p> <p>If the specified ledger doesn't exist or is in <code>DELETING</code> status, then throws <code>ResourceNotFoundException</code>.</p> <p>If the specified ledger is in <code>CREATING</code> status, then throws <code>ResourcePreconditionNotMetException</code>.</p> <p>If no block exists with the specified address, then throws <code>InvalidParameterException</code>.</p>"
-    },
-    "GetDigest":{
-      "name":"GetDigest",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ledgers/{name}/digest"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ledgers/{name}/block"
       },
-      "input":{"shape":"GetDigestRequest"},
-      "output":{"shape":"GetDigestResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourcePreconditionNotMetException"}
+      "input": {
+        "shape": "GetBlockRequest"
+      },
+      "name": "GetBlock",
+      "output": {
+        "shape": "GetBlockResponse"
+      }
+    },
+    "GetDigest": {
+      "documentation": "<p>Returns the digest of a ledger at the latest committed block in the journal. The response includes a 256-bit hash value and a block address.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourcePreconditionNotMetException"
+        }
       ],
-      "documentation":"<p>Returns the digest of a ledger at the latest committed block in the journal. The response includes a 256-bit hash value and a block address.</p>"
-    },
-    "GetRevision":{
-      "name":"GetRevision",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ledgers/{name}/revision"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ledgers/{name}/digest"
       },
-      "input":{"shape":"GetRevisionRequest"},
-      "output":{"shape":"GetRevisionResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourcePreconditionNotMetException"}
+      "input": {
+        "shape": "GetDigestRequest"
+      },
+      "name": "GetDigest",
+      "output": {
+        "shape": "GetDigestResponse"
+      }
+    },
+    "GetRevision": {
+      "documentation": "<p>Returns a revision data object for a specified document ID and block address. Also returns a proof of the specified revision for verification if <code>DigestTipAddress</code> is provided.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourcePreconditionNotMetException"
+        }
       ],
-      "documentation":"<p>Returns a revision data object for a specified document ID and block address. Also returns a proof of the specified revision for verification if <code>DigestTipAddress</code> is provided.</p>"
-    },
-    "ListJournalS3Exports":{
-      "name":"ListJournalS3Exports",
-      "http":{
-        "method":"GET",
-        "requestUri":"/journal-s3-exports"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ledgers/{name}/revision"
       },
-      "input":{"shape":"ListJournalS3ExportsRequest"},
-      "output":{"shape":"ListJournalS3ExportsResponse"},
-      "documentation":"<p>Returns an array of journal export job descriptions for all ledgers that are associated with the current AWS account and Region.</p> <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so that you can retrieve all the items by calling <code>ListJournalS3Exports</code> multiple times.</p>"
-    },
-    "ListJournalS3ExportsForLedger":{
-      "name":"ListJournalS3ExportsForLedger",
-      "http":{
-        "method":"GET",
-        "requestUri":"/ledgers/{name}/journal-s3-exports"
+      "input": {
+        "shape": "GetRevisionRequest"
       },
-      "input":{"shape":"ListJournalS3ExportsForLedgerRequest"},
-      "output":{"shape":"ListJournalS3ExportsForLedgerResponse"},
-      "documentation":"<p>Returns an array of journal export job descriptions for a specified ledger.</p> <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so that you can retrieve all the items by calling <code>ListJournalS3ExportsForLedger</code> multiple times.</p>"
+      "name": "GetRevision",
+      "output": {
+        "shape": "GetRevisionResponse"
+      }
     },
-    "ListLedgers":{
-      "name":"ListLedgers",
-      "http":{
-        "method":"GET",
-        "requestUri":"/ledgers"
+    "ListJournalS3Exports": {
+      "documentation": "<p>Returns an array of journal export job descriptions for all ledgers that are associated with the current AWS account and Region.</p> <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so that you can retrieve all the items by calling <code>ListJournalS3Exports</code> multiple times.</p>",
+      "http": {
+        "method": "GET",
+        "requestUri": "/journal-s3-exports"
       },
-      "input":{"shape":"ListLedgersRequest"},
-      "output":{"shape":"ListLedgersResponse"},
-      "documentation":"<p>Returns an array of ledger summaries that are associated with the current AWS account and Region.</p> <p>This action returns a maximum of 100 items and is paginated so that you can retrieve all the items by calling <code>ListLedgers</code> multiple times.</p>"
+      "input": {
+        "shape": "ListJournalS3ExportsRequest"
+      },
+      "name": "ListJournalS3Exports",
+      "output": {
+        "shape": "ListJournalS3ExportsResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/tags/{resourceArn}"
+    "ListJournalS3ExportsForLedger": {
+      "documentation": "<p>Returns an array of journal export job descriptions for a specified ledger.</p> <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so that you can retrieve all the items by calling <code>ListJournalS3ExportsForLedger</code> multiple times.</p>",
+      "http": {
+        "method": "GET",
+        "requestUri": "/ledgers/{name}/journal-s3-exports"
       },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"}
+      "input": {
+        "shape": "ListJournalS3ExportsForLedgerRequest"
+      },
+      "name": "ListJournalS3ExportsForLedger",
+      "output": {
+        "shape": "ListJournalS3ExportsForLedgerResponse"
+      }
+    },
+    "ListLedgers": {
+      "documentation": "<p>Returns an array of ledger summaries that are associated with the current AWS account and Region.</p> <p>This action returns a maximum of 100 items and is paginated so that you can retrieve all the items by calling <code>ListLedgers</code> multiple times.</p>",
+      "http": {
+        "method": "GET",
+        "requestUri": "/ledgers"
+      },
+      "input": {
+        "shape": "ListLedgersRequest"
+      },
+      "name": "ListLedgers",
+      "output": {
+        "shape": "ListLedgersResponse"
+      }
+    },
+    "ListTagsForResource": {
+      "documentation": "<p>Returns all tags for a specified Amazon QLDB resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Returns all tags for a specified Amazon QLDB resource.</p>"
-    },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tags/{resourceArn}"
+      "http": {
+        "method": "GET",
+        "requestUri": "/tags/{resourceArn}"
       },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"}
-      ],
-      "documentation":"<p>Adds one or more tags to a specified Amazon QLDB resource.</p> <p>A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, your request fails and returns an error.</p>"
-    },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/tags/{resourceArn}"
+      "input": {
+        "shape": "ListTagsForResourceRequest"
       },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"}
-      ],
-      "documentation":"<p>Removes one or more tags from a specified Amazon QLDB resource. You can specify up to 50 tag keys to remove.</p>"
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "UpdateLedger":{
-      "name":"UpdateLedger",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/ledgers/{name}"
-      },
-      "input":{"shape":"UpdateLedgerRequest"},
-      "output":{"shape":"UpdateLedgerResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"}
+    "TagResource": {
+      "documentation": "<p>Adds one or more tags to a specified Amazon QLDB resource.</p> <p>A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, your request fails and returns an error.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Updates properties on a ledger.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/tags/{resourceArn}"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
+    },
+    "UntagResource": {
+      "documentation": "<p>Removes one or more tags from a specified Amazon QLDB resource. You can specify up to 50 tag keys to remove.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
+      ],
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/tags/{resourceArn}"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
+    },
+    "UpdateLedger": {
+      "documentation": "<p>Updates properties on a ledger.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
+      ],
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/ledgers/{name}"
+      },
+      "input": {
+        "shape": "UpdateLedgerRequest"
+      },
+      "name": "UpdateLedger",
+      "output": {
+        "shape": "UpdateLedgerResponse"
+      }
     }
   },
-  "shapes":{
-    "Arn":{
-      "type":"string",
-      "max":1600,
-      "min":20
+  "shapes": {
+    "Arn": {
+      "max": 1600,
+      "min": 20,
+      "type": "string"
     },
-    "CreateLedgerRequest":{
-      "type":"structure",
-      "required":[
+    "CreateLedgerRequest": {
+      "members": {
+        "DeletionProtection": {
+          "documentation": "<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+          "shape": "DeletionProtection"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger that you want to create. The name must be unique among all of your ledgers in the current AWS Region.</p>",
+          "shape": "LedgerName"
+        },
+        "PermissionsMode": {
+          "documentation": "<p>The permissions mode to assign to the ledger that you want to create.</p>",
+          "shape": "PermissionsMode"
+        },
+        "Tags": {
+          "documentation": "<p>The key-value pairs to add as tags to the ledger that you want to create. Tag keys are case sensitive. Tag values are case sensitive and can be null.</p>",
+          "shape": "Tags"
+        }
+      },
+      "required": [
         "Name",
         "PermissionsMode"
       ],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger that you want to create. The name must be unique among all of your ledgers in the current AWS Region.</p>"
-        },
-        "Tags":{
-          "shape":"Tags",
-          "documentation":"<p>The key-value pairs to add as tags to the ledger that you want to create. Tag keys are case sensitive. Tag values are case sensitive and can be null.</p>"
-        },
-        "PermissionsMode":{
-          "shape":"PermissionsMode",
-          "documentation":"<p>The permissions mode to assign to the ledger that you want to create.</p>"
-        },
-        "DeletionProtection":{
-          "shape":"DeletionProtection",
-          "documentation":"<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateLedgerResponse":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>"
+    "CreateLedgerResponse": {
+      "members": {
+        "Arn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the ledger.</p>",
+          "shape": "Arn"
         },
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the ledger.</p>"
+        "CreationDateTime": {
+          "documentation": "<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>",
+          "shape": "Timestamp"
         },
-        "State":{
-          "shape":"LedgerState",
-          "documentation":"<p>The current status of the ledger.</p>"
+        "DeletionProtection": {
+          "documentation": "<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+          "shape": "DeletionProtection"
         },
-        "CreationDateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>"
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "shape": "LedgerName"
         },
-        "DeletionProtection":{
-          "shape":"DeletionProtection",
-          "documentation":"<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
+        "State": {
+          "documentation": "<p>The current status of the ledger.</p>",
+          "shape": "LedgerState"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeleteLedgerRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger that you want to delete.</p>",
-          "location":"uri",
-          "locationName":"name"
+    "DeleteLedgerRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the ledger that you want to delete.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         }
-      }
+      },
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "DeletionProtection":{"type":"boolean"},
-    "DescribeJournalS3ExportRequest":{
-      "type":"structure",
-      "required":[
+    "DeletionProtection": {
+      "type": "boolean"
+    },
+    "DescribeJournalS3ExportRequest": {
+      "members": {
+        "ExportId": {
+          "documentation": "<p>The unique ID of the journal export job that you want to describe.</p>",
+          "location": "uri",
+          "locationName": "exportId",
+          "shape": "UniqueId"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
+        }
+      },
+      "required": [
         "Name",
         "ExportId"
       ],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
-        },
-        "ExportId":{
-          "shape":"UniqueId",
-          "documentation":"<p>The unique ID of the journal export job that you want to describe.</p>",
-          "location":"uri",
-          "locationName":"exportId"
+      "type": "structure"
+    },
+    "DescribeJournalS3ExportResponse": {
+      "members": {
+        "ExportDescription": {
+          "documentation": "<p>Information about the journal export job returned by a <code>DescribeJournalS3Export</code> request.</p>",
+          "shape": "JournalS3ExportDescription"
         }
-      }
+      },
+      "required": [
+        "ExportDescription"
+      ],
+      "type": "structure"
     },
-    "DescribeJournalS3ExportResponse":{
-      "type":"structure",
-      "required":["ExportDescription"],
-      "members":{
-        "ExportDescription":{
-          "shape":"JournalS3ExportDescription",
-          "documentation":"<p>Information about the journal export job returned by a <code>DescribeJournalS3Export</code> request.</p>"
+    "DescribeLedgerRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the ledger that you want to describe.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         }
-      }
+      },
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "DescribeLedgerRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger that you want to describe.</p>",
-          "location":"uri",
-          "locationName":"name"
+    "DescribeLedgerResponse": {
+      "members": {
+        "Arn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the ledger.</p>",
+          "shape": "Arn"
+        },
+        "CreationDateTime": {
+          "documentation": "<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>",
+          "shape": "Timestamp"
+        },
+        "DeletionProtection": {
+          "documentation": "<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+          "shape": "DeletionProtection"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "shape": "LedgerName"
+        },
+        "State": {
+          "documentation": "<p>The current status of the ledger.</p>",
+          "shape": "LedgerState"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeLedgerResponse":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>"
+    "Digest": {
+      "max": 32,
+      "min": 32,
+      "type": "blob"
+    },
+    "ErrorMessage": {
+      "type": "string"
+    },
+    "ExportJournalToS3Request": {
+      "members": {
+        "ExclusiveEndTime": {
+          "documentation": "<p>The exclusive end date and time for the range of journal contents that you want to export.</p> <p>The <code>ExclusiveEndTime</code> must be in <code>ISO 8601</code> date and time format and in Universal Coordinated Time (UTC). For example: <code>2019-06-13T21:36:34Z</code> </p> <p>The <code>ExclusiveEndTime</code> must be less than or equal to the current UTC date and time.</p>",
+          "shape": "Timestamp"
         },
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the ledger.</p>"
+        "InclusiveStartTime": {
+          "documentation": "<p>The inclusive start date and time for the range of journal contents that you want to export.</p> <p>The <code>InclusiveStartTime</code> must be in <code>ISO 8601</code> date and time format and in Universal Coordinated Time (UTC). For example: <code>2019-06-13T21:36:34Z</code> </p> <p>The <code>InclusiveStartTime</code> must be before <code>ExclusiveEndTime</code>.</p> <p>If you provide an <code>InclusiveStartTime</code> that is before the ledger's <code>CreationDateTime</code>, Amazon QLDB defaults it to the ledger's <code>CreationDateTime</code>.</p>",
+          "shape": "Timestamp"
         },
-        "State":{
-          "shape":"LedgerState",
-          "documentation":"<p>The current status of the ledger.</p>"
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         },
-        "CreationDateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>"
+        "RoleArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a journal export job to do the following:</p> <ul> <li> <p>Write objects into your Amazon Simple Storage Service (Amazon S3) bucket.</p> </li> <li> <p>(Optional) Use your customer master key (CMK) in AWS Key Management Service (AWS KMS) for server-side encryption of your exported data.</p> </li> </ul>",
+          "shape": "Arn"
         },
-        "DeletionProtection":{
-          "shape":"DeletionProtection",
-          "documentation":"<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
+        "S3ExportConfiguration": {
+          "documentation": "<p>The configuration settings of the Amazon S3 bucket destination for your export request.</p>",
+          "shape": "S3ExportConfiguration"
         }
-      }
-    },
-    "Digest":{
-      "type":"blob",
-      "max":32,
-      "min":32
-    },
-    "ErrorMessage":{"type":"string"},
-    "ExportJournalToS3Request":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "Name",
         "InclusiveStartTime",
         "ExclusiveEndTime",
         "S3ExportConfiguration",
         "RoleArn"
       ],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
-        },
-        "InclusiveStartTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The inclusive start date and time for the range of journal contents that you want to export.</p> <p>The <code>InclusiveStartTime</code> must be in <code>ISO 8601</code> date and time format and in Universal Coordinated Time (UTC). For example: <code>2019-06-13T21:36:34Z</code> </p> <p>The <code>InclusiveStartTime</code> must be before <code>ExclusiveEndTime</code>.</p> <p>If you provide an <code>InclusiveStartTime</code> that is before the ledger's <code>CreationDateTime</code>, Amazon QLDB defaults it to the ledger's <code>CreationDateTime</code>.</p>"
-        },
-        "ExclusiveEndTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The exclusive end date and time for the range of journal contents that you want to export.</p> <p>The <code>ExclusiveEndTime</code> must be in <code>ISO 8601</code> date and time format and in Universal Coordinated Time (UTC). For example: <code>2019-06-13T21:36:34Z</code> </p> <p>The <code>ExclusiveEndTime</code> must be less than or equal to the current UTC date and time.</p>"
-        },
-        "S3ExportConfiguration":{
-          "shape":"S3ExportConfiguration",
-          "documentation":"<p>The configuration settings of the Amazon S3 bucket destination for your export request.</p>"
-        },
-        "RoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a journal export job to do the following:</p> <ul> <li> <p>Write objects into your Amazon Simple Storage Service (Amazon S3) bucket.</p> </li> <li> <p>(Optional) Use your customer master key (CMK) in AWS Key Management Service (AWS KMS) for server-side encryption of your exported data.</p> </li> </ul>"
-        }
-      }
+      "type": "structure"
     },
-    "ExportJournalToS3Response":{
-      "type":"structure",
-      "required":["ExportId"],
-      "members":{
-        "ExportId":{
-          "shape":"UniqueId",
-          "documentation":"<p>The unique ID that QLDB assigns to each journal export job.</p> <p>To describe your export request and check the status of the job, you can use <code>ExportId</code> to call <code>DescribeJournalS3Export</code>.</p>"
+    "ExportJournalToS3Response": {
+      "members": {
+        "ExportId": {
+          "documentation": "<p>The unique ID that QLDB assigns to each journal export job.</p> <p>To describe your export request and check the status of the job, you can use <code>ExportId</code> to call <code>DescribeJournalS3Export</code>.</p>",
+          "shape": "UniqueId"
         }
-      }
+      },
+      "required": [
+        "ExportId"
+      ],
+      "type": "structure"
     },
-    "ExportStatus":{
-      "type":"string",
-      "enum":[
+    "ExportStatus": {
+      "enum": [
         "IN_PROGRESS",
         "COMPLETED",
         "CANCELLED"
-      ]
+      ],
+      "type": "string"
     },
-    "GetBlockRequest":{
-      "type":"structure",
-      "required":[
+    "GetBlockRequest": {
+      "members": {
+        "BlockAddress": {
+          "documentation": "<p>The location of the block that you want to request. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:14}</code> </p>",
+          "shape": "ValueHolder"
+        },
+        "DigestTipAddress": {
+          "documentation": "<p>The latest block location covered by the digest for which to request a proof. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:49}</code> </p>",
+          "shape": "ValueHolder"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
+        }
+      },
+      "required": [
         "Name",
         "BlockAddress"
       ],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
-        },
-        "BlockAddress":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The location of the block that you want to request. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:14}</code> </p>"
-        },
-        "DigestTipAddress":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The latest block location covered by the digest for which to request a proof. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:49}</code> </p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetBlockResponse":{
-      "type":"structure",
-      "required":["Block"],
-      "members":{
-        "Block":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The block data object in Amazon Ion format.</p>"
+    "GetBlockResponse": {
+      "members": {
+        "Block": {
+          "documentation": "<p>The block data object in Amazon Ion format.</p>",
+          "shape": "ValueHolder"
         },
-        "Proof":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The proof object in Amazon Ion format returned by a <code>GetBlock</code> request. A proof contains the list of hash values required to recalculate the specified digest using a Merkle tree, starting with the specified block.</p>"
+        "Proof": {
+          "documentation": "<p>The proof object in Amazon Ion format returned by a <code>GetBlock</code> request. A proof contains the list of hash values required to recalculate the specified digest using a Merkle tree, starting with the specified block.</p>",
+          "shape": "ValueHolder"
         }
-      }
+      },
+      "required": [
+        "Block"
+      ],
+      "type": "structure"
     },
-    "GetDigestRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
+    "GetDigestRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         }
-      }
+      },
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "GetDigestResponse":{
-      "type":"structure",
-      "required":[
+    "GetDigestResponse": {
+      "members": {
+        "Digest": {
+          "documentation": "<p>The 256-bit hash value representing the digest returned by a <code>GetDigest</code> request.</p>",
+          "shape": "Digest"
+        },
+        "DigestTipAddress": {
+          "documentation": "<p>The latest block location covered by the digest that you requested. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p>",
+          "shape": "ValueHolder"
+        }
+      },
+      "required": [
         "Digest",
         "DigestTipAddress"
       ],
-      "members":{
-        "Digest":{
-          "shape":"Digest",
-          "documentation":"<p>The 256-bit hash value representing the digest returned by a <code>GetDigest</code> request.</p>"
-        },
-        "DigestTipAddress":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The latest block location covered by the digest that you requested. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetRevisionRequest":{
-      "type":"structure",
-      "required":[
+    "GetRevisionRequest": {
+      "members": {
+        "BlockAddress": {
+          "documentation": "<p>The block location of the document revision to be verified. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:14}</code> </p>",
+          "shape": "ValueHolder"
+        },
+        "DigestTipAddress": {
+          "documentation": "<p>The latest block location covered by the digest for which to request a proof. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:49}</code> </p>",
+          "shape": "ValueHolder"
+        },
+        "DocumentId": {
+          "documentation": "<p>The unique ID of the document to be verified.</p>",
+          "shape": "UniqueId"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
+        }
+      },
+      "required": [
         "Name",
         "BlockAddress",
         "DocumentId"
       ],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
-        },
-        "BlockAddress":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The block location of the document revision to be verified. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:14}</code> </p>"
-        },
-        "DocumentId":{
-          "shape":"UniqueId",
-          "documentation":"<p>The unique ID of the document to be verified.</p>"
-        },
-        "DigestTipAddress":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The latest block location covered by the digest for which to request a proof. An address is an Amazon Ion structure that has two fields: <code>strandId</code> and <code>sequenceNo</code>.</p> <p>For example: <code>{strandId:\"BlFTjlSXze9BIh1KOszcE3\",sequenceNo:49}</code> </p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetRevisionResponse":{
-      "type":"structure",
-      "required":["Revision"],
-      "members":{
-        "Proof":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The proof object in Amazon Ion format returned by a <code>GetRevision</code> request. A proof contains the list of hash values that are required to recalculate the specified digest using a Merkle tree, starting with the specified document revision.</p>"
+    "GetRevisionResponse": {
+      "members": {
+        "Proof": {
+          "documentation": "<p>The proof object in Amazon Ion format returned by a <code>GetRevision</code> request. A proof contains the list of hash values that are required to recalculate the specified digest using a Merkle tree, starting with the specified document revision.</p>",
+          "shape": "ValueHolder"
         },
-        "Revision":{
-          "shape":"ValueHolder",
-          "documentation":"<p>The document revision data object in Amazon Ion format.</p>"
-        }
-      }
-    },
-    "InvalidParameterException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ParameterName":{
-          "shape":"ParameterName",
-          "documentation":"<p>The name of the invalid parameter.</p>"
+        "Revision": {
+          "documentation": "<p>The document revision data object in Amazon Ion format.</p>",
+          "shape": "ValueHolder"
         }
       },
-      "documentation":"<p>One or more parameters in the request aren't valid.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "required": [
+        "Revision"
+      ],
+      "type": "structure"
     },
-    "IonText":{
-      "type":"string",
-      "max":1048576,
-      "min":1,
-      "sensitive":true
+    "InvalidParameterException": {
+      "documentation": "<p>One or more parameters in the request aren't valid.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ParameterName": {
+          "documentation": "<p>The name of the invalid parameter.</p>",
+          "shape": "ParameterName"
+        }
+      },
+      "type": "structure"
     },
-    "JournalS3ExportDescription":{
-      "type":"structure",
-      "required":[
+    "IonText": {
+      "max": 1048576,
+      "min": 1,
+      "sensitive": true,
+      "type": "string"
+    },
+    "JournalS3ExportDescription": {
+      "documentation": "<p>The information about a journal export job, including the ledger name, export ID, when it was created, current status, and its start and end time export parameters.</p>",
+      "members": {
+        "ExclusiveEndTime": {
+          "documentation": "<p>The exclusive end date and time for the range of journal contents that are specified in the original export request.</p>",
+          "shape": "Timestamp"
+        },
+        "ExportCreationTime": {
+          "documentation": "<p>The date and time, in epoch time format, when the export job was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>",
+          "shape": "Timestamp"
+        },
+        "ExportId": {
+          "documentation": "<p>The unique ID of the journal export job.</p>",
+          "shape": "UniqueId"
+        },
+        "InclusiveStartTime": {
+          "documentation": "<p>The inclusive start date and time for the range of journal contents that are specified in the original export request.</p>",
+          "shape": "Timestamp"
+        },
+        "LedgerName": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "shape": "LedgerName"
+        },
+        "RoleArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a journal export job to do the following:</p> <ul> <li> <p>Write objects into your Amazon Simple Storage Service (Amazon S3) bucket.</p> </li> <li> <p>(Optional) Use your customer master key (CMK) in AWS Key Management Service (AWS KMS) for server-side encryption of your exported data.</p> </li> </ul>",
+          "shape": "Arn"
+        },
+        "S3ExportConfiguration": {
+          "shape": "S3ExportConfiguration"
+        },
+        "Status": {
+          "documentation": "<p>The current state of the journal export job.</p>",
+          "shape": "ExportStatus"
+        }
+      },
+      "required": [
         "LedgerName",
         "ExportId",
         "ExportCreationTime",
@@ -551,486 +724,501 @@
         "S3ExportConfiguration",
         "RoleArn"
       ],
-      "members":{
-        "LedgerName":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>"
-        },
-        "ExportId":{
-          "shape":"UniqueId",
-          "documentation":"<p>The unique ID of the journal export job.</p>"
-        },
-        "ExportCreationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time, in epoch time format, when the export job was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>"
-        },
-        "Status":{
-          "shape":"ExportStatus",
-          "documentation":"<p>The current state of the journal export job.</p>"
-        },
-        "InclusiveStartTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The inclusive start date and time for the range of journal contents that are specified in the original export request.</p>"
-        },
-        "ExclusiveEndTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The exclusive end date and time for the range of journal contents that are specified in the original export request.</p>"
-        },
-        "S3ExportConfiguration":{"shape":"S3ExportConfiguration"},
-        "RoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a journal export job to do the following:</p> <ul> <li> <p>Write objects into your Amazon Simple Storage Service (Amazon S3) bucket.</p> </li> <li> <p>(Optional) Use your customer master key (CMK) in AWS Key Management Service (AWS KMS) for server-side encryption of your exported data.</p> </li> </ul>"
-        }
+      "type": "structure"
+    },
+    "JournalS3ExportList": {
+      "member": {
+        "shape": "JournalS3ExportDescription"
       },
-      "documentation":"<p>The information about a journal export job, including the ledger name, export ID, when it was created, current status, and its start and end time export parameters.</p>"
+      "type": "list"
     },
-    "JournalS3ExportList":{
-      "type":"list",
-      "member":{"shape":"JournalS3ExportDescription"}
+    "LedgerList": {
+      "member": {
+        "shape": "LedgerSummary"
+      },
+      "type": "list"
     },
-    "LedgerList":{
-      "type":"list",
-      "member":{"shape":"LedgerSummary"}
+    "LedgerName": {
+      "max": 32,
+      "min": 1,
+      "pattern": "(?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$",
+      "type": "string"
     },
-    "LedgerName":{
-      "type":"string",
-      "max":32,
-      "min":1,
-      "pattern":"(?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$"
-    },
-    "LedgerState":{
-      "type":"string",
-      "enum":[
+    "LedgerState": {
+      "enum": [
         "CREATING",
         "ACTIVE",
         "DELETING",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "LedgerSummary":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>"
+    "LedgerSummary": {
+      "documentation": "<p>Information about a ledger, including its name, state, and when it was created.</p>",
+      "members": {
+        "CreationDateTime": {
+          "documentation": "<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>",
+          "shape": "Timestamp"
         },
-        "State":{
-          "shape":"LedgerState",
-          "documentation":"<p>The current status of the ledger.</p>"
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "shape": "LedgerName"
         },
-        "CreationDateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>"
+        "State": {
+          "documentation": "<p>The current status of the ledger.</p>",
+          "shape": "LedgerState"
         }
       },
-      "documentation":"<p>Information about a ledger, including its name, state, and when it was created.</p>"
+      "type": "structure"
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ResourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
+    "LimitExceededException": {
+      "documentation": "<p>You have reached the limit on the maximum number of resources allowed.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ResourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation":"<p>You have reached the limit on the maximum number of resources allowed.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
     },
-    "ListJournalS3ExportsForLedgerRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
+    "ListJournalS3ExportsForLedgerRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single <code>ListJournalS3ExportsForLedger</code> request. (The actual number of results returned might be fewer.)</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single <code>ListJournalS3ExportsForLedger</code> request. (The actual number of results returned might be fewer.)</p>",
-          "location":"querystring",
-          "locationName":"max_results"
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListJournalS3ExportsForLedger</code> call, then you should use that value as input here.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        }
-      }
-    },
-    "ListJournalS3ExportsForLedgerResponse":{
-      "type":"structure",
-      "members":{
-        "JournalS3Exports":{
-          "shape":"JournalS3ExportList",
-          "documentation":"<p>The array of journal export job descriptions that are associated with the specified ledger.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListJournalS3ExportsForLedger</code> call.</p> </li> </ul>"
-        }
-      }
-    },
-    "ListJournalS3ExportsRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single <code>ListJournalS3Exports</code> request. (The actual number of results returned might be fewer.)</p>",
-          "location":"querystring",
-          "locationName":"max_results"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListJournalS3Exports</code> call, then you should use that value as input here.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        }
-      }
-    },
-    "ListJournalS3ExportsResponse":{
-      "type":"structure",
-      "members":{
-        "JournalS3Exports":{
-          "shape":"JournalS3ExportList",
-          "documentation":"<p>The array of journal export job descriptions for all ledgers that are associated with the current AWS account and Region.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListJournalS3Exports</code> call.</p> </li> </ul>"
-        }
-      }
-    },
-    "ListLedgersRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single <code>ListLedgers</code> request. (The actual number of results returned might be fewer.)</p>",
-          "location":"querystring",
-          "locationName":"max_results"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListLedgers</code> call, then you should use that value as input here.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        }
-      }
-    },
-    "ListLedgersResponse":{
-      "type":"structure",
-      "members":{
-        "Ledgers":{
-          "shape":"LedgerList",
-          "documentation":"<p>The array of ledger summaries that are associated with the current AWS account and Region.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A pagination token, indicating whether there are more results available:</p> <ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListLedgers</code> call.</p> </li> </ul>"
-        }
-      }
-    },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for which you want to list the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
-          "location":"uri",
-          "locationName":"resourceArn"
-        }
-      }
-    },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"Tags",
-          "documentation":"<p>The tags that are currently associated with the specified Amazon QLDB resource.</p>"
-        }
-      }
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":100,
-      "min":1
-    },
-    "NextToken":{
-      "type":"string",
-      "max":1024,
-      "min":4,
-      "pattern":"^[A-Za-z-0-9+/=]+$"
-    },
-    "ParameterName":{"type":"string"},
-    "PermissionsMode":{
-      "type":"string",
-      "enum":["ALLOW_ALL"]
-    },
-    "ResourceAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ResourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
-        },
-        "ResourceName":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource.</p>"
+        "NextToken": {
+          "documentation": "<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListJournalS3ExportsForLedger</code> call, then you should use that value as input here.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The specified resource already exists.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ResourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
+    "ListJournalS3ExportsForLedgerResponse": {
+      "members": {
+        "JournalS3Exports": {
+          "documentation": "<p>The array of journal export job descriptions that are associated with the specified ledger.</p>",
+          "shape": "JournalS3ExportList"
         },
-        "ResourceName":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource.</p>"
+        "NextToken": {
+          "documentation": "<ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListJournalS3ExportsForLedger</code> call.</p> </li> </ul>",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The specified resource can't be modified at this time.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "type": "structure"
     },
-    "ResourceName":{"type":"string"},
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ResourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
+    "ListJournalS3ExportsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single <code>ListJournalS3Exports</code> request. (The actual number of results returned might be fewer.)</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
         },
-        "ResourceName":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource.</p>"
+        "NextToken": {
+          "documentation": "<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListJournalS3Exports</code> call, then you should use that value as input here.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The specified resource doesn't exist.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
+      "type": "structure"
     },
-    "ResourcePreconditionNotMetException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"},
-        "ResourceType":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of resource.</p>"
+    "ListJournalS3ExportsResponse": {
+      "members": {
+        "JournalS3Exports": {
+          "documentation": "<p>The array of journal export job descriptions for all ledgers that are associated with the current AWS account and Region.</p>",
+          "shape": "JournalS3ExportList"
         },
-        "ResourceName":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource.</p>"
+        "NextToken": {
+          "documentation": "<ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListJournalS3Exports</code> call.</p> </li> </ul>",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The operation failed because a condition wasn't satisfied in advance.</p>",
-      "error":{"httpStatusCode":412},
-      "exception":true
+      "type": "structure"
     },
-    "ResourceType":{"type":"string"},
-    "S3Bucket":{
-      "type":"string",
-      "max":255,
-      "min":3,
-      "pattern":"^[A-Za-z-0-9-_.]+$"
-    },
-    "S3EncryptionConfiguration":{
-      "type":"structure",
-      "required":["ObjectEncryptionType"],
-      "members":{
-        "ObjectEncryptionType":{
-          "shape":"S3ObjectEncryptionType",
-          "documentation":"<p>The Amazon S3 object encryption type.</p> <p>To learn more about server-side encryption options in Amazon S3, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html\">Protecting Data Using Server-Side Encryption</a> in the <i>Amazon S3 Developer Guide</i>.</p>"
+    "ListLedgersRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single <code>ListLedgers</code> request. (The actual number of results returned might be fewer.)</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
         },
-        "KmsKeyArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for a customer master key (CMK) in AWS Key Management Service (AWS KMS).</p> <p>You must provide a <code>KmsKeyArn</code> if you specify <code>SSE_KMS</code> as the <code>ObjectEncryptionType</code>.</p> <p> <code>KmsKeyArn</code> is not required if you specify <code>SSE_S3</code> as the <code>ObjectEncryptionType</code>.</p>"
+        "NextToken": {
+          "documentation": "<p>A pagination token, indicating that you want to retrieve the next page of results. If you received a value for <code>NextToken</code> in the response from a previous <code>ListLedgers</code> call, then you should use that value as input here.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The encryption settings that are used by a journal export job to write data in an Amazon Simple Storage Service (Amazon S3) bucket.</p>"
+      "type": "structure"
     },
-    "S3ExportConfiguration":{
-      "type":"structure",
-      "required":[
+    "ListLedgersResponse": {
+      "members": {
+        "Ledgers": {
+          "documentation": "<p>The array of ledger summaries that are associated with the current AWS account and Region.</p>",
+          "shape": "LedgerList"
+        },
+        "NextToken": {
+          "documentation": "<p>A pagination token, indicating whether there are more results available:</p> <ul> <li> <p>If <code>NextToken</code> is empty, then the last page of results has been processed and there are no more results to be retrieved.</p> </li> <li> <p>If <code>NextToken</code> is <i>not</i> empty, then there are more results available. To retrieve the next page of results, use the value of <code>NextToken</code> in a subsequent <code>ListLedgers</code> call.</p> </li> </ul>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for which you want to list the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "Arn"
+        }
+      },
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
+    },
+    "ListTagsForResourceResponse": {
+      "members": {
+        "Tags": {
+          "documentation": "<p>The tags that are currently associated with the specified Amazon QLDB resource.</p>",
+          "shape": "Tags"
+        }
+      },
+      "type": "structure"
+    },
+    "MaxResults": {
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "NextToken": {
+      "max": 1024,
+      "min": 4,
+      "pattern": "^[A-Za-z-0-9+/=]+$",
+      "type": "string"
+    },
+    "ParameterName": {
+      "type": "string"
+    },
+    "PermissionsMode": {
+      "enum": [
+        "ALLOW_ALL"
+      ],
+      "type": "string"
+    },
+    "ResourceAlreadyExistsException": {
+      "documentation": "<p>The specified resource already exists.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ResourceName": {
+          "documentation": "<p>The name of the resource.</p>",
+          "shape": "ResourceName"
+        },
+        "ResourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceInUseException": {
+      "documentation": "<p>The specified resource can't be modified at this time.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ResourceName": {
+          "documentation": "<p>The name of the resource.</p>",
+          "shape": "ResourceName"
+        },
+        "ResourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceName": {
+      "type": "string"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource doesn't exist.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ResourceName": {
+          "documentation": "<p>The name of the resource.</p>",
+          "shape": "ResourceName"
+        },
+        "ResourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourcePreconditionNotMetException": {
+      "documentation": "<p>The operation failed because a condition wasn't satisfied in advance.</p>",
+      "error": {
+        "httpStatusCode": 412
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        },
+        "ResourceName": {
+          "documentation": "<p>The name of the resource.</p>",
+          "shape": "ResourceName"
+        },
+        "ResourceType": {
+          "documentation": "<p>The type of resource.</p>",
+          "shape": "ResourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceType": {
+      "type": "string"
+    },
+    "S3Bucket": {
+      "max": 255,
+      "min": 3,
+      "pattern": "^[A-Za-z-0-9-_.]+$",
+      "type": "string"
+    },
+    "S3EncryptionConfiguration": {
+      "documentation": "<p>The encryption settings that are used by a journal export job to write data in an Amazon Simple Storage Service (Amazon S3) bucket.</p>",
+      "members": {
+        "KmsKeyArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for a customer master key (CMK) in AWS Key Management Service (AWS KMS).</p> <p>You must provide a <code>KmsKeyArn</code> if you specify <code>SSE_KMS</code> as the <code>ObjectEncryptionType</code>.</p> <p> <code>KmsKeyArn</code> is not required if you specify <code>SSE_S3</code> as the <code>ObjectEncryptionType</code>.</p>",
+          "shape": "Arn"
+        },
+        "ObjectEncryptionType": {
+          "documentation": "<p>The Amazon S3 object encryption type.</p> <p>To learn more about server-side encryption options in Amazon S3, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html\">Protecting Data Using Server-Side Encryption</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+          "shape": "S3ObjectEncryptionType"
+        }
+      },
+      "required": [
+        "ObjectEncryptionType"
+      ],
+      "type": "structure"
+    },
+    "S3ExportConfiguration": {
+      "documentation": "<p>The Amazon Simple Storage Service (Amazon S3) bucket location in which a journal export job writes the journal contents.</p>",
+      "members": {
+        "Bucket": {
+          "documentation": "<p>The Amazon S3 bucket name in which a journal export job writes the journal contents.</p> <p>The bucket name must comply with the Amazon S3 bucket naming conventions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html\">Bucket Restrictions and Limitations</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+          "shape": "S3Bucket"
+        },
+        "EncryptionConfiguration": {
+          "documentation": "<p>The encryption settings that are used by a journal export job to write data in an Amazon S3 bucket.</p>",
+          "shape": "S3EncryptionConfiguration"
+        },
+        "Prefix": {
+          "documentation": "<p>The prefix for the Amazon S3 bucket in which a journal export job writes the journal contents.</p> <p>The prefix must comply with Amazon S3 key naming rules and restrictions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html\">Object Key and Metadata</a> in the <i>Amazon S3 Developer Guide</i>.</p> <p>The following are examples of valid <code>Prefix</code> values:</p> <ul> <li> <p> <code>JournalExports-ForMyLedger/Testing/</code> </p> </li> <li> <p> <code>JournalExports</code> </p> </li> <li> <p> <code>My:Tests/</code> </p> </li> </ul>",
+          "shape": "S3Prefix"
+        }
+      },
+      "required": [
         "Bucket",
         "Prefix",
         "EncryptionConfiguration"
       ],
-      "members":{
-        "Bucket":{
-          "shape":"S3Bucket",
-          "documentation":"<p>The Amazon S3 bucket name in which a journal export job writes the journal contents.</p> <p>The bucket name must comply with the Amazon S3 bucket naming conventions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html\">Bucket Restrictions and Limitations</a> in the <i>Amazon S3 Developer Guide</i>.</p>"
-        },
-        "Prefix":{
-          "shape":"S3Prefix",
-          "documentation":"<p>The prefix for the Amazon S3 bucket in which a journal export job writes the journal contents.</p> <p>The prefix must comply with Amazon S3 key naming rules and restrictions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html\">Object Key and Metadata</a> in the <i>Amazon S3 Developer Guide</i>.</p> <p>The following are examples of valid <code>Prefix</code> values:</p> <ul> <li> <p> <code>JournalExports-ForMyLedger/Testing/</code> </p> </li> <li> <p> <code>JournalExports</code> </p> </li> <li> <p> <code>My:Tests/</code> </p> </li> </ul>"
-        },
-        "EncryptionConfiguration":{
-          "shape":"S3EncryptionConfiguration",
-          "documentation":"<p>The encryption settings that are used by a journal export job to write data in an Amazon S3 bucket.</p>"
-        }
-      },
-      "documentation":"<p>The Amazon Simple Storage Service (Amazon S3) bucket location in which a journal export job writes the journal contents.</p>"
+      "type": "structure"
     },
-    "S3ObjectEncryptionType":{
-      "type":"string",
-      "enum":[
+    "S3ObjectEncryptionType": {
+      "enum": [
         "SSE_KMS",
         "SSE_S3",
         "NO_ENCRYPTION"
-      ]
+      ],
+      "type": "string"
     },
-    "S3Prefix":{
-      "type":"string",
-      "max":128,
-      "min":0
+    "S3Prefix": {
+      "max": 128,
+      "min": 0,
+      "type": "string"
     },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
     },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":200,
-      "min":0
+    "TagKeyList": {
+      "max": 200,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "TagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) to which you want to add the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "Arn"
+        },
+        "Tags": {
+          "documentation": "<p>The key-value pairs to add as tags to the specified QLDB resource. Tag keys are case sensitive. If you specify a key that already exists for the resource, your request fails and returns an error. Tag values are case sensitive and can be null.</p>",
+          "shape": "Tags"
+        }
+      },
+      "required": [
         "ResourceArn",
         "Tags"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) to which you want to add the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
-          "location":"uri",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagValue": {
+      "max": 256,
+      "min": 0,
+      "type": "string"
+    },
+    "Tags": {
+      "key": {
+        "shape": "TagKey"
+      },
+      "max": 200,
+      "min": 0,
+      "type": "map",
+      "value": {
+        "shape": "TagValue"
+      }
+    },
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "UniqueId": {
+      "max": 22,
+      "min": 22,
+      "pattern": "^[A-Za-z-0-9]+$",
+      "type": "string"
+    },
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) from which you want to remove the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "Arn"
         },
-        "Tags":{
-          "shape":"Tags",
-          "documentation":"<p>The key-value pairs to add as tags to the specified QLDB resource. Tag keys are case sensitive. If you specify a key that already exists for the resource, your request fails and returns an error. Tag values are case sensitive and can be null.</p>"
+        "TagKeys": {
+          "documentation": "<p>The list of tag keys that you want to remove.</p>",
+          "location": "querystring",
+          "locationName": "tagKeys",
+          "shape": "TagKeyList"
         }
-      }
-    },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":0
-    },
-    "Tags":{
-      "type":"map",
-      "key":{"shape":"TagKey"},
-      "value":{"shape":"TagValue"},
-      "max":200,
-      "min":0
-    },
-    "Timestamp":{"type":"timestamp"},
-    "UniqueId":{
-      "type":"string",
-      "max":22,
-      "min":22,
-      "pattern":"^[A-Za-z-0-9]+$"
-    },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ResourceArn",
         "TagKeys"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) from which you want to remove the tags. For example:</p> <p> <code>arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger</code> </p>",
-          "location":"uri",
-          "locationName":"resourceArn"
-        },
-        "TagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The list of tag keys that you want to remove.</p>",
-          "location":"querystring",
-          "locationName":"tagKeys"
-        }
-      }
+      "type": "structure"
     },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "UpdateLedgerRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>",
-          "location":"uri",
-          "locationName":"name"
+    "UpdateLedgerRequest": {
+      "members": {
+        "DeletionProtection": {
+          "documentation": "<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+          "shape": "DeletionProtection"
         },
-        "DeletionProtection":{
-          "shape":"DeletionProtection",
-          "documentation":"<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
-        }
-      }
-    },
-    "UpdateLedgerResponse":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"LedgerName",
-          "documentation":"<p>The name of the ledger.</p>"
-        },
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the ledger.</p>"
-        },
-        "State":{
-          "shape":"LedgerState",
-          "documentation":"<p>The current status of the ledger.</p>"
-        },
-        "CreationDateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>"
-        },
-        "DeletionProtection":{
-          "shape":"DeletionProtection",
-          "documentation":"<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>"
-        }
-      }
-    },
-    "ValueHolder":{
-      "type":"structure",
-      "members":{
-        "IonText":{
-          "shape":"IonText",
-          "documentation":"<p>An Amazon Ion plaintext value contained in a <code>ValueHolder</code> structure.</p>"
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "location": "uri",
+          "locationName": "name",
+          "shape": "LedgerName"
         }
       },
-      "documentation":"<p>A structure that can contain an Amazon Ion value in multiple encoding formats.</p>",
-      "sensitive":true
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
+    },
+    "UpdateLedgerResponse": {
+      "members": {
+        "Arn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the ledger.</p>",
+          "shape": "Arn"
+        },
+        "CreationDateTime": {
+          "documentation": "<p>The date and time, in epoch time format, when the ledger was created. (Epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.)</p>",
+          "shape": "Timestamp"
+        },
+        "DeletionProtection": {
+          "documentation": "<p>The flag that prevents a ledger from being deleted by any user. If not provided on ledger creation, this feature is enabled (<code>true</code>) by default.</p> <p>If deletion protection is enabled, you must first disable it before you can delete the ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB console disables deletion protection for you when you use it to delete a ledger.</p>",
+          "shape": "DeletionProtection"
+        },
+        "Name": {
+          "documentation": "<p>The name of the ledger.</p>",
+          "shape": "LedgerName"
+        },
+        "State": {
+          "documentation": "<p>The current status of the ledger.</p>",
+          "shape": "LedgerState"
+        }
+      },
+      "type": "structure"
+    },
+    "ValueHolder": {
+      "documentation": "<p>A structure that can contain an Amazon Ion value in multiple encoding formats.</p>",
+      "members": {
+        "IonText": {
+          "documentation": "<p>An Amazon Ion plaintext value contained in a <code>ValueHolder</code> structure.</p>",
+          "shape": "IonText"
+        }
+      },
+      "sensitive": true,
+      "type": "structure"
     }
   },
-  "documentation":"<p>The control plane for Amazon QLDB</p>"
+  "version": "2.0"
 }

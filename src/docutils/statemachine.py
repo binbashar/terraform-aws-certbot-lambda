@@ -859,7 +859,7 @@ class StateMachineWS(StateMachine):
             offset += 1
         return indented, offset, blank_finish
 
-    def get_first_known_indented(self, indent, until_blank=False, 
+    def get_first_known_indented(self, indent, until_blank=False,
                                  strip_indent=True, strip_top=True):
         """
         Return an indented block and info.

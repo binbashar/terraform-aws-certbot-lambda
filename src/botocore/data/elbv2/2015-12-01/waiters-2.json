@@ -1,100 +1,100 @@
 {
   "version": 2,
   "waiters": {
-    "LoadBalancerExists": {
-      "delay": 15,
-      "operation": "DescribeLoadBalancers",
-      "maxAttempts": 40,
+    "LoadBalancerAvailable": {
       "acceptors": [
         {
-          "matcher": "status",
-          "expected": 200,
+          "argument": "LoadBalancers[].State.Code",
+          "expected": "active",
+          "matcher": "pathAll",
           "state": "success"
         },
         {
-          "matcher": "error",
+          "argument": "LoadBalancers[].State.Code",
+          "expected": "provisioning",
+          "matcher": "pathAny",
+          "state": "retry"
+        },
+        {
           "expected": "LoadBalancerNotFound",
+          "matcher": "error",
           "state": "retry"
         }
-      ]
-    },
-    "LoadBalancerAvailable": {
+      ],
       "delay": 15,
-      "operation": "DescribeLoadBalancers",
       "maxAttempts": 40,
+      "operation": "DescribeLoadBalancers"
+    },
+    "LoadBalancerExists": {
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "pathAll",
-          "argument": "LoadBalancers[].State.Code",
-          "expected": "active"
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
         },
         {
-          "state": "retry",
-          "matcher": "pathAny",
-          "argument": "LoadBalancers[].State.Code",
-          "expected": "provisioning"
-        },
-        {
-          "state": "retry",
+          "expected": "LoadBalancerNotFound",
           "matcher": "error",
-          "expected": "LoadBalancerNotFound"
+          "state": "retry"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeLoadBalancers"
     },
     "LoadBalancersDeleted": {
-      "delay": 15,
-      "operation": "DescribeLoadBalancers",
-      "maxAttempts": 40,
       "acceptors": [
         {
-          "state": "retry",
-          "matcher": "pathAll",
           "argument": "LoadBalancers[].State.Code",
-          "expected": "active"
+          "expected": "active",
+          "matcher": "pathAll",
+          "state": "retry"
         },
         {
-          "matcher": "error",
           "expected": "LoadBalancerNotFound",
+          "matcher": "error",
           "state": "success"
         }
-      ]
-    },
-    "TargetInService":{
-      "delay":15,
-      "maxAttempts":40,
-      "operation":"DescribeTargetHealth",
-      "acceptors":[
-        {
-          "argument":"TargetHealthDescriptions[].TargetHealth.State",
-          "expected":"healthy",
-          "matcher":"pathAll",
-          "state":"success"
-        },
-        {
-          "matcher": "error",
-          "expected": "InvalidInstance",
-          "state": "retry"
-        }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeLoadBalancers"
     },
     "TargetDeregistered": {
-      "delay": 15,
-      "maxAttempts": 40,
-      "operation": "DescribeTargetHealth",
       "acceptors": [
         {
-          "matcher": "error",
           "expected": "InvalidTarget",
+          "matcher": "error",
           "state": "success"
         },
         {
-          "argument":"TargetHealthDescriptions[].TargetHealth.State",
-          "expected":"unused",
-          "matcher":"pathAll",
-          "state":"success"
+          "argument": "TargetHealthDescriptions[].TargetHealth.State",
+          "expected": "unused",
+          "matcher": "pathAll",
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeTargetHealth"
+    },
+    "TargetInService": {
+      "acceptors": [
+        {
+          "argument": "TargetHealthDescriptions[].TargetHealth.State",
+          "expected": "healthy",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "expected": "InvalidInstance",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeTargetHealth"
     }
   }
 }

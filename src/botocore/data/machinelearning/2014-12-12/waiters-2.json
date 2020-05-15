@@ -1,81 +1,81 @@
 {
   "version": 2,
   "waiters": {
-    "DataSourceAvailable": {
-      "delay": 30,
-      "operation": "DescribeDataSources",
-      "maxAttempts": 60,
+    "BatchPredictionAvailable": {
       "acceptors": [
         {
+          "argument": "Results[].Status",
           "expected": "COMPLETED",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Results[].Status"
+          "state": "success"
         },
         {
+          "argument": "Results[].Status",
           "expected": "FAILED",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Results[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeBatchPredictions"
     },
-    "MLModelAvailable": {
-      "delay": 30,
-      "operation": "DescribeMLModels",
-      "maxAttempts": 60,
+    "DataSourceAvailable": {
       "acceptors": [
         {
+          "argument": "Results[].Status",
           "expected": "COMPLETED",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Results[].Status"
+          "state": "success"
         },
         {
+          "argument": "Results[].Status",
           "expected": "FAILED",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Results[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeDataSources"
     },
     "EvaluationAvailable": {
-      "delay": 30,
-      "operation": "DescribeEvaluations",
-      "maxAttempts": 60,
       "acceptors": [
         {
+          "argument": "Results[].Status",
           "expected": "COMPLETED",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Results[].Status"
+          "state": "success"
         },
         {
+          "argument": "Results[].Status",
           "expected": "FAILED",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Results[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeEvaluations"
     },
-    "BatchPredictionAvailable": {
-      "delay": 30,
-      "operation": "DescribeBatchPredictions",
-      "maxAttempts": 60,
+    "MLModelAvailable": {
       "acceptors": [
         {
+          "argument": "Results[].Status",
           "expected": "COMPLETED",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Results[].Status"
+          "state": "success"
         },
         {
+          "argument": "Results[].Status",
           "expected": "FAILED",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Results[].Status"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "DescribeMLModels"
     }
   }
 }

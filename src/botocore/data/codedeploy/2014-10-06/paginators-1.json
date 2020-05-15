@@ -25,15 +25,15 @@
       "output_token": "nextToken",
       "result_key": "instancesList"
     },
-    "ListDeployments": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "result_key": "deployments"
-    },
     "ListDeploymentTargets": {
       "input_token": "nextToken",
       "output_token": "nextToken",
       "result_key": "targetIds"
+    },
+    "ListDeployments": {
+      "input_token": "nextToken",
+      "output_token": "nextToken",
+      "result_key": "deployments"
     },
     "ListGitHubAccountTokenNames": {
       "input_token": "nextToken",

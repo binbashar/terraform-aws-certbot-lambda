@@ -1,443 +1,778 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2018-09-24",
-    "endpointPrefix":"managedblockchain",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"ManagedBlockchain",
-    "serviceFullName":"Amazon Managed Blockchain",
-    "serviceId":"ManagedBlockchain",
-    "signatureVersion":"v4",
-    "signingName":"managedblockchain",
-    "uid":"managedblockchain-2018-09-24"
+  "documentation": "<p/> <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority. Currently, Managed Blockchain supports the Hyperledger Fabric open source framework. </p>",
+  "metadata": {
+    "apiVersion": "2018-09-24",
+    "endpointPrefix": "managedblockchain",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "ManagedBlockchain",
+    "serviceFullName": "Amazon Managed Blockchain",
+    "serviceId": "ManagedBlockchain",
+    "signatureVersion": "v4",
+    "signingName": "managedblockchain",
+    "uid": "managedblockchain-2018-09-24"
   },
-  "operations":{
-    "CreateMember":{
-      "name":"CreateMember",
-      "http":{
-        "method":"POST",
-        "requestUri":"/networks/{networkId}/members"
-      },
-      "input":{"shape":"CreateMemberInput"},
-      "output":{"shape":"CreateMemberOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ResourceNotReadyException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"ResourceLimitExceededException"},
-        {"shape":"InternalServiceErrorException"}
+  "operations": {
+    "CreateMember": {
+      "documentation": "<p>Creates a member within a Managed Blockchain network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ResourceNotReadyException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "ResourceLimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Creates a member within a Managed Blockchain network.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/networks/{networkId}/members"
+      },
+      "input": {
+        "shape": "CreateMemberInput"
+      },
+      "name": "CreateMember",
+      "output": {
+        "shape": "CreateMemberOutput"
+      }
     },
-    "CreateNetwork":{
-      "name":"CreateNetwork",
-      "http":{
-        "method":"POST",
-        "requestUri":"/networks"
-      },
-      "input":{"shape":"CreateNetworkInput"},
-      "output":{"shape":"CreateNetworkOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"ResourceLimitExceededException"},
-        {"shape":"InternalServiceErrorException"}
+    "CreateNetwork": {
+      "documentation": "<p>Creates a new blockchain network using Amazon Managed Blockchain.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "ResourceLimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Creates a new blockchain network using Amazon Managed Blockchain.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/networks"
+      },
+      "input": {
+        "shape": "CreateNetworkInput"
+      },
+      "name": "CreateNetwork",
+      "output": {
+        "shape": "CreateNetworkOutput"
+      }
     },
-    "CreateNode":{
-      "name":"CreateNode",
-      "http":{
-        "method":"POST",
-        "requestUri":"/networks/{networkId}/members/{memberId}/nodes"
-      },
-      "input":{"shape":"CreateNodeInput"},
-      "output":{"shape":"CreateNodeOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ResourceNotReadyException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"ResourceLimitExceededException"},
-        {"shape":"InternalServiceErrorException"}
+    "CreateNode": {
+      "documentation": "<p>Creates a peer node in a member.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "ResourceNotReadyException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "ResourceLimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Creates a peer node in a member.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/networks/{networkId}/members/{memberId}/nodes"
+      },
+      "input": {
+        "shape": "CreateNodeInput"
+      },
+      "name": "CreateNode",
+      "output": {
+        "shape": "CreateNodeOutput"
+      }
     },
-    "CreateProposal":{
-      "name":"CreateProposal",
-      "http":{
-        "method":"POST",
-        "requestUri":"/networks/{networkId}/proposals"
-      },
-      "input":{"shape":"CreateProposalInput"},
-      "output":{"shape":"CreateProposalOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceNotReadyException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "CreateProposal": {
+      "documentation": "<p>Creates a proposal for a change to the network that other members of the network can vote on, for example, a proposal to add a new member to the network. Any member can create a proposal.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceNotReadyException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Creates a proposal for a change to the network that other members of the network can vote on, for example, a proposal to add a new member to the network. Any member can create a proposal.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/networks/{networkId}/proposals"
+      },
+      "input": {
+        "shape": "CreateProposalInput"
+      },
+      "name": "CreateProposal",
+      "output": {
+        "shape": "CreateProposalOutput"
+      }
     },
-    "DeleteMember":{
-      "name":"DeleteMember",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/networks/{networkId}/members/{memberId}"
-      },
-      "input":{"shape":"DeleteMemberInput"},
-      "output":{"shape":"DeleteMemberOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceNotReadyException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "DeleteMember": {
+      "documentation": "<p>Deletes a member. Deleting a member removes the member and all associated resources from the network. <code>DeleteMember</code> can only be called for a specified <code>MemberId</code> if the principal performing the action is associated with the AWS account that owns the member. In all other cases, the <code>DeleteMember</code> action is carried out as the result of an approved proposal to remove a member. If <code>MemberId</code> is the last member in a network specified by the last AWS account, the network is deleted also.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceNotReadyException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Deletes a member. Deleting a member removes the member and all associated resources from the network. <code>DeleteMember</code> can only be called for a specified <code>MemberId</code> if the principal performing the action is associated with the AWS account that owns the member. In all other cases, the <code>DeleteMember</code> action is carried out as the result of an approved proposal to remove a member. If <code>MemberId</code> is the last member in a network specified by the last AWS account, the network is deleted also.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/networks/{networkId}/members/{memberId}"
+      },
+      "input": {
+        "shape": "DeleteMemberInput"
+      },
+      "name": "DeleteMember",
+      "output": {
+        "shape": "DeleteMemberOutput"
+      }
     },
-    "DeleteNode":{
-      "name":"DeleteNode",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
-      },
-      "input":{"shape":"DeleteNodeInput"},
-      "output":{"shape":"DeleteNodeOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceNotReadyException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "DeleteNode": {
+      "documentation": "<p>Deletes a peer node from a member that your AWS account owns. All data on the node is lost and cannot be recovered.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceNotReadyException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Deletes a peer node from a member that your AWS account owns. All data on the node is lost and cannot be recovered.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
+      },
+      "input": {
+        "shape": "DeleteNodeInput"
+      },
+      "name": "DeleteNode",
+      "output": {
+        "shape": "DeleteNodeOutput"
+      }
     },
-    "GetMember":{
-      "name":"GetMember",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/members/{memberId}"
-      },
-      "input":{"shape":"GetMemberInput"},
-      "output":{"shape":"GetMemberOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "GetMember": {
+      "documentation": "<p>Returns detailed information about a member.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns detailed information about a member.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/members/{memberId}"
+      },
+      "input": {
+        "shape": "GetMemberInput"
+      },
+      "name": "GetMember",
+      "output": {
+        "shape": "GetMemberOutput"
+      }
     },
-    "GetNetwork":{
-      "name":"GetNetwork",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}"
-      },
-      "input":{"shape":"GetNetworkInput"},
-      "output":{"shape":"GetNetworkOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "GetNetwork": {
+      "documentation": "<p>Returns detailed information about a network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns detailed information about a network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}"
+      },
+      "input": {
+        "shape": "GetNetworkInput"
+      },
+      "name": "GetNetwork",
+      "output": {
+        "shape": "GetNetworkOutput"
+      }
     },
-    "GetNode":{
-      "name":"GetNode",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
-      },
-      "input":{"shape":"GetNodeInput"},
-      "output":{"shape":"GetNodeOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "GetNode": {
+      "documentation": "<p>Returns detailed information about a peer node.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns detailed information about a peer node.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
+      },
+      "input": {
+        "shape": "GetNodeInput"
+      },
+      "name": "GetNode",
+      "output": {
+        "shape": "GetNodeOutput"
+      }
     },
-    "GetProposal":{
-      "name":"GetProposal",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/proposals/{proposalId}"
-      },
-      "input":{"shape":"GetProposalInput"},
-      "output":{"shape":"GetProposalOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "GetProposal": {
+      "documentation": "<p>Returns detailed information about a proposal.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns detailed information about a proposal.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/proposals/{proposalId}"
+      },
+      "input": {
+        "shape": "GetProposalInput"
+      },
+      "name": "GetProposal",
+      "output": {
+        "shape": "GetProposalOutput"
+      }
     },
-    "ListInvitations":{
-      "name":"ListInvitations",
-      "http":{
-        "method":"GET",
-        "requestUri":"/invitations"
-      },
-      "input":{"shape":"ListInvitationsInput"},
-      "output":{"shape":"ListInvitationsOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"ResourceLimitExceededException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListInvitations": {
+      "documentation": "<p>Returns a listing of all invitations made on the specified network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "ResourceLimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns a listing of all invitations made on the specified network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/invitations"
+      },
+      "input": {
+        "shape": "ListInvitationsInput"
+      },
+      "name": "ListInvitations",
+      "output": {
+        "shape": "ListInvitationsOutput"
+      }
     },
-    "ListMembers":{
-      "name":"ListMembers",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/members"
-      },
-      "input":{"shape":"ListMembersInput"},
-      "output":{"shape":"ListMembersOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListMembers": {
+      "documentation": "<p>Returns a listing of the members in a network and properties of their configurations.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns a listing of the members in a network and properties of their configurations.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/members"
+      },
+      "input": {
+        "shape": "ListMembersInput"
+      },
+      "name": "ListMembers",
+      "output": {
+        "shape": "ListMembersOutput"
+      }
     },
-    "ListNetworks":{
-      "name":"ListNetworks",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks"
-      },
-      "input":{"shape":"ListNetworksInput"},
-      "output":{"shape":"ListNetworksOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListNetworks": {
+      "documentation": "<p>Returns information about the networks in which the current AWS account has members.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns information about the networks in which the current AWS account has members.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks"
+      },
+      "input": {
+        "shape": "ListNetworksInput"
+      },
+      "name": "ListNetworks",
+      "output": {
+        "shape": "ListNetworksOutput"
+      }
     },
-    "ListNodes":{
-      "name":"ListNodes",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/members/{memberId}/nodes"
-      },
-      "input":{"shape":"ListNodesInput"},
-      "output":{"shape":"ListNodesOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListNodes": {
+      "documentation": "<p>Returns information about the nodes within a network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns information about the nodes within a network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/members/{memberId}/nodes"
+      },
+      "input": {
+        "shape": "ListNodesInput"
+      },
+      "name": "ListNodes",
+      "output": {
+        "shape": "ListNodesOutput"
+      }
     },
-    "ListProposalVotes":{
-      "name":"ListProposalVotes",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/proposals/{proposalId}/votes"
-      },
-      "input":{"shape":"ListProposalVotesInput"},
-      "output":{"shape":"ListProposalVotesOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListProposalVotes": {
+      "documentation": "<p>Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/proposals/{proposalId}/votes"
+      },
+      "input": {
+        "shape": "ListProposalVotesInput"
+      },
+      "name": "ListProposalVotes",
+      "output": {
+        "shape": "ListProposalVotesOutput"
+      }
     },
-    "ListProposals":{
-      "name":"ListProposals",
-      "http":{
-        "method":"GET",
-        "requestUri":"/networks/{networkId}/proposals"
-      },
-      "input":{"shape":"ListProposalsInput"},
-      "output":{"shape":"ListProposalsOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "ListProposals": {
+      "documentation": "<p>Returns a listing of proposals for the network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Returns a listing of proposals for the network.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/networks/{networkId}/proposals"
+      },
+      "input": {
+        "shape": "ListProposalsInput"
+      },
+      "name": "ListProposals",
+      "output": {
+        "shape": "ListProposalsOutput"
+      }
     },
-    "RejectInvitation":{
-      "name":"RejectInvitation",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/invitations/{invitationId}"
-      },
-      "input":{"shape":"RejectInvitationInput"},
-      "output":{"shape":"RejectInvitationOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"IllegalActionException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "RejectInvitation": {
+      "documentation": "<p>Rejects an invitation to join a network. This action can be called by a principal in an AWS account that has received an invitation to create a member and join a network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "IllegalActionException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Rejects an invitation to join a network. This action can be called by a principal in an AWS account that has received an invitation to create a member and join a network.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/invitations/{invitationId}"
+      },
+      "input": {
+        "shape": "RejectInvitationInput"
+      },
+      "name": "RejectInvitation",
+      "output": {
+        "shape": "RejectInvitationOutput"
+      }
     },
-    "UpdateMember":{
-      "name":"UpdateMember",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/networks/{networkId}/members/{memberId}"
-      },
-      "input":{"shape":"UpdateMemberInput"},
-      "output":{"shape":"UpdateMemberOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "UpdateMember": {
+      "documentation": "<p>Updates a member configuration with new parameters.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Updates a member configuration with new parameters.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/networks/{networkId}/members/{memberId}"
+      },
+      "input": {
+        "shape": "UpdateMemberInput"
+      },
+      "name": "UpdateMember",
+      "output": {
+        "shape": "UpdateMemberOutput"
+      }
     },
-    "UpdateNode":{
-      "name":"UpdateNode",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
-      },
-      "input":{"shape":"UpdateNodeInput"},
-      "output":{"shape":"UpdateNodeOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "UpdateNode": {
+      "documentation": "<p>Updates a node configuration with new parameters.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Updates a node configuration with new parameters.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/networks/{networkId}/members/{memberId}/nodes/{nodeId}"
+      },
+      "input": {
+        "shape": "UpdateNodeInput"
+      },
+      "name": "UpdateNode",
+      "output": {
+        "shape": "UpdateNodeOutput"
+      }
     },
-    "VoteOnProposal":{
-      "name":"VoteOnProposal",
-      "http":{
-        "method":"POST",
-        "requestUri":"/networks/{networkId}/proposals/{proposalId}/votes"
-      },
-      "input":{"shape":"VoteOnProposalInput"},
-      "output":{"shape":"VoteOnProposalOutput"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"IllegalActionException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalServiceErrorException"}
+    "VoteOnProposal": {
+      "documentation": "<p>Casts a vote for a specified <code>ProposalId</code> on behalf of a member. The member to vote as, specified by <code>VoterMemberId</code>, must be in the same AWS account as the principal that calls the action.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "IllegalActionException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Casts a vote for a specified <code>ProposalId</code> on behalf of a member. The member to vote as, specified by <code>VoterMemberId</code>, must be in the same AWS account as the principal that calls the action.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/networks/{networkId}/proposals/{proposalId}/votes"
+      },
+      "input": {
+        "shape": "VoteOnProposalInput"
+      },
+      "name": "VoteOnProposal",
+      "output": {
+        "shape": "VoteOnProposalOutput"
+      }
     }
   },
-  "shapes":{
-    "AccessDeniedException":{
-      "type":"structure",
-      "members":{
+  "shapes": {
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have sufficient access to perform this action.</p>",
+      "error": {
+        "httpStatusCode": 403
       },
-      "documentation":"<p>You do not have sufficient access to perform this action.</p>",
-      "error":{"httpStatusCode":403},
-      "exception":true
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "ApprovalThresholdPolicy":{
-      "type":"structure",
-      "members":{
-        "ThresholdPercentage":{
-          "shape":"ThresholdPercentageInt",
-          "documentation":"<p>The percentage of votes among all members that must be <code>YES</code> for a proposal to be approved. For example, a <code>ThresholdPercentage</code> value of <code>50</code> indicates 50%. The <code>ThresholdComparator</code> determines the precise comparison. If a <code>ThresholdPercentage</code> value of <code>50</code> is specified on a network with 10 members, along with a <code>ThresholdComparator</code> value of <code>GREATER_THAN</code>, this indicates that 6 <code>YES</code> votes are required for the proposal to be approved.</p>"
+    "ApprovalThresholdPolicy": {
+      "documentation": "<p>A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of <code>YES</code> votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p>",
+      "members": {
+        "ProposalDurationInHours": {
+          "documentation": "<p>The duration from the time that a proposal is created until it expires. If members cast neither the required number of <code>YES</code> votes to approve the proposal nor the number of <code>NO</code> votes required to reject it before the duration expires, the proposal is <code>EXPIRED</code> and <code>ProposalActions</code> are not carried out.</p>",
+          "shape": "ProposalDurationInt"
         },
-        "ProposalDurationInHours":{
-          "shape":"ProposalDurationInt",
-          "documentation":"<p>The duration from the time that a proposal is created until it expires. If members cast neither the required number of <code>YES</code> votes to approve the proposal nor the number of <code>NO</code> votes required to reject it before the duration expires, the proposal is <code>EXPIRED</code> and <code>ProposalActions</code> are not carried out.</p>"
+        "ThresholdComparator": {
+          "documentation": "<p>Determines whether the vote percentage must be greater than the <code>ThresholdPercentage</code> or must be greater than or equal to the <code>ThreholdPercentage</code> to be approved.</p>",
+          "shape": "ThresholdComparator"
         },
-        "ThresholdComparator":{
-          "shape":"ThresholdComparator",
-          "documentation":"<p>Determines whether the vote percentage must be greater than the <code>ThresholdPercentage</code> or must be greater than or equal to the <code>ThreholdPercentage</code> to be approved.</p>"
+        "ThresholdPercentage": {
+          "documentation": "<p>The percentage of votes among all members that must be <code>YES</code> for a proposal to be approved. For example, a <code>ThresholdPercentage</code> value of <code>50</code> indicates 50%. The <code>ThresholdComparator</code> determines the precise comparison. If a <code>ThresholdPercentage</code> value of <code>50</code> is specified on a network with 10 members, along with a <code>ThresholdComparator</code> value of <code>GREATER_THAN</code>, this indicates that 6 <code>YES</code> votes are required for the proposal to be approved.</p>",
+          "shape": "ThresholdPercentageInt"
         }
       },
-      "documentation":"<p>A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of <code>YES</code> votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p>"
+      "type": "structure"
     },
-    "AvailabilityZoneString":{"type":"string"},
-    "ClientRequestTokenString":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "AvailabilityZoneString": {
+      "type": "string"
     },
-    "CreateMemberInput":{
-      "type":"structure",
-      "required":[
+    "ClientRequestTokenString": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "CreateMemberInput": {
+      "members": {
+        "ClientRequestToken": {
+          "documentation": "<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
+          "idempotencyToken": true,
+          "shape": "ClientRequestTokenString"
+        },
+        "InvitationId": {
+          "documentation": "<p>The unique identifier of the invitation that is sent to the member to join the network.</p>",
+          "shape": "ResourceIdString"
+        },
+        "MemberConfiguration": {
+          "documentation": "<p>Member configuration parameters.</p>",
+          "shape": "MemberConfiguration"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network in which the member is created.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "ClientRequestToken",
         "InvitationId",
         "NetworkId",
         "MemberConfiguration"
       ],
-      "members":{
-        "ClientRequestToken":{
-          "shape":"ClientRequestTokenString",
-          "documentation":"<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
-          "idempotencyToken":true
-        },
-        "InvitationId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the invitation that is sent to the member to join the network.</p>"
-        },
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network in which the member is created.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberConfiguration":{
-          "shape":"MemberConfiguration",
-          "documentation":"<p>Member configuration parameters.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateMemberOutput":{
-      "type":"structure",
-      "members":{
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member.</p>"
+    "CreateMemberOutput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member.</p>",
+          "shape": "ResourceIdString"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateNetworkInput":{
-      "type":"structure",
-      "required":[
+    "CreateNetworkInput": {
+      "members": {
+        "ClientRequestToken": {
+          "documentation": "<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
+          "idempotencyToken": true,
+          "shape": "ClientRequestTokenString"
+        },
+        "Description": {
+          "documentation": "<p>An optional description for the network.</p>",
+          "shape": "DescriptionString"
+        },
+        "Framework": {
+          "documentation": "<p>The blockchain framework that the network uses.</p>",
+          "shape": "Framework"
+        },
+        "FrameworkConfiguration": {
+          "documentation": "<p> Configuration properties of the blockchain framework relevant to the network configuration. </p>",
+          "shape": "NetworkFrameworkConfiguration"
+        },
+        "FrameworkVersion": {
+          "documentation": "<p>The version of the blockchain framework that the network uses.</p>",
+          "shape": "FrameworkVersionString"
+        },
+        "MemberConfiguration": {
+          "documentation": "<p>Configuration properties for the first member within the network.</p>",
+          "shape": "MemberConfiguration"
+        },
+        "Name": {
+          "documentation": "<p>The name of the network.</p>",
+          "shape": "NameString"
+        },
+        "VotingPolicy": {
+          "documentation": "<p> The voting rules used by the network to determine if a proposal is approved. </p>",
+          "shape": "VotingPolicy"
+        }
+      },
+      "required": [
         "ClientRequestToken",
         "Name",
         "Framework",
@@ -445,1176 +780,1172 @@
         "VotingPolicy",
         "MemberConfiguration"
       ],
-      "members":{
-        "ClientRequestToken":{
-          "shape":"ClientRequestTokenString",
-          "documentation":"<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
-          "idempotencyToken":true
-        },
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the network.</p>"
-        },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>An optional description for the network.</p>"
-        },
-        "Framework":{
-          "shape":"Framework",
-          "documentation":"<p>The blockchain framework that the network uses.</p>"
-        },
-        "FrameworkVersion":{
-          "shape":"FrameworkVersionString",
-          "documentation":"<p>The version of the blockchain framework that the network uses.</p>"
-        },
-        "FrameworkConfiguration":{
-          "shape":"NetworkFrameworkConfiguration",
-          "documentation":"<p> Configuration properties of the blockchain framework relevant to the network configuration. </p>"
-        },
-        "VotingPolicy":{
-          "shape":"VotingPolicy",
-          "documentation":"<p> The voting rules used by the network to determine if a proposal is approved. </p>"
-        },
-        "MemberConfiguration":{
-          "shape":"MemberConfiguration",
-          "documentation":"<p>Configuration properties for the first member within the network.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateNetworkOutput":{
-      "type":"structure",
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier for the network.</p>"
+    "CreateNetworkOutput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier for the first member within the network.</p>",
+          "shape": "ResourceIdString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier for the first member within the network.</p>"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier for the network.</p>",
+          "shape": "ResourceIdString"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateNodeInput":{
-      "type":"structure",
-      "required":[
+    "CreateNodeInput": {
+      "members": {
+        "ClientRequestToken": {
+          "documentation": "<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
+          "idempotencyToken": true,
+          "shape": "ClientRequestTokenString"
+        },
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member that owns this node.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network in which this node runs.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NodeConfiguration": {
+          "documentation": "<p>The properties of a node configuration.</p>",
+          "shape": "NodeConfiguration"
+        }
+      },
+      "required": [
         "ClientRequestToken",
         "NetworkId",
         "MemberId",
         "NodeConfiguration"
       ],
-      "members":{
-        "ClientRequestToken":{
-          "shape":"ClientRequestTokenString",
-          "documentation":"<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
-          "idempotencyToken":true
-        },
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network in which this node runs.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member that owns this node.</p>",
-          "location":"uri",
-          "locationName":"memberId"
-        },
-        "NodeConfiguration":{
-          "shape":"NodeConfiguration",
-          "documentation":"<p>The properties of a node configuration.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateNodeOutput":{
-      "type":"structure",
-      "members":{
-        "NodeId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the node.</p>"
+    "CreateNodeOutput": {
+      "members": {
+        "NodeId": {
+          "documentation": "<p>The unique identifier of the node.</p>",
+          "shape": "ResourceIdString"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateProposalInput":{
-      "type":"structure",
-      "required":[
+    "CreateProposalInput": {
+      "members": {
+        "Actions": {
+          "documentation": "<p>The type of actions proposed, such as inviting a member or removing a member. The types of <code>Actions</code> in a proposal are mutually exclusive. For example, a proposal with <code>Invitations</code> actions cannot also contain <code>Removals</code> actions.</p>",
+          "shape": "ProposalActions"
+        },
+        "ClientRequestToken": {
+          "documentation": "<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
+          "idempotencyToken": true,
+          "shape": "ClientRequestTokenString"
+        },
+        "Description": {
+          "documentation": "<p>A description for the proposal that is visible to voting members, for example, \"Proposal to add Example Corp. as member.\"</p>",
+          "shape": "DescriptionString"
+        },
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member that is creating the proposal. This identifier is especially useful for identifying the member making the proposal when multiple members exist in a single AWS account.</p>",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p> The unique identifier of the network for which the proposal is made.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "ClientRequestToken",
         "NetworkId",
         "MemberId",
         "Actions"
       ],
-      "members":{
-        "ClientRequestToken":{
-          "shape":"ClientRequestTokenString",
-          "documentation":"<p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an AWS SDK or the AWS CLI.</p>",
-          "idempotencyToken":true
-        },
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the network for which the proposal is made.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member that is creating the proposal. This identifier is especially useful for identifying the member making the proposal when multiple members exist in a single AWS account.</p>"
-        },
-        "Actions":{
-          "shape":"ProposalActions",
-          "documentation":"<p>The type of actions proposed, such as inviting a member or removing a member. The types of <code>Actions</code> in a proposal are mutually exclusive. For example, a proposal with <code>Invitations</code> actions cannot also contain <code>Removals</code> actions.</p>"
-        },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>A description for the proposal that is visible to voting members, for example, \"Proposal to add Example Corp. as member.\"</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateProposalOutput":{
-      "type":"structure",
-      "members":{
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the proposal.</p>"
+    "CreateProposalOutput": {
+      "members": {
+        "ProposalId": {
+          "documentation": "<p>The unique identifier of the proposal.</p>",
+          "shape": "ResourceIdString"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeleteMemberInput":{
-      "type":"structure",
-      "required":[
+    "DeleteMemberInput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member to remove.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network from which the member is removed.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "NetworkId",
         "MemberId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network from which the member is removed.</p>",
-          "location":"uri",
-          "locationName":"networkId"
+      "type": "structure"
+    },
+    "DeleteMemberOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteNodeInput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member that owns this node.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member to remove.</p>",
-          "location":"uri",
-          "locationName":"memberId"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network that the node belongs to.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NodeId": {
+          "documentation": "<p>The unique identifier of the node.</p>",
+          "location": "uri",
+          "locationName": "nodeId",
+          "shape": "ResourceIdString"
         }
-      }
-    },
-    "DeleteMemberOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteNodeInput":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "NetworkId",
         "MemberId",
         "NodeId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network that the node belongs to.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member that owns this node.</p>",
-          "location":"uri",
-          "locationName":"memberId"
-        },
-        "NodeId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the node.</p>",
-          "location":"uri",
-          "locationName":"nodeId"
-        }
-      }
+      "type": "structure"
     },
-    "DeleteNodeOutput":{
-      "type":"structure",
-      "members":{
-      }
+    "DeleteNodeOutput": {
+      "members": {},
+      "type": "structure"
     },
-    "DescriptionString":{
-      "type":"string",
-      "max":128
+    "DescriptionString": {
+      "max": 128,
+      "type": "string"
     },
-    "Edition":{
-      "type":"string",
-      "enum":[
+    "Edition": {
+      "enum": [
         "STARTER",
         "STANDARD"
-      ]
+      ],
+      "type": "string"
     },
-    "Enabled":{
-      "type":"boolean",
-      "box":true
+    "Enabled": {
+      "box": true,
+      "type": "boolean"
     },
-    "Framework":{
-      "type":"string",
-      "enum":["HYPERLEDGER_FABRIC"]
+    "Framework": {
+      "enum": [
+        "HYPERLEDGER_FABRIC"
+      ],
+      "type": "string"
     },
-    "FrameworkVersionString":{
-      "type":"string",
-      "max":8,
-      "min":1
+    "FrameworkVersionString": {
+      "max": 8,
+      "min": 1,
+      "type": "string"
     },
-    "GetMemberInput":{
-      "type":"structure",
-      "required":[
+    "GetMemberInput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network to which the member belongs.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "NetworkId",
         "MemberId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network to which the member belongs.</p>",
-          "location":"uri",
-          "locationName":"networkId"
+      "type": "structure"
+    },
+    "GetMemberOutput": {
+      "members": {
+        "Member": {
+          "documentation": "<p>The properties of a member.</p>",
+          "shape": "Member"
+        }
+      },
+      "type": "structure"
+    },
+    "GetNetworkInput": {
+      "members": {
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network to get information about.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
+        "NetworkId"
+      ],
+      "type": "structure"
+    },
+    "GetNetworkOutput": {
+      "members": {
+        "Network": {
+          "documentation": "<p>An object containing network configuration parameters.</p>",
+          "shape": "Network"
+        }
+      },
+      "type": "structure"
+    },
+    "GetNodeInput": {
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member that owns the node.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member.</p>",
-          "location":"uri",
-          "locationName":"memberId"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network to which the node belongs.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NodeId": {
+          "documentation": "<p>The unique identifier of the node.</p>",
+          "location": "uri",
+          "locationName": "nodeId",
+          "shape": "ResourceIdString"
         }
-      }
-    },
-    "GetMemberOutput":{
-      "type":"structure",
-      "members":{
-        "Member":{
-          "shape":"Member",
-          "documentation":"<p>The properties of a member.</p>"
-        }
-      }
-    },
-    "GetNetworkInput":{
-      "type":"structure",
-      "required":["NetworkId"],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network to get information about.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        }
-      }
-    },
-    "GetNetworkOutput":{
-      "type":"structure",
-      "members":{
-        "Network":{
-          "shape":"Network",
-          "documentation":"<p>An object containing network configuration parameters.</p>"
-        }
-      }
-    },
-    "GetNodeInput":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "NetworkId",
         "MemberId",
         "NodeId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network to which the node belongs.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member that owns the node.</p>",
-          "location":"uri",
-          "locationName":"memberId"
-        },
-        "NodeId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the node.</p>",
-          "location":"uri",
-          "locationName":"nodeId"
-        }
-      }
+      "type": "structure"
     },
-    "GetNodeOutput":{
-      "type":"structure",
-      "members":{
-        "Node":{
-          "shape":"Node",
-          "documentation":"<p>Properties of the node configuration.</p>"
+    "GetNodeOutput": {
+      "members": {
+        "Node": {
+          "documentation": "<p>Properties of the node configuration.</p>",
+          "shape": "Node"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetProposalInput":{
-      "type":"structure",
-      "required":[
+    "GetProposalInput": {
+      "members": {
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network for which the proposal is made.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "ProposalId": {
+          "documentation": "<p>The unique identifier of the proposal.</p>",
+          "location": "uri",
+          "locationName": "proposalId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "NetworkId",
         "ProposalId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network for which the proposal is made.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the proposal.</p>",
-          "location":"uri",
-          "locationName":"proposalId"
+      "type": "structure"
+    },
+    "GetProposalOutput": {
+      "members": {
+        "Proposal": {
+          "documentation": "<p>Information about a proposal.</p>",
+          "shape": "Proposal"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetProposalOutput":{
-      "type":"structure",
-      "members":{
-        "Proposal":{
-          "shape":"Proposal",
-          "documentation":"<p>Information about a proposal.</p>"
+    "IllegalActionException": {
+      "documentation": "<p/>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
-    },
-    "IllegalActionException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
       },
-      "documentation":"<p/>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
     },
-    "InstanceTypeString":{"type":"string"},
-    "InternalServiceErrorException":{
-      "type":"structure",
-      "members":{
+    "InstanceTypeString": {
+      "type": "string"
+    },
+    "InternalServiceErrorException": {
+      "documentation": "<p>The request processing has failed because of an unknown error, exception or failure.</p>",
+      "error": {
+        "httpStatusCode": 500
       },
-      "documentation":"<p>The request processing has failed because of an unknown error, exception or failure.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "InvalidRequestException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "InvalidRequestException": {
+      "documentation": "<p>The action or operation requested is invalid. Verify that the action is typed correctly.</p>",
+      "error": {
+        "httpStatusCode": 400
       },
-      "documentation":"<p>The action or operation requested is invalid. Verify that the action is typed correctly.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "Invitation":{
-      "type":"structure",
-      "members":{
-        "InvitationId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier for the invitation.</p>"
-        },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the invitation was created.</p>"
-        },
-        "ExpirationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the invitation expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, the invitee can no longer create a member and join the network using this <code>InvitationId</code>.</p>"
-        },
-        "Status":{
-          "shape":"InvitationStatus",
-          "documentation":"<p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The invitee has not created a member to join the network, and the invitation has not yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun creating a member, and creation has not yet completed.</p> </li> <li> <p> <code>ACCEPTED</code> - The invitee created a member and joined the network using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> - The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> - The invitee neither created a member nor rejected the invitation before the <code>ExpirationDate</code>.</p> </li> </ul>"
-        },
-        "NetworkSummary":{"shape":"NetworkSummary"}
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>An invitation to an AWS account to create a member and join the network.</p>"
+      "type": "structure"
     },
-    "InvitationList":{
-      "type":"list",
-      "member":{"shape":"Invitation"}
+    "Invitation": {
+      "documentation": "<p>An invitation to an AWS account to create a member and join the network.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p>The date and time that the invitation was created.</p>",
+          "shape": "Timestamp"
+        },
+        "ExpirationDate": {
+          "documentation": "<p>The date and time that the invitation expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, the invitee can no longer create a member and join the network using this <code>InvitationId</code>.</p>",
+          "shape": "Timestamp"
+        },
+        "InvitationId": {
+          "documentation": "<p>The unique identifier for the invitation.</p>",
+          "shape": "ResourceIdString"
+        },
+        "NetworkSummary": {
+          "shape": "NetworkSummary"
+        },
+        "Status": {
+          "documentation": "<p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The invitee has not created a member to join the network, and the invitation has not yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun creating a member, and creation has not yet completed.</p> </li> <li> <p> <code>ACCEPTED</code> - The invitee created a member and joined the network using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> - The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> - The invitee neither created a member nor rejected the invitation before the <code>ExpirationDate</code>.</p> </li> </ul>",
+          "shape": "InvitationStatus"
+        }
+      },
+      "type": "structure"
     },
-    "InvitationStatus":{
-      "type":"string",
-      "enum":[
+    "InvitationList": {
+      "member": {
+        "shape": "Invitation"
+      },
+      "type": "list"
+    },
+    "InvitationStatus": {
+      "enum": [
         "PENDING",
         "ACCEPTED",
         "ACCEPTING",
         "REJECTED",
         "EXPIRED"
-      ]
+      ],
+      "type": "string"
     },
-    "InviteAction":{
-      "type":"structure",
-      "required":["Principal"],
-      "members":{
-        "Principal":{
-          "shape":"PrincipalString",
-          "documentation":"<p>The AWS account ID to invite.</p>"
+    "InviteAction": {
+      "documentation": "<p>An action to invite a specific AWS account to create a member and join the network. The <code>InviteAction</code> is carried out when a <code>Proposal</code> is <code>APPROVED</code>.</p>",
+      "members": {
+        "Principal": {
+          "documentation": "<p>The AWS account ID to invite.</p>",
+          "shape": "PrincipalString"
         }
       },
-      "documentation":"<p>An action to invite a specific AWS account to create a member and join the network. The <code>InviteAction</code> is carried out when a <code>Proposal</code> is <code>APPROVED</code>.</p>"
+      "required": [
+        "Principal"
+      ],
+      "type": "structure"
     },
-    "InviteActionList":{
-      "type":"list",
-      "member":{"shape":"InviteAction"}
+    "InviteActionList": {
+      "member": {
+        "shape": "InviteAction"
+      },
+      "type": "list"
     },
-    "IsOwned":{
-      "type":"boolean",
-      "box":true
+    "IsOwned": {
+      "box": true,
+      "type": "boolean"
     },
-    "ListInvitationsInput":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"ProposalListMaxResults",
-          "documentation":"<p>The maximum number of invitations to return.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+    "ListInvitationsInput": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of invitations to return.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "ProposalListMaxResults"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListInvitationsOutput":{
-      "type":"structure",
-      "members":{
-        "Invitations":{
-          "shape":"InvitationList",
-          "documentation":"<p>The invitations for the network.</p>"
+    "ListInvitationsOutput": {
+      "members": {
+        "Invitations": {
+          "documentation": "<p>The invitations for the network.</p>",
+          "shape": "InvitationList"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "shape": "PaginationToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListMembersInput":{
-      "type":"structure",
-      "required":["NetworkId"],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network for which to list members.</p>",
-          "location":"uri",
-          "locationName":"networkId"
+    "ListMembersInput": {
+      "members": {
+        "IsOwned": {
+          "documentation": "<p>An optional Boolean value. If provided, the request is limited either to members that the current AWS account owns (<code>true</code>) or that other AWS accounts own (<code>false</code>). If omitted, all members are listed.</p>",
+          "location": "querystring",
+          "locationName": "isOwned",
+          "shape": "IsOwned"
         },
-        "Name":{
-          "shape":"String",
-          "documentation":"<p>The optional name of the member to list.</p>",
-          "location":"querystring",
-          "locationName":"name"
+        "MaxResults": {
+          "documentation": "<p>The maximum number of members to return in the request.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MemberListMaxResults"
         },
-        "Status":{
-          "shape":"MemberStatus",
-          "documentation":"<p>An optional status specifier. If provided, only members currently in this status are listed.</p>",
-          "location":"querystring",
-          "locationName":"status"
+        "Name": {
+          "documentation": "<p>The optional name of the member to list.</p>",
+          "location": "querystring",
+          "locationName": "name",
+          "shape": "String"
         },
-        "IsOwned":{
-          "shape":"IsOwned",
-          "documentation":"<p>An optional Boolean value. If provided, the request is limited either to members that the current AWS account owns (<code>true</code>) or that other AWS accounts own (<code>false</code>). If omitted, all members are listed.</p>",
-          "location":"querystring",
-          "locationName":"isOwned"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network for which to list members.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
         },
-        "MaxResults":{
-          "shape":"MemberListMaxResults",
-          "documentation":"<p>The maximum number of members to return in the request.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+        "Status": {
+          "documentation": "<p>An optional status specifier. If provided, only members currently in this status are listed.</p>",
+          "location": "querystring",
+          "locationName": "status",
+          "shape": "MemberStatus"
         }
-      }
+      },
+      "required": [
+        "NetworkId"
+      ],
+      "type": "structure"
     },
-    "ListMembersOutput":{
-      "type":"structure",
-      "members":{
-        "Members":{
-          "shape":"MemberSummaryList",
-          "documentation":"<p>An array of <code>MemberSummary</code> objects. Each object contains details about a network member.</p>"
+    "ListMembersOutput": {
+      "members": {
+        "Members": {
+          "documentation": "<p>An array of <code>MemberSummary</code> objects. Each object contains details about a network member.</p>",
+          "shape": "MemberSummaryList"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "shape": "PaginationToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListNetworksInput":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"String",
-          "documentation":"<p>The name of the network.</p>",
-          "location":"querystring",
-          "locationName":"name"
+    "ListNetworksInput": {
+      "members": {
+        "Framework": {
+          "documentation": "<p>An optional framework specifier. If provided, only networks of this framework type are listed.</p>",
+          "location": "querystring",
+          "locationName": "framework",
+          "shape": "Framework"
         },
-        "Framework":{
-          "shape":"Framework",
-          "documentation":"<p>An optional framework specifier. If provided, only networks of this framework type are listed.</p>",
-          "location":"querystring",
-          "locationName":"framework"
+        "MaxResults": {
+          "documentation": "<p>The maximum number of networks to list.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "NetworkListMaxResults"
         },
-        "Status":{
-          "shape":"NetworkStatus",
-          "documentation":"<p>An optional status specifier. If provided, only networks currently in this status are listed.</p>",
-          "location":"querystring",
-          "locationName":"status"
+        "Name": {
+          "documentation": "<p>The name of the network.</p>",
+          "location": "querystring",
+          "locationName": "name",
+          "shape": "String"
         },
-        "MaxResults":{
-          "shape":"NetworkListMaxResults",
-          "documentation":"<p>The maximum number of networks to list.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+        "Status": {
+          "documentation": "<p>An optional status specifier. If provided, only networks currently in this status are listed.</p>",
+          "location": "querystring",
+          "locationName": "status",
+          "shape": "NetworkStatus"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListNetworksOutput":{
-      "type":"structure",
-      "members":{
-        "Networks":{
-          "shape":"NetworkSummaryList",
-          "documentation":"<p>An array of <code>NetworkSummary</code> objects that contain configuration properties for each network.</p>"
+    "ListNetworksOutput": {
+      "members": {
+        "Networks": {
+          "documentation": "<p>An array of <code>NetworkSummary</code> objects that contain configuration properties for each network.</p>",
+          "shape": "NetworkSummaryList"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>"
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "shape": "PaginationToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListNodesInput":{
-      "type":"structure",
-      "required":[
+    "ListNodesInput": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of nodes to list.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "NodeListMaxResults"
+        },
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member who owns the nodes to list.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network for which to list nodes.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
+        },
+        "Status": {
+          "documentation": "<p>An optional status specifier. If provided, only nodes currently in this status are listed.</p>",
+          "location": "querystring",
+          "locationName": "status",
+          "shape": "NodeStatus"
+        }
+      },
+      "required": [
         "NetworkId",
         "MemberId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network for which to list nodes.</p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member who owns the nodes to list.</p>",
-          "location":"uri",
-          "locationName":"memberId"
-        },
-        "Status":{
-          "shape":"NodeStatus",
-          "documentation":"<p>An optional status specifier. If provided, only nodes currently in this status are listed.</p>",
-          "location":"querystring",
-          "locationName":"status"
-        },
-        "MaxResults":{
-          "shape":"NodeListMaxResults",
-          "documentation":"<p>The maximum number of nodes to list.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
+      "type": "structure"
     },
-    "ListNodesOutput":{
-      "type":"structure",
-      "members":{
-        "Nodes":{
-          "shape":"NodeSummaryList",
-          "documentation":"<p>An array of <code>NodeSummary</code> objects that contain configuration properties for each node.</p>"
+    "ListNodesOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "shape": "PaginationToken"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>"
+        "Nodes": {
+          "documentation": "<p>An array of <code>NodeSummary</code> objects that contain configuration properties for each node.</p>",
+          "shape": "NodeSummaryList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListProposalVotesInput":{
-      "type":"structure",
-      "required":[
+    "ListProposalVotesInput": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p> The maximum number of votes to return. </p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "ProposalListMaxResults"
+        },
+        "NetworkId": {
+          "documentation": "<p> The unique identifier of the network. </p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NextToken": {
+          "documentation": "<p> The pagination token that indicates the next set of results to retrieve. </p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
+        },
+        "ProposalId": {
+          "documentation": "<p> The unique identifier of the proposal. </p>",
+          "location": "uri",
+          "locationName": "proposalId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "NetworkId",
         "ProposalId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the network. </p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the proposal. </p>",
-          "location":"uri",
-          "locationName":"proposalId"
-        },
-        "MaxResults":{
-          "shape":"ProposalListMaxResults",
-          "documentation":"<p> The maximum number of votes to return. </p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p> The pagination token that indicates the next set of results to retrieve. </p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
+      "type": "structure"
     },
-    "ListProposalVotesOutput":{
-      "type":"structure",
-      "members":{
-        "ProposalVotes":{
-          "shape":"ProposalVoteList",
-          "documentation":"<p> The listing of votes. </p>"
+    "ListProposalVotesOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p> The pagination token that indicates the next set of results to retrieve. </p>",
+          "shape": "PaginationToken"
         },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p> The pagination token that indicates the next set of results to retrieve. </p>"
-        }
-      }
-    },
-    "ListProposalsInput":{
-      "type":"structure",
-      "required":["NetworkId"],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the network. </p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "MaxResults":{
-          "shape":"ProposalListMaxResults",
-          "documentation":"<p> The maximum number of proposals to return. </p>",
-          "location":"querystring",
-          "locationName":"maxResults"
-        },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p> The pagination token that indicates the next set of results to retrieve. </p>",
-          "location":"querystring",
-          "locationName":"nextToken"
-        }
-      }
-    },
-    "ListProposalsOutput":{
-      "type":"structure",
-      "members":{
-        "Proposals":{
-          "shape":"ProposalSummaryList",
-          "documentation":"<p>The summary of each proposal made on the network.</p>"
-        },
-        "NextToken":{
-          "shape":"PaginationToken",
-          "documentation":"<p>The pagination token that indicates the next set of results to retrieve.</p>"
-        }
-      }
-    },
-    "LogConfiguration":{
-      "type":"structure",
-      "members":{
-        "Enabled":{
-          "shape":"Enabled",
-          "documentation":"<p>Indicates whether logging is enabled.</p>"
+        "ProposalVotes": {
+          "documentation": "<p> The listing of votes. </p>",
+          "shape": "ProposalVoteList"
         }
       },
-      "documentation":"<p>A configuration for logging events.</p>"
+      "type": "structure"
     },
-    "LogConfigurations":{
-      "type":"structure",
-      "members":{
-        "Cloudwatch":{
-          "shape":"LogConfiguration",
-          "documentation":"<p>Parameters for publishing logs to Amazon CloudWatch Logs.</p>"
+    "ListProposalsInput": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p> The maximum number of proposals to return. </p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "ProposalListMaxResults"
+        },
+        "NetworkId": {
+          "documentation": "<p> The unique identifier of the network. </p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NextToken": {
+          "documentation": "<p> The pagination token that indicates the next set of results to retrieve. </p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "PaginationToken"
         }
       },
-      "documentation":"<p>A collection of log configurations.</p>"
+      "required": [
+        "NetworkId"
+      ],
+      "type": "structure"
     },
-    "Member":{
-      "type":"structure",
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network to which the member belongs.</p>"
+    "ListProposalsOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The pagination token that indicates the next set of results to retrieve.</p>",
+          "shape": "PaginationToken"
         },
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member.</p>"
-        },
-        "Name":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p>The name of the member.</p>"
-        },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>An optional description for the member.</p>"
-        },
-        "FrameworkAttributes":{
-          "shape":"MemberFrameworkAttributes",
-          "documentation":"<p>Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>"
-        },
-        "LogPublishingConfiguration":{
-          "shape":"MemberLogPublishingConfiguration",
-          "documentation":"<p>Configuration properties for logging events associated with a member.</p>"
-        },
-        "Status":{
-          "shape":"MemberStatus",
-          "documentation":"<p>The status of a member.</p> <ul> <li> <p> <code>CREATING</code> - The AWS account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The AWS account attempted to create a member and creation failed.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> </ul>"
-        },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the member was created.</p>"
+        "Proposals": {
+          "documentation": "<p>The summary of each proposal made on the network.</p>",
+          "shape": "ProposalSummaryList"
         }
       },
-      "documentation":"<p>Member configuration properties.</p>"
+      "type": "structure"
     },
-    "MemberConfiguration":{
-      "type":"structure",
-      "required":[
+    "LogConfiguration": {
+      "documentation": "<p>A configuration for logging events.</p>",
+      "members": {
+        "Enabled": {
+          "documentation": "<p>Indicates whether logging is enabled.</p>",
+          "shape": "Enabled"
+        }
+      },
+      "type": "structure"
+    },
+    "LogConfigurations": {
+      "documentation": "<p>A collection of log configurations.</p>",
+      "members": {
+        "Cloudwatch": {
+          "documentation": "<p>Parameters for publishing logs to Amazon CloudWatch Logs.</p>",
+          "shape": "LogConfiguration"
+        }
+      },
+      "type": "structure"
+    },
+    "Member": {
+      "documentation": "<p>Member configuration properties.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p>The date and time that the member was created.</p>",
+          "shape": "Timestamp"
+        },
+        "Description": {
+          "documentation": "<p>An optional description for the member.</p>",
+          "shape": "DescriptionString"
+        },
+        "FrameworkAttributes": {
+          "documentation": "<p>Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>",
+          "shape": "MemberFrameworkAttributes"
+        },
+        "Id": {
+          "documentation": "<p>The unique identifier of the member.</p>",
+          "shape": "ResourceIdString"
+        },
+        "LogPublishingConfiguration": {
+          "documentation": "<p>Configuration properties for logging events associated with a member.</p>",
+          "shape": "MemberLogPublishingConfiguration"
+        },
+        "Name": {
+          "documentation": "<p>The name of the member.</p>",
+          "shape": "NetworkMemberNameString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network to which the member belongs.</p>",
+          "shape": "ResourceIdString"
+        },
+        "Status": {
+          "documentation": "<p>The status of a member.</p> <ul> <li> <p> <code>CREATING</code> - The AWS account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The AWS account attempted to create a member and creation failed.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> </ul>",
+          "shape": "MemberStatus"
+        }
+      },
+      "type": "structure"
+    },
+    "MemberConfiguration": {
+      "documentation": "<p>Configuration properties of the member.</p>",
+      "members": {
+        "Description": {
+          "documentation": "<p>An optional description of the member.</p>",
+          "shape": "DescriptionString"
+        },
+        "FrameworkConfiguration": {
+          "documentation": "<p>Configuration properties of the blockchain framework relevant to the member.</p>",
+          "shape": "MemberFrameworkConfiguration"
+        },
+        "LogPublishingConfiguration": {
+          "documentation": "<p/>",
+          "shape": "MemberLogPublishingConfiguration"
+        },
+        "Name": {
+          "documentation": "<p>The name of the member.</p>",
+          "shape": "NetworkMemberNameString"
+        }
+      },
+      "required": [
         "Name",
         "FrameworkConfiguration"
       ],
-      "members":{
-        "Name":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p>The name of the member.</p>"
+      "type": "structure"
+    },
+    "MemberFabricAttributes": {
+      "documentation": "<p>Attributes of Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.</p>",
+      "members": {
+        "AdminUsername": {
+          "documentation": "<p>The user name for the initial administrator user for the member.</p>",
+          "shape": "UsernameString"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>An optional description of the member.</p>"
-        },
-        "FrameworkConfiguration":{
-          "shape":"MemberFrameworkConfiguration",
-          "documentation":"<p>Configuration properties of the blockchain framework relevant to the member.</p>"
-        },
-        "LogPublishingConfiguration":{
-          "shape":"MemberLogPublishingConfiguration",
-          "documentation":"<p/>"
+        "CaEndpoint": {
+          "documentation": "<p>The endpoint used to access the member's certificate authority.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Configuration properties of the member.</p>"
+      "type": "structure"
     },
-    "MemberFabricAttributes":{
-      "type":"structure",
-      "members":{
-        "AdminUsername":{
-          "shape":"UsernameString",
-          "documentation":"<p>The user name for the initial administrator user for the member.</p>"
+    "MemberFabricConfiguration": {
+      "documentation": "<p>Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.</p>",
+      "members": {
+        "AdminPassword": {
+          "documentation": "<p>The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least eight characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(\u2018), double quote(\u201c), forward slash(/), backward slash(\\), @, or a space.</p>",
+          "shape": "PasswordString"
         },
-        "CaEndpoint":{
-          "shape":"String",
-          "documentation":"<p>The endpoint used to access the member's certificate authority.</p>"
+        "AdminUsername": {
+          "documentation": "<p>The user name for the member's initial administrative user.</p>",
+          "shape": "UsernameString"
         }
       },
-      "documentation":"<p>Attributes of Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.</p>"
-    },
-    "MemberFabricConfiguration":{
-      "type":"structure",
-      "required":[
+      "required": [
         "AdminUsername",
         "AdminPassword"
       ],
-      "members":{
-        "AdminUsername":{
-          "shape":"UsernameString",
-          "documentation":"<p>The user name for the member's initial administrative user.</p>"
-        },
-        "AdminPassword":{
-          "shape":"PasswordString",
-          "documentation":"<p>The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least eight characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘), double quote(“), forward slash(/), backward slash(\\), @, or a space.</p>"
+      "type": "structure"
+    },
+    "MemberFabricLogPublishingConfiguration": {
+      "documentation": "<p>Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>",
+      "members": {
+        "CaLogs": {
+          "documentation": "<p>Configuration properties for logging events associated with a member's Certificate Authority (CA). CA logs help you determine when a member in your account joins the network, or when new peers register with a member CA.</p>",
+          "shape": "LogConfigurations"
         }
       },
-      "documentation":"<p>Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.</p>"
+      "type": "structure"
     },
-    "MemberFabricLogPublishingConfiguration":{
-      "type":"structure",
-      "members":{
-        "CaLogs":{
-          "shape":"LogConfigurations",
-          "documentation":"<p>Configuration properties for logging events associated with a member's Certificate Authority (CA). CA logs help you determine when a member in your account joins the network, or when new peers register with a member CA.</p>"
+    "MemberFrameworkAttributes": {
+      "documentation": "<p>Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Attributes of Hyperledger Fabric relevant to a member on a Managed Blockchain network that uses Hyperledger Fabric.</p>",
+          "shape": "MemberFabricAttributes"
         }
       },
-      "documentation":"<p>Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>"
+      "type": "structure"
     },
-    "MemberFrameworkAttributes":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"MemberFabricAttributes",
-          "documentation":"<p>Attributes of Hyperledger Fabric relevant to a member on a Managed Blockchain network that uses Hyperledger Fabric.</p>"
+    "MemberFrameworkConfiguration": {
+      "documentation": "<p>Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Attributes of Hyperledger Fabric for a member on a Managed Blockchain network that uses Hyperledger Fabric.</p>",
+          "shape": "MemberFabricConfiguration"
         }
       },
-      "documentation":"<p>Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>"
+      "type": "structure"
     },
-    "MemberFrameworkConfiguration":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"MemberFabricConfiguration",
-          "documentation":"<p>Attributes of Hyperledger Fabric for a member on a Managed Blockchain network that uses Hyperledger Fabric.</p>"
+    "MemberListMaxResults": {
+      "box": true,
+      "max": 20,
+      "min": 1,
+      "type": "integer"
+    },
+    "MemberLogPublishingConfiguration": {
+      "documentation": "<p>Configuration properties for logging events associated with a member of a Managed Blockchain network.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>",
+          "shape": "MemberFabricLogPublishingConfiguration"
         }
       },
-      "documentation":"<p>Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.</p>"
+      "type": "structure"
     },
-    "MemberListMaxResults":{
-      "type":"integer",
-      "box":true,
-      "max":20,
-      "min":1
-    },
-    "MemberLogPublishingConfiguration":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"MemberFabricLogPublishingConfiguration",
-          "documentation":"<p>Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>"
-        }
-      },
-      "documentation":"<p>Configuration properties for logging events associated with a member of a Managed Blockchain network.</p>"
-    },
-    "MemberStatus":{
-      "type":"string",
-      "enum":[
+    "MemberStatus": {
+      "enum": [
         "CREATING",
         "AVAILABLE",
         "CREATE_FAILED",
         "UPDATING",
         "DELETING",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "MemberSummary":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member.</p>"
+    "MemberSummary": {
+      "documentation": "<p>A summary of configuration properties for a member.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p>The date and time that the member was created.</p>",
+          "shape": "Timestamp"
         },
-        "Name":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p>The name of the member.</p>"
+        "Description": {
+          "documentation": "<p>An optional description of the member.</p>",
+          "shape": "DescriptionString"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>An optional description of the member.</p>"
+        "Id": {
+          "documentation": "<p>The unique identifier of the member.</p>",
+          "shape": "ResourceIdString"
         },
-        "Status":{
-          "shape":"MemberStatus",
-          "documentation":"<p>The status of the member.</p> <ul> <li> <p> <code>CREATING</code> - The AWS account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The AWS account attempted to create a member and creation failed.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> </ul>"
+        "IsOwned": {
+          "documentation": "<p>An indicator of whether the member is owned by your AWS account or a different AWS account.</p>",
+          "shape": "IsOwned"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the member was created.</p>"
+        "Name": {
+          "documentation": "<p>The name of the member.</p>",
+          "shape": "NetworkMemberNameString"
         },
-        "IsOwned":{
-          "shape":"IsOwned",
-          "documentation":"<p>An indicator of whether the member is owned by your AWS account or a different AWS account.</p>"
+        "Status": {
+          "documentation": "<p>The status of the member.</p> <ul> <li> <p> <code>CREATING</code> - The AWS account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The AWS account attempted to create a member and creation failed.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the AWS account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> </ul>",
+          "shape": "MemberStatus"
         }
       },
-      "documentation":"<p>A summary of configuration properties for a member.</p>"
+      "type": "structure"
     },
-    "MemberSummaryList":{
-      "type":"list",
-      "member":{"shape":"MemberSummary"}
+    "MemberSummaryList": {
+      "member": {
+        "shape": "MemberSummary"
+      },
+      "type": "list"
     },
-    "NameString":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":".*\\S.*"
+    "NameString": {
+      "max": 64,
+      "min": 1,
+      "pattern": ".*\\S.*",
+      "type": "string"
     },
-    "Network":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network.</p>"
+    "Network": {
+      "documentation": "<p>Network configuration properties.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p>The date and time that the network was created.</p>",
+          "shape": "Timestamp"
         },
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the network.</p>"
+        "Description": {
+          "documentation": "<p>Attributes of the blockchain framework for the network.</p>",
+          "shape": "DescriptionString"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>Attributes of the blockchain framework for the network.</p>"
+        "Framework": {
+          "documentation": "<p>The blockchain framework that the network uses.</p>",
+          "shape": "Framework"
         },
-        "Framework":{
-          "shape":"Framework",
-          "documentation":"<p>The blockchain framework that the network uses.</p>"
+        "FrameworkAttributes": {
+          "documentation": "<p>Attributes of the blockchain framework that the network uses.</p>",
+          "shape": "NetworkFrameworkAttributes"
         },
-        "FrameworkVersion":{
-          "shape":"FrameworkVersionString",
-          "documentation":"<p>The version of the blockchain framework that the network uses.</p>"
+        "FrameworkVersion": {
+          "documentation": "<p>The version of the blockchain framework that the network uses.</p>",
+          "shape": "FrameworkVersionString"
         },
-        "FrameworkAttributes":{
-          "shape":"NetworkFrameworkAttributes",
-          "documentation":"<p>Attributes of the blockchain framework that the network uses.</p>"
+        "Id": {
+          "documentation": "<p>The unique identifier of the network.</p>",
+          "shape": "ResourceIdString"
         },
-        "VpcEndpointServiceName":{
-          "shape":"String",
-          "documentation":"<p>The VPC endpoint service name of the VPC endpoint service of the network. Members use the VPC endpoint service name to create a VPC endpoint to access network resources.</p>"
+        "Name": {
+          "documentation": "<p>The name of the network.</p>",
+          "shape": "NameString"
         },
-        "VotingPolicy":{
-          "shape":"VotingPolicy",
-          "documentation":"<p>The voting rules for the network to decide if a proposal is accepted.</p>"
+        "Status": {
+          "documentation": "<p>The current status of the network.</p>",
+          "shape": "NetworkStatus"
         },
-        "Status":{
-          "shape":"NetworkStatus",
-          "documentation":"<p>The current status of the network.</p>"
+        "VotingPolicy": {
+          "documentation": "<p>The voting rules for the network to decide if a proposal is accepted.</p>",
+          "shape": "VotingPolicy"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the network was created.</p>"
+        "VpcEndpointServiceName": {
+          "documentation": "<p>The VPC endpoint service name of the VPC endpoint service of the network. Members use the VPC endpoint service name to create a VPC endpoint to access network resources.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Network configuration properties.</p>"
+      "type": "structure"
     },
-    "NetworkFabricAttributes":{
-      "type":"structure",
-      "members":{
-        "OrderingServiceEndpoint":{
-          "shape":"String",
-          "documentation":"<p>The endpoint of the ordering service for the network.</p>"
+    "NetworkFabricAttributes": {
+      "documentation": "<p>Attributes of Hyperledger Fabric for a network.</p>",
+      "members": {
+        "Edition": {
+          "documentation": "<p>The edition of Amazon Managed Blockchain that Hyperledger Fabric uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>.</p>",
+          "shape": "Edition"
         },
-        "Edition":{
-          "shape":"Edition",
-          "documentation":"<p>The edition of Amazon Managed Blockchain that Hyperledger Fabric uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>.</p>"
+        "OrderingServiceEndpoint": {
+          "documentation": "<p>The endpoint of the ordering service for the network.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Attributes of Hyperledger Fabric for a network.</p>"
+      "type": "structure"
     },
-    "NetworkFabricConfiguration":{
-      "type":"structure",
-      "required":["Edition"],
-      "members":{
-        "Edition":{
-          "shape":"Edition",
-          "documentation":"<p>The edition of Amazon Managed Blockchain that the network uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>.</p>"
+    "NetworkFabricConfiguration": {
+      "documentation": "<p>Hyperledger Fabric configuration properties for the network.</p>",
+      "members": {
+        "Edition": {
+          "documentation": "<p>The edition of Amazon Managed Blockchain that the network uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>.</p>",
+          "shape": "Edition"
         }
       },
-      "documentation":"<p>Hyperledger Fabric configuration properties for the network.</p>"
+      "required": [
+        "Edition"
+      ],
+      "type": "structure"
     },
-    "NetworkFrameworkAttributes":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"NetworkFabricAttributes",
-          "documentation":"<p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric.</p>"
+    "NetworkFrameworkAttributes": {
+      "documentation": "<p>Attributes relevant to the network for the blockchain framework that the network uses.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric.</p>",
+          "shape": "NetworkFabricAttributes"
         }
       },
-      "documentation":"<p>Attributes relevant to the network for the blockchain framework that the network uses.</p>"
+      "type": "structure"
     },
-    "NetworkFrameworkConfiguration":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"NetworkFabricConfiguration",
-          "documentation":"<p> Hyperledger Fabric configuration properties for a Managed Blockchain network that uses Hyperledger Fabric. </p>"
+    "NetworkFrameworkConfiguration": {
+      "documentation": "<p> Configuration properties relevant to the network for the blockchain framework that the network uses. </p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p> Hyperledger Fabric configuration properties for a Managed Blockchain network that uses Hyperledger Fabric. </p>",
+          "shape": "NetworkFabricConfiguration"
         }
       },
-      "documentation":"<p> Configuration properties relevant to the network for the blockchain framework that the network uses. </p>"
+      "type": "structure"
     },
-    "NetworkListMaxResults":{
-      "type":"integer",
-      "box":true,
-      "max":10,
-      "min":1
+    "NetworkListMaxResults": {
+      "box": true,
+      "max": 10,
+      "min": 1,
+      "type": "integer"
     },
-    "NetworkMemberNameString":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"^(?!-)^[^0-9](?!.*--)[A-Za-z0-9-]+[^- ]$"
+    "NetworkMemberNameString": {
+      "max": 64,
+      "min": 1,
+      "pattern": "^(?!-)^[^0-9](?!.*--)[A-Za-z0-9-]+[^- ]$",
+      "type": "string"
     },
-    "NetworkStatus":{
-      "type":"string",
-      "enum":[
+    "NetworkStatus": {
+      "enum": [
         "CREATING",
         "AVAILABLE",
         "CREATE_FAILED",
         "DELETING",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "NetworkSummary":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network.</p>"
+    "NetworkSummary": {
+      "documentation": "<p>A summary of network configuration properties.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p>The date and time that the network was created.</p>",
+          "shape": "Timestamp"
         },
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the network.</p>"
+        "Description": {
+          "documentation": "<p>An optional description of the network.</p>",
+          "shape": "DescriptionString"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>An optional description of the network.</p>"
+        "Framework": {
+          "documentation": "<p>The blockchain framework that the network uses.</p>",
+          "shape": "Framework"
         },
-        "Framework":{
-          "shape":"Framework",
-          "documentation":"<p>The blockchain framework that the network uses.</p>"
+        "FrameworkVersion": {
+          "documentation": "<p>The version of the blockchain framework that the network uses.</p>",
+          "shape": "FrameworkVersionString"
         },
-        "FrameworkVersion":{
-          "shape":"FrameworkVersionString",
-          "documentation":"<p>The version of the blockchain framework that the network uses.</p>"
+        "Id": {
+          "documentation": "<p>The unique identifier of the network.</p>",
+          "shape": "ResourceIdString"
         },
-        "Status":{
-          "shape":"NetworkStatus",
-          "documentation":"<p>The current status of the network.</p>"
+        "Name": {
+          "documentation": "<p>The name of the network.</p>",
+          "shape": "NameString"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the network was created.</p>"
+        "Status": {
+          "documentation": "<p>The current status of the network.</p>",
+          "shape": "NetworkStatus"
         }
       },
-      "documentation":"<p>A summary of network configuration properties.</p>"
+      "type": "structure"
     },
-    "NetworkSummaryList":{
-      "type":"list",
-      "member":{"shape":"NetworkSummary"}
+    "NetworkSummaryList": {
+      "member": {
+        "shape": "NetworkSummary"
+      },
+      "type": "list"
     },
-    "Node":{
-      "type":"structure",
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network that the node is in.</p>"
+    "Node": {
+      "documentation": "<p>Configuration properties of a peer node.</p>",
+      "members": {
+        "AvailabilityZone": {
+          "documentation": "<p>The Availability Zone in which the node exists.</p>",
+          "shape": "AvailabilityZoneString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member to which the node belongs.</p>"
+        "CreationDate": {
+          "documentation": "<p>The date and time that the node was created.</p>",
+          "shape": "Timestamp"
         },
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the node.</p>"
+        "FrameworkAttributes": {
+          "documentation": "<p>Attributes of the blockchain framework being used.</p>",
+          "shape": "NodeFrameworkAttributes"
         },
-        "InstanceType":{
-          "shape":"InstanceTypeString",
-          "documentation":"<p>The instance type of the node.</p>"
+        "Id": {
+          "documentation": "<p>The unique identifier of the node.</p>",
+          "shape": "ResourceIdString"
         },
-        "AvailabilityZone":{
-          "shape":"AvailabilityZoneString",
-          "documentation":"<p>The Availability Zone in which the node exists.</p>"
+        "InstanceType": {
+          "documentation": "<p>The instance type of the node.</p>",
+          "shape": "InstanceTypeString"
         },
-        "FrameworkAttributes":{
-          "shape":"NodeFrameworkAttributes",
-          "documentation":"<p>Attributes of the blockchain framework being used.</p>"
+        "LogPublishingConfiguration": {
+          "documentation": "<p/>",
+          "shape": "NodeLogPublishingConfiguration"
         },
-        "LogPublishingConfiguration":{
-          "shape":"NodeLogPublishingConfiguration",
-          "documentation":"<p/>"
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member to which the node belongs.</p>",
+          "shape": "ResourceIdString"
         },
-        "Status":{
-          "shape":"NodeStatus",
-          "documentation":"<p>The status of the node.</p>"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network that the node is in.</p>",
+          "shape": "ResourceIdString"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the node was created.</p>"
+        "Status": {
+          "documentation": "<p>The status of the node.</p>",
+          "shape": "NodeStatus"
         }
       },
-      "documentation":"<p>Configuration properties of a peer node.</p>"
+      "type": "structure"
     },
-    "NodeConfiguration":{
-      "type":"structure",
-      "required":[
+    "NodeConfiguration": {
+      "documentation": "<p>Configuration properties of a peer node.</p>",
+      "members": {
+        "AvailabilityZone": {
+          "documentation": "<p>The Availability Zone in which the node exists.</p>",
+          "shape": "AvailabilityZoneString"
+        },
+        "InstanceType": {
+          "documentation": "<p>The Amazon Managed Blockchain instance type for the node.</p>",
+          "shape": "InstanceTypeString"
+        },
+        "LogPublishingConfiguration": {
+          "documentation": "<p/>",
+          "shape": "NodeLogPublishingConfiguration"
+        }
+      },
+      "required": [
         "InstanceType",
         "AvailabilityZone"
       ],
-      "members":{
-        "InstanceType":{
-          "shape":"InstanceTypeString",
-          "documentation":"<p>The Amazon Managed Blockchain instance type for the node.</p>"
+      "type": "structure"
+    },
+    "NodeFabricAttributes": {
+      "documentation": "<p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>",
+      "members": {
+        "PeerEndpoint": {
+          "documentation": "<p>The endpoint that identifies the peer node for all services except peer channel-based event services.</p>",
+          "shape": "String"
         },
-        "AvailabilityZone":{
-          "shape":"AvailabilityZoneString",
-          "documentation":"<p>The Availability Zone in which the node exists.</p>"
+        "PeerEventEndpoint": {
+          "documentation": "<p>The endpoint that identifies the peer node for peer channel-based event services.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "NodeFabricLogPublishingConfiguration": {
+      "documentation": "<p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>",
+      "members": {
+        "ChaincodeLogs": {
+          "documentation": "<p>Configuration properties for logging events associated with chaincode execution on a peer node. Chaincode logs contain the results of instantiating, invoking, and querying the chaincode. A peer can run multiple instances of chaincode. When enabled, a log stream is created for all chaincodes, with an individual log stream for each chaincode.</p>",
+          "shape": "LogConfigurations"
         },
-        "LogPublishingConfiguration":{
-          "shape":"NodeLogPublishingConfiguration",
-          "documentation":"<p/>"
+        "PeerLogs": {
+          "documentation": "<p>Configuration properties for a peer node log. Peer node logs contain messages generated when your client submits transaction proposals to peer nodes, requests to join channels, enrolls an admin peer, and lists the chaincode instances on a peer node. </p>",
+          "shape": "LogConfigurations"
         }
       },
-      "documentation":"<p>Configuration properties of a peer node.</p>"
+      "type": "structure"
     },
-    "NodeFabricAttributes":{
-      "type":"structure",
-      "members":{
-        "PeerEndpoint":{
-          "shape":"String",
-          "documentation":"<p>The endpoint that identifies the peer node for all services except peer channel-based event services.</p>"
-        },
-        "PeerEventEndpoint":{
-          "shape":"String",
-          "documentation":"<p>The endpoint that identifies the peer node for peer channel-based event services.</p>"
+    "NodeFrameworkAttributes": {
+      "documentation": "<p>Attributes relevant to a peer node on a Managed Blockchain network for the blockchain framework that the network uses.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>",
+          "shape": "NodeFabricAttributes"
         }
       },
-      "documentation":"<p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>"
+      "type": "structure"
     },
-    "NodeFabricLogPublishingConfiguration":{
-      "type":"structure",
-      "members":{
-        "ChaincodeLogs":{
-          "shape":"LogConfigurations",
-          "documentation":"<p>Configuration properties for logging events associated with chaincode execution on a peer node. Chaincode logs contain the results of instantiating, invoking, and querying the chaincode. A peer can run multiple instances of chaincode. When enabled, a log stream is created for all chaincodes, with an individual log stream for each chaincode.</p>"
-        },
-        "PeerLogs":{
-          "shape":"LogConfigurations",
-          "documentation":"<p>Configuration properties for a peer node log. Peer node logs contain messages generated when your client submits transaction proposals to peer nodes, requests to join channels, enrolls an admin peer, and lists the chaincode instances on a peer node. </p>"
+    "NodeListMaxResults": {
+      "box": true,
+      "max": 20,
+      "min": 1,
+      "type": "integer"
+    },
+    "NodeLogPublishingConfiguration": {
+      "documentation": "<p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>",
+      "members": {
+        "Fabric": {
+          "documentation": "<p>Configuration properties for logging events associated with a node that is owned by a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>",
+          "shape": "NodeFabricLogPublishingConfiguration"
         }
       },
-      "documentation":"<p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>"
+      "type": "structure"
     },
-    "NodeFrameworkAttributes":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"NodeFabricAttributes",
-          "documentation":"<p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>"
-        }
-      },
-      "documentation":"<p>Attributes relevant to a peer node on a Managed Blockchain network for the blockchain framework that the network uses.</p>"
-    },
-    "NodeListMaxResults":{
-      "type":"integer",
-      "box":true,
-      "max":20,
-      "min":1
-    },
-    "NodeLogPublishingConfiguration":{
-      "type":"structure",
-      "members":{
-        "Fabric":{
-          "shape":"NodeFabricLogPublishingConfiguration",
-          "documentation":"<p>Configuration properties for logging events associated with a node that is owned by a member of a Managed Blockchain network using the Hyperledger Fabric framework.</p>"
-        }
-      },
-      "documentation":"<p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>"
-    },
-    "NodeStatus":{
-      "type":"string",
-      "enum":[
+    "NodeStatus": {
+      "enum": [
         "CREATING",
         "AVAILABLE",
         "CREATE_FAILED",
@@ -1622,429 +1953,459 @@
         "DELETING",
         "DELETED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "NodeSummary":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the node.</p>"
+    "NodeSummary": {
+      "documentation": "<p>A summary of configuration properties for a peer node.</p>",
+      "members": {
+        "AvailabilityZone": {
+          "documentation": "<p>The Availability Zone in which the node exists.</p>",
+          "shape": "AvailabilityZoneString"
         },
-        "Status":{
-          "shape":"NodeStatus",
-          "documentation":"<p>The status of the node.</p>"
+        "CreationDate": {
+          "documentation": "<p>The date and time that the node was created.</p>",
+          "shape": "Timestamp"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time that the node was created.</p>"
+        "Id": {
+          "documentation": "<p>The unique identifier of the node.</p>",
+          "shape": "ResourceIdString"
         },
-        "AvailabilityZone":{
-          "shape":"AvailabilityZoneString",
-          "documentation":"<p>The Availability Zone in which the node exists.</p>"
+        "InstanceType": {
+          "documentation": "<p>The EC2 instance type for the node.</p>",
+          "shape": "InstanceTypeString"
         },
-        "InstanceType":{
-          "shape":"InstanceTypeString",
-          "documentation":"<p>The EC2 instance type for the node.</p>"
+        "Status": {
+          "documentation": "<p>The status of the node.</p>",
+          "shape": "NodeStatus"
         }
       },
-      "documentation":"<p>A summary of configuration properties for a peer node.</p>"
+      "type": "structure"
     },
-    "NodeSummaryList":{
-      "type":"list",
-      "member":{"shape":"NodeSummary"}
+    "NodeSummaryList": {
+      "member": {
+        "shape": "NodeSummary"
+      },
+      "type": "list"
     },
-    "PaginationToken":{
-      "type":"string",
-      "max":128
+    "PaginationToken": {
+      "max": 128,
+      "type": "string"
     },
-    "PasswordString":{
-      "type":"string",
-      "max":32,
-      "min":8,
-      "pattern":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?!.*[@'\\\\\"/])[a-zA-Z0-9\\S]*$",
-      "sensitive":true
+    "PasswordString": {
+      "max": 32,
+      "min": 8,
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?!.*[@'\\\\\"/])[a-zA-Z0-9\\S]*$",
+      "sensitive": true,
+      "type": "string"
     },
-    "PrincipalString":{"type":"string"},
-    "Proposal":{
-      "type":"structure",
-      "members":{
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the proposal.</p>"
+    "PrincipalString": {
+      "type": "string"
+    },
+    "Proposal": {
+      "documentation": "<p>Properties of a proposal on a Managed Blockchain network.</p>",
+      "members": {
+        "Actions": {
+          "documentation": "<p>The actions to perform on the network if the proposal is <code>APPROVED</code>.</p>",
+          "shape": "ProposalActions"
         },
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the network for which the proposal is made.</p>"
+        "CreationDate": {
+          "documentation": "<p> The date and time that the proposal was created. </p>",
+          "shape": "Timestamp"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p>The description of the proposal.</p>"
+        "Description": {
+          "documentation": "<p>The description of the proposal.</p>",
+          "shape": "DescriptionString"
         },
-        "Actions":{
-          "shape":"ProposalActions",
-          "documentation":"<p>The actions to perform on the network if the proposal is <code>APPROVED</code>.</p>"
+        "ExpirationDate": {
+          "documentation": "<p> The date and time that the proposal expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, if members have not cast enough votes to determine the outcome according to the voting policy, the proposal is <code>EXPIRED</code> and <code>Actions</code> are not carried out. </p>",
+          "shape": "Timestamp"
         },
-        "ProposedByMemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member that created the proposal.</p>"
+        "NetworkId": {
+          "documentation": "<p>The unique identifier of the network for which the proposal is made.</p>",
+          "shape": "ResourceIdString"
         },
-        "ProposedByMemberName":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p>The name of the member that created the proposal.</p>"
+        "NoVoteCount": {
+          "documentation": "<p> The current total of <code>NO</code> votes cast on the proposal by members. </p>",
+          "shape": "VoteCount"
         },
-        "Status":{
-          "shape":"ProposalStatus",
-          "documentation":"<p>The status of the proposal. Values are as follows:</p> <ul> <li> <p> <code>IN_PROGRESS</code> - The proposal is active and open for member voting.</p> </li> <li> <p> <code>APPROVED</code> - The proposal was approved with sufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified proposal actions are carried out.</p> </li> <li> <p> <code>REJECTED</code> - The proposal was rejected with insufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>EXPIRED</code> - Members did not cast the number of votes required to determine the proposal outcome before the proposal expired. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>ACTION_FAILED</code> - One or more of the specified <code>ProposalActions</code> in a proposal that was approved could not be completed because of an error. The <code>ACTION_FAILED</code> status occurs even if only one ProposalAction fails and other actions are successful.</p> </li> </ul>"
+        "OutstandingVoteCount": {
+          "documentation": "<p> The number of votes remaining to be cast on the proposal by members. In other words, the number of members minus the sum of <code>YES</code> votes and <code>NO</code> votes. </p>",
+          "shape": "VoteCount"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p> The date and time that the proposal was created. </p>"
+        "ProposalId": {
+          "documentation": "<p>The unique identifier of the proposal.</p>",
+          "shape": "ResourceIdString"
         },
-        "ExpirationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p> The date and time that the proposal expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, if members have not cast enough votes to determine the outcome according to the voting policy, the proposal is <code>EXPIRED</code> and <code>Actions</code> are not carried out. </p>"
+        "ProposedByMemberId": {
+          "documentation": "<p>The unique identifier of the member that created the proposal.</p>",
+          "shape": "ResourceIdString"
         },
-        "YesVoteCount":{
-          "shape":"VoteCount",
-          "documentation":"<p> The current total of <code>YES</code> votes cast on the proposal by members. </p>"
+        "ProposedByMemberName": {
+          "documentation": "<p>The name of the member that created the proposal.</p>",
+          "shape": "NetworkMemberNameString"
         },
-        "NoVoteCount":{
-          "shape":"VoteCount",
-          "documentation":"<p> The current total of <code>NO</code> votes cast on the proposal by members. </p>"
+        "Status": {
+          "documentation": "<p>The status of the proposal. Values are as follows:</p> <ul> <li> <p> <code>IN_PROGRESS</code> - The proposal is active and open for member voting.</p> </li> <li> <p> <code>APPROVED</code> - The proposal was approved with sufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified proposal actions are carried out.</p> </li> <li> <p> <code>REJECTED</code> - The proposal was rejected with insufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>EXPIRED</code> - Members did not cast the number of votes required to determine the proposal outcome before the proposal expired. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>ACTION_FAILED</code> - One or more of the specified <code>ProposalActions</code> in a proposal that was approved could not be completed because of an error. The <code>ACTION_FAILED</code> status occurs even if only one ProposalAction fails and other actions are successful.</p> </li> </ul>",
+          "shape": "ProposalStatus"
         },
-        "OutstandingVoteCount":{
-          "shape":"VoteCount",
-          "documentation":"<p> The number of votes remaining to be cast on the proposal by members. In other words, the number of members minus the sum of <code>YES</code> votes and <code>NO</code> votes. </p>"
+        "YesVoteCount": {
+          "documentation": "<p> The current total of <code>YES</code> votes cast on the proposal by members. </p>",
+          "shape": "VoteCount"
         }
       },
-      "documentation":"<p>Properties of a proposal on a Managed Blockchain network.</p>"
+      "type": "structure"
     },
-    "ProposalActions":{
-      "type":"structure",
-      "members":{
-        "Invitations":{
-          "shape":"InviteActionList",
-          "documentation":"<p> The actions to perform for an <code>APPROVED</code> proposal to invite an AWS account to create a member and join the network. </p>"
+    "ProposalActions": {
+      "documentation": "<p> The actions to carry out if a proposal is <code>APPROVED</code>. </p>",
+      "members": {
+        "Invitations": {
+          "documentation": "<p> The actions to perform for an <code>APPROVED</code> proposal to invite an AWS account to create a member and join the network. </p>",
+          "shape": "InviteActionList"
         },
-        "Removals":{
-          "shape":"RemoveActionList",
-          "documentation":"<p> The actions to perform for an <code>APPROVED</code> proposal to remove a member from the network, which deletes the member and all associated member resources from the network. </p>"
+        "Removals": {
+          "documentation": "<p> The actions to perform for an <code>APPROVED</code> proposal to remove a member from the network, which deletes the member and all associated member resources from the network. </p>",
+          "shape": "RemoveActionList"
         }
       },
-      "documentation":"<p> The actions to carry out if a proposal is <code>APPROVED</code>. </p>"
+      "type": "structure"
     },
-    "ProposalDurationInt":{
-      "type":"integer",
-      "box":true,
-      "max":168,
-      "min":1
+    "ProposalDurationInt": {
+      "box": true,
+      "max": 168,
+      "min": 1,
+      "type": "integer"
     },
-    "ProposalListMaxResults":{
-      "type":"integer",
-      "box":true,
-      "max":100,
-      "min":1
+    "ProposalListMaxResults": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
     },
-    "ProposalStatus":{
-      "type":"string",
-      "enum":[
+    "ProposalStatus": {
+      "enum": [
         "IN_PROGRESS",
         "APPROVED",
         "REJECTED",
         "EXPIRED",
         "ACTION_FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "ProposalSummary":{
-      "type":"structure",
-      "members":{
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the proposal. </p>"
+    "ProposalSummary": {
+      "documentation": "<p>Properties of a proposal.</p>",
+      "members": {
+        "CreationDate": {
+          "documentation": "<p> The date and time that the proposal was created. </p>",
+          "shape": "Timestamp"
         },
-        "Description":{
-          "shape":"DescriptionString",
-          "documentation":"<p> The description of the proposal. </p>"
+        "Description": {
+          "documentation": "<p> The description of the proposal. </p>",
+          "shape": "DescriptionString"
         },
-        "ProposedByMemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the member that created the proposal. </p>"
+        "ExpirationDate": {
+          "documentation": "<p> The date and time that the proposal expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, if members have not cast enough votes to determine the outcome according to the voting policy, the proposal is <code>EXPIRED</code> and <code>Actions</code> are not carried out. </p>",
+          "shape": "Timestamp"
         },
-        "ProposedByMemberName":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p> The name of the member that created the proposal. </p>"
+        "ProposalId": {
+          "documentation": "<p> The unique identifier of the proposal. </p>",
+          "shape": "ResourceIdString"
         },
-        "Status":{
-          "shape":"ProposalStatus",
-          "documentation":"<p>The status of the proposal. Values are as follows:</p> <ul> <li> <p> <code>IN_PROGRESS</code> - The proposal is active and open for member voting.</p> </li> <li> <p> <code>APPROVED</code> - The proposal was approved with sufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified proposal actions are carried out.</p> </li> <li> <p> <code>REJECTED</code> - The proposal was rejected with insufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>EXPIRED</code> - Members did not cast the number of votes required to determine the proposal outcome before the proposal expired. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>ACTION_FAILED</code> - One or more of the specified <code>ProposalActions</code> in a proposal that was approved could not be completed because of an error.</p> </li> </ul>"
+        "ProposedByMemberId": {
+          "documentation": "<p> The unique identifier of the member that created the proposal. </p>",
+          "shape": "ResourceIdString"
         },
-        "CreationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p> The date and time that the proposal was created. </p>"
+        "ProposedByMemberName": {
+          "documentation": "<p> The name of the member that created the proposal. </p>",
+          "shape": "NetworkMemberNameString"
         },
-        "ExpirationDate":{
-          "shape":"Timestamp",
-          "documentation":"<p> The date and time that the proposal expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, if members have not cast enough votes to determine the outcome according to the voting policy, the proposal is <code>EXPIRED</code> and <code>Actions</code> are not carried out. </p>"
+        "Status": {
+          "documentation": "<p>The status of the proposal. Values are as follows:</p> <ul> <li> <p> <code>IN_PROGRESS</code> - The proposal is active and open for member voting.</p> </li> <li> <p> <code>APPROVED</code> - The proposal was approved with sufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified proposal actions are carried out.</p> </li> <li> <p> <code>REJECTED</code> - The proposal was rejected with insufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>EXPIRED</code> - Members did not cast the number of votes required to determine the proposal outcome before the proposal expired. The specified <code>ProposalActions</code> are not carried out.</p> </li> <li> <p> <code>ACTION_FAILED</code> - One or more of the specified <code>ProposalActions</code> in a proposal that was approved could not be completed because of an error.</p> </li> </ul>",
+          "shape": "ProposalStatus"
         }
       },
-      "documentation":"<p>Properties of a proposal.</p>"
+      "type": "structure"
     },
-    "ProposalSummaryList":{
-      "type":"list",
-      "member":{"shape":"ProposalSummary"}
+    "ProposalSummaryList": {
+      "member": {
+        "shape": "ProposalSummary"
+      },
+      "type": "list"
     },
-    "ProposalVoteList":{
-      "type":"list",
-      "member":{"shape":"VoteSummary"}
+    "ProposalVoteList": {
+      "member": {
+        "shape": "VoteSummary"
+      },
+      "type": "list"
     },
-    "RejectInvitationInput":{
-      "type":"structure",
-      "required":["InvitationId"],
-      "members":{
-        "InvitationId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the invitation to reject.</p>",
-          "location":"uri",
-          "locationName":"invitationId"
-        }
-      }
-    },
-    "RejectInvitationOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "RemoveAction":{
-      "type":"structure",
-      "required":["MemberId"],
-      "members":{
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member to remove.</p>"
+    "RejectInvitationInput": {
+      "members": {
+        "InvitationId": {
+          "documentation": "<p>The unique identifier of the invitation to reject.</p>",
+          "location": "uri",
+          "locationName": "invitationId",
+          "shape": "ResourceIdString"
         }
       },
-      "documentation":"<p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p>"
+      "required": [
+        "InvitationId"
+      ],
+      "type": "structure"
     },
-    "RemoveActionList":{
-      "type":"list",
-      "member":{"shape":"RemoveAction"}
+    "RejectInvitationOutput": {
+      "members": {},
+      "type": "structure"
     },
-    "ResourceAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "RemoveAction": {
+      "documentation": "<p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p>",
+      "members": {
+        "MemberId": {
+          "documentation": "<p>The unique identifier of the member to remove.</p>",
+          "shape": "ResourceIdString"
+        }
       },
-      "documentation":"<p>A resource request is issued for a resource that already exists.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "required": [
+        "MemberId"
+      ],
+      "type": "structure"
     },
-    "ResourceIdString":{
-      "type":"string",
-      "max":32,
-      "min":1
-    },
-    "ResourceLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "RemoveActionList": {
+      "member": {
+        "shape": "RemoveAction"
       },
-      "documentation":"<p>The maximum number of resources of that type already exist. Ensure the resources requested are within the boundaries of the service edition and your account limits.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "type": "list"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "ResourceAlreadyExistsException": {
+      "documentation": "<p>A resource request is issued for a resource that already exists.</p>",
+      "error": {
+        "httpStatusCode": 409
       },
-      "documentation":"<p>A requested resource does not exist on the network. It may have been deleted or referenced inaccurately.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "ResourceNotReadyException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>The requested resource exists but is not in a status that can complete the operation.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "type": "structure"
     },
-    "String":{"type":"string"},
-    "ThresholdComparator":{
-      "type":"string",
-      "enum":[
+    "ResourceIdString": {
+      "max": 32,
+      "min": 1,
+      "type": "string"
+    },
+    "ResourceLimitExceededException": {
+      "documentation": "<p>The maximum number of resources of that type already exist. Ensure the resources requested are within the boundaries of the service edition and your account limits.</p>",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>A requested resource does not exist on the network. It may have been deleted or referenced inaccurately.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceNotReadyException": {
+      "documentation": "<p>The requested resource exists but is not in a status that can complete the operation.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "String": {
+      "type": "string"
+    },
+    "ThresholdComparator": {
+      "enum": [
         "GREATER_THAN",
         "GREATER_THAN_OR_EQUAL_TO"
-      ]
+      ],
+      "type": "string"
     },
-    "ThresholdPercentageInt":{
-      "type":"integer",
-      "box":true,
-      "max":100,
-      "min":0
+    "ThresholdPercentageInt": {
+      "box": true,
+      "max": 100,
+      "min": 0,
+      "type": "integer"
     },
-    "ThrottlingException":{
-      "type":"structure",
-      "members":{
+    "ThrottlingException": {
+      "documentation": "<p>The request or operation could not be performed because a service is throttling requests. The most common source of throttling errors is launching EC2 instances such that your service limit for EC2 instances is exceeded. Request a limit increase or delete unused resources if possible.</p>",
+      "error": {
+        "httpStatusCode": 429
       },
-      "documentation":"<p>The request or operation could not be performed because a service is throttling requests. The most common source of throttling errors is launching EC2 instances such that your service limit for EC2 instances is exceeded. Request a limit increase or delete unused resources if possible.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "Timestamp":{
-      "type":"timestamp",
-      "timestampFormat":"iso8601"
+    "Timestamp": {
+      "timestampFormat": "iso8601",
+      "type": "timestamp"
     },
-    "UpdateMemberInput":{
-      "type":"structure",
-      "required":[
+    "UpdateMemberInput": {
+      "members": {
+        "LogPublishingConfiguration": {
+          "documentation": "<p>Configuration properties for publishing to Amazon CloudWatch Logs.</p>",
+          "shape": "MemberLogPublishingConfiguration"
+        },
+        "MemberId": {
+          "documentation": "<p>The unique ID of the member.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
+        },
+        "NetworkId": {
+          "documentation": "<p>The unique ID of the Managed Blockchain network to which the member belongs.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        }
+      },
+      "required": [
         "NetworkId",
         "MemberId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique ID of the Managed Blockchain network to which the member belongs.</p>",
-          "location":"uri",
-          "locationName":"networkId"
+      "type": "structure"
+    },
+    "UpdateMemberOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateNodeInput": {
+      "members": {
+        "LogPublishingConfiguration": {
+          "documentation": "<p>Configuration properties for publishing to Amazon CloudWatch Logs.</p>",
+          "shape": "NodeLogPublishingConfiguration"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique ID of the member.</p>",
-          "location":"uri",
-          "locationName":"memberId"
+        "MemberId": {
+          "documentation": "<p>The unique ID of the member that owns the node.</p>",
+          "location": "uri",
+          "locationName": "memberId",
+          "shape": "ResourceIdString"
         },
-        "LogPublishingConfiguration":{
-          "shape":"MemberLogPublishingConfiguration",
-          "documentation":"<p>Configuration properties for publishing to Amazon CloudWatch Logs.</p>"
+        "NetworkId": {
+          "documentation": "<p>The unique ID of the Managed Blockchain network to which the node belongs.</p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
+        },
+        "NodeId": {
+          "documentation": "<p>The unique ID of the node.</p>",
+          "location": "uri",
+          "locationName": "nodeId",
+          "shape": "ResourceIdString"
         }
-      }
-    },
-    "UpdateMemberOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateNodeInput":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "NetworkId",
         "MemberId",
         "NodeId"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique ID of the Managed Blockchain network to which the node belongs.</p>",
-          "location":"uri",
-          "locationName":"networkId"
+      "type": "structure"
+    },
+    "UpdateNodeOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "UsernameString": {
+      "max": 16,
+      "min": 1,
+      "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+      "type": "string"
+    },
+    "VoteCount": {
+      "box": true,
+      "type": "integer"
+    },
+    "VoteOnProposalInput": {
+      "members": {
+        "NetworkId": {
+          "documentation": "<p> The unique identifier of the network. </p>",
+          "location": "uri",
+          "locationName": "networkId",
+          "shape": "ResourceIdString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique ID of the member that owns the node.</p>",
-          "location":"uri",
-          "locationName":"memberId"
+        "ProposalId": {
+          "documentation": "<p> The unique identifier of the proposal. </p>",
+          "location": "uri",
+          "locationName": "proposalId",
+          "shape": "ResourceIdString"
         },
-        "NodeId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique ID of the node.</p>",
-          "location":"uri",
-          "locationName":"nodeId"
+        "Vote": {
+          "documentation": "<p> The value of the vote. </p>",
+          "shape": "VoteValue"
         },
-        "LogPublishingConfiguration":{
-          "shape":"NodeLogPublishingConfiguration",
-          "documentation":"<p>Configuration properties for publishing to Amazon CloudWatch Logs.</p>"
+        "VoterMemberId": {
+          "documentation": "<p>The unique identifier of the member casting the vote. </p>",
+          "shape": "ResourceIdString"
         }
-      }
-    },
-    "UpdateNodeOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UsernameString":{
-      "type":"string",
-      "max":16,
-      "min":1,
-      "pattern":"^[a-zA-Z][a-zA-Z0-9]*$"
-    },
-    "VoteCount":{
-      "type":"integer",
-      "box":true
-    },
-    "VoteOnProposalInput":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "NetworkId",
         "ProposalId",
         "VoterMemberId",
         "Vote"
       ],
-      "members":{
-        "NetworkId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the network. </p>",
-          "location":"uri",
-          "locationName":"networkId"
-        },
-        "ProposalId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the proposal. </p>",
-          "location":"uri",
-          "locationName":"proposalId"
-        },
-        "VoterMemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p>The unique identifier of the member casting the vote. </p>"
-        },
-        "Vote":{
-          "shape":"VoteValue",
-          "documentation":"<p> The value of the vote. </p>"
-        }
-      }
+      "type": "structure"
     },
-    "VoteOnProposalOutput":{
-      "type":"structure",
-      "members":{
-      }
+    "VoteOnProposalOutput": {
+      "members": {},
+      "type": "structure"
     },
-    "VoteSummary":{
-      "type":"structure",
-      "members":{
-        "Vote":{
-          "shape":"VoteValue",
-          "documentation":"<p> The vote value, either <code>YES</code> or <code>NO</code>. </p>"
+    "VoteSummary": {
+      "documentation": "<p> Properties of an individual vote that a member cast for a proposal. </p>",
+      "members": {
+        "MemberId": {
+          "documentation": "<p> The unique identifier of the member that cast the vote. </p>",
+          "shape": "ResourceIdString"
         },
-        "MemberName":{
-          "shape":"NetworkMemberNameString",
-          "documentation":"<p> The name of the member that cast the vote. </p>"
+        "MemberName": {
+          "documentation": "<p> The name of the member that cast the vote. </p>",
+          "shape": "NetworkMemberNameString"
         },
-        "MemberId":{
-          "shape":"ResourceIdString",
-          "documentation":"<p> The unique identifier of the member that cast the vote. </p>"
+        "Vote": {
+          "documentation": "<p> The vote value, either <code>YES</code> or <code>NO</code>. </p>",
+          "shape": "VoteValue"
         }
       },
-      "documentation":"<p> Properties of an individual vote that a member cast for a proposal. </p>"
+      "type": "structure"
     },
-    "VoteValue":{
-      "type":"string",
-      "enum":[
+    "VoteValue": {
+      "enum": [
         "YES",
         "NO"
-      ]
+      ],
+      "type": "string"
     },
-    "VotingPolicy":{
-      "type":"structure",
-      "members":{
-        "ApprovalThresholdPolicy":{
-          "shape":"ApprovalThresholdPolicy",
-          "documentation":"<p>Defines the rules for the network for voting on proposals, such as the percentage of <code>YES</code> votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p>"
+    "VotingPolicy": {
+      "documentation": "<p> The voting rules for the network to decide if a proposal is accepted </p>",
+      "members": {
+        "ApprovalThresholdPolicy": {
+          "documentation": "<p>Defines the rules for the network for voting on proposals, such as the percentage of <code>YES</code> votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p>",
+          "shape": "ApprovalThresholdPolicy"
         }
       },
-      "documentation":"<p> The voting rules for the network to decide if a proposal is accepted </p>"
+      "type": "structure"
     }
   },
-  "documentation":"<p/> <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority. Currently, Managed Blockchain supports the Hyperledger Fabric open source framework. </p>"
+  "version": "2.0"
 }

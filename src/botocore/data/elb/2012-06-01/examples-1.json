@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "AddTags": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example adds two tags to the specified load balancer.",
+        "id": "elb-add-tags-1",
         "input": {
           "LoadBalancerNames": [
             "my-load-balancer"
@@ -18,19 +23,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example adds two tags to the specified load balancer.",
-        "id": "elb-add-tags-1",
         "title": "To add tags to a load balancer"
       }
     ],
     "ApplySecurityGroupsToLoadBalancer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example associates a security group with the specified load balancer in a VPC.",
+        "id": "elb-apply-security-groups-to-load-balancer-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "SecurityGroups": [
@@ -42,19 +45,17 @@
             "sg-fc448899"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example associates a security group with the specified load balancer in a VPC.",
-        "id": "elb-apply-security-groups-to-load-balancer-1",
         "title": "To associate a security group with a load balancer in a VPC"
       }
     ],
     "AttachLoadBalancerToSubnets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example adds the specified subnet to the set of configured subnets for the specified load balancer.",
+        "id": "elb-attach-load-balancer-to-subnets-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "Subnets": [
@@ -67,19 +68,17 @@
             "subnet-0ecac448"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example adds the specified subnet to the set of configured subnets for the specified load balancer.",
-        "id": "elb-attach-load-balancer-to-subnets-1",
         "title": "To attach subnets to a load balancer"
       }
     ],
     "ConfigureHealthCheck": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example specifies the health check settings used to evaluate the health of your backend EC2 instances.",
+        "id": "elb-configure-health-check-1",
         "input": {
           "HealthCheck": {
             "HealthyThreshold": 2,
@@ -99,86 +98,78 @@
             "UnhealthyThreshold": 2
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example specifies the health check settings used to evaluate the health of your backend EC2 instances.",
-        "id": "elb-configure-health-check-1",
         "title": "To specify the health check settings for your backend EC2 instances"
       }
     ],
     "CreateAppCookieStickinessPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example generates a stickiness policy that follows the sticky session lifetimes of the application-generated cookie.",
+        "id": "elb-create-app-cookie-stickiness-policy-1",
         "input": {
           "CookieName": "my-app-cookie",
           "LoadBalancerName": "my-load-balancer",
           "PolicyName": "my-app-cookie-policy"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example generates a stickiness policy that follows the sticky session lifetimes of the application-generated cookie.",
-        "id": "elb-create-app-cookie-stickiness-policy-1",
         "title": "To generate a stickiness policy for your load balancer"
       }
     ],
     "CreateLBCookieStickinessPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example generates a stickiness policy with sticky session lifetimes controlled by the specified expiration period.",
+        "id": "elb-create-lb-cookie-stickiness-policy-1",
         "input": {
           "CookieExpirationPeriod": 60,
           "LoadBalancerName": "my-load-balancer",
           "PolicyName": "my-duration-cookie-policy"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example generates a stickiness policy with sticky session lifetimes controlled by the specified expiration period.",
-        "id": "elb-create-lb-cookie-stickiness-policy-1",
         "title": "To generate a duration-based stickiness policy for your load balancer"
       }
     ],
     "CreateLoadBalancer": [
       {
-        "input": {
-          "Listeners": [
-            {
-              "InstancePort": 80,
-              "InstanceProtocol": "HTTP",
-              "LoadBalancerPort": 80,
-              "Protocol": "HTTP"
-            }
-          ],
-          "LoadBalancerName": "my-load-balancer",
-          "SecurityGroups": [
-            "sg-a61988c3"
-          ],
-          "Subnets": [
-            "subnet-15aaab61"
-          ]
-        },
-        "output": {
-          "DNSName": "my-load-balancer-1234567890.us-west-2.elb.amazonaws.com"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example creates a load balancer with an HTTP listener in a VPC.",
         "id": "elb-create-load-balancer-1",
+        "input": {
+          "Listeners": [
+            {
+              "InstancePort": 80,
+              "InstanceProtocol": "HTTP",
+              "LoadBalancerPort": 80,
+              "Protocol": "HTTP"
+            }
+          ],
+          "LoadBalancerName": "my-load-balancer",
+          "SecurityGroups": [
+            "sg-a61988c3"
+          ],
+          "Subnets": [
+            "subnet-15aaab61"
+          ]
+        },
+        "output": {
+          "DNSName": "my-load-balancer-1234567890.us-west-2.elb.amazonaws.com"
+        },
         "title": "To create an HTTP load balancer in a VPC"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a load balancer with an HTTP listener in EC2-Classic.",
+        "id": "elb-create-load-balancer-2",
         "input": {
           "AvailabilityZones": [
             "us-west-2a"
@@ -196,17 +187,15 @@
         "output": {
           "DNSName": "my-load-balancer-123456789.us-west-2.elb.amazonaws.com"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a load balancer with an HTTP listener in EC2-Classic.",
-        "id": "elb-create-load-balancer-2",
         "title": "To create an HTTP load balancer in EC2-Classic"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a load balancer with an HTTPS listener in a VPC.",
+        "id": "elb-create-load-balancer-3",
         "input": {
           "Listeners": [
             {
@@ -234,17 +223,15 @@
         "output": {
           "DNSName": "my-load-balancer-1234567890.us-west-2.elb.amazonaws.com"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a load balancer with an HTTPS listener in a VPC.",
-        "id": "elb-create-load-balancer-3",
         "title": "To create an HTTPS load balancer in a VPC"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a load balancer with an HTTPS listener in EC2-Classic.",
+        "id": "elb-create-load-balancer-4",
         "input": {
           "AvailabilityZones": [
             "us-west-2a"
@@ -269,17 +256,15 @@
         "output": {
           "DNSName": "my-load-balancer-123456789.us-west-2.elb.amazonaws.com"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a load balancer with an HTTPS listener in EC2-Classic.",
-        "id": "elb-create-load-balancer-4",
         "title": "To create an HTTPS load balancer in EC2-Classic"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates an internal load balancer with an HTTP listener in a VPC.",
+        "id": "elb-create-load-balancer-5",
         "input": {
           "Listeners": [
             {
@@ -301,19 +286,17 @@
         "output": {
           "DNSName": "internal-my-load-balancer-123456789.us-west-2.elb.amazonaws.com"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates an internal load balancer with an HTTP listener in a VPC.",
-        "id": "elb-create-load-balancer-5",
         "title": "To create an internal load balancer"
       }
     ],
     "CreateLoadBalancerListeners": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a listener for your load balancer at port 80 using the HTTP protocol.",
+        "id": "elb-create-load-balancer-listeners-1",
         "input": {
           "Listeners": [
             {
@@ -325,17 +308,15 @@
           ],
           "LoadBalancerName": "my-load-balancer"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a listener for your load balancer at port 80 using the HTTP protocol.",
-        "id": "elb-create-load-balancer-listeners-1",
         "title": "To create an HTTP listener for a load balancer"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a listener for your load balancer at port 443 using the HTTPS protocol.",
+        "id": "elb-create-load-balancer-listeners-2",
         "input": {
           "Listeners": [
             {
@@ -348,19 +329,17 @@
           ],
           "LoadBalancerName": "my-load-balancer"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a listener for your load balancer at port 443 using the HTTPS protocol.",
-        "id": "elb-create-load-balancer-listeners-2",
         "title": "To create an HTTPS listener for a load balancer"
       }
     ],
     "CreateLoadBalancerPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a policy that enables Proxy Protocol on the specified load balancer.",
+        "id": "elb-create-load-balancer-policy-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "PolicyAttributes": [
@@ -372,17 +351,15 @@
           "PolicyName": "my-ProxyProtocol-policy",
           "PolicyTypeName": "ProxyProtocolPolicyType"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a policy that enables Proxy Protocol on the specified load balancer.",
-        "id": "elb-create-load-balancer-policy-1",
         "title": "To create a policy that enables Proxy Protocol on a load balancer"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a public key policy.",
+        "id": "elb-create-load-balancer-policy-2",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "PolicyAttributes": [
@@ -394,17 +371,15 @@
           "PolicyName": "my-PublicKey-policy",
           "PolicyTypeName": "PublicKeyPolicyType"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a public key policy.",
-        "id": "elb-create-load-balancer-policy-2",
         "title": "To create a public key policy"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a backend server authentication policy that enables authentication on your backend instance using a public key policy.",
+        "id": "elb-create-load-balancer-policy-3",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "PolicyAttributes": [
@@ -416,71 +391,63 @@
           "PolicyName": "my-authentication-policy",
           "PolicyTypeName": "BackendServerAuthenticationPolicyType"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a backend server authentication policy that enables authentication on your backend instance using a public key policy.",
-        "id": "elb-create-load-balancer-policy-3",
         "title": "To create a backend server authentication policy"
       }
     ],
     "DeleteLoadBalancer": [
       {
-        "input": {
-          "LoadBalancerName": "my-load-balancer"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example deletes the specified load balancer.",
         "id": "elb-delete-load-balancer-1",
+        "input": {
+          "LoadBalancerName": "my-load-balancer"
+        },
         "title": "To delete a load balancer"
       }
     ],
     "DeleteLoadBalancerListeners": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example deletes the listener for the specified port from the specified load balancer.",
+        "id": "elb-delete-load-balancer-listeners-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "LoadBalancerPorts": [
             80
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example deletes the listener for the specified port from the specified load balancer.",
-        "id": "elb-delete-load-balancer-listeners-1",
         "title": "To delete a listener from your load balancer"
       }
     ],
     "DeleteLoadBalancerPolicy": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example deletes the specified policy from the specified load balancer. The policy must not be enabled on any listener.",
+        "id": "elb-delete-load-balancer-policy-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "PolicyName": "my-duration-cookie-policy"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example deletes the specified policy from the specified load balancer. The policy must not be enabled on any listener.",
-        "id": "elb-delete-load-balancer-policy-1",
         "title": "To delete a policy from your load balancer"
       }
     ],
     "DeregisterInstancesFromLoadBalancer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example deregisters the specified instance from the specified load balancer.",
+        "id": "elb-deregister-instances-from-load-balancer-1",
         "input": {
           "Instances": [
             {
@@ -499,19 +466,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example deregisters the specified instance from the specified load balancer.",
-        "id": "elb-deregister-instances-from-load-balancer-1",
         "title": "To deregister instances from a load balancer"
       }
     ],
     "DescribeInstanceHealth": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the health of the instances for the specified load balancer.",
+        "id": "elb-describe-instance-health-1",
         "input": {
           "LoadBalancerName": "my-load-balancer"
         },
@@ -531,19 +496,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the health of the instances for the specified load balancer.",
-        "id": "elb-describe-instance-health-1",
         "title": "To describe the health of the instances for a load balancer"
       }
     ],
     "DescribeLoadBalancerAttributes": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the attributes of the specified load balancer.",
+        "id": "elb-describe-load-balancer-attributes-1",
         "input": {
           "LoadBalancerName": "my-load-balancer"
         },
@@ -564,19 +527,17 @@
             }
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the attributes of the specified load balancer.",
-        "id": "elb-describe-load-balancer-attributes-1",
         "title": "To describe the attributes of a load balancer"
       }
     ],
     "DescribeLoadBalancerPolicies": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the specified policy associated with the specified load balancer.",
+        "id": "elb-describe-load-balancer-policies-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "PolicyNames": [
@@ -597,19 +558,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the specified policy associated with the specified load balancer.",
-        "id": "elb-describe-load-balancer-policies-1",
         "title": "To describe a policy associated with a load balancer"
       }
     ],
     "DescribeLoadBalancerPolicyTypes": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the specified load balancer policy type.",
+        "id": "elb-describe-load-balancer-policy-types-1",
         "input": {
           "PolicyTypeNames": [
             "ProxyProtocolPolicyType"
@@ -630,19 +589,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the specified load balancer policy type.",
-        "id": "elb-describe-load-balancer-policy-types-1",
         "title": "To describe a load balancer policy type defined by Elastic Load Balancing"
       }
     ],
     "DescribeLoadBalancers": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the specified load balancer.",
+        "id": "elb-describe-load-balancers-1",
         "input": {
           "LoadBalancerNames": [
             "my-load-balancer"
@@ -689,9 +646,7 @@
                     "LoadBalancerPort": 80,
                     "Protocol": "HTTP"
                   },
-                  "PolicyNames": [
-
-                  ]
+                  "PolicyNames": []
                 },
                 {
                   "Listener": {
@@ -708,9 +663,7 @@
               ],
               "LoadBalancerName": "my-load-balancer",
               "Policies": {
-                "AppCookieStickinessPolicies": [
-
-                ],
+                "AppCookieStickinessPolicies": [],
                 "LBCookieStickinessPolicies": [
                   {
                     "CookieExpirationPeriod": 60,
@@ -740,19 +693,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the specified load balancer.",
-        "id": "elb-describe-load-balancers-1",
         "title": "To describe one of your load balancers"
       }
     ],
     "DescribeTags": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the tags for the specified load balancer.",
+        "id": "elb-describe-tags-1",
         "input": {
           "LoadBalancerNames": [
             "my-load-balancer"
@@ -775,19 +726,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the tags for the specified load balancer.",
-        "id": "elb-describe-tags-1",
         "title": "To describe the tags for a load balancer"
       }
     ],
     "DetachLoadBalancerFromSubnets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example detaches the specified load balancer from the specified subnet.",
+        "id": "elb-detach-load-balancer-from-subnets-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "Subnets": [
@@ -799,19 +748,17 @@
             "subnet-15aaab61"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example detaches the specified load balancer from the specified subnet.",
-        "id": "elb-detach-load-balancer-from-subnets-1",
         "title": "To detach a load balancer from a subnet"
       }
     ],
     "DisableAvailabilityZonesForLoadBalancer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example removes the specified Availability Zone from the set of Availability Zones for the specified load balancer.",
+        "id": "elb-disable-availability-zones-for-load-balancer-1",
         "input": {
           "AvailabilityZones": [
             "us-west-2a"
@@ -823,19 +770,17 @@
             "us-west-2b"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example removes the specified Availability Zone from the set of Availability Zones for the specified load balancer.",
-        "id": "elb-disable-availability-zones-for-load-balancer-1",
         "title": "To disable an Availability Zone for a load balancer"
       }
     ],
     "EnableAvailabilityZonesForLoadBalancer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example adds the specified Availability Zone to the specified load balancer.",
+        "id": "elb-enable-availability-zones-for-load-balancer-1",
         "input": {
           "AvailabilityZones": [
             "us-west-2b"
@@ -848,46 +793,42 @@
             "us-west-2b"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example adds the specified Availability Zone to the specified load balancer.",
-        "id": "elb-enable-availability-zones-for-load-balancer-1",
         "title": "To enable an Availability Zone for a load balancer"
       }
     ],
     "ModifyLoadBalancerAttributes": [
       {
-        "input": {
-          "LoadBalancerAttributes": {
-            "CrossZoneLoadBalancing": {
-              "Enabled": true
-            }
-          },
-          "LoadBalancerName": "my-load-balancer"
-        },
-        "output": {
-          "LoadBalancerAttributes": {
-            "CrossZoneLoadBalancing": {
-              "Enabled": true
-            }
-          },
-          "LoadBalancerName": "my-load-balancer"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example enables cross-zone load balancing for the specified load balancer.",
         "id": "elb-modify-load-balancer-attributes-1",
+        "input": {
+          "LoadBalancerAttributes": {
+            "CrossZoneLoadBalancing": {
+              "Enabled": true
+            }
+          },
+          "LoadBalancerName": "my-load-balancer"
+        },
+        "output": {
+          "LoadBalancerAttributes": {
+            "CrossZoneLoadBalancing": {
+              "Enabled": true
+            }
+          },
+          "LoadBalancerName": "my-load-balancer"
+        },
         "title": "To enable cross-zone load balancing"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example enables connection draining for the specified load balancer.",
+        "id": "elb-modify-load-balancer-attributes-2",
         "input": {
           "LoadBalancerAttributes": {
             "ConnectionDraining": {
@@ -906,19 +847,17 @@
           },
           "LoadBalancerName": "my-load-balancer"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example enables connection draining for the specified load balancer.",
-        "id": "elb-modify-load-balancer-attributes-2",
         "title": "To enable connection draining"
       }
     ],
     "RegisterInstancesWithLoadBalancer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example registers the specified instance with the specified load balancer.",
+        "id": "elb-register-instances-with-load-balancer-1",
         "input": {
           "Instances": [
             {
@@ -940,19 +879,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example registers the specified instance with the specified load balancer.",
-        "id": "elb-register-instances-with-load-balancer-1",
         "title": "To register instances with a load balancer"
       }
     ],
     "RemoveTags": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example removes the specified tag from the specified load balancer.",
+        "id": "elb-remove-tags-1",
         "input": {
           "LoadBalancerNames": [
             "my-load-balancer"
@@ -963,37 +900,33 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example removes the specified tag from the specified load balancer.",
-        "id": "elb-remove-tags-1",
         "title": "To remove tags from a load balancer"
       }
     ],
     "SetLoadBalancerListenerSSLCertificate": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example replaces the existing SSL certificate for the specified HTTPS listener.",
+        "id": "elb-set-load-balancer-listener-ssl-certificate-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "LoadBalancerPort": 443,
           "SSLCertificateId": "arn:aws:iam::123456789012:server-certificate/new-server-cert"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example replaces the existing SSL certificate for the specified HTTPS listener.",
-        "id": "elb-set-load-balancer-listener-ssl-certificate-1",
         "title": "To update the SSL certificate for an HTTPS listener"
       }
     ],
     "SetLoadBalancerPoliciesForBackendServer": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example replaces the policies that are currently associated with the specified port.",
+        "id": "elb-set-load-balancer-policies-for-backend-server-1",
         "input": {
           "InstancePort": 80,
           "LoadBalancerName": "my-load-balancer",
@@ -1001,19 +934,17 @@
             "my-ProxyProtocol-policy"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example replaces the policies that are currently associated with the specified port.",
-        "id": "elb-set-load-balancer-policies-for-backend-server-1",
         "title": "To replace the policies associated with a port for a backend instance"
       }
     ],
     "SetLoadBalancerPoliciesOfListener": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example replaces the policies that are currently associated with the specified listener.",
+        "id": "elb-set-load-balancer-policies-of-listener-1",
         "input": {
           "LoadBalancerName": "my-load-balancer",
           "LoadBalancerPort": 80,
@@ -1021,16 +952,9 @@
             "my-SSLNegotiation-policy"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example replaces the policies that are currently associated with the specified listener.",
-        "id": "elb-set-load-balancer-policies-of-listener-1",
         "title": "To replace the policies associated with a listener"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

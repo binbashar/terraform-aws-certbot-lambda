@@ -2,17 +2,17 @@
   "version": 2,
   "waiters": {
     "ResourceRecordSetsChanged": {
-      "delay": 30,
-      "maxAttempts": 60,
-      "operation": "GetChange",
       "acceptors": [
         {
-          "matcher": "path",
-          "expected": "INSYNC",
           "argument": "ChangeInfo.Status",
+          "expected": "INSYNC",
+          "matcher": "path",
           "state": "success"
         }
-      ]
+      ],
+      "delay": 30,
+      "maxAttempts": 60,
+      "operation": "GetChange"
     }
   }
 }

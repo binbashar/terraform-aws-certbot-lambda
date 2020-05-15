@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "AddTagsToResource": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Adds up to 10 tags, key/value pairs, to a cluster or snapshot resource.",
+        "id": "addtagstoresource-1482430264385",
         "input": {
           "ResourceName": "arn:aws:elasticache:us-east-1:1234567890:cluster:my-mem-cluster",
           "Tags": [
@@ -28,37 +33,33 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Adds up to 10 tags, key/value pairs, to a cluster or snapshot resource.",
-        "id": "addtagstoresource-1482430264385",
         "title": "AddTagsToResource"
       }
     ],
     "AuthorizeCacheSecurityGroupIngress": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Allows network ingress to a cache security group. Applications using ElastiCache must be running on Amazon EC2. Amazon EC2 security groups are used as the authorization mechanism.",
+        "id": "authorizecachecachesecuritygroupingress-1483046446206",
         "input": {
           "CacheSecurityGroupName": "my-sec-grp",
           "EC2SecurityGroupName": "my-ec2-sec-grp",
           "EC2SecurityGroupOwnerId": "1234567890"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Allows network ingress to a cache security group. Applications using ElastiCache must be running on Amazon EC2. Amazon EC2 security groups are used as the authorization mechanism.",
-        "id": "authorizecachecachesecuritygroupingress-1483046446206",
         "title": "AuthorizeCacheCacheSecurityGroupIngress"
       }
     ],
     "CopySnapshot": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Copies a snapshot to a specified name.",
+        "id": "copysnapshot-1482961393820",
         "input": {
           "SourceSnapshotName": "my-snapshot",
           "TargetBucket": "",
@@ -94,19 +95,17 @@
             "VpcId": "vpc-3820329f3"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Copies a snapshot to a specified name.",
-        "id": "copysnapshot-1482961393820",
         "title": "CopySnapshot"
       }
     ],
     "CreateCacheCluster": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a Memcached cluster with 2 nodes. ",
+        "id": "createcachecluster-1474994727381",
         "input": {
           "AZMode": "cross-az",
           "CacheClusterId": "my-memcached-cluster",
@@ -124,37 +123,30 @@
             "CacheClusterStatus": "creating",
             "CacheNodeType": "cache.r3.large",
             "CacheParameterGroup": {
-              "CacheNodeIdsToReboot": [
-
-              ],
+              "CacheNodeIdsToReboot": [],
               "CacheParameterGroupName": "default.memcached1.4",
               "ParameterApplyStatus": "in-sync"
             },
-            "CacheSecurityGroups": [
-
-            ],
+            "CacheSecurityGroups": [],
             "CacheSubnetGroupName": "default",
             "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
             "Engine": "memcached",
             "EngineVersion": "1.4.24",
             "NumCacheNodes": 2,
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "PreferredAvailabilityZone": "Multiple",
             "PreferredMaintenanceWindow": "wed:09:00-wed:10:00"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a Memcached cluster with 2 nodes. ",
-        "id": "createcachecluster-1474994727381",
         "title": "CreateCacheCluster"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a Redis cluster with 1 node. ",
+        "id": "createcachecluster-1474994727381",
         "input": {
           "AutoMinorVersionUpgrade": true,
           "CacheClusterId": "my-redis",
@@ -174,41 +166,34 @@
             "CacheClusterStatus": "creating",
             "CacheNodeType": "cache.m3.large",
             "CacheParameterGroup": {
-              "CacheNodeIdsToReboot": [
-
-              ],
+              "CacheNodeIdsToReboot": [],
               "CacheParameterGroupName": "default.redis3.2",
               "ParameterApplyStatus": "in-sync"
             },
-            "CacheSecurityGroups": [
-
-            ],
+            "CacheSecurityGroups": [],
             "CacheSubnetGroupName": "default",
             "ClientDownloadLandingPage": "https: //console.aws.amazon.com/elasticache/home#client-download: ",
             "Engine": "redis",
             "EngineVersion": "3.2.4",
             "NumCacheNodes": 1,
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "PreferredAvailabilityZone": "us-east-1c",
             "PreferredMaintenanceWindow": "fri: 05: 30-fri: 06: 30",
             "SnapshotRetentionLimit": 7,
             "SnapshotWindow": "10: 00-11: 00"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a Redis cluster with 1 node. ",
-        "id": "createcachecluster-1474994727381",
         "title": "CreateCacheCluster"
       }
     ],
     "CreateCacheParameterGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates the Amazon ElastiCache parameter group custom-redis2-8.",
+        "id": "createcacheparametergroup-1474997699362",
         "input": {
           "CacheParameterGroupFamily": "redis2.8",
           "CacheParameterGroupName": "custom-redis2-8",
@@ -221,36 +206,32 @@
             "Description": "Custom Redis 2.8 parameter group."
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates the Amazon ElastiCache parameter group custom-redis2-8.",
-        "id": "createcacheparametergroup-1474997699362",
         "title": "CreateCacheParameterGroup"
       }
     ],
     "CreateCacheSecurityGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates an ElastiCache security group. ElastiCache security groups are only for clusters not running in an AWS VPC.",
+        "id": "createcachesecuritygroup-1483041506604",
         "input": {
           "CacheSecurityGroupName": "my-cache-sec-grp",
           "Description": "Example ElastiCache security group."
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates an ElastiCache security group. ElastiCache security groups are only for clusters not running in an AWS VPC.",
-        "id": "createcachesecuritygroup-1483041506604",
         "title": "CreateCacheSecurityGroup"
       }
     ],
     "CreateCacheSubnetGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a new cache subnet group.",
+        "id": "createcachesubnet-1483042274558",
         "input": {
           "CacheSubnetGroupDescription": "Sample subnet group",
           "CacheSubnetGroupName": "my-sn-grp2",
@@ -287,19 +268,17 @@
             "VpcId": "vpc-91280df6"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a new cache subnet group.",
-        "id": "createcachesubnet-1483042274558",
         "title": "CreateCacheSubnet"
       }
     ],
     "CreateReplicationGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a Redis replication group with 3 nodes.",
+        "id": "createcachereplicationgroup-1474998730655",
         "input": {
           "AutomaticFailoverEnabled": true,
           "CacheNodeType": "cache.m3.medium",
@@ -319,24 +298,21 @@
               "my-redis-rg-002",
               "my-redis-rg-003"
             ],
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "ReplicationGroupId": "my-redis-rg",
             "SnapshottingClusterId": "my-redis-rg-002",
             "Status": "creating"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a Redis replication group with 3 nodes.",
-        "id": "createcachereplicationgroup-1474998730655",
         "title": "CreateCacheReplicationGroup"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a Redis (cluster mode enabled) replication group with two shards. One shard has one read replica node and the other shard has two read replicas.",
+        "id": "createreplicationgroup-1483657035585",
         "input": {
           "AutoMinorVersionUpgrade": true,
           "CacheNodeType": "cache.m3.medium",
@@ -378,27 +354,24 @@
               "rc-rg3-0002-002",
               "rc-rg3-0002-003"
             ],
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "ReplicationGroupId": "clustered-redis-rg",
             "SnapshotRetentionLimit": 8,
             "SnapshotWindow": "05:30-06:30",
             "Status": "creating"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a Redis (cluster mode enabled) replication group with two shards. One shard has one read replica node and the other shard has two read replicas.",
-        "id": "createreplicationgroup-1483657035585",
         "title": "CreateReplicationGroup"
       }
     ],
     "CreateSnapshot": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a snapshot of a non-clustered Redis cluster that has only one node.",
+        "id": "createsnapshot-1474999681024",
         "input": {
           "CacheClusterId": "onenoderedis",
           "SnapshotName": "snapshot-1"
@@ -432,17 +405,15 @@
             "VpcId": "vpc-73c3cd17"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a snapshot of a non-clustered Redis cluster that has only one node.",
-        "id": "createsnapshot-1474999681024",
         "title": "CreateSnapshot - NonClustered Redis, no read-replicas"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a snapshot of a non-clustered Redis cluster that has only three nodes, primary and two read-replicas. CacheClusterId must be a specific node in the cluster.",
+        "id": "createsnapshot-1474999681024",
         "input": {
           "CacheClusterId": "threenoderedis-001",
           "SnapshotName": "snapshot-2"
@@ -476,17 +447,15 @@
             "VpcId": "vpc-73c3cd17"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a snapshot of a non-clustered Redis cluster that has only three nodes, primary and two read-replicas. CacheClusterId must be a specific node in the cluster.",
-        "id": "createsnapshot-1474999681024",
         "title": "CreateSnapshot - NonClustered Redis, 2 read-replicas"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Creates a snapshot of a clustered Redis cluster that has 2 shards, each with a primary and 4 read-replicas.",
+        "id": "createsnapshot-clustered-redis-1486144841758",
         "input": {
           "ReplicationGroupId": "clusteredredis",
           "SnapshotName": "snapshot-2x5"
@@ -523,19 +492,17 @@
             "VpcId": "vpc-73c3cd17"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Creates a snapshot of a clustered Redis cluster that has 2 shards, each with a primary and 4 read-replicas.",
-        "id": "createsnapshot-clustered-redis-1486144841758",
         "title": "CreateSnapshot-clustered Redis"
       }
     ],
     "DeleteCacheCluster": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Deletes an Amazon ElastiCache cluster.",
+        "id": "deletecachecluster-1475010605291",
         "input": {
           "CacheClusterId": "my-memcached"
         },
@@ -547,15 +514,11 @@
             "CacheClusterStatus": "deleting",
             "CacheNodeType": "cache.r3.large",
             "CacheParameterGroup": {
-              "CacheNodeIdsToReboot": [
-
-              ],
+              "CacheNodeIdsToReboot": [],
               "CacheParameterGroupName": "default.memcached1.4",
               "ParameterApplyStatus": "in-sync"
             },
-            "CacheSecurityGroups": [
-
-            ],
+            "CacheSecurityGroups": [],
             "CacheSubnetGroupName": "default",
             "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
             "ConfigurationEndpoint": {
@@ -565,73 +528,64 @@
             "Engine": "memcached",
             "EngineVersion": "1.4.24",
             "NumCacheNodes": 2,
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "PreferredAvailabilityZone": "Multiple",
             "PreferredMaintenanceWindow": "tue:07:30-tue:08:30"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Deletes an Amazon ElastiCache cluster.",
-        "id": "deletecachecluster-1475010605291",
         "title": "DeleteCacheCluster"
       }
     ],
     "DeleteCacheParameterGroup": [
       {
-        "input": {
-          "CacheParameterGroupName": "custom-mem1-4"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Deletes the Amazon ElastiCache parameter group custom-mem1-4.",
         "id": "deletecacheparametergroup-1475010933957",
+        "input": {
+          "CacheParameterGroupName": "custom-mem1-4"
+        },
         "title": "DeleteCacheParameterGroup"
       }
     ],
     "DeleteCacheSecurityGroup": [
       {
-        "input": {
-          "CacheSecurityGroupName": "my-sec-group"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Deletes a cache security group.",
         "id": "deletecachesecuritygroup-1483046967507",
+        "input": {
+          "CacheSecurityGroupName": "my-sec-group"
+        },
         "title": "DeleteCacheSecurityGroup"
       }
     ],
     "DeleteCacheSubnetGroup": [
       {
-        "input": {
-          "CacheSubnetGroupName": "my-subnet-group"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Deletes the Amazon ElastiCache subnet group my-subnet-group.",
         "id": "deletecachesubnetgroup-1475011431325",
+        "input": {
+          "CacheSubnetGroupName": "my-subnet-group"
+        },
         "title": "DeleteCacheSubnetGroup"
       }
     ],
     "DeleteReplicationGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Deletes the Amazon ElastiCache replication group my-redis-rg.",
+        "id": "deletereplicationgroup-1475011641804",
         "input": {
           "ReplicationGroupId": "my-redis-rg",
           "RetainPrimaryCluster": false
@@ -640,25 +594,22 @@
           "ReplicationGroup": {
             "AutomaticFailover": "disabled",
             "Description": "simple redis cluster",
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "ReplicationGroupId": "my-redis-rg",
             "Status": "deleting"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Deletes the Amazon ElastiCache replication group my-redis-rg.",
-        "id": "deletereplicationgroup-1475011641804",
         "title": "DeleteReplicationGroup"
       }
     ],
     "DeleteSnapshot": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Deletes the Redis snapshot snapshot-20160822.",
+        "id": "deletesnapshot-1475011945779",
         "input": {
           "SnapshotName": "snapshot-20161212"
         },
@@ -692,19 +643,17 @@
             "VpcId": "vpc-91280df6"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Deletes the Redis snapshot snapshot-20160822.",
-        "id": "deletesnapshot-1475011945779",
         "title": "DeleteSnapshot"
       }
     ],
     "DescribeCacheClusters": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists the details for up to 50 cache clusters.",
+        "id": "describecacheclusters-1475012269754",
         "input": {
           "CacheClusterId": "my-mem-cluster"
         },
@@ -717,15 +666,11 @@
               "CacheClusterStatus": "available",
               "CacheNodeType": "cache.t2.medium",
               "CacheParameterGroup": {
-                "CacheNodeIdsToReboot": [
-
-                ],
+                "CacheNodeIdsToReboot": [],
                 "CacheParameterGroupName": "default.memcached1.4",
                 "ParameterApplyStatus": "in-sync"
               },
-              "CacheSecurityGroups": [
-
-              ],
+              "CacheSecurityGroups": [],
               "CacheSubnetGroupName": "default",
               "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
               "ConfigurationEndpoint": {
@@ -735,24 +680,21 @@
               "Engine": "memcached",
               "EngineVersion": "1.4.24",
               "NumCacheNodes": 2,
-              "PendingModifiedValues": {
-              },
+              "PendingModifiedValues": {},
               "PreferredAvailabilityZone": "Multiple",
               "PreferredMaintenanceWindow": "wed:06:00-wed:07:00"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists the details for up to 50 cache clusters.",
-        "id": "describecacheclusters-1475012269754",
         "title": "DescribeCacheClusters"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists the details for the cache cluster my-mem-cluster.",
+        "id": "describecacheclusters-1475012269754",
         "input": {
           "CacheClusterId": "my-mem-cluster",
           "ShowCacheNodeInfo": true
@@ -790,15 +732,11 @@
                 }
               ],
               "CacheParameterGroup": {
-                "CacheNodeIdsToReboot": [
-
-                ],
+                "CacheNodeIdsToReboot": [],
                 "CacheParameterGroupName": "default.memcached1.4",
                 "ParameterApplyStatus": "in-sync"
               },
-              "CacheSecurityGroups": [
-
-              ],
+              "CacheSecurityGroups": [],
               "CacheSubnetGroupName": "default",
               "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
               "ConfigurationEndpoint": {
@@ -808,28 +746,24 @@
               "Engine": "memcached",
               "EngineVersion": "1.4.24",
               "NumCacheNodes": 2,
-              "PendingModifiedValues": {
-              },
+              "PendingModifiedValues": {},
               "PreferredAvailabilityZone": "Multiple",
               "PreferredMaintenanceWindow": "wed:06:00-wed:07:00"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists the details for the cache cluster my-mem-cluster.",
-        "id": "describecacheclusters-1475012269754",
         "title": "DescribeCacheClusters"
       }
     ],
     "DescribeCacheEngineVersions": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "Lists the details for up to 25 Memcached and Redis cache engine versions.",
+        "id": "describecacheengineversions-1475012638790",
+        "input": {},
         "output": {
           "CacheEngineVersions": [
             {
@@ -918,17 +852,15 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists the details for up to 25 Memcached and Redis cache engine versions.",
-        "id": "describecacheengineversions-1475012638790",
         "title": "DescribeCacheEngineVersions"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists the details for up to 50 Redis cache engine versions.",
+        "id": "describecacheengineversions-1475012638790",
         "input": {
           "DefaultOnly": false,
           "Engine": "redis",
@@ -995,19 +927,17 @@
           ],
           "Marker": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists the details for up to 50 Redis cache engine versions.",
-        "id": "describecacheengineversions-1475012638790",
         "title": "DescribeCacheEngineVersions"
       }
     ],
     "DescribeCacheParameterGroups": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.",
+        "id": "describecacheparametergroups-1483045457557",
         "input": {
           "CacheParameterGroupName": "custom-mem1-4"
         },
@@ -1020,19 +950,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.",
-        "id": "describecacheparametergroups-1483045457557",
         "title": "DescribeCacheParameterGroups"
       }
     ],
     "DescribeCacheParameters": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists up to 100 user parameter values for the parameter group custom.redis2.8.",
+        "id": "describecacheparameters-1475013576900",
         "input": {
           "CacheParameterGroupName": "custom-redis2-8",
           "MaxRecords": 100,
@@ -1426,35 +1354,31 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists up to 100 user parameter values for the parameter group custom.redis2.8.",
-        "id": "describecacheparameters-1475013576900",
         "title": "DescribeCacheParameters"
       }
     ],
     "DescribeCacheSecurityGroups": [
       {
-        "input": {
-          "CacheSecurityGroupName": "my-sec-group"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group.",
         "id": "describecachesecuritygroups-1483047200801",
+        "input": {
+          "CacheSecurityGroupName": "my-sec-group"
+        },
         "title": "DescribeCacheSecurityGroups"
       }
     ],
     "DescribeCacheSubnetGroups": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Describes up to 25 cache subnet groups.",
+        "id": "describecachesubnetgroups-1482439214064",
         "input": {
           "MaxRecords": 25
         },
@@ -1494,19 +1418,17 @@
           ],
           "Marker": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Describes up to 25 cache subnet groups.",
-        "id": "describecachesubnetgroups-1482439214064",
         "title": "DescribeCacheSubnetGroups"
       }
     ],
     "DescribeEngineDefaultParameters": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns the default engine and system parameter information for the specified cache engine.",
+        "id": "describeenginedefaultparameters-1481738057686",
         "input": {
           "CacheParameterGroupFamily": "redis2.8",
           "MaxRecords": 25
@@ -2111,19 +2033,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns the default engine and system parameter information for the specified cache engine.",
-        "id": "describeenginedefaultparameters-1481738057686",
         "title": "DescribeEngineDefaultParameters"
       }
     ],
     "DescribeEvents": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Describes all the cache-cluster events for the past 120 minutes.",
+        "id": "describeevents-1481843894757",
         "input": {
           "Duration": 360,
           "SourceType": "cache-cluster"
@@ -2163,17 +2083,15 @@
           ],
           "Marker": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Describes all the cache-cluster events for the past 120 minutes.",
-        "id": "describeevents-1481843894757",
         "title": "DescribeEvents"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Describes all the replication-group events from 3:00P to 5:00P on November 11, 2016.",
+        "id": "describeevents-1481843894757",
         "input": {
           "StartTime": "2016-12-22T15:00:00.000Z"
         },
@@ -2218,21 +2136,18 @@
           ],
           "Marker": ""
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Describes all the replication-group events from 3:00P to 5:00P on November 11, 2016.",
-        "id": "describeevents-1481843894757",
         "title": "DescribeEvents"
       }
     ],
     "DescribeReplicationGroups": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "Returns information about the replication group myreplgroup.",
+        "id": "describereplicationgroups-1481742639427",
+        "input": {},
         "output": {
           "Marker": "",
           "ReplicationGroups": [
@@ -2279,42 +2194,37 @@
                   "Status": "available"
                 }
               ],
-              "PendingModifiedValues": {
-              },
+              "PendingModifiedValues": {},
               "ReplicationGroupId": "clustered-redis",
               "Status": "available"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns information about the replication group myreplgroup.",
-        "id": "describereplicationgroups-1481742639427",
         "title": "DescribeReplicationGroups"
       }
     ],
     "DescribeReservedCacheNodes": [
       {
-        "input": {
-          "MaxRecords": 25
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Returns information about reserved cache nodes for this account, or about a specified reserved cache node. If the account has no reserved cache nodes, the operation returns an empty list, as shown here.",
         "id": "describereservedcachenodes-1481742348045",
+        "input": {
+          "MaxRecords": 25
+        },
         "title": "DescribeReservedCacheNodes"
       }
     ],
     "DescribeReservedCacheNodesOfferings": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists available reserved cache node offerings.",
+        "id": "describereseredcachenodeofferings-1481742869998",
         "input": {
           "MaxRecords": 20
         },
@@ -2327,9 +2237,7 @@
               "FixedPrice": 157.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "0167633d-37f6-4222-b872-b1f22eb79ba4",
               "UsagePrice": 0.017
             },
@@ -2354,9 +2262,7 @@
               "FixedPrice": 2381.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "02e1755e-76e8-48e3-8d82-820a5726a458",
               "UsagePrice": 0.276
             },
@@ -2396,9 +2302,7 @@
               "FixedPrice": 101.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "redis",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "065c71ae-4a4e-4f1e-bebf-37525f4c6cb2",
               "UsagePrice": 0.023
             },
@@ -2408,9 +2312,7 @@
               "FixedPrice": 314.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "06774b12-7f5e-48c1-907a-f286c63f327d",
               "UsagePrice": 0.034
             },
@@ -2420,9 +2322,7 @@
               "FixedPrice": 163.0,
               "OfferingType": "Light Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "0924ac6b-847f-4761-ba6b-4290b2adf719",
               "UsagePrice": 0.137
             },
@@ -2462,9 +2362,7 @@
               "FixedPrice": 875.0,
               "OfferingType": "Light Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "0b0c1cc5-2177-4150-95d7-c67ec34dcb19",
               "UsagePrice": 0.363
             },
@@ -2504,9 +2402,7 @@
               "FixedPrice": 2381.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "redis",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "12fcb19c-5416-4e1d-934f-28f1e2cb8599",
               "UsagePrice": 0.276
             },
@@ -2546,9 +2442,7 @@
               "FixedPrice": 140.0,
               "OfferingType": "Light Utilization",
               "ProductDescription": "redis",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "15d7018c-71fb-4717-8409-4bdcdca18da7",
               "UsagePrice": 0.052
             },
@@ -2588,25 +2482,21 @@
               "FixedPrice": 54.0,
               "OfferingType": "Medium Utilization",
               "ProductDescription": "memcached",
-              "RecurringCharges": [
-
-              ],
+              "RecurringCharges": [],
               "ReservedCacheNodesOfferingId": "1ef01f5b-94ff-433f-a530-61a56bfc8e7a",
               "UsagePrice": 0.008
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists available reserved cache node offerings.",
-        "id": "describereseredcachenodeofferings-1481742869998",
         "title": "DescribeReseredCacheNodeOfferings"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists available reserved cache node offerings for cache.r3.large nodes with a 3 year commitment.",
+        "id": "describereseredcachenodeofferings-1481742869998",
         "input": {
           "CacheNodeType": "cache.r3.large",
           "Duration": "3",
@@ -2616,21 +2506,17 @@
         },
         "output": {
           "Marker": "",
-          "ReservedCacheNodesOfferings": [
-
-          ]
+          "ReservedCacheNodesOfferings": []
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists available reserved cache node offerings for cache.r3.large nodes with a 3 year commitment.",
-        "id": "describereseredcachenodeofferings-1481742869998",
         "title": "DescribeReseredCacheNodeOfferings"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists available reserved cache node offerings.",
+        "id": "describereseredcachenodeofferings-1481742869998",
         "input": {
           "CacheNodeType": "",
           "Duration": "",
@@ -2642,23 +2528,19 @@
         },
         "output": {
           "Marker": "",
-          "ReservedCacheNodesOfferings": [
-
-          ]
+          "ReservedCacheNodesOfferings": []
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists available reserved cache node offerings.",
-        "id": "describereseredcachenodeofferings-1481742869998",
         "title": "DescribeReseredCacheNodeOfferings"
       }
     ],
     "DescribeSnapshots": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns information about the snapshot mysnapshot. By default.",
+        "id": "describesnapshots-1481743399584",
         "input": {
           "SnapshotName": "snapshot-20161212"
         },
@@ -2695,19 +2577,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns information about the snapshot mysnapshot. By default.",
-        "id": "describesnapshots-1481743399584",
         "title": "DescribeSnapshots"
       }
     ],
     "ListAllowedNodeTypeModifications": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to.",
+        "id": "listallowednodetypemodifications-1481748494872",
         "input": {
           "ReplicationGroupId": "myreplgroup"
         },
@@ -2723,38 +2603,32 @@
             "cache.r3.xlarge"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to.",
-        "id": "listallowednodetypemodifications-1481748494872",
         "title": "ListAllowedNodeTypeModifications"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to.",
+        "id": "listallowednodetypemodifications-1481748494872",
         "input": {
           "CacheClusterId": "mycluster"
         },
         "output": {
-          "ScaleUpModifications": [
-
-          ]
+          "ScaleUpModifications": []
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to.",
-        "id": "listallowednodetypemodifications-1481748494872",
         "title": "ListAllowedNodeTypeModifications"
       }
     ],
     "ListTagsForResource": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Lists all cost allocation tags currently on the named resource. A cost allocation tag is a key-value pair where the key is case-sensitive and the value is optional. You can use cost allocation tags to categorize and track your AWS costs.",
+        "id": "listtagsforresource-1481748784584",
         "input": {
           "ResourceName": "arn:aws:elasticache:us-west-2:<my-account-id>:cluster:mycluster"
         },
@@ -2770,19 +2644,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Lists all cost allocation tags currently on the named resource. A cost allocation tag is a key-value pair where the key is case-sensitive and the value is optional. You can use cost allocation tags to categorize and track your AWS costs.",
-        "id": "listtagsforresource-1481748784584",
         "title": "ListTagsForResource"
       }
     ],
     "ModifyCacheCluster": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Copies a snapshot to a specified name.",
+        "id": "modifycachecluster-1482962725919",
         "input": {
           "ApplyImmediately": true,
           "CacheClusterId": "redis-cluster",
@@ -2796,41 +2668,34 @@
             "CacheClusterStatus": "available",
             "CacheNodeType": "cache.r3.large",
             "CacheParameterGroup": {
-              "CacheNodeIdsToReboot": [
-
-              ],
+              "CacheNodeIdsToReboot": [],
               "CacheParameterGroupName": "default.redis3.2",
               "ParameterApplyStatus": "in-sync"
             },
-            "CacheSecurityGroups": [
-
-            ],
+            "CacheSecurityGroups": [],
             "CacheSubnetGroupName": "default",
             "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
             "Engine": "redis",
             "EngineVersion": "3.2.4",
             "NumCacheNodes": 1,
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "PreferredAvailabilityZone": "us-east-1e",
             "PreferredMaintenanceWindow": "fri:09:00-fri:10:00",
             "SnapshotRetentionLimit": 14,
             "SnapshotWindow": "07:00-08:00"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Copies a snapshot to a specified name.",
-        "id": "modifycachecluster-1482962725919",
         "title": "ModifyCacheCluster"
       }
     ],
     "ModifyCacheParameterGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Modifies one or more parameter values in the specified parameter group. You cannot modify any default parameter group.",
+        "id": "modifycacheparametergroup-1482966746787",
         "input": {
           "CacheParameterGroupName": "custom-mem1-4",
           "ParameterNameValues": [
@@ -2847,19 +2712,17 @@
         "output": {
           "CacheParameterGroupName": "custom-mem1-4"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Modifies one or more parameter values in the specified parameter group. You cannot modify any default parameter group.",
-        "id": "modifycacheparametergroup-1482966746787",
         "title": "ModifyCacheParameterGroup"
       }
     ],
     "ModifyCacheSubnetGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Modifies an existing ElastiCache subnet group.",
+        "id": "modifycachesubnetgroup-1483043446226",
         "input": {
           "CacheSubnetGroupName": "my-sn-grp",
           "SubnetIds": [
@@ -2905,19 +2768,17 @@
             "VpcId": "vpc-91280df6"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Modifies an existing ElastiCache subnet group.",
-        "id": "modifycachesubnetgroup-1483043446226",
         "title": "ModifyCacheSubnetGroup"
       }
     ],
     "ModifyReplicationGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "",
+        "id": "modifyreplicationgroup-1483039689581",
         "input": {
           "ApplyImmediately": true,
           "ReplicationGroupDescription": "Modified replication group",
@@ -2976,42 +2837,37 @@
                 "Status": "available"
               }
             ],
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "ReplicationGroupId": "my-redis-rg",
             "SnapshottingClusterId": "my-redis-rg-002",
             "Status": "available"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "",
-        "id": "modifyreplicationgroup-1483039689581",
         "title": "ModifyReplicationGroup"
       }
     ],
     "PurchaseReservedCacheNodesOffering": [
       {
-        "input": {
-          "ReservedCacheNodesOfferingId": "1ef01f5b-94ff-433f-a530-61a56bfc8e7a"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "Allows you to purchase a reserved cache node offering.",
         "id": "purchasereservedcachenodesofferings-1483040798484",
+        "input": {
+          "ReservedCacheNodesOfferingId": "1ef01f5b-94ff-433f-a530-61a56bfc8e7a"
+        },
         "title": "PurchaseReservedCacheNodesOfferings"
       }
     ],
     "RebootCacheCluster": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Reboots the specified nodes in the names cluster.",
+        "id": "rebootcachecluster-1482969019505",
         "input": {
           "CacheClusterId": "custom-mem1-4  ",
           "CacheNodeIdsToReboot": [
@@ -3027,15 +2883,11 @@
             "CacheClusterStatus": "rebooting cache cluster nodes",
             "CacheNodeType": "cache.t2.medium",
             "CacheParameterGroup": {
-              "CacheNodeIdsToReboot": [
-
-              ],
+              "CacheNodeIdsToReboot": [],
               "CacheParameterGroupName": "default.memcached1.4",
               "ParameterApplyStatus": "in-sync"
             },
-            "CacheSecurityGroups": [
-
-            ],
+            "CacheSecurityGroups": [],
             "CacheSubnetGroupName": "default",
             "ClientDownloadLandingPage": "https://console.aws.amazon.com/elasticache/home#client-download:",
             "ConfigurationEndpoint": {
@@ -3045,25 +2897,22 @@
             "Engine": "memcached",
             "EngineVersion": "1.4.24",
             "NumCacheNodes": 2,
-            "PendingModifiedValues": {
-            },
+            "PendingModifiedValues": {},
             "PreferredAvailabilityZone": "Multiple",
             "PreferredMaintenanceWindow": "wed:06:00-wed:07:00"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Reboots the specified nodes in the names cluster.",
-        "id": "rebootcachecluster-1482969019505",
         "title": "RebootCacheCluster"
       }
     ],
     "RemoveTagsFromResource": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Removes tags identified by a list of tag keys from the list of tags on the specified resource.",
+        "id": "removetagsfromresource-1483037920947",
         "input": {
           "ResourceName": "arn:aws:elasticache:us-east-1:1234567890:cluster:my-mem-cluster",
           "TagKeys": [
@@ -3096,19 +2945,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Removes tags identified by a list of tag keys from the list of tags on the specified resource.",
-        "id": "removetagsfromresource-1483037920947",
         "title": "RemoveTagsFromResource"
       }
     ],
     "ResetCacheParameterGroup": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Modifies the parameters of a cache parameter group to the engine or system default value.",
+        "id": "resetcacheparametergroup-1483038334014",
         "input": {
           "CacheParameterGroupName": "custom-mem1-4",
           "ResetAllParameters": true
@@ -3116,34 +2963,25 @@
         "output": {
           "CacheParameterGroupName": "custom-mem1-4"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Modifies the parameters of a cache parameter group to the engine or system default value.",
-        "id": "resetcacheparametergroup-1483038334014",
         "title": "ResetCacheParameterGroup"
       }
     ],
     "RevokeCacheSecurityGroupIngress": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group.",
+        "id": "describecachesecuritygroups-1483047200801",
         "input": {
           "CacheSecurityGroupName": "my-sec-grp",
           "EC2SecurityGroupName": "my-ec2-sec-grp",
           "EC2SecurityGroupOwnerId": "1234567890"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group.",
-        "id": "describecachesecuritygroups-1483047200801",
         "title": "DescribeCacheSecurityGroups"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

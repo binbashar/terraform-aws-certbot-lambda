@@ -1,44 +1,44 @@
 {
   "pagination": {
+    "DescribePullRequestEvents": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "pullRequestEvents"
+    },
+    "GetCommentsForComparedCommit": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "commentsForComparedCommitData"
+    },
+    "GetCommentsForPullRequest": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "commentsForPullRequestData"
+    },
+    "GetDifferences": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "differences"
+    },
     "ListBranches": {
       "input_token": "nextToken",
       "output_token": "nextToken",
       "result_key": "branches"
     },
+    "ListPullRequests": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "pullRequestIds"
+    },
     "ListRepositories": {
       "input_token": "nextToken",
       "output_token": "nextToken",
       "result_key": "repositories"
-    },
-    "GetCommentsForComparedCommit": {
-      "result_key": "commentsForComparedCommitData",
-      "output_token": "nextToken",
-      "input_token": "nextToken",
-      "limit_key": "maxResults"
-    },
-    "DescribePullRequestEvents": {
-      "result_key": "pullRequestEvents",
-      "output_token": "nextToken",
-      "input_token": "nextToken",
-      "limit_key": "maxResults"
-    },
-    "GetCommentsForPullRequest": {
-      "result_key": "commentsForPullRequestData",
-      "output_token": "nextToken",
-      "input_token": "nextToken",
-      "limit_key": "maxResults"
-    },
-    "ListPullRequests": {
-      "result_key": "pullRequestIds",
-      "output_token": "nextToken",
-      "input_token": "nextToken",
-      "limit_key": "maxResults"
-    },
-    "GetDifferences": {
-      "result_key": "differences",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
     }
   }
 }

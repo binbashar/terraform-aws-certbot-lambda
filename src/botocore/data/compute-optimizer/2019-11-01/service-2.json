@@ -1,857 +1,1080 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-11-01",
-    "endpointPrefix":"compute-optimizer",
-    "jsonVersion":"1.0",
-    "protocol":"json",
-    "serviceFullName":"AWS Compute Optimizer",
-    "serviceId":"Compute Optimizer",
-    "signatureVersion":"v4",
-    "signingName":"compute-optimizer",
-    "targetPrefix":"ComputeOptimizerService",
-    "uid":"compute-optimizer-2019-11-01"
+  "documentation": "<p>AWS Compute Optimizer is a service that analyzes the configuration and utilization metrics of your AWS resources, such as EC2 instances and Auto Scaling groups. It reports whether your resources are optimal, and generates optimization recommendations to reduce the cost and improve the performance of your workloads. Compute Optimizer also provides recent utilization metric data, as well as projected utilization metric data for the recommendations, which you can use to evaluate which recommendation provides the best price-performance trade-off. The analysis of your usage patterns can help you decide when to move or resize your running resources, and still meet your performance and capacity requirements. For more information about Compute Optimizer, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/\">AWS Compute Optimizer User Guide</a>.</p>",
+  "metadata": {
+    "apiVersion": "2019-11-01",
+    "endpointPrefix": "compute-optimizer",
+    "jsonVersion": "1.0",
+    "protocol": "json",
+    "serviceFullName": "AWS Compute Optimizer",
+    "serviceId": "Compute Optimizer",
+    "signatureVersion": "v4",
+    "signingName": "compute-optimizer",
+    "targetPrefix": "ComputeOptimizerService",
+    "uid": "compute-optimizer-2019-11-01"
   },
-  "operations":{
-    "GetAutoScalingGroupRecommendations":{
-      "name":"GetAutoScalingGroupRecommendations",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetAutoScalingGroupRecommendationsRequest"},
-      "output":{"shape":"GetAutoScalingGroupRecommendationsResponse"},
-      "errors":[
-        {"shape":"OptInRequiredException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+  "operations": {
+    "GetAutoScalingGroupRecommendations": {
+      "documentation": "<p>Returns Auto Scaling group recommendations.</p> <p>AWS Compute Optimizer currently generates recommendations for Auto Scaling groups that are configured to run instances of the M, C, R, T, and X instance families. The service does not generate recommendations for Auto Scaling groups that have a scaling policy attached to them, or that do not have the same values for desired, minimum, and maximum capacity. In order for Compute Optimizer to analyze your Auto Scaling groups, they must be of a fixed size. For more information, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is.html\">AWS Compute Optimizer User Guide</a>.</p>",
+      "errors": [
+        {
+          "shape": "OptInRequiredException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Returns Auto Scaling group recommendations.</p> <p>AWS Compute Optimizer currently generates recommendations for Auto Scaling groups that are configured to run instances of the M, C, R, T, and X instance families. The service does not generate recommendations for Auto Scaling groups that have a scaling policy attached to them, or that do not have the same values for desired, minimum, and maximum capacity. In order for Compute Optimizer to analyze your Auto Scaling groups, they must be of a fixed size. For more information, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is.html\">AWS Compute Optimizer User Guide</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetAutoScalingGroupRecommendationsRequest"
+      },
+      "name": "GetAutoScalingGroupRecommendations",
+      "output": {
+        "shape": "GetAutoScalingGroupRecommendationsResponse"
+      }
     },
-    "GetEC2InstanceRecommendations":{
-      "name":"GetEC2InstanceRecommendations",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetEC2InstanceRecommendationsRequest"},
-      "output":{"shape":"GetEC2InstanceRecommendationsResponse"},
-      "errors":[
-        {"shape":"OptInRequiredException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+    "GetEC2InstanceRecommendations": {
+      "documentation": "<p>Returns Amazon EC2 instance recommendations.</p> <p>AWS Compute Optimizer currently generates recommendations for Amazon Elastic Compute Cloud (Amazon EC2) and Amazon EC2 Auto Scaling. It generates recommendations for M, C, R, T, and X instance families. For more information, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is.html\">AWS Compute Optimizer User Guide</a>.</p>",
+      "errors": [
+        {
+          "shape": "OptInRequiredException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Returns Amazon EC2 instance recommendations.</p> <p>AWS Compute Optimizer currently generates recommendations for Amazon Elastic Compute Cloud (Amazon EC2) and Amazon EC2 Auto Scaling. It generates recommendations for M, C, R, T, and X instance families. For more information, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is.html\">AWS Compute Optimizer User Guide</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetEC2InstanceRecommendationsRequest"
+      },
+      "name": "GetEC2InstanceRecommendations",
+      "output": {
+        "shape": "GetEC2InstanceRecommendationsResponse"
+      }
     },
-    "GetEC2RecommendationProjectedMetrics":{
-      "name":"GetEC2RecommendationProjectedMetrics",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetEC2RecommendationProjectedMetricsRequest"},
-      "output":{"shape":"GetEC2RecommendationProjectedMetricsResponse"},
-      "errors":[
-        {"shape":"OptInRequiredException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+    "GetEC2RecommendationProjectedMetrics": {
+      "documentation": "<p>Returns the projected utilization metrics of Amazon EC2 instance recommendations.</p>",
+      "errors": [
+        {
+          "shape": "OptInRequiredException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Returns the projected utilization metrics of Amazon EC2 instance recommendations.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetEC2RecommendationProjectedMetricsRequest"
+      },
+      "name": "GetEC2RecommendationProjectedMetrics",
+      "output": {
+        "shape": "GetEC2RecommendationProjectedMetricsResponse"
+      }
     },
-    "GetEnrollmentStatus":{
-      "name":"GetEnrollmentStatus",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetEnrollmentStatusRequest"},
-      "output":{"shape":"GetEnrollmentStatusResponse"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+    "GetEnrollmentStatus": {
+      "documentation": "<p>Returns the enrollment (opt in) status of an account to the AWS Compute Optimizer service.</p> <p>If the account is a master account of an organization, this operation also confirms the enrollment status of member accounts within the organization.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Returns the enrollment (opt in) status of an account to the AWS Compute Optimizer service.</p> <p>If the account is a master account of an organization, this operation also confirms the enrollment status of member accounts within the organization.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetEnrollmentStatusRequest"
+      },
+      "name": "GetEnrollmentStatus",
+      "output": {
+        "shape": "GetEnrollmentStatusResponse"
+      }
     },
-    "GetRecommendationSummaries":{
-      "name":"GetRecommendationSummaries",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetRecommendationSummariesRequest"},
-      "output":{"shape":"GetRecommendationSummariesResponse"},
-      "errors":[
-        {"shape":"OptInRequiredException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+    "GetRecommendationSummaries": {
+      "documentation": "<p>Returns the optimization findings for an account.</p> <p>For example, it returns the number of Amazon EC2 instances in an account that are under-provisioned, over-provisioned, or optimized. It also returns the number of Auto Scaling groups in an account that are not optimized, or optimized.</p>",
+      "errors": [
+        {
+          "shape": "OptInRequiredException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Returns the optimization findings for an account.</p> <p>For example, it returns the number of Amazon EC2 instances in an account that are under-provisioned, over-provisioned, or optimized. It also returns the number of Auto Scaling groups in an account that are not optimized, or optimized.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetRecommendationSummariesRequest"
+      },
+      "name": "GetRecommendationSummaries",
+      "output": {
+        "shape": "GetRecommendationSummariesResponse"
+      }
     },
-    "UpdateEnrollmentStatus":{
-      "name":"UpdateEnrollmentStatus",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateEnrollmentStatusRequest"},
-      "output":{"shape":"UpdateEnrollmentStatusResponse"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"MissingAuthenticationToken"},
-        {"shape":"ThrottlingException"}
+    "UpdateEnrollmentStatus": {
+      "documentation": "<p>Updates the enrollment (opt in) status of an account to the AWS Compute Optimizer service.</p> <p>If the account is a master account of an organization, this operation can also enroll member accounts within the organization.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "MissingAuthenticationToken"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Updates the enrollment (opt in) status of an account to the AWS Compute Optimizer service.</p> <p>If the account is a master account of an organization, this operation can also enroll member accounts within the organization.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateEnrollmentStatusRequest"
+      },
+      "name": "UpdateEnrollmentStatus",
+      "output": {
+        "shape": "UpdateEnrollmentStatusResponse"
+      }
     }
   },
-  "shapes":{
-    "AccessDeniedException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>You do not have sufficient access to perform this action.</p>",
-      "exception":true,
-      "synthetic":true
-    },
-    "AccountId":{"type":"string"},
-    "AccountIds":{
-      "type":"list",
-      "member":{"shape":"AccountId"}
-    },
-    "AutoScalingGroupArn":{"type":"string"},
-    "AutoScalingGroupArns":{
-      "type":"list",
-      "member":{"shape":"AutoScalingGroupArn"}
-    },
-    "AutoScalingGroupConfiguration":{
-      "type":"structure",
-      "members":{
-        "desiredCapacity":{
-          "shape":"DesiredCapacity",
-          "documentation":"<p>The desired capacity, or number of instances, for the Auto Scaling group.</p>"
-        },
-        "minSize":{
-          "shape":"MinSize",
-          "documentation":"<p>The minimum size, or minimum number of instances, for the Auto Scaling group.</p>"
-        },
-        "maxSize":{
-          "shape":"MaxSize",
-          "documentation":"<p>The maximum size, or maximum number of instances, for the Auto Scaling group.</p>"
-        },
-        "instanceType":{
-          "shape":"InstanceType",
-          "documentation":"<p>The instance type for the Auto Scaling group.</p>"
+  "shapes": {
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have sufficient access to perform this action.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>Describes the configuration of an Auto Scaling group.</p>"
+      "synthetic": true,
+      "type": "structure"
     },
-    "AutoScalingGroupName":{"type":"string"},
-    "AutoScalingGroupRecommendation":{
-      "type":"structure",
-      "members":{
-        "accountId":{
-          "shape":"AccountId",
-          "documentation":"<p>The AWS account ID of the Auto Scaling group.</p>"
+    "AccountId": {
+      "type": "string"
+    },
+    "AccountIds": {
+      "member": {
+        "shape": "AccountId"
+      },
+      "type": "list"
+    },
+    "AutoScalingGroupArn": {
+      "type": "string"
+    },
+    "AutoScalingGroupArns": {
+      "member": {
+        "shape": "AutoScalingGroupArn"
+      },
+      "type": "list"
+    },
+    "AutoScalingGroupConfiguration": {
+      "documentation": "<p>Describes the configuration of an Auto Scaling group.</p>",
+      "members": {
+        "desiredCapacity": {
+          "documentation": "<p>The desired capacity, or number of instances, for the Auto Scaling group.</p>",
+          "shape": "DesiredCapacity"
         },
-        "autoScalingGroupArn":{
-          "shape":"AutoScalingGroupArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the Auto Scaling group.</p>"
+        "instanceType": {
+          "documentation": "<p>The instance type for the Auto Scaling group.</p>",
+          "shape": "InstanceType"
         },
-        "autoScalingGroupName":{
-          "shape":"AutoScalingGroupName",
-          "documentation":"<p>The name of the Auto Scaling group.</p>"
+        "maxSize": {
+          "documentation": "<p>The maximum size, or maximum number of instances, for the Auto Scaling group.</p>",
+          "shape": "MaxSize"
         },
-        "finding":{
-          "shape":"Finding",
-          "documentation":"<p>The finding classification for the Auto Scaling group.</p> <p>Findings for Auto Scaling groups include:</p> <ul> <li> <p> <b> <code>NotOptimized</code> </b>—An Auto Scaling group is considered not optimized when AWS Compute Optimizer identifies a recommendation that can provide better performance for your workload.</p> </li> <li> <p> <b> <code>Optimized</code> </b>—An Auto Scaling group is considered optimized when Compute Optimizer determines that the group is correctly provisioned to run your workload based on the chosen instance type. For optimized resources, Compute Optimizer might recommend a new generation instance type.</p> </li> </ul> <note> <p>The values that are returned might be <code>NOT_OPTIMIZED</code> or <code>OPTIMIZED</code>.</p> </note>"
-        },
-        "utilizationMetrics":{
-          "shape":"UtilizationMetrics",
-          "documentation":"<p>An array of objects that describe the utilization metrics of the Auto Scaling group.</p>"
-        },
-        "lookBackPeriodInDays":{
-          "shape":"LookBackPeriodInDays",
-          "documentation":"<p>The number of days for which utilization metrics were analyzed for the Auto Scaling group.</p>"
-        },
-        "currentConfiguration":{
-          "shape":"AutoScalingGroupConfiguration",
-          "documentation":"<p>An array of objects that describe the current configuration of the Auto Scaling group.</p>"
-        },
-        "recommendationOptions":{
-          "shape":"AutoScalingGroupRecommendationOptions",
-          "documentation":"<p>An array of objects that describe the recommendation options for the Auto Scaling group.</p>"
-        },
-        "lastRefreshTimestamp":{
-          "shape":"LastRefreshTimestamp",
-          "documentation":"<p>The time stamp of when the Auto Scaling group recommendation was last refreshed.</p>"
+        "minSize": {
+          "documentation": "<p>The minimum size, or minimum number of instances, for the Auto Scaling group.</p>",
+          "shape": "MinSize"
         }
       },
-      "documentation":"<p>Describes an Auto Scaling group recommendation.</p>"
+      "type": "structure"
     },
-    "AutoScalingGroupRecommendationOption":{
-      "type":"structure",
-      "members":{
-        "configuration":{
-          "shape":"AutoScalingGroupConfiguration",
-          "documentation":"<p>An array of objects that describe an Auto Scaling group configuration.</p>"
+    "AutoScalingGroupName": {
+      "type": "string"
+    },
+    "AutoScalingGroupRecommendation": {
+      "documentation": "<p>Describes an Auto Scaling group recommendation.</p>",
+      "members": {
+        "accountId": {
+          "documentation": "<p>The AWS account ID of the Auto Scaling group.</p>",
+          "shape": "AccountId"
         },
-        "projectedUtilizationMetrics":{
-          "shape":"ProjectedUtilizationMetrics",
-          "documentation":"<p>An array of objects that describe the projected utilization metrics of the Auto Scaling group recommendation option.</p>"
+        "autoScalingGroupArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the Auto Scaling group.</p>",
+          "shape": "AutoScalingGroupArn"
         },
-        "performanceRisk":{
-          "shape":"PerformanceRisk",
-          "documentation":"<p>The performance risk of the Auto Scaling group configuration recommendation.</p> <p>Performance risk is the likelihood of the recommended instance type not meeting the performance requirement of your workload.</p> <p>The lowest performance risk is categorized as <code>0</code>, and the highest as <code>5</code>.</p>"
+        "autoScalingGroupName": {
+          "documentation": "<p>The name of the Auto Scaling group.</p>",
+          "shape": "AutoScalingGroupName"
         },
-        "rank":{
-          "shape":"Rank",
-          "documentation":"<p>The rank of the Auto Scaling group recommendation option.</p> <p>The top recommendation option is ranked as <code>1</code>.</p>"
+        "currentConfiguration": {
+          "documentation": "<p>An array of objects that describe the current configuration of the Auto Scaling group.</p>",
+          "shape": "AutoScalingGroupConfiguration"
+        },
+        "finding": {
+          "documentation": "<p>The finding classification for the Auto Scaling group.</p> <p>Findings for Auto Scaling groups include:</p> <ul> <li> <p> <b> <code>NotOptimized</code> </b>\u2014An Auto Scaling group is considered not optimized when AWS Compute Optimizer identifies a recommendation that can provide better performance for your workload.</p> </li> <li> <p> <b> <code>Optimized</code> </b>\u2014An Auto Scaling group is considered optimized when Compute Optimizer determines that the group is correctly provisioned to run your workload based on the chosen instance type. For optimized resources, Compute Optimizer might recommend a new generation instance type.</p> </li> </ul> <note> <p>The values that are returned might be <code>NOT_OPTIMIZED</code> or <code>OPTIMIZED</code>.</p> </note>",
+          "shape": "Finding"
+        },
+        "lastRefreshTimestamp": {
+          "documentation": "<p>The time stamp of when the Auto Scaling group recommendation was last refreshed.</p>",
+          "shape": "LastRefreshTimestamp"
+        },
+        "lookBackPeriodInDays": {
+          "documentation": "<p>The number of days for which utilization metrics were analyzed for the Auto Scaling group.</p>",
+          "shape": "LookBackPeriodInDays"
+        },
+        "recommendationOptions": {
+          "documentation": "<p>An array of objects that describe the recommendation options for the Auto Scaling group.</p>",
+          "shape": "AutoScalingGroupRecommendationOptions"
+        },
+        "utilizationMetrics": {
+          "documentation": "<p>An array of objects that describe the utilization metrics of the Auto Scaling group.</p>",
+          "shape": "UtilizationMetrics"
         }
       },
-      "documentation":"<p>Describes a recommendation option for an Auto Scaling group.</p>"
+      "type": "structure"
     },
-    "AutoScalingGroupRecommendationOptions":{
-      "type":"list",
-      "member":{"shape":"AutoScalingGroupRecommendationOption"}
-    },
-    "AutoScalingGroupRecommendations":{
-      "type":"list",
-      "member":{"shape":"AutoScalingGroupRecommendation"}
-    },
-    "Code":{"type":"string"},
-    "CurrentInstanceType":{"type":"string"},
-    "DesiredCapacity":{"type":"integer"},
-    "ErrorMessage":{"type":"string"},
-    "Filter":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"FilterName",
-          "documentation":"<p>The name of the filter.</p> <p>Specify <code>Finding</code> to filter the results to a specific findings classification.</p> <p>Specify <code>RecommendationSourceType</code> to filter the results to a specific resource type.</p>"
+    "AutoScalingGroupRecommendationOption": {
+      "documentation": "<p>Describes a recommendation option for an Auto Scaling group.</p>",
+      "members": {
+        "configuration": {
+          "documentation": "<p>An array of objects that describe an Auto Scaling group configuration.</p>",
+          "shape": "AutoScalingGroupConfiguration"
         },
-        "values":{
-          "shape":"FilterValues",
-          "documentation":"<p>The value of the filter.</p> <p>If you specify the <code>name</code> parameter as <code>Finding</code>, and you're recommendations for an <i>instance</i>, then the valid values are <code>Underprovisioned</code>, <code>Overprovisioned</code>, <code>NotOptimized</code>, or <code>Optimized</code>.</p> <p>If you specify the <code>name</code> parameter as <code>Finding</code>, and you're recommendations for an <i>Auto Scaling group</i>, then the valid values are <code>Optimized</code>, or <code>NotOptimized</code>.</p> <p>If you specify the <code>name</code> parameter as <code>RecommendationSourceType</code>, then the valid values are <code>EC2Instance</code>, or <code>AutoScalingGroup</code>.</p>"
+        "performanceRisk": {
+          "documentation": "<p>The performance risk of the Auto Scaling group configuration recommendation.</p> <p>Performance risk is the likelihood of the recommended instance type not meeting the performance requirement of your workload.</p> <p>The lowest performance risk is categorized as <code>0</code>, and the highest as <code>5</code>.</p>",
+          "shape": "PerformanceRisk"
+        },
+        "projectedUtilizationMetrics": {
+          "documentation": "<p>An array of objects that describe the projected utilization metrics of the Auto Scaling group recommendation option.</p>",
+          "shape": "ProjectedUtilizationMetrics"
+        },
+        "rank": {
+          "documentation": "<p>The rank of the Auto Scaling group recommendation option.</p> <p>The top recommendation option is ranked as <code>1</code>.</p>",
+          "shape": "Rank"
         }
       },
-      "documentation":"<p>Describes a filter that returns a more specific list of recommendations.</p>"
+      "type": "structure"
     },
-    "FilterName":{
-      "type":"string",
-      "enum":[
+    "AutoScalingGroupRecommendationOptions": {
+      "member": {
+        "shape": "AutoScalingGroupRecommendationOption"
+      },
+      "type": "list"
+    },
+    "AutoScalingGroupRecommendations": {
+      "member": {
+        "shape": "AutoScalingGroupRecommendation"
+      },
+      "type": "list"
+    },
+    "Code": {
+      "type": "string"
+    },
+    "CurrentInstanceType": {
+      "type": "string"
+    },
+    "DesiredCapacity": {
+      "type": "integer"
+    },
+    "ErrorMessage": {
+      "type": "string"
+    },
+    "Filter": {
+      "documentation": "<p>Describes a filter that returns a more specific list of recommendations.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the filter.</p> <p>Specify <code>Finding</code> to filter the results to a specific findings classification.</p> <p>Specify <code>RecommendationSourceType</code> to filter the results to a specific resource type.</p>",
+          "shape": "FilterName"
+        },
+        "values": {
+          "documentation": "<p>The value of the filter.</p> <p>If you specify the <code>name</code> parameter as <code>Finding</code>, and you're recommendations for an <i>instance</i>, then the valid values are <code>Underprovisioned</code>, <code>Overprovisioned</code>, <code>NotOptimized</code>, or <code>Optimized</code>.</p> <p>If you specify the <code>name</code> parameter as <code>Finding</code>, and you're recommendations for an <i>Auto Scaling group</i>, then the valid values are <code>Optimized</code>, or <code>NotOptimized</code>.</p> <p>If you specify the <code>name</code> parameter as <code>RecommendationSourceType</code>, then the valid values are <code>EC2Instance</code>, or <code>AutoScalingGroup</code>.</p>",
+          "shape": "FilterValues"
+        }
+      },
+      "type": "structure"
+    },
+    "FilterName": {
+      "enum": [
         "Finding",
         "RecommendationSourceType"
-      ]
+      ],
+      "type": "string"
     },
-    "FilterValue":{"type":"string"},
-    "FilterValues":{
-      "type":"list",
-      "member":{"shape":"FilterValue"}
+    "FilterValue": {
+      "type": "string"
     },
-    "Filters":{
-      "type":"list",
-      "member":{"shape":"Filter"}
+    "FilterValues": {
+      "member": {
+        "shape": "FilterValue"
+      },
+      "type": "list"
     },
-    "Finding":{
-      "type":"string",
-      "enum":[
+    "Filters": {
+      "member": {
+        "shape": "Filter"
+      },
+      "type": "list"
+    },
+    "Finding": {
+      "enum": [
         "Underprovisioned",
         "Overprovisioned",
         "Optimized",
         "NotOptimized"
-      ]
+      ],
+      "type": "string"
     },
-    "GetAutoScalingGroupRecommendationsRequest":{
-      "type":"structure",
-      "members":{
-        "accountIds":{
-          "shape":"AccountIds",
-          "documentation":"<p>The AWS account IDs for which to return Auto Scaling group recommendations.</p> <p>Only one account ID can be specified per request.</p>"
+    "GetAutoScalingGroupRecommendationsRequest": {
+      "members": {
+        "accountIds": {
+          "documentation": "<p>The AWS account IDs for which to return Auto Scaling group recommendations.</p> <p>Only one account ID can be specified per request.</p>",
+          "shape": "AccountIds"
         },
-        "autoScalingGroupArns":{
-          "shape":"AutoScalingGroupArns",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the Auto Scaling groups for which to return recommendations.</p>"
+        "autoScalingGroupArns": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the Auto Scaling groups for which to return recommendations.</p>",
+          "shape": "AutoScalingGroupArns"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to advance to the next page of Auto Scaling group recommendations.</p>"
+        "filters": {
+          "documentation": "<p>An array of objects that describe a filter that returns a more specific list of Auto Scaling group recommendations.</p>",
+          "shape": "Filters"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of Auto Scaling group recommendations to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of Auto Scaling group recommendations to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>",
+          "shape": "MaxResults"
         },
-        "filters":{
-          "shape":"Filters",
-          "documentation":"<p>An array of objects that describe a filter that returns a more specific list of Auto Scaling group recommendations.</p>"
+        "nextToken": {
+          "documentation": "<p>The token to advance to the next page of Auto Scaling group recommendations.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetAutoScalingGroupRecommendationsResponse":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to advance to the next page of Auto Scaling group recommendations.</p> <p>This value is null when there are no more pages of Auto Scaling group recommendations to return.</p>"
+    "GetAutoScalingGroupRecommendationsResponse": {
+      "members": {
+        "autoScalingGroupRecommendations": {
+          "documentation": "<p>An array of objects that describe Auto Scaling group recommendations.</p>",
+          "shape": "AutoScalingGroupRecommendations"
         },
-        "autoScalingGroupRecommendations":{
-          "shape":"AutoScalingGroupRecommendations",
-          "documentation":"<p>An array of objects that describe Auto Scaling group recommendations.</p>"
+        "errors": {
+          "documentation": "<p>An array of objects that describe errors of the request.</p> <p>For example, an error is returned if you request recommendations for an unsupported Auto Scaling group.</p>",
+          "shape": "GetRecommendationErrors"
         },
-        "errors":{
-          "shape":"GetRecommendationErrors",
-          "documentation":"<p>An array of objects that describe errors of the request.</p> <p>For example, an error is returned if you request recommendations for an unsupported Auto Scaling group.</p>"
+        "nextToken": {
+          "documentation": "<p>The token to use to advance to the next page of Auto Scaling group recommendations.</p> <p>This value is null when there are no more pages of Auto Scaling group recommendations to return.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetEC2InstanceRecommendationsRequest":{
-      "type":"structure",
-      "members":{
-        "instanceArns":{
-          "shape":"InstanceArns",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the instances for which to return recommendations.</p>"
+    "GetEC2InstanceRecommendationsRequest": {
+      "members": {
+        "accountIds": {
+          "documentation": "<p>The AWS account IDs for which to return instance recommendations.</p> <p>Only one account ID can be specified per request.</p>",
+          "shape": "AccountIds"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to advance to the next page of instance recommendations.</p>"
+        "filters": {
+          "documentation": "<p>An array of objects that describe a filter that returns a more specific list of instance recommendations.</p>",
+          "shape": "Filters"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of instance recommendations to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>"
+        "instanceArns": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the instances for which to return recommendations.</p>",
+          "shape": "InstanceArns"
         },
-        "filters":{
-          "shape":"Filters",
-          "documentation":"<p>An array of objects that describe a filter that returns a more specific list of instance recommendations.</p>"
+        "maxResults": {
+          "documentation": "<p>The maximum number of instance recommendations to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>",
+          "shape": "MaxResults"
         },
-        "accountIds":{
-          "shape":"AccountIds",
-          "documentation":"<p>The AWS account IDs for which to return instance recommendations.</p> <p>Only one account ID can be specified per request.</p>"
+        "nextToken": {
+          "documentation": "<p>The token to advance to the next page of instance recommendations.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetEC2InstanceRecommendationsResponse":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to advance to the next page of instance recommendations.</p> <p>This value is null when there are no more pages of instance recommendations to return.</p>"
+    "GetEC2InstanceRecommendationsResponse": {
+      "members": {
+        "errors": {
+          "documentation": "<p>An array of objects that describe errors of the request.</p> <p>For example, an error is returned if you request recommendations for an instance of an unsupported instance family.</p>",
+          "shape": "GetRecommendationErrors"
         },
-        "instanceRecommendations":{
-          "shape":"InstanceRecommendations",
-          "documentation":"<p>An array of objects that describe instance recommendations.</p>"
+        "instanceRecommendations": {
+          "documentation": "<p>An array of objects that describe instance recommendations.</p>",
+          "shape": "InstanceRecommendations"
         },
-        "errors":{
-          "shape":"GetRecommendationErrors",
-          "documentation":"<p>An array of objects that describe errors of the request.</p> <p>For example, an error is returned if you request recommendations for an instance of an unsupported instance family.</p>"
+        "nextToken": {
+          "documentation": "<p>The token to use to advance to the next page of instance recommendations.</p> <p>This value is null when there are no more pages of instance recommendations to return.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetEC2RecommendationProjectedMetricsRequest":{
-      "type":"structure",
-      "required":[
+    "GetEC2RecommendationProjectedMetricsRequest": {
+      "members": {
+        "endTime": {
+          "documentation": "<p>The time stamp of the last projected metrics data point to return.</p>",
+          "shape": "Timestamp"
+        },
+        "instanceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the instances for which to return recommendation projected metrics.</p>",
+          "shape": "InstanceArn"
+        },
+        "period": {
+          "documentation": "<p>The granularity, in seconds, of the projected metrics data points.</p>",
+          "shape": "Period"
+        },
+        "startTime": {
+          "documentation": "<p>The time stamp of the first projected metrics data point to return.</p>",
+          "shape": "Timestamp"
+        },
+        "stat": {
+          "documentation": "<p>The statistic of the projected metrics.</p>",
+          "shape": "MetricStatistic"
+        }
+      },
+      "required": [
         "instanceArn",
         "stat",
         "period",
         "startTime",
         "endTime"
       ],
-      "members":{
-        "instanceArn":{
-          "shape":"InstanceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the instances for which to return recommendation projected metrics.</p>"
-        },
-        "stat":{
-          "shape":"MetricStatistic",
-          "documentation":"<p>The statistic of the projected metrics.</p>"
-        },
-        "period":{
-          "shape":"Period",
-          "documentation":"<p>The granularity, in seconds, of the projected metrics data points.</p>"
-        },
-        "startTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time stamp of the first projected metrics data point to return.</p>"
-        },
-        "endTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time stamp of the last projected metrics data point to return.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetEC2RecommendationProjectedMetricsResponse":{
-      "type":"structure",
-      "members":{
-        "recommendedOptionProjectedMetrics":{
-          "shape":"RecommendedOptionProjectedMetrics",
-          "documentation":"<p>An array of objects that describe a projected metrics.</p>"
-        }
-      }
-    },
-    "GetEnrollmentStatusRequest":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "GetEnrollmentStatusResponse":{
-      "type":"structure",
-      "members":{
-        "status":{
-          "shape":"Status",
-          "documentation":"<p>The enrollment status of the account.</p>"
-        },
-        "statusReason":{
-          "shape":"StatusReason",
-          "documentation":"<p>The reason for the enrollment status of the account.</p> <p>For example, an account might show a status of <code>Pending</code> because member accounts of an organization require more time to be enrolled in the service.</p>"
-        },
-        "memberAccountsEnrolled":{
-          "shape":"MemberAccountsEnrolled",
-          "documentation":"<p>Confirms the enrollment status of member accounts within the organization, if the account is a master account of an organization.</p>"
-        }
-      }
-    },
-    "GetRecommendationError":{
-      "type":"structure",
-      "members":{
-        "identifier":{
-          "shape":"Identifier",
-          "documentation":"<p>The ID of the error.</p>"
-        },
-        "code":{
-          "shape":"Code",
-          "documentation":"<p>The error code.</p>"
-        },
-        "message":{
-          "shape":"Message",
-          "documentation":"<p>The message, or reason, for the error.</p>"
+    "GetEC2RecommendationProjectedMetricsResponse": {
+      "members": {
+        "recommendedOptionProjectedMetrics": {
+          "documentation": "<p>An array of objects that describe a projected metrics.</p>",
+          "shape": "RecommendedOptionProjectedMetrics"
         }
       },
-      "documentation":"<p>Describes an error experienced when getting recommendations.</p> <p>For example, an error is returned if you request recommendations for an unsupported Auto Scaling group, or if you request recommendations for an instance of an unsupported instance family.</p>"
+      "type": "structure"
     },
-    "GetRecommendationErrors":{
-      "type":"list",
-      "member":{"shape":"GetRecommendationError"}
+    "GetEnrollmentStatusRequest": {
+      "members": {},
+      "type": "structure"
     },
-    "GetRecommendationSummariesRequest":{
-      "type":"structure",
-      "members":{
-        "accountIds":{
-          "shape":"AccountIds",
-          "documentation":"<p>The AWS account IDs for which to return recommendation summaries.</p> <p>Only one account ID can be specified per request.</p>"
+    "GetEnrollmentStatusResponse": {
+      "members": {
+        "memberAccountsEnrolled": {
+          "documentation": "<p>Confirms the enrollment status of member accounts within the organization, if the account is a master account of an organization.</p>",
+          "shape": "MemberAccountsEnrolled"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to advance to the next page of recommendation summaries.</p>"
+        "status": {
+          "documentation": "<p>The enrollment status of the account.</p>",
+          "shape": "Status"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of recommendation summaries to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>"
-        }
-      }
-    },
-    "GetRecommendationSummariesResponse":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to advance to the next page of recommendation summaries.</p> <p>This value is null when there are no more pages of recommendation summaries to return.</p>"
-        },
-        "recommendationSummaries":{
-          "shape":"RecommendationSummaries",
-          "documentation":"<p>An array of objects that summarize a recommendation.</p>"
-        }
-      }
-    },
-    "Identifier":{"type":"string"},
-    "IncludeMemberAccounts":{"type":"boolean"},
-    "InstanceArn":{"type":"string"},
-    "InstanceArns":{
-      "type":"list",
-      "member":{"shape":"InstanceArn"}
-    },
-    "InstanceName":{"type":"string"},
-    "InstanceRecommendation":{
-      "type":"structure",
-      "members":{
-        "instanceArn":{
-          "shape":"InstanceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the current instance.</p>"
-        },
-        "accountId":{
-          "shape":"AccountId",
-          "documentation":"<p>The AWS account ID of the instance recommendation.</p>"
-        },
-        "instanceName":{
-          "shape":"InstanceName",
-          "documentation":"<p>The name of the current instance.</p>"
-        },
-        "currentInstanceType":{
-          "shape":"CurrentInstanceType",
-          "documentation":"<p>The instance type of the current instance.</p>"
-        },
-        "finding":{
-          "shape":"Finding",
-          "documentation":"<p>The finding classification for the instance.</p> <p>Findings for instances include:</p> <ul> <li> <p> <b> <code>Underprovisioned</code> </b>—An instance is considered under-provisioned when at least one specification of your instance, such as CPU, memory, or network, does not meet the performance requirements of your workload. Under-provisioned instances may lead to poor application performance.</p> </li> <li> <p> <b> <code>Overprovisioned</code> </b>—An instance is considered over-provisioned when at least one specification of your instance, such as CPU, memory, or network, can be sized down while still meeting the performance requirements of your workload, and no specification is under-provisioned. Over-provisioned instances may lead to unnecessary infrastructure cost.</p> </li> <li> <p> <b> <code>Optimized</code> </b>—An instance is considered optimized when all specifications of your instance, such as CPU, memory, and network, meet the performance requirements of your workload and is not over provisioned. An optimized instance runs your workloads with optimal performance and infrastructure cost. For optimized resources, AWS Compute Optimizer might recommend a new generation instance type.</p> </li> </ul> <note> <p>The values that are returned might be <code>UNDER_PROVISIONED</code>, <code>OVER_PROVISIONED</code>, or <code>OPTIMIZED</code>.</p> </note>"
-        },
-        "utilizationMetrics":{
-          "shape":"UtilizationMetrics",
-          "documentation":"<p>An array of objects that describe the utilization metrics of the instance.</p>"
-        },
-        "lookBackPeriodInDays":{
-          "shape":"LookBackPeriodInDays",
-          "documentation":"<p>The number of days for which utilization metrics were analyzed for the instance.</p>"
-        },
-        "recommendationOptions":{
-          "shape":"RecommendationOptions",
-          "documentation":"<p>An array of objects that describe the recommendation options for the instance.</p>"
-        },
-        "recommendationSources":{
-          "shape":"RecommendationSources",
-          "documentation":"<p>An array of objects that describe the source resource of the recommendation.</p>"
-        },
-        "lastRefreshTimestamp":{
-          "shape":"LastRefreshTimestamp",
-          "documentation":"<p>The time stamp of when the instance recommendation was last refreshed.</p>"
+        "statusReason": {
+          "documentation": "<p>The reason for the enrollment status of the account.</p> <p>For example, an account might show a status of <code>Pending</code> because member accounts of an organization require more time to be enrolled in the service.</p>",
+          "shape": "StatusReason"
         }
       },
-      "documentation":"<p>Describes an Amazon EC2 instance recommendation.</p>"
+      "type": "structure"
     },
-    "InstanceRecommendationOption":{
-      "type":"structure",
-      "members":{
-        "instanceType":{
-          "shape":"InstanceType",
-          "documentation":"<p>The instance type of the instance recommendation.</p>"
+    "GetRecommendationError": {
+      "documentation": "<p>Describes an error experienced when getting recommendations.</p> <p>For example, an error is returned if you request recommendations for an unsupported Auto Scaling group, or if you request recommendations for an instance of an unsupported instance family.</p>",
+      "members": {
+        "code": {
+          "documentation": "<p>The error code.</p>",
+          "shape": "Code"
         },
-        "projectedUtilizationMetrics":{
-          "shape":"ProjectedUtilizationMetrics",
-          "documentation":"<p>An array of objects that describe the projected utilization metrics of the instance recommendation option.</p>"
+        "identifier": {
+          "documentation": "<p>The ID of the error.</p>",
+          "shape": "Identifier"
         },
-        "performanceRisk":{
-          "shape":"PerformanceRisk",
-          "documentation":"<p>The performance risk of the instance recommendation option.</p> <p>Performance risk is the likelihood of the recommended instance type not meeting the performance requirement of your workload.</p> <p>The lowest performance risk is categorized as <code>0</code>, and the highest as <code>5</code>.</p>"
-        },
-        "rank":{
-          "shape":"Rank",
-          "documentation":"<p>The rank of the instance recommendation option.</p> <p>The top recommendation option is ranked as <code>1</code>.</p>"
+        "message": {
+          "documentation": "<p>The message, or reason, for the error.</p>",
+          "shape": "Message"
         }
       },
-      "documentation":"<p>Describes a recommendation option for an Amazon EC2 instance.</p>"
+      "type": "structure"
     },
-    "InstanceRecommendations":{
-      "type":"list",
-      "member":{"shape":"InstanceRecommendation"}
-    },
-    "InstanceType":{"type":"string"},
-    "InternalServerException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "GetRecommendationErrors": {
+      "member": {
+        "shape": "GetRecommendationError"
       },
-      "documentation":"<p>The request processing has failed because of an unknown error, exception, or failure.</p>",
-      "exception":true,
-      "fault":true
+      "type": "list"
     },
-    "InvalidParameterValueException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "GetRecommendationSummariesRequest": {
+      "members": {
+        "accountIds": {
+          "documentation": "<p>The AWS account IDs for which to return recommendation summaries.</p> <p>Only one account ID can be specified per request.</p>",
+          "shape": "AccountIds"
+        },
+        "maxResults": {
+          "documentation": "<p>The maximum number of recommendation summaries to return with a single call.</p> <p>To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>",
+          "shape": "MaxResults"
+        },
+        "nextToken": {
+          "documentation": "<p>The token to advance to the next page of recommendation summaries.</p>",
+          "shape": "NextToken"
+        }
       },
-      "documentation":"<p>An invalid or out-of-range value was supplied for the input parameter.</p>",
-      "exception":true,
-      "synthetic":true
+      "type": "structure"
     },
-    "LastRefreshTimestamp":{"type":"timestamp"},
-    "LookBackPeriodInDays":{"type":"double"},
-    "MaxResults":{
-      "type":"integer",
-      "box":true
+    "GetRecommendationSummariesResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The token to use to advance to the next page of recommendation summaries.</p> <p>This value is null when there are no more pages of recommendation summaries to return.</p>",
+          "shape": "NextToken"
+        },
+        "recommendationSummaries": {
+          "documentation": "<p>An array of objects that summarize a recommendation.</p>",
+          "shape": "RecommendationSummaries"
+        }
+      },
+      "type": "structure"
     },
-    "MaxSize":{"type":"integer"},
-    "MemberAccountsEnrolled":{"type":"boolean"},
-    "Message":{"type":"string"},
-    "MetricName":{
-      "type":"string",
-      "enum":[
+    "Identifier": {
+      "type": "string"
+    },
+    "IncludeMemberAccounts": {
+      "type": "boolean"
+    },
+    "InstanceArn": {
+      "type": "string"
+    },
+    "InstanceArns": {
+      "member": {
+        "shape": "InstanceArn"
+      },
+      "type": "list"
+    },
+    "InstanceName": {
+      "type": "string"
+    },
+    "InstanceRecommendation": {
+      "documentation": "<p>Describes an Amazon EC2 instance recommendation.</p>",
+      "members": {
+        "accountId": {
+          "documentation": "<p>The AWS account ID of the instance recommendation.</p>",
+          "shape": "AccountId"
+        },
+        "currentInstanceType": {
+          "documentation": "<p>The instance type of the current instance.</p>",
+          "shape": "CurrentInstanceType"
+        },
+        "finding": {
+          "documentation": "<p>The finding classification for the instance.</p> <p>Findings for instances include:</p> <ul> <li> <p> <b> <code>Underprovisioned</code> </b>\u2014An instance is considered under-provisioned when at least one specification of your instance, such as CPU, memory, or network, does not meet the performance requirements of your workload. Under-provisioned instances may lead to poor application performance.</p> </li> <li> <p> <b> <code>Overprovisioned</code> </b>\u2014An instance is considered over-provisioned when at least one specification of your instance, such as CPU, memory, or network, can be sized down while still meeting the performance requirements of your workload, and no specification is under-provisioned. Over-provisioned instances may lead to unnecessary infrastructure cost.</p> </li> <li> <p> <b> <code>Optimized</code> </b>\u2014An instance is considered optimized when all specifications of your instance, such as CPU, memory, and network, meet the performance requirements of your workload and is not over provisioned. An optimized instance runs your workloads with optimal performance and infrastructure cost. For optimized resources, AWS Compute Optimizer might recommend a new generation instance type.</p> </li> </ul> <note> <p>The values that are returned might be <code>UNDER_PROVISIONED</code>, <code>OVER_PROVISIONED</code>, or <code>OPTIMIZED</code>.</p> </note>",
+          "shape": "Finding"
+        },
+        "instanceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the current instance.</p>",
+          "shape": "InstanceArn"
+        },
+        "instanceName": {
+          "documentation": "<p>The name of the current instance.</p>",
+          "shape": "InstanceName"
+        },
+        "lastRefreshTimestamp": {
+          "documentation": "<p>The time stamp of when the instance recommendation was last refreshed.</p>",
+          "shape": "LastRefreshTimestamp"
+        },
+        "lookBackPeriodInDays": {
+          "documentation": "<p>The number of days for which utilization metrics were analyzed for the instance.</p>",
+          "shape": "LookBackPeriodInDays"
+        },
+        "recommendationOptions": {
+          "documentation": "<p>An array of objects that describe the recommendation options for the instance.</p>",
+          "shape": "RecommendationOptions"
+        },
+        "recommendationSources": {
+          "documentation": "<p>An array of objects that describe the source resource of the recommendation.</p>",
+          "shape": "RecommendationSources"
+        },
+        "utilizationMetrics": {
+          "documentation": "<p>An array of objects that describe the utilization metrics of the instance.</p>",
+          "shape": "UtilizationMetrics"
+        }
+      },
+      "type": "structure"
+    },
+    "InstanceRecommendationOption": {
+      "documentation": "<p>Describes a recommendation option for an Amazon EC2 instance.</p>",
+      "members": {
+        "instanceType": {
+          "documentation": "<p>The instance type of the instance recommendation.</p>",
+          "shape": "InstanceType"
+        },
+        "performanceRisk": {
+          "documentation": "<p>The performance risk of the instance recommendation option.</p> <p>Performance risk is the likelihood of the recommended instance type not meeting the performance requirement of your workload.</p> <p>The lowest performance risk is categorized as <code>0</code>, and the highest as <code>5</code>.</p>",
+          "shape": "PerformanceRisk"
+        },
+        "projectedUtilizationMetrics": {
+          "documentation": "<p>An array of objects that describe the projected utilization metrics of the instance recommendation option.</p>",
+          "shape": "ProjectedUtilizationMetrics"
+        },
+        "rank": {
+          "documentation": "<p>The rank of the instance recommendation option.</p> <p>The top recommendation option is ranked as <code>1</code>.</p>",
+          "shape": "Rank"
+        }
+      },
+      "type": "structure"
+    },
+    "InstanceRecommendations": {
+      "member": {
+        "shape": "InstanceRecommendation"
+      },
+      "type": "list"
+    },
+    "InstanceType": {
+      "type": "string"
+    },
+    "InternalServerException": {
+      "documentation": "<p>The request processing has failed because of an unknown error, exception, or failure.</p>",
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidParameterValueException": {
+      "documentation": "<p>An invalid or out-of-range value was supplied for the input parameter.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "synthetic": true,
+      "type": "structure"
+    },
+    "LastRefreshTimestamp": {
+      "type": "timestamp"
+    },
+    "LookBackPeriodInDays": {
+      "type": "double"
+    },
+    "MaxResults": {
+      "box": true,
+      "type": "integer"
+    },
+    "MaxSize": {
+      "type": "integer"
+    },
+    "MemberAccountsEnrolled": {
+      "type": "boolean"
+    },
+    "Message": {
+      "type": "string"
+    },
+    "MetricName": {
+      "enum": [
         "Cpu",
         "Memory"
-      ]
+      ],
+      "type": "string"
     },
-    "MetricStatistic":{
-      "type":"string",
-      "enum":[
+    "MetricStatistic": {
+      "enum": [
         "Maximum",
         "Average"
-      ]
+      ],
+      "type": "string"
     },
-    "MetricValue":{"type":"double"},
-    "MetricValues":{
-      "type":"list",
-      "member":{"shape":"MetricValue"}
+    "MetricValue": {
+      "type": "double"
     },
-    "MinSize":{"type":"integer"},
-    "MissingAuthenticationToken":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "MetricValues": {
+      "member": {
+        "shape": "MetricValue"
       },
-      "documentation":"<p>The request must contain either a valid (registered) AWS access key ID or X.509 certificate.</p>",
-      "exception":true,
-      "synthetic":true
+      "type": "list"
     },
-    "NextToken":{"type":"string"},
-    "OptInRequiredException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>You must opt in to the service to perform this action.</p>",
-      "exception":true,
-      "synthetic":true
+    "MinSize": {
+      "type": "integer"
     },
-    "PerformanceRisk":{
-      "type":"double",
-      "max":5,
-      "min":0
-    },
-    "Period":{"type":"integer"},
-    "ProjectedMetric":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"MetricName",
-          "documentation":"<p>The name of the projected utilization metric.</p> <note> <p>Memory metrics are only returned for resources that have the unified CloudWatch agent installed on them. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html\">Enabling Memory Utilization with the CloudWatch Agent</a>.</p> </note>"
-        },
-        "timestamps":{
-          "shape":"Timestamps",
-          "documentation":"<p>The time stamps of the projected utilization metric.</p>"
-        },
-        "values":{
-          "shape":"MetricValues",
-          "documentation":"<p>The values of the projected utilization metrics.</p>"
+    "MissingAuthenticationToken": {
+      "documentation": "<p>The request must contain either a valid (registered) AWS access key ID or X.509 certificate.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>Describes a projected utilization metric of a recommendation option, such as an Amazon EC2 instance.</p>"
+      "synthetic": true,
+      "type": "structure"
     },
-    "ProjectedMetrics":{
-      "type":"list",
-      "member":{"shape":"ProjectedMetric"}
+    "NextToken": {
+      "type": "string"
     },
-    "ProjectedUtilizationMetrics":{
-      "type":"list",
-      "member":{"shape":"UtilizationMetric"}
-    },
-    "Rank":{"type":"integer"},
-    "RecommendationOptions":{
-      "type":"list",
-      "member":{"shape":"InstanceRecommendationOption"}
-    },
-    "RecommendationSource":{
-      "type":"structure",
-      "members":{
-        "recommendationSourceArn":{
-          "shape":"RecommendationSourceArn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the recommendation source.</p>"
-        },
-        "recommendationSourceType":{
-          "shape":"RecommendationSourceType",
-          "documentation":"<p>The resource type of the recommendation source.</p>"
+    "OptInRequiredException": {
+      "documentation": "<p>You must opt in to the service to perform this action.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>Describes the source of a recommendation, such as an Amazon EC2 instance or Auto Scaling group.</p>"
+      "synthetic": true,
+      "type": "structure"
     },
-    "RecommendationSourceArn":{"type":"string"},
-    "RecommendationSourceType":{
-      "type":"string",
-      "enum":[
+    "PerformanceRisk": {
+      "max": 5,
+      "min": 0,
+      "type": "double"
+    },
+    "Period": {
+      "type": "integer"
+    },
+    "ProjectedMetric": {
+      "documentation": "<p>Describes a projected utilization metric of a recommendation option, such as an Amazon EC2 instance.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the projected utilization metric.</p> <note> <p>Memory metrics are only returned for resources that have the unified CloudWatch agent installed on them. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html\">Enabling Memory Utilization with the CloudWatch Agent</a>.</p> </note>",
+          "shape": "MetricName"
+        },
+        "timestamps": {
+          "documentation": "<p>The time stamps of the projected utilization metric.</p>",
+          "shape": "Timestamps"
+        },
+        "values": {
+          "documentation": "<p>The values of the projected utilization metrics.</p>",
+          "shape": "MetricValues"
+        }
+      },
+      "type": "structure"
+    },
+    "ProjectedMetrics": {
+      "member": {
+        "shape": "ProjectedMetric"
+      },
+      "type": "list"
+    },
+    "ProjectedUtilizationMetrics": {
+      "member": {
+        "shape": "UtilizationMetric"
+      },
+      "type": "list"
+    },
+    "Rank": {
+      "type": "integer"
+    },
+    "RecommendationOptions": {
+      "member": {
+        "shape": "InstanceRecommendationOption"
+      },
+      "type": "list"
+    },
+    "RecommendationSource": {
+      "documentation": "<p>Describes the source of a recommendation, such as an Amazon EC2 instance or Auto Scaling group.</p>",
+      "members": {
+        "recommendationSourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the recommendation source.</p>",
+          "shape": "RecommendationSourceArn"
+        },
+        "recommendationSourceType": {
+          "documentation": "<p>The resource type of the recommendation source.</p>",
+          "shape": "RecommendationSourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "RecommendationSourceArn": {
+      "type": "string"
+    },
+    "RecommendationSourceType": {
+      "enum": [
         "Ec2Instance",
         "AutoScalingGroup"
-      ]
+      ],
+      "type": "string"
     },
-    "RecommendationSources":{
-      "type":"list",
-      "member":{"shape":"RecommendationSource"}
+    "RecommendationSources": {
+      "member": {
+        "shape": "RecommendationSource"
+      },
+      "type": "list"
     },
-    "RecommendationSummaries":{
-      "type":"list",
-      "member":{"shape":"RecommendationSummary"}
+    "RecommendationSummaries": {
+      "member": {
+        "shape": "RecommendationSummary"
+      },
+      "type": "list"
     },
-    "RecommendationSummary":{
-      "type":"structure",
-      "members":{
-        "summaries":{
-          "shape":"Summaries",
-          "documentation":"<p>An array of objects that describe a recommendation summary.</p>"
+    "RecommendationSummary": {
+      "documentation": "<p>A summary of a recommendation.</p>",
+      "members": {
+        "accountId": {
+          "documentation": "<p>The AWS account ID of the recommendation summary.</p>",
+          "shape": "AccountId"
         },
-        "recommendationResourceType":{
-          "shape":"RecommendationSourceType",
-          "documentation":"<p>The resource type of the recommendation.</p>"
+        "recommendationResourceType": {
+          "documentation": "<p>The resource type of the recommendation.</p>",
+          "shape": "RecommendationSourceType"
         },
-        "accountId":{
-          "shape":"AccountId",
-          "documentation":"<p>The AWS account ID of the recommendation summary.</p>"
+        "summaries": {
+          "documentation": "<p>An array of objects that describe a recommendation summary.</p>",
+          "shape": "Summaries"
         }
       },
-      "documentation":"<p>A summary of a recommendation.</p>"
+      "type": "structure"
     },
-    "RecommendedInstanceType":{"type":"string"},
-    "RecommendedOptionProjectedMetric":{
-      "type":"structure",
-      "members":{
-        "recommendedInstanceType":{
-          "shape":"RecommendedInstanceType",
-          "documentation":"<p>The recommended instance type.</p>"
+    "RecommendedInstanceType": {
+      "type": "string"
+    },
+    "RecommendedOptionProjectedMetric": {
+      "documentation": "<p>Describes a projected utilization metric of a recommendation option.</p>",
+      "members": {
+        "projectedMetrics": {
+          "documentation": "<p>An array of objects that describe a projected utilization metric.</p>",
+          "shape": "ProjectedMetrics"
         },
-        "rank":{
-          "shape":"Rank",
-          "documentation":"<p>The rank of the recommendation option projected metric.</p> <p>The top recommendation option is ranked as <code>1</code>.</p> <p>The projected metric rank correlates to the recommendation option rank. For example, the projected metric ranked as <code>1</code> is related to the recommendation option that is also ranked as <code>1</code> in the same response.</p>"
+        "rank": {
+          "documentation": "<p>The rank of the recommendation option projected metric.</p> <p>The top recommendation option is ranked as <code>1</code>.</p> <p>The projected metric rank correlates to the recommendation option rank. For example, the projected metric ranked as <code>1</code> is related to the recommendation option that is also ranked as <code>1</code> in the same response.</p>",
+          "shape": "Rank"
         },
-        "projectedMetrics":{
-          "shape":"ProjectedMetrics",
-          "documentation":"<p>An array of objects that describe a projected utilization metric.</p>"
+        "recommendedInstanceType": {
+          "documentation": "<p>The recommended instance type.</p>",
+          "shape": "RecommendedInstanceType"
         }
       },
-      "documentation":"<p>Describes a projected utilization metric of a recommendation option.</p>"
+      "type": "structure"
     },
-    "RecommendedOptionProjectedMetrics":{
-      "type":"list",
-      "member":{"shape":"RecommendedOptionProjectedMetric"}
-    },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "RecommendedOptionProjectedMetrics": {
+      "member": {
+        "shape": "RecommendedOptionProjectedMetric"
       },
-      "documentation":"<p>The specified resource was not found.</p>",
-      "exception":true,
-      "synthetic":true
+      "type": "list"
     },
-    "ServiceUnavailableException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource was not found.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
       },
-      "documentation":"<p>The request has failed due to a temporary failure of the server.</p>",
-      "exception":true,
-      "fault":true
+      "synthetic": true,
+      "type": "structure"
     },
-    "Status":{
-      "type":"string",
-      "enum":[
+    "ServiceUnavailableException": {
+      "documentation": "<p>The request has failed due to a temporary failure of the server.</p>",
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "Status": {
+      "enum": [
         "Active",
         "Inactive",
         "Pending",
         "Failed"
-      ]
+      ],
+      "type": "string"
     },
-    "StatusReason":{"type":"string"},
-    "Summaries":{
-      "type":"list",
-      "member":{"shape":"Summary"}
+    "StatusReason": {
+      "type": "string"
     },
-    "Summary":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"Finding",
-          "documentation":"<p>The finding classification of the recommendation.</p>"
+    "Summaries": {
+      "member": {
+        "shape": "Summary"
+      },
+      "type": "list"
+    },
+    "Summary": {
+      "documentation": "<p>The summary of a recommendation.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The finding classification of the recommendation.</p>",
+          "shape": "Finding"
         },
-        "value":{
-          "shape":"SummaryValue",
-          "documentation":"<p>The value of the recommendation summary.</p>"
+        "value": {
+          "documentation": "<p>The value of the recommendation summary.</p>",
+          "shape": "SummaryValue"
         }
       },
-      "documentation":"<p>The summary of a recommendation.</p>"
+      "type": "structure"
     },
-    "SummaryValue":{"type":"double"},
-    "ThrottlingException":{
-      "type":"structure",
-      "required":["message"],
-      "members":{
-        "message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The limit on the number of requests per second was exceeded.</p>",
-      "exception":true,
-      "synthetic":true
+    "SummaryValue": {
+      "type": "double"
     },
-    "Timestamp":{"type":"timestamp"},
-    "Timestamps":{
-      "type":"list",
-      "member":{"shape":"Timestamp"}
-    },
-    "UpdateEnrollmentStatusRequest":{
-      "type":"structure",
-      "required":["status"],
-      "members":{
-        "status":{
-          "shape":"Status",
-          "documentation":"<p>The new enrollment status of the account.</p> <p>Accepted options are <code>Active</code> or <code>Inactive</code>. You will get an error if <code>Pending</code> or <code>Failed</code> are specified.</p>"
-        },
-        "includeMemberAccounts":{
-          "shape":"IncludeMemberAccounts",
-          "documentation":"<p>Indicates whether to enroll member accounts within the organization, if the account is a master account of an organization.</p>"
-        }
-      }
-    },
-    "UpdateEnrollmentStatusResponse":{
-      "type":"structure",
-      "members":{
-        "status":{
-          "shape":"Status",
-          "documentation":"<p>The enrollment status of the account.</p>"
-        },
-        "statusReason":{
-          "shape":"StatusReason",
-          "documentation":"<p>The reason for the enrollment status of the account. For example, an account might show a status of <code>Pending</code> because member accounts of an organization require more time to be enrolled in the service.</p>"
-        }
-      }
-    },
-    "UtilizationMetric":{
-      "type":"structure",
-      "members":{
-        "name":{
-          "shape":"MetricName",
-          "documentation":"<p>The name of the utilization metric.</p> <note> <p>Memory metrics are only returned for resources that have the unified CloudWatch agent installed on them. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html\">Enabling Memory Utilization with the CloudWatch Agent</a>.</p> </note>"
-        },
-        "statistic":{
-          "shape":"MetricStatistic",
-          "documentation":"<p>The statistic of the utilization metric.</p>"
-        },
-        "value":{
-          "shape":"MetricValue",
-          "documentation":"<p>The value of the utilization metric.</p>"
+    "ThrottlingException": {
+      "documentation": "<p>The limit on the number of requests per second was exceeded.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>Describes a utilization metric of a resource, such as an Amazon EC2 instance.</p>"
+      "required": [
+        "message"
+      ],
+      "synthetic": true,
+      "type": "structure"
     },
-    "UtilizationMetrics":{
-      "type":"list",
-      "member":{"shape":"UtilizationMetric"}
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "Timestamps": {
+      "member": {
+        "shape": "Timestamp"
+      },
+      "type": "list"
+    },
+    "UpdateEnrollmentStatusRequest": {
+      "members": {
+        "includeMemberAccounts": {
+          "documentation": "<p>Indicates whether to enroll member accounts within the organization, if the account is a master account of an organization.</p>",
+          "shape": "IncludeMemberAccounts"
+        },
+        "status": {
+          "documentation": "<p>The new enrollment status of the account.</p> <p>Accepted options are <code>Active</code> or <code>Inactive</code>. You will get an error if <code>Pending</code> or <code>Failed</code> are specified.</p>",
+          "shape": "Status"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "structure"
+    },
+    "UpdateEnrollmentStatusResponse": {
+      "members": {
+        "status": {
+          "documentation": "<p>The enrollment status of the account.</p>",
+          "shape": "Status"
+        },
+        "statusReason": {
+          "documentation": "<p>The reason for the enrollment status of the account. For example, an account might show a status of <code>Pending</code> because member accounts of an organization require more time to be enrolled in the service.</p>",
+          "shape": "StatusReason"
+        }
+      },
+      "type": "structure"
+    },
+    "UtilizationMetric": {
+      "documentation": "<p>Describes a utilization metric of a resource, such as an Amazon EC2 instance.</p>",
+      "members": {
+        "name": {
+          "documentation": "<p>The name of the utilization metric.</p> <note> <p>Memory metrics are only returned for resources that have the unified CloudWatch agent installed on them. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html\">Enabling Memory Utilization with the CloudWatch Agent</a>.</p> </note>",
+          "shape": "MetricName"
+        },
+        "statistic": {
+          "documentation": "<p>The statistic of the utilization metric.</p>",
+          "shape": "MetricStatistic"
+        },
+        "value": {
+          "documentation": "<p>The value of the utilization metric.</p>",
+          "shape": "MetricValue"
+        }
+      },
+      "type": "structure"
+    },
+    "UtilizationMetrics": {
+      "member": {
+        "shape": "UtilizationMetric"
+      },
+      "type": "list"
     }
   },
-  "documentation":"<p>AWS Compute Optimizer is a service that analyzes the configuration and utilization metrics of your AWS resources, such as EC2 instances and Auto Scaling groups. It reports whether your resources are optimal, and generates optimization recommendations to reduce the cost and improve the performance of your workloads. Compute Optimizer also provides recent utilization metric data, as well as projected utilization metric data for the recommendations, which you can use to evaluate which recommendation provides the best price-performance trade-off. The analysis of your usage patterns can help you decide when to move or resize your running resources, and still meet your performance and capacity requirements. For more information about Compute Optimizer, see the <a href=\"https://docs.aws.amazon.com/compute-optimizer/latest/ug/\">AWS Compute Optimizer User Guide</a>.</p>"
+  "version": "2.0"
 }

@@ -1,14 +1,7 @@
 {
-  "version": "1.0",
   "examples": {
     "CancelKeyDeletion": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
-        "output": {
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose deletion you are canceling. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -19,15 +12,17 @@
         },
         "description": "The following example cancels deletion of the specified CMK.",
         "id": "to-cancel-deletion-of-a-cmk-1477428535102",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
+        "output": {
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To cancel deletion of a customer master key (CMK)"
       }
     ],
     "CreateAlias": [
       {
-        "input": {
-          "AliasName": "alias/ExampleAlias",
-          "TargetKeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "AliasName": "The alias to create. Aliases must begin with 'alias/'. Do not use aliases that begin with 'alias/aws' because they are reserved for use by AWS.",
@@ -36,23 +31,15 @@
         },
         "description": "The following example creates an alias for the specified customer master key (CMK).",
         "id": "to-create-an-alias-1477505685119",
+        "input": {
+          "AliasName": "alias/ExampleAlias",
+          "TargetKeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To create an alias"
       }
     ],
     "CreateGrant": [
       {
-        "input": {
-          "GranteePrincipal": "arn:aws:iam::111122223333:role/ExampleRole",
-          "KeyId": "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-          "Operations": [
-            "Encrypt",
-            "Decrypt"
-          ]
-        },
-        "output": {
-          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
-          "GrantToken": "AQpAM2RhZTk1MGMyNTk2ZmZmMzEyYWVhOWViN2I1MWM4Mzc0MWFiYjc0ZDE1ODkyNGFlNTIzODZhMzgyZjBlNGY3NiKIAgEBAgB4Pa6VDCWW__MSrqnre1HIN0Grt00ViSSuUjhqOC8OT3YAAADfMIHcBgkqhkiG9w0BBwaggc4wgcsCAQAwgcUGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMmqLyBTAegIn9XlK5AgEQgIGXZQjkBcl1dykDdqZBUQ6L1OfUivQy7JVYO2-ZJP7m6f1g8GzV47HX5phdtONAP7K_HQIflcgpkoCqd_fUnE114mSmiagWkbQ5sqAVV3ov-VeqgrvMe5ZFEWLMSluvBAqdjHEdMIkHMlhlj4ENZbzBfo9Wxk8b8SnwP4kc4gGivedzFXo-dwN8fxjjq_ZZ9JFOj2ijIbj5FyogDCN0drOfi8RORSEuCEmPvjFRMFAwcmwFkN2NPp89amA"
-        },
         "comments": {
           "input": {
             "GranteePrincipal": "The identity that is given permission to perform the operations specified in the grant.",
@@ -66,11 +53,33 @@
         },
         "description": "The following example creates a grant that allows the specified IAM role to encrypt data with the specified customer master key (CMK).",
         "id": "to-create-a-grant-1477972226782",
+        "input": {
+          "GranteePrincipal": "arn:aws:iam::111122223333:role/ExampleRole",
+          "KeyId": "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+          "Operations": [
+            "Encrypt",
+            "Decrypt"
+          ]
+        },
+        "output": {
+          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
+          "GrantToken": "AQpAM2RhZTk1MGMyNTk2ZmZmMzEyYWVhOWViN2I1MWM4Mzc0MWFiYjc0ZDE1ODkyNGFlNTIzODZhMzgyZjBlNGY3NiKIAgEBAgB4Pa6VDCWW__MSrqnre1HIN0Grt00ViSSuUjhqOC8OT3YAAADfMIHcBgkqhkiG9w0BBwaggc4wgcsCAQAwgcUGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMmqLyBTAegIn9XlK5AgEQgIGXZQjkBcl1dykDdqZBUQ6L1OfUivQy7JVYO2-ZJP7m6f1g8GzV47HX5phdtONAP7K_HQIflcgpkoCqd_fUnE114mSmiagWkbQ5sqAVV3ov-VeqgrvMe5ZFEWLMSluvBAqdjHEdMIkHMlhlj4ENZbzBfo9Wxk8b8SnwP4kc4gGivedzFXo-dwN8fxjjq_ZZ9JFOj2ijIbj5FyogDCN0drOfi8RORSEuCEmPvjFRMFAwcmwFkN2NPp89amA"
+        },
         "title": "To create a grant"
       }
     ],
     "CreateKey": [
       {
+        "comments": {
+          "input": {
+            "Tags": "One or more tags. Each tag consists of a tag key and a tag value."
+          },
+          "output": {
+            "KeyMetadata": "An object that contains information about the CMK created by this operation."
+          }
+        },
+        "description": "The following example creates a CMK.",
+        "id": "to-create-a-cmk-1478028992966",
         "input": {
           "Tags": [
             {
@@ -93,28 +102,11 @@
             "Origin": "AWS_KMS"
           }
         },
-        "comments": {
-          "input": {
-            "Tags": "One or more tags. Each tag consists of a tag key and a tag value."
-          },
-          "output": {
-            "KeyMetadata": "An object that contains information about the CMK created by this operation."
-          }
-        },
-        "description": "The following example creates a CMK.",
-        "id": "to-create-a-cmk-1478028992966",
         "title": "To create a customer master key (CMK)"
       }
     ],
     "Decrypt": [
       {
-        "input": {
-          "CiphertextBlob": "<binary data>"
-        },
-        "output": {
-          "KeyId": "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-          "Plaintext": "<binary data>"
-        },
         "comments": {
           "input": {
             "CiphertextBlob": "The encrypted data (ciphertext)."
@@ -126,14 +118,18 @@
         },
         "description": "The following example decrypts data that was encrypted with a customer master key (CMK) in AWS KMS.",
         "id": "to-decrypt-data-1478281622886",
+        "input": {
+          "CiphertextBlob": "<binary data>"
+        },
+        "output": {
+          "KeyId": "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+          "Plaintext": "<binary data>"
+        },
         "title": "To decrypt data"
       }
     ],
     "DeleteAlias": [
       {
-        "input": {
-          "AliasName": "alias/ExampleAlias"
-        },
         "comments": {
           "input": {
             "AliasName": "The alias to delete."
@@ -141,14 +137,14 @@
         },
         "description": "The following example deletes the specified alias.",
         "id": "to-delete-an-alias-1478285209338",
+        "input": {
+          "AliasName": "alias/ExampleAlias"
+        },
         "title": "To delete an alias"
       }
     ],
     "DeleteImportedKeyMaterial": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose imported key material you are deleting. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -156,11 +152,24 @@
         },
         "description": "The following example deletes the imported key material from the specified customer master key (CMK).",
         "id": "to-delete-imported-key-material-1478561674507",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To delete imported key material"
       }
     ],
     "DescribeKey": [
       {
+        "comments": {
+          "input": {
+            "KeyId": "The identifier of the CMK that you want information about. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
+          },
+          "output": {
+            "KeyMetadata": "An object that contains information about the specified CMK."
+          }
+        },
+        "description": "The following example returns information (metadata) about the specified CMK.",
+        "id": "to-obtain-information-about-a-cmk-1478565820907",
         "input": {
           "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
         },
@@ -178,24 +187,11 @@
             "Origin": "AWS_KMS"
           }
         },
-        "comments": {
-          "input": {
-            "KeyId": "The identifier of the CMK that you want information about. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
-          },
-          "output": {
-            "KeyMetadata": "An object that contains information about the specified CMK."
-          }
-        },
-        "description": "The following example returns information (metadata) about the specified CMK.",
-        "id": "to-obtain-information-about-a-cmk-1478565820907",
         "title": "To obtain information about a customer master key (CMK)"
       }
     ],
     "DisableKey": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to disable. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -203,14 +199,14 @@
         },
         "description": "The following example disables the specified CMK.",
         "id": "to-disable-a-cmk-1478566583659",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To disable a customer master key (CMK)"
       }
     ],
     "DisableKeyRotation": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose key material will no longer be rotated. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -218,14 +214,14 @@
         },
         "description": "The following example disables automatic annual rotation of the key material for the specified CMK.",
         "id": "to-disable-automatic-rotation-of-key-material-1478624396092",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To disable automatic rotation of key material"
       }
     ],
     "EnableKey": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to enable. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -233,14 +229,14 @@
         },
         "description": "The following example enables the specified CMK.",
         "id": "to-enable-a-cmk-1478627501129",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To enable a customer master key (CMK)"
       }
     ],
     "EnableKeyRotation": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose key material will be rotated annually. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -248,19 +244,14 @@
         },
         "description": "The following example enables automatic annual rotation of the key material for the specified CMK.",
         "id": "to-enable-automatic-rotation-of-key-material-1478629109677",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To enable automatic rotation of key material"
       }
     ],
     "Encrypt": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "Plaintext": "<binary data>"
-        },
-        "output": {
-          "CiphertextBlob": "<binary data>",
-          "KeyId": "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to use for encryption. You can use the key ID or Amazon Resource Name (ARN) of the CMK, or the name or ARN of an alias that refers to the CMK.",
@@ -273,20 +264,19 @@
         },
         "description": "The following example encrypts data with the specified customer master key (CMK).",
         "id": "to-encrypt-data-1478906026012",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "Plaintext": "<binary data>"
+        },
+        "output": {
+          "CiphertextBlob": "<binary data>",
+          "KeyId": "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To encrypt data"
       }
     ],
     "GenerateDataKey": [
       {
-        "input": {
-          "KeyId": "alias/ExampleAlias",
-          "KeySpec": "AES_256"
-        },
-        "output": {
-          "CiphertextBlob": "<binary data>",
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-          "Plaintext": "<binary data>"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to use to encrypt the data key. You can use the key ID or Amazon Resource Name (ARN) of the CMK, or the name or ARN of an alias that refers to the CMK.",
@@ -300,19 +290,20 @@
         },
         "description": "The following example generates a 256-bit symmetric data encryption key (data key) in two formats. One is the unencrypted (plainext) data key, and the other is the data key encrypted with the specified customer master key (CMK).",
         "id": "to-generate-a-data-key-1478912956062",
-        "title": "To generate a data key"
-      }
-    ],
-    "GenerateDataKeyWithoutPlaintext": [
-      {
         "input": {
           "KeyId": "alias/ExampleAlias",
           "KeySpec": "AES_256"
         },
         "output": {
           "CiphertextBlob": "<binary data>",
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+          "Plaintext": "<binary data>"
         },
+        "title": "To generate a data key"
+      }
+    ],
+    "GenerateDataKeyWithoutPlaintext": [
+      {
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to use to encrypt the data key. You can use the key ID or Amazon Resource Name (ARN) of the CMK, or the name or ARN of an alias that refers to the CMK.",
@@ -325,17 +316,19 @@
         },
         "description": "The following example generates an encrypted copy of a 256-bit symmetric data encryption key (data key). The data key is encrypted with the specified customer master key (CMK).",
         "id": "to-generate-an-encrypted-data-key-1478914121134",
+        "input": {
+          "KeyId": "alias/ExampleAlias",
+          "KeySpec": "AES_256"
+        },
+        "output": {
+          "CiphertextBlob": "<binary data>",
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To generate an encrypted data key"
       }
     ],
     "GenerateRandom": [
       {
-        "input": {
-          "NumberOfBytes": 32
-        },
-        "output": {
-          "Plaintext": "<binary data>"
-        },
         "comments": {
           "input": {
             "NumberOfBytes": "The length of the random data, specified in number of bytes."
@@ -346,18 +339,17 @@
         },
         "description": "The following example uses AWS KMS to generate 32 bytes of random data.",
         "id": "to-generate-random-data-1479163645600",
+        "input": {
+          "NumberOfBytes": 32
+        },
+        "output": {
+          "Plaintext": "<binary data>"
+        },
         "title": "To generate random data"
       }
     ],
     "GetKeyPolicy": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "PolicyName": "default"
-        },
-        "output": {
-          "Policy": "{\n  \"Version\" : \"2012-10-17\",\n  \"Id\" : \"key-default-1\",\n  \"Statement\" : [ {\n    \"Sid\" : \"Enable IAM User Permissions\",\n    \"Effect\" : \"Allow\",\n    \"Principal\" : {\n      \"AWS\" : \"arn:aws:iam::111122223333:root\"\n    },\n    \"Action\" : \"kms:*\",\n    \"Resource\" : \"*\"\n  } ]\n}"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose key policy you want to retrieve. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
@@ -369,17 +361,18 @@
         },
         "description": "The following example retrieves the key policy for the specified customer master key (CMK).",
         "id": "to-retrieve-a-key-policy-1479170128325",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "PolicyName": "default"
+        },
+        "output": {
+          "Policy": "{\n  \"Version\" : \"2012-10-17\",\n  \"Id\" : \"key-default-1\",\n  \"Statement\" : [ {\n    \"Sid\" : \"Enable IAM User Permissions\",\n    \"Effect\" : \"Allow\",\n    \"Principal\" : {\n      \"AWS\" : \"arn:aws:iam::111122223333:root\"\n    },\n    \"Action\" : \"kms:*\",\n    \"Resource\" : \"*\"\n  } ]\n}"
+        },
         "title": "To retrieve a key policy"
       }
     ],
     "GetKeyRotationStatus": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
-        "output": {
-          "KeyRotationEnabled": true
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose key material rotation status you want to retrieve. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -390,22 +383,17 @@
         },
         "description": "The following example retrieves the status of automatic annual rotation of the key material for the specified CMK.",
         "id": "to-retrieve-the-rotation-status-for-a-cmk-1479172287408",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
+        "output": {
+          "KeyRotationEnabled": true
+        },
         "title": "To retrieve the rotation status for a customer master key (CMK)"
       }
     ],
     "GetParametersForImport": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "WrappingAlgorithm": "RSAES_OAEP_SHA_1",
-          "WrappingKeySpec": "RSA_2048"
-        },
-        "output": {
-          "ImportToken": "<binary data>",
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-          "ParametersValidTo": "2016-12-01T14:52:17-08:00",
-          "PublicKey": "<binary data>"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK for which to retrieve the public key and import token. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
@@ -421,17 +409,22 @@
         },
         "description": "The following example retrieves the public key and import token for the specified CMK.",
         "id": "to-retrieve-the-public-key-and-import-token-for-a-cmk-1480626483211",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "WrappingAlgorithm": "RSAES_OAEP_SHA_1",
+          "WrappingKeySpec": "RSA_2048"
+        },
+        "output": {
+          "ImportToken": "<binary data>",
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+          "ParametersValidTo": "2016-12-01T14:52:17-08:00",
+          "PublicKey": "<binary data>"
+        },
         "title": "To retrieve the public key and import token for a customer master key (CMK)"
       }
     ],
     "ImportKeyMaterial": [
       {
-        "input": {
-          "EncryptedKeyMaterial": "<binary data>",
-          "ExpirationModel": "KEY_MATERIAL_DOES_NOT_EXPIRE",
-          "ImportToken": "<binary data>",
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "EncryptedKeyMaterial": "The encrypted key material to import.",
@@ -442,11 +435,25 @@
         },
         "description": "The following example imports key material into the specified CMK.",
         "id": "to-import-key-material-into-a-cmk-1480630551969",
+        "input": {
+          "EncryptedKeyMaterial": "<binary data>",
+          "ExpirationModel": "KEY_MATERIAL_DOES_NOT_EXPIRE",
+          "ImportToken": "<binary data>",
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To import key material into a customer master key (CMK)"
       }
     ],
     "ListAliases": [
       {
+        "comments": {
+          "output": {
+            "Aliases": "A list of aliases, including the key ID of the customer master key (CMK) that each alias refers to.",
+            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
+          }
+        },
+        "description": "The following example lists aliases.",
+        "id": "to-list-aliases-1480729693349",
         "output": {
           "Aliases": [
             {
@@ -492,19 +499,22 @@
           ],
           "Truncated": false
         },
-        "comments": {
-          "output": {
-            "Aliases": "A list of aliases, including the key ID of the customer master key (CMK) that each alias refers to.",
-            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
-          }
-        },
-        "description": "The following example lists aliases.",
-        "id": "to-list-aliases-1480729693349",
         "title": "To list aliases"
       }
     ],
     "ListGrants": [
       {
+        "comments": {
+          "input": {
+            "KeyId": "The identifier of the CMK whose grants you want to list. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
+          },
+          "output": {
+            "Grants": "A list of grants.",
+            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
+          }
+        },
+        "description": "The following example lists grants for the specified CMK.",
+        "id": "to-list-grants-for-a-cmk-1481067365389",
         "input": {
           "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
         },
@@ -564,31 +574,11 @@
           ],
           "Truncated": true
         },
-        "comments": {
-          "input": {
-            "KeyId": "The identifier of the CMK whose grants you want to list. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
-          },
-          "output": {
-            "Grants": "A list of grants.",
-            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
-          }
-        },
-        "description": "The following example lists grants for the specified CMK.",
-        "id": "to-list-grants-for-a-cmk-1481067365389",
         "title": "To list grants for a customer master key (CMK)"
       }
     ],
     "ListKeyPolicies": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
-        "output": {
-          "PolicyNames": [
-            "default"
-          ],
-          "Truncated": false
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose key policies you want to list. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
@@ -600,11 +590,28 @@
         },
         "description": "The following example lists key policies for the specified CMK.",
         "id": "to-list-key-policies-for-a-cmk-1481069780998",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
+        "output": {
+          "PolicyNames": [
+            "default"
+          ],
+          "Truncated": false
+        },
         "title": "To list key policies for a customer master key (CMK)"
       }
     ],
     "ListKeys": [
       {
+        "comments": {
+          "output": {
+            "Keys": "A list of CMKs, including the key ID and Amazon Resource Name (ARN) of each one.",
+            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
+          }
+        },
+        "description": "The following example lists CMKs.",
+        "id": "to-list-cmks-1481071643069",
         "output": {
           "Keys": [
             {
@@ -638,19 +645,22 @@
           ],
           "Truncated": false
         },
-        "comments": {
-          "output": {
-            "Keys": "A list of CMKs, including the key ID and Amazon Resource Name (ARN) of each one.",
-            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
-          }
-        },
-        "description": "The following example lists CMKs.",
-        "id": "to-list-cmks-1481071643069",
         "title": "To list customer master keys (CMKs)"
       }
     ],
     "ListResourceTags": [
       {
+        "comments": {
+          "input": {
+            "KeyId": "The identifier of the CMK whose tags you are listing. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
+          },
+          "output": {
+            "Tags": "A list of tags.",
+            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
+          }
+        },
+        "description": "The following example lists tags for a CMK.",
+        "id": "to-list-tags-for-a-cmk-1483996855796",
         "input": {
           "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
         },
@@ -671,22 +681,22 @@
           ],
           "Truncated": false
         },
-        "comments": {
-          "input": {
-            "KeyId": "The identifier of the CMK whose tags you are listing. You can use the key ID or the Amazon Resource Name (ARN) of the CMK."
-          },
-          "output": {
-            "Tags": "A list of tags.",
-            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
-          }
-        },
-        "description": "The following example lists tags for a CMK.",
-        "id": "to-list-tags-for-a-cmk-1483996855796",
         "title": "To list tags for a customer master key (CMK)"
       }
     ],
     "ListRetirableGrants": [
       {
+        "comments": {
+          "input": {
+            "RetiringPrincipal": "The retiring principal whose grants you want to list. Use the Amazon Resource Name (ARN) of an AWS principal such as an AWS account (root), IAM user, federated user, or assumed role user."
+          },
+          "output": {
+            "Grants": "A list of grants that the specified principal can retire.",
+            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
+          }
+        },
+        "description": "The following example lists the grants that the specified principal (identity) can retire.",
+        "id": "to-list-grants-that-the-specified-principal-can-retire-1481140499620",
         "input": {
           "RetiringPrincipal": "arn:aws:iam::111122223333:role/ExampleRole"
         },
@@ -707,27 +717,11 @@
           ],
           "Truncated": false
         },
-        "comments": {
-          "input": {
-            "RetiringPrincipal": "The retiring principal whose grants you want to list. Use the Amazon Resource Name (ARN) of an AWS principal such as an AWS account (root), IAM user, federated user, or assumed role user."
-          },
-          "output": {
-            "Grants": "A list of grants that the specified principal can retire.",
-            "Truncated": "A boolean that indicates whether there are more items in the list. Returns true when there are more items, or false when there are not."
-          }
-        },
-        "description": "The following example lists the grants that the specified principal (identity) can retire.",
-        "id": "to-list-grants-that-the-specified-principal-can-retire-1481140499620",
         "title": "To list grants that the specified principal can retire"
       }
     ],
     "PutKeyPolicy": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "Policy": "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n    \"Statement\": [\n        {\n            \"Sid\": \"Enable IAM User Permissions\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:root\"\n            },\n            \"Action\": \"kms:*\",\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow access for Key Administrators\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": [\n                    \"arn:aws:iam::111122223333:user/ExampleAdminUser\",\n                    \"arn:aws:iam::111122223333:role/ExampleAdminRole\"\n                ]\n            },\n            \"Action\": [\n                \"kms:Create*\",\n                \"kms:Describe*\",\n                \"kms:Enable*\",\n                \"kms:List*\",\n                \"kms:Put*\",\n                \"kms:Update*\",\n                \"kms:Revoke*\",\n                \"kms:Disable*\",\n                \"kms:Get*\",\n                \"kms:Delete*\",\n                \"kms:ScheduleKeyDeletion\",\n                \"kms:CancelKeyDeletion\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow use of the key\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:Encrypt\",\n                \"kms:Decrypt\",\n                \"kms:ReEncrypt*\",\n                \"kms:GenerateDataKey*\",\n                \"kms:DescribeKey\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow attachment of persistent resources\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:CreateGrant\",\n                \"kms:ListGrants\",\n                \"kms:RevokeGrant\"\n            ],\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"Bool\": {\n                    \"kms:GrantIsForAWSResource\": \"true\"\n                }\n            }\n        }\n    ]\n}\n",
-          "PolicyName": "default"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to attach the key policy to. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
@@ -737,20 +731,16 @@
         },
         "description": "The following example attaches a key policy to the specified CMK.",
         "id": "to-attach-a-key-policy-to-a-cmk-1481147345018",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "Policy": "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n    \"Statement\": [\n        {\n            \"Sid\": \"Enable IAM User Permissions\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:root\"\n            },\n            \"Action\": \"kms:*\",\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow access for Key Administrators\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": [\n                    \"arn:aws:iam::111122223333:user/ExampleAdminUser\",\n                    \"arn:aws:iam::111122223333:role/ExampleAdminRole\"\n                ]\n            },\n            \"Action\": [\n                \"kms:Create*\",\n                \"kms:Describe*\",\n                \"kms:Enable*\",\n                \"kms:List*\",\n                \"kms:Put*\",\n                \"kms:Update*\",\n                \"kms:Revoke*\",\n                \"kms:Disable*\",\n                \"kms:Get*\",\n                \"kms:Delete*\",\n                \"kms:ScheduleKeyDeletion\",\n                \"kms:CancelKeyDeletion\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow use of the key\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:Encrypt\",\n                \"kms:Decrypt\",\n                \"kms:ReEncrypt*\",\n                \"kms:GenerateDataKey*\",\n                \"kms:DescribeKey\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"Allow attachment of persistent resources\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"AWS\": \"arn:aws:iam::111122223333:role/ExamplePowerUserRole\"\n            },\n            \"Action\": [\n                \"kms:CreateGrant\",\n                \"kms:ListGrants\",\n                \"kms:RevokeGrant\"\n            ],\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"Bool\": {\n                    \"kms:GrantIsForAWSResource\": \"true\"\n                }\n            }\n        }\n    ]\n}\n",
+          "PolicyName": "default"
+        },
         "title": "To attach a key policy to a customer master key (CMK)"
       }
     ],
     "ReEncrypt": [
       {
-        "input": {
-          "CiphertextBlob": "<binary data>",
-          "DestinationKeyId": "0987dcba-09fe-87dc-65ba-ab0987654321"
-        },
-        "output": {
-          "CiphertextBlob": "<binary data>",
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/0987dcba-09fe-87dc-65ba-ab0987654321",
-          "SourceKeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "CiphertextBlob": "The data to reencrypt.",
@@ -764,15 +754,20 @@
         },
         "description": "The following example reencrypts data with the specified CMK.",
         "id": "to-reencrypt-data-1481230358001",
+        "input": {
+          "CiphertextBlob": "<binary data>",
+          "DestinationKeyId": "0987dcba-09fe-87dc-65ba-ab0987654321"
+        },
+        "output": {
+          "CiphertextBlob": "<binary data>",
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/0987dcba-09fe-87dc-65ba-ab0987654321",
+          "SourceKeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To reencrypt data"
       }
     ],
     "RetireGrant": [
       {
-        "input": {
-          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
-          "KeyId": "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "GrantId": "The identifier of the grant to retire.",
@@ -781,15 +776,15 @@
         },
         "description": "The following example retires a grant.",
         "id": "to-retire-a-grant-1481327028297",
+        "input": {
+          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
+          "KeyId": "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To retire a grant"
       }
     ],
     "RevokeGrant": [
       {
-        "input": {
-          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "GrantId": "The identifier of the grant to revoke.",
@@ -798,19 +793,15 @@
         },
         "description": "The following example revokes a grant.",
         "id": "to-revoke-a-grant-1481329549302",
+        "input": {
+          "GrantId": "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To revoke a grant"
       }
     ],
     "ScheduleKeyDeletion": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "PendingWindowInDays": 7
-        },
-        "output": {
-          "DeletionDate": "2016-12-17T16:00:00-08:00",
-          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK to schedule for deletion. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
@@ -823,11 +814,27 @@
         },
         "description": "The following example schedules the specified CMK for deletion.",
         "id": "to-schedule-a-cmk-for-deletion-1481331111094",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "PendingWindowInDays": 7
+        },
+        "output": {
+          "DeletionDate": "2016-12-17T16:00:00-08:00",
+          "KeyId": "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To schedule a customer master key (CMK) for deletion"
       }
     ],
     "TagResource": [
       {
+        "comments": {
+          "input": {
+            "KeyId": "The identifier of the CMK you are tagging. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
+            "Tags": "A list of tags."
+          }
+        },
+        "description": "The following example tags a CMK.",
+        "id": "to-tag-a-cmk-1483997246518",
         "input": {
           "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
           "Tags": [
@@ -837,26 +844,11 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-            "KeyId": "The identifier of the CMK you are tagging. You can use the key ID or the Amazon Resource Name (ARN) of the CMK.",
-            "Tags": "A list of tags."
-          }
-        },
-        "description": "The following example tags a CMK.",
-        "id": "to-tag-a-cmk-1483997246518",
         "title": "To tag a customer master key (CMK)"
       }
     ],
     "UntagResource": [
       {
-        "input": {
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
-          "TagKeys": [
-            "Purpose",
-            "CostCenter"
-          ]
-        },
         "comments": {
           "input": {
             "KeyId": "The identifier of the CMK whose tags you are removing.",
@@ -865,15 +857,18 @@
         },
         "description": "The following example removes tags from a CMK.",
         "id": "to-remove-tags-from-a-cmk-1483997590962",
+        "input": {
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab",
+          "TagKeys": [
+            "Purpose",
+            "CostCenter"
+          ]
+        },
         "title": "To remove tags from a customer master key (CMK)"
       }
     ],
     "UpdateAlias": [
       {
-        "input": {
-          "AliasName": "alias/ExampleAlias",
-          "TargetKeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "AliasName": "The alias to update.",
@@ -882,15 +877,15 @@
         },
         "description": "The following example updates the specified alias to refer to the specified customer master key (CMK).",
         "id": "to-update-an-alias-1481572726920",
+        "input": {
+          "AliasName": "alias/ExampleAlias",
+          "TargetKeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To update an alias"
       }
     ],
     "UpdateKeyDescription": [
       {
-        "input": {
-          "Description": "Example description that indicates the intended use of this CMK.",
-          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
-        },
         "comments": {
           "input": {
             "Description": "The updated description.",
@@ -899,8 +894,13 @@
         },
         "description": "The following example updates the description of the specified CMK.",
         "id": "to-update-the-description-of-a-cmk-1481574808619",
+        "input": {
+          "Description": "Example description that indicates the intended use of this CMK.",
+          "KeyId": "1234abcd-12ab-34cd-56ef-1234567890ab"
+        },
         "title": "To update the description of a customer master key (CMK)"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

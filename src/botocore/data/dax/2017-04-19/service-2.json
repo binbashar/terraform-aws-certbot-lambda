@@ -1,1684 +1,2048 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2017-04-19",
-    "endpointPrefix":"dax",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"Amazon DAX",
-    "serviceFullName":"Amazon DynamoDB Accelerator (DAX)",
-    "serviceId":"DAX",
-    "signatureVersion":"v4",
-    "targetPrefix":"AmazonDAXV3",
-    "uid":"dax-2017-04-19"
+  "documentation": "<p>DAX is a managed caching service engineered for Amazon DynamoDB. DAX dramatically speeds up database reads by caching frequently-accessed data from DynamoDB, so applications can access that data with sub-millisecond latency. You can create a DAX cluster easily, using the AWS Management Console. With a few simple modifications to your code, your application can begin taking advantage of the DAX cluster and realize significant improvements in read performance.</p>",
+  "metadata": {
+    "apiVersion": "2017-04-19",
+    "endpointPrefix": "dax",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "Amazon DAX",
+    "serviceFullName": "Amazon DynamoDB Accelerator (DAX)",
+    "serviceId": "DAX",
+    "signatureVersion": "v4",
+    "targetPrefix": "AmazonDAXV3",
+    "uid": "dax-2017-04-19"
   },
-  "operations":{
-    "CreateCluster":{
-      "name":"CreateCluster",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateClusterRequest"},
-      "output":{"shape":"CreateClusterResponse"},
-      "errors":[
-        {"shape":"ClusterAlreadyExistsFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"InsufficientClusterCapacityFault"},
-        {"shape":"SubnetGroupNotFoundFault"},
-        {"shape":"InvalidParameterGroupStateFault"},
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ClusterQuotaForCustomerExceededFault"},
-        {"shape":"NodeQuotaForClusterExceededFault"},
-        {"shape":"NodeQuotaForCustomerExceededFault"},
-        {"shape":"InvalidVPCNetworkStateFault"},
-        {"shape":"TagQuotaPerResourceExceeded"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+  "operations": {
+    "CreateCluster": {
+      "documentation": "<p>Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.</p>",
+      "errors": [
+        {
+          "shape": "ClusterAlreadyExistsFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "InsufficientClusterCapacityFault"
+        },
+        {
+          "shape": "SubnetGroupNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterGroupStateFault"
+        },
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "shape": "NodeQuotaForClusterExceededFault"
+        },
+        {
+          "shape": "NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "shape": "InvalidVPCNetworkStateFault"
+        },
+        {
+          "shape": "TagQuotaPerResourceExceeded"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateClusterRequest"
+      },
+      "name": "CreateCluster",
+      "output": {
+        "shape": "CreateClusterResponse"
+      }
     },
-    "CreateParameterGroup":{
-      "name":"CreateParameterGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateParameterGroupRequest"},
-      "output":{"shape":"CreateParameterGroupResponse"},
-      "errors":[
-        {"shape":"ParameterGroupQuotaExceededFault"},
-        {"shape":"ParameterGroupAlreadyExistsFault"},
-        {"shape":"InvalidParameterGroupStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "CreateParameterGroup": {
+      "documentation": "<p>Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.</p>",
+      "errors": [
+        {
+          "shape": "ParameterGroupQuotaExceededFault"
+        },
+        {
+          "shape": "ParameterGroupAlreadyExistsFault"
+        },
+        {
+          "shape": "InvalidParameterGroupStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateParameterGroupRequest"
+      },
+      "name": "CreateParameterGroup",
+      "output": {
+        "shape": "CreateParameterGroupResponse"
+      }
     },
-    "CreateSubnetGroup":{
-      "name":"CreateSubnetGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateSubnetGroupRequest"},
-      "output":{"shape":"CreateSubnetGroupResponse"},
-      "errors":[
-        {"shape":"SubnetGroupAlreadyExistsFault"},
-        {"shape":"SubnetGroupQuotaExceededFault"},
-        {"shape":"SubnetQuotaExceededFault"},
-        {"shape":"InvalidSubnet"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"}
+    "CreateSubnetGroup": {
+      "documentation": "<p>Creates a new subnet group.</p>",
+      "errors": [
+        {
+          "shape": "SubnetGroupAlreadyExistsFault"
+        },
+        {
+          "shape": "SubnetGroupQuotaExceededFault"
+        },
+        {
+          "shape": "SubnetQuotaExceededFault"
+        },
+        {
+          "shape": "InvalidSubnet"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        }
       ],
-      "documentation":"<p>Creates a new subnet group.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateSubnetGroupRequest"
+      },
+      "name": "CreateSubnetGroup",
+      "output": {
+        "shape": "CreateSubnetGroupResponse"
+      }
     },
-    "DecreaseReplicationFactor":{
-      "name":"DecreaseReplicationFactor",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DecreaseReplicationFactorRequest"},
-      "output":{"shape":"DecreaseReplicationFactorResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"NodeNotFoundFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DecreaseReplicationFactor": {
+      "documentation": "<p>Removes one or more nodes from a DAX cluster.</p> <note> <p>You cannot use <code>DecreaseReplicationFactor</code> to remove the last node in a DAX cluster. If you need to do this, use <code>DeleteCluster</code> instead.</p> </note>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "NodeNotFoundFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Removes one or more nodes from a DAX cluster.</p> <note> <p>You cannot use <code>DecreaseReplicationFactor</code> to remove the last node in a DAX cluster. If you need to do this, use <code>DeleteCluster</code> instead.</p> </note>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DecreaseReplicationFactorRequest"
+      },
+      "name": "DecreaseReplicationFactor",
+      "output": {
+        "shape": "DecreaseReplicationFactorResponse"
+      }
     },
-    "DeleteCluster":{
-      "name":"DeleteCluster",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteClusterRequest"},
-      "output":{"shape":"DeleteClusterResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DeleteCluster": {
+      "documentation": "<p>Deletes a previously provisioned DAX cluster. <i>DeleteCluster</i> deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.</p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Deletes a previously provisioned DAX cluster. <i>DeleteCluster</i> deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteClusterRequest"
+      },
+      "name": "DeleteCluster",
+      "output": {
+        "shape": "DeleteClusterResponse"
+      }
     },
-    "DeleteParameterGroup":{
-      "name":"DeleteParameterGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteParameterGroupRequest"},
-      "output":{"shape":"DeleteParameterGroupResponse"},
-      "errors":[
-        {"shape":"InvalidParameterGroupStateFault"},
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DeleteParameterGroup": {
+      "documentation": "<p>Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterGroupStateFault"
+        },
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteParameterGroupRequest"
+      },
+      "name": "DeleteParameterGroup",
+      "output": {
+        "shape": "DeleteParameterGroupResponse"
+      }
     },
-    "DeleteSubnetGroup":{
-      "name":"DeleteSubnetGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteSubnetGroupRequest"},
-      "output":{"shape":"DeleteSubnetGroupResponse"},
-      "errors":[
-        {"shape":"SubnetGroupInUseFault"},
-        {"shape":"SubnetGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"}
+    "DeleteSubnetGroup": {
+      "documentation": "<p>Deletes a subnet group.</p> <note> <p>You cannot delete a subnet group if it is associated with any DAX clusters.</p> </note>",
+      "errors": [
+        {
+          "shape": "SubnetGroupInUseFault"
+        },
+        {
+          "shape": "SubnetGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        }
       ],
-      "documentation":"<p>Deletes a subnet group.</p> <note> <p>You cannot delete a subnet group if it is associated with any DAX clusters.</p> </note>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteSubnetGroupRequest"
+      },
+      "name": "DeleteSubnetGroup",
+      "output": {
+        "shape": "DeleteSubnetGroupResponse"
+      }
     },
-    "DescribeClusters":{
-      "name":"DescribeClusters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeClustersRequest"},
-      "output":{"shape":"DescribeClustersResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DescribeClusters": {
+      "documentation": "<p>Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.</p> <p>If the cluster is in the CREATING state, only cluster level information will be displayed until all of the nodes are successfully provisioned.</p> <p>If the cluster is in the DELETING state, only cluster level information will be displayed.</p> <p>If nodes are currently being added to the DAX cluster, node endpoint information and creation time for the additional nodes will not be displayed until they are completely provisioned. When the DAX cluster state is <i>available</i>, the cluster is ready for use.</p> <p>If nodes are currently being removed from the DAX cluster, no endpoint information for the removed nodes is displayed.</p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.</p> <p>If the cluster is in the CREATING state, only cluster level information will be displayed until all of the nodes are successfully provisioned.</p> <p>If the cluster is in the DELETING state, only cluster level information will be displayed.</p> <p>If nodes are currently being added to the DAX cluster, node endpoint information and creation time for the additional nodes will not be displayed until they are completely provisioned. When the DAX cluster state is <i>available</i>, the cluster is ready for use.</p> <p>If nodes are currently being removed from the DAX cluster, no endpoint information for the removed nodes is displayed.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeClustersRequest"
+      },
+      "name": "DescribeClusters",
+      "output": {
+        "shape": "DescribeClustersResponse"
+      }
     },
-    "DescribeDefaultParameters":{
-      "name":"DescribeDefaultParameters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeDefaultParametersRequest"},
-      "output":{"shape":"DescribeDefaultParametersResponse"},
-      "errors":[
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DescribeDefaultParameters": {
+      "documentation": "<p>Returns the default system parameter information for the DAX caching software.</p>",
+      "errors": [
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Returns the default system parameter information for the DAX caching software.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeDefaultParametersRequest"
+      },
+      "name": "DescribeDefaultParameters",
+      "output": {
+        "shape": "DescribeDefaultParametersResponse"
+      }
     },
-    "DescribeEvents":{
-      "name":"DescribeEvents",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeEventsRequest"},
-      "output":{"shape":"DescribeEventsResponse"},
-      "errors":[
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DescribeEvents": {
+      "documentation": "<p>Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.</p> <p>By default, only the events occurring within the last 24 hours are returned; however, you can retrieve up to 14 days' worth of events if necessary.</p>",
+      "errors": [
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.</p> <p>By default, only the events occurring within the last 24 hours are returned; however, you can retrieve up to 14 days' worth of events if necessary.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeEventsRequest"
+      },
+      "name": "DescribeEvents",
+      "output": {
+        "shape": "DescribeEventsResponse"
+      }
     },
-    "DescribeParameterGroups":{
-      "name":"DescribeParameterGroups",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeParameterGroupsRequest"},
-      "output":{"shape":"DescribeParameterGroupsResponse"},
-      "errors":[
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DescribeParameterGroups": {
+      "documentation": "<p>Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.</p>",
+      "errors": [
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeParameterGroupsRequest"
+      },
+      "name": "DescribeParameterGroups",
+      "output": {
+        "shape": "DescribeParameterGroupsResponse"
+      }
     },
-    "DescribeParameters":{
-      "name":"DescribeParameters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeParametersRequest"},
-      "output":{"shape":"DescribeParametersResponse"},
-      "errors":[
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "DescribeParameters": {
+      "documentation": "<p>Returns the detailed parameter list for a particular parameter group.</p>",
+      "errors": [
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Returns the detailed parameter list for a particular parameter group.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeParametersRequest"
+      },
+      "name": "DescribeParameters",
+      "output": {
+        "shape": "DescribeParametersResponse"
+      }
     },
-    "DescribeSubnetGroups":{
-      "name":"DescribeSubnetGroups",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeSubnetGroupsRequest"},
-      "output":{"shape":"DescribeSubnetGroupsResponse"},
-      "errors":[
-        {"shape":"SubnetGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"}
+    "DescribeSubnetGroups": {
+      "documentation": "<p>Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.</p>",
+      "errors": [
+        {
+          "shape": "SubnetGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        }
       ],
-      "documentation":"<p>Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeSubnetGroupsRequest"
+      },
+      "name": "DescribeSubnetGroups",
+      "output": {
+        "shape": "DescribeSubnetGroupsResponse"
+      }
     },
-    "IncreaseReplicationFactor":{
-      "name":"IncreaseReplicationFactor",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"IncreaseReplicationFactorRequest"},
-      "output":{"shape":"IncreaseReplicationFactorResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"InsufficientClusterCapacityFault"},
-        {"shape":"InvalidVPCNetworkStateFault"},
-        {"shape":"NodeQuotaForClusterExceededFault"},
-        {"shape":"NodeQuotaForCustomerExceededFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "IncreaseReplicationFactor": {
+      "documentation": "<p>Adds one or more nodes to a DAX cluster.</p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "InsufficientClusterCapacityFault"
+        },
+        {
+          "shape": "InvalidVPCNetworkStateFault"
+        },
+        {
+          "shape": "NodeQuotaForClusterExceededFault"
+        },
+        {
+          "shape": "NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Adds one or more nodes to a DAX cluster.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "IncreaseReplicationFactorRequest"
+      },
+      "name": "IncreaseReplicationFactor",
+      "output": {
+        "shape": "IncreaseReplicationFactorResponse"
+      }
     },
-    "ListTags":{
-      "name":"ListTags",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListTagsRequest"},
-      "output":{"shape":"ListTagsResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"InvalidARNFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "ListTags": {
+      "documentation": "<p>List all of the tags for a DAX cluster. You can call <code>ListTags</code> up to 10 times per second, per account.</p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "InvalidARNFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>List all of the tags for a DAX cluster. You can call <code>ListTags</code> up to 10 times per second, per account.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListTagsRequest"
+      },
+      "name": "ListTags",
+      "output": {
+        "shape": "ListTagsResponse"
+      }
     },
-    "RebootNode":{
-      "name":"RebootNode",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"RebootNodeRequest"},
-      "output":{"shape":"RebootNodeResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"NodeNotFoundFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "RebootNode": {
+      "documentation": "<p>Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.</p> <note> <p> <code>RebootNode</code> restarts the DAX engine process and does not remove the contents of the cache. </p> </note>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "NodeNotFoundFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.</p> <note> <p> <code>RebootNode</code> restarts the DAX engine process and does not remove the contents of the cache. </p> </note>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "RebootNodeRequest"
+      },
+      "name": "RebootNode",
+      "output": {
+        "shape": "RebootNodeResponse"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"TagQuotaPerResourceExceeded"},
-        {"shape":"InvalidARNFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "TagResource": {
+      "documentation": "<p>Associates a set of tags with a DAX resource. You can call <code>TagResource</code> up to 5 times per second, per account. </p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "TagQuotaPerResourceExceeded"
+        },
+        {
+          "shape": "InvalidARNFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Associates a set of tags with a DAX resource. You can call <code>TagResource</code> up to 5 times per second, per account. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"InvalidARNFault"},
-        {"shape":"TagNotFoundFault"},
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "UntagResource": {
+      "documentation": "<p>Removes the association of tags from a DAX resource. You can call <code>UntagResource</code> up to 5 times per second, per account. </p>",
+      "errors": [
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "InvalidARNFault"
+        },
+        {
+          "shape": "TagNotFoundFault"
+        },
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Removes the association of tags from a DAX resource. You can call <code>UntagResource</code> up to 5 times per second, per account. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateCluster":{
-      "name":"UpdateCluster",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateClusterRequest"},
-      "output":{"shape":"UpdateClusterResponse"},
-      "errors":[
-        {"shape":"InvalidClusterStateFault"},
-        {"shape":"ClusterNotFoundFault"},
-        {"shape":"InvalidParameterGroupStateFault"},
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "UpdateCluster": {
+      "documentation": "<p>Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.</p>",
+      "errors": [
+        {
+          "shape": "InvalidClusterStateFault"
+        },
+        {
+          "shape": "ClusterNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterGroupStateFault"
+        },
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateClusterRequest"
+      },
+      "name": "UpdateCluster",
+      "output": {
+        "shape": "UpdateClusterResponse"
+      }
     },
-    "UpdateParameterGroup":{
-      "name":"UpdateParameterGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateParameterGroupRequest"},
-      "output":{"shape":"UpdateParameterGroupResponse"},
-      "errors":[
-        {"shape":"InvalidParameterGroupStateFault"},
-        {"shape":"ParameterGroupNotFoundFault"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"},
-        {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+    "UpdateParameterGroup": {
+      "documentation": "<p>Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterGroupStateFault"
+        },
+        {
+          "shape": "ParameterGroupNotFoundFault"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "shape": "InvalidParameterValueException"
+        },
+        {
+          "shape": "InvalidParameterCombinationException"
+        }
       ],
-      "documentation":"<p>Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateParameterGroupRequest"
+      },
+      "name": "UpdateParameterGroup",
+      "output": {
+        "shape": "UpdateParameterGroupResponse"
+      }
     },
-    "UpdateSubnetGroup":{
-      "name":"UpdateSubnetGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateSubnetGroupRequest"},
-      "output":{"shape":"UpdateSubnetGroupResponse"},
-      "errors":[
-        {"shape":"SubnetGroupNotFoundFault"},
-        {"shape":"SubnetQuotaExceededFault"},
-        {"shape":"SubnetInUse"},
-        {"shape":"InvalidSubnet"},
-        {"shape":"ServiceLinkedRoleNotFoundFault"}
+    "UpdateSubnetGroup": {
+      "documentation": "<p>Modifies an existing subnet group.</p>",
+      "errors": [
+        {
+          "shape": "SubnetGroupNotFoundFault"
+        },
+        {
+          "shape": "SubnetQuotaExceededFault"
+        },
+        {
+          "shape": "SubnetInUse"
+        },
+        {
+          "shape": "InvalidSubnet"
+        },
+        {
+          "shape": "ServiceLinkedRoleNotFoundFault"
+        }
       ],
-      "documentation":"<p>Modifies an existing subnet group.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateSubnetGroupRequest"
+      },
+      "name": "UpdateSubnetGroup",
+      "output": {
+        "shape": "UpdateSubnetGroupResponse"
+      }
     }
   },
-  "shapes":{
-    "AvailabilityZoneList":{
-      "type":"list",
-      "member":{"shape":"String"}
+  "shapes": {
+    "AvailabilityZoneList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
     },
-    "AwsQueryErrorMessage":{"type":"string"},
-    "ChangeType":{
-      "type":"string",
-      "enum":[
+    "AwsQueryErrorMessage": {
+      "type": "string"
+    },
+    "ChangeType": {
+      "enum": [
         "IMMEDIATE",
         "REQUIRES_REBOOT"
-      ]
+      ],
+      "type": "string"
     },
-    "Cluster":{
-      "type":"structure",
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX cluster.</p>"
+    "Cluster": {
+      "documentation": "<p>Contains all of the attributes of a specific DAX cluster.</p>",
+      "members": {
+        "ActiveNodes": {
+          "documentation": "<p>The number of nodes in the cluster that are active (i.e., capable of serving requests).</p>",
+          "shape": "IntegerOptional"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the cluster.</p>"
+        "ClusterArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>",
+          "shape": "String"
         },
-        "ClusterArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>"
+        "ClusterDiscoveryEndpoint": {
+          "documentation": "<p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>",
+          "shape": "Endpoint"
         },
-        "TotalNodes":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The total number of nodes in the cluster.</p>"
+        "ClusterName": {
+          "documentation": "<p>The name of the DAX cluster.</p>",
+          "shape": "String"
         },
-        "ActiveNodes":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The number of nodes in the cluster that are active (i.e., capable of serving requests).</p>"
+        "Description": {
+          "documentation": "<p>The description of the cluster.</p>",
+          "shape": "String"
         },
-        "NodeType":{
-          "shape":"String",
-          "documentation":"<p>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</p>"
+        "IamRoleArn": {
+          "documentation": "<p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>",
+          "shape": "String"
         },
-        "Status":{
-          "shape":"String",
-          "documentation":"<p>The current status of the cluster.</p>"
+        "NodeIdsToRemove": {
+          "documentation": "<p>A list of nodes to be removed from the cluster.</p>",
+          "shape": "NodeIdentifierList"
         },
-        "ClusterDiscoveryEndpoint":{
-          "shape":"Endpoint",
-          "documentation":"<p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>"
+        "NodeType": {
+          "documentation": "<p>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</p>",
+          "shape": "String"
         },
-        "NodeIdsToRemove":{
-          "shape":"NodeIdentifierList",
-          "documentation":"<p>A list of nodes to be removed from the cluster.</p>"
+        "Nodes": {
+          "documentation": "<p>A list of nodes that are currently in the cluster.</p>",
+          "shape": "NodeList"
         },
-        "Nodes":{
-          "shape":"NodeList",
-          "documentation":"<p>A list of nodes that are currently in the cluster.</p>"
+        "NotificationConfiguration": {
+          "documentation": "<p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>",
+          "shape": "NotificationConfiguration"
         },
-        "PreferredMaintenanceWindow":{
-          "shape":"String",
-          "documentation":"<p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>"
+        "ParameterGroup": {
+          "documentation": "<p>The parameter group being used by nodes in the cluster.</p>",
+          "shape": "ParameterGroupStatus"
         },
-        "NotificationConfiguration":{
-          "shape":"NotificationConfiguration",
-          "documentation":"<p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>"
+        "PreferredMaintenanceWindow": {
+          "documentation": "<p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>",
+          "shape": "String"
         },
-        "SubnetGroup":{
-          "shape":"String",
-          "documentation":"<p>The subnet group where the DAX cluster is running.</p>"
+        "SSEDescription": {
+          "documentation": "<p>The description of the server-side encryption status on the specified DAX cluster.</p>",
+          "shape": "SSEDescription"
         },
-        "SecurityGroups":{
-          "shape":"SecurityGroupMembershipList",
-          "documentation":"<p>A list of security groups, and the status of each, for the nodes in the cluster.</p>"
+        "SecurityGroups": {
+          "documentation": "<p>A list of security groups, and the status of each, for the nodes in the cluster.</p>",
+          "shape": "SecurityGroupMembershipList"
         },
-        "IamRoleArn":{
-          "shape":"String",
-          "documentation":"<p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>"
+        "Status": {
+          "documentation": "<p>The current status of the cluster.</p>",
+          "shape": "String"
         },
-        "ParameterGroup":{
-          "shape":"ParameterGroupStatus",
-          "documentation":"<p>The parameter group being used by nodes in the cluster.</p>"
+        "SubnetGroup": {
+          "documentation": "<p>The subnet group where the DAX cluster is running.</p>",
+          "shape": "String"
         },
-        "SSEDescription":{
-          "shape":"SSEDescription",
-          "documentation":"<p>The description of the server-side encryption status on the specified DAX cluster.</p>"
+        "TotalNodes": {
+          "documentation": "<p>The total number of nodes in the cluster.</p>",
+          "shape": "IntegerOptional"
         }
       },
-      "documentation":"<p>Contains all of the attributes of a specific DAX cluster.</p>"
+      "type": "structure"
     },
-    "ClusterAlreadyExistsFault":{
-      "type":"structure",
-      "members":{
+    "ClusterAlreadyExistsFault": {
+      "documentation": "<p>You already have a DAX cluster with the given identifier.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "ClusterList": {
+      "member": {
+        "shape": "Cluster"
       },
-      "documentation":"<p>You already have a DAX cluster with the given identifier.</p>",
-      "exception":true
+      "type": "list"
     },
-    "ClusterList":{
-      "type":"list",
-      "member":{"shape":"Cluster"}
-    },
-    "ClusterNameList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "ClusterNotFoundFault":{
-      "type":"structure",
-      "members":{
+    "ClusterNameList": {
+      "member": {
+        "shape": "String"
       },
-      "documentation":"<p>The requested cluster ID does not refer to an existing DAX cluster.</p>",
-      "exception":true
+      "type": "list"
     },
-    "ClusterQuotaForCustomerExceededFault":{
-      "type":"structure",
-      "members":{
+    "ClusterNotFoundFault": {
+      "documentation": "<p>The requested cluster ID does not refer to an existing DAX cluster.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "ClusterQuotaForCustomerExceededFault": {
+      "documentation": "<p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "CreateClusterRequest": {
+      "members": {
+        "AvailabilityZones": {
+          "documentation": "<p>The Availability Zones (AZs) in which the cluster nodes will reside after the cluster has been created or updated. If provided, the length of this list must equal the <code>ReplicationFactor</code> parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest availability.</p>",
+          "shape": "AvailabilityZoneList"
+        },
+        "ClusterName": {
+          "documentation": "<p>The cluster identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>",
+          "shape": "String"
+        },
+        "Description": {
+          "documentation": "<p>A description of the cluster.</p>",
+          "shape": "String"
+        },
+        "IamRoleArn": {
+          "documentation": "<p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>",
+          "shape": "String"
+        },
+        "NodeType": {
+          "documentation": "<p>The compute and memory capacity of the nodes in the cluster.</p>",
+          "shape": "String"
+        },
+        "NotificationTopicArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.</p> <note> <p>The Amazon SNS topic owner must be same as the DAX cluster owner.</p> </note>",
+          "shape": "String"
+        },
+        "ParameterGroupName": {
+          "documentation": "<p>The parameter group to be associated with the DAX cluster.</p>",
+          "shape": "String"
+        },
+        "PreferredMaintenanceWindow": {
+          "documentation": "<p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>",
+          "shape": "String"
+        },
+        "ReplicationFactor": {
+          "documentation": "<p>The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set <code>ReplicationFactor</code> to a number between 3 (one primary and two read replicas) and 10 (one primary and nine read replicas). <code>If the AvailabilityZones</code> parameter is provided, its length must equal the <code>ReplicationFactor</code>.</p> <note> <p>AWS recommends that you have at least two read replicas per cluster.</p> </note>",
+          "shape": "Integer"
+        },
+        "SSESpecification": {
+          "documentation": "<p>Represents the settings used to enable server-side encryption on the cluster.</p>",
+          "shape": "SSESpecification"
+        },
+        "SecurityGroupIds": {
+          "documentation": "<p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>",
+          "shape": "SecurityGroupIdentifierList"
+        },
+        "SubnetGroupName": {
+          "documentation": "<p>The name of the subnet group to be used for the replication group.</p> <important> <p>DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.</p> </important>",
+          "shape": "String"
+        },
+        "Tags": {
+          "documentation": "<p>A set of tags to associate with the DAX cluster. </p>",
+          "shape": "TagList"
+        }
       },
-      "documentation":"<p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>",
-      "exception":true
-    },
-    "CreateClusterRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "ClusterName",
         "NodeType",
         "ReplicationFactor",
         "IamRoleArn"
       ],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The cluster identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>"
-        },
-        "NodeType":{
-          "shape":"String",
-          "documentation":"<p>The compute and memory capacity of the nodes in the cluster.</p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the cluster.</p>"
-        },
-        "ReplicationFactor":{
-          "shape":"Integer",
-          "documentation":"<p>The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set <code>ReplicationFactor</code> to a number between 3 (one primary and two read replicas) and 10 (one primary and nine read replicas). <code>If the AvailabilityZones</code> parameter is provided, its length must equal the <code>ReplicationFactor</code>.</p> <note> <p>AWS recommends that you have at least two read replicas per cluster.</p> </note>"
-        },
-        "AvailabilityZones":{
-          "shape":"AvailabilityZoneList",
-          "documentation":"<p>The Availability Zones (AZs) in which the cluster nodes will reside after the cluster has been created or updated. If provided, the length of this list must equal the <code>ReplicationFactor</code> parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest availability.</p>"
-        },
-        "SubnetGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the subnet group to be used for the replication group.</p> <important> <p>DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.</p> </important>"
-        },
-        "SecurityGroupIds":{
-          "shape":"SecurityGroupIdentifierList",
-          "documentation":"<p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>"
-        },
-        "PreferredMaintenanceWindow":{
-          "shape":"String",
-          "documentation":"<p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>"
-        },
-        "NotificationTopicArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.</p> <note> <p>The Amazon SNS topic owner must be same as the DAX cluster owner.</p> </note>"
-        },
-        "IamRoleArn":{
-          "shape":"String",
-          "documentation":"<p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>"
-        },
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The parameter group to be associated with the DAX cluster.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A set of tags to associate with the DAX cluster. </p>"
-        },
-        "SSESpecification":{
-          "shape":"SSESpecification",
-          "documentation":"<p>Represents the settings used to enable server-side encryption on the cluster.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateClusterResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster that you have created.</p>"
+    "CreateClusterResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster that you have created.</p>",
+          "shape": "Cluster"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateParameterGroupRequest":{
-      "type":"structure",
-      "required":["ParameterGroupName"],
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group to apply to all of the clusters in this replication group.</p>"
+    "CreateParameterGroupRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the parameter group.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the parameter group.</p>"
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group to apply to all of the clusters in this replication group.</p>",
+          "shape": "String"
         }
-      }
+      },
+      "required": [
+        "ParameterGroupName"
+      ],
+      "type": "structure"
     },
-    "CreateParameterGroupResponse":{
-      "type":"structure",
-      "members":{
-        "ParameterGroup":{
-          "shape":"ParameterGroup",
-          "documentation":"<p>Represents the output of a <i>CreateParameterGroup</i> action.</p>"
+    "CreateParameterGroupResponse": {
+      "members": {
+        "ParameterGroup": {
+          "documentation": "<p>Represents the output of a <i>CreateParameterGroup</i> action.</p>",
+          "shape": "ParameterGroup"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateSubnetGroupRequest":{
-      "type":"structure",
-      "required":[
+    "CreateSubnetGroupRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description for the subnet group</p>",
+          "shape": "String"
+        },
+        "SubnetGroupName": {
+          "documentation": "<p>A name for the subnet group. This value is stored as a lowercase string. </p>",
+          "shape": "String"
+        },
+        "SubnetIds": {
+          "documentation": "<p>A list of VPC subnet IDs for the subnet group.</p>",
+          "shape": "SubnetIdentifierList"
+        }
+      },
+      "required": [
         "SubnetGroupName",
         "SubnetIds"
       ],
-      "members":{
-        "SubnetGroupName":{
-          "shape":"String",
-          "documentation":"<p>A name for the subnet group. This value is stored as a lowercase string. </p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description for the subnet group</p>"
-        },
-        "SubnetIds":{
-          "shape":"SubnetIdentifierList",
-          "documentation":"<p>A list of VPC subnet IDs for the subnet group.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateSubnetGroupResponse":{
-      "type":"structure",
-      "members":{
-        "SubnetGroup":{
-          "shape":"SubnetGroup",
-          "documentation":"<p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>"
+    "CreateSubnetGroupResponse": {
+      "members": {
+        "SubnetGroup": {
+          "documentation": "<p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>",
+          "shape": "SubnetGroup"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DecreaseReplicationFactorRequest":{
-      "type":"structure",
-      "required":[
+    "DecreaseReplicationFactorRequest": {
+      "members": {
+        "AvailabilityZones": {
+          "documentation": "<p>The Availability Zone(s) from which to remove nodes.</p>",
+          "shape": "AvailabilityZoneList"
+        },
+        "ClusterName": {
+          "documentation": "<p>The name of the DAX cluster from which you want to remove nodes.</p>",
+          "shape": "String"
+        },
+        "NewReplicationFactor": {
+          "documentation": "<p>The new number of nodes for the DAX cluster.</p>",
+          "shape": "Integer"
+        },
+        "NodeIdsToRemove": {
+          "documentation": "<p>The unique identifiers of the nodes to be removed from the cluster.</p>",
+          "shape": "NodeIdentifierList"
+        }
+      },
+      "required": [
         "ClusterName",
         "NewReplicationFactor"
       ],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX cluster from which you want to remove nodes.</p>"
-        },
-        "NewReplicationFactor":{
-          "shape":"Integer",
-          "documentation":"<p>The new number of nodes for the DAX cluster.</p>"
-        },
-        "AvailabilityZones":{
-          "shape":"AvailabilityZoneList",
-          "documentation":"<p>The Availability Zone(s) from which to remove nodes.</p>"
-        },
-        "NodeIdsToRemove":{
-          "shape":"NodeIdentifierList",
-          "documentation":"<p>The unique identifiers of the nodes to be removed from the cluster.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DecreaseReplicationFactorResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster, after you have decreased its replication factor.</p>"
-        }
-      }
-    },
-    "DeleteClusterRequest":{
-      "type":"structure",
-      "required":["ClusterName"],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the cluster to be deleted.</p>"
-        }
-      }
-    },
-    "DeleteClusterResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster that is being deleted.</p>"
-        }
-      }
-    },
-    "DeleteParameterGroupRequest":{
-      "type":"structure",
-      "required":["ParameterGroupName"],
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group to delete.</p>"
-        }
-      }
-    },
-    "DeleteParameterGroupResponse":{
-      "type":"structure",
-      "members":{
-        "DeletionMessage":{
-          "shape":"String",
-          "documentation":"<p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>"
-        }
-      }
-    },
-    "DeleteSubnetGroupRequest":{
-      "type":"structure",
-      "required":["SubnetGroupName"],
-      "members":{
-        "SubnetGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the subnet group to delete.</p>"
-        }
-      }
-    },
-    "DeleteSubnetGroupResponse":{
-      "type":"structure",
-      "members":{
-        "DeletionMessage":{
-          "shape":"String",
-          "documentation":"<p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>"
-        }
-      }
-    },
-    "DescribeClustersRequest":{
-      "type":"structure",
-      "members":{
-        "ClusterNames":{
-          "shape":"ClusterNameList",
-          "documentation":"<p>The names of the DAX clusters being described.</p>"
-        },
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeClustersResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "Clusters":{
-          "shape":"ClusterList",
-          "documentation":"<p>The descriptions of your DAX clusters, in response to a <i>DescribeClusters</i> request.</p>"
-        }
-      }
-    },
-    "DescribeDefaultParametersRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeDefaultParametersResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "Parameters":{
-          "shape":"ParameterList",
-          "documentation":"<p>A list of parameters. Each element in the list represents one parameter.</p>"
-        }
-      }
-    },
-    "DescribeEventsRequest":{
-      "type":"structure",
-      "members":{
-        "SourceName":{
-          "shape":"String",
-          "documentation":"<p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p>"
-        },
-        "SourceType":{
-          "shape":"SourceType",
-          "documentation":"<p>The event source to retrieve events for. If no value is specified, all events are returned.</p>"
-        },
-        "StartTime":{
-          "shape":"TStamp",
-          "documentation":"<p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format.</p>"
-        },
-        "EndTime":{
-          "shape":"TStamp",
-          "documentation":"<p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>"
-        },
-        "Duration":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The number of minutes' worth of events to retrieve.</p>"
-        },
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeEventsResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "Events":{
-          "shape":"EventList",
-          "documentation":"<p>An array of events. Each element in the array represents one event.</p>"
-        }
-      }
-    },
-    "DescribeParameterGroupsRequest":{
-      "type":"structure",
-      "members":{
-        "ParameterGroupNames":{
-          "shape":"ParameterGroupNameList",
-          "documentation":"<p>The names of the parameter groups.</p>"
-        },
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeParameterGroupsResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "ParameterGroups":{
-          "shape":"ParameterGroupList",
-          "documentation":"<p>An array of parameter groups. Each element in the array represents one parameter group.</p>"
-        }
-      }
-    },
-    "DescribeParametersRequest":{
-      "type":"structure",
-      "required":["ParameterGroupName"],
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group.</p>"
-        },
-        "Source":{
-          "shape":"String",
-          "documentation":"<p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>"
-        },
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeParametersResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "Parameters":{
-          "shape":"ParameterList",
-          "documentation":"<p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>"
-        }
-      }
-    },
-    "DescribeSubnetGroupsRequest":{
-      "type":"structure",
-      "members":{
-        "SubnetGroupNames":{
-          "shape":"SubnetGroupNameList",
-          "documentation":"<p>The name of the subnet group.</p>"
-        },
-        "MaxResults":{
-          "shape":"IntegerOptional",
-          "documentation":"<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>"
-        }
-      }
-    },
-    "DescribeSubnetGroupsResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>Provides an identifier to allow retrieval of paginated results.</p>"
-        },
-        "SubnetGroups":{
-          "shape":"SubnetGroupList",
-          "documentation":"<p>An array of subnet groups. Each element in the array represents a single subnet group.</p>"
-        }
-      }
-    },
-    "Endpoint":{
-      "type":"structure",
-      "members":{
-        "Address":{
-          "shape":"String",
-          "documentation":"<p>The DNS hostname of the endpoint.</p>"
-        },
-        "Port":{
-          "shape":"Integer",
-          "documentation":"<p>The port number that applications should use to connect to the endpoint.</p>"
+    "DecreaseReplicationFactorResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster, after you have decreased its replication factor.</p>",
+          "shape": "Cluster"
         }
       },
-      "documentation":"<p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>"
+      "type": "structure"
     },
-    "Event":{
-      "type":"structure",
-      "members":{
-        "SourceName":{
-          "shape":"String",
-          "documentation":"<p>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</p>"
-        },
-        "SourceType":{
-          "shape":"SourceType",
-          "documentation":"<p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>"
-        },
-        "Message":{
-          "shape":"String",
-          "documentation":"<p>A user-defined message associated with the event.</p>"
-        },
-        "Date":{
-          "shape":"TStamp",
-          "documentation":"<p>The date and time when the event occurred.</p>"
+    "DeleteClusterRequest": {
+      "members": {
+        "ClusterName": {
+          "documentation": "<p>The name of the cluster to be deleted.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.</p>"
+      "required": [
+        "ClusterName"
+      ],
+      "type": "structure"
     },
-    "EventList":{
-      "type":"list",
-      "member":{"shape":"Event"}
+    "DeleteClusterResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster that is being deleted.</p>",
+          "shape": "Cluster"
+        }
+      },
+      "type": "structure"
     },
-    "IncreaseReplicationFactorRequest":{
-      "type":"structure",
-      "required":[
+    "DeleteParameterGroupRequest": {
+      "members": {
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group to delete.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "ParameterGroupName"
+      ],
+      "type": "structure"
+    },
+    "DeleteParameterGroupResponse": {
+      "members": {
+        "DeletionMessage": {
+          "documentation": "<p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DeleteSubnetGroupRequest": {
+      "members": {
+        "SubnetGroupName": {
+          "documentation": "<p>The name of the subnet group to delete.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "SubnetGroupName"
+      ],
+      "type": "structure"
+    },
+    "DeleteSubnetGroupResponse": {
+      "members": {
+        "DeletionMessage": {
+          "documentation": "<p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeClustersRequest": {
+      "members": {
+        "ClusterNames": {
+          "documentation": "<p>The names of the DAX clusters being described.</p>",
+          "shape": "ClusterNameList"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeClustersResponse": {
+      "members": {
+        "Clusters": {
+          "documentation": "<p>The descriptions of your DAX clusters, in response to a <i>DescribeClusters</i> request.</p>",
+          "shape": "ClusterList"
+        },
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeDefaultParametersRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeDefaultParametersResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        },
+        "Parameters": {
+          "documentation": "<p>A list of parameters. Each element in the list represents one parameter.</p>",
+          "shape": "ParameterList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsRequest": {
+      "members": {
+        "Duration": {
+          "documentation": "<p>The number of minutes' worth of events to retrieve.</p>",
+          "shape": "IntegerOptional"
+        },
+        "EndTime": {
+          "documentation": "<p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>",
+          "shape": "TStamp"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        },
+        "SourceName": {
+          "documentation": "<p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p>",
+          "shape": "String"
+        },
+        "SourceType": {
+          "documentation": "<p>The event source to retrieve events for. If no value is specified, all events are returned.</p>",
+          "shape": "SourceType"
+        },
+        "StartTime": {
+          "documentation": "<p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format.</p>",
+          "shape": "TStamp"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeEventsResponse": {
+      "members": {
+        "Events": {
+          "documentation": "<p>An array of events. Each element in the array represents one event.</p>",
+          "shape": "EventList"
+        },
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeParameterGroupsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        },
+        "ParameterGroupNames": {
+          "documentation": "<p>The names of the parameter groups.</p>",
+          "shape": "ParameterGroupNameList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeParameterGroupsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        },
+        "ParameterGroups": {
+          "documentation": "<p>An array of parameter groups. Each element in the array represents one parameter group.</p>",
+          "shape": "ParameterGroupList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeParametersRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        },
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group.</p>",
+          "shape": "String"
+        },
+        "Source": {
+          "documentation": "<p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
+        "ParameterGroupName"
+      ],
+      "type": "structure"
+    },
+    "DescribeParametersResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        },
+        "Parameters": {
+          "documentation": "<p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>",
+          "shape": "ParameterList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeSubnetGroupsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>",
+          "shape": "IntegerOptional"
+        },
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>",
+          "shape": "String"
+        },
+        "SubnetGroupNames": {
+          "documentation": "<p>The name of the subnet group.</p>",
+          "shape": "SubnetGroupNameList"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeSubnetGroupsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>Provides an identifier to allow retrieval of paginated results.</p>",
+          "shape": "String"
+        },
+        "SubnetGroups": {
+          "documentation": "<p>An array of subnet groups. Each element in the array represents a single subnet group.</p>",
+          "shape": "SubnetGroupList"
+        }
+      },
+      "type": "structure"
+    },
+    "Endpoint": {
+      "documentation": "<p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>",
+      "members": {
+        "Address": {
+          "documentation": "<p>The DNS hostname of the endpoint.</p>",
+          "shape": "String"
+        },
+        "Port": {
+          "documentation": "<p>The port number that applications should use to connect to the endpoint.</p>",
+          "shape": "Integer"
+        }
+      },
+      "type": "structure"
+    },
+    "Event": {
+      "documentation": "<p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.</p>",
+      "members": {
+        "Date": {
+          "documentation": "<p>The date and time when the event occurred.</p>",
+          "shape": "TStamp"
+        },
+        "Message": {
+          "documentation": "<p>A user-defined message associated with the event.</p>",
+          "shape": "String"
+        },
+        "SourceName": {
+          "documentation": "<p>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</p>",
+          "shape": "String"
+        },
+        "SourceType": {
+          "documentation": "<p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>",
+          "shape": "SourceType"
+        }
+      },
+      "type": "structure"
+    },
+    "EventList": {
+      "member": {
+        "shape": "Event"
+      },
+      "type": "list"
+    },
+    "IncreaseReplicationFactorRequest": {
+      "members": {
+        "AvailabilityZones": {
+          "documentation": "<p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>",
+          "shape": "AvailabilityZoneList"
+        },
+        "ClusterName": {
+          "documentation": "<p>The name of the DAX cluster that will receive additional nodes.</p>",
+          "shape": "String"
+        },
+        "NewReplicationFactor": {
+          "documentation": "<p>The new number of nodes for the DAX cluster.</p>",
+          "shape": "Integer"
+        }
+      },
+      "required": [
         "ClusterName",
         "NewReplicationFactor"
       ],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX cluster that will receive additional nodes.</p>"
-        },
-        "NewReplicationFactor":{
-          "shape":"Integer",
-          "documentation":"<p>The new number of nodes for the DAX cluster.</p>"
-        },
-        "AvailabilityZones":{
-          "shape":"AvailabilityZoneList",
-          "documentation":"<p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>"
+      "type": "structure"
+    },
+    "IncreaseReplicationFactorResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster. with its new replication factor.</p>",
+          "shape": "Cluster"
         }
-      }
+      },
+      "type": "structure"
     },
-    "IncreaseReplicationFactorResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster. with its new replication factor.</p>"
+    "InsufficientClusterCapacityFault": {
+      "documentation": "<p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "Integer": {
+      "type": "integer"
+    },
+    "IntegerOptional": {
+      "type": "integer"
+    },
+    "InvalidARNFault": {
+      "documentation": "<p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "InvalidClusterStateFault": {
+      "documentation": "<p>The requested DAX cluster is not in the <i>available</i> state.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "InvalidParameterCombinationException": {
+      "documentation": "<p>Two or more incompatible parameters were specified.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "AwsQueryErrorMessage"
         }
-      }
-    },
-    "InsufficientClusterCapacityFault":{
-      "type":"structure",
-      "members":{
       },
-      "documentation":"<p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>",
-      "exception":true
+      "synthetic": true,
+      "type": "structure"
     },
-    "Integer":{"type":"integer"},
-    "IntegerOptional":{"type":"integer"},
-    "InvalidARNFault":{
-      "type":"structure",
-      "members":{
+    "InvalidParameterGroupStateFault": {
+      "documentation": "<p>One or more parameters in a parameter group are in an invalid state.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "InvalidParameterValueException": {
+      "documentation": "<p>The value for a parameter is invalid.</p>",
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "AwsQueryErrorMessage"
+        }
       },
-      "documentation":"<p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>",
-      "exception":true
+      "synthetic": true,
+      "type": "structure"
     },
-    "InvalidClusterStateFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The requested DAX cluster is not in the <i>available</i> state.</p>",
-      "exception":true
+    "InvalidSubnet": {
+      "documentation": "<p>An invalid subnet identifier was specified.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "InvalidParameterCombinationException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"AwsQueryErrorMessage"}
-      },
-      "documentation":"<p>Two or more incompatible parameters were specified.</p>",
-      "exception":true,
-      "synthetic":true
+    "InvalidVPCNetworkStateFault": {
+      "documentation": "<p>The VPC network is in an invalid state.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "InvalidParameterGroupStateFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>One or more parameters in a parameter group are in an invalid state.</p>",
-      "exception":true
-    },
-    "InvalidParameterValueException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"AwsQueryErrorMessage"}
-      },
-      "documentation":"<p>The value for a parameter is invalid.</p>",
-      "exception":true,
-      "synthetic":true
-    },
-    "InvalidSubnet":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>An invalid subnet identifier was specified.</p>",
-      "exception":true
-    },
-    "InvalidVPCNetworkStateFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The VPC network is in an invalid state.</p>",
-      "exception":true
-    },
-    "IsModifiable":{
-      "type":"string",
-      "enum":[
+    "IsModifiable": {
+      "enum": [
         "TRUE",
         "FALSE",
         "CONDITIONAL"
-      ]
+      ],
+      "type": "string"
     },
-    "KeyList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "KeyList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
     },
-    "ListTagsRequest":{
-      "type":"structure",
-      "required":["ResourceName"],
-      "members":{
-        "ResourceName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX resource to which the tags belong.</p>"
+    "ListTagsRequest": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.</p>",
+          "shape": "String"
         },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.</p>"
-        }
-      }
-    },
-    "ListTagsResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of tags currently associated with the DAX cluster.</p>"
-        },
-        "NextToken":{
-          "shape":"String",
-          "documentation":"<p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>"
-        }
-      }
-    },
-    "Node":{
-      "type":"structure",
-      "members":{
-        "NodeId":{
-          "shape":"String",
-          "documentation":"<p>A system-generated identifier for the node.</p>"
-        },
-        "Endpoint":{
-          "shape":"Endpoint",
-          "documentation":"<p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>"
-        },
-        "NodeCreateTime":{
-          "shape":"TStamp",
-          "documentation":"<p>The date and time (in UNIX epoch format) when the node was launched.</p>"
-        },
-        "AvailabilityZone":{
-          "shape":"String",
-          "documentation":"<p>The Availability Zone (AZ) in which the node has been deployed.</p>"
-        },
-        "NodeStatus":{
-          "shape":"String",
-          "documentation":"<p>The current status of the node. For example: <code>available</code>.</p>"
-        },
-        "ParameterGroupStatus":{
-          "shape":"String",
-          "documentation":"<p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>"
+        "ResourceName": {
+          "documentation": "<p>The name of the DAX resource to which the tags belong.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Represents an individual node within a DAX cluster.</p>"
+      "required": [
+        "ResourceName"
+      ],
+      "type": "structure"
     },
-    "NodeIdentifierList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "NodeList":{
-      "type":"list",
-      "member":{"shape":"Node"}
-    },
-    "NodeNotFoundFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>None of the nodes in the cluster have the given node ID.</p>",
-      "exception":true
-    },
-    "NodeQuotaForClusterExceededFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>",
-      "exception":true
-    },
-    "NodeQuotaForCustomerExceededFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>",
-      "exception":true
-    },
-    "NodeTypeSpecificValue":{
-      "type":"structure",
-      "members":{
-        "NodeType":{
-          "shape":"String",
-          "documentation":"<p>A node type to which the parameter value applies.</p>"
+    "ListTagsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>",
+          "shape": "String"
         },
-        "Value":{
-          "shape":"String",
-          "documentation":"<p>The parameter value for this node type.</p>"
+        "Tags": {
+          "documentation": "<p>A list of tags currently associated with the DAX cluster.</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>Represents a parameter value that is applicable to a particular node type.</p>"
+      "type": "structure"
     },
-    "NodeTypeSpecificValueList":{
-      "type":"list",
-      "member":{"shape":"NodeTypeSpecificValue"}
-    },
-    "NotificationConfiguration":{
-      "type":"structure",
-      "members":{
-        "TopicArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) that identifies the topic. </p>"
+    "Node": {
+      "documentation": "<p>Represents an individual node within a DAX cluster.</p>",
+      "members": {
+        "AvailabilityZone": {
+          "documentation": "<p>The Availability Zone (AZ) in which the node has been deployed.</p>",
+          "shape": "String"
         },
-        "TopicStatus":{
-          "shape":"String",
-          "documentation":"<p>The current state of the topic.</p>"
+        "Endpoint": {
+          "documentation": "<p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>",
+          "shape": "Endpoint"
+        },
+        "NodeCreateTime": {
+          "documentation": "<p>The date and time (in UNIX epoch format) when the node was launched.</p>",
+          "shape": "TStamp"
+        },
+        "NodeId": {
+          "documentation": "<p>A system-generated identifier for the node.</p>",
+          "shape": "String"
+        },
+        "NodeStatus": {
+          "documentation": "<p>The current status of the node. For example: <code>available</code>.</p>",
+          "shape": "String"
+        },
+        "ParameterGroupStatus": {
+          "documentation": "<p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>"
+      "type": "structure"
     },
-    "Parameter":{
-      "type":"structure",
-      "members":{
-        "ParameterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter.</p>"
+    "NodeIdentifierList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "NodeList": {
+      "member": {
+        "shape": "Node"
+      },
+      "type": "list"
+    },
+    "NodeNotFoundFault": {
+      "documentation": "<p>None of the nodes in the cluster have the given node ID.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "NodeQuotaForClusterExceededFault": {
+      "documentation": "<p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "NodeQuotaForCustomerExceededFault": {
+      "documentation": "<p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "NodeTypeSpecificValue": {
+      "documentation": "<p>Represents a parameter value that is applicable to a particular node type.</p>",
+      "members": {
+        "NodeType": {
+          "documentation": "<p>A node type to which the parameter value applies.</p>",
+          "shape": "String"
         },
-        "ParameterType":{
-          "shape":"ParameterType",
-          "documentation":"<p>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.</p>"
-        },
-        "ParameterValue":{
-          "shape":"String",
-          "documentation":"<p>The value for the parameter.</p>"
-        },
-        "NodeTypeSpecificValues":{
-          "shape":"NodeTypeSpecificValueList",
-          "documentation":"<p>A list of node types, and specific parameter values for each node.</p>"
-        },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the parameter</p>"
-        },
-        "Source":{
-          "shape":"String",
-          "documentation":"<p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>"
-        },
-        "DataType":{
-          "shape":"String",
-          "documentation":"<p>The data type of the parameter. For example, <code>integer</code>:</p>"
-        },
-        "AllowedValues":{
-          "shape":"String",
-          "documentation":"<p>A range of values within which the parameter can be set.</p>"
-        },
-        "IsModifiable":{
-          "shape":"IsModifiable",
-          "documentation":"<p>Whether the customer is allowed to modify the parameter.</p>"
-        },
-        "ChangeType":{
-          "shape":"ChangeType",
-          "documentation":"<p>The conditions under which changes to this parameter can be applied. For example, <code>requires-reboot</code> indicates that a new value for this parameter will only take effect if a node is rebooted.</p>"
+        "Value": {
+          "documentation": "<p>The parameter value for this node type.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Describes an individual setting that controls some aspect of DAX behavior.</p>"
+      "type": "structure"
     },
-    "ParameterGroup":{
-      "type":"structure",
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group.</p>"
+    "NodeTypeSpecificValueList": {
+      "member": {
+        "shape": "NodeTypeSpecificValue"
+      },
+      "type": "list"
+    },
+    "NotificationConfiguration": {
+      "documentation": "<p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>",
+      "members": {
+        "TopicArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) that identifies the topic. </p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the parameter group.</p>"
+        "TopicStatus": {
+          "documentation": "<p>The current state of the topic.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>A named set of parameters that are applied to all of the nodes in a DAX cluster.</p>"
+      "type": "structure"
     },
-    "ParameterGroupAlreadyExistsFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The specified parameter group already exists.</p>",
-      "exception":true
-    },
-    "ParameterGroupList":{
-      "type":"list",
-      "member":{"shape":"ParameterGroup"}
-    },
-    "ParameterGroupNameList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "ParameterGroupNotFoundFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The specified parameter group does not exist.</p>",
-      "exception":true
-    },
-    "ParameterGroupQuotaExceededFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>You have attempted to exceed the maximum number of parameter groups.</p>",
-      "exception":true
-    },
-    "ParameterGroupStatus":{
-      "type":"structure",
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group.</p>"
+    "Parameter": {
+      "documentation": "<p>Describes an individual setting that controls some aspect of DAX behavior.</p>",
+      "members": {
+        "AllowedValues": {
+          "documentation": "<p>A range of values within which the parameter can be set.</p>",
+          "shape": "String"
         },
-        "ParameterApplyStatus":{
-          "shape":"String",
-          "documentation":"<p>The status of parameter updates. </p>"
+        "ChangeType": {
+          "documentation": "<p>The conditions under which changes to this parameter can be applied. For example, <code>requires-reboot</code> indicates that a new value for this parameter will only take effect if a node is rebooted.</p>",
+          "shape": "ChangeType"
         },
-        "NodeIdsToReboot":{
-          "shape":"NodeIdentifierList",
-          "documentation":"<p>The node IDs of one or more nodes to be rebooted.</p>"
+        "DataType": {
+          "documentation": "<p>The data type of the parameter. For example, <code>integer</code>:</p>",
+          "shape": "String"
+        },
+        "Description": {
+          "documentation": "<p>A description of the parameter</p>",
+          "shape": "String"
+        },
+        "IsModifiable": {
+          "documentation": "<p>Whether the customer is allowed to modify the parameter.</p>",
+          "shape": "IsModifiable"
+        },
+        "NodeTypeSpecificValues": {
+          "documentation": "<p>A list of node types, and specific parameter values for each node.</p>",
+          "shape": "NodeTypeSpecificValueList"
+        },
+        "ParameterName": {
+          "documentation": "<p>The name of the parameter.</p>",
+          "shape": "String"
+        },
+        "ParameterType": {
+          "documentation": "<p>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.</p>",
+          "shape": "ParameterType"
+        },
+        "ParameterValue": {
+          "documentation": "<p>The value for the parameter.</p>",
+          "shape": "String"
+        },
+        "Source": {
+          "documentation": "<p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The status of a parameter group.</p>"
+      "type": "structure"
     },
-    "ParameterList":{
-      "type":"list",
-      "member":{"shape":"Parameter"}
-    },
-    "ParameterNameValue":{
-      "type":"structure",
-      "members":{
-        "ParameterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter.</p>"
+    "ParameterGroup": {
+      "documentation": "<p>A named set of parameters that are applied to all of the nodes in a DAX cluster.</p>",
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the parameter group.</p>",
+          "shape": "String"
         },
-        "ParameterValue":{
-          "shape":"String",
-          "documentation":"<p>The value of the parameter.</p>"
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>An individual DAX parameter.</p>"
+      "type": "structure"
     },
-    "ParameterNameValueList":{
-      "type":"list",
-      "member":{"shape":"ParameterNameValue"}
+    "ParameterGroupAlreadyExistsFault": {
+      "documentation": "<p>The specified parameter group already exists.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "ParameterType":{
-      "type":"string",
-      "enum":[
+    "ParameterGroupList": {
+      "member": {
+        "shape": "ParameterGroup"
+      },
+      "type": "list"
+    },
+    "ParameterGroupNameList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
+    },
+    "ParameterGroupNotFoundFault": {
+      "documentation": "<p>The specified parameter group does not exist.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "ParameterGroupQuotaExceededFault": {
+      "documentation": "<p>You have attempted to exceed the maximum number of parameter groups.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "ParameterGroupStatus": {
+      "documentation": "<p>The status of a parameter group.</p>",
+      "members": {
+        "NodeIdsToReboot": {
+          "documentation": "<p>The node IDs of one or more nodes to be rebooted.</p>",
+          "shape": "NodeIdentifierList"
+        },
+        "ParameterApplyStatus": {
+          "documentation": "<p>The status of parameter updates. </p>",
+          "shape": "String"
+        },
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ParameterList": {
+      "member": {
+        "shape": "Parameter"
+      },
+      "type": "list"
+    },
+    "ParameterNameValue": {
+      "documentation": "<p>An individual DAX parameter.</p>",
+      "members": {
+        "ParameterName": {
+          "documentation": "<p>The name of the parameter.</p>",
+          "shape": "String"
+        },
+        "ParameterValue": {
+          "documentation": "<p>The value of the parameter.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ParameterNameValueList": {
+      "member": {
+        "shape": "ParameterNameValue"
+      },
+      "type": "list"
+    },
+    "ParameterType": {
+      "enum": [
         "DEFAULT",
         "NODE_TYPE_SPECIFIC"
-      ]
+      ],
+      "type": "string"
     },
-    "RebootNodeRequest":{
-      "type":"structure",
-      "required":[
+    "RebootNodeRequest": {
+      "members": {
+        "ClusterName": {
+          "documentation": "<p>The name of the DAX cluster containing the node to be rebooted.</p>",
+          "shape": "String"
+        },
+        "NodeId": {
+          "documentation": "<p>The system-assigned ID of the node to be rebooted.</p>",
+          "shape": "String"
+        }
+      },
+      "required": [
         "ClusterName",
         "NodeId"
       ],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX cluster containing the node to be rebooted.</p>"
-        },
-        "NodeId":{
-          "shape":"String",
-          "documentation":"<p>The system-assigned ID of the node to be rebooted.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "RebootNodeResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster after a node has been rebooted.</p>"
-        }
-      }
-    },
-    "SSEDescription":{
-      "type":"structure",
-      "members":{
-        "Status":{
-          "shape":"SSEStatus",
-          "documentation":"<p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> </ul>"
+    "RebootNodeResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster after a node has been rebooted.</p>",
+          "shape": "Cluster"
         }
       },
-      "documentation":"<p>The description of the server-side encryption status on the specified DAX cluster.</p>"
+      "type": "structure"
     },
-    "SSEEnabled":{"type":"boolean"},
-    "SSESpecification":{
-      "type":"structure",
-      "required":["Enabled"],
-      "members":{
-        "Enabled":{
-          "shape":"SSEEnabled",
-          "documentation":"<p>Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.</p>"
+    "SSEDescription": {
+      "documentation": "<p>The description of the server-side encryption status on the specified DAX cluster.</p>",
+      "members": {
+        "Status": {
+          "documentation": "<p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> </ul>",
+          "shape": "SSEStatus"
         }
       },
-      "documentation":"<p>Represents the settings used to enable server-side encryption.</p>"
+      "type": "structure"
     },
-    "SSEStatus":{
-      "type":"string",
-      "enum":[
+    "SSEEnabled": {
+      "type": "boolean"
+    },
+    "SSESpecification": {
+      "documentation": "<p>Represents the settings used to enable server-side encryption.</p>",
+      "members": {
+        "Enabled": {
+          "documentation": "<p>Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.</p>",
+          "shape": "SSEEnabled"
+        }
+      },
+      "required": [
+        "Enabled"
+      ],
+      "type": "structure"
+    },
+    "SSEStatus": {
+      "enum": [
         "ENABLING",
         "ENABLED",
         "DISABLING",
         "DISABLED"
-      ]
+      ],
+      "type": "string"
     },
-    "SecurityGroupIdentifierList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "SecurityGroupIdentifierList": {
+      "member": {
+        "shape": "String"
+      },
+      "type": "list"
     },
-    "SecurityGroupMembership":{
-      "type":"structure",
-      "members":{
-        "SecurityGroupIdentifier":{
-          "shape":"String",
-          "documentation":"<p>The unique ID for this security group.</p>"
+    "SecurityGroupMembership": {
+      "documentation": "<p>An individual VPC security group and its status.</p>",
+      "members": {
+        "SecurityGroupIdentifier": {
+          "documentation": "<p>The unique ID for this security group.</p>",
+          "shape": "String"
         },
-        "Status":{
-          "shape":"String",
-          "documentation":"<p>The status of this security group.</p>"
+        "Status": {
+          "documentation": "<p>The status of this security group.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>An individual VPC security group and its status.</p>"
+      "type": "structure"
     },
-    "SecurityGroupMembershipList":{
-      "type":"list",
-      "member":{"shape":"SecurityGroupMembership"}
-    },
-    "ServiceLinkedRoleNotFoundFault":{
-      "type":"structure",
-      "members":{
+    "SecurityGroupMembershipList": {
+      "member": {
+        "shape": "SecurityGroupMembership"
       },
-      "documentation":"<p>The specified service linked role (SLR) was not found.</p>",
-      "exception":true
+      "type": "list"
     },
-    "SourceType":{
-      "type":"string",
-      "enum":[
+    "ServiceLinkedRoleNotFoundFault": {
+      "documentation": "<p>The specified service linked role (SLR) was not found.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "SourceType": {
+      "enum": [
         "CLUSTER",
         "PARAMETER_GROUP",
         "SUBNET_GROUP"
-      ]
+      ],
+      "type": "string"
     },
-    "String":{"type":"string"},
-    "Subnet":{
-      "type":"structure",
-      "members":{
-        "SubnetIdentifier":{
-          "shape":"String",
-          "documentation":"<p>The system-assigned identifier for the subnet.</p>"
+    "String": {
+      "type": "string"
+    },
+    "Subnet": {
+      "documentation": "<p>Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.</p>",
+      "members": {
+        "SubnetAvailabilityZone": {
+          "documentation": "<p>The Availability Zone (AZ) for the subnet.</p>",
+          "shape": "String"
         },
-        "SubnetAvailabilityZone":{
-          "shape":"String",
-          "documentation":"<p>The Availability Zone (AZ) for the subnet.</p>"
+        "SubnetIdentifier": {
+          "documentation": "<p>The system-assigned identifier for the subnet.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.</p>"
+      "type": "structure"
     },
-    "SubnetGroup":{
-      "type":"structure",
-      "members":{
-        "SubnetGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the subnet group.</p>"
+    "SubnetGroup": {
+      "documentation": "<p>Represents the output of one of the following actions:</p> <ul> <li> <p> <i>CreateSubnetGroup</i> </p> </li> <li> <p> <i>ModifySubnetGroup</i> </p> </li> </ul>",
+      "members": {
+        "Description": {
+          "documentation": "<p>The description of the subnet group.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>The description of the subnet group.</p>"
+        "SubnetGroupName": {
+          "documentation": "<p>The name of the subnet group.</p>",
+          "shape": "String"
         },
-        "VpcId":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</p>"
+        "Subnets": {
+          "documentation": "<p>A list of subnets associated with the subnet group. </p>",
+          "shape": "SubnetList"
         },
-        "Subnets":{
-          "shape":"SubnetList",
-          "documentation":"<p>A list of subnets associated with the subnet group. </p>"
+        "VpcId": {
+          "documentation": "<p>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>Represents the output of one of the following actions:</p> <ul> <li> <p> <i>CreateSubnetGroup</i> </p> </li> <li> <p> <i>ModifySubnetGroup</i> </p> </li> </ul>"
+      "type": "structure"
     },
-    "SubnetGroupAlreadyExistsFault":{
-      "type":"structure",
-      "members":{
+    "SubnetGroupAlreadyExistsFault": {
+      "documentation": "<p>The specified subnet group already exists.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "SubnetGroupInUseFault": {
+      "documentation": "<p>The specified subnet group is currently in use.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "SubnetGroupList": {
+      "member": {
+        "shape": "SubnetGroup"
       },
-      "documentation":"<p>The specified subnet group already exists.</p>",
-      "exception":true
+      "type": "list"
     },
-    "SubnetGroupInUseFault":{
-      "type":"structure",
-      "members":{
+    "SubnetGroupNameList": {
+      "member": {
+        "shape": "String"
       },
-      "documentation":"<p>The specified subnet group is currently in use.</p>",
-      "exception":true
+      "type": "list"
     },
-    "SubnetGroupList":{
-      "type":"list",
-      "member":{"shape":"SubnetGroup"}
+    "SubnetGroupNotFoundFault": {
+      "documentation": "<p>The requested subnet group name does not refer to an existing subnet group.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "SubnetGroupNameList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "SubnetGroupQuotaExceededFault": {
+      "documentation": "<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "SubnetGroupNotFoundFault":{
-      "type":"structure",
-      "members":{
+    "SubnetIdentifierList": {
+      "member": {
+        "shape": "String"
       },
-      "documentation":"<p>The requested subnet group name does not refer to an existing subnet group.</p>",
-      "exception":true
+      "type": "list"
     },
-    "SubnetGroupQuotaExceededFault":{
-      "type":"structure",
-      "members":{
+    "SubnetInUse": {
+      "documentation": "<p>The requested subnet is being used by another subnet group.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "SubnetList": {
+      "member": {
+        "shape": "Subnet"
       },
-      "documentation":"<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
-      "exception":true
+      "type": "list"
     },
-    "SubnetIdentifierList":{
-      "type":"list",
-      "member":{"shape":"String"}
+    "SubnetQuotaExceededFault": {
+      "documentation": "<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
     },
-    "SubnetInUse":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The requested subnet is being used by another subnet group.</p>",
-      "exception":true
+    "TStamp": {
+      "type": "timestamp"
     },
-    "SubnetList":{
-      "type":"list",
-      "member":{"shape":"Subnet"}
-    },
-    "SubnetQuotaExceededFault":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
-      "exception":true
-    },
-    "TStamp":{"type":"timestamp"},
-    "Tag":{
-      "type":"structure",
-      "members":{
-        "Key":{
-          "shape":"String",
-          "documentation":"<p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>"
+    "Tag": {
+      "documentation": "<p>A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.</p> <p>AWS-assigned tag names and values are automatically assigned the <code>aws:</code> prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix <code>user:</code>.</p> <p>You cannot backdate the application of a tag.</p>",
+      "members": {
+        "Key": {
+          "documentation": "<p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>",
+          "shape": "String"
         },
-        "Value":{
-          "shape":"String",
-          "documentation":"<p>The value of the tag. Tag values are case-sensitive and can be null. </p>"
+        "Value": {
+          "documentation": "<p>The value of the tag. Tag values are case-sensitive and can be null. </p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.</p> <p>AWS-assigned tag names and values are automatically assigned the <code>aws:</code> prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix <code>user:</code>.</p> <p>You cannot backdate the application of a tag.</p>"
+      "type": "structure"
     },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"}
-    },
-    "TagNotFoundFault":{
-      "type":"structure",
-      "members":{
+    "TagList": {
+      "member": {
+        "shape": "Tag"
       },
-      "documentation":"<p>The tag does not exist.</p>",
-      "exception":true
+      "type": "list"
     },
-    "TagQuotaPerResourceExceeded":{
-      "type":"structure",
-      "members":{
+    "TagNotFoundFault": {
+      "documentation": "<p>The tag does not exist.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "TagQuotaPerResourceExceeded": {
+      "documentation": "<p>You have exceeded the maximum number of tags for this DAX cluster.</p>",
+      "exception": true,
+      "members": {},
+      "type": "structure"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "ResourceName": {
+          "documentation": "<p>The name of the DAX resource to which tags should be added.</p>",
+          "shape": "String"
+        },
+        "Tags": {
+          "documentation": "<p>The tags to be assigned to the DAX resource. </p>",
+          "shape": "TagList"
+        }
       },
-      "documentation":"<p>You have exceeded the maximum number of tags for this DAX cluster.</p>",
-      "exception":true
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "ResourceName",
         "Tags"
       ],
-      "members":{
-        "ResourceName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX resource to which tags should be added.</p>"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "members": {
+        "Tags": {
+          "documentation": "<p>The list of tags that are associated with the DAX resource.</p>",
+          "shape": "TagList"
+        }
+      },
+      "type": "structure"
+    },
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceName": {
+          "documentation": "<p>The name of the DAX resource from which the tags should be removed.</p>",
+          "shape": "String"
         },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags to be assigned to the DAX resource. </p>"
+        "TagKeys": {
+          "documentation": "<p>A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.</p>",
+          "shape": "KeyList"
         }
-      }
-    },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The list of tags that are associated with the DAX resource.</p>"
-        }
-      }
-    },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ResourceName",
         "TagKeys"
       ],
-      "members":{
-        "ResourceName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX resource from which the tags should be removed.</p>"
-        },
-        "TagKeys":{
-          "shape":"KeyList",
-          "documentation":"<p>A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tag keys that have been removed from the cluster.</p>"
+    "UntagResourceResponse": {
+      "members": {
+        "Tags": {
+          "documentation": "<p>The tag keys that have been removed from the cluster.</p>",
+          "shape": "TagList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateClusterRequest":{
-      "type":"structure",
-      "required":["ClusterName"],
-      "members":{
-        "ClusterName":{
-          "shape":"String",
-          "documentation":"<p>The name of the DAX cluster to be modified.</p>"
+    "UpdateClusterRequest": {
+      "members": {
+        "ClusterName": {
+          "documentation": "<p>The name of the DAX cluster to be modified.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the changes being made to the cluster.</p>"
+        "Description": {
+          "documentation": "<p>A description of the changes being made to the cluster.</p>",
+          "shape": "String"
         },
-        "PreferredMaintenanceWindow":{
-          "shape":"String",
-          "documentation":"<p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>"
+        "NotificationTopicArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) that identifies the topic.</p>",
+          "shape": "String"
         },
-        "NotificationTopicArn":{
-          "shape":"String",
-          "documentation":"<p>The Amazon Resource Name (ARN) that identifies the topic.</p>"
+        "NotificationTopicStatus": {
+          "documentation": "<p>The current state of the topic.</p>",
+          "shape": "String"
         },
-        "NotificationTopicStatus":{
-          "shape":"String",
-          "documentation":"<p>The current state of the topic.</p>"
+        "ParameterGroupName": {
+          "documentation": "<p>The name of a parameter group for this cluster.</p>",
+          "shape": "String"
         },
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of a parameter group for this cluster.</p>"
+        "PreferredMaintenanceWindow": {
+          "documentation": "<p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>",
+          "shape": "String"
         },
-        "SecurityGroupIds":{
-          "shape":"SecurityGroupIdentifierList",
-          "documentation":"<p>A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>"
+        "SecurityGroupIds": {
+          "documentation": "<p>A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>",
+          "shape": "SecurityGroupIdentifierList"
         }
-      }
+      },
+      "required": [
+        "ClusterName"
+      ],
+      "type": "structure"
     },
-    "UpdateClusterResponse":{
-      "type":"structure",
-      "members":{
-        "Cluster":{
-          "shape":"Cluster",
-          "documentation":"<p>A description of the DAX cluster, after it has been modified.</p>"
+    "UpdateClusterResponse": {
+      "members": {
+        "Cluster": {
+          "documentation": "<p>A description of the DAX cluster, after it has been modified.</p>",
+          "shape": "Cluster"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateParameterGroupRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateParameterGroupRequest": {
+      "members": {
+        "ParameterGroupName": {
+          "documentation": "<p>The name of the parameter group.</p>",
+          "shape": "String"
+        },
+        "ParameterNameValues": {
+          "documentation": "<p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>",
+          "shape": "ParameterNameValueList"
+        }
+      },
+      "required": [
         "ParameterGroupName",
         "ParameterNameValues"
       ],
-      "members":{
-        "ParameterGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the parameter group.</p>"
-        },
-        "ParameterNameValues":{
-          "shape":"ParameterNameValueList",
-          "documentation":"<p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateParameterGroupResponse":{
-      "type":"structure",
-      "members":{
-        "ParameterGroup":{
-          "shape":"ParameterGroup",
-          "documentation":"<p>The parameter group that has been modified.</p>"
+    "UpdateParameterGroupResponse": {
+      "members": {
+        "ParameterGroup": {
+          "documentation": "<p>The parameter group that has been modified.</p>",
+          "shape": "ParameterGroup"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateSubnetGroupRequest":{
-      "type":"structure",
-      "required":["SubnetGroupName"],
-      "members":{
-        "SubnetGroupName":{
-          "shape":"String",
-          "documentation":"<p>The name of the subnet group.</p>"
+    "UpdateSubnetGroupRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the subnet group.</p>",
+          "shape": "String"
         },
-        "Description":{
-          "shape":"String",
-          "documentation":"<p>A description of the subnet group.</p>"
+        "SubnetGroupName": {
+          "documentation": "<p>The name of the subnet group.</p>",
+          "shape": "String"
         },
-        "SubnetIds":{
-          "shape":"SubnetIdentifierList",
-          "documentation":"<p>A list of subnet IDs in the subnet group.</p>"
+        "SubnetIds": {
+          "documentation": "<p>A list of subnet IDs in the subnet group.</p>",
+          "shape": "SubnetIdentifierList"
         }
-      }
+      },
+      "required": [
+        "SubnetGroupName"
+      ],
+      "type": "structure"
     },
-    "UpdateSubnetGroupResponse":{
-      "type":"structure",
-      "members":{
-        "SubnetGroup":{
-          "shape":"SubnetGroup",
-          "documentation":"<p>The subnet group that has been modified.</p>"
+    "UpdateSubnetGroupResponse": {
+      "members": {
+        "SubnetGroup": {
+          "documentation": "<p>The subnet group that has been modified.</p>",
+          "shape": "SubnetGroup"
         }
-      }
+      },
+      "type": "structure"
     }
   },
-  "documentation":"<p>DAX is a managed caching service engineered for Amazon DynamoDB. DAX dramatically speeds up database reads by caching frequently-accessed data from DynamoDB, so applications can access that data with sub-millisecond latency. You can create a DAX cluster easily, using the AWS Management Console. With a few simple modifications to your code, your application can begin taking advantage of the DAX cluster and realize significant improvements in read performance.</p>"
+  "version": "2.0"
 }

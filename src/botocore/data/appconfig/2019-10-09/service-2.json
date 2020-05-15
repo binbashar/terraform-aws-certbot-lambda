@@ -1,1870 +1,2214 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-10-09",
-    "endpointPrefix":"appconfig",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"AppConfig",
-    "serviceFullName":"Amazon AppConfig",
-    "serviceId":"AppConfig",
-    "signatureVersion":"v4",
-    "signingName":"appconfig",
-    "uid":"appconfig-2019-10-09"
+  "documentation": "<fullname>AWS AppConfig</fullname> <p>Use AWS AppConfig, a capability of AWS Systems Manager, to create, manage, and quickly deploy application configurations. AppConfig supports controlled deployments to applications of any size and includes built-in validation checks and monitoring. You can use AppConfig with applications hosted on Amazon EC2 instances, AWS Lambda, containers, mobile applications, or IoT devices.</p> <p>To prevent errors when deploying application configurations, especially for production systems where a simple typo could cause an unexpected outage, AppConfig includes validators. A validator provides a syntactic or semantic check to ensure that the configuration you want to deploy works as intended. To validate your application configuration data, you provide a schema or a Lambda function that runs against the configuration. The configuration deployment or update can only proceed when the configuration data is valid.</p> <p>During a configuration deployment, AppConfig monitors the application to ensure that the deployment is successful. If the system encounters an error, AppConfig rolls back the change to minimize impact for your application users. You can configure a deployment strategy for each application or environment that includes deployment criteria, including velocity, bake time, and alarms to monitor. Similar to error monitoring, if a deployment triggers an alarm, AppConfig automatically rolls back to the previous version. </p> <p>AppConfig supports multiple use cases. Here are some examples.</p> <ul> <li> <p> <b>Application tuning</b>: Use AppConfig to carefully introduce changes to your application that can only be tested with production traffic.</p> </li> <li> <p> <b>Feature toggle</b>: Use AppConfig to turn on new features that require a timely deployment, such as a product launch or announcement. </p> </li> <li> <p> <b>User membership</b>: Use AppConfig to allow premium subscribers to access paid content. </p> </li> <li> <p> <b>Operational issues</b>: Use AppConfig to reduce stress on your application when a dependency or other external factor impacts the system.</p> </li> </ul> <p>This reference is intended to be used with the <a href=\"http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html\">AWS AppConfig User Guide</a>.</p>",
+  "metadata": {
+    "apiVersion": "2019-10-09",
+    "endpointPrefix": "appconfig",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "AppConfig",
+    "serviceFullName": "Amazon AppConfig",
+    "serviceId": "AppConfig",
+    "signatureVersion": "v4",
+    "signingName": "appconfig",
+    "uid": "appconfig-2019-10-09"
   },
-  "operations":{
-    "CreateApplication":{
-      "name":"CreateApplication",
-      "http":{
-        "method":"POST",
-        "requestUri":"/applications",
-        "responseCode":201
-      },
-      "input":{"shape":"CreateApplicationRequest"},
-      "output":{"shape":"Application"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"InternalServerException"}
+  "operations": {
+    "CreateApplication": {
+      "documentation": "<p>An application in AppConfig is a logical unit of code that provides capabilities for your customers. For example, an application can be a microservice that runs on Amazon EC2 instances, a mobile application installed by your users, a serverless application using Amazon API Gateway and AWS Lambda, or any system you run on behalf of others.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>An application in AppConfig is a logical unit of code that provides capabilities for your customers. For example, an application can be a microservice that runs on Amazon EC2 instances, a mobile application installed by your users, a serverless application using Amazon API Gateway and AWS Lambda, or any system you run on behalf of others.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/applications",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "CreateApplicationRequest"
+      },
+      "name": "CreateApplication",
+      "output": {
+        "shape": "Application"
+      }
     },
-    "CreateConfigurationProfile":{
-      "name":"CreateConfigurationProfile",
-      "http":{
-        "method":"POST",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles",
-        "responseCode":201
-      },
-      "input":{"shape":"CreateConfigurationProfileRequest"},
-      "output":{"shape":"ConfigurationProfile"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "CreateConfigurationProfile": {
+      "documentation": "<p>Information that enables AppConfig to access the configuration source. Valid configuration sources include Systems Manager (SSM) documents, SSM Parameter Store parameters, and Amazon S3 objects. A configuration profile includes the following information.</p> <ul> <li> <p>The Uri location of the configuration data.</p> </li> <li> <p>The AWS Identity and Access Management (IAM) role that provides access to the configuration data.</p> </li> <li> <p>A validator for the configuration data. Available validators include either a JSON Schema or an AWS Lambda function.</p> </li> </ul> <p>For more information, see <a href=\"http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html\">Create a Configuration and a Configuration Profile</a> in the <i>AWS AppConfig User Guide</i>.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Information that enables AppConfig to access the configuration source. Valid configuration sources include Systems Manager (SSM) documents, SSM Parameter Store parameters, and Amazon S3 objects. A configuration profile includes the following information.</p> <ul> <li> <p>The Uri location of the configuration data.</p> </li> <li> <p>The AWS Identity and Access Management (IAM) role that provides access to the configuration data.</p> </li> <li> <p>A validator for the configuration data. Available validators include either a JSON Schema or an AWS Lambda function.</p> </li> </ul> <p>For more information, see <a href=\"http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html\">Create a Configuration and a Configuration Profile</a> in the <i>AWS AppConfig User Guide</i>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "CreateConfigurationProfileRequest"
+      },
+      "name": "CreateConfigurationProfile",
+      "output": {
+        "shape": "ConfigurationProfile"
+      }
     },
-    "CreateDeploymentStrategy":{
-      "name":"CreateDeploymentStrategy",
-      "http":{
-        "method":"POST",
-        "requestUri":"/deploymentstrategies",
-        "responseCode":201
-      },
-      "input":{"shape":"CreateDeploymentStrategyRequest"},
-      "output":{"shape":"DeploymentStrategy"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "CreateDeploymentStrategy": {
+      "documentation": "<p>A deployment strategy defines important criteria for rolling out your configuration to the designated targets. A deployment strategy includes: the overall duration required, a percentage of targets to receive the deployment during each interval, an algorithm that defines how percentage grows, and bake time.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>A deployment strategy defines important criteria for rolling out your configuration to the designated targets. A deployment strategy includes: the overall duration required, a percentage of targets to receive the deployment during each interval, an algorithm that defines how percentage grows, and bake time.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/deploymentstrategies",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "CreateDeploymentStrategyRequest"
+      },
+      "name": "CreateDeploymentStrategy",
+      "output": {
+        "shape": "DeploymentStrategy"
+      }
     },
-    "CreateEnvironment":{
-      "name":"CreateEnvironment",
-      "http":{
-        "method":"POST",
-        "requestUri":"/applications/{ApplicationId}/environments",
-        "responseCode":201
-      },
-      "input":{"shape":"CreateEnvironmentRequest"},
-      "output":{"shape":"Environment"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"BadRequestException"}
+    "CreateEnvironment": {
+      "documentation": "<p>For each application, you define one or more environments. An environment is a logical deployment group of AppConfig targets, such as applications in a <code>Beta</code> or <code>Production</code> environment. You can also define environments for application subcomponents such as the <code>Web</code>, <code>Mobile</code> and <code>Back-end</code> components for your application. You can configure Amazon CloudWatch alarms for each environment. The system monitors alarms during a configuration deployment. If an alarm is triggered, the system rolls back the configuration.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>For each application, you define one or more environments. An environment is a logical deployment group of AppConfig targets, such as applications in a <code>Beta</code> or <code>Production</code> environment. You can also define environments for application subcomponents such as the <code>Web</code>, <code>Mobile</code> and <code>Back-end</code> components for your application. You can configure Amazon CloudWatch alarms for each environment. The system monitors alarms during a configuration deployment. If an alarm is triggered, the system rolls back the configuration.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/applications/{ApplicationId}/environments",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "CreateEnvironmentRequest"
+      },
+      "name": "CreateEnvironment",
+      "output": {
+        "shape": "Environment"
+      }
     },
-    "DeleteApplication":{
-      "name":"DeleteApplication",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/applications/{ApplicationId}",
-        "responseCode":204
-      },
-      "input":{"shape":"DeleteApplicationRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "DeleteApplication": {
+      "documentation": "<p>Delete an application. Deleting an application does not delete a configuration from a host.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Delete an application. Deleting an application does not delete a configuration from a host.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/applications/{ApplicationId}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "DeleteApplicationRequest"
+      },
+      "name": "DeleteApplication"
     },
-    "DeleteConfigurationProfile":{
-      "name":"DeleteConfigurationProfile",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
-        "responseCode":204
-      },
-      "input":{"shape":"DeleteConfigurationProfileRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "DeleteConfigurationProfile": {
+      "documentation": "<p>Delete a configuration profile. Deleting a configuration profile does not delete a configuration from a host.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Delete a configuration profile. Deleting a configuration profile does not delete a configuration from a host.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "DeleteConfigurationProfileRequest"
+      },
+      "name": "DeleteConfigurationProfile"
     },
-    "DeleteDeploymentStrategy":{
-      "name":"DeleteDeploymentStrategy",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/deployementstrategies/{DeploymentStrategyId}",
-        "responseCode":204
-      },
-      "input":{"shape":"DeleteDeploymentStrategyRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "DeleteDeploymentStrategy": {
+      "documentation": "<p>Delete a deployment strategy. Deleting a deployment strategy does not delete a configuration from a host.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Delete a deployment strategy. Deleting a deployment strategy does not delete a configuration from a host.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/deployementstrategies/{DeploymentStrategyId}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "DeleteDeploymentStrategyRequest"
+      },
+      "name": "DeleteDeploymentStrategy"
     },
-    "DeleteEnvironment":{
-      "name":"DeleteEnvironment",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}",
-        "responseCode":204
-      },
-      "input":{"shape":"DeleteEnvironmentRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "DeleteEnvironment": {
+      "documentation": "<p>Delete an environment. Deleting an environment does not delete a configuration from a host.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Delete an environment. Deleting an environment does not delete a configuration from a host.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "DeleteEnvironmentRequest"
+      },
+      "name": "DeleteEnvironment"
     },
-    "GetApplication":{
-      "name":"GetApplication",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetApplicationRequest"},
-      "output":{"shape":"Application"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "GetApplication": {
+      "documentation": "<p>Retrieve information about an application.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about an application.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetApplicationRequest"
+      },
+      "name": "GetApplication",
+      "output": {
+        "shape": "Application"
+      }
     },
-    "GetConfiguration":{
-      "name":"GetConfiguration",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{Application}/environments/{Environment}/configurations/{Configuration}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetConfigurationRequest"},
-      "output":{"shape":"Configuration"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"BadRequestException"}
+    "GetConfiguration": {
+      "documentation": "<p>Retrieve information about a configuration.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about a configuration.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{Application}/environments/{Environment}/configurations/{Configuration}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetConfigurationRequest"
+      },
+      "name": "GetConfiguration",
+      "output": {
+        "shape": "Configuration"
+      }
     },
-    "GetConfigurationProfile":{
-      "name":"GetConfigurationProfile",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetConfigurationProfileRequest"},
-      "output":{"shape":"ConfigurationProfile"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "GetConfigurationProfile": {
+      "documentation": "<p>Retrieve information about a configuration profile.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about a configuration profile.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetConfigurationProfileRequest"
+      },
+      "name": "GetConfigurationProfile",
+      "output": {
+        "shape": "ConfigurationProfile"
+      }
     },
-    "GetDeployment":{
-      "name":"GetDeployment",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetDeploymentRequest"},
-      "output":{"shape":"Deployment"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "GetDeployment": {
+      "documentation": "<p>Retrieve information about a configuration deployment.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about a configuration deployment.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetDeploymentRequest"
+      },
+      "name": "GetDeployment",
+      "output": {
+        "shape": "Deployment"
+      }
     },
-    "GetDeploymentStrategy":{
-      "name":"GetDeploymentStrategy",
-      "http":{
-        "method":"GET",
-        "requestUri":"/deploymentstrategies/{DeploymentStrategyId}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetDeploymentStrategyRequest"},
-      "output":{"shape":"DeploymentStrategy"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "GetDeploymentStrategy": {
+      "documentation": "<p>Retrieve information about a deployment strategy. A deployment strategy defines important criteria for rolling out your configuration to the designated targets. A deployment strategy includes: the overall duration required, a percentage of targets to receive the deployment during each interval, an algorithm that defines how percentage grows, and bake time.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about a deployment strategy. A deployment strategy defines important criteria for rolling out your configuration to the designated targets. A deployment strategy includes: the overall duration required, a percentage of targets to receive the deployment during each interval, an algorithm that defines how percentage grows, and bake time.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/deploymentstrategies/{DeploymentStrategyId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetDeploymentStrategyRequest"
+      },
+      "name": "GetDeploymentStrategy",
+      "output": {
+        "shape": "DeploymentStrategy"
+      }
     },
-    "GetEnvironment":{
-      "name":"GetEnvironment",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}",
-        "responseCode":200
-      },
-      "input":{"shape":"GetEnvironmentRequest"},
-      "output":{"shape":"Environment"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "GetEnvironment": {
+      "documentation": "<p>Retrieve information about an environment. An environment is a logical deployment group of AppConfig applications, such as applications in a <code>Production</code> environment or in an <code>EU_Region</code> environment. Each configuration deployment targets an environment. You can enable one or more Amazon CloudWatch alarms for an environment. If an alarm is triggered during a deployment, AppConfig roles back the configuration.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Retrieve information about an environment. An environment is a logical deployment group of AppConfig applications, such as applications in a <code>Production</code> environment or in an <code>EU_Region</code> environment. Each configuration deployment targets an environment. You can enable one or more Amazon CloudWatch alarms for an environment. If an alarm is triggered during a deployment, AppConfig roles back the configuration.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetEnvironmentRequest"
+      },
+      "name": "GetEnvironment",
+      "output": {
+        "shape": "Environment"
+      }
     },
-    "ListApplications":{
-      "name":"ListApplications",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications",
-        "responseCode":200
-      },
-      "input":{"shape":"ListApplicationsRequest"},
-      "output":{"shape":"Applications"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "ListApplications": {
+      "documentation": "<p>List all applications in your AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>List all applications in your AWS account.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListApplicationsRequest"
+      },
+      "name": "ListApplications",
+      "output": {
+        "shape": "Applications"
+      }
     },
-    "ListConfigurationProfiles":{
-      "name":"ListConfigurationProfiles",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles",
-        "responseCode":200
-      },
-      "input":{"shape":"ListConfigurationProfilesRequest"},
-      "output":{"shape":"ConfigurationProfiles"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "ListConfigurationProfiles": {
+      "documentation": "<p>Lists the configuration profiles for an application.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Lists the configuration profiles for an application.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListConfigurationProfilesRequest"
+      },
+      "name": "ListConfigurationProfiles",
+      "output": {
+        "shape": "ConfigurationProfiles"
+      }
     },
-    "ListDeploymentStrategies":{
-      "name":"ListDeploymentStrategies",
-      "http":{
-        "method":"GET",
-        "requestUri":"/deploymentstrategies",
-        "responseCode":200
-      },
-      "input":{"shape":"ListDeploymentStrategiesRequest"},
-      "output":{"shape":"DeploymentStrategies"},
-      "errors":[
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "ListDeploymentStrategies": {
+      "documentation": "<p>List deployment strategies.</p>",
+      "errors": [
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>List deployment strategies.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/deploymentstrategies",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListDeploymentStrategiesRequest"
+      },
+      "name": "ListDeploymentStrategies",
+      "output": {
+        "shape": "DeploymentStrategies"
+      }
     },
-    "ListDeployments":{
-      "name":"ListDeployments",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
-        "responseCode":200
-      },
-      "input":{"shape":"ListDeploymentsRequest"},
-      "output":{"shape":"Deployments"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "ListDeployments": {
+      "documentation": "<p>Lists the deployments for an environment.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Lists the deployments for an environment.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListDeploymentsRequest"
+      },
+      "name": "ListDeployments",
+      "output": {
+        "shape": "Deployments"
+      }
     },
-    "ListEnvironments":{
-      "name":"ListEnvironments",
-      "http":{
-        "method":"GET",
-        "requestUri":"/applications/{ApplicationId}/environments",
-        "responseCode":200
-      },
-      "input":{"shape":"ListEnvironmentsRequest"},
-      "output":{"shape":"Environments"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "ListEnvironments": {
+      "documentation": "<p>List the environments for an application.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>List the environments for an application.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/applications/{ApplicationId}/environments",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListEnvironmentsRequest"
+      },
+      "name": "ListEnvironments",
+      "output": {
+        "shape": "Environments"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/tags/{ResourceArn}",
-        "responseCode":200
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ResourceTags"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"BadRequestException"},
-        {"shape":"InternalServerException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Retrieves the list of key-value tags assigned to the resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Retrieves the list of key-value tags assigned to the resource.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/tags/{ResourceArn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ResourceTags"
+      }
     },
-    "StartDeployment":{
-      "name":"StartDeployment",
-      "http":{
-        "method":"POST",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
-        "responseCode":201
-      },
-      "input":{"shape":"StartDeploymentRequest"},
-      "output":{"shape":"Deployment"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConflictException"},
-        {"shape":"InternalServerException"}
+    "StartDeployment": {
+      "documentation": "<p>Starts a deployment.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ConflictException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Starts a deployment.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "StartDeploymentRequest"
+      },
+      "name": "StartDeployment",
+      "output": {
+        "shape": "Deployment"
+      }
     },
-    "StopDeployment":{
-      "name":"StopDeployment",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
-        "responseCode":202
-      },
-      "input":{"shape":"StopDeploymentRequest"},
-      "output":{"shape":"Deployment"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"},
-        {"shape":"BadRequestException"}
+    "StopDeployment": {
+      "documentation": "<p>Stops a deployment. This API action works only on deployments that have a status of <code>DEPLOYING</code>. This action moves the deployment to a status of <code>ROLLED_BACK</code>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        },
+        {
+          "shape": "BadRequestException"
+        }
       ],
-      "documentation":"<p>Stops a deployment. This API action works only on deployments that have a status of <code>DEPLOYING</code>. This action moves the deployment to a status of <code>ROLLED_BACK</code>.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
+        "responseCode": 202
+      },
+      "input": {
+        "shape": "StopDeploymentRequest"
+      },
+      "name": "StopDeployment",
+      "output": {
+        "shape": "Deployment"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tags/{ResourceArn}",
-        "responseCode":204
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"BadRequestException"},
-        {"shape":"InternalServerException"}
+    "TagResource": {
+      "documentation": "<p>Metadata to assign to an AppConfig resource. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define. You can specify a maximum of 50 tags for a resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Metadata to assign to an AppConfig resource. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define. You can specify a maximum of 50 tags for a resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/tags/{ResourceArn}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource"
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/tags/{ResourceArn}",
-        "responseCode":204
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"BadRequestException"},
-        {"shape":"InternalServerException"}
+    "UntagResource": {
+      "documentation": "<p>Deletes a tag key and value from an AppConfig resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Deletes a tag key and value from an AppConfig resource.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/tags/{ResourceArn}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource"
     },
-    "UpdateApplication":{
-      "name":"UpdateApplication",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/applications/{ApplicationId}",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateApplicationRequest"},
-      "output":{"shape":"Application"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "UpdateApplication": {
+      "documentation": "<p>Updates an application.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates an application.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/applications/{ApplicationId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "UpdateApplicationRequest"
+      },
+      "name": "UpdateApplication",
+      "output": {
+        "shape": "Application"
+      }
     },
-    "UpdateConfigurationProfile":{
-      "name":"UpdateConfigurationProfile",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateConfigurationProfileRequest"},
-      "output":{"shape":"ConfigurationProfile"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "UpdateConfigurationProfile": {
+      "documentation": "<p>Updates a configuration profile.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates a configuration profile.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "UpdateConfigurationProfileRequest"
+      },
+      "name": "UpdateConfigurationProfile",
+      "output": {
+        "shape": "ConfigurationProfile"
+      }
     },
-    "UpdateDeploymentStrategy":{
-      "name":"UpdateDeploymentStrategy",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/deploymentstrategies/{DeploymentStrategyId}",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateDeploymentStrategyRequest"},
-      "output":{"shape":"DeploymentStrategy"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "UpdateDeploymentStrategy": {
+      "documentation": "<p>Updates a deployment strategy.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates a deployment strategy.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/deploymentstrategies/{DeploymentStrategyId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "UpdateDeploymentStrategyRequest"
+      },
+      "name": "UpdateDeploymentStrategy",
+      "output": {
+        "shape": "DeploymentStrategy"
+      }
     },
-    "UpdateEnvironment":{
-      "name":"UpdateEnvironment",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/applications/{ApplicationId}/environments/{EnvironmentId}",
-        "responseCode":200
-      },
-      "input":{"shape":"UpdateEnvironmentRequest"},
-      "output":{"shape":"Environment"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "UpdateEnvironment": {
+      "documentation": "<p>Updates an environment.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Updates an environment.</p>"
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/applications/{ApplicationId}/environments/{EnvironmentId}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "UpdateEnvironmentRequest"
+      },
+      "name": "UpdateEnvironment",
+      "output": {
+        "shape": "Environment"
+      }
     },
-    "ValidateConfiguration":{
-      "name":"ValidateConfiguration",
-      "http":{
-        "method":"POST",
-        "requestUri":"/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/validators",
-        "responseCode":204
-      },
-      "input":{"shape":"ValidateConfigurationRequest"},
-      "errors":[
-        {"shape":"BadRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalServerException"}
+    "ValidateConfiguration": {
+      "documentation": "<p>Uses the validators in a configuration profile to validate a configuration.</p>",
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalServerException"
+        }
       ],
-      "documentation":"<p>Uses the validators in a configuration profile to validate a configuration.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/validators",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "ValidateConfigurationRequest"
+      },
+      "name": "ValidateConfiguration"
     }
   },
-  "shapes":{
-    "Application":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>"
+  "shapes": {
+    "Application": {
+      "members": {
+        "Description": {
+          "documentation": "<p>The description of the application.</p>",
+          "shape": "Description"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The application name.</p>"
+        "Id": {
+          "documentation": "<p>The application ID.</p>",
+          "shape": "Id"
         },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>The description of the application.</p>"
-        }
-      }
-    },
-    "ApplicationList":{
-      "type":"list",
-      "member":{"shape":"Application"}
-    },
-    "Applications":{
-      "type":"structure",
-      "members":{
-        "Items":{
-          "shape":"ApplicationList",
-          "documentation":"<p>The elements from this collection.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of items to return. Use this token to get the next set of results.</p>"
-        }
-      }
-    },
-    "Arn":{
-      "type":"string",
-      "max":2048,
-      "min":20,
-      "pattern":"arn:(aws[a-zA-Z-]*)?:[a-z]+:([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\d{1})?:(\\d{12})?:[a-zA-Z0-9-_/:.]+"
-    },
-    "BadRequestException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The input fails to satisfy the constraints specified by an AWS service.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "Blob":{"type":"blob"},
-    "Configuration":{
-      "type":"structure",
-      "members":{
-        "Content":{
-          "shape":"Blob",
-          "documentation":"<p>The content of the configuration or the configuration data.</p>"
-        },
-        "ConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The configuration version.</p>",
-          "location":"header",
-          "locationName":"Configuration-Version"
-        },
-        "ContentType":{
-          "shape":"String",
-          "documentation":"<p>A standard MIME type describing the format of the configuration content. For more information, see <a href=\"http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17\">Content-Type</a>.</p>",
-          "location":"header",
-          "locationName":"Content-Type"
+        "Name": {
+          "documentation": "<p>The application name.</p>",
+          "shape": "Name"
         }
       },
-      "payload":"Content"
+      "type": "structure"
     },
-    "ConfigurationProfile":{
-      "type":"structure",
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>"
-        },
-        "Id":{
-          "shape":"Id",
-          "documentation":"<p>The configuration profile ID.</p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the configuration profile.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>The configuration profile description.</p>"
-        },
-        "LocationUri":{
-          "shape":"Uri",
-          "documentation":"<p>The URI location of the configuration.</p>"
-        },
-        "RetrievalRoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>"
-        },
-        "Validators":{
-          "shape":"ValidatorList",
-          "documentation":"<p>A list of methods for validating the configuration.</p>"
-        }
-      }
+    "ApplicationList": {
+      "member": {
+        "shape": "Application"
+      },
+      "type": "list"
     },
-    "ConfigurationProfileSummary":{
-      "type":"structure",
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>"
+    "Applications": {
+      "members": {
+        "Items": {
+          "documentation": "<p>The elements from this collection.</p>",
+          "shape": "ApplicationList"
         },
-        "Id":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the configuration profile.</p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the configuration profile.</p>"
-        },
-        "LocationUri":{
-          "shape":"Uri",
-          "documentation":"<p>The URI location of the configuration.</p>"
-        },
-        "ValidatorTypes":{
-          "shape":"ValidatorTypeList",
-          "documentation":"<p>The types of validators in the configuration profile.</p>"
+        "NextToken": {
+          "documentation": "<p>The token for the next set of items to return. Use this token to get the next set of results.</p>",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>A summary of a configuration profile.</p>"
+      "type": "structure"
     },
-    "ConfigurationProfileSummaryList":{
-      "type":"list",
-      "member":{"shape":"ConfigurationProfileSummary"}
+    "Arn": {
+      "max": 2048,
+      "min": 20,
+      "pattern": "arn:(aws[a-zA-Z-]*)?:[a-z]+:([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\d{1})?:(\\d{12})?:[a-zA-Z0-9-_/:.]+",
+      "type": "string"
     },
-    "ConfigurationProfiles":{
-      "type":"structure",
-      "members":{
-        "Items":{
-          "shape":"ConfigurationProfileSummaryList",
-          "documentation":"<p>The elements from this collection.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of items to return. Use this token to get the next set of results.</p>"
-        }
-      }
-    },
-    "ConflictException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "BadRequestException": {
+      "documentation": "<p>The input fails to satisfy the constraints specified by an AWS service.</p>",
+      "error": {
+        "httpStatusCode": 400
       },
-      "documentation":"<p>The request could not be processed because of conflict in the current state of the resource.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
-    },
-    "CreateApplicationRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A name for the application.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the application.</p>"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to the application. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateConfigurationProfileRequest":{
-      "type":"structure",
-      "required":[
+    "Blob": {
+      "type": "blob"
+    },
+    "Configuration": {
+      "members": {
+        "ConfigurationVersion": {
+          "documentation": "<p>The configuration version.</p>",
+          "location": "header",
+          "locationName": "Configuration-Version",
+          "shape": "Version"
+        },
+        "Content": {
+          "documentation": "<p>The content of the configuration or the configuration data.</p>",
+          "shape": "Blob"
+        },
+        "ContentType": {
+          "documentation": "<p>A standard MIME type describing the format of the configuration content. For more information, see <a href=\"http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17\">Content-Type</a>.</p>",
+          "location": "header",
+          "locationName": "Content-Type",
+          "shape": "String"
+        }
+      },
+      "payload": "Content",
+      "type": "structure"
+    },
+    "ConfigurationProfile": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>The configuration profile description.</p>",
+          "shape": "Description"
+        },
+        "Id": {
+          "documentation": "<p>The configuration profile ID.</p>",
+          "shape": "Id"
+        },
+        "LocationUri": {
+          "documentation": "<p>The URI location of the configuration.</p>",
+          "shape": "Uri"
+        },
+        "Name": {
+          "documentation": "<p>The name of the configuration profile.</p>",
+          "shape": "Name"
+        },
+        "RetrievalRoleArn": {
+          "documentation": "<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>",
+          "shape": "Arn"
+        },
+        "Validators": {
+          "documentation": "<p>A list of methods for validating the configuration.</p>",
+          "shape": "ValidatorList"
+        }
+      },
+      "type": "structure"
+    },
+    "ConfigurationProfileSummary": {
+      "documentation": "<p>A summary of a configuration profile.</p>",
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "shape": "Id"
+        },
+        "Id": {
+          "documentation": "<p>The ID of the configuration profile.</p>",
+          "shape": "Id"
+        },
+        "LocationUri": {
+          "documentation": "<p>The URI location of the configuration.</p>",
+          "shape": "Uri"
+        },
+        "Name": {
+          "documentation": "<p>The name of the configuration profile.</p>",
+          "shape": "Name"
+        },
+        "ValidatorTypes": {
+          "documentation": "<p>The types of validators in the configuration profile.</p>",
+          "shape": "ValidatorTypeList"
+        }
+      },
+      "type": "structure"
+    },
+    "ConfigurationProfileSummaryList": {
+      "member": {
+        "shape": "ConfigurationProfileSummary"
+      },
+      "type": "list"
+    },
+    "ConfigurationProfiles": {
+      "members": {
+        "Items": {
+          "documentation": "<p>The elements from this collection.</p>",
+          "shape": "ConfigurationProfileSummaryList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next set of items to return. Use this token to get the next set of results.</p>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ConflictException": {
+      "documentation": "<p>The request could not be processed because of conflict in the current state of the resource.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "CreateApplicationRequest": {
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the application.</p>",
+          "shape": "Description"
+        },
+        "Name": {
+          "documentation": "<p>A name for the application.</p>",
+          "shape": "Name"
+        },
+        "Tags": {
+          "documentation": "<p>Metadata to assign to the application. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
+    },
+    "CreateConfigurationProfileRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>A description of the configuration profile.</p>",
+          "shape": "Description"
+        },
+        "LocationUri": {
+          "documentation": "<p>A URI to locate the configuration. You can specify a Systems Manager (SSM) document, an SSM Parameter Store parameter, or an Amazon S3 object. For an SSM document, specify either the document name in the format <code>ssm-document://&lt;Document_name&gt;</code> or the Amazon Resource Name (ARN). For a parameter, specify either the parameter name in the format <code>ssm-parameter://&lt;Parameter_name&gt;</code> or the ARN. For an Amazon S3 object, specify the URI in the following format: <code>s3://&lt;bucket&gt;/&lt;objectKey&gt; </code>. Here is an example: s3://my-bucket/my-app/us-east-1/my-config.json</p>",
+          "shape": "Uri"
+        },
+        "Name": {
+          "documentation": "<p>A name for the configuration profile.</p>",
+          "shape": "Name"
+        },
+        "RetrievalRoleArn": {
+          "documentation": "<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>",
+          "shape": "Arn"
+        },
+        "Tags": {
+          "documentation": "<p>Metadata to assign to the configuration profile. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        },
+        "Validators": {
+          "documentation": "<p>A list of methods for validating the configuration.</p>",
+          "shape": "ValidatorList"
+        }
+      },
+      "required": [
         "ApplicationId",
         "Name",
         "LocationUri",
         "RetrievalRoleArn"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A name for the configuration profile.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the configuration profile.</p>"
-        },
-        "LocationUri":{
-          "shape":"Uri",
-          "documentation":"<p>A URI to locate the configuration. You can specify a Systems Manager (SSM) document, an SSM Parameter Store parameter, or an Amazon S3 object. For an SSM document, specify either the document name in the format <code>ssm-document://&lt;Document_name&gt;</code> or the Amazon Resource Name (ARN). For a parameter, specify either the parameter name in the format <code>ssm-parameter://&lt;Parameter_name&gt;</code> or the ARN. For an Amazon S3 object, specify the URI in the following format: <code>s3://&lt;bucket&gt;/&lt;objectKey&gt; </code>. Here is an example: s3://my-bucket/my-app/us-east-1/my-config.json</p>"
-        },
-        "RetrievalRoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>"
-        },
-        "Validators":{
-          "shape":"ValidatorList",
-          "documentation":"<p>A list of methods for validating the configuration.</p>"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to the configuration profile. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateDeploymentStrategyRequest":{
-      "type":"structure",
-      "required":[
+    "CreateDeploymentStrategyRequest": {
+      "members": {
+        "DeploymentDurationInMinutes": {
+          "box": true,
+          "documentation": "<p>Total amount of time for a deployment to last.</p>",
+          "shape": "MinutesBetween0And24Hours"
+        },
+        "Description": {
+          "documentation": "<p>A description of the deployment strategy.</p>",
+          "shape": "Description"
+        },
+        "FinalBakeTimeInMinutes": {
+          "documentation": "<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
+          "shape": "MinutesBetween0And24Hours"
+        },
+        "GrowthFactor": {
+          "box": true,
+          "documentation": "<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
+          "shape": "GrowthFactor"
+        },
+        "GrowthType": {
+          "documentation": "<p>The algorithm used to define how percentage grows over time. AWS AppConfig supports the following growth types:</p> <p> <b>Linear</b>: For this type, AppConfig processes the deployment by dividing the total number of targets by the value specified for <code>Step percentage</code>. For example, a linear deployment that uses a <code>Step percentage</code> of 10 deploys the configuration to 10 percent of the hosts. After those deployments are complete, the system deploys the configuration to the next 10 percent. This continues until 100% of the targets have successfully received the configuration.</p> <p> <b>Exponential</b>: For this type, AppConfig processes the deployment exponentially using the following formula: <code>G*(2^N)</code>. In this formula, <code>G</code> is the growth factor specified by the user and <code>N</code> is the number of steps until the configuration is deployed to all targets. For example, if you specify a growth factor of 2, then the system rolls out the configuration as follows:</p> <p> <code>2*(2^0)</code> </p> <p> <code>2*(2^1)</code> </p> <p> <code>2*(2^2)</code> </p> <p>Expressed numerically, the deployment rolls out as follows: 2% of the targets, 4% of the targets, 8% of the targets, and continues until the configuration has been deployed to all targets.</p>",
+          "shape": "GrowthType"
+        },
+        "Name": {
+          "documentation": "<p>A name for the deployment strategy.</p>",
+          "shape": "Name"
+        },
+        "ReplicateTo": {
+          "documentation": "<p>Save the deployment strategy to a Systems Manager (SSM) document.</p>",
+          "shape": "ReplicateTo"
+        },
+        "Tags": {
+          "documentation": "<p>Metadata to assign to the deployment strategy. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "required": [
         "Name",
         "DeploymentDurationInMinutes",
         "GrowthFactor",
         "ReplicateTo"
       ],
-      "members":{
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A name for the deployment strategy.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the deployment strategy.</p>"
-        },
-        "DeploymentDurationInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>Total amount of time for a deployment to last.</p>",
-          "box":true
-        },
-        "FinalBakeTimeInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>"
-        },
-        "GrowthFactor":{
-          "shape":"GrowthFactor",
-          "documentation":"<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
-          "box":true
-        },
-        "GrowthType":{
-          "shape":"GrowthType",
-          "documentation":"<p>The algorithm used to define how percentage grows over time. AWS AppConfig supports the following growth types:</p> <p> <b>Linear</b>: For this type, AppConfig processes the deployment by dividing the total number of targets by the value specified for <code>Step percentage</code>. For example, a linear deployment that uses a <code>Step percentage</code> of 10 deploys the configuration to 10 percent of the hosts. After those deployments are complete, the system deploys the configuration to the next 10 percent. This continues until 100% of the targets have successfully received the configuration.</p> <p> <b>Exponential</b>: For this type, AppConfig processes the deployment exponentially using the following formula: <code>G*(2^N)</code>. In this formula, <code>G</code> is the growth factor specified by the user and <code>N</code> is the number of steps until the configuration is deployed to all targets. For example, if you specify a growth factor of 2, then the system rolls out the configuration as follows:</p> <p> <code>2*(2^0)</code> </p> <p> <code>2*(2^1)</code> </p> <p> <code>2*(2^2)</code> </p> <p>Expressed numerically, the deployment rolls out as follows: 2% of the targets, 4% of the targets, 8% of the targets, and continues until the configuration has been deployed to all targets.</p>"
-        },
-        "ReplicateTo":{
-          "shape":"ReplicateTo",
-          "documentation":"<p>Save the deployment strategy to a Systems Manager (SSM) document.</p>"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to the deployment strategy. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateEnvironmentRequest":{
-      "type":"structure",
-      "required":[
+    "CreateEnvironmentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>A description of the environment.</p>",
+          "shape": "Description"
+        },
+        "Monitors": {
+          "documentation": "<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>",
+          "shape": "MonitorList"
+        },
+        "Name": {
+          "documentation": "<p>A name for the environment.</p>",
+          "shape": "Name"
+        },
+        "Tags": {
+          "documentation": "<p>Metadata to assign to the environment. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "required": [
         "ApplicationId",
         "Name"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A name for the environment.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the environment.</p>"
-        },
-        "Monitors":{
-          "shape":"MonitorList",
-          "documentation":"<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to the environment. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DeleteApplicationRequest":{
-      "type":"structure",
-      "required":["ApplicationId"],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application to delete.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+    "DeleteApplicationRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application to delete.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         }
-      }
+      },
+      "required": [
+        "ApplicationId"
+      ],
+      "type": "structure"
     },
-    "DeleteConfigurationProfileRequest":{
-      "type":"structure",
-      "required":[
+    "DeleteConfigurationProfileRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID that includes the configuration profile you want to delete.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "ConfigurationProfileId": {
+          "documentation": "<p>The ID of the configuration profile you want to delete.</p>",
+          "location": "uri",
+          "locationName": "ConfigurationProfileId",
+          "shape": "Id"
+        }
+      },
+      "required": [
         "ApplicationId",
         "ConfigurationProfileId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID that includes the configuration profile you want to delete.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+      "type": "structure"
+    },
+    "DeleteDeploymentStrategyRequest": {
+      "members": {
+        "DeploymentStrategyId": {
+          "documentation": "<p>The ID of the deployment strategy you want to delete.</p>",
+          "location": "uri",
+          "locationName": "DeploymentStrategyId",
+          "shape": "DeploymentStrategyId"
+        }
+      },
+      "required": [
+        "DeploymentStrategyId"
+      ],
+      "type": "structure"
+    },
+    "DeleteEnvironmentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID that includes the environment you want to delete.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the configuration profile you want to delete.</p>",
-          "location":"uri",
-          "locationName":"ConfigurationProfileId"
+        "EnvironmentId": {
+          "documentation": "<p>The ID of the environment you want to delete.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
         }
-      }
-    },
-    "DeleteDeploymentStrategyRequest":{
-      "type":"structure",
-      "required":["DeploymentStrategyId"],
-      "members":{
-        "DeploymentStrategyId":{
-          "shape":"DeploymentStrategyId",
-          "documentation":"<p>The ID of the deployment strategy you want to delete.</p>",
-          "location":"uri",
-          "locationName":"DeploymentStrategyId"
-        }
-      }
-    },
-    "DeleteEnvironmentRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID that includes the environment you want to delete.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the environment you want to delete.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        }
-      }
+      "type": "structure"
     },
-    "Deployment":{
-      "type":"structure",
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application that was deployed.</p>"
+    "Deployment": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application that was deployed.</p>",
+          "shape": "Id"
         },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the environment that was deployed.</p>"
+        "CompletedAt": {
+          "documentation": "<p>The time the deployment completed. </p>",
+          "shape": "Iso8601DateTime"
         },
-        "DeploymentStrategyId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the deployment strategy that was deployed.</p>"
+        "ConfigurationLocationUri": {
+          "documentation": "<p>Information about the source location of the configuration.</p>",
+          "shape": "Uri"
         },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the configuration profile that was deployed.</p>"
+        "ConfigurationName": {
+          "documentation": "<p>The name of the configuration.</p>",
+          "shape": "Name"
         },
-        "DeploymentNumber":{
-          "shape":"Integer",
-          "documentation":"<p>The sequence number of the deployment.</p>"
+        "ConfigurationProfileId": {
+          "documentation": "<p>The ID of the configuration profile that was deployed.</p>",
+          "shape": "Id"
         },
-        "ConfigurationName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the configuration.</p>"
+        "ConfigurationVersion": {
+          "documentation": "<p>The configuration version that was deployed.</p>",
+          "shape": "Version"
         },
-        "ConfigurationLocationUri":{
-          "shape":"Uri",
-          "documentation":"<p>Information about the source location of the configuration.</p>"
+        "DeploymentDurationInMinutes": {
+          "documentation": "<p>Total amount of time the deployment lasted.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "ConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The configuration version that was deployed.</p>"
+        "DeploymentNumber": {
+          "documentation": "<p>The sequence number of the deployment.</p>",
+          "shape": "Integer"
         },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>The description of the deployment.</p>"
+        "DeploymentStrategyId": {
+          "documentation": "<p>The ID of the deployment strategy that was deployed.</p>",
+          "shape": "Id"
         },
-        "DeploymentDurationInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>Total amount of time the deployment lasted.</p>"
+        "Description": {
+          "documentation": "<p>The description of the deployment.</p>",
+          "shape": "Description"
         },
-        "GrowthType":{
-          "shape":"GrowthType",
-          "documentation":"<p>The algorithm used to define how percentage grew over time.</p>"
+        "EnvironmentId": {
+          "documentation": "<p>The ID of the environment that was deployed.</p>",
+          "shape": "Id"
         },
-        "GrowthFactor":{
-          "shape":"Percentage",
-          "documentation":"<p>The percentage of targets to receive a deployed configuration during each interval.</p>"
+        "EventLog": {
+          "documentation": "<p>A list containing all events related to a deployment. The most recent events are displayed first.</p>",
+          "shape": "DeploymentEvents"
         },
-        "FinalBakeTimeInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>The amount of time AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>"
+        "FinalBakeTimeInMinutes": {
+          "documentation": "<p>The amount of time AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "State":{
-          "shape":"DeploymentState",
-          "documentation":"<p>The state of the deployment.</p>"
+        "GrowthFactor": {
+          "documentation": "<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
+          "shape": "Percentage"
         },
-        "EventLog":{
-          "shape":"DeploymentEvents",
-          "documentation":"<p>A list containing all events related to a deployment. The most recent events are displayed first.</p>"
+        "GrowthType": {
+          "documentation": "<p>The algorithm used to define how percentage grew over time.</p>",
+          "shape": "GrowthType"
         },
-        "PercentageComplete":{
-          "shape":"Percentage",
-          "documentation":"<p>The percentage of targets for which the deployment is available.</p>"
+        "PercentageComplete": {
+          "documentation": "<p>The percentage of targets for which the deployment is available.</p>",
+          "shape": "Percentage"
         },
-        "StartedAt":{
-          "shape":"Iso8601DateTime",
-          "documentation":"<p>The time the deployment started.</p>"
+        "StartedAt": {
+          "documentation": "<p>The time the deployment started.</p>",
+          "shape": "Iso8601DateTime"
         },
-        "CompletedAt":{
-          "shape":"Iso8601DateTime",
-          "documentation":"<p>The time the deployment completed. </p>"
-        }
-      }
-    },
-    "DeploymentEvent":{
-      "type":"structure",
-      "members":{
-        "EventType":{
-          "shape":"DeploymentEventType",
-          "documentation":"<p>The type of deployment event. Deployment event types include the start, stop, or completion of a deployment; a percentage update; the start or stop of a bake period; the start or completion of a rollback.</p>"
-        },
-        "TriggeredBy":{
-          "shape":"TriggeredBy",
-          "documentation":"<p>The entity that triggered the deployment event. Events can be triggered by a user, AWS AppConfig, an Amazon CloudWatch alarm, or an internal error.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the deployment event. Descriptions include, but are not limited to, the user account or the CloudWatch alarm ARN that initiated a rollback, the percentage of hosts that received the deployment, or in the case of an internal error, a recommendation to attempt a new deployment.</p>"
-        },
-        "OccurredAt":{
-          "shape":"Iso8601DateTime",
-          "documentation":"<p>The date and time the event occurred.</p>"
+        "State": {
+          "documentation": "<p>The state of the deployment.</p>",
+          "shape": "DeploymentState"
         }
       },
-      "documentation":"<p>An object that describes a deployment event.</p>"
+      "type": "structure"
     },
-    "DeploymentEventType":{
-      "type":"string",
-      "enum":[
+    "DeploymentEvent": {
+      "documentation": "<p>An object that describes a deployment event.</p>",
+      "members": {
+        "Description": {
+          "documentation": "<p>A description of the deployment event. Descriptions include, but are not limited to, the user account or the CloudWatch alarm ARN that initiated a rollback, the percentage of hosts that received the deployment, or in the case of an internal error, a recommendation to attempt a new deployment.</p>",
+          "shape": "Description"
+        },
+        "EventType": {
+          "documentation": "<p>The type of deployment event. Deployment event types include the start, stop, or completion of a deployment; a percentage update; the start or stop of a bake period; the start or completion of a rollback.</p>",
+          "shape": "DeploymentEventType"
+        },
+        "OccurredAt": {
+          "documentation": "<p>The date and time the event occurred.</p>",
+          "shape": "Iso8601DateTime"
+        },
+        "TriggeredBy": {
+          "documentation": "<p>The entity that triggered the deployment event. Events can be triggered by a user, AWS AppConfig, an Amazon CloudWatch alarm, or an internal error.</p>",
+          "shape": "TriggeredBy"
+        }
+      },
+      "type": "structure"
+    },
+    "DeploymentEventType": {
+      "enum": [
         "PERCENTAGE_UPDATED",
         "ROLLBACK_STARTED",
         "ROLLBACK_COMPLETED",
         "BAKE_TIME_STARTED",
         "DEPLOYMENT_STARTED",
         "DEPLOYMENT_COMPLETED"
-      ]
+      ],
+      "type": "string"
     },
-    "DeploymentEvents":{
-      "type":"list",
-      "member":{"shape":"DeploymentEvent"}
+    "DeploymentEvents": {
+      "member": {
+        "shape": "DeploymentEvent"
+      },
+      "type": "list"
     },
-    "DeploymentList":{
-      "type":"list",
-      "member":{"shape":"DeploymentSummary"}
+    "DeploymentList": {
+      "member": {
+        "shape": "DeploymentSummary"
+      },
+      "type": "list"
     },
-    "DeploymentState":{
-      "type":"string",
-      "enum":[
+    "DeploymentState": {
+      "enum": [
         "BAKING",
         "VALIDATING",
         "DEPLOYING",
         "COMPLETE",
         "ROLLING_BACK",
         "ROLLED_BACK"
-      ]
+      ],
+      "type": "string"
     },
-    "DeploymentStrategies":{
-      "type":"structure",
-      "members":{
-        "Items":{
-          "shape":"DeploymentStrategyList",
-          "documentation":"<p>The elements from this collection.</p>"
+    "DeploymentStrategies": {
+      "members": {
+        "Items": {
+          "documentation": "<p>The elements from this collection.</p>",
+          "shape": "DeploymentStrategyList"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of items to return. Use this token to get the next set of results.</p>"
-        }
-      }
-    },
-    "DeploymentStrategy":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"Id",
-          "documentation":"<p>The deployment strategy ID.</p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the deployment strategy.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>The description of the deployment strategy.</p>"
-        },
-        "DeploymentDurationInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>Total amount of time the deployment lasted.</p>"
-        },
-        "GrowthType":{
-          "shape":"GrowthType",
-          "documentation":"<p>The algorithm used to define how percentage grew over time.</p>"
-        },
-        "GrowthFactor":{
-          "shape":"Percentage",
-          "documentation":"<p>The percentage of targets that received a deployed configuration during each interval.</p>"
-        },
-        "FinalBakeTimeInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>The amount of time AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>"
-        },
-        "ReplicateTo":{
-          "shape":"ReplicateTo",
-          "documentation":"<p>Save the deployment strategy to a Systems Manager (SSM) document.</p>"
-        }
-      }
-    },
-    "DeploymentStrategyId":{
-      "type":"string",
-      "pattern":"([a-z0-9]{4,7}|arn:aws.*)"
-    },
-    "DeploymentStrategyList":{
-      "type":"list",
-      "member":{"shape":"DeploymentStrategy"}
-    },
-    "DeploymentSummary":{
-      "type":"structure",
-      "members":{
-        "DeploymentNumber":{
-          "shape":"Integer",
-          "documentation":"<p>The sequence number of the deployment.</p>"
-        },
-        "ConfigurationName":{
-          "shape":"Name",
-          "documentation":"<p>The name of the configuration.</p>"
-        },
-        "ConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the configuration.</p>"
-        },
-        "DeploymentDurationInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>Total amount of time the deployment lasted.</p>"
-        },
-        "GrowthType":{
-          "shape":"GrowthType",
-          "documentation":"<p>The algorithm used to define how percentage grows over time.</p>"
-        },
-        "GrowthFactor":{
-          "shape":"Percentage",
-          "documentation":"<p>The percentage of targets to receive a deployed configuration during each interval.</p>"
-        },
-        "FinalBakeTimeInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>"
-        },
-        "State":{
-          "shape":"DeploymentState",
-          "documentation":"<p>The state of the deployment.</p>"
-        },
-        "PercentageComplete":{
-          "shape":"Percentage",
-          "documentation":"<p>The percentage of targets for which the deployment is available.</p>"
-        },
-        "StartedAt":{
-          "shape":"Iso8601DateTime",
-          "documentation":"<p>Time the deployment started.</p>"
-        },
-        "CompletedAt":{
-          "shape":"Iso8601DateTime",
-          "documentation":"<p>Time the deployment completed.</p>"
+        "NextToken": {
+          "documentation": "<p>The token for the next set of items to return. Use this token to get the next set of results.</p>",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>Information about the deployment.</p>"
+      "type": "structure"
     },
-    "Deployments":{
-      "type":"structure",
-      "members":{
-        "Items":{
-          "shape":"DeploymentList",
-          "documentation":"<p>The elements from this collection.</p>"
+    "DeploymentStrategy": {
+      "members": {
+        "DeploymentDurationInMinutes": {
+          "documentation": "<p>Total amount of time the deployment lasted.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of items to return. Use this token to get the next set of results.</p>"
+        "Description": {
+          "documentation": "<p>The description of the deployment strategy.</p>",
+          "shape": "Description"
+        },
+        "FinalBakeTimeInMinutes": {
+          "documentation": "<p>The amount of time AppConfig monitored for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
+          "shape": "MinutesBetween0And24Hours"
+        },
+        "GrowthFactor": {
+          "documentation": "<p>The percentage of targets that received a deployed configuration during each interval.</p>",
+          "shape": "Percentage"
+        },
+        "GrowthType": {
+          "documentation": "<p>The algorithm used to define how percentage grew over time.</p>",
+          "shape": "GrowthType"
+        },
+        "Id": {
+          "documentation": "<p>The deployment strategy ID.</p>",
+          "shape": "Id"
+        },
+        "Name": {
+          "documentation": "<p>The name of the deployment strategy.</p>",
+          "shape": "Name"
+        },
+        "ReplicateTo": {
+          "documentation": "<p>Save the deployment strategy to a Systems Manager (SSM) document.</p>",
+          "shape": "ReplicateTo"
         }
-      }
+      },
+      "type": "structure"
     },
-    "Description":{
-      "type":"string",
-      "max":1024,
-      "min":0
+    "DeploymentStrategyId": {
+      "pattern": "([a-z0-9]{4,7}|arn:aws.*)",
+      "type": "string"
     },
-    "Environment":{
-      "type":"structure",
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>"
+    "DeploymentStrategyList": {
+      "member": {
+        "shape": "DeploymentStrategy"
+      },
+      "type": "list"
+    },
+    "DeploymentSummary": {
+      "documentation": "<p>Information about the deployment.</p>",
+      "members": {
+        "CompletedAt": {
+          "documentation": "<p>Time the deployment completed.</p>",
+          "shape": "Iso8601DateTime"
         },
-        "Id":{
-          "shape":"Id",
-          "documentation":"<p>The environment ID.</p>"
+        "ConfigurationName": {
+          "documentation": "<p>The name of the configuration.</p>",
+          "shape": "Name"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the environment.</p>"
+        "ConfigurationVersion": {
+          "documentation": "<p>The version of the configuration.</p>",
+          "shape": "Version"
         },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>The description of the environment.</p>"
+        "DeploymentDurationInMinutes": {
+          "documentation": "<p>Total amount of time the deployment lasted.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "State":{
-          "shape":"EnvironmentState",
-          "documentation":"<p>The state of the environment. An environment can be in one of the following states: <code>READY_FOR_DEPLOYMENT</code>, <code>DEPLOYING</code>, <code>ROLLING_BACK</code>, or <code>ROLLED_BACK</code> </p>"
+        "DeploymentNumber": {
+          "documentation": "<p>The sequence number of the deployment.</p>",
+          "shape": "Integer"
         },
-        "Monitors":{
-          "shape":"MonitorList",
-          "documentation":"<p>Amazon CloudWatch alarms monitored during the deployment.</p>"
+        "FinalBakeTimeInMinutes": {
+          "documentation": "<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
+          "shape": "MinutesBetween0And24Hours"
+        },
+        "GrowthFactor": {
+          "documentation": "<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
+          "shape": "Percentage"
+        },
+        "GrowthType": {
+          "documentation": "<p>The algorithm used to define how percentage grows over time.</p>",
+          "shape": "GrowthType"
+        },
+        "PercentageComplete": {
+          "documentation": "<p>The percentage of targets for which the deployment is available.</p>",
+          "shape": "Percentage"
+        },
+        "StartedAt": {
+          "documentation": "<p>Time the deployment started.</p>",
+          "shape": "Iso8601DateTime"
+        },
+        "State": {
+          "documentation": "<p>The state of the deployment.</p>",
+          "shape": "DeploymentState"
         }
-      }
+      },
+      "type": "structure"
     },
-    "EnvironmentList":{
-      "type":"list",
-      "member":{"shape":"Environment"}
+    "Deployments": {
+      "members": {
+        "Items": {
+          "documentation": "<p>The elements from this collection.</p>",
+          "shape": "DeploymentList"
+        },
+        "NextToken": {
+          "documentation": "<p>The token for the next set of items to return. Use this token to get the next set of results.</p>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
     },
-    "EnvironmentState":{
-      "type":"string",
-      "enum":[
+    "Description": {
+      "max": 1024,
+      "min": 0,
+      "type": "string"
+    },
+    "Environment": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>The description of the environment.</p>",
+          "shape": "Description"
+        },
+        "Id": {
+          "documentation": "<p>The environment ID.</p>",
+          "shape": "Id"
+        },
+        "Monitors": {
+          "documentation": "<p>Amazon CloudWatch alarms monitored during the deployment.</p>",
+          "shape": "MonitorList"
+        },
+        "Name": {
+          "documentation": "<p>The name of the environment.</p>",
+          "shape": "Name"
+        },
+        "State": {
+          "documentation": "<p>The state of the environment. An environment can be in one of the following states: <code>READY_FOR_DEPLOYMENT</code>, <code>DEPLOYING</code>, <code>ROLLING_BACK</code>, or <code>ROLLED_BACK</code> </p>",
+          "shape": "EnvironmentState"
+        }
+      },
+      "type": "structure"
+    },
+    "EnvironmentList": {
+      "member": {
+        "shape": "Environment"
+      },
+      "type": "list"
+    },
+    "EnvironmentState": {
+      "enum": [
         "READY_FOR_DEPLOYMENT",
         "DEPLOYING",
         "ROLLING_BACK",
         "ROLLED_BACK"
-      ]
+      ],
+      "type": "string"
     },
-    "Environments":{
-      "type":"structure",
-      "members":{
-        "Items":{
-          "shape":"EnvironmentList",
-          "documentation":"<p>The elements from this collection.</p>"
+    "Environments": {
+      "members": {
+        "Items": {
+          "documentation": "<p>The elements from this collection.</p>",
+          "shape": "EnvironmentList"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of items to return. Use this token to get the next set of results.</p>"
+        "NextToken": {
+          "documentation": "<p>The token for the next set of items to return. Use this token to get the next set of results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetApplicationRequest":{
-      "type":"structure",
-      "required":["ApplicationId"],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application you want to get.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+    "GetApplicationRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application you want to get.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         }
-      }
+      },
+      "required": [
+        "ApplicationId"
+      ],
+      "type": "structure"
     },
-    "GetConfigurationProfileRequest":{
-      "type":"structure",
-      "required":[
+    "GetConfigurationProfileRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application that includes the configuration profile you want to get.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "ConfigurationProfileId": {
+          "documentation": "<p>The ID of the configuration profile you want to get.</p>",
+          "location": "uri",
+          "locationName": "ConfigurationProfileId",
+          "shape": "Id"
+        }
+      },
+      "required": [
         "ApplicationId",
         "ConfigurationProfileId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application that includes the configuration profile you want to get.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the configuration profile you want to get.</p>",
-          "location":"uri",
-          "locationName":"ConfigurationProfileId"
-        }
-      }
+      "type": "structure"
     },
-    "GetConfigurationRequest":{
-      "type":"structure",
-      "required":[
+    "GetConfigurationRequest": {
+      "members": {
+        "Application": {
+          "documentation": "<p>The application to get. Specify either the application name or the application ID.</p>",
+          "location": "uri",
+          "locationName": "Application",
+          "shape": "StringWithLengthBetween1And64"
+        },
+        "ClientConfigurationVersion": {
+          "documentation": "<p>The configuration version returned in the most recent GetConfiguration response.</p>",
+          "location": "querystring",
+          "locationName": "client_configuration_version",
+          "shape": "Version"
+        },
+        "ClientId": {
+          "documentation": "<p>A unique ID to identify the client for the configuration. This ID enables AppConfig to deploy the configuration in intervals, as defined in the deployment strategy.</p>",
+          "location": "querystring",
+          "locationName": "client_id",
+          "shape": "StringWithLengthBetween1And64"
+        },
+        "Configuration": {
+          "documentation": "<p>The configuration to get. Specify either the configuration name or the configuration ID.</p>",
+          "location": "uri",
+          "locationName": "Configuration",
+          "shape": "StringWithLengthBetween1And64"
+        },
+        "Environment": {
+          "documentation": "<p>The environment to get. Specify either the environment name or the environment ID.</p>",
+          "location": "uri",
+          "locationName": "Environment",
+          "shape": "StringWithLengthBetween1And64"
+        }
+      },
+      "required": [
         "Application",
         "Environment",
         "Configuration",
         "ClientId"
       ],
-      "members":{
-        "Application":{
-          "shape":"StringWithLengthBetween1And64",
-          "documentation":"<p>The application to get. Specify either the application name or the application ID.</p>",
-          "location":"uri",
-          "locationName":"Application"
-        },
-        "Environment":{
-          "shape":"StringWithLengthBetween1And64",
-          "documentation":"<p>The environment to get. Specify either the environment name or the environment ID.</p>",
-          "location":"uri",
-          "locationName":"Environment"
-        },
-        "Configuration":{
-          "shape":"StringWithLengthBetween1And64",
-          "documentation":"<p>The configuration to get. Specify either the configuration name or the configuration ID.</p>",
-          "location":"uri",
-          "locationName":"Configuration"
-        },
-        "ClientId":{
-          "shape":"StringWithLengthBetween1And64",
-          "documentation":"<p>A unique ID to identify the client for the configuration. This ID enables AppConfig to deploy the configuration in intervals, as defined in the deployment strategy.</p>",
-          "location":"querystring",
-          "locationName":"client_id"
-        },
-        "ClientConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The configuration version returned in the most recent GetConfiguration response.</p>",
-          "location":"querystring",
-          "locationName":"client_configuration_version"
-        }
-      }
+      "type": "structure"
     },
-    "GetDeploymentRequest":{
-      "type":"structure",
-      "required":[
+    "GetDeploymentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application that includes the deployment you want to get. </p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "DeploymentNumber": {
+          "box": true,
+          "documentation": "<p>The sequence number of the deployment.</p>",
+          "location": "uri",
+          "locationName": "DeploymentNumber",
+          "shape": "Integer"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The ID of the environment that includes the deployment you want to get. </p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId",
         "DeploymentNumber"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application that includes the deployment you want to get. </p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the environment that includes the deployment you want to get. </p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        },
-        "DeploymentNumber":{
-          "shape":"Integer",
-          "documentation":"<p>The sequence number of the deployment.</p>",
-          "box":true,
-          "location":"uri",
-          "locationName":"DeploymentNumber"
-        }
-      }
+      "type": "structure"
     },
-    "GetDeploymentStrategyRequest":{
-      "type":"structure",
-      "required":["DeploymentStrategyId"],
-      "members":{
-        "DeploymentStrategyId":{
-          "shape":"DeploymentStrategyId",
-          "documentation":"<p>The ID of the deployment strategy to get.</p>",
-          "location":"uri",
-          "locationName":"DeploymentStrategyId"
+    "GetDeploymentStrategyRequest": {
+      "members": {
+        "DeploymentStrategyId": {
+          "documentation": "<p>The ID of the deployment strategy to get.</p>",
+          "location": "uri",
+          "locationName": "DeploymentStrategyId",
+          "shape": "DeploymentStrategyId"
         }
-      }
+      },
+      "required": [
+        "DeploymentStrategyId"
+      ],
+      "type": "structure"
     },
-    "GetEnvironmentRequest":{
-      "type":"structure",
-      "required":[
+    "GetEnvironmentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The ID of the application that includes the environment you want to get.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The ID of the environment you wnat to get.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the application that includes the environment you want to get.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the environment you wnat to get.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        }
-      }
+      "type": "structure"
     },
-    "GrowthFactor":{
-      "type":"float",
-      "max":100.0,
-      "min":1.0
+    "GrowthFactor": {
+      "max": 100.0,
+      "min": 1.0,
+      "type": "float"
     },
-    "GrowthType":{
-      "type":"string",
-      "enum":[
+    "GrowthType": {
+      "enum": [
         "LINEAR",
         "EXPONENTIAL"
-      ]
+      ],
+      "type": "string"
     },
-    "Id":{
-      "type":"string",
-      "pattern":"[a-z0-9]{4,7}"
+    "Id": {
+      "pattern": "[a-z0-9]{4,7}",
+      "type": "string"
     },
-    "Integer":{"type":"integer"},
-    "InternalServerException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "Integer": {
+      "type": "integer"
+    },
+    "InternalServerException": {
+      "documentation": "<p>There was an internal failure in the AppConfig service.</p>",
+      "error": {
+        "httpStatusCode": 500
       },
-      "documentation":"<p>There was an internal failure in the AppConfig service.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true,
-      "fault":true
-    },
-    "Iso8601DateTime":{
-      "type":"timestamp",
-      "timestampFormat":"iso8601"
-    },
-    "ListApplicationsRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
-          "box":true,
-          "location":"querystring",
-          "locationName":"max_results"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to start the list. Use this token to get the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
+      "exception": true,
+      "fault": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListConfigurationProfilesRequest":{
-      "type":"structure",
-      "required":["ApplicationId"],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+    "Iso8601DateTime": {
+      "timestampFormat": "iso8601",
+      "type": "timestamp"
+    },
+    "ListApplicationsRequest": {
+      "members": {
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
-          "box":true,
-          "location":"querystring",
-          "locationName":"max_results"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to start the list. Use this token to get the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
+        "NextToken": {
+          "documentation": "<p>A token to start the list. Use this token to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListDeploymentStrategiesRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
-          "box":true,
-          "location":"querystring",
-          "locationName":"max_results"
+    "ListConfigurationProfilesRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to start the list. Use this token to get the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>A token to start the list. Use this token to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "ApplicationId"
+      ],
+      "type": "structure"
     },
-    "ListDeploymentsRequest":{
-      "type":"structure",
-      "required":[
+    "ListDeploymentStrategiesRequest": {
+      "members": {
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>A token to start the list. Use this token to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ListDeploymentsRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The environment ID.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        },
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>A token to start the list. Use this token to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The environment ID.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
-          "box":true,
-          "location":"querystring",
-          "locationName":"max_results"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to start the list. Use this token to get the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        }
-      }
+      "type": "structure"
     },
-    "ListEnvironmentsRequest":{
-      "type":"structure",
-      "required":["ApplicationId"],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+    "ListEnvironmentsRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
-          "box":true,
-          "location":"querystring",
-          "locationName":"max_results"
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "max_results",
+          "shape": "MaxResults"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to start the list. Use this token to get the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        }
-      }
-    },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The resource ARN.</p>",
-          "location":"uri",
-          "locationName":"ResourceArn"
-        }
-      }
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":50,
-      "min":1
-    },
-    "MinutesBetween0And24Hours":{
-      "type":"integer",
-      "max":1440,
-      "min":0
-    },
-    "Monitor":{
-      "type":"structure",
-      "members":{
-        "AlarmArn":{
-          "shape":"Arn",
-          "documentation":"<p>ARN of the Amazon CloudWatch alarm.</p>"
-        },
-        "AlarmRoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>ARN of an IAM role for AppConfig to monitor <code>AlarmArn</code>.</p>"
+        "NextToken": {
+          "documentation": "<p>A token to start the list. Use this token to get the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>"
+      "required": [
+        "ApplicationId"
+      ],
+      "type": "structure"
     },
-    "MonitorList":{
-      "type":"list",
-      "member":{"shape":"Monitor"},
-      "max":5,
-      "min":0
+    "ListTagsForResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The resource ARN.</p>",
+          "location": "uri",
+          "locationName": "ResourceArn",
+          "shape": "Arn"
+        }
+      },
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "Name":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "MaxResults": {
+      "max": 50,
+      "min": 1,
+      "type": "integer"
     },
-    "NextToken":{
-      "type":"string",
-      "max":2048,
-      "min":1
+    "MinutesBetween0And24Hours": {
+      "max": 1440,
+      "min": 0,
+      "type": "integer"
     },
-    "Percentage":{
-      "type":"float",
-      "max":100.0,
-      "min":1.0
+    "Monitor": {
+      "documentation": "<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>",
+      "members": {
+        "AlarmArn": {
+          "documentation": "<p>ARN of the Amazon CloudWatch alarm.</p>",
+          "shape": "Arn"
+        },
+        "AlarmRoleArn": {
+          "documentation": "<p>ARN of an IAM role for AppConfig to monitor <code>AlarmArn</code>.</p>",
+          "shape": "Arn"
+        }
+      },
+      "type": "structure"
     },
-    "ReplicateTo":{
-      "type":"string",
-      "enum":[
+    "MonitorList": {
+      "max": 5,
+      "member": {
+        "shape": "Monitor"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "Name": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "NextToken": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
+    },
+    "Percentage": {
+      "max": 100.0,
+      "min": 1.0,
+      "type": "float"
+    },
+    "ReplicateTo": {
+      "enum": [
         "NONE",
         "SSM_DOCUMENT"
-      ]
+      ],
+      "type": "string"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceName":{"shape":"String"}
+    "ResourceNotFoundException": {
+      "documentation": "<p>The requested resource could not be found.</p>",
+      "error": {
+        "httpStatusCode": 404
       },
-      "documentation":"<p>The requested resource could not be found.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "ResourceTags":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to AppConfig resources. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceName": {
+          "shape": "String"
         }
-      }
+      },
+      "type": "structure"
     },
-    "StartDeploymentRequest":{
-      "type":"structure",
-      "required":[
+    "ResourceTags": {
+      "members": {
+        "Tags": {
+          "documentation": "<p>Metadata to assign to AppConfig resources. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "type": "structure"
+    },
+    "StartDeploymentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "ConfigurationProfileId": {
+          "documentation": "<p>The configuration profile ID.</p>",
+          "shape": "Id"
+        },
+        "ConfigurationVersion": {
+          "documentation": "<p>The configuration version to deploy.</p>",
+          "shape": "Version"
+        },
+        "DeploymentStrategyId": {
+          "documentation": "<p>The deployment strategy ID.</p>",
+          "shape": "DeploymentStrategyId"
+        },
+        "Description": {
+          "documentation": "<p>A description of the deployment.</p>",
+          "shape": "Description"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The environment ID.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        },
+        "Tags": {
+          "documentation": "<p>Metadata to assign to the deployment. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId",
         "DeploymentStrategyId",
         "ConfigurationProfileId",
         "ConfigurationVersion"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The environment ID.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        },
-        "DeploymentStrategyId":{
-          "shape":"DeploymentStrategyId",
-          "documentation":"<p>The deployment strategy ID.</p>"
-        },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The configuration profile ID.</p>"
-        },
-        "ConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The configuration version to deploy.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the deployment.</p>"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>Metadata to assign to the deployment. Tags help organize and categorize your AppConfig resources. Each tag consists of a key and an optional value, both of which you define.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "StopDeploymentRequest":{
-      "type":"structure",
-      "required":[
+    "StopDeploymentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "DeploymentNumber": {
+          "box": true,
+          "documentation": "<p>The sequence number of the deployment.</p>",
+          "location": "uri",
+          "locationName": "DeploymentNumber",
+          "shape": "Integer"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The environment ID.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId",
         "DeploymentNumber"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The environment ID.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
-        },
-        "DeploymentNumber":{
-          "shape":"Integer",
-          "documentation":"<p>The sequence number of the deployment.</p>",
-          "box":true,
-          "location":"uri",
-          "locationName":"DeploymentNumber"
-        }
+      "type": "structure"
+    },
+    "String": {
+      "type": "string"
+    },
+    "StringWithLengthBetween0And32768": {
+      "max": 32768,
+      "min": 0,
+      "type": "string"
+    },
+    "StringWithLengthBetween1And64": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
+    },
+    "TagKeyList": {
+      "max": 50,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagMap": {
+      "key": {
+        "shape": "TagKey"
+      },
+      "max": 50,
+      "min": 0,
+      "type": "map",
+      "value": {
+        "shape": "TagValue"
       }
     },
-    "String":{"type":"string"},
-    "StringWithLengthBetween0And32768":{
-      "type":"string",
-      "max":32768,
-      "min":0
-    },
-    "StringWithLengthBetween1And64":{
-      "type":"string",
-      "max":64,
-      "min":1
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":50,
-      "min":0
-    },
-    "TagMap":{
-      "type":"map",
-      "key":{"shape":"TagKey"},
-      "value":{"shape":"TagValue"},
-      "max":50,
-      "min":0
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "TagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The ARN of the resource for which to retrieve tags.</p>",
+          "location": "uri",
+          "locationName": "ResourceArn",
+          "shape": "Arn"
+        },
+        "Tags": {
+          "documentation": "<p>The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with <code>aws:</code>. The tag value can be up to 256 characters.</p>",
+          "shape": "TagMap"
+        }
+      },
+      "required": [
         "ResourceArn",
         "Tags"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the resource for which to retrieve tags.</p>",
-          "location":"uri",
-          "locationName":"ResourceArn"
-        },
-        "Tags":{
-          "shape":"TagMap",
-          "documentation":"<p>The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with <code>aws:</code>. The tag value can be up to 256 characters.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "TagValue":{
-      "type":"string",
-      "max":256
+    "TagValue": {
+      "max": 256,
+      "type": "string"
     },
-    "TriggeredBy":{
-      "type":"string",
-      "enum":[
+    "TriggeredBy": {
+      "enum": [
         "USER",
         "APPCONFIG",
         "CLOUDWATCH_ALARM",
         "INTERNAL_ERROR"
-      ]
+      ],
+      "type": "string"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The ARN of the resource for which to remove tags.</p>",
+          "location": "uri",
+          "locationName": "ResourceArn",
+          "shape": "Arn"
+        },
+        "TagKeys": {
+          "documentation": "<p>The tag keys to delete.</p>",
+          "location": "querystring",
+          "locationName": "tagKeys",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "ResourceArn",
         "TagKeys"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of the resource for which to remove tags.</p>",
-          "location":"uri",
-          "locationName":"ResourceArn"
-        },
-        "TagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The tag keys to delete.</p>",
-          "location":"querystring",
-          "locationName":"tagKeys"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateApplicationRequest":{
-      "type":"structure",
-      "required":["ApplicationId"],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+    "UpdateApplicationRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the application.</p>"
+        "Description": {
+          "documentation": "<p>A description of the application.</p>",
+          "shape": "Description"
         },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the application.</p>"
+        "Name": {
+          "documentation": "<p>The name of the application.</p>",
+          "shape": "Name"
         }
-      }
+      },
+      "required": [
+        "ApplicationId"
+      ],
+      "type": "structure"
     },
-    "UpdateConfigurationProfileRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateConfigurationProfileRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "ConfigurationProfileId": {
+          "documentation": "<p>The ID of the configuration profile.</p>",
+          "location": "uri",
+          "locationName": "ConfigurationProfileId",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>A description of the configuration profile.</p>",
+          "shape": "Description"
+        },
+        "Name": {
+          "documentation": "<p>The name of the configuration profile.</p>",
+          "shape": "Name"
+        },
+        "RetrievalRoleArn": {
+          "documentation": "<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>",
+          "shape": "Arn"
+        },
+        "Validators": {
+          "documentation": "<p>A list of methods for validating the configuration.</p>",
+          "shape": "ValidatorList"
+        }
+      },
+      "required": [
         "ApplicationId",
         "ConfigurationProfileId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The ID of the configuration profile.</p>",
-          "location":"uri",
-          "locationName":"ConfigurationProfileId"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the configuration profile.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the configuration profile.</p>"
-        },
-        "RetrievalRoleArn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN of an IAM role with permission to access the configuration at the specified LocationUri.</p>"
-        },
-        "Validators":{
-          "shape":"ValidatorList",
-          "documentation":"<p>A list of methods for validating the configuration.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateDeploymentStrategyRequest":{
-      "type":"structure",
-      "required":["DeploymentStrategyId"],
-      "members":{
-        "DeploymentStrategyId":{
-          "shape":"DeploymentStrategyId",
-          "documentation":"<p>The deployment strategy ID.</p>",
-          "location":"uri",
-          "locationName":"DeploymentStrategyId"
+    "UpdateDeploymentStrategyRequest": {
+      "members": {
+        "DeploymentDurationInMinutes": {
+          "box": true,
+          "documentation": "<p>Total amount of time for a deployment to last.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the deployment strategy.</p>"
+        "DeploymentStrategyId": {
+          "documentation": "<p>The deployment strategy ID.</p>",
+          "location": "uri",
+          "locationName": "DeploymentStrategyId",
+          "shape": "DeploymentStrategyId"
         },
-        "DeploymentDurationInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>Total amount of time for a deployment to last.</p>",
-          "box":true
+        "Description": {
+          "documentation": "<p>A description of the deployment strategy.</p>",
+          "shape": "Description"
         },
-        "FinalBakeTimeInMinutes":{
-          "shape":"MinutesBetween0And24Hours",
-          "documentation":"<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
-          "box":true
+        "FinalBakeTimeInMinutes": {
+          "box": true,
+          "documentation": "<p>The amount of time AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back.</p>",
+          "shape": "MinutesBetween0And24Hours"
         },
-        "GrowthFactor":{
-          "shape":"GrowthFactor",
-          "documentation":"<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
-          "box":true
+        "GrowthFactor": {
+          "box": true,
+          "documentation": "<p>The percentage of targets to receive a deployed configuration during each interval.</p>",
+          "shape": "GrowthFactor"
         },
-        "GrowthType":{
-          "shape":"GrowthType",
-          "documentation":"<p>The algorithm used to define how percentage grows over time. AWS AppConfig supports the following growth types:</p> <p> <b>Linear</b>: For this type, AppConfig processes the deployment by increments of the growth factor evenly distributed over the deployment time. For example, a linear deployment that uses a growth factor of 20 initially makes the configuration available to 20 percent of the targets. After 1/5th of the deployment time has passed, the system updates the percentage to 40 percent. This continues until 100% of the targets are set to receive the deployed configuration.</p> <p> <b>Exponential</b>: For this type, AppConfig processes the deployment exponentially using the following formula: <code>G*(2^N)</code>. In this formula, <code>G</code> is the growth factor specified by the user and <code>N</code> is the number of steps until the configuration is deployed to all targets. For example, if you specify a growth factor of 2, then the system rolls out the configuration as follows:</p> <p> <code>2*(2^0)</code> </p> <p> <code>2*(2^1)</code> </p> <p> <code>2*(2^2)</code> </p> <p>Expressed numerically, the deployment rolls out as follows: 2% of the targets, 4% of the targets, 8% of the targets, and continues until the configuration has been deployed to all targets.</p>"
+        "GrowthType": {
+          "documentation": "<p>The algorithm used to define how percentage grows over time. AWS AppConfig supports the following growth types:</p> <p> <b>Linear</b>: For this type, AppConfig processes the deployment by increments of the growth factor evenly distributed over the deployment time. For example, a linear deployment that uses a growth factor of 20 initially makes the configuration available to 20 percent of the targets. After 1/5th of the deployment time has passed, the system updates the percentage to 40 percent. This continues until 100% of the targets are set to receive the deployed configuration.</p> <p> <b>Exponential</b>: For this type, AppConfig processes the deployment exponentially using the following formula: <code>G*(2^N)</code>. In this formula, <code>G</code> is the growth factor specified by the user and <code>N</code> is the number of steps until the configuration is deployed to all targets. For example, if you specify a growth factor of 2, then the system rolls out the configuration as follows:</p> <p> <code>2*(2^0)</code> </p> <p> <code>2*(2^1)</code> </p> <p> <code>2*(2^2)</code> </p> <p>Expressed numerically, the deployment rolls out as follows: 2% of the targets, 4% of the targets, 8% of the targets, and continues until the configuration has been deployed to all targets.</p>",
+          "shape": "GrowthType"
         }
-      }
+      },
+      "required": [
+        "DeploymentStrategyId"
+      ],
+      "type": "structure"
     },
-    "UpdateEnvironmentRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateEnvironmentRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
+        },
+        "Description": {
+          "documentation": "<p>A description of the environment.</p>",
+          "shape": "Description"
+        },
+        "EnvironmentId": {
+          "documentation": "<p>The environment ID.</p>",
+          "location": "uri",
+          "locationName": "EnvironmentId",
+          "shape": "Id"
+        },
+        "Monitors": {
+          "documentation": "<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>",
+          "shape": "MonitorList"
+        },
+        "Name": {
+          "documentation": "<p>The name of the environment.</p>",
+          "shape": "Name"
+        }
+      },
+      "required": [
         "ApplicationId",
         "EnvironmentId"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
+      "type": "structure"
+    },
+    "Uri": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
+    },
+    "ValidateConfigurationRequest": {
+      "members": {
+        "ApplicationId": {
+          "documentation": "<p>The application ID.</p>",
+          "location": "uri",
+          "locationName": "ApplicationId",
+          "shape": "Id"
         },
-        "EnvironmentId":{
-          "shape":"Id",
-          "documentation":"<p>The environment ID.</p>",
-          "location":"uri",
-          "locationName":"EnvironmentId"
+        "ConfigurationProfileId": {
+          "documentation": "<p>The configuration profile ID.</p>",
+          "location": "uri",
+          "locationName": "ConfigurationProfileId",
+          "shape": "Id"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the environment.</p>"
-        },
-        "Description":{
-          "shape":"Description",
-          "documentation":"<p>A description of the environment.</p>"
-        },
-        "Monitors":{
-          "shape":"MonitorList",
-          "documentation":"<p>Amazon CloudWatch alarms to monitor during the deployment process.</p>"
+        "ConfigurationVersion": {
+          "documentation": "<p>The version of the configuration to validate.</p>",
+          "location": "querystring",
+          "locationName": "configuration_version",
+          "shape": "Version"
         }
-      }
-    },
-    "Uri":{
-      "type":"string",
-      "max":2048,
-      "min":1
-    },
-    "ValidateConfigurationRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ApplicationId",
         "ConfigurationProfileId",
         "ConfigurationVersion"
       ],
-      "members":{
-        "ApplicationId":{
-          "shape":"Id",
-          "documentation":"<p>The application ID.</p>",
-          "location":"uri",
-          "locationName":"ApplicationId"
-        },
-        "ConfigurationProfileId":{
-          "shape":"Id",
-          "documentation":"<p>The configuration profile ID.</p>",
-          "location":"uri",
-          "locationName":"ConfigurationProfileId"
-        },
-        "ConfigurationVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the configuration to validate.</p>",
-          "location":"querystring",
-          "locationName":"configuration_version"
-        }
-      }
+      "type": "structure"
     },
-    "Validator":{
-      "type":"structure",
-      "required":[
+    "Validator": {
+      "documentation": "<p>A validator provides a syntactic or semantic check to ensure the configuration you want to deploy functions as intended. To validate your application configuration data, you provide a schema or a Lambda function that runs against the configuration. The configuration deployment or update can only proceed when the configuration data is valid.</p>",
+      "members": {
+        "Content": {
+          "documentation": "<p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an AWS Lambda function.</p>",
+          "shape": "StringWithLengthBetween0And32768"
+        },
+        "Type": {
+          "documentation": "<p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and <code>LAMBDA</code> </p>",
+          "shape": "ValidatorType"
+        }
+      },
+      "required": [
         "Type",
         "Content"
       ],
-      "members":{
-        "Type":{
-          "shape":"ValidatorType",
-          "documentation":"<p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and <code>LAMBDA</code> </p>"
-        },
-        "Content":{
-          "shape":"StringWithLengthBetween0And32768",
-          "documentation":"<p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an AWS Lambda function.</p>"
-        }
+      "type": "structure"
+    },
+    "ValidatorList": {
+      "max": 2,
+      "member": {
+        "shape": "Validator"
       },
-      "documentation":"<p>A validator provides a syntactic or semantic check to ensure the configuration you want to deploy functions as intended. To validate your application configuration data, you provide a schema or a Lambda function that runs against the configuration. The configuration deployment or update can only proceed when the configuration data is valid.</p>"
+      "min": 0,
+      "type": "list"
     },
-    "ValidatorList":{
-      "type":"list",
-      "member":{"shape":"Validator"},
-      "max":2,
-      "min":0
-    },
-    "ValidatorType":{
-      "type":"string",
-      "enum":[
+    "ValidatorType": {
+      "enum": [
         "JSON_SCHEMA",
         "LAMBDA"
-      ]
+      ],
+      "type": "string"
     },
-    "ValidatorTypeList":{
-      "type":"list",
-      "member":{"shape":"ValidatorType"},
-      "max":2,
-      "min":0
+    "ValidatorTypeList": {
+      "max": 2,
+      "member": {
+        "shape": "ValidatorType"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "Version":{
-      "type":"string",
-      "max":128,
-      "min":1
+    "Version": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
     }
   },
-  "documentation":"<fullname>AWS AppConfig</fullname> <p>Use AWS AppConfig, a capability of AWS Systems Manager, to create, manage, and quickly deploy application configurations. AppConfig supports controlled deployments to applications of any size and includes built-in validation checks and monitoring. You can use AppConfig with applications hosted on Amazon EC2 instances, AWS Lambda, containers, mobile applications, or IoT devices.</p> <p>To prevent errors when deploying application configurations, especially for production systems where a simple typo could cause an unexpected outage, AppConfig includes validators. A validator provides a syntactic or semantic check to ensure that the configuration you want to deploy works as intended. To validate your application configuration data, you provide a schema or a Lambda function that runs against the configuration. The configuration deployment or update can only proceed when the configuration data is valid.</p> <p>During a configuration deployment, AppConfig monitors the application to ensure that the deployment is successful. If the system encounters an error, AppConfig rolls back the change to minimize impact for your application users. You can configure a deployment strategy for each application or environment that includes deployment criteria, including velocity, bake time, and alarms to monitor. Similar to error monitoring, if a deployment triggers an alarm, AppConfig automatically rolls back to the previous version. </p> <p>AppConfig supports multiple use cases. Here are some examples.</p> <ul> <li> <p> <b>Application tuning</b>: Use AppConfig to carefully introduce changes to your application that can only be tested with production traffic.</p> </li> <li> <p> <b>Feature toggle</b>: Use AppConfig to turn on new features that require a timely deployment, such as a product launch or announcement. </p> </li> <li> <p> <b>User membership</b>: Use AppConfig to allow premium subscribers to access paid content. </p> </li> <li> <p> <b>Operational issues</b>: Use AppConfig to reduce stress on your application when a dependency or other external factor impacts the system.</p> </li> </ul> <p>This reference is intended to be used with the <a href=\"http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html\">AWS AppConfig User Guide</a>.</p>"
+  "version": "2.0"
 }

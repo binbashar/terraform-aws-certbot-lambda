@@ -1,58 +1,58 @@
 {
   "pagination": {
     "ListAssignmentsForHIT": {
-      "result_key": "Assignments",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListQualificationTypes": {
-      "result_key": "QualificationTypes",
+      "limit_key": "MaxResults",
       "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListHITs": {
-      "result_key": "HITs",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListWorkerBlocks": {
-      "result_key": "WorkerBlocks",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListReviewableHITs": {
-      "result_key": "HITs",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListHITsForQualificationType": {
-      "result_key": "HITs",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListQualificationRequests": {
-      "result_key": "QualificationRequests",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListWorkersWithQualificationType": {
-      "result_key": "Qualifications",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "result_key": "Assignments"
     },
     "ListBonusPayments": {
-      "result_key": "BonusPayments",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "BonusPayments"
+    },
+    "ListHITs": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "HITs"
+    },
+    "ListHITsForQualificationType": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "HITs"
+    },
+    "ListQualificationRequests": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "QualificationRequests"
+    },
+    "ListQualificationTypes": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "QualificationTypes"
+    },
+    "ListReviewableHITs": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "HITs"
+    },
+    "ListWorkerBlocks": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "WorkerBlocks"
+    },
+    "ListWorkersWithQualificationType": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Qualifications"
     }
   }
 }

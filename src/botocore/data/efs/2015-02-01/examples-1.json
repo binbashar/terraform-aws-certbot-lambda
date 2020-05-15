@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "CreateFileSystem": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation creates a new file system with the default generalpurpose performance mode.",
+        "id": "to-create-a-new-file-system-1481840798547",
         "input": {
           "CreationToken": "tokenstring",
           "PerformanceMode": "generalPurpose"
@@ -19,19 +24,17 @@
             "Value": 0
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation creates a new file system with the default generalpurpose performance mode.",
-        "id": "to-create-a-new-file-system-1481840798547",
         "title": "To create a new file system"
       }
     ],
     "CreateMountTarget": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation creates a new mount target for an EFS file system.",
+        "id": "to-create-a-new-mount-target-1481842289329",
         "input": {
           "FileSystemId": "fs-01234567",
           "SubnetId": "subnet-1234abcd"
@@ -45,19 +48,14 @@
           "OwnerId": "012345678912",
           "SubnetId": "subnet-1234abcd"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation creates a new mount target for an EFS file system.",
-        "id": "to-create-a-new-mount-target-1481842289329",
         "title": "To create a new mount target"
       }
     ],
     "CreateTags": [
       {
+        "comments": {},
+        "description": "This operation creates a new tag for an EFS file system.",
+        "id": "to-create-a-new-tag-1481843409357",
         "input": {
           "FileSystemId": "fs-01234567",
           "Tags": [
@@ -67,56 +65,51 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This operation creates a new tag for an EFS file system.",
-        "id": "to-create-a-new-tag-1481843409357",
         "title": "To create a new tag"
       }
     ],
     "DeleteFileSystem": [
       {
+        "comments": {},
+        "description": "This operation deletes an EFS file system.",
+        "id": "to-delete-a-file-system-1481847318348",
         "input": {
           "FileSystemId": "fs-01234567"
         },
-        "comments": {
-        },
-        "description": "This operation deletes an EFS file system.",
-        "id": "to-delete-a-file-system-1481847318348",
         "title": "To delete a file system"
       }
     ],
     "DeleteMountTarget": [
       {
+        "comments": {},
+        "description": "This operation deletes a mount target.",
+        "id": "to-delete-a-mount-target-1481847635607",
         "input": {
           "MountTargetId": "fsmt-12340abc"
         },
-        "comments": {
-        },
-        "description": "This operation deletes a mount target.",
-        "id": "to-delete-a-mount-target-1481847635607",
         "title": "To delete a mount target"
       }
     ],
     "DeleteTags": [
       {
+        "comments": {},
+        "description": "This operation deletes tags for an EFS file system.",
+        "id": "to-delete-tags-for-an-efs-file-system-1481848189061",
         "input": {
           "FileSystemId": "fs-01234567",
           "TagKeys": [
             "Name"
           ]
         },
-        "comments": {
-        },
-        "description": "This operation deletes tags for an EFS file system.",
-        "id": "to-delete-tags-for-an-efs-file-system-1481848189061",
         "title": "To delete tags for an EFS file system"
       }
     ],
     "DescribeFileSystems": [
       {
-        "input": {
-        },
+        "comments": {},
+        "description": "This operation describes all of the EFS file systems in an account.",
+        "id": "to-describe-an-efs-file-system-1481848448460",
+        "input": {},
         "output": {
           "FileSystems": [
             {
@@ -134,15 +127,14 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This operation describes all of the EFS file systems in an account.",
-        "id": "to-describe-an-efs-file-system-1481848448460",
         "title": "To describe an EFS file system"
       }
     ],
     "DescribeMountTargetSecurityGroups": [
       {
+        "comments": {},
+        "description": "This operation describes all of the security groups for a file system's mount target.",
+        "id": "to-describe-the-security-groups-for-a-mount-target-1481849317823",
         "input": {
           "MountTargetId": "fsmt-12340abc"
         },
@@ -151,15 +143,14 @@
             "sg-fghi4567"
           ]
         },
-        "comments": {
-        },
-        "description": "This operation describes all of the security groups for a file system's mount target.",
-        "id": "to-describe-the-security-groups-for-a-mount-target-1481849317823",
         "title": "To describe the security groups for a mount target"
       }
     ],
     "DescribeMountTargets": [
       {
+        "comments": {},
+        "description": "This operation describes all of a file system's mount targets.",
+        "id": "to-describe-the-mount-targets-for-a-file-system-1481849958584",
         "input": {
           "FileSystemId": "fs-01234567"
         },
@@ -176,15 +167,14 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This operation describes all of a file system's mount targets.",
-        "id": "to-describe-the-mount-targets-for-a-file-system-1481849958584",
         "title": "To describe the mount targets for a file system"
       }
     ],
     "DescribeTags": [
       {
+        "comments": {},
+        "description": "This operation describes all of a file system's tags.",
+        "id": "to-describe-the-tags-for-a-file-system-1481850497090",
         "input": {
           "FileSystemId": "fs-01234567"
         },
@@ -196,27 +186,23 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This operation describes all of a file system's tags.",
-        "id": "to-describe-the-tags-for-a-file-system-1481850497090",
         "title": "To describe the tags for a file system"
       }
     ],
     "ModifyMountTargetSecurityGroups": [
       {
+        "comments": {},
+        "description": "This operation modifies the security groups associated with a mount target for a file system.",
+        "id": "to-modify-the-security-groups-associated-with-a-mount-target-for-a-file-system-1481850772562",
         "input": {
           "MountTargetId": "fsmt-12340abc",
           "SecurityGroups": [
             "sg-abcd1234"
           ]
         },
-        "comments": {
-        },
-        "description": "This operation modifies the security groups associated with a mount target for a file system.",
-        "id": "to-modify-the-security-groups-associated-with-a-mount-target-for-a-file-system-1481850772562",
         "title": "To modify the security groups associated with a mount target for a file system"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

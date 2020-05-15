@@ -1,64 +1,21 @@
 {
-  "service": {
-    "actions": {
-      "CreateQueue": {
-        "request": { "operation": "CreateQueue" },
-        "resource": {
-          "type": "Queue",
-          "identifiers": [
-            { "target": "Url", "source": "response", "path": "QueueUrl" }
-          ]
-        }
-      },
-      "GetQueueByName": {
-        "request": { "operation": "GetQueueUrl" },
-        "resource": {
-          "type": "Queue",
-          "identifiers": [
-            { "target": "Url", "source": "response", "path": "QueueUrl" }
-          ]
-        }
-      }
-    },
-    "has": {
-      "Queue": {
-        "resource": {
-          "type": "Queue",
-          "identifiers": [
-            { "target": "Url", "source": "input" }
-          ]
-        }
-      }
-    },
-    "hasMany": {
-      "Queues": {
-        "request": { "operation": "ListQueues" },
-        "resource": {
-          "type": "Queue",
-          "identifiers": [
-            { "target": "Url", "source": "response", "path": "QueueUrls[]" }
-          ]
-        }
-      }
-    }
-  },
   "resources": {
     "Message": {
-      "identifiers": [
-        { "name": "QueueUrl" },
-        {
-          "name": "ReceiptHandle",
-          "memberName": "ReceiptHandle"
-        }
-      ],
-      "shape": "Message",
       "actions": {
         "ChangeVisibility": {
           "request": {
             "operation": "ChangeMessageVisibility",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "QueueUrl" },
-              { "target": "ReceiptHandle", "source": "identifier", "name": "ReceiptHandle" }
+              {
+                "name": "QueueUrl",
+                "source": "identifier",
+                "target": "QueueUrl"
+              },
+              {
+                "name": "ReceiptHandle",
+                "source": "identifier",
+                "target": "ReceiptHandle"
+              }
             ]
           }
         },
@@ -66,8 +23,16 @@
           "request": {
             "operation": "DeleteMessage",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "QueueUrl" },
-              { "target": "ReceiptHandle", "source": "identifier", "name": "ReceiptHandle" }
+              {
+                "name": "QueueUrl",
+                "source": "identifier",
+                "target": "QueueUrl"
+              },
+              {
+                "name": "ReceiptHandle",
+                "source": "identifier",
+                "target": "ReceiptHandle"
+              }
             ]
           }
         }
@@ -77,9 +42,21 @@
           "request": {
             "operation": "DeleteMessageBatch",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "QueueUrl" },
-              { "target": "Entries[*].Id", "source": "data", "path": "MessageId" },
-              { "target": "Entries[*].ReceiptHandle", "source": "identifier", "name": "ReceiptHandle" }
+              {
+                "name": "QueueUrl",
+                "source": "identifier",
+                "target": "QueueUrl"
+              },
+              {
+                "path": "MessageId",
+                "source": "data",
+                "target": "Entries[*].Id"
+              },
+              {
+                "name": "ReceiptHandle",
+                "source": "identifier",
+                "target": "Entries[*].ReceiptHandle"
+              }
             ]
           }
         }
@@ -87,35 +64,39 @@
       "has": {
         "Queue": {
           "resource": {
-            "type": "Queue",
             "identifiers": [
-              { "target": "Url", "source": "identifier", "name": "QueueUrl" }
-            ]
+              {
+                "name": "QueueUrl",
+                "source": "identifier",
+                "target": "Url"
+              }
+            ],
+            "type": "Queue"
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "QueueUrl"
+        },
+        {
+          "memberName": "ReceiptHandle",
+          "name": "ReceiptHandle"
+        }
+      ],
+      "shape": "Message"
     },
     "Queue": {
-      "identifiers": [
-        { "name": "Url" }
-      ],
-      "shape": "GetQueueAttributesResult",
-      "load": {
-        "request": {
-          "operation": "GetQueueAttributes",
-          "params": [
-            { "target": "QueueUrl", "source": "identifier", "name": "Url" },
-            { "target": "AttributeNames[]", "source": "string", "value": "All" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "AddPermission": {
           "request": {
             "operation": "AddPermission",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -123,7 +104,11 @@
           "request": {
             "operation": "ChangeMessageVisibilityBatch",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -131,7 +116,11 @@
           "request": {
             "operation": "DeleteQueue",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -139,7 +128,11 @@
           "request": {
             "operation": "DeleteMessageBatch",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -147,7 +140,11 @@
           "request": {
             "operation": "PurgeQueue",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -155,23 +152,39 @@
           "request": {
             "operation": "ReceiveMessage",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           },
           "resource": {
-            "type": "Message",
             "identifiers": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" },
-              { "target": "ReceiptHandle", "source": "response", "path": "Messages[].ReceiptHandle" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              },
+              {
+                "path": "Messages[].ReceiptHandle",
+                "source": "response",
+                "target": "ReceiptHandle"
+              }
             ],
-            "path": "Messages[]"
+            "path": "Messages[]",
+            "type": "Message"
           }
         },
         "RemovePermission": {
           "request": {
             "operation": "RemovePermission",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -179,7 +192,11 @@
           "request": {
             "operation": "SendMessage",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -187,7 +204,11 @@
           "request": {
             "operation": "SendMessageBatch",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         },
@@ -195,7 +216,11 @@
           "request": {
             "operation": "SetQueueAttributes",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           }
         }
@@ -203,11 +228,18 @@
       "has": {
         "Message": {
           "resource": {
-            "type": "Message",
             "identifiers": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" },
-              { "target": "ReceiptHandle", "source": "input" }
-            ]
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              },
+              {
+                "source": "input",
+                "target": "ReceiptHandle"
+              }
+            ],
+            "type": "Message"
           }
         }
       },
@@ -216,15 +248,111 @@
           "request": {
             "operation": "ListDeadLetterSourceQueues",
             "params": [
-              { "target": "QueueUrl", "source": "identifier", "name": "Url" }
+              {
+                "name": "Url",
+                "source": "identifier",
+                "target": "QueueUrl"
+              }
             ]
           },
           "resource": {
-            "type": "Queue",
             "identifiers": [
-              { "target": "Url", "source": "response", "path": "queueUrls[]" }
-            ]
+              {
+                "path": "queueUrls[]",
+                "source": "response",
+                "target": "Url"
+              }
+            ],
+            "type": "Queue"
           }
+        }
+      },
+      "identifiers": [
+        {
+          "name": "Url"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "GetQueueAttributes",
+          "params": [
+            {
+              "name": "Url",
+              "source": "identifier",
+              "target": "QueueUrl"
+            },
+            {
+              "source": "string",
+              "target": "AttributeNames[]",
+              "value": "All"
+            }
+          ]
+        }
+      },
+      "shape": "GetQueueAttributesResult"
+    }
+  },
+  "service": {
+    "actions": {
+      "CreateQueue": {
+        "request": {
+          "operation": "CreateQueue"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "QueueUrl",
+              "source": "response",
+              "target": "Url"
+            }
+          ],
+          "type": "Queue"
+        }
+      },
+      "GetQueueByName": {
+        "request": {
+          "operation": "GetQueueUrl"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "QueueUrl",
+              "source": "response",
+              "target": "Url"
+            }
+          ],
+          "type": "Queue"
+        }
+      }
+    },
+    "has": {
+      "Queue": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Url"
+            }
+          ],
+          "type": "Queue"
+        }
+      }
+    },
+    "hasMany": {
+      "Queues": {
+        "request": {
+          "operation": "ListQueues"
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "QueueUrls[]",
+              "source": "response",
+              "target": "Url"
+            }
+          ],
+          "type": "Queue"
         }
       }
     }

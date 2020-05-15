@@ -2,26 +2,26 @@
   "pagination": {
     "ListAnalyzedResources": {
       "input_token": "nextToken",
-      "output_token": "nextToken",
       "limit_key": "maxResults",
+      "output_token": "nextToken",
       "result_key": "analyzedResources"
     },
     "ListAnalyzers": {
       "input_token": "nextToken",
-      "output_token": "nextToken",
       "limit_key": "maxResults",
+      "output_token": "nextToken",
       "result_key": "analyzers"
     },
     "ListArchiveRules": {
       "input_token": "nextToken",
-      "output_token": "nextToken",
       "limit_key": "maxResults",
+      "output_token": "nextToken",
       "result_key": "archiveRules"
     },
     "ListFindings": {
       "input_token": "nextToken",
-      "output_token": "nextToken",
       "limit_key": "maxResults",
+      "output_token": "nextToken",
       "result_key": "findings"
     }
   }
