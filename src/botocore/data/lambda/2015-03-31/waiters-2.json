@@ -1,74 +1,74 @@
 {
   "version": 2,
   "waiters": {
-    "FunctionExists": {
-      "delay": 1,
-      "operation": "GetFunction",
-      "maxAttempts": 20,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "status",
-          "expected": 200
-        },
-        {
-          "state": "retry",
-          "matcher": "error",
-          "expected": "ResourceNotFoundException"
-        }
-      ]
-    },
     "FunctionActive": {
-      "delay": 5,
-      "maxAttempts": 60,
-      "operation": "GetFunctionConfiguration",
-      "description": "Waits for the function's State to be Active.",
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "path",
           "argument": "State",
-          "expected": "Active"
+          "expected": "Active",
+          "matcher": "path",
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "path",
           "argument": "State",
-          "expected": "Failed"
+          "expected": "Failed",
+          "matcher": "path",
+          "state": "failure"
         },
         {
-          "state": "retry",
-          "matcher": "path",
           "argument": "State",
-          "expected": "Pending"
+          "expected": "Pending",
+          "matcher": "path",
+          "state": "retry"
         }
-      ]
+      ],
+      "delay": 5,
+      "description": "Waits for the function's State to be Active.",
+      "maxAttempts": 60,
+      "operation": "GetFunctionConfiguration"
+    },
+    "FunctionExists": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "ResourceNotFoundException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 1,
+      "maxAttempts": 20,
+      "operation": "GetFunction"
     },
     "FunctionUpdated": {
-      "delay": 5,
-      "maxAttempts": 60,
-      "operation": "GetFunctionConfiguration",
-      "description": "Waits for the function's LastUpdateStatus to be Successful.",
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "path",
           "argument": "LastUpdateStatus",
-          "expected": "Successful"
+          "expected": "Successful",
+          "matcher": "path",
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "path",
           "argument": "LastUpdateStatus",
-          "expected": "Failed"
+          "expected": "Failed",
+          "matcher": "path",
+          "state": "failure"
         },
         {
-          "state": "retry",
-          "matcher": "path",
           "argument": "LastUpdateStatus",
-          "expected": "InProgress"
+          "expected": "InProgress",
+          "matcher": "path",
+          "state": "retry"
         }
-      ]
+      ],
+      "delay": 5,
+      "description": "Waits for the function's LastUpdateStatus to be Successful.",
+      "maxAttempts": 60,
+      "operation": "GetFunctionConfiguration"
     }
   }
 }

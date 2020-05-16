@@ -1,5 +1,11 @@
 {
   "pagination": {
+    "ListApplicationStates": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "ApplicationStateList"
+    },
     "ListCreatedArtifacts": {
       "input_token": "NextToken",
       "limit_key": "MaxResults",
@@ -23,12 +29,6 @@
       "limit_key": "MaxResults",
       "output_token": "NextToken",
       "result_key": "ProgressUpdateStreamSummaryList"
-    },
-    "ListApplicationStates": {
-      "input_token": "NextToken",
-      "limit_key": "MaxResults",
-      "output_token": "NextToken",
-      "result_key": "ApplicationStateList"
     }
   }
 }

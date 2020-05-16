@@ -1,17 +1,5 @@
 {
   "pagination": {
-    "ListElasticsearchInstanceTypes": {
-      "result_key": "ElasticsearchInstanceTypes",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListElasticsearchVersions": {
-      "result_key": "ElasticsearchVersions",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
     "DescribeReservedElasticsearchInstanceOfferings": {
       "input_token": "NextToken",
       "limit_key": "MaxResults",
@@ -29,6 +17,18 @@
       "limit_key": "MaxResults",
       "output_token": "NextToken",
       "result_key": "UpgradeHistories"
+    },
+    "ListElasticsearchInstanceTypes": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "ElasticsearchInstanceTypes"
+    },
+    "ListElasticsearchVersions": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "ElasticsearchVersions"
     }
   }
 }

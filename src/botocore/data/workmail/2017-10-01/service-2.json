@@ -1,2660 +1,3305 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2017-10-01",
-    "endpointPrefix":"workmail",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceFullName":"Amazon WorkMail",
-    "serviceId":"WorkMail",
-    "signatureVersion":"v4",
-    "targetPrefix":"WorkMailService",
-    "uid":"workmail-2017-10-01"
+  "documentation": "<p>Amazon WorkMail is a secure, managed business email and calendaring service with support for existing desktop and mobile email clients. You can access your email, contacts, and calendars using Microsoft Outlook, your browser, or other native iOS and Android email applications. You can integrate WorkMail with your existing corporate directory and control both the keys that encrypt your data and the location in which your data is stored.</p> <p>The WorkMail API is designed for the following scenarios:</p> <ul> <li> <p>Listing and describing organizations</p> </li> </ul> <ul> <li> <p>Managing users</p> </li> </ul> <ul> <li> <p>Managing groups</p> </li> </ul> <ul> <li> <p>Managing resources</p> </li> </ul> <p>All WorkMail API operations are Amazon-authenticated and certificate-signed. They not only require the use of the AWS SDK, but also allow for the exclusive use of AWS Identity and Access Management users and roles to help facilitate access, trust, and permission policies. By creating a role and allowing an IAM user to access the WorkMail site, the IAM user gains full administrative visibility into the entire WorkMail organization (or as set in the IAM policy). This includes, but is not limited to, the ability to create, update, and delete users, groups, and resources. This allows developers to perform the scenarios listed above, as well as give users the ability to grant access on a selective basis using the IAM model.</p>",
+  "metadata": {
+    "apiVersion": "2017-10-01",
+    "endpointPrefix": "workmail",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceFullName": "Amazon WorkMail",
+    "serviceId": "WorkMail",
+    "signatureVersion": "v4",
+    "targetPrefix": "WorkMailService",
+    "uid": "workmail-2017-10-01"
   },
-  "operations":{
-    "AssociateDelegateToResource":{
-      "name":"AssociateDelegateToResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"AssociateDelegateToResourceRequest"},
-      "output":{"shape":"AssociateDelegateToResourceResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+  "operations": {
+    "AssociateDelegateToResource": {
+      "documentation": "<p>Adds a member (user or group) to the resource's set of delegates.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Adds a member (user or group) to the resource's set of delegates.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "AssociateDelegateToResourceRequest"
+      },
+      "name": "AssociateDelegateToResource",
+      "output": {
+        "shape": "AssociateDelegateToResourceResponse"
+      }
     },
-    "AssociateMemberToGroup":{
-      "name":"AssociateMemberToGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"AssociateMemberToGroupRequest"},
-      "output":{"shape":"AssociateMemberToGroupResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "AssociateMemberToGroup": {
+      "documentation": "<p>Adds a member (user or group) to the group's set.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Adds a member (user or group) to the group's set.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "AssociateMemberToGroupRequest"
+      },
+      "name": "AssociateMemberToGroup",
+      "output": {
+        "shape": "AssociateMemberToGroupResponse"
+      }
     },
-    "CreateAlias":{
-      "name":"CreateAlias",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateAliasRequest"},
-      "output":{"shape":"CreateAliasResponse"},
-      "errors":[
-        {"shape":"EmailAddressInUseException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"MailDomainNotFoundException"},
-        {"shape":"MailDomainStateException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"LimitExceededException"}
+    "CreateAlias": {
+      "documentation": "<p>Adds an alias to the set of a given member (user or group) of Amazon WorkMail.</p>",
+      "errors": [
+        {
+          "shape": "EmailAddressInUseException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "MailDomainNotFoundException"
+        },
+        {
+          "shape": "MailDomainStateException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "LimitExceededException"
+        }
       ],
-      "documentation":"<p>Adds an alias to the set of a given member (user or group) of Amazon WorkMail.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateAliasRequest"
+      },
+      "name": "CreateAlias",
+      "output": {
+        "shape": "CreateAliasResponse"
+      }
     },
-    "CreateGroup":{
-      "name":"CreateGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateGroupRequest"},
-      "output":{"shape":"CreateGroupResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"NameAvailabilityException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"ReservedNameException"},
-        {"shape":"UnsupportedOperationException"}
+    "CreateGroup": {
+      "documentation": "<p>Creates a group that can be used in Amazon WorkMail by calling the <a>RegisterToWorkMail</a> operation.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "NameAvailabilityException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "ReservedNameException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Creates a group that can be used in Amazon WorkMail by calling the <a>RegisterToWorkMail</a> operation.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateGroupRequest"
+      },
+      "name": "CreateGroup",
+      "output": {
+        "shape": "CreateGroupResponse"
+      }
     },
-    "CreateResource":{
-      "name":"CreateResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateResourceRequest"},
-      "output":{"shape":"CreateResourceResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"NameAvailabilityException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"ReservedNameException"}
+    "CreateResource": {
+      "documentation": "<p>Creates a new Amazon WorkMail resource. </p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "NameAvailabilityException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "ReservedNameException"
+        }
       ],
-      "documentation":"<p>Creates a new Amazon WorkMail resource. </p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateResourceRequest"
+      },
+      "name": "CreateResource",
+      "output": {
+        "shape": "CreateResourceResponse"
+      }
     },
-    "CreateUser":{
-      "name":"CreateUser",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateUserRequest"},
-      "output":{"shape":"CreateUserResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidPasswordException"},
-        {"shape":"NameAvailabilityException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"ReservedNameException"},
-        {"shape":"UnsupportedOperationException"}
+    "CreateUser": {
+      "documentation": "<p>Creates a user who can be used in Amazon WorkMail by calling the <a>RegisterToWorkMail</a> operation.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidPasswordException"
+        },
+        {
+          "shape": "NameAvailabilityException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "ReservedNameException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Creates a user who can be used in Amazon WorkMail by calling the <a>RegisterToWorkMail</a> operation.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "CreateUserRequest"
+      },
+      "name": "CreateUser",
+      "output": {
+        "shape": "CreateUserResponse"
+      }
     },
-    "DeleteAccessControlRule":{
-      "name":"DeleteAccessControlRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteAccessControlRuleRequest"},
-      "output":{"shape":"DeleteAccessControlRuleResponse"},
-      "errors":[
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DeleteAccessControlRule": {
+      "documentation": "<p>Deletes an access control rule for the specified WorkMail organization.</p>",
+      "errors": [
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Deletes an access control rule for the specified WorkMail organization.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteAccessControlRuleRequest"
+      },
+      "name": "DeleteAccessControlRule",
+      "output": {
+        "shape": "DeleteAccessControlRuleResponse"
+      }
     },
-    "DeleteAlias":{
-      "name":"DeleteAlias",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteAliasRequest"},
-      "output":{"shape":"DeleteAliasResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DeleteAlias": {
+      "documentation": "<p>Remove one or more specified aliases from a set of aliases for a given user.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Remove one or more specified aliases from a set of aliases for a given user.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteAliasRequest"
+      },
+      "name": "DeleteAlias",
+      "output": {
+        "shape": "DeleteAliasResponse"
+      }
     },
-    "DeleteGroup":{
-      "name":"DeleteGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteGroupRequest"},
-      "output":{"shape":"DeleteGroupResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "DeleteGroup": {
+      "documentation": "<p>Deletes a group from Amazon WorkMail.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Deletes a group from Amazon WorkMail.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteGroupRequest"
+      },
+      "name": "DeleteGroup",
+      "output": {
+        "shape": "DeleteGroupResponse"
+      }
     },
-    "DeleteMailboxPermissions":{
-      "name":"DeleteMailboxPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteMailboxPermissionsRequest"},
-      "output":{"shape":"DeleteMailboxPermissionsResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DeleteMailboxPermissions": {
+      "documentation": "<p>Deletes permissions granted to a member (user or group).</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Deletes permissions granted to a member (user or group).</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteMailboxPermissionsRequest"
+      },
+      "name": "DeleteMailboxPermissions",
+      "output": {
+        "shape": "DeleteMailboxPermissionsResponse"
+      }
     },
-    "DeleteResource":{
-      "name":"DeleteResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteResourceRequest"},
-      "output":{"shape":"DeleteResourceResponse"},
-      "errors":[
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DeleteResource": {
+      "documentation": "<p>Deletes the specified resource. </p>",
+      "errors": [
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Deletes the specified resource. </p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteResourceRequest"
+      },
+      "name": "DeleteResource",
+      "output": {
+        "shape": "DeleteResourceResponse"
+      }
     },
-    "DeleteUser":{
-      "name":"DeleteUser",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteUserRequest"},
-      "output":{"shape":"DeleteUserResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "DeleteUser": {
+      "documentation": "<p>Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the user state must be <code>DISABLED</code>. Use the <a>DescribeUser</a> action to confirm the user state.</p> <p>Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the user state must be <code>DISABLED</code>. Use the <a>DescribeUser</a> action to confirm the user state.</p> <p>Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeleteUserRequest"
+      },
+      "name": "DeleteUser",
+      "output": {
+        "shape": "DeleteUserResponse"
+      }
     },
-    "DeregisterFromWorkMail":{
-      "name":"DeregisterFromWorkMail",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeregisterFromWorkMailRequest"},
-      "output":{"shape":"DeregisterFromWorkMailResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DeregisterFromWorkMail": {
+      "documentation": "<p>Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is <i>Disable</i>.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is <i>Disable</i>.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DeregisterFromWorkMailRequest"
+      },
+      "name": "DeregisterFromWorkMail",
+      "output": {
+        "shape": "DeregisterFromWorkMailResponse"
+      }
     },
-    "DescribeGroup":{
-      "name":"DescribeGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeGroupRequest"},
-      "output":{"shape":"DescribeGroupResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DescribeGroup": {
+      "documentation": "<p>Returns the data available for the group.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns the data available for the group.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeGroupRequest"
+      },
+      "name": "DescribeGroup",
+      "output": {
+        "shape": "DescribeGroupResponse"
+      }
     },
-    "DescribeOrganization":{
-      "name":"DescribeOrganization",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeOrganizationRequest"},
-      "output":{"shape":"DescribeOrganizationResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"}
+    "DescribeOrganization": {
+      "documentation": "<p>Provides more information regarding a given organization based on its identifier.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        }
       ],
-      "documentation":"<p>Provides more information regarding a given organization based on its identifier.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeOrganizationRequest"
+      },
+      "name": "DescribeOrganization",
+      "output": {
+        "shape": "DescribeOrganizationResponse"
+      }
     },
-    "DescribeResource":{
-      "name":"DescribeResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeResourceRequest"},
-      "output":{"shape":"DescribeResourceResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DescribeResource": {
+      "documentation": "<p>Returns the data available for the resource.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns the data available for the resource.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeResourceRequest"
+      },
+      "name": "DescribeResource",
+      "output": {
+        "shape": "DescribeResourceResponse"
+      }
     },
-    "DescribeUser":{
-      "name":"DescribeUser",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeUserRequest"},
-      "output":{"shape":"DescribeUserResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DescribeUser": {
+      "documentation": "<p>Provides information regarding the user.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Provides information regarding the user.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DescribeUserRequest"
+      },
+      "name": "DescribeUser",
+      "output": {
+        "shape": "DescribeUserResponse"
+      }
     },
-    "DisassociateDelegateFromResource":{
-      "name":"DisassociateDelegateFromResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DisassociateDelegateFromResourceRequest"},
-      "output":{"shape":"DisassociateDelegateFromResourceResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "DisassociateDelegateFromResource": {
+      "documentation": "<p>Removes a member from the resource's set of delegates.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Removes a member from the resource's set of delegates.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DisassociateDelegateFromResourceRequest"
+      },
+      "name": "DisassociateDelegateFromResource",
+      "output": {
+        "shape": "DisassociateDelegateFromResourceResponse"
+      }
     },
-    "DisassociateMemberFromGroup":{
-      "name":"DisassociateMemberFromGroup",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DisassociateMemberFromGroupRequest"},
-      "output":{"shape":"DisassociateMemberFromGroupResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "DisassociateMemberFromGroup": {
+      "documentation": "<p>Removes a member from a group.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Removes a member from a group.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "DisassociateMemberFromGroupRequest"
+      },
+      "name": "DisassociateMemberFromGroup",
+      "output": {
+        "shape": "DisassociateMemberFromGroupResponse"
+      }
     },
-    "GetAccessControlEffect":{
-      "name":"GetAccessControlEffect",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetAccessControlEffectRequest"},
-      "output":{"shape":"GetAccessControlEffectResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "GetAccessControlEffect": {
+      "documentation": "<p>Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID. </p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetAccessControlEffectRequest"
+      },
+      "name": "GetAccessControlEffect",
+      "output": {
+        "shape": "GetAccessControlEffectResponse"
+      }
     },
-    "GetMailboxDetails":{
-      "name":"GetMailboxDetails",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetMailboxDetailsRequest"},
-      "output":{"shape":"GetMailboxDetailsResponse"},
-      "errors":[
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"EntityNotFoundException"}
+    "GetMailboxDetails": {
+      "documentation": "<p>Requests a user's mailbox details for a specified organization and user.</p>",
+      "errors": [
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        }
       ],
-      "documentation":"<p>Requests a user's mailbox details for a specified organization and user.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "GetMailboxDetailsRequest"
+      },
+      "name": "GetMailboxDetails",
+      "output": {
+        "shape": "GetMailboxDetailsResponse"
+      }
     },
-    "ListAccessControlRules":{
-      "name":"ListAccessControlRules",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListAccessControlRulesRequest"},
-      "output":{"shape":"ListAccessControlRulesResponse"},
-      "errors":[
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListAccessControlRules": {
+      "documentation": "<p>Lists the access control rules for the specified organization.</p>",
+      "errors": [
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Lists the access control rules for the specified organization.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListAccessControlRulesRequest"
+      },
+      "name": "ListAccessControlRules",
+      "output": {
+        "shape": "ListAccessControlRulesResponse"
+      }
     },
-    "ListAliases":{
-      "name":"ListAliases",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListAliasesRequest"},
-      "output":{"shape":"ListAliasesResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListAliases": {
+      "documentation": "<p>Creates a paginated call to list the aliases associated with a given entity.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Creates a paginated call to list the aliases associated with a given entity.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListAliasesRequest"
+      },
+      "name": "ListAliases",
+      "output": {
+        "shape": "ListAliasesResponse"
+      }
     },
-    "ListGroupMembers":{
-      "name":"ListGroupMembers",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListGroupMembersRequest"},
-      "output":{"shape":"ListGroupMembersResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListGroupMembers": {
+      "documentation": "<p>Returns an overview of the members of a group. Users and groups can be members of a group.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns an overview of the members of a group. Users and groups can be members of a group.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListGroupMembersRequest"
+      },
+      "name": "ListGroupMembers",
+      "output": {
+        "shape": "ListGroupMembersResponse"
+      }
     },
-    "ListGroups":{
-      "name":"ListGroups",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListGroupsRequest"},
-      "output":{"shape":"ListGroupsResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListGroups": {
+      "documentation": "<p>Returns summaries of the organization's groups.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns summaries of the organization's groups.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListGroupsRequest"
+      },
+      "name": "ListGroups",
+      "output": {
+        "shape": "ListGroupsResponse"
+      }
     },
-    "ListMailboxPermissions":{
-      "name":"ListMailboxPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListMailboxPermissionsRequest"},
-      "output":{"shape":"ListMailboxPermissionsResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListMailboxPermissions": {
+      "documentation": "<p>Lists the mailbox permissions associated with a user, group, or resource mailbox.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Lists the mailbox permissions associated with a user, group, or resource mailbox.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListMailboxPermissionsRequest"
+      },
+      "name": "ListMailboxPermissions",
+      "output": {
+        "shape": "ListMailboxPermissionsResponse"
+      }
     },
-    "ListOrganizations":{
-      "name":"ListOrganizations",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListOrganizationsRequest"},
-      "output":{"shape":"ListOrganizationsResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"}
+    "ListOrganizations": {
+      "documentation": "<p>Returns summaries of the customer's non-deleted organizations.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        }
       ],
-      "documentation":"<p>Returns summaries of the customer's non-deleted organizations.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListOrganizationsRequest"
+      },
+      "name": "ListOrganizations",
+      "output": {
+        "shape": "ListOrganizationsResponse"
+      }
     },
-    "ListResourceDelegates":{
-      "name":"ListResourceDelegates",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResourceDelegatesRequest"},
-      "output":{"shape":"ListResourceDelegatesResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListResourceDelegates": {
+      "documentation": "<p>Lists the delegates associated with a resource. Users and groups can be resource delegates and answer requests on behalf of the resource.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Lists the delegates associated with a resource. Users and groups can be resource delegates and answer requests on behalf of the resource.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListResourceDelegatesRequest"
+      },
+      "name": "ListResourceDelegates",
+      "output": {
+        "shape": "ListResourceDelegatesResponse"
+      }
     },
-    "ListResources":{
-      "name":"ListResources",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResourcesRequest"},
-      "output":{"shape":"ListResourcesResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListResources": {
+      "documentation": "<p>Returns summaries of the organization's resources.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns summaries of the organization's resources.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListResourcesRequest"
+      },
+      "name": "ListResources",
+      "output": {
+        "shape": "ListResourcesResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Lists the tags applied to an Amazon WorkMail organization resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Lists the tags applied to an Amazon WorkMail organization resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "ListUsers":{
-      "name":"ListUsers",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListUsersRequest"},
-      "output":{"shape":"ListUsersResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "ListUsers": {
+      "documentation": "<p>Returns summaries of the organization's users.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Returns summaries of the organization's users.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ListUsersRequest"
+      },
+      "name": "ListUsers",
+      "output": {
+        "shape": "ListUsersResponse"
+      }
     },
-    "PutAccessControlRule":{
-      "name":"PutAccessControlRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"PutAccessControlRuleRequest"},
-      "output":{"shape":"PutAccessControlRuleResponse"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "PutAccessControlRule": {
+      "documentation": "<p>Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, and user IDs. Adding a new rule with the same name as an existing rule replaces the older rule.</p>",
+      "errors": [
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, and user IDs. Adding a new rule with the same name as an existing rule replaces the older rule.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "PutAccessControlRuleRequest"
+      },
+      "name": "PutAccessControlRule",
+      "output": {
+        "shape": "PutAccessControlRuleResponse"
+      }
     },
-    "PutMailboxPermissions":{
-      "name":"PutMailboxPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"PutMailboxPermissionsRequest"},
-      "output":{"shape":"PutMailboxPermissionsResponse"},
-      "errors":[
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "PutMailboxPermissions": {
+      "documentation": "<p>Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.</p>",
+      "errors": [
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "PutMailboxPermissionsRequest"
+      },
+      "name": "PutMailboxPermissions",
+      "output": {
+        "shape": "PutMailboxPermissionsResponse"
+      }
     },
-    "RegisterToWorkMail":{
-      "name":"RegisterToWorkMail",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"RegisterToWorkMailRequest"},
-      "output":{"shape":"RegisterToWorkMailResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EmailAddressInUseException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"EntityAlreadyRegisteredException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"MailDomainNotFoundException"},
-        {"shape":"MailDomainStateException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "RegisterToWorkMail": {
+      "documentation": "<p>Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see <a href=\"https://aws.amazon.com/workmail/pricing\">Pricing</a>. The equivalent console functionality for this operation is <i>Enable</i>. </p> <p>Users can either be created by calling the <a>CreateUser</a> API operation or they can be synchronized from your directory. For more information, see <a>DeregisterFromWorkMail</a>.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EmailAddressInUseException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "EntityAlreadyRegisteredException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "MailDomainNotFoundException"
+        },
+        {
+          "shape": "MailDomainStateException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see <a href=\"https://aws.amazon.com/workmail/pricing\">Pricing</a>. The equivalent console functionality for this operation is <i>Enable</i>. </p> <p>Users can either be created by calling the <a>CreateUser</a> API operation or they can be synchronized from your directory. For more information, see <a>DeregisterFromWorkMail</a>.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "RegisterToWorkMailRequest"
+      },
+      "name": "RegisterToWorkMail",
+      "output": {
+        "shape": "RegisterToWorkMailResponse"
+      }
     },
-    "ResetPassword":{
-      "name":"ResetPassword",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ResetPasswordRequest"},
-      "output":{"shape":"ResetPasswordResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidPasswordException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "ResetPassword": {
+      "documentation": "<p>Allows the administrator to reset the password for a user.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidPasswordException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Allows the administrator to reset the password for a user.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "ResetPasswordRequest"
+      },
+      "name": "ResetPassword",
+      "output": {
+        "shape": "ResetPasswordResponse"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"TooManyTagsException"},
-        {"shape":"OrganizationStateException"}
+    "TagResource": {
+      "documentation": "<p>Applies the specified tags to the specified Amazon WorkMail organization resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "TooManyTagsException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Applies the specified tags to the specified Amazon WorkMail organization resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+    "UntagResource": {
+      "documentation": "<p>Untags the specified tags from the specified Amazon WorkMail organization resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Untags the specified tags from the specified Amazon WorkMail organization resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateMailboxQuota":{
-      "name":"UpdateMailboxQuota",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateMailboxQuotaRequest"},
-      "output":{"shape":"UpdateMailboxQuotaResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"}
+    "UpdateMailboxQuota": {
+      "documentation": "<p>Updates a user's current mailbox quota for a specified organization and user.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        }
       ],
-      "documentation":"<p>Updates a user's current mailbox quota for a specified organization and user.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UpdateMailboxQuotaRequest"
+      },
+      "name": "UpdateMailboxQuota",
+      "output": {
+        "shape": "UpdateMailboxQuotaResponse"
+      }
     },
-    "UpdatePrimaryEmailAddress":{
-      "name":"UpdatePrimaryEmailAddress",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdatePrimaryEmailAddressRequest"},
-      "output":{"shape":"UpdatePrimaryEmailAddressResponse"},
-      "errors":[
-        {"shape":"DirectoryServiceAuthenticationFailedException"},
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EmailAddressInUseException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"MailDomainNotFoundException"},
-        {"shape":"MailDomainStateException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"},
-        {"shape":"UnsupportedOperationException"}
+    "UpdatePrimaryEmailAddress": {
+      "documentation": "<p>Updates the primary email for a user, group, or resource. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email), and the email provided in the input is promoted as the primary.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EmailAddressInUseException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "MailDomainNotFoundException"
+        },
+        {
+          "shape": "MailDomainStateException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Updates the primary email for a user, group, or resource. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email), and the email provided in the input is promoted as the primary.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UpdatePrimaryEmailAddressRequest"
+      },
+      "name": "UpdatePrimaryEmailAddress",
+      "output": {
+        "shape": "UpdatePrimaryEmailAddressResponse"
+      }
     },
-    "UpdateResource":{
-      "name":"UpdateResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateResourceRequest"},
-      "output":{"shape":"UpdateResourceResponse"},
-      "errors":[
-        {"shape":"DirectoryUnavailableException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"EntityStateException"},
-        {"shape":"InvalidConfigurationException"},
-        {"shape":"EmailAddressInUseException"},
-        {"shape":"MailDomainNotFoundException"},
-        {"shape":"MailDomainStateException"},
-        {"shape":"NameAvailabilityException"},
-        {"shape":"OrganizationNotFoundException"},
-        {"shape":"OrganizationStateException"}
+    "UpdateResource": {
+      "documentation": "<p>Updates data for the resource. To have the latest information, it must be preceded by a <a>DescribeResource</a> call. The dataset in the request should be the one expected when performing another <code>DescribeResource</code> call.</p>",
+      "errors": [
+        {
+          "shape": "DirectoryUnavailableException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "EntityStateException"
+        },
+        {
+          "shape": "InvalidConfigurationException"
+        },
+        {
+          "shape": "EmailAddressInUseException"
+        },
+        {
+          "shape": "MailDomainNotFoundException"
+        },
+        {
+          "shape": "MailDomainStateException"
+        },
+        {
+          "shape": "NameAvailabilityException"
+        },
+        {
+          "shape": "OrganizationNotFoundException"
+        },
+        {
+          "shape": "OrganizationStateException"
+        }
       ],
-      "documentation":"<p>Updates data for the resource. To have the latest information, it must be preceded by a <a>DescribeResource</a> call. The dataset in the request should be the one expected when performing another <code>DescribeResource</code> call.</p>",
-      "idempotent":true
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "idempotent": true,
+      "input": {
+        "shape": "UpdateResourceRequest"
+      },
+      "name": "UpdateResource",
+      "output": {
+        "shape": "UpdateResourceResponse"
+      }
     }
   },
-  "shapes":{
-    "AccessControlRule":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"AccessControlRuleName",
-          "documentation":"<p>The rule name.</p>"
+  "shapes": {
+    "AccessControlRule": {
+      "documentation": "<p>A rule that controls access to an Amazon WorkMail organization.</p>",
+      "members": {
+        "Actions": {
+          "documentation": "<p>Access protocol actions to include in the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>",
+          "shape": "ActionsList"
         },
-        "Effect":{
-          "shape":"AccessControlRuleEffect",
-          "documentation":"<p>The rule effect.</p>"
+        "DateCreated": {
+          "documentation": "<p>The date that the rule was created.</p>",
+          "shape": "Timestamp"
         },
-        "Description":{
-          "shape":"AccessControlRuleDescription",
-          "documentation":"<p>The rule description.</p>"
+        "DateModified": {
+          "documentation": "<p>The date that the rule was modified.</p>",
+          "shape": "Timestamp"
         },
-        "IpRanges":{
-          "shape":"IpRangeList",
-          "documentation":"<p>IPv4 CIDR ranges to include in the rule.</p>"
+        "Description": {
+          "documentation": "<p>The rule description.</p>",
+          "shape": "AccessControlRuleDescription"
         },
-        "NotIpRanges":{
-          "shape":"IpRangeList",
-          "documentation":"<p>IPv4 CIDR ranges to exclude from the rule.</p>"
+        "Effect": {
+          "documentation": "<p>The rule effect.</p>",
+          "shape": "AccessControlRuleEffect"
         },
-        "Actions":{
-          "shape":"ActionsList",
-          "documentation":"<p>Access protocol actions to include in the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>"
+        "IpRanges": {
+          "documentation": "<p>IPv4 CIDR ranges to include in the rule.</p>",
+          "shape": "IpRangeList"
         },
-        "NotActions":{
-          "shape":"ActionsList",
-          "documentation":"<p>Access protocol actions to exclude from the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>"
+        "Name": {
+          "documentation": "<p>The rule name.</p>",
+          "shape": "AccessControlRuleName"
         },
-        "UserIds":{
-          "shape":"UserIdList",
-          "documentation":"<p>User IDs to include in the rule.</p>"
+        "NotActions": {
+          "documentation": "<p>Access protocol actions to exclude from the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>",
+          "shape": "ActionsList"
         },
-        "NotUserIds":{
-          "shape":"UserIdList",
-          "documentation":"<p>User IDs to exclude from the rule.</p>"
+        "NotIpRanges": {
+          "documentation": "<p>IPv4 CIDR ranges to exclude from the rule.</p>",
+          "shape": "IpRangeList"
         },
-        "DateCreated":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date that the rule was created.</p>"
+        "NotUserIds": {
+          "documentation": "<p>User IDs to exclude from the rule.</p>",
+          "shape": "UserIdList"
         },
-        "DateModified":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date that the rule was modified.</p>"
+        "UserIds": {
+          "documentation": "<p>User IDs to include in the rule.</p>",
+          "shape": "UserIdList"
         }
       },
-      "documentation":"<p>A rule that controls access to an Amazon WorkMail organization.</p>"
+      "type": "structure"
     },
-    "AccessControlRuleAction":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"[a-zA-Z]+"
+    "AccessControlRuleAction": {
+      "max": 64,
+      "min": 1,
+      "pattern": "[a-zA-Z]+",
+      "type": "string"
     },
-    "AccessControlRuleDescription":{
-      "type":"string",
-      "max":255,
-      "min":0,
-      "pattern":"[\\u0020-\\u00FF]+"
+    "AccessControlRuleDescription": {
+      "max": 255,
+      "min": 0,
+      "pattern": "[\\u0020-\\u00FF]+",
+      "type": "string"
     },
-    "AccessControlRuleEffect":{
-      "type":"string",
-      "enum":[
+    "AccessControlRuleEffect": {
+      "enum": [
         "ALLOW",
         "DENY"
-      ]
+      ],
+      "type": "string"
     },
-    "AccessControlRuleName":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"[a-zA-Z0-9_-]+"
+    "AccessControlRuleName": {
+      "max": 64,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9_-]+",
+      "type": "string"
     },
-    "AccessControlRuleNameList":{
-      "type":"list",
-      "member":{"shape":"AccessControlRuleName"},
-      "max":10,
-      "min":0
+    "AccessControlRuleNameList": {
+      "max": 10,
+      "member": {
+        "shape": "AccessControlRuleName"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "AccessControlRulesList":{
-      "type":"list",
-      "member":{"shape":"AccessControlRule"},
-      "max":10,
-      "min":0
+    "AccessControlRulesList": {
+      "max": 10,
+      "member": {
+        "shape": "AccessControlRule"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "ActionsList":{
-      "type":"list",
-      "member":{"shape":"AccessControlRuleAction"},
-      "max":10,
-      "min":0
+    "ActionsList": {
+      "max": 10,
+      "member": {
+        "shape": "AccessControlRuleAction"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "Aliases":{
-      "type":"list",
-      "member":{"shape":"EmailAddress"}
+    "Aliases": {
+      "member": {
+        "shape": "EmailAddress"
+      },
+      "type": "list"
     },
-    "AmazonResourceName":{
-      "type":"string",
-      "max":1011,
-      "min":1
+    "AmazonResourceName": {
+      "max": 1011,
+      "min": 1,
+      "type": "string"
     },
-    "AssociateDelegateToResourceRequest":{
-      "type":"structure",
-      "required":[
+    "AssociateDelegateToResourceRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The member (user or group) to associate to the resource.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The organization under which the resource exists.</p>",
+          "shape": "OrganizationId"
+        },
+        "ResourceId": {
+          "documentation": "<p>The resource for which members (users or groups) are associated.</p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "ResourceId",
         "EntityId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization under which the resource exists.</p>"
+      "type": "structure"
+    },
+    "AssociateDelegateToResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "AssociateMemberToGroupRequest": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The group to which the member (user or group) is associated.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The resource for which members (users or groups) are associated.</p>"
+        "MemberId": {
+          "documentation": "<p>The member (user or group) to associate to the group.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The member (user or group) to associate to the resource.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The organization under which the group exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "AssociateDelegateToResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "AssociateMemberToGroupRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "GroupId",
         "MemberId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization under which the group exists.</p>"
-        },
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The group to which the member (user or group) is associated.</p>"
-        },
-        "MemberId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The member (user or group) to associate to the group.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "AssociateMemberToGroupResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "AssociateMemberToGroupResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "BookingOptions":{
-      "type":"structure",
-      "members":{
-        "AutoAcceptRequests":{
-          "shape":"Boolean",
-          "documentation":"<p>The resource's ability to automatically reply to requests. If disabled, delegates must be associated to the resource.</p>"
+    "BookingOptions": {
+      "documentation": "<p>At least one delegate must be associated to the resource to disable automatic replies from the resource.</p>",
+      "members": {
+        "AutoAcceptRequests": {
+          "documentation": "<p>The resource's ability to automatically reply to requests. If disabled, delegates must be associated to the resource.</p>",
+          "shape": "Boolean"
         },
-        "AutoDeclineRecurringRequests":{
-          "shape":"Boolean",
-          "documentation":"<p>The resource's ability to automatically decline any recurring requests.</p>"
+        "AutoDeclineConflictingRequests": {
+          "documentation": "<p>The resource's ability to automatically decline any conflicting requests.</p>",
+          "shape": "Boolean"
         },
-        "AutoDeclineConflictingRequests":{
-          "shape":"Boolean",
-          "documentation":"<p>The resource's ability to automatically decline any conflicting requests.</p>"
+        "AutoDeclineRecurringRequests": {
+          "documentation": "<p>The resource's ability to automatically decline any recurring requests.</p>",
+          "shape": "Boolean"
         }
       },
-      "documentation":"<p>At least one delegate must be associated to the resource to disable automatic replies from the resource.</p>"
+      "type": "structure"
     },
-    "Boolean":{"type":"boolean"},
-    "CreateAliasRequest":{
-      "type":"structure",
-      "required":[
+    "Boolean": {
+      "type": "boolean"
+    },
+    "CreateAliasRequest": {
+      "members": {
+        "Alias": {
+          "documentation": "<p>The alias to add to the member set.</p>",
+          "shape": "EmailAddress"
+        },
+        "EntityId": {
+          "documentation": "<p>The member (user or group) to which this alias is added.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The organization under which the member (user or group) exists.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "Alias"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization under which the member (user or group) exists.</p>"
+      "type": "structure"
+    },
+    "CreateAliasResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "CreateGroupRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the group.</p>",
+          "shape": "GroupName"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The member (user or group) to which this alias is added.</p>"
-        },
-        "Alias":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The alias to add to the member set.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The organization under which the group is to be created.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "CreateAliasResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "CreateGroupRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "Name"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization under which the group is to be created.</p>"
+      "type": "structure"
+    },
+    "CreateGroupResponse": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The identifier of the group.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "type": "structure"
+    },
+    "CreateResourceRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the new resource.</p>",
+          "shape": "ResourceName"
         },
-        "Name":{
-          "shape":"GroupName",
-          "documentation":"<p>The name of the group.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier associated with the organization for which the resource is created.</p>",
+          "shape": "OrganizationId"
+        },
+        "Type": {
+          "documentation": "<p>The type of the new resource. The available types are <code>equipment</code> and <code>room</code>.</p>",
+          "shape": "ResourceType"
         }
-      }
-    },
-    "CreateGroupResponse":{
-      "type":"structure",
-      "members":{
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the group.</p>"
-        }
-      }
-    },
-    "CreateResourceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "Name",
         "Type"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier associated with the organization for which the resource is created.</p>"
-        },
-        "Name":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the new resource.</p>"
-        },
-        "Type":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the new resource. The available types are <code>equipment</code> and <code>room</code>.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateResourceResponse":{
-      "type":"structure",
-      "members":{
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the new resource.</p>"
+    "CreateResourceResponse": {
+      "members": {
+        "ResourceId": {
+          "documentation": "<p>The identifier of the new resource.</p>",
+          "shape": "ResourceId"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateUserRequest":{
-      "type":"structure",
-      "required":[
+    "CreateUserRequest": {
+      "members": {
+        "DisplayName": {
+          "documentation": "<p>The display name for the new user.</p>",
+          "shape": "String"
+        },
+        "Name": {
+          "documentation": "<p>The name for the new user. Simple AD or AD Connector user names have a maximum length of 20. All others have a maximum length of 64.</p>",
+          "shape": "UserName"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization for which the user is created.</p>",
+          "shape": "OrganizationId"
+        },
+        "Password": {
+          "documentation": "<p>The password for the new user.</p>",
+          "shape": "Password"
+        }
+      },
+      "required": [
         "OrganizationId",
         "Name",
         "DisplayName",
         "Password"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization for which the user is created.</p>"
-        },
-        "Name":{
-          "shape":"UserName",
-          "documentation":"<p>The name for the new user. Simple AD or AD Connector user names have a maximum length of 20. All others have a maximum length of 64.</p>"
-        },
-        "DisplayName":{
-          "shape":"String",
-          "documentation":"<p>The display name for the new user.</p>"
-        },
-        "Password":{
-          "shape":"Password",
-          "documentation":"<p>The password for the new user.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateUserResponse":{
-      "type":"structure",
-      "members":{
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the new user.</p>"
+    "CreateUserResponse": {
+      "members": {
+        "UserId": {
+          "documentation": "<p>The identifier for the new user.</p>",
+          "shape": "WorkMailIdentifier"
         }
-      }
+      },
+      "type": "structure"
     },
-    "Delegate":{
-      "type":"structure",
-      "required":[
+    "Delegate": {
+      "documentation": "<p>The name of the attribute, which is one of the values defined in the UserAttribute enumeration.</p>",
+      "members": {
+        "Id": {
+          "documentation": "<p>The identifier for the user or group associated as the resource's delegate.</p>",
+          "shape": "String"
+        },
+        "Type": {
+          "documentation": "<p>The type of the delegate: user or group.</p>",
+          "shape": "MemberType"
+        }
+      },
+      "required": [
         "Id",
         "Type"
       ],
-      "members":{
-        "Id":{
-          "shape":"String",
-          "documentation":"<p>The identifier for the user or group associated as the resource's delegate.</p>"
+      "type": "structure"
+    },
+    "DeleteAccessControlRuleRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the access control rule.</p>",
+          "shape": "AccessControlRuleName"
         },
-        "Type":{
-          "shape":"MemberType",
-          "documentation":"<p>The type of the delegate: user or group.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization.</p>",
+          "shape": "OrganizationId"
         }
       },
-      "documentation":"<p>The name of the attribute, which is one of the values defined in the UserAttribute enumeration.</p>"
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "DeleteAccessControlRuleRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization.</p>"
+    "DeleteAccessControlRuleResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteAliasRequest": {
+      "members": {
+        "Alias": {
+          "documentation": "<p>The aliases to be removed from the user's set of aliases. Duplicate entries in the list are collapsed into single entries (the list is transformed into a set).</p>",
+          "shape": "EmailAddress"
         },
-        "Name":{
-          "shape":"AccessControlRuleName",
-          "documentation":"<p>The name of the access control rule.</p>"
+        "EntityId": {
+          "documentation": "<p>The identifier for the member (user or group) from which to have the aliases removed.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the user exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DeleteAccessControlRuleResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteAliasRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "Alias"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the user exists.</p>"
+      "type": "structure"
+    },
+    "DeleteAliasResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteGroupRequest": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The identifier of the group to be deleted.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the member (user or group) from which to have the aliases removed.</p>"
-        },
-        "Alias":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The aliases to be removed from the user's set of aliases. Duplicate entries in the list are collapsed into single entries (the list is transformed into a set).</p>"
+        "OrganizationId": {
+          "documentation": "<p>The organization that contains the group.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DeleteAliasResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteGroupRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "GroupId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization that contains the group.</p>"
+      "type": "structure"
+    },
+    "DeleteGroupResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteMailboxPermissionsRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier of the member (user or group)that owns the mailbox.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the group to be deleted.</p>"
+        "GranteeId": {
+          "documentation": "<p>The identifier of the member (user or group) for which to delete granted permissions.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization under which the member (user or group) exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DeleteGroupResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteMailboxPermissionsRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "GranteeId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization under which the member (user or group) exists.</p>"
+      "type": "structure"
+    },
+    "DeleteMailboxPermissionsResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteResourceRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier associated with the organization from which the resource is deleted.</p>",
+          "shape": "OrganizationId"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the member (user or group)that owns the mailbox.</p>"
-        },
-        "GranteeId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the member (user or group) for which to delete granted permissions.</p>"
+        "ResourceId": {
+          "documentation": "<p>The identifier of the resource to be deleted.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "DeleteMailboxPermissionsResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteResourceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "ResourceId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier associated with the organization from which the resource is deleted.</p>"
+      "type": "structure"
+    },
+    "DeleteResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteUserRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The organization that contains the user to be deleted.</p>",
+          "shape": "OrganizationId"
         },
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the resource to be deleted.</p>"
+        "UserId": {
+          "documentation": "<p>The identifier of the user to be deleted.</p>",
+          "shape": "WorkMailIdentifier"
         }
-      }
-    },
-    "DeleteResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteUserRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "UserId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization that contains the user to be deleted.</p>"
+      "type": "structure"
+    },
+    "DeleteUserResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeregisterFromWorkMailRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier for the member (user or group) to be updated.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user to be deleted.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the Amazon WorkMail entity exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DeleteUserResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeregisterFromWorkMailRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the Amazon WorkMail entity exists.</p>"
+      "type": "structure"
+    },
+    "DeregisterFromWorkMailResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DescribeGroupRequest": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The identifier for the group to be described.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the member (user or group) to be updated.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the group exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DeregisterFromWorkMailResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DescribeGroupRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "GroupId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the group exists.</p>"
-        },
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the group to be described.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DescribeGroupResponse":{
-      "type":"structure",
-      "members":{
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the described group.</p>"
+    "DescribeGroupResponse": {
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date and time when a user was deregistered from WorkMail, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "Name":{
-          "shape":"GroupName",
-          "documentation":"<p>The name of the described group.</p>"
+        "Email": {
+          "documentation": "<p>The email of the described group.</p>",
+          "shape": "EmailAddress"
         },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the described group.</p>"
+        "EnabledDate": {
+          "documentation": "<p>The date and time when a user was registered to WorkMail, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).</p>"
+        "GroupId": {
+          "documentation": "<p>The identifier of the described group.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when a user was registered to WorkMail, in UNIX epoch time format.</p>"
+        "Name": {
+          "documentation": "<p>The name of the described group.</p>",
+          "shape": "GroupName"
         },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when a user was deregistered from WorkMail, in UNIX epoch time format.</p>"
+        "State": {
+          "documentation": "<p>The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).</p>",
+          "shape": "EntityState"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeOrganizationRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization to be described.</p>"
+    "DescribeOrganizationRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization to be described.</p>",
+          "shape": "OrganizationId"
         }
-      }
+      },
+      "required": [
+        "OrganizationId"
+      ],
+      "type": "structure"
     },
-    "DescribeOrganizationResponse":{
-      "type":"structure",
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of an organization.</p>"
+    "DescribeOrganizationResponse": {
+      "members": {
+        "ARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the organization.</p>",
+          "shape": "AmazonResourceName"
         },
-        "Alias":{
-          "shape":"OrganizationName",
-          "documentation":"<p>The alias for an organization.</p>"
+        "Alias": {
+          "documentation": "<p>The alias for an organization.</p>",
+          "shape": "OrganizationName"
         },
-        "State":{
-          "shape":"String",
-          "documentation":"<p>The state of an organization.</p>"
+        "CompletedDate": {
+          "documentation": "<p>The date at which the organization became usable in the WorkMail context, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "DirectoryId":{
-          "shape":"String",
-          "documentation":"<p>The identifier for the directory associated with an Amazon WorkMail organization.</p>"
+        "DefaultMailDomain": {
+          "documentation": "<p>The default mail domain associated with the organization.</p>",
+          "shape": "String"
         },
-        "DirectoryType":{
-          "shape":"String",
-          "documentation":"<p>The type of directory associated with the WorkMail organization.</p>"
+        "DirectoryId": {
+          "documentation": "<p>The identifier for the directory associated with an Amazon WorkMail organization.</p>",
+          "shape": "String"
         },
-        "DefaultMailDomain":{
-          "shape":"String",
-          "documentation":"<p>The default mail domain associated with the organization.</p>"
+        "DirectoryType": {
+          "documentation": "<p>The type of directory associated with the WorkMail organization.</p>",
+          "shape": "String"
         },
-        "CompletedDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date at which the organization became usable in the WorkMail context, in UNIX epoch time format.</p>"
+        "ErrorMessage": {
+          "documentation": "<p>(Optional) The error message indicating if unexpected behavior was encountered with regards to the organization.</p>",
+          "shape": "String"
         },
-        "ErrorMessage":{
-          "shape":"String",
-          "documentation":"<p>(Optional) The error message indicating if unexpected behavior was encountered with regards to the organization.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier of an organization.</p>",
+          "shape": "OrganizationId"
         },
-        "ARN":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the organization.</p>"
+        "State": {
+          "documentation": "<p>The state of an organization.</p>",
+          "shape": "String"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeResourceRequest":{
-      "type":"structure",
-      "required":[
+    "DescribeResourceRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier associated with the organization for which the resource is described.</p>",
+          "shape": "OrganizationId"
+        },
+        "ResourceId": {
+          "documentation": "<p>The identifier of the resource to be described.</p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "ResourceId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier associated with the organization for which the resource is described.</p>"
-        },
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the resource to be described.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DescribeResourceResponse":{
-      "type":"structure",
-      "members":{
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the described resource.</p>"
+    "DescribeResourceResponse": {
+      "members": {
+        "BookingOptions": {
+          "documentation": "<p>The booking options for the described resource.</p>",
+          "shape": "BookingOptions"
         },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the described resource.</p>"
+        "DisabledDate": {
+          "documentation": "<p>The date and time when a resource was disabled from WorkMail, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "Name":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the described resource.</p>"
+        "Email": {
+          "documentation": "<p>The email of the described resource.</p>",
+          "shape": "EmailAddress"
         },
-        "Type":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the described resource.</p>"
+        "EnabledDate": {
+          "documentation": "<p>The date and time when a resource was enabled for WorkMail, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "BookingOptions":{
-          "shape":"BookingOptions",
-          "documentation":"<p>The booking options for the described resource.</p>"
+        "Name": {
+          "documentation": "<p>The name of the described resource.</p>",
+          "shape": "ResourceName"
         },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the resource: enabled (registered to Amazon WorkMail), disabled (deregistered or never registered to WorkMail), or deleted.</p>"
+        "ResourceId": {
+          "documentation": "<p>The identifier of the described resource.</p>",
+          "shape": "ResourceId"
         },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when a resource was enabled for WorkMail, in UNIX epoch time format.</p>"
+        "State": {
+          "documentation": "<p>The state of the resource: enabled (registered to Amazon WorkMail), disabled (deregistered or never registered to WorkMail), or deleted.</p>",
+          "shape": "EntityState"
         },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time when a resource was disabled from WorkMail, in UNIX epoch time format.</p>"
+        "Type": {
+          "documentation": "<p>The type of the described resource.</p>",
+          "shape": "ResourceType"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeUserRequest":{
-      "type":"structure",
-      "required":[
+    "DescribeUserRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the user exists.</p>",
+          "shape": "OrganizationId"
+        },
+        "UserId": {
+          "documentation": "<p>The identifier for the user to be described.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "required": [
         "OrganizationId",
         "UserId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the user exists.</p>"
+      "type": "structure"
+    },
+    "DescribeUserResponse": {
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date and time at which the user was disabled for Amazon WorkMail usage, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
         },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the user to be described.</p>"
+        "DisplayName": {
+          "documentation": "<p>The display name of the user.</p>",
+          "shape": "String"
+        },
+        "Email": {
+          "documentation": "<p>The email of the user.</p>",
+          "shape": "EmailAddress"
+        },
+        "EnabledDate": {
+          "documentation": "<p>The date and time at which the user was enabled for Amazon WorkMail usage, in UNIX epoch time format.</p>",
+          "shape": "Timestamp"
+        },
+        "Name": {
+          "documentation": "<p>The name for the user.</p>",
+          "shape": "UserName"
+        },
+        "State": {
+          "documentation": "<p>The state of a user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).</p>",
+          "shape": "EntityState"
+        },
+        "UserId": {
+          "documentation": "<p>The identifier for the described user.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "UserRole": {
+          "documentation": "<p>In certain cases, other entities are modeled as users. If interoperability is enabled, resources are imported into Amazon WorkMail as users. Because different WorkMail organizations rely on different directory types, administrators can distinguish between an unregistered user (account is disabled and has a user role) and the directory administrators. The values are USER, RESOURCE, and SYSTEM_USER.</p>",
+          "shape": "UserRole"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DescribeUserResponse":{
-      "type":"structure",
-      "members":{
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the described user.</p>"
-        },
-        "Name":{
-          "shape":"UserName",
-          "documentation":"<p>The name for the user.</p>"
-        },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the user.</p>"
-        },
-        "DisplayName":{
-          "shape":"String",
-          "documentation":"<p>The display name of the user.</p>"
-        },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of a user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).</p>"
-        },
-        "UserRole":{
-          "shape":"UserRole",
-          "documentation":"<p>In certain cases, other entities are modeled as users. If interoperability is enabled, resources are imported into Amazon WorkMail as users. Because different WorkMail organizations rely on different directory types, administrators can distinguish between an unregistered user (account is disabled and has a user role) and the directory administrators. The values are USER, RESOURCE, and SYSTEM_USER.</p>"
-        },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time at which the user was enabled for Amazon WorkMail usage, in UNIX epoch time format.</p>"
-        },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date and time at which the user was disabled for Amazon WorkMail usage, in UNIX epoch time format.</p>"
+    "DirectoryServiceAuthenticationFailedException": {
+      "documentation": "<p>The directory service doesn't recognize the credentials supplied by WorkMail.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
-    },
-    "DirectoryServiceAuthenticationFailedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
       },
-      "documentation":"<p>The directory service doesn't recognize the credentials supplied by WorkMail.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "DirectoryUnavailableException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "DirectoryUnavailableException": {
+      "documentation": "<p>The directory on which you are trying to perform operations isn't available.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>The directory on which you are trying to perform operations isn't available.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "DisassociateDelegateFromResourceRequest":{
-      "type":"structure",
-      "required":[
+    "DisassociateDelegateFromResourceRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier for the member (user, group) to be removed from the resource's delegates.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the resource exists.</p>",
+          "shape": "OrganizationId"
+        },
+        "ResourceId": {
+          "documentation": "<p>The identifier of the resource from which delegates' set members are removed. </p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "ResourceId",
         "EntityId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the resource exists.</p>"
+      "type": "structure"
+    },
+    "DisassociateDelegateFromResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DisassociateMemberFromGroupRequest": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The identifier for the group from which members are removed.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the resource from which delegates' set members are removed. </p>"
+        "MemberId": {
+          "documentation": "<p>The identifier for the member to be removed to the group.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the member (user, group) to be removed from the resource's delegates.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the group exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "DisassociateDelegateFromResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DisassociateMemberFromGroupRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "GroupId",
         "MemberId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the group exists.</p>"
-        },
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the group from which members are removed.</p>"
-        },
-        "MemberId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the member to be removed to the group.</p>"
+      "type": "structure"
+    },
+    "DisassociateMemberFromGroupResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "EmailAddress": {
+      "max": 254,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+      "type": "string"
+    },
+    "EmailAddressInUseException": {
+      "documentation": "<p>The email address that you're trying to assign is already created for a different user, group, or resource.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
-    },
-    "DisassociateMemberFromGroupResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "EmailAddress":{
-      "type":"string",
-      "max":254,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-    },
-    "EmailAddressInUseException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
       },
-      "documentation":"<p>The email address that you're trying to assign is already created for a different user, group, or resource.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "EntityAlreadyRegisteredException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "EntityAlreadyRegisteredException": {
+      "documentation": "<p>The user, group, or resource that you're trying to register is already registered.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>The user, group, or resource that you're trying to register is already registered.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "EntityNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "EntityNotFoundException": {
+      "documentation": "<p>The identifier supplied for the user, group, or resource does not exist in your organization.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>The identifier supplied for the user, group, or resource does not exist in your organization.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "EntityState":{
-      "type":"string",
-      "enum":[
+    "EntityState": {
+      "enum": [
         "ENABLED",
         "DISABLED",
         "DELETED"
-      ]
+      ],
+      "type": "string"
     },
-    "EntityStateException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "EntityStateException": {
+      "documentation": "<p>You are performing an operation on a user, group, or resource that isn't in the expected state, such as trying to delete an active user.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>You are performing an operation on a user, group, or resource that isn't in the expected state, such as trying to delete an active user.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "GetAccessControlEffectRequest":{
-      "type":"structure",
-      "required":[
+    "GetAccessControlEffectRequest": {
+      "members": {
+        "Action": {
+          "documentation": "<p>The access protocol action. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>",
+          "shape": "AccessControlRuleAction"
+        },
+        "IpAddress": {
+          "documentation": "<p>The IPv4 address.</p>",
+          "shape": "IpAddress"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization.</p>",
+          "shape": "OrganizationId"
+        },
+        "UserId": {
+          "documentation": "<p>The user ID.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "required": [
         "OrganizationId",
         "IpAddress",
         "Action",
         "UserId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization.</p>"
-        },
-        "IpAddress":{
-          "shape":"IpAddress",
-          "documentation":"<p>The IPv4 address.</p>"
-        },
-        "Action":{
-          "shape":"AccessControlRuleAction",
-          "documentation":"<p>The access protocol action. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>"
-        },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The user ID.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetAccessControlEffectResponse":{
-      "type":"structure",
-      "members":{
-        "Effect":{
-          "shape":"AccessControlRuleEffect",
-          "documentation":"<p>The rule effect.</p>"
+    "GetAccessControlEffectResponse": {
+      "members": {
+        "Effect": {
+          "documentation": "<p>The rule effect.</p>",
+          "shape": "AccessControlRuleEffect"
         },
-        "MatchedRules":{
-          "shape":"AccessControlRuleNameList",
-          "documentation":"<p>The rules that match the given parameters, resulting in an effect.</p>"
+        "MatchedRules": {
+          "documentation": "<p>The rules that match the given parameters, resulting in an effect.</p>",
+          "shape": "AccessControlRuleNameList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetMailboxDetailsRequest":{
-      "type":"structure",
-      "required":[
+    "GetMailboxDetailsRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization that contains the user whose mailbox details are being requested.</p>",
+          "shape": "OrganizationId"
+        },
+        "UserId": {
+          "documentation": "<p>The identifier for the user whose mailbox details are being requested.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "required": [
         "OrganizationId",
         "UserId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization that contains the user whose mailbox details are being requested.</p>"
-        },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the user whose mailbox details are being requested.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GetMailboxDetailsResponse":{
-      "type":"structure",
-      "members":{
-        "MailboxQuota":{
-          "shape":"MailboxQuota",
-          "documentation":"<p>The maximum allowed mailbox size, in MB, for the specified user.</p>"
+    "GetMailboxDetailsResponse": {
+      "members": {
+        "MailboxQuota": {
+          "documentation": "<p>The maximum allowed mailbox size, in MB, for the specified user.</p>",
+          "shape": "MailboxQuota"
         },
-        "MailboxSize":{
-          "shape":"MailboxSize",
-          "documentation":"<p>The current mailbox size, in MB, for the specified user.</p>"
-        }
-      }
-    },
-    "Group":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the group.</p>"
-        },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the group.</p>"
-        },
-        "Name":{
-          "shape":"GroupName",
-          "documentation":"<p>The name of the group.</p>"
-        },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the group, which can be ENABLED, DISABLED, or DELETED.</p>"
-        },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the group was enabled for Amazon WorkMail use.</p>"
-        },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the group was disabled from Amazon WorkMail use.</p>"
+        "MailboxSize": {
+          "documentation": "<p>The current mailbox size, in MB, for the specified user.</p>",
+          "shape": "MailboxSize"
         }
       },
-      "documentation":"<p>The representation of an Amazon WorkMail group.</p>"
+      "type": "structure"
     },
-    "GroupName":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[\\u0020-\\u00FF]+"
-    },
-    "Groups":{
-      "type":"list",
-      "member":{"shape":"Group"}
-    },
-    "InvalidConfigurationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do so on its behalf.</p>",
-      "exception":true
-    },
-    "InvalidParameterException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>One or more of the input parameters don't match the service's restrictions.</p>",
-      "exception":true
-    },
-    "InvalidPasswordException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The supplied password doesn't match the minimum security constraints, such as length or use of special characters.</p>",
-      "exception":true
-    },
-    "IpAddress":{
-      "type":"string",
-      "max":15,
-      "min":1,
-      "pattern":"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
-    },
-    "IpRange":{
-      "type":"string",
-      "max":18,
-      "min":1,
-      "pattern":"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])/([0-9]|[12][0-9]|3[0-2])$"
-    },
-    "IpRangeList":{
-      "type":"list",
-      "member":{"shape":"IpRange"},
-      "max":10,
-      "min":0
-    },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The request exceeds the limit of the resource.</p>",
-      "exception":true
-    },
-    "ListAccessControlRulesRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization.</p>"
+    "Group": {
+      "documentation": "<p>The representation of an Amazon WorkMail group.</p>",
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date indicating when the group was disabled from Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
+        },
+        "Email": {
+          "documentation": "<p>The email of the group.</p>",
+          "shape": "EmailAddress"
+        },
+        "EnabledDate": {
+          "documentation": "<p>The date indicating when the group was enabled for Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
+        },
+        "Id": {
+          "documentation": "<p>The identifier of the group.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "Name": {
+          "documentation": "<p>The name of the group.</p>",
+          "shape": "GroupName"
+        },
+        "State": {
+          "documentation": "<p>The state of the group, which can be ENABLED, DISABLED, or DELETED.</p>",
+          "shape": "EntityState"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListAccessControlRulesResponse":{
-      "type":"structure",
-      "members":{
-        "Rules":{
-          "shape":"AccessControlRulesList",
-          "documentation":"<p>The access control rules.</p>"
+    "GroupName": {
+      "max": 256,
+      "min": 1,
+      "pattern": "[\\u0020-\\u00FF]+",
+      "type": "string"
+    },
+    "Groups": {
+      "member": {
+        "shape": "Group"
+      },
+      "type": "list"
+    },
+    "InvalidConfigurationException": {
+      "documentation": "<p>The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do so on its behalf.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListAliasesRequest":{
-      "type":"structure",
-      "required":[
+    "InvalidParameterException": {
+      "documentation": "<p>One or more of the input parameters don't match the service's restrictions.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidPasswordException": {
+      "documentation": "<p>The supplied password doesn't match the minimum security constraints, such as length or use of special characters.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "IpAddress": {
+      "max": 15,
+      "min": 1,
+      "pattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "type": "string"
+    },
+    "IpRange": {
+      "max": 18,
+      "min": 1,
+      "pattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])/([0-9]|[12][0-9]|3[0-2])$",
+      "type": "string"
+    },
+    "IpRangeList": {
+      "max": 10,
+      "member": {
+        "shape": "IpRange"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "LimitExceededException": {
+      "documentation": "<p>The request exceeds the limit of the resource.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ListAccessControlRulesRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
+        "OrganizationId"
+      ],
+      "type": "structure"
+    },
+    "ListAccessControlRulesResponse": {
+      "members": {
+        "Rules": {
+          "documentation": "<p>The access control rules.</p>",
+          "shape": "AccessControlRulesList"
+        }
+      },
+      "type": "structure"
+    },
+    "ListAliasesRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier for the entity for which to list the aliases.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the entity exists.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "EntityId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the entity exists.</p>"
-        },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the entity for which to list the aliases.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "ListAliasesResponse":{
-      "type":"structure",
-      "members":{
-        "Aliases":{
-          "shape":"Aliases",
-          "documentation":"<p>The entity's paginated aliases.</p>"
+    "ListAliasesResponse": {
+      "members": {
+        "Aliases": {
+          "documentation": "<p>The entity's paginated aliases.</p>",
+          "shape": "Aliases"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>"
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListGroupMembersRequest":{
-      "type":"structure",
-      "required":[
+    "ListGroupMembersRequest": {
+      "members": {
+        "GroupId": {
+          "documentation": "<p>The identifier for the group to which the members (users or groups) are associated.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p> The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the group exists.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "GroupId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the group exists.</p>"
-        },
-        "GroupId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the group to which the members (users or groups) are associated.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p> The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "ListGroupMembersResponse":{
-      "type":"structure",
-      "members":{
-        "Members":{
-          "shape":"Members",
-          "documentation":"<p>The members associated to the group.</p>"
+    "ListGroupMembersResponse": {
+      "members": {
+        "Members": {
+          "documentation": "<p>The members associated to the group.</p>",
+          "shape": "Members"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListGroupsRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the groups exist.</p>"
+    "ListGroupsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the groups exist.</p>",
+          "shape": "OrganizationId"
         }
-      }
+      },
+      "required": [
+        "OrganizationId"
+      ],
+      "type": "structure"
     },
-    "ListGroupsResponse":{
-      "type":"structure",
-      "members":{
-        "Groups":{
-          "shape":"Groups",
-          "documentation":"<p>The overview of groups for an organization.</p>"
+    "ListGroupsResponse": {
+      "members": {
+        "Groups": {
+          "documentation": "<p>The overview of groups for an organization.</p>",
+          "shape": "Groups"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>"
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListMailboxPermissionsRequest":{
-      "type":"structure",
-      "required":[
+    "ListMailboxPermissionsRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier of the user, group, or resource for which to list mailbox permissions.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization under which the user, group, or resource exists.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
         "OrganizationId",
         "EntityId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization under which the user, group, or resource exists.</p>"
-        },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user, group, or resource for which to list mailbox permissions.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "ListMailboxPermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "Permissions":{
-          "shape":"Permissions",
-          "documentation":"<p>One page of the user, group, or resource mailbox permissions.</p>"
+    "ListMailboxPermissionsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>",
+          "shape": "NextToken"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>"
+        "Permissions": {
+          "documentation": "<p>One page of the user, group, or resource mailbox permissions.</p>",
+          "shape": "Permissions"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListOrganizationsRequest":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
+    "ListOrganizationsRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListOrganizationsResponse":{
-      "type":"structure",
-      "members":{
-        "OrganizationSummaries":{
-          "shape":"OrganizationSummaries",
-          "documentation":"<p>The overview of owned organizations presented as a list of organization summaries.</p>"
+    "ListOrganizationsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>",
+          "shape": "NextToken"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The value is \"null\" when there are no more results to return.</p>"
+        "OrganizationSummaries": {
+          "documentation": "<p>The overview of owned organizations presented as a list of organization summaries.</p>",
+          "shape": "OrganizationSummaries"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResourceDelegatesRequest":{
-      "type":"structure",
-      "required":[
+    "ListResourceDelegatesRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The number of maximum results in a page.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token used to paginate through the delegates associated with a resource.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization that contains the resource for which delegates are listed.</p>",
+          "shape": "OrganizationId"
+        },
+        "ResourceId": {
+          "documentation": "<p>The identifier for the resource whose delegates are listed.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "required": [
         "OrganizationId",
         "ResourceId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization that contains the resource for which delegates are listed.</p>"
-        },
-        "ResourceId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the resource whose delegates are listed.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token used to paginate through the delegates associated with a resource.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The number of maximum results in a page.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "ListResourceDelegatesResponse":{
-      "type":"structure",
-      "members":{
-        "Delegates":{
-          "shape":"ResourceDelegates",
-          "documentation":"<p>One page of the resource's delegates.</p>"
+    "ListResourceDelegatesResponse": {
+      "members": {
+        "Delegates": {
+          "documentation": "<p>One page of the resource's delegates.</p>",
+          "shape": "ResourceDelegates"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty. </p>"
-        }
-      }
-    },
-    "ListResourcesRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the resources exist.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
-        }
-      }
-    },
-    "ListResourcesResponse":{
-      "type":"structure",
-      "members":{
-        "Resources":{
-          "shape":"Resources",
-          "documentation":"<p>One page of the organization's resource representation.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p> The token used to paginate through all the organization's resources. While results are still available, it has an associated value. When the last page is reached, the token is empty.</p>"
-        }
-      }
-    },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["ResourceARN"],
-      "members":{
-        "ResourceARN":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The resource ARN.</p>"
-        }
-      }
-    },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of tag key-value pairs.</p>"
-        }
-      }
-    },
-    "ListUsersRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the users exist.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>"
-        },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return in a single call.</p>"
-        }
-      }
-    },
-    "ListUsersResponse":{
-      "type":"structure",
-      "members":{
-        "Users":{
-          "shape":"Users",
-          "documentation":"<p>The overview of users for an organization.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p> The token to use to retrieve the next page of results. This value is `null` when there are no more results to return.</p>"
-        }
-      }
-    },
-    "MailDomainNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>For an email or alias to be created in Amazon WorkMail, the included domain must be defined in the organization.</p>",
-      "exception":true
-    },
-    "MailDomainStateException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>After a domain has been added to the organization, it must be verified. The domain is not yet verified.</p>",
-      "exception":true
-    },
-    "MailboxQuota":{
-      "type":"integer",
-      "box":true,
-      "min":1
-    },
-    "MailboxSize":{
-      "type":"double",
-      "min":0
-    },
-    "MaxResults":{
-      "type":"integer",
-      "box":true,
-      "max":100,
-      "min":1
-    },
-    "Member":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"String",
-          "documentation":"<p>The identifier of the member.</p>"
-        },
-        "Name":{
-          "shape":"String",
-          "documentation":"<p>The name of the member.</p>"
-        },
-        "Type":{
-          "shape":"MemberType",
-          "documentation":"<p>A member can be a user or group.</p>"
-        },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the member, which can be ENABLED, DISABLED, or DELETED.</p>"
-        },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the member was enabled for Amazon WorkMail use.</p>"
-        },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the member was disabled from Amazon WorkMail use.</p>"
+        "NextToken": {
+          "documentation": "<p>The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty. </p>",
+          "shape": "NextToken"
         }
       },
-      "documentation":"<p>The representation of a user or group.</p>"
+      "type": "structure"
     },
-    "MemberType":{
-      "type":"string",
-      "enum":[
+    "ListResourcesRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the resources exist.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
+        "OrganizationId"
+      ],
+      "type": "structure"
+    },
+    "ListResourcesResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p> The token used to paginate through all the organization's resources. While results are still available, it has an associated value. When the last page is reached, the token is empty.</p>",
+          "shape": "NextToken"
+        },
+        "Resources": {
+          "documentation": "<p>One page of the organization's resource representation.</p>",
+          "shape": "Resources"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForResourceRequest": {
+      "members": {
+        "ResourceARN": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "AmazonResourceName"
+        }
+      },
+      "required": [
+        "ResourceARN"
+      ],
+      "type": "structure"
+    },
+    "ListTagsForResourceResponse": {
+      "members": {
+        "Tags": {
+          "documentation": "<p>A list of tag key-value pairs.</p>",
+          "shape": "TagList"
+        }
+      },
+      "type": "structure"
+    },
+    "ListUsersRequest": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return in a single call.</p>",
+          "shape": "MaxResults"
+        },
+        "NextToken": {
+          "documentation": "<p>The token to use to retrieve the next page of results. The first call does not contain any tokens.</p>",
+          "shape": "NextToken"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the users exist.</p>",
+          "shape": "OrganizationId"
+        }
+      },
+      "required": [
+        "OrganizationId"
+      ],
+      "type": "structure"
+    },
+    "ListUsersResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p> The token to use to retrieve the next page of results. This value is `null` when there are no more results to return.</p>",
+          "shape": "NextToken"
+        },
+        "Users": {
+          "documentation": "<p>The overview of users for an organization.</p>",
+          "shape": "Users"
+        }
+      },
+      "type": "structure"
+    },
+    "MailDomainNotFoundException": {
+      "documentation": "<p>For an email or alias to be created in Amazon WorkMail, the included domain must be defined in the organization.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "MailDomainStateException": {
+      "documentation": "<p>After a domain has been added to the organization, it must be verified. The domain is not yet verified.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "MailboxQuota": {
+      "box": true,
+      "min": 1,
+      "type": "integer"
+    },
+    "MailboxSize": {
+      "min": 0,
+      "type": "double"
+    },
+    "MaxResults": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "Member": {
+      "documentation": "<p>The representation of a user or group.</p>",
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date indicating when the member was disabled from Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
+        },
+        "EnabledDate": {
+          "documentation": "<p>The date indicating when the member was enabled for Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
+        },
+        "Id": {
+          "documentation": "<p>The identifier of the member.</p>",
+          "shape": "String"
+        },
+        "Name": {
+          "documentation": "<p>The name of the member.</p>",
+          "shape": "String"
+        },
+        "State": {
+          "documentation": "<p>The state of the member, which can be ENABLED, DISABLED, or DELETED.</p>",
+          "shape": "EntityState"
+        },
+        "Type": {
+          "documentation": "<p>A member can be a user or group.</p>",
+          "shape": "MemberType"
+        }
+      },
+      "type": "structure"
+    },
+    "MemberType": {
+      "enum": [
         "GROUP",
         "USER"
-      ]
+      ],
+      "type": "string"
     },
-    "Members":{
-      "type":"list",
-      "member":{"shape":"Member"}
-    },
-    "NameAvailabilityException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "Members": {
+      "member": {
+        "shape": "Member"
       },
-      "documentation":"<p>The user, group, or resource name isn't unique in Amazon WorkMail.</p>",
-      "exception":true
+      "type": "list"
     },
-    "NextToken":{
-      "type":"string",
-      "max":1024,
-      "min":1
-    },
-    "OrganizationId":{
-      "type":"string",
-      "pattern":"^m-[0-9a-f]{32}$"
-    },
-    "OrganizationName":{
-      "type":"string",
-      "max":62,
-      "min":1,
-      "pattern":"^(?!d-)([\\da-zA-Z]+)([-]*[\\da-zA-Z])*"
-    },
-    "OrganizationNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>An operation received a valid organization identifier that either doesn't belong or exist in the system.</p>",
-      "exception":true
-    },
-    "OrganizationStateException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its members.</p>",
-      "exception":true
-    },
-    "OrganizationSummaries":{
-      "type":"list",
-      "member":{"shape":"OrganizationSummary"}
-    },
-    "OrganizationSummary":{
-      "type":"structure",
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier associated with the organization.</p>"
-        },
-        "Alias":{
-          "shape":"OrganizationName",
-          "documentation":"<p>The alias associated with the organization.</p>"
-        },
-        "ErrorMessage":{
-          "shape":"String",
-          "documentation":"<p>The error message associated with the organization. It is only present if unexpected behavior has occurred with regards to the organization. It provides insight or solutions regarding unexpected behavior.</p>"
-        },
-        "State":{
-          "shape":"String",
-          "documentation":"<p>The state associated with the organization.</p>"
+    "NameAvailabilityException": {
+      "documentation": "<p>The user, group, or resource name isn't unique in Amazon WorkMail.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
       },
-      "documentation":"<p>The representation of an organization.</p>"
+      "type": "structure"
     },
-    "Password":{
-      "type":"string",
-      "max":256,
-      "pattern":"[\\u0020-\\u00FF]+",
-      "sensitive":true
+    "NextToken": {
+      "max": 1024,
+      "min": 1,
+      "type": "string"
     },
-    "Permission":{
-      "type":"structure",
-      "required":[
+    "OrganizationId": {
+      "pattern": "^m-[0-9a-f]{32}$",
+      "type": "string"
+    },
+    "OrganizationName": {
+      "max": 62,
+      "min": 1,
+      "pattern": "^(?!d-)([\\da-zA-Z]+)([-]*[\\da-zA-Z])*",
+      "type": "string"
+    },
+    "OrganizationNotFoundException": {
+      "documentation": "<p>An operation received a valid organization identifier that either doesn't belong or exist in the system.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "OrganizationStateException": {
+      "documentation": "<p>The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its members.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "OrganizationSummaries": {
+      "member": {
+        "shape": "OrganizationSummary"
+      },
+      "type": "list"
+    },
+    "OrganizationSummary": {
+      "documentation": "<p>The representation of an organization.</p>",
+      "members": {
+        "Alias": {
+          "documentation": "<p>The alias associated with the organization.</p>",
+          "shape": "OrganizationName"
+        },
+        "ErrorMessage": {
+          "documentation": "<p>The error message associated with the organization. It is only present if unexpected behavior has occurred with regards to the organization. It provides insight or solutions regarding unexpected behavior.</p>",
+          "shape": "String"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier associated with the organization.</p>",
+          "shape": "OrganizationId"
+        },
+        "State": {
+          "documentation": "<p>The state associated with the organization.</p>",
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "Password": {
+      "max": 256,
+      "pattern": "[\\u0020-\\u00FF]+",
+      "sensitive": true,
+      "type": "string"
+    },
+    "Permission": {
+      "documentation": "<p>Permission granted to a user, group, or resource to access a certain aspect of another user, group, or resource mailbox.</p>",
+      "members": {
+        "GranteeId": {
+          "documentation": "<p>The identifier of the user, group, or resource to which the permissions are granted.</p>",
+          "shape": "WorkMailIdentifier"
+        },
+        "GranteeType": {
+          "documentation": "<p>The type of user, group, or resource referred to in GranteeId.</p>",
+          "shape": "MemberType"
+        },
+        "PermissionValues": {
+          "documentation": "<p>The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.</p>",
+          "shape": "PermissionValues"
+        }
+      },
+      "required": [
         "GranteeId",
         "GranteeType",
         "PermissionValues"
       ],
-      "members":{
-        "GranteeId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user, group, or resource to which the permissions are granted.</p>"
-        },
-        "GranteeType":{
-          "shape":"MemberType",
-          "documentation":"<p>The type of user, group, or resource referred to in GranteeId.</p>"
-        },
-        "PermissionValues":{
-          "shape":"PermissionValues",
-          "documentation":"<p>The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.</p>"
-        }
-      },
-      "documentation":"<p>Permission granted to a user, group, or resource to access a certain aspect of another user, group, or resource mailbox.</p>"
+      "type": "structure"
     },
-    "PermissionType":{
-      "type":"string",
-      "enum":[
+    "PermissionType": {
+      "enum": [
         "FULL_ACCESS",
         "SEND_AS",
         "SEND_ON_BEHALF"
-      ]
+      ],
+      "type": "string"
     },
-    "PermissionValues":{
-      "type":"list",
-      "member":{"shape":"PermissionType"}
+    "PermissionValues": {
+      "member": {
+        "shape": "PermissionType"
+      },
+      "type": "list"
     },
-    "Permissions":{
-      "type":"list",
-      "member":{"shape":"Permission"}
+    "Permissions": {
+      "member": {
+        "shape": "Permission"
+      },
+      "type": "list"
     },
-    "PutAccessControlRuleRequest":{
-      "type":"structure",
-      "required":[
+    "PutAccessControlRuleRequest": {
+      "members": {
+        "Actions": {
+          "documentation": "<p>Access protocol actions to include in the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>",
+          "shape": "ActionsList"
+        },
+        "Description": {
+          "documentation": "<p>The rule description.</p>",
+          "shape": "AccessControlRuleDescription"
+        },
+        "Effect": {
+          "documentation": "<p>The rule effect.</p>",
+          "shape": "AccessControlRuleEffect"
+        },
+        "IpRanges": {
+          "documentation": "<p>IPv4 CIDR ranges to include in the rule.</p>",
+          "shape": "IpRangeList"
+        },
+        "Name": {
+          "documentation": "<p>The rule name.</p>",
+          "shape": "AccessControlRuleName"
+        },
+        "NotActions": {
+          "documentation": "<p>Access protocol actions to exclude from the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>",
+          "shape": "ActionsList"
+        },
+        "NotIpRanges": {
+          "documentation": "<p>IPv4 CIDR ranges to exclude from the rule.</p>",
+          "shape": "IpRangeList"
+        },
+        "NotUserIds": {
+          "documentation": "<p>User IDs to exclude from the rule.</p>",
+          "shape": "UserIdList"
+        },
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization.</p>",
+          "shape": "OrganizationId"
+        },
+        "UserIds": {
+          "documentation": "<p>User IDs to include in the rule.</p>",
+          "shape": "UserIdList"
+        }
+      },
+      "required": [
         "Name",
         "Effect",
         "Description",
         "OrganizationId"
       ],
-      "members":{
-        "Name":{
-          "shape":"AccessControlRuleName",
-          "documentation":"<p>The rule name.</p>"
+      "type": "structure"
+    },
+    "PutAccessControlRuleResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "PutMailboxPermissionsRequest": {
+      "members": {
+        "EntityId": {
+          "documentation": "<p>The identifier of the user, group, or resource for which to update mailbox permissions.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "Effect":{
-          "shape":"AccessControlRuleEffect",
-          "documentation":"<p>The rule effect.</p>"
+        "GranteeId": {
+          "documentation": "<p>The identifier of the user, group, or resource to which to grant the permissions.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "Description":{
-          "shape":"AccessControlRuleDescription",
-          "documentation":"<p>The rule description.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization under which the user, group, or resource exists.</p>",
+          "shape": "OrganizationId"
         },
-        "IpRanges":{
-          "shape":"IpRangeList",
-          "documentation":"<p>IPv4 CIDR ranges to include in the rule.</p>"
-        },
-        "NotIpRanges":{
-          "shape":"IpRangeList",
-          "documentation":"<p>IPv4 CIDR ranges to exclude from the rule.</p>"
-        },
-        "Actions":{
-          "shape":"ActionsList",
-          "documentation":"<p>Access protocol actions to include in the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>"
-        },
-        "NotActions":{
-          "shape":"ActionsList",
-          "documentation":"<p>Access protocol actions to exclude from the rule. Valid values include <code>ActiveSync</code>, <code>AutoDiscover</code>, <code>EWS</code>, <code>IMAP</code>, <code>SMTP</code>, <code>WindowsOutlook</code>, and <code>WebMail</code>.</p>"
-        },
-        "UserIds":{
-          "shape":"UserIdList",
-          "documentation":"<p>User IDs to include in the rule.</p>"
-        },
-        "NotUserIds":{
-          "shape":"UserIdList",
-          "documentation":"<p>User IDs to exclude from the rule.</p>"
-        },
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization.</p>"
+        "PermissionValues": {
+          "documentation": "<p>The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.</p>",
+          "shape": "PermissionValues"
         }
-      }
-    },
-    "PutAccessControlRuleResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "PutMailboxPermissionsRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "GranteeId",
         "PermissionValues"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization under which the user, group, or resource exists.</p>"
+      "type": "structure"
+    },
+    "PutMailboxPermissionsResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "RegisterToWorkMailRequest": {
+      "members": {
+        "Email": {
+          "documentation": "<p>The email for the user, group, or resource to be updated.</p>",
+          "shape": "EmailAddress"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user, group, or resource for which to update mailbox permissions.</p>"
+        "EntityId": {
+          "documentation": "<p>The identifier for the user, group, or resource to be updated.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "GranteeId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user, group, or resource to which to grant the permissions.</p>"
-        },
-        "PermissionValues":{
-          "shape":"PermissionValues",
-          "documentation":"<p>The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization under which the user, group, or resource exists.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "PutMailboxPermissionsResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "RegisterToWorkMailRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "Email"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization under which the user, group, or resource exists.</p>"
-        },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier for the user, group, or resource to be updated.</p>"
-        },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email for the user, group, or resource to be updated.</p>"
+      "type": "structure"
+    },
+    "RegisterToWorkMailResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "ReservedNameException": {
+      "documentation": "<p>This user, group, or resource name is not allowed in Amazon WorkMail.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
-    },
-    "RegisterToWorkMailResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "ReservedNameException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
       },
-      "documentation":"<p>This user, group, or resource name is not allowed in Amazon WorkMail.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "ResetPasswordRequest":{
-      "type":"structure",
-      "required":[
+    "ResetPasswordRequest": {
+      "members": {
+        "OrganizationId": {
+          "documentation": "<p>The identifier of the organization that contains the user for which the password is reset.</p>",
+          "shape": "OrganizationId"
+        },
+        "Password": {
+          "documentation": "<p>The new password for the user.</p>",
+          "shape": "Password"
+        },
+        "UserId": {
+          "documentation": "<p>The identifier of the user for whom the password is reset.</p>",
+          "shape": "WorkMailIdentifier"
+        }
+      },
+      "required": [
         "OrganizationId",
         "UserId",
         "Password"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier of the organization that contains the user for which the password is reset.</p>"
-        },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user for whom the password is reset.</p>"
-        },
-        "Password":{
-          "shape":"Password",
-          "documentation":"<p>The new password for the user.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "ResetPasswordResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "ResetPasswordResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "Resource":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the resource.</p>"
+    "Resource": {
+      "documentation": "<p>The representation of a resource.</p>",
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date indicating when the resource was disabled from Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
         },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the resource.</p>"
+        "Email": {
+          "documentation": "<p>The email of the resource.</p>",
+          "shape": "EmailAddress"
         },
-        "Name":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource.</p>"
+        "EnabledDate": {
+          "documentation": "<p>The date indicating when the resource was enabled for Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
         },
-        "Type":{
-          "shape":"ResourceType",
-          "documentation":"<p>The type of the resource: equipment or room.</p>"
+        "Id": {
+          "documentation": "<p>The identifier of the resource.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>"
+        "Name": {
+          "documentation": "<p>The name of the resource.</p>",
+          "shape": "ResourceName"
         },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the resource was enabled for Amazon WorkMail use.</p>"
+        "State": {
+          "documentation": "<p>The state of the resource, which can be ENABLED, DISABLED, or DELETED.</p>",
+          "shape": "EntityState"
         },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the resource was disabled from Amazon WorkMail use.</p>"
+        "Type": {
+          "documentation": "<p>The type of the resource: equipment or room.</p>",
+          "shape": "ResourceType"
         }
       },
-      "documentation":"<p>The representation of a resource.</p>"
+      "type": "structure"
     },
-    "ResourceDelegates":{
-      "type":"list",
-      "member":{"shape":"Delegate"}
-    },
-    "ResourceId":{
-      "type":"string",
-      "pattern":"^r-[0-9a-f]{32}$"
-    },
-    "ResourceName":{
-      "type":"string",
-      "max":20,
-      "min":1,
-      "pattern":"[\\w\\-.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z0-9]{2,})?"
-    },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "ResourceDelegates": {
+      "member": {
+        "shape": "Delegate"
       },
-      "documentation":"<p>The resource cannot be found.</p>",
-      "exception":true
+      "type": "list"
     },
-    "ResourceType":{
-      "type":"string",
-      "enum":[
+    "ResourceId": {
+      "pattern": "^r-[0-9a-f]{32}$",
+      "type": "string"
+    },
+    "ResourceName": {
+      "max": 20,
+      "min": 1,
+      "pattern": "[\\w\\-.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z0-9]{2,})?",
+      "type": "string"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>The resource cannot be found.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceType": {
+      "enum": [
         "ROOM",
         "EQUIPMENT"
-      ]
+      ],
+      "type": "string"
     },
-    "Resources":{
-      "type":"list",
-      "member":{"shape":"Resource"}
+    "Resources": {
+      "member": {
+        "shape": "Resource"
+      },
+      "type": "list"
     },
-    "String":{
-      "type":"string",
-      "max":256
+    "String": {
+      "max": 256,
+      "type": "string"
     },
-    "Tag":{
-      "type":"structure",
-      "required":[
+    "Tag": {
+      "documentation": "<p>Describes a tag applied to a resource.</p>",
+      "members": {
+        "Key": {
+          "documentation": "<p>The key of the tag.</p>",
+          "shape": "TagKey"
+        },
+        "Value": {
+          "documentation": "<p>The value of the tag.</p>",
+          "shape": "TagValue"
+        }
+      },
+      "required": [
         "Key",
         "Value"
       ],
-      "members":{
-        "Key":{
-          "shape":"TagKey",
-          "documentation":"<p>The key of the tag.</p>"
+      "type": "structure"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
+    },
+    "TagKeyList": {
+      "max": 50,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagList": {
+      "max": 50,
+      "member": {
+        "shape": "Tag"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "ResourceARN": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "AmazonResourceName"
         },
-        "Value":{
-          "shape":"TagValue",
-          "documentation":"<p>The value of the tag.</p>"
+        "Tags": {
+          "documentation": "<p>The tag key-value pairs.</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>Describes a tag applied to a resource.</p>"
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":50,
-      "min":0
-    },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"},
-      "max":50,
-      "min":0
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "ResourceARN",
         "Tags"
       ],
-      "members":{
-        "ResourceARN":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The resource ARN.</p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tag key-value pairs.</p>"
+      "type": "structure"
+    },
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagValue": {
+      "max": 256,
+      "min": 0,
+      "type": "string"
+    },
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "TooManyTagsException": {
+      "documentation": "<p>The resource can have up to 50 user-applied tags.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
         }
-      }
-    },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":0
-    },
-    "Timestamp":{"type":"timestamp"},
-    "TooManyTagsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
       },
-      "documentation":"<p>The resource can have up to 50 user-applied tags.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "UnsupportedOperationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
+    "UnsupportedOperationException": {
+      "documentation": "<p>You can't perform a write operation against a read-only directory.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
       },
-      "documentation":"<p>You can't perform a write operation against a read-only directory.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceARN": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "AmazonResourceName"
+        },
+        "TagKeys": {
+          "documentation": "<p>The tag keys.</p>",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "ResourceARN",
         "TagKeys"
       ],
-      "members":{
-        "ResourceARN":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The resource ARN.</p>"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateMailboxQuotaRequest": {
+      "members": {
+        "MailboxQuota": {
+          "documentation": "<p>The updated mailbox quota, in MB, for the specified user.</p>",
+          "shape": "MailboxQuota"
         },
-        "TagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The tag keys.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier for the organization that contains the user for whom to update the mailbox quota.</p>",
+          "shape": "OrganizationId"
+        },
+        "UserId": {
+          "documentation": "<p>The identifer for the user for whom to update the mailbox quota.</p>",
+          "shape": "WorkMailIdentifier"
         }
-      }
-    },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateMailboxQuotaRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "UserId",
         "MailboxQuota"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier for the organization that contains the user for whom to update the mailbox quota.</p>"
+      "type": "structure"
+    },
+    "UpdateMailboxQuotaResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdatePrimaryEmailAddressRequest": {
+      "members": {
+        "Email": {
+          "documentation": "<p>The value of the email to be updated as primary.</p>",
+          "shape": "EmailAddress"
         },
-        "UserId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifer for the user for whom to update the mailbox quota.</p>"
+        "EntityId": {
+          "documentation": "<p>The user, group, or resource to update.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "MailboxQuota":{
-          "shape":"MailboxQuota",
-          "documentation":"<p>The updated mailbox quota, in MB, for the specified user.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The organization that contains the user, group, or resource to update.</p>",
+          "shape": "OrganizationId"
         }
-      }
-    },
-    "UpdateMailboxQuotaResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdatePrimaryEmailAddressRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "EntityId",
         "Email"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The organization that contains the user, group, or resource to update.</p>"
+      "type": "structure"
+    },
+    "UpdatePrimaryEmailAddressResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateResourceRequest": {
+      "members": {
+        "BookingOptions": {
+          "documentation": "<p>The resource's booking options to be updated.</p>",
+          "shape": "BookingOptions"
         },
-        "EntityId":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The user, group, or resource to update.</p>"
+        "Name": {
+          "documentation": "<p>The name of the resource to be updated.</p>",
+          "shape": "ResourceName"
         },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The value of the email to be updated as primary.</p>"
+        "OrganizationId": {
+          "documentation": "<p>The identifier associated with the organization for which the resource is updated.</p>",
+          "shape": "OrganizationId"
+        },
+        "ResourceId": {
+          "documentation": "<p>The identifier of the resource to be updated.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "UpdatePrimaryEmailAddressResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateResourceRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "OrganizationId",
         "ResourceId"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"OrganizationId",
-          "documentation":"<p>The identifier associated with the organization for which the resource is updated.</p>"
-        },
-        "ResourceId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The identifier of the resource to be updated.</p>"
-        },
-        "Name":{
-          "shape":"ResourceName",
-          "documentation":"<p>The name of the resource to be updated.</p>"
-        },
-        "BookingOptions":{
-          "shape":"BookingOptions",
-          "documentation":"<p>The resource's booking options to be updated.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "UpdateResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "User":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"WorkMailIdentifier",
-          "documentation":"<p>The identifier of the user.</p>"
+    "User": {
+      "documentation": "<p>The representation of an Amazon WorkMail user.</p>",
+      "members": {
+        "DisabledDate": {
+          "documentation": "<p>The date indicating when the user was disabled from Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
         },
-        "Email":{
-          "shape":"EmailAddress",
-          "documentation":"<p>The email of the user.</p>"
+        "DisplayName": {
+          "documentation": "<p>The display name of the user.</p>",
+          "shape": "String"
         },
-        "Name":{
-          "shape":"UserName",
-          "documentation":"<p>The name of the user.</p>"
+        "Email": {
+          "documentation": "<p>The email of the user.</p>",
+          "shape": "EmailAddress"
         },
-        "DisplayName":{
-          "shape":"String",
-          "documentation":"<p>The display name of the user.</p>"
+        "EnabledDate": {
+          "documentation": "<p>The date indicating when the user was enabled for Amazon WorkMail use.</p>",
+          "shape": "Timestamp"
         },
-        "State":{
-          "shape":"EntityState",
-          "documentation":"<p>The state of the user, which can be ENABLED, DISABLED, or DELETED.</p>"
+        "Id": {
+          "documentation": "<p>The identifier of the user.</p>",
+          "shape": "WorkMailIdentifier"
         },
-        "UserRole":{
-          "shape":"UserRole",
-          "documentation":"<p>The role of the user.</p>"
+        "Name": {
+          "documentation": "<p>The name of the user.</p>",
+          "shape": "UserName"
         },
-        "EnabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the user was enabled for Amazon WorkMail use.</p>"
+        "State": {
+          "documentation": "<p>The state of the user, which can be ENABLED, DISABLED, or DELETED.</p>",
+          "shape": "EntityState"
         },
-        "DisabledDate":{
-          "shape":"Timestamp",
-          "documentation":"<p>The date indicating when the user was disabled from Amazon WorkMail use.</p>"
+        "UserRole": {
+          "documentation": "<p>The role of the user.</p>",
+          "shape": "UserRole"
         }
       },
-      "documentation":"<p>The representation of an Amazon WorkMail user.</p>"
+      "type": "structure"
     },
-    "UserIdList":{
-      "type":"list",
-      "member":{"shape":"WorkMailIdentifier"},
-      "max":10,
-      "min":0
+    "UserIdList": {
+      "max": 10,
+      "member": {
+        "shape": "WorkMailIdentifier"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "UserName":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"[\\w\\-.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z0-9]{2,})?"
+    "UserName": {
+      "max": 64,
+      "min": 1,
+      "pattern": "[\\w\\-.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z0-9]{2,})?",
+      "type": "string"
     },
-    "UserRole":{
-      "type":"string",
-      "enum":[
+    "UserRole": {
+      "enum": [
         "USER",
         "RESOURCE",
         "SYSTEM_USER"
-      ]
+      ],
+      "type": "string"
     },
-    "Users":{
-      "type":"list",
-      "member":{"shape":"User"}
+    "Users": {
+      "member": {
+        "shape": "User"
+      },
+      "type": "list"
     },
-    "WorkMailIdentifier":{
-      "type":"string",
-      "max":256,
-      "min":12
+    "WorkMailIdentifier": {
+      "max": 256,
+      "min": 12,
+      "type": "string"
     }
   },
-  "documentation":"<p>Amazon WorkMail is a secure, managed business email and calendaring service with support for existing desktop and mobile email clients. You can access your email, contacts, and calendars using Microsoft Outlook, your browser, or other native iOS and Android email applications. You can integrate WorkMail with your existing corporate directory and control both the keys that encrypt your data and the location in which your data is stored.</p> <p>The WorkMail API is designed for the following scenarios:</p> <ul> <li> <p>Listing and describing organizations</p> </li> </ul> <ul> <li> <p>Managing users</p> </li> </ul> <ul> <li> <p>Managing groups</p> </li> </ul> <ul> <li> <p>Managing resources</p> </li> </ul> <p>All WorkMail API operations are Amazon-authenticated and certificate-signed. They not only require the use of the AWS SDK, but also allow for the exclusive use of AWS Identity and Access Management users and roles to help facilitate access, trust, and permission policies. By creating a role and allowing an IAM user to access the WorkMail site, the IAM user gains full administrative visibility into the entire WorkMail organization (or as set in the IAM policy). This includes, but is not limited to, the ability to create, update, and delete users, groups, and resources. This allows developers to perform the scenarios listed above, as well as give users the ability to grant access on a selective basis using the IAM model.</p>"
+  "version": "2.0"
 }

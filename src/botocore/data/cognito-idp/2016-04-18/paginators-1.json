@@ -42,16 +42,16 @@
       "output_token": "NextToken",
       "result_key": "UserPools"
     },
-    "ListUsersInGroup": {
-      "input_token": "NextToken",
-      "limit_key": "Limit",
-      "output_token": "NextToken",
-      "result_key": "Users"
-    },
     "ListUsers": {
       "input_token": "PaginationToken",
       "limit_key": "Limit",
       "output_token": "PaginationToken",
+      "result_key": "Users"
+    },
+    "ListUsersInGroup": {
+      "input_token": "NextToken",
+      "limit_key": "Limit",
+      "output_token": "NextToken",
       "result_key": "Users"
     }
   }

@@ -1,1289 +1,1642 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2017-09-30",
-    "endpointPrefix":"kinesisvideo",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"Kinesis Video",
-    "serviceFullName":"Amazon Kinesis Video Streams",
-    "serviceId":"Kinesis Video",
-    "signatureVersion":"v4",
-    "uid":"kinesisvideo-2017-09-30"
+  "documentation": "<p/>",
+  "metadata": {
+    "apiVersion": "2017-09-30",
+    "endpointPrefix": "kinesisvideo",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "Kinesis Video",
+    "serviceFullName": "Amazon Kinesis Video Streams",
+    "serviceId": "Kinesis Video",
+    "signatureVersion": "v4",
+    "uid": "kinesisvideo-2017-09-30"
   },
-  "operations":{
-    "CreateSignalingChannel":{
-      "name":"CreateSignalingChannel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/createSignalingChannel"
-      },
-      "input":{"shape":"CreateSignalingChannelInput"},
-      "output":{"shape":"CreateSignalingChannelOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"AccountChannelLimitExceededException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"TagsPerResourceExceededLimitException"}
+  "operations": {
+    "CreateSignalingChannel": {
+      "documentation": "<p>Creates a signaling channel. </p> <p> <code>CreateSignalingChannel</code> is an asynchronous operation.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "AccountChannelLimitExceededException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "TagsPerResourceExceededLimitException"
+        }
       ],
-      "documentation":"<p>Creates a signaling channel. </p> <p> <code>CreateSignalingChannel</code> is an asynchronous operation.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/createSignalingChannel"
+      },
+      "input": {
+        "shape": "CreateSignalingChannelInput"
+      },
+      "name": "CreateSignalingChannel",
+      "output": {
+        "shape": "CreateSignalingChannelOutput"
+      }
     },
-    "CreateStream":{
-      "name":"CreateStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/createStream"
-      },
-      "input":{"shape":"CreateStreamInput"},
-      "output":{"shape":"CreateStreamOutput"},
-      "errors":[
-        {"shape":"AccountStreamLimitExceededException"},
-        {"shape":"DeviceStreamLimitExceededException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"InvalidDeviceException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"TagsPerResourceExceededLimitException"}
+    "CreateStream": {
+      "documentation": "<p>Creates a new Kinesis video stream. </p> <p>When you create a new stream, Kinesis Video Streams assigns it a version number. When you change the stream's metadata, Kinesis Video Streams updates the version. </p> <p> <code>CreateStream</code> is an asynchronous operation.</p> <p>For information about how the service works, see <a href=\"https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html\">How it Works</a>. </p> <p>You must have permissions for the <code>KinesisVideo:CreateStream</code> action.</p>",
+      "errors": [
+        {
+          "shape": "AccountStreamLimitExceededException"
+        },
+        {
+          "shape": "DeviceStreamLimitExceededException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "InvalidDeviceException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "TagsPerResourceExceededLimitException"
+        }
       ],
-      "documentation":"<p>Creates a new Kinesis video stream. </p> <p>When you create a new stream, Kinesis Video Streams assigns it a version number. When you change the stream's metadata, Kinesis Video Streams updates the version. </p> <p> <code>CreateStream</code> is an asynchronous operation.</p> <p>For information about how the service works, see <a href=\"https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html\">How it Works</a>. </p> <p>You must have permissions for the <code>KinesisVideo:CreateStream</code> action.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/createStream"
+      },
+      "input": {
+        "shape": "CreateStreamInput"
+      },
+      "name": "CreateStream",
+      "output": {
+        "shape": "CreateStreamOutput"
+      }
     },
-    "DeleteSignalingChannel":{
-      "name":"DeleteSignalingChannel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/deleteSignalingChannel"
-      },
-      "input":{"shape":"DeleteSignalingChannelInput"},
-      "output":{"shape":"DeleteSignalingChannelOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"VersionMismatchException"}
+    "DeleteSignalingChannel": {
+      "documentation": "<p>Deletes a specified signaling channel. <code>DeleteSignalingChannel</code> is an asynchronous operation. If you don't specify the channel's current version, the most recent version is deleted.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "VersionMismatchException"
+        }
       ],
-      "documentation":"<p>Deletes a specified signaling channel. <code>DeleteSignalingChannel</code> is an asynchronous operation. If you don't specify the channel's current version, the most recent version is deleted.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/deleteSignalingChannel"
+      },
+      "input": {
+        "shape": "DeleteSignalingChannelInput"
+      },
+      "name": "DeleteSignalingChannel",
+      "output": {
+        "shape": "DeleteSignalingChannelOutput"
+      }
     },
-    "DeleteStream":{
-      "name":"DeleteStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/deleteStream"
-      },
-      "input":{"shape":"DeleteStreamInput"},
-      "output":{"shape":"DeleteStreamOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"VersionMismatchException"}
+    "DeleteStream": {
+      "documentation": "<p>Deletes a Kinesis video stream and the data contained in the stream. </p> <p>This method marks the stream for deletion, and makes the data in the stream inaccessible immediately.</p> <p> </p> <p> To ensure that you have the latest version of the stream before deleting it, you can specify the stream version. Kinesis Video Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a new version number. To get the latest stream version, use the <code>DescribeStream</code> API. </p> <p>This operation requires permission for the <code>KinesisVideo:DeleteStream</code> action.</p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "VersionMismatchException"
+        }
       ],
-      "documentation":"<p>Deletes a Kinesis video stream and the data contained in the stream. </p> <p>This method marks the stream for deletion, and makes the data in the stream inaccessible immediately.</p> <p> </p> <p> To ensure that you have the latest version of the stream before deleting it, you can specify the stream version. Kinesis Video Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a new version number. To get the latest stream version, use the <code>DescribeStream</code> API. </p> <p>This operation requires permission for the <code>KinesisVideo:DeleteStream</code> action.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/deleteStream"
+      },
+      "input": {
+        "shape": "DeleteStreamInput"
+      },
+      "name": "DeleteStream",
+      "output": {
+        "shape": "DeleteStreamOutput"
+      }
     },
-    "DescribeSignalingChannel":{
-      "name":"DescribeSignalingChannel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/describeSignalingChannel"
-      },
-      "input":{"shape":"DescribeSignalingChannelInput"},
-      "output":{"shape":"DescribeSignalingChannelOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"}
+    "DescribeSignalingChannel": {
+      "documentation": "<p>Returns the most current information about the signaling channel. You must specify either the name or the ARN of the channel that you want to describe.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Returns the most current information about the signaling channel. You must specify either the name or the ARN of the channel that you want to describe.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/describeSignalingChannel"
+      },
+      "input": {
+        "shape": "DescribeSignalingChannelInput"
+      },
+      "name": "DescribeSignalingChannel",
+      "output": {
+        "shape": "DescribeSignalingChannelOutput"
+      }
     },
-    "DescribeStream":{
-      "name":"DescribeStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/describeStream"
-      },
-      "input":{"shape":"DescribeStreamInput"},
-      "output":{"shape":"DescribeStreamOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"NotAuthorizedException"}
+    "DescribeStream": {
+      "documentation": "<p>Returns the most current information about the specified stream. You must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        }
       ],
-      "documentation":"<p>Returns the most current information about the specified stream. You must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/describeStream"
+      },
+      "input": {
+        "shape": "DescribeStreamInput"
+      },
+      "name": "DescribeStream",
+      "output": {
+        "shape": "DescribeStreamOutput"
+      }
     },
-    "GetDataEndpoint":{
-      "name":"GetDataEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/getDataEndpoint"
-      },
-      "input":{"shape":"GetDataEndpointInput"},
-      "output":{"shape":"GetDataEndpointOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"NotAuthorizedException"}
+    "GetDataEndpoint": {
+      "documentation": "<p>Gets an endpoint for a specified stream for either reading or writing. Use this endpoint in your application to read from the specified stream (using the <code>GetMedia</code> or <code>GetMediaForFragmentList</code> operations) or write to it (using the <code>PutMedia</code> operation). </p> <note> <p>The returned endpoint does not have the API name appended. The client needs to add the API name to the returned endpoint.</p> </note> <p>In the request, specify the stream either by <code>StreamName</code> or <code>StreamARN</code>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        }
       ],
-      "documentation":"<p>Gets an endpoint for a specified stream for either reading or writing. Use this endpoint in your application to read from the specified stream (using the <code>GetMedia</code> or <code>GetMediaForFragmentList</code> operations) or write to it (using the <code>PutMedia</code> operation). </p> <note> <p>The returned endpoint does not have the API name appended. The client needs to add the API name to the returned endpoint.</p> </note> <p>In the request, specify the stream either by <code>StreamName</code> or <code>StreamARN</code>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/getDataEndpoint"
+      },
+      "input": {
+        "shape": "GetDataEndpointInput"
+      },
+      "name": "GetDataEndpoint",
+      "output": {
+        "shape": "GetDataEndpointOutput"
+      }
     },
-    "GetSignalingChannelEndpoint":{
-      "name":"GetSignalingChannelEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/getSignalingChannelEndpoint"
-      },
-      "input":{"shape":"GetSignalingChannelEndpointInput"},
-      "output":{"shape":"GetSignalingChannelEndpointOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"AccessDeniedException"}
+    "GetSignalingChannelEndpoint": {
+      "documentation": "<p>Provides an endpoint for the specified signaling channel to send and receive messages. This API uses the <code>SingleMasterChannelEndpointConfiguration</code> input parameter, which consists of the <code>Protocols</code> and <code>Role</code> properties.</p> <p> <code>Protocols</code> is used to determine the communication mechanism. For example, specifying <code>WSS</code> as the protocol, results in this API producing a secure websocket endpoint, and specifying <code>HTTPS</code> as the protocol, results in this API generating an HTTPS endpoint. </p> <p> <code>Role</code> determines the messaging permissions. A <code>MASTER</code> role results in this API generating an endpoint that a client can use to communicate with any of the viewers on the channel. A <code>VIEWER</code> role results in this API generating an endpoint that a client can use to communicate only with a <code>MASTER</code>. </p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Provides an endpoint for the specified signaling channel to send and receive messages. This API uses the <code>SingleMasterChannelEndpointConfiguration</code> input parameter, which consists of the <code>Protocols</code> and <code>Role</code> properties.</p> <p> <code>Protocols</code> is used to determine the communication mechanism. For example, specifying <code>WSS</code> as the protocol, results in this API producing a secure websocket endpoint, and specifying <code>HTTPS</code> as the protocol, results in this API generating an HTTPS endpoint. </p> <p> <code>Role</code> determines the messaging permissions. A <code>MASTER</code> role results in this API generating an endpoint that a client can use to communicate with any of the viewers on the channel. A <code>VIEWER</code> role results in this API generating an endpoint that a client can use to communicate only with a <code>MASTER</code>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/getSignalingChannelEndpoint"
+      },
+      "input": {
+        "shape": "GetSignalingChannelEndpointInput"
+      },
+      "name": "GetSignalingChannelEndpoint",
+      "output": {
+        "shape": "GetSignalingChannelEndpointOutput"
+      }
     },
-    "ListSignalingChannels":{
-      "name":"ListSignalingChannels",
-      "http":{
-        "method":"POST",
-        "requestUri":"/listSignalingChannels"
-      },
-      "input":{"shape":"ListSignalingChannelsInput"},
-      "output":{"shape":"ListSignalingChannelsOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"AccessDeniedException"}
+    "ListSignalingChannels": {
+      "documentation": "<p>Returns an array of <code>ChannelInfo</code> objects. Each object describes a signaling channel. To retrieve only those channels that satisfy a specific condition, you can specify a <code>ChannelNameCondition</code>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Returns an array of <code>ChannelInfo</code> objects. Each object describes a signaling channel. To retrieve only those channels that satisfy a specific condition, you can specify a <code>ChannelNameCondition</code>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/listSignalingChannels"
+      },
+      "input": {
+        "shape": "ListSignalingChannelsInput"
+      },
+      "name": "ListSignalingChannels",
+      "output": {
+        "shape": "ListSignalingChannelsOutput"
+      }
     },
-    "ListStreams":{
-      "name":"ListStreams",
-      "http":{
-        "method":"POST",
-        "requestUri":"/listStreams"
-      },
-      "input":{"shape":"ListStreamsInput"},
-      "output":{"shape":"ListStreamsOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"}
+    "ListStreams": {
+      "documentation": "<p>Returns an array of <code>StreamInfo</code> objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a <code>StreamNameCondition</code>. </p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        }
       ],
-      "documentation":"<p>Returns an array of <code>StreamInfo</code> objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a <code>StreamNameCondition</code>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/listStreams"
+      },
+      "input": {
+        "shape": "ListStreamsInput"
+      },
+      "name": "ListStreams",
+      "output": {
+        "shape": "ListStreamsOutput"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/ListTagsForResource"
-      },
-      "input":{"shape":"ListTagsForResourceInput"},
-      "output":{"shape":"ListTagsForResourceOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Returns a list of tags associated with the specified signaling channel.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Returns a list of tags associated with the specified signaling channel.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/ListTagsForResource"
+      },
+      "input": {
+        "shape": "ListTagsForResourceInput"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceOutput"
+      }
     },
-    "ListTagsForStream":{
-      "name":"ListTagsForStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/listTagsForStream"
-      },
-      "input":{"shape":"ListTagsForStreamInput"},
-      "output":{"shape":"ListTagsForStreamOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"InvalidResourceFormatException"}
+    "ListTagsForStream": {
+      "documentation": "<p>Returns a list of tags associated with the specified stream.</p> <p>In the request, you must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "InvalidResourceFormatException"
+        }
       ],
-      "documentation":"<p>Returns a list of tags associated with the specified stream.</p> <p>In the request, you must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/listTagsForStream"
+      },
+      "input": {
+        "shape": "ListTagsForStreamInput"
+      },
+      "name": "ListTagsForStream",
+      "output": {
+        "shape": "ListTagsForStreamOutput"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/TagResource"
-      },
-      "input":{"shape":"TagResourceInput"},
-      "output":{"shape":"TagResourceOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"TagsPerResourceExceededLimitException"}
+    "TagResource": {
+      "documentation": "<p>Adds one or more tags to a signaling channel. A <i>tag</i> is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. For more information, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html\">Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "TagsPerResourceExceededLimitException"
+        }
       ],
-      "documentation":"<p>Adds one or more tags to a signaling channel. A <i>tag</i> is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. For more information, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html\">Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/TagResource"
+      },
+      "input": {
+        "shape": "TagResourceInput"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceOutput"
+      }
     },
-    "TagStream":{
-      "name":"TagStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tagStream"
-      },
-      "input":{"shape":"TagStreamInput"},
-      "output":{"shape":"TagStreamOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"InvalidResourceFormatException"},
-        {"shape":"TagsPerResourceExceededLimitException"}
+    "TagStream": {
+      "documentation": "<p>Adds one or more tags to a stream. A <i>tag</i> is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. For more information, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html\">Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>. </p> <p>You must provide either the <code>StreamName</code> or the <code>StreamARN</code>.</p> <p>This operation requires permission for the <code>KinesisVideo:TagStream</code> action.</p> <p>Kinesis video streams support up to 50 tags.</p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "InvalidResourceFormatException"
+        },
+        {
+          "shape": "TagsPerResourceExceededLimitException"
+        }
       ],
-      "documentation":"<p>Adds one or more tags to a stream. A <i>tag</i> is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. For more information, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html\">Using Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>. </p> <p>You must provide either the <code>StreamName</code> or the <code>StreamARN</code>.</p> <p>This operation requires permission for the <code>KinesisVideo:TagStream</code> action.</p> <p>Kinesis video streams support up to 50 tags.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/tagStream"
+      },
+      "input": {
+        "shape": "TagStreamInput"
+      },
+      "name": "TagStream",
+      "output": {
+        "shape": "TagStreamOutput"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/UntagResource"
-      },
-      "input":{"shape":"UntagResourceInput"},
-      "output":{"shape":"UntagResourceOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"AccessDeniedException"}
+    "UntagResource": {
+      "documentation": "<p>Removes one or more tags from a signaling channel. In the request, specify only a tag key or keys; don't specify the value. If you specify a tag key that does not exist, it's ignored.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        }
       ],
-      "documentation":"<p>Removes one or more tags from a signaling channel. In the request, specify only a tag key or keys; don't specify the value. If you specify a tag key that does not exist, it's ignored.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/UntagResource"
+      },
+      "input": {
+        "shape": "UntagResourceInput"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceOutput"
+      }
     },
-    "UntagStream":{
-      "name":"UntagStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/untagStream"
-      },
-      "input":{"shape":"UntagStreamInput"},
-      "output":{"shape":"UntagStreamOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"InvalidResourceFormatException"}
+    "UntagStream": {
+      "documentation": "<p>Removes one or more tags from a stream. In the request, specify only a tag key or keys; don't specify the value. If you specify a tag key that does not exist, it's ignored.</p> <p>In the request, you must provide the <code>StreamName</code> or <code>StreamARN</code>.</p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "InvalidResourceFormatException"
+        }
       ],
-      "documentation":"<p>Removes one or more tags from a stream. In the request, specify only a tag key or keys; don't specify the value. If you specify a tag key that does not exist, it's ignored.</p> <p>In the request, you must provide the <code>StreamName</code> or <code>StreamARN</code>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/untagStream"
+      },
+      "input": {
+        "shape": "UntagStreamInput"
+      },
+      "name": "UntagStream",
+      "output": {
+        "shape": "UntagStreamOutput"
+      }
     },
-    "UpdateDataRetention":{
-      "name":"UpdateDataRetention",
-      "http":{
-        "method":"POST",
-        "requestUri":"/updateDataRetention"
-      },
-      "input":{"shape":"UpdateDataRetentionInput"},
-      "output":{"shape":"UpdateDataRetentionOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"VersionMismatchException"}
+    "UpdateDataRetention": {
+      "documentation": "<p> Increases or decreases the stream's data retention period by the value that you specify. To indicate whether you want to increase or decrease the data retention period, specify the <code>Operation</code> parameter in the request body. In the request, you must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p> <note> <p>The retention period that you specify replaces the current value.</p> </note> <p>This operation requires permission for the <code>KinesisVideo:UpdateDataRetention</code> action.</p> <p>Changing the data retention period affects the data in the stream as follows:</p> <ul> <li> <p>If the data retention period is increased, existing data is retained for the new retention period. For example, if the data retention period is increased from one hour to seven hours, all existing data is retained for seven hours.</p> </li> <li> <p>If the data retention period is decreased, existing data is retained for the new retention period. For example, if the data retention period is decreased from seven hours to one hour, all existing data is retained for one hour, and any data older than one hour is deleted immediately.</p> </li> </ul>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "VersionMismatchException"
+        }
       ],
-      "documentation":"<p> Increases or decreases the stream's data retention period by the value that you specify. To indicate whether you want to increase or decrease the data retention period, specify the <code>Operation</code> parameter in the request body. In the request, you must specify either the <code>StreamName</code> or the <code>StreamARN</code>. </p> <note> <p>The retention period that you specify replaces the current value.</p> </note> <p>This operation requires permission for the <code>KinesisVideo:UpdateDataRetention</code> action.</p> <p>Changing the data retention period affects the data in the stream as follows:</p> <ul> <li> <p>If the data retention period is increased, existing data is retained for the new retention period. For example, if the data retention period is increased from one hour to seven hours, all existing data is retained for seven hours.</p> </li> <li> <p>If the data retention period is decreased, existing data is retained for the new retention period. For example, if the data retention period is decreased from seven hours to one hour, all existing data is retained for one hour, and any data older than one hour is deleted immediately.</p> </li> </ul>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/updateDataRetention"
+      },
+      "input": {
+        "shape": "UpdateDataRetentionInput"
+      },
+      "name": "UpdateDataRetention",
+      "output": {
+        "shape": "UpdateDataRetentionOutput"
+      }
     },
-    "UpdateSignalingChannel":{
-      "name":"UpdateSignalingChannel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/updateSignalingChannel"
-      },
-      "input":{"shape":"UpdateSignalingChannelInput"},
-      "output":{"shape":"UpdateSignalingChannelOutput"},
-      "errors":[
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"AccessDeniedException"},
-        {"shape":"VersionMismatchException"}
+    "UpdateSignalingChannel": {
+      "documentation": "<p>Updates the existing signaling channel. This is an asynchronous operation and takes time to complete. </p> <p>If the <code>MessageTtlSeconds</code> value is updated (either increased or reduced), then it only applies to new messages sent via this channel after it's been updated. Existing messages are still expire as per the previous <code>MessageTtlSeconds</code> value.</p>",
+      "errors": [
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "AccessDeniedException"
+        },
+        {
+          "shape": "VersionMismatchException"
+        }
       ],
-      "documentation":"<p>Updates the existing signaling channel. This is an asynchronous operation and takes time to complete. </p> <p>If the <code>MessageTtlSeconds</code> value is updated (either increased or reduced), then it only applies to new messages sent via this channel after it's been updated. Existing messages are still expire as per the previous <code>MessageTtlSeconds</code> value.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/updateSignalingChannel"
+      },
+      "input": {
+        "shape": "UpdateSignalingChannelInput"
+      },
+      "name": "UpdateSignalingChannel",
+      "output": {
+        "shape": "UpdateSignalingChannelOutput"
+      }
     },
-    "UpdateStream":{
-      "name":"UpdateStream",
-      "http":{
-        "method":"POST",
-        "requestUri":"/updateStream"
-      },
-      "input":{"shape":"UpdateStreamInput"},
-      "output":{"shape":"UpdateStreamOutput"},
-      "errors":[
-        {"shape":"ClientLimitExceededException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"NotAuthorizedException"},
-        {"shape":"VersionMismatchException"}
+    "UpdateStream": {
+      "documentation": "<p>Updates stream metadata, such as the device name and media type.</p> <p>You must provide the stream name or the Amazon Resource Name (ARN) of the stream.</p> <p>To make sure that you have the latest version of the stream before updating it, you can specify the stream version. Kinesis Video Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a new version number. To get the latest stream version, use the <code>DescribeStream</code> API. </p> <p> <code>UpdateStream</code> is an asynchronous operation, and takes time to complete.</p>",
+      "errors": [
+        {
+          "shape": "ClientLimitExceededException"
+        },
+        {
+          "shape": "InvalidArgumentException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "NotAuthorizedException"
+        },
+        {
+          "shape": "VersionMismatchException"
+        }
       ],
-      "documentation":"<p>Updates stream metadata, such as the device name and media type.</p> <p>You must provide the stream name or the Amazon Resource Name (ARN) of the stream.</p> <p>To make sure that you have the latest version of the stream before updating it, you can specify the stream version. Kinesis Video Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a new version number. To get the latest stream version, use the <code>DescribeStream</code> API. </p> <p> <code>UpdateStream</code> is an asynchronous operation, and takes time to complete.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/updateStream"
+      },
+      "input": {
+        "shape": "UpdateStreamInput"
+      },
+      "name": "UpdateStream",
+      "output": {
+        "shape": "UpdateStreamOutput"
+      }
     }
   },
-  "shapes":{
-    "APIName":{
-      "type":"string",
-      "enum":[
+  "shapes": {
+    "APIName": {
+      "enum": [
         "PUT_MEDIA",
         "GET_MEDIA",
         "LIST_FRAGMENTS",
         "GET_MEDIA_FOR_FRAGMENT_LIST",
         "GET_HLS_STREAMING_SESSION_URL",
         "GET_DASH_STREAMING_SESSION_URL"
-      ]
+      ],
+      "type": "string"
     },
-    "AccessDeniedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "AccessDeniedException": {
+      "documentation": "<p>You do not have required permissions to perform this operation.</p>",
+      "error": {
+        "httpStatusCode": 401
       },
-      "documentation":"<p>You do not have required permissions to perform this operation.</p>",
-      "error":{"httpStatusCode":401},
-      "exception":true
-    },
-    "AccountChannelLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>You have reached the maximum limit of active signaling channels for this AWS account in this region.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "AccountStreamLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The number of streams created for the account is too high.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "ChannelInfo":{
-      "type":"structure",
-      "members":{
-        "ChannelName":{
-          "shape":"ChannelName",
-          "documentation":"<p>The name of the signaling channel.</p>"
-        },
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel.</p>"
-        },
-        "ChannelType":{
-          "shape":"ChannelType",
-          "documentation":"<p>The type of the signaling channel.</p>"
-        },
-        "ChannelStatus":{
-          "shape":"Status",
-          "documentation":"<p>Current status of the signaling channel.</p>"
-        },
-        "CreationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time at which the signaling channel was created.</p>"
-        },
-        "SingleMasterConfiguration":{
-          "shape":"SingleMasterConfiguration",
-          "documentation":"<p>A structure that contains the configuration for the <code>SINGLE_MASTER</code> channel type.</p>"
-        },
-        "Version":{
-          "shape":"Version",
-          "documentation":"<p>The current version of the signaling channel.</p>"
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>A structure that encapsulates a signaling channel's metadata and properties.</p>"
+      "type": "structure"
     },
-    "ChannelInfoList":{
-      "type":"list",
-      "member":{"shape":"ChannelInfo"}
-    },
-    "ChannelName":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[a-zA-Z0-9_.-]+"
-    },
-    "ChannelNameCondition":{
-      "type":"structure",
-      "members":{
-        "ComparisonOperator":{
-          "shape":"ComparisonOperator",
-          "documentation":"<p>A comparison operator. Currently, you can only specify the <code>BEGINS_WITH</code> operator, which finds signaling channels whose names begin with a given prefix.</p>"
-        },
-        "ComparisonValue":{
-          "shape":"ChannelName",
-          "documentation":"<p>A value to compare.</p>"
+    "AccountChannelLimitExceededException": {
+      "documentation": "<p>You have reached the maximum limit of active signaling channels for this AWS account in this region.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>An optional input parameter for the <code>ListSignalingChannels</code> API. When this parameter is specified while invoking <code>ListSignalingChannels</code>, the API returns only the channels that satisfy a condition specified in <code>ChannelNameCondition</code>.</p>"
+      "type": "structure"
     },
-    "ChannelProtocol":{
-      "type":"string",
-      "enum":[
+    "AccountStreamLimitExceededException": {
+      "documentation": "<p>The number of streams created for the account is too high.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ChannelInfo": {
+      "documentation": "<p>A structure that encapsulates a signaling channel's metadata and properties.</p>",
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the signaling channel.</p>",
+          "shape": "ResourceARN"
+        },
+        "ChannelName": {
+          "documentation": "<p>The name of the signaling channel.</p>",
+          "shape": "ChannelName"
+        },
+        "ChannelStatus": {
+          "documentation": "<p>Current status of the signaling channel.</p>",
+          "shape": "Status"
+        },
+        "ChannelType": {
+          "documentation": "<p>The type of the signaling channel.</p>",
+          "shape": "ChannelType"
+        },
+        "CreationTime": {
+          "documentation": "<p>The time at which the signaling channel was created.</p>",
+          "shape": "Timestamp"
+        },
+        "SingleMasterConfiguration": {
+          "documentation": "<p>A structure that contains the configuration for the <code>SINGLE_MASTER</code> channel type.</p>",
+          "shape": "SingleMasterConfiguration"
+        },
+        "Version": {
+          "documentation": "<p>The current version of the signaling channel.</p>",
+          "shape": "Version"
+        }
+      },
+      "type": "structure"
+    },
+    "ChannelInfoList": {
+      "member": {
+        "shape": "ChannelInfo"
+      },
+      "type": "list"
+    },
+    "ChannelName": {
+      "max": 256,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9_.-]+",
+      "type": "string"
+    },
+    "ChannelNameCondition": {
+      "documentation": "<p>An optional input parameter for the <code>ListSignalingChannels</code> API. When this parameter is specified while invoking <code>ListSignalingChannels</code>, the API returns only the channels that satisfy a condition specified in <code>ChannelNameCondition</code>.</p>",
+      "members": {
+        "ComparisonOperator": {
+          "documentation": "<p>A comparison operator. Currently, you can only specify the <code>BEGINS_WITH</code> operator, which finds signaling channels whose names begin with a given prefix.</p>",
+          "shape": "ComparisonOperator"
+        },
+        "ComparisonValue": {
+          "documentation": "<p>A value to compare.</p>",
+          "shape": "ChannelName"
+        }
+      },
+      "type": "structure"
+    },
+    "ChannelProtocol": {
+      "enum": [
         "WSS",
         "HTTPS"
-      ]
+      ],
+      "type": "string"
     },
-    "ChannelRole":{
-      "type":"string",
-      "enum":[
+    "ChannelRole": {
+      "enum": [
         "MASTER",
         "VIEWER"
-      ]
+      ],
+      "type": "string"
     },
-    "ChannelType":{
-      "type":"string",
-      "enum":["SINGLE_MASTER"]
+    "ChannelType": {
+      "enum": [
+        "SINGLE_MASTER"
+      ],
+      "type": "string"
     },
-    "ClientLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ClientLimitExceededException": {
+      "documentation": "<p>Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.</p>",
+      "error": {
+        "httpStatusCode": 400
       },
-      "documentation":"<p>Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "ComparisonOperator":{
-      "type":"string",
-      "enum":["BEGINS_WITH"]
-    },
-    "CreateSignalingChannelInput":{
-      "type":"structure",
-      "required":["ChannelName"],
-      "members":{
-        "ChannelName":{
-          "shape":"ChannelName",
-          "documentation":"<p>A name for the signaling channel that you are creating. It must be unique for each account and region.</p>"
-        },
-        "ChannelType":{
-          "shape":"ChannelType",
-          "documentation":"<p>A type of the signaling channel that you are creating. Currently, <code>SINGLE_MASTER</code> is the only supported channel type. </p>"
-        },
-        "SingleMasterConfiguration":{
-          "shape":"SingleMasterConfiguration",
-          "documentation":"<p>A structure containing the configuration for the <code>SINGLE_MASTER</code> channel type. </p>"
-        },
-        "Tags":{
-          "shape":"TagOnCreateList",
-          "documentation":"<p>A set of tags (key/value pairs) that you want to associate with this channel.</p>"
-        }
-      }
-    },
-    "CreateSignalingChannelOutput":{
-      "type":"structure",
-      "members":{
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the created channel.</p>"
-        }
-      }
-    },
-    "CreateStreamInput":{
-      "type":"structure",
-      "required":["StreamName"],
-      "members":{
-        "DeviceName":{
-          "shape":"DeviceName",
-          "documentation":"<p>The name of the device that is writing to the stream. </p> <note> <p>In the current implementation, Kinesis Video Streams does not use this name.</p> </note>"
-        },
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>A name for the stream that you are creating.</p> <p>The stream name is an identifier for the stream, and must be unique for each account and region.</p>"
-        },
-        "MediaType":{
-          "shape":"MediaType",
-          "documentation":"<p>The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see <a href=\"http://www.iana.org/assignments/media-types/media-types.xhtml\">Media Types</a>. If you choose to specify the <code>MediaType</code>, see <a href=\"https://tools.ietf.org/html/rfc6838#section-4.2\">Naming Requirements</a> for guidelines.</p> <p>Example valid values include \"video/h264\" and \"video/h264,audio/aac\".</p> <p>This parameter is optional; the default value is <code>null</code> (or empty in JSON).</p>"
-        },
-        "KmsKeyId":{
-          "shape":"KmsKeyId",
-          "documentation":"<p>The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data.</p> <p>If no key ID is specified, the default, Kinesis Video-managed key (<code>aws/kinesisvideo</code>) is used.</p> <p> For more information, see <a href=\"https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters\">DescribeKey</a>. </p>"
-        },
-        "DataRetentionInHours":{
-          "shape":"DataRetentionInHours",
-          "documentation":"<p>The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream.</p> <p>The default value is 0, indicating that the stream does not persist data.</p> <p>When the <code>DataRetentionInHours</code> value is 0, consumers can still consume the fragments that remain in the service host buffer, which has a retention time limit of 5 minutes and a retention memory limit of 200 MB. Fragments are removed from the buffer when either limit is reached.</p>"
-        },
-        "Tags":{
-          "shape":"ResourceTags",
-          "documentation":"<p>A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).</p>"
-        }
-      }
-    },
-    "CreateStreamOutput":{
-      "type":"structure",
-      "members":{
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream.</p>"
-        }
-      }
-    },
-    "DataEndpoint":{"type":"string"},
-    "DataRetentionChangeInHours":{
-      "type":"integer",
-      "min":1
-    },
-    "DataRetentionInHours":{
-      "type":"integer",
-      "min":0
-    },
-    "DeleteSignalingChannelInput":{
-      "type":"structure",
-      "required":["ChannelARN"],
-      "members":{
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel that you want to delete.</p>"
-        },
-        "CurrentVersion":{
-          "shape":"Version",
-          "documentation":"<p>The current version of the signaling channel that you want to delete. You can obtain the current version by invoking the <code>DescribeSignalingChannel</code> or <code>ListSignalingChannels</code> APIs.</p>"
-        }
-      }
-    },
-    "DeleteSignalingChannelOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteStreamInput":{
-      "type":"structure",
-      "required":["StreamARN"],
-      "members":{
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream that you want to delete. </p>"
-        },
-        "CurrentVersion":{
-          "shape":"Version",
-          "documentation":"<p>Optional: The version of the stream that you want to delete. </p> <p>Specify the version as a safeguard to ensure that your are deleting the correct stream. To get the stream version, use the <code>DescribeStream</code> API.</p> <p>If not specified, only the <code>CreationTime</code> is checked before deleting the stream.</p>"
-        }
-      }
-    },
-    "DeleteStreamOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DescribeSignalingChannelInput":{
-      "type":"structure",
-      "members":{
-        "ChannelName":{
-          "shape":"ChannelName",
-          "documentation":"<p>The name of the signaling channel that you want to describe.</p>"
-        },
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel that you want to describe.</p>"
-        }
-      }
-    },
-    "DescribeSignalingChannelOutput":{
-      "type":"structure",
-      "members":{
-        "ChannelInfo":{
-          "shape":"ChannelInfo",
-          "documentation":"<p>A structure that encapsulates the specified signaling channel's metadata and properties.</p>"
-        }
-      }
-    },
-    "DescribeStreamInput":{
-      "type":"structure",
-      "members":{
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream.</p>"
-        },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream.</p>"
-        }
-      }
-    },
-    "DescribeStreamOutput":{
-      "type":"structure",
-      "members":{
-        "StreamInfo":{
-          "shape":"StreamInfo",
-          "documentation":"<p>An object that describes the stream.</p>"
-        }
-      }
-    },
-    "DeviceName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[a-zA-Z0-9_.-]+"
-    },
-    "DeviceStreamLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>Not implemented. </p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "ErrorMessage":{"type":"string"},
-    "GetDataEndpointInput":{
-      "type":"structure",
-      "required":["APIName"],
-      "members":{
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream that you want to get the endpoint for. You must specify either this parameter or a <code>StreamARN</code> in the request.</p>"
-        },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream that you want to get the endpoint for. You must specify either this parameter or a <code>StreamName</code> in the request. </p>"
-        },
-        "APIName":{
-          "shape":"APIName",
-          "documentation":"<p>The name of the API action for which to get an endpoint.</p>"
-        }
-      }
-    },
-    "GetDataEndpointOutput":{
-      "type":"structure",
-      "members":{
-        "DataEndpoint":{
-          "shape":"DataEndpoint",
-          "documentation":"<p>The endpoint value. To read data from the stream or to write data to it, specify this endpoint in your application.</p>"
-        }
-      }
-    },
-    "GetSignalingChannelEndpointInput":{
-      "type":"structure",
-      "required":["ChannelARN"],
-      "members":{
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signalling channel for which you want to get an endpoint.</p>"
-        },
-        "SingleMasterChannelEndpointConfiguration":{
-          "shape":"SingleMasterChannelEndpointConfiguration",
-          "documentation":"<p>A structure containing the endpoint configuration for the <code>SINGLE_MASTER</code> channel type.</p>"
-        }
-      }
-    },
-    "GetSignalingChannelEndpointOutput":{
-      "type":"structure",
-      "members":{
-        "ResourceEndpointList":{
-          "shape":"ResourceEndpointList",
-          "documentation":"<p>A list of endpoints for the specified signaling channel.</p>"
-        }
-      }
-    },
-    "InvalidArgumentException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The value for this input parameter is invalid.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "InvalidDeviceException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>Not implemented.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "InvalidResourceFormatException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The format of the <code>StreamARN</code> is invalid.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
-    },
-    "KmsKeyId":{
-      "type":"string",
-      "max":2048,
-      "min":1
-    },
-    "ListOfProtocols":{
-      "type":"list",
-      "member":{"shape":"ChannelProtocol"},
-      "max":5,
-      "min":1
-    },
-    "ListSignalingChannelsInput":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"ListStreamsInputLimit",
-          "documentation":"<p>The maximum number of channels to return in the response. The default is 500.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter, when the result of a <code>ListSignalingChannels</code> operation is truncated, the call returns the <code>NextToken</code> in the response. To get another batch of channels, provide this token in your next request.</p>"
-        },
-        "ChannelNameCondition":{
-          "shape":"ChannelNameCondition",
-          "documentation":"<p>Optional: Returns only the channels that satisfy a specific condition.</p>"
-        }
-      }
-    },
-    "ListSignalingChannelsOutput":{
-      "type":"structure",
-      "members":{
-        "ChannelInfoList":{
-          "shape":"ChannelInfoList",
-          "documentation":"<p>An array of <code>ChannelInfo</code> objects.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If the response is truncated, the call returns this element with a token. To get the next batch of streams, use this token in your next request.</p>"
-        }
-      }
-    },
-    "ListStreamsInput":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"ListStreamsInputLimit",
-          "documentation":"<p>The maximum number of streams to return in the response. The default is 10,000.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter, when the result of a <code>ListStreams</code> operation is truncated, the call returns the <code>NextToken</code> in the response. To get another batch of streams, provide this token in your next request.</p>"
-        },
-        "StreamNameCondition":{
-          "shape":"StreamNameCondition",
-          "documentation":"<p>Optional: Returns only streams that satisfy a specific condition. Currently, you can specify only the prefix of a stream name as a condition. </p>"
-        }
-      }
-    },
-    "ListStreamsInputLimit":{
-      "type":"integer",
-      "max":10000,
-      "min":1
-    },
-    "ListStreamsOutput":{
-      "type":"structure",
-      "members":{
-        "StreamInfoList":{
-          "shape":"StreamInfoList",
-          "documentation":"<p>An array of <code>StreamInfo</code> objects.</p>"
-        },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If the response is truncated, the call returns this element with a token. To get the next batch of streams, use this token in your next request. </p>"
-        }
-      }
-    },
-    "ListTagsForResourceInput":{
-      "type":"structure",
-      "required":["ResourceARN"],
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter and the result of a ListTagsForResource call is truncated, the response includes a token that you can use in the next request to fetch the next batch of tags. </p>"
-        },
-        "ResourceARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel for which you want to list tags.</p>"
-        }
-      }
-    },
-    "ListTagsForResourceOutput":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter and the result of a ListTagsForResource call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags. </p>"
-        },
-        "Tags":{
-          "shape":"ResourceTags",
-          "documentation":"<p>A map of tag keys and values associated with the specified signaling channel.</p>"
-        }
-      }
-    },
-    "ListTagsForStreamInput":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter and the result of a <code>ListTagsForStream</code> call is truncated, the response includes a token that you can use in the next request to fetch the next batch of tags.</p>"
-        },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream that you want to list tags for.</p>"
-        },
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream that you want to list tags for.</p>"
-        }
-      }
-    },
-    "ListTagsForStreamOutput":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If you specify this parameter and the result of a <code>ListTags</code> call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags.</p>"
-        },
-        "Tags":{
-          "shape":"ResourceTags",
-          "documentation":"<p>A map of tag keys and values associated with the specified stream.</p>"
-        }
-      }
-    },
-    "MediaType":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[\\w\\-\\.\\+]+/[\\w\\-\\.\\+]+(,[\\w\\-\\.\\+]+/[\\w\\-\\.\\+]+)*"
-    },
-    "MessageTtlSeconds":{
-      "type":"integer",
-      "max":120,
-      "min":5
-    },
-    "NextToken":{
-      "type":"string",
-      "max":512,
-      "min":0,
-      "pattern":"[a-zA-Z0-9+/=]*"
-    },
-    "NotAuthorizedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The caller is not authorized to perform this operation.</p>",
-      "error":{"httpStatusCode":401},
-      "exception":true
-    },
-    "ResourceARN":{
-      "type":"string",
-      "max":1024,
-      "min":1,
-      "pattern":"arn:aws:kinesisvideo:[a-z0-9-]+:[0-9]+:[a-z]+/[a-zA-Z0-9_.-]+/[0-9]+"
-    },
-    "ResourceEndpoint":{"type":"string"},
-    "ResourceEndpointList":{
-      "type":"list",
-      "member":{"shape":"ResourceEndpointListItem"}
-    },
-    "ResourceEndpointListItem":{
-      "type":"structure",
-      "members":{
-        "Protocol":{
-          "shape":"ChannelProtocol",
-          "documentation":"<p>The protocol of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>"
-        },
-        "ResourceEndpoint":{
-          "shape":"ResourceEndpoint",
-          "documentation":"<p>The endpoint of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>"
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
         }
       },
-      "documentation":"<p>An object that describes the endpoint of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>"
+      "type": "structure"
     },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>The stream is currently not available for this operation.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+    "ComparisonOperator": {
+      "enum": [
+        "BEGINS_WITH"
+      ],
+      "type": "string"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "documentation":"<p>Amazon Kinesis Video Streams can't find the stream that you specified.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "ResourceTags":{
-      "type":"map",
-      "key":{"shape":"TagKey"},
-      "value":{"shape":"TagValue"},
-      "max":50,
-      "min":1
-    },
-    "SingleMasterChannelEndpointConfiguration":{
-      "type":"structure",
-      "members":{
-        "Protocols":{
-          "shape":"ListOfProtocols",
-          "documentation":"<p>This property is used to determine the nature of communication over this <code>SINGLE_MASTER</code> signaling channel. If <code>WSS</code> is specified, this API returns a websocket endpoint. If <code>HTTPS</code> is specified, this API returns an <code>HTTPS</code> endpoint.</p>"
+    "CreateSignalingChannelInput": {
+      "members": {
+        "ChannelName": {
+          "documentation": "<p>A name for the signaling channel that you are creating. It must be unique for each account and region.</p>",
+          "shape": "ChannelName"
         },
-        "Role":{
-          "shape":"ChannelRole",
-          "documentation":"<p>This property is used to determine messaging permissions in this <code>SINGLE_MASTER</code> signaling channel. If <code>MASTER</code> is specified, this API returns an endpoint that a client can use to receive offers from and send answers to any of the viewers on this signaling channel. If <code>VIEWER</code> is specified, this API returns an endpoint that a client can use only to send offers to another <code>MASTER</code> client on this signaling channel. </p>"
+        "ChannelType": {
+          "documentation": "<p>A type of the signaling channel that you are creating. Currently, <code>SINGLE_MASTER</code> is the only supported channel type. </p>",
+          "shape": "ChannelType"
+        },
+        "SingleMasterConfiguration": {
+          "documentation": "<p>A structure containing the configuration for the <code>SINGLE_MASTER</code> channel type. </p>",
+          "shape": "SingleMasterConfiguration"
+        },
+        "Tags": {
+          "documentation": "<p>A set of tags (key/value pairs) that you want to associate with this channel.</p>",
+          "shape": "TagOnCreateList"
         }
       },
-      "documentation":"<p>An object that contains the endpoint configuration for the <code>SINGLE_MASTER</code> channel type. </p>"
+      "required": [
+        "ChannelName"
+      ],
+      "type": "structure"
     },
-    "SingleMasterConfiguration":{
-      "type":"structure",
-      "members":{
-        "MessageTtlSeconds":{
-          "shape":"MessageTtlSeconds",
-          "documentation":"<p>The period of time a signaling channel retains underlivered messages before they are discarded.</p>"
+    "CreateSignalingChannelOutput": {
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the created channel.</p>",
+          "shape": "ResourceARN"
         }
       },
-      "documentation":"<p>A structure that contains the configuration for the <code>SINGLE_MASTER</code> channel type.</p>"
+      "type": "structure"
     },
-    "Status":{
-      "type":"string",
-      "enum":[
+    "CreateStreamInput": {
+      "members": {
+        "DataRetentionInHours": {
+          "documentation": "<p>The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream.</p> <p>The default value is 0, indicating that the stream does not persist data.</p> <p>When the <code>DataRetentionInHours</code> value is 0, consumers can still consume the fragments that remain in the service host buffer, which has a retention time limit of 5 minutes and a retention memory limit of 200 MB. Fragments are removed from the buffer when either limit is reached.</p>",
+          "shape": "DataRetentionInHours"
+        },
+        "DeviceName": {
+          "documentation": "<p>The name of the device that is writing to the stream. </p> <note> <p>In the current implementation, Kinesis Video Streams does not use this name.</p> </note>",
+          "shape": "DeviceName"
+        },
+        "KmsKeyId": {
+          "documentation": "<p>The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data.</p> <p>If no key ID is specified, the default, Kinesis Video-managed key (<code>aws/kinesisvideo</code>) is used.</p> <p> For more information, see <a href=\"https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters\">DescribeKey</a>. </p>",
+          "shape": "KmsKeyId"
+        },
+        "MediaType": {
+          "documentation": "<p>The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see <a href=\"http://www.iana.org/assignments/media-types/media-types.xhtml\">Media Types</a>. If you choose to specify the <code>MediaType</code>, see <a href=\"https://tools.ietf.org/html/rfc6838#section-4.2\">Naming Requirements</a> for guidelines.</p> <p>Example valid values include \"video/h264\" and \"video/h264,audio/aac\".</p> <p>This parameter is optional; the default value is <code>null</code> (or empty in JSON).</p>",
+          "shape": "MediaType"
+        },
+        "StreamName": {
+          "documentation": "<p>A name for the stream that you are creating.</p> <p>The stream name is an identifier for the stream, and must be unique for each account and region.</p>",
+          "shape": "StreamName"
+        },
+        "Tags": {
+          "documentation": "<p>A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).</p>",
+          "shape": "ResourceTags"
+        }
+      },
+      "required": [
+        "StreamName"
+      ],
+      "type": "structure"
+    },
+    "CreateStreamOutput": {
+      "members": {
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream.</p>",
+          "shape": "ResourceARN"
+        }
+      },
+      "type": "structure"
+    },
+    "DataEndpoint": {
+      "type": "string"
+    },
+    "DataRetentionChangeInHours": {
+      "min": 1,
+      "type": "integer"
+    },
+    "DataRetentionInHours": {
+      "min": 0,
+      "type": "integer"
+    },
+    "DeleteSignalingChannelInput": {
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the signaling channel that you want to delete.</p>",
+          "shape": "ResourceARN"
+        },
+        "CurrentVersion": {
+          "documentation": "<p>The current version of the signaling channel that you want to delete. You can obtain the current version by invoking the <code>DescribeSignalingChannel</code> or <code>ListSignalingChannels</code> APIs.</p>",
+          "shape": "Version"
+        }
+      },
+      "required": [
+        "ChannelARN"
+      ],
+      "type": "structure"
+    },
+    "DeleteSignalingChannelOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteStreamInput": {
+      "members": {
+        "CurrentVersion": {
+          "documentation": "<p>Optional: The version of the stream that you want to delete. </p> <p>Specify the version as a safeguard to ensure that your are deleting the correct stream. To get the stream version, use the <code>DescribeStream</code> API.</p> <p>If not specified, only the <code>CreationTime</code> is checked before deleting the stream.</p>",
+          "shape": "Version"
+        },
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream that you want to delete. </p>",
+          "shape": "ResourceARN"
+        }
+      },
+      "required": [
+        "StreamARN"
+      ],
+      "type": "structure"
+    },
+    "DeleteStreamOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "DescribeSignalingChannelInput": {
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the signaling channel that you want to describe.</p>",
+          "shape": "ResourceARN"
+        },
+        "ChannelName": {
+          "documentation": "<p>The name of the signaling channel that you want to describe.</p>",
+          "shape": "ChannelName"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeSignalingChannelOutput": {
+      "members": {
+        "ChannelInfo": {
+          "documentation": "<p>A structure that encapsulates the specified signaling channel's metadata and properties.</p>",
+          "shape": "ChannelInfo"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeStreamInput": {
+      "members": {
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream.</p>",
+          "shape": "ResourceARN"
+        },
+        "StreamName": {
+          "documentation": "<p>The name of the stream.</p>",
+          "shape": "StreamName"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeStreamOutput": {
+      "members": {
+        "StreamInfo": {
+          "documentation": "<p>An object that describes the stream.</p>",
+          "shape": "StreamInfo"
+        }
+      },
+      "type": "structure"
+    },
+    "DeviceName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9_.-]+",
+      "type": "string"
+    },
+    "DeviceStreamLimitExceededException": {
+      "documentation": "<p>Not implemented. </p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ErrorMessage": {
+      "type": "string"
+    },
+    "GetDataEndpointInput": {
+      "members": {
+        "APIName": {
+          "documentation": "<p>The name of the API action for which to get an endpoint.</p>",
+          "shape": "APIName"
+        },
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream that you want to get the endpoint for. You must specify either this parameter or a <code>StreamName</code> in the request. </p>",
+          "shape": "ResourceARN"
+        },
+        "StreamName": {
+          "documentation": "<p>The name of the stream that you want to get the endpoint for. You must specify either this parameter or a <code>StreamARN</code> in the request.</p>",
+          "shape": "StreamName"
+        }
+      },
+      "required": [
+        "APIName"
+      ],
+      "type": "structure"
+    },
+    "GetDataEndpointOutput": {
+      "members": {
+        "DataEndpoint": {
+          "documentation": "<p>The endpoint value. To read data from the stream or to write data to it, specify this endpoint in your application.</p>",
+          "shape": "DataEndpoint"
+        }
+      },
+      "type": "structure"
+    },
+    "GetSignalingChannelEndpointInput": {
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the signalling channel for which you want to get an endpoint.</p>",
+          "shape": "ResourceARN"
+        },
+        "SingleMasterChannelEndpointConfiguration": {
+          "documentation": "<p>A structure containing the endpoint configuration for the <code>SINGLE_MASTER</code> channel type.</p>",
+          "shape": "SingleMasterChannelEndpointConfiguration"
+        }
+      },
+      "required": [
+        "ChannelARN"
+      ],
+      "type": "structure"
+    },
+    "GetSignalingChannelEndpointOutput": {
+      "members": {
+        "ResourceEndpointList": {
+          "documentation": "<p>A list of endpoints for the specified signaling channel.</p>",
+          "shape": "ResourceEndpointList"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidArgumentException": {
+      "documentation": "<p>The value for this input parameter is invalid.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidDeviceException": {
+      "documentation": "<p>Not implemented.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidResourceFormatException": {
+      "documentation": "<p>The format of the <code>StreamARN</code> is invalid.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "KmsKeyId": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
+    },
+    "ListOfProtocols": {
+      "max": 5,
+      "member": {
+        "shape": "ChannelProtocol"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "ListSignalingChannelsInput": {
+      "members": {
+        "ChannelNameCondition": {
+          "documentation": "<p>Optional: Returns only the channels that satisfy a specific condition.</p>",
+          "shape": "ChannelNameCondition"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of channels to return in the response. The default is 500.</p>",
+          "shape": "ListStreamsInputLimit"
+        },
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter, when the result of a <code>ListSignalingChannels</code> operation is truncated, the call returns the <code>NextToken</code> in the response. To get another batch of channels, provide this token in your next request.</p>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ListSignalingChannelsOutput": {
+      "members": {
+        "ChannelInfoList": {
+          "documentation": "<p>An array of <code>ChannelInfo</code> objects.</p>",
+          "shape": "ChannelInfoList"
+        },
+        "NextToken": {
+          "documentation": "<p>If the response is truncated, the call returns this element with a token. To get the next batch of streams, use this token in your next request.</p>",
+          "shape": "NextToken"
+        }
+      },
+      "type": "structure"
+    },
+    "ListStreamsInput": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The maximum number of streams to return in the response. The default is 10,000.</p>",
+          "shape": "ListStreamsInputLimit"
+        },
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter, when the result of a <code>ListStreams</code> operation is truncated, the call returns the <code>NextToken</code> in the response. To get another batch of streams, provide this token in your next request.</p>",
+          "shape": "NextToken"
+        },
+        "StreamNameCondition": {
+          "documentation": "<p>Optional: Returns only streams that satisfy a specific condition. Currently, you can specify only the prefix of a stream name as a condition. </p>",
+          "shape": "StreamNameCondition"
+        }
+      },
+      "type": "structure"
+    },
+    "ListStreamsInputLimit": {
+      "max": 10000,
+      "min": 1,
+      "type": "integer"
+    },
+    "ListStreamsOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If the response is truncated, the call returns this element with a token. To get the next batch of streams, use this token in your next request. </p>",
+          "shape": "NextToken"
+        },
+        "StreamInfoList": {
+          "documentation": "<p>An array of <code>StreamInfo</code> objects.</p>",
+          "shape": "StreamInfoList"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForResourceInput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter and the result of a ListTagsForResource call is truncated, the response includes a token that you can use in the next request to fetch the next batch of tags. </p>",
+          "shape": "NextToken"
+        },
+        "ResourceARN": {
+          "documentation": "<p>The ARN of the signaling channel for which you want to list tags.</p>",
+          "shape": "ResourceARN"
+        }
+      },
+      "required": [
+        "ResourceARN"
+      ],
+      "type": "structure"
+    },
+    "ListTagsForResourceOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter and the result of a ListTagsForResource call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags. </p>",
+          "shape": "NextToken"
+        },
+        "Tags": {
+          "documentation": "<p>A map of tag keys and values associated with the specified signaling channel.</p>",
+          "shape": "ResourceTags"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForStreamInput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter and the result of a <code>ListTagsForStream</code> call is truncated, the response includes a token that you can use in the next request to fetch the next batch of tags.</p>",
+          "shape": "NextToken"
+        },
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream that you want to list tags for.</p>",
+          "shape": "ResourceARN"
+        },
+        "StreamName": {
+          "documentation": "<p>The name of the stream that you want to list tags for.</p>",
+          "shape": "StreamName"
+        }
+      },
+      "type": "structure"
+    },
+    "ListTagsForStreamOutput": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If you specify this parameter and the result of a <code>ListTags</code> call is truncated, the response includes a token that you can use in the next request to fetch the next set of tags.</p>",
+          "shape": "NextToken"
+        },
+        "Tags": {
+          "documentation": "<p>A map of tag keys and values associated with the specified stream.</p>",
+          "shape": "ResourceTags"
+        }
+      },
+      "type": "structure"
+    },
+    "MediaType": {
+      "max": 128,
+      "min": 1,
+      "pattern": "[\\w\\-\\.\\+]+/[\\w\\-\\.\\+]+(,[\\w\\-\\.\\+]+/[\\w\\-\\.\\+]+)*",
+      "type": "string"
+    },
+    "MessageTtlSeconds": {
+      "max": 120,
+      "min": 5,
+      "type": "integer"
+    },
+    "NextToken": {
+      "max": 512,
+      "min": 0,
+      "pattern": "[a-zA-Z0-9+/=]*",
+      "type": "string"
+    },
+    "NotAuthorizedException": {
+      "documentation": "<p>The caller is not authorized to perform this operation.</p>",
+      "error": {
+        "httpStatusCode": 401
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceARN": {
+      "max": 1024,
+      "min": 1,
+      "pattern": "arn:aws:kinesisvideo:[a-z0-9-]+:[0-9]+:[a-z]+/[a-zA-Z0-9_.-]+/[0-9]+",
+      "type": "string"
+    },
+    "ResourceEndpoint": {
+      "type": "string"
+    },
+    "ResourceEndpointList": {
+      "member": {
+        "shape": "ResourceEndpointListItem"
+      },
+      "type": "list"
+    },
+    "ResourceEndpointListItem": {
+      "documentation": "<p>An object that describes the endpoint of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>",
+      "members": {
+        "Protocol": {
+          "documentation": "<p>The protocol of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>",
+          "shape": "ChannelProtocol"
+        },
+        "ResourceEndpoint": {
+          "documentation": "<p>The endpoint of the signaling channel returned by the <code>GetSignalingChannelEndpoint</code> API.</p>",
+          "shape": "ResourceEndpoint"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceInUseException": {
+      "documentation": "<p>The stream is currently not available for this operation.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>Amazon Kinesis Video Streams can't find the stream that you specified.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceTags": {
+      "key": {
+        "shape": "TagKey"
+      },
+      "max": 50,
+      "min": 1,
+      "type": "map",
+      "value": {
+        "shape": "TagValue"
+      }
+    },
+    "SingleMasterChannelEndpointConfiguration": {
+      "documentation": "<p>An object that contains the endpoint configuration for the <code>SINGLE_MASTER</code> channel type. </p>",
+      "members": {
+        "Protocols": {
+          "documentation": "<p>This property is used to determine the nature of communication over this <code>SINGLE_MASTER</code> signaling channel. If <code>WSS</code> is specified, this API returns a websocket endpoint. If <code>HTTPS</code> is specified, this API returns an <code>HTTPS</code> endpoint.</p>",
+          "shape": "ListOfProtocols"
+        },
+        "Role": {
+          "documentation": "<p>This property is used to determine messaging permissions in this <code>SINGLE_MASTER</code> signaling channel. If <code>MASTER</code> is specified, this API returns an endpoint that a client can use to receive offers from and send answers to any of the viewers on this signaling channel. If <code>VIEWER</code> is specified, this API returns an endpoint that a client can use only to send offers to another <code>MASTER</code> client on this signaling channel. </p>",
+          "shape": "ChannelRole"
+        }
+      },
+      "type": "structure"
+    },
+    "SingleMasterConfiguration": {
+      "documentation": "<p>A structure that contains the configuration for the <code>SINGLE_MASTER</code> channel type.</p>",
+      "members": {
+        "MessageTtlSeconds": {
+          "documentation": "<p>The period of time a signaling channel retains underlivered messages before they are discarded.</p>",
+          "shape": "MessageTtlSeconds"
+        }
+      },
+      "type": "structure"
+    },
+    "Status": {
+      "enum": [
         "CREATING",
         "ACTIVE",
         "UPDATING",
         "DELETING"
-      ]
+      ],
+      "type": "string"
     },
-    "StreamInfo":{
-      "type":"structure",
-      "members":{
-        "DeviceName":{
-          "shape":"DeviceName",
-          "documentation":"<p>The name of the device that is associated with the stream.</p>"
+    "StreamInfo": {
+      "documentation": "<p>An object describing a Kinesis video stream.</p>",
+      "members": {
+        "CreationTime": {
+          "documentation": "<p>A time stamp that indicates when the stream was created.</p>",
+          "shape": "Timestamp"
         },
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream.</p>"
+        "DataRetentionInHours": {
+          "documentation": "<p>How long the stream retains data, in hours.</p>",
+          "shape": "DataRetentionInHours"
         },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream.</p>"
+        "DeviceName": {
+          "documentation": "<p>The name of the device that is associated with the stream.</p>",
+          "shape": "DeviceName"
         },
-        "MediaType":{
-          "shape":"MediaType",
-          "documentation":"<p>The <code>MediaType</code> of the stream. </p>"
+        "KmsKeyId": {
+          "documentation": "<p>The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams uses to encrypt data on the stream.</p>",
+          "shape": "KmsKeyId"
         },
-        "KmsKeyId":{
-          "shape":"KmsKeyId",
-          "documentation":"<p>The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams uses to encrypt data on the stream.</p>"
+        "MediaType": {
+          "documentation": "<p>The <code>MediaType</code> of the stream. </p>",
+          "shape": "MediaType"
         },
-        "Version":{
-          "shape":"Version",
-          "documentation":"<p>The version of the stream.</p>"
+        "Status": {
+          "documentation": "<p>The status of the stream.</p>",
+          "shape": "Status"
         },
-        "Status":{
-          "shape":"Status",
-          "documentation":"<p>The status of the stream.</p>"
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream.</p>",
+          "shape": "ResourceARN"
         },
-        "CreationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>A time stamp that indicates when the stream was created.</p>"
+        "StreamName": {
+          "documentation": "<p>The name of the stream.</p>",
+          "shape": "StreamName"
         },
-        "DataRetentionInHours":{
-          "shape":"DataRetentionInHours",
-          "documentation":"<p>How long the stream retains data, in hours.</p>"
+        "Version": {
+          "documentation": "<p>The version of the stream.</p>",
+          "shape": "Version"
         }
       },
-      "documentation":"<p>An object describing a Kinesis video stream.</p>"
+      "type": "structure"
     },
-    "StreamInfoList":{
-      "type":"list",
-      "member":{"shape":"StreamInfo"}
+    "StreamInfoList": {
+      "member": {
+        "shape": "StreamInfo"
+      },
+      "type": "list"
     },
-    "StreamName":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[a-zA-Z0-9_.-]+"
+    "StreamName": {
+      "max": 256,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9_.-]+",
+      "type": "string"
     },
-    "StreamNameCondition":{
-      "type":"structure",
-      "members":{
-        "ComparisonOperator":{
-          "shape":"ComparisonOperator",
-          "documentation":"<p>A comparison operator. Currently, you can specify only the <code>BEGINS_WITH</code> operator, which finds streams whose names start with a given prefix.</p>"
+    "StreamNameCondition": {
+      "documentation": "<p>Specifies the condition that streams must satisfy to be returned when you list streams (see the <code>ListStreams</code> API). A condition has a comparison operation and a value. Currently, you can specify only the <code>BEGINS_WITH</code> operator, which finds streams whose names start with a given prefix. </p>",
+      "members": {
+        "ComparisonOperator": {
+          "documentation": "<p>A comparison operator. Currently, you can specify only the <code>BEGINS_WITH</code> operator, which finds streams whose names start with a given prefix.</p>",
+          "shape": "ComparisonOperator"
         },
-        "ComparisonValue":{
-          "shape":"StreamName",
-          "documentation":"<p>A value to compare.</p>"
+        "ComparisonValue": {
+          "documentation": "<p>A value to compare.</p>",
+          "shape": "StreamName"
         }
       },
-      "documentation":"<p>Specifies the condition that streams must satisfy to be returned when you list streams (see the <code>ListStreams</code> API). A condition has a comparison operation and a value. Currently, you can specify only the <code>BEGINS_WITH</code> operator, which finds streams whose names start with a given prefix. </p>"
+      "type": "structure"
     },
-    "Tag":{
-      "type":"structure",
-      "required":[
+    "Tag": {
+      "documentation": "<p>A key and value pair that is associated with the specified signaling channel.</p>",
+      "members": {
+        "Key": {
+          "documentation": "<p>The key of the tag that is associated with the specified signaling channel.</p>",
+          "shape": "TagKey"
+        },
+        "Value": {
+          "documentation": "<p>The value of the tag that is associated with the specified signaling channel.</p>",
+          "shape": "TagValue"
+        }
+      },
+      "required": [
         "Key",
         "Value"
       ],
-      "members":{
-        "Key":{
-          "shape":"TagKey",
-          "documentation":"<p>The key of the tag that is associated with the specified signaling channel.</p>"
+      "type": "structure"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+      "type": "string"
+    },
+    "TagKeyList": {
+      "max": 50,
+      "member": {
+        "shape": "TagKey"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "TagList": {
+      "max": 50,
+      "member": {
+        "shape": "Tag"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "TagOnCreateList": {
+      "max": 50,
+      "member": {
+        "shape": "Tag"
+      },
+      "min": 0,
+      "type": "list"
+    },
+    "TagResourceInput": {
+      "members": {
+        "ResourceARN": {
+          "documentation": "<p>The ARN of the signaling channel to which you want to add tags.</p>",
+          "shape": "ResourceARN"
         },
-        "Value":{
-          "shape":"TagValue",
-          "documentation":"<p>The value of the tag that is associated with the specified signaling channel.</p>"
+        "Tags": {
+          "documentation": "<p>A list of tags to associate with the specified signaling channel. Each tag is a key-value pair.</p>",
+          "shape": "TagList"
         }
       },
-      "documentation":"<p>A key and value pair that is associated with the specified signaling channel.</p>"
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
-    },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"},
-      "max":50,
-      "min":1
-    },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"},
-      "max":50,
-      "min":1
-    },
-    "TagOnCreateList":{
-      "type":"list",
-      "member":{"shape":"Tag"},
-      "max":50,
-      "min":0
-    },
-    "TagResourceInput":{
-      "type":"structure",
-      "required":[
+      "required": [
         "ResourceARN",
         "Tags"
       ],
-      "members":{
-        "ResourceARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel to which you want to add tags.</p>"
+      "type": "structure"
+    },
+    "TagResourceOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagStreamInput": {
+      "members": {
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource that you want to add the tag or tags to.</p>",
+          "shape": "ResourceARN"
         },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of tags to associate with the specified signaling channel. Each tag is a key-value pair.</p>"
+        "StreamName": {
+          "documentation": "<p>The name of the stream that you want to add the tag or tags to.</p>",
+          "shape": "StreamName"
+        },
+        "Tags": {
+          "documentation": "<p>A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).</p>",
+          "shape": "ResourceTags"
         }
-      }
-    },
-    "TagResourceOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagStreamInput":{
-      "type":"structure",
-      "required":["Tags"],
-      "members":{
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource that you want to add the tag or tags to.</p>"
-        },
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream that you want to add the tag or tags to.</p>"
-        },
-        "Tags":{
-          "shape":"ResourceTags",
-          "documentation":"<p>A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).</p>"
-        }
-      }
-    },
-    "TagStreamOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":0,
-      "pattern":"[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"
-    },
-    "TagsPerResourceExceededLimitException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
       },
-      "documentation":"<p>You have exceeded the limit of tags that you can associate with the resource. Kinesis video streams support up to 50 tags. </p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "required": [
+        "Tags"
+      ],
+      "type": "structure"
     },
-    "Timestamp":{"type":"timestamp"},
-    "UntagResourceInput":{
-      "type":"structure",
-      "required":[
+    "TagStreamOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "TagValue": {
+      "max": 256,
+      "min": 0,
+      "pattern": "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*",
+      "type": "string"
+    },
+    "TagsPerResourceExceededLimitException": {
+      "documentation": "<p>You have exceeded the limit of tags that you can associate with the resource. Kinesis video streams support up to 50 tags. </p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "UntagResourceInput": {
+      "members": {
+        "ResourceARN": {
+          "documentation": "<p>The ARN of the signaling channel from which you want to remove tags.</p>",
+          "shape": "ResourceARN"
+        },
+        "TagKeyList": {
+          "documentation": "<p>A list of the keys of the tags that you want to remove.</p>",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "ResourceARN",
         "TagKeyList"
       ],
-      "members":{
-        "ResourceARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel from which you want to remove tags.</p>"
+      "type": "structure"
+    },
+    "UntagResourceOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "UntagStreamInput": {
+      "members": {
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream that you want to remove tags from.</p>",
+          "shape": "ResourceARN"
         },
-        "TagKeyList":{
-          "shape":"TagKeyList",
-          "documentation":"<p>A list of the keys of the tags that you want to remove.</p>"
+        "StreamName": {
+          "documentation": "<p>The name of the stream that you want to remove tags from.</p>",
+          "shape": "StreamName"
+        },
+        "TagKeyList": {
+          "documentation": "<p>A list of the keys of the tags that you want to remove.</p>",
+          "shape": "TagKeyList"
         }
-      }
+      },
+      "required": [
+        "TagKeyList"
+      ],
+      "type": "structure"
     },
-    "UntagResourceOutput":{
-      "type":"structure",
-      "members":{
-      }
+    "UntagStreamOutput": {
+      "members": {},
+      "type": "structure"
     },
-    "UntagStreamInput":{
-      "type":"structure",
-      "required":["TagKeyList"],
-      "members":{
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream that you want to remove tags from.</p>"
+    "UpdateDataRetentionInput": {
+      "members": {
+        "CurrentVersion": {
+          "documentation": "<p>The version of the stream whose retention period you want to change. To get the version, call either the <code>DescribeStream</code> or the <code>ListStreams</code> API.</p>",
+          "shape": "Version"
         },
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream that you want to remove tags from.</p>"
+        "DataRetentionChangeInHours": {
+          "documentation": "<p>The retention period, in hours. The value you specify replaces the current value. The maximum value for this parameter is 87600 (ten years).</p>",
+          "shape": "DataRetentionChangeInHours"
         },
-        "TagKeyList":{
-          "shape":"TagKeyList",
-          "documentation":"<p>A list of the keys of the tags that you want to remove.</p>"
+        "Operation": {
+          "documentation": "<p>Indicates whether you want to increase or decrease the retention period.</p>",
+          "shape": "UpdateDataRetentionOperation"
+        },
+        "StreamARN": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the stream whose retention period you want to change.</p>",
+          "shape": "ResourceARN"
+        },
+        "StreamName": {
+          "documentation": "<p>The name of the stream whose retention period you want to change.</p>",
+          "shape": "StreamName"
         }
-      }
-    },
-    "UntagStreamOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateDataRetentionInput":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "CurrentVersion",
         "Operation",
         "DataRetentionChangeInHours"
       ],
-      "members":{
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream whose retention period you want to change.</p>"
-        },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the stream whose retention period you want to change.</p>"
-        },
-        "CurrentVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the stream whose retention period you want to change. To get the version, call either the <code>DescribeStream</code> or the <code>ListStreams</code> API.</p>"
-        },
-        "Operation":{
-          "shape":"UpdateDataRetentionOperation",
-          "documentation":"<p>Indicates whether you want to increase or decrease the retention period.</p>"
-        },
-        "DataRetentionChangeInHours":{
-          "shape":"DataRetentionChangeInHours",
-          "documentation":"<p>The retention period, in hours. The value you specify replaces the current value. The maximum value for this parameter is 87600 (ten years).</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateDataRetentionOperation":{
-      "type":"string",
-      "enum":[
+    "UpdateDataRetentionOperation": {
+      "enum": [
         "INCREASE_DATA_RETENTION",
         "DECREASE_DATA_RETENTION"
-      ]
+      ],
+      "type": "string"
     },
-    "UpdateDataRetentionOutput":{
-      "type":"structure",
-      "members":{
-      }
+    "UpdateDataRetentionOutput": {
+      "members": {},
+      "type": "structure"
     },
-    "UpdateSignalingChannelInput":{
-      "type":"structure",
-      "required":[
+    "UpdateSignalingChannelInput": {
+      "members": {
+        "ChannelARN": {
+          "documentation": "<p>The ARN of the signaling channel that you want to update.</p>",
+          "shape": "ResourceARN"
+        },
+        "CurrentVersion": {
+          "documentation": "<p>The current version of the signaling channel that you want to update.</p>",
+          "shape": "Version"
+        },
+        "SingleMasterConfiguration": {
+          "documentation": "<p>The structure containing the configuration for the <code>SINGLE_MASTER</code> type of the signaling channel that you want to update. </p>",
+          "shape": "SingleMasterConfiguration"
+        }
+      },
+      "required": [
         "ChannelARN",
         "CurrentVersion"
       ],
-      "members":{
-        "ChannelARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the signaling channel that you want to update.</p>"
+      "type": "structure"
+    },
+    "UpdateSignalingChannelOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateStreamInput": {
+      "members": {
+        "CurrentVersion": {
+          "documentation": "<p>The version of the stream whose metadata you want to update.</p>",
+          "shape": "Version"
         },
-        "CurrentVersion":{
-          "shape":"Version",
-          "documentation":"<p>The current version of the signaling channel that you want to update.</p>"
+        "DeviceName": {
+          "documentation": "<p>The name of the device that is writing to the stream. </p> <note> <p> In the current implementation, Kinesis Video Streams does not use this name. </p> </note>",
+          "shape": "DeviceName"
         },
-        "SingleMasterConfiguration":{
-          "shape":"SingleMasterConfiguration",
-          "documentation":"<p>The structure containing the configuration for the <code>SINGLE_MASTER</code> type of the signaling channel that you want to update. </p>"
+        "MediaType": {
+          "documentation": "<p>The stream's media type. Use <code>MediaType</code> to specify the type of content that the stream contains to the consumers of the stream. For more information about media types, see <a href=\"http://www.iana.org/assignments/media-types/media-types.xhtml\">Media Types</a>. If you choose to specify the <code>MediaType</code>, see <a href=\"https://tools.ietf.org/html/rfc6838#section-4.2\">Naming Requirements</a>.</p> <p>To play video on the console, you must specify the correct video type. For example, if the video in the stream is H.264, specify <code>video/h264</code> as the <code>MediaType</code>.</p>",
+          "shape": "MediaType"
+        },
+        "StreamARN": {
+          "documentation": "<p>The ARN of the stream whose metadata you want to update.</p>",
+          "shape": "ResourceARN"
+        },
+        "StreamName": {
+          "documentation": "<p>The name of the stream whose metadata you want to update.</p> <p>The stream name is an identifier for the stream, and must be unique for each account and region.</p>",
+          "shape": "StreamName"
         }
-      }
-    },
-    "UpdateSignalingChannelOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateStreamInput":{
-      "type":"structure",
-      "required":["CurrentVersion"],
-      "members":{
-        "StreamName":{
-          "shape":"StreamName",
-          "documentation":"<p>The name of the stream whose metadata you want to update.</p> <p>The stream name is an identifier for the stream, and must be unique for each account and region.</p>"
-        },
-        "StreamARN":{
-          "shape":"ResourceARN",
-          "documentation":"<p>The ARN of the stream whose metadata you want to update.</p>"
-        },
-        "CurrentVersion":{
-          "shape":"Version",
-          "documentation":"<p>The version of the stream whose metadata you want to update.</p>"
-        },
-        "DeviceName":{
-          "shape":"DeviceName",
-          "documentation":"<p>The name of the device that is writing to the stream. </p> <note> <p> In the current implementation, Kinesis Video Streams does not use this name. </p> </note>"
-        },
-        "MediaType":{
-          "shape":"MediaType",
-          "documentation":"<p>The stream's media type. Use <code>MediaType</code> to specify the type of content that the stream contains to the consumers of the stream. For more information about media types, see <a href=\"http://www.iana.org/assignments/media-types/media-types.xhtml\">Media Types</a>. If you choose to specify the <code>MediaType</code>, see <a href=\"https://tools.ietf.org/html/rfc6838#section-4.2\">Naming Requirements</a>.</p> <p>To play video on the console, you must specify the correct video type. For example, if the video in the stream is H.264, specify <code>video/h264</code> as the <code>MediaType</code>.</p>"
-        }
-      }
-    },
-    "UpdateStreamOutput":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "Version":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"[a-zA-Z0-9]+"
-    },
-    "VersionMismatchException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
       },
-      "documentation":"<p>The stream version that you specified is not the latest version. To get the latest version, use the <a href=\"https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html\">DescribeStream</a> API.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "required": [
+        "CurrentVersion"
+      ],
+      "type": "structure"
+    },
+    "UpdateStreamOutput": {
+      "members": {},
+      "type": "structure"
+    },
+    "Version": {
+      "max": 64,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9]+",
+      "type": "string"
+    },
+    "VersionMismatchException": {
+      "documentation": "<p>The stream version that you specified is not the latest version. To get the latest version, use the <a href=\"https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html\">DescribeStream</a> API.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ErrorMessage"
+        }
+      },
+      "type": "structure"
     }
   },
-  "documentation":"<p/>"
+  "version": "2.0"
 }

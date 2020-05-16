@@ -1,47 +1,5 @@
 {
   "pagination": {
-    "ListByteMatchSets": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "ByteMatchSets"
-    },
-    "ListIPSets": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "IPSets"
-    },
-    "ListRules": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "Rules"
-    },
-    "ListSizeConstraintSets": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "SizeConstraintSets"
-    },
-    "ListSqlInjectionMatchSets": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "SqlInjectionMatchSets"
-    },
-    "ListWebACLs": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "WebACLs"
-    },
-    "ListXssMatchSets": {
-      "input_token": "NextMarker",
-      "output_token": "NextMarker",
-      "limit_key": "Limit",
-      "result_key": "XssMatchSets"
-    },
     "GetRateBasedRuleManagedKeys": {
       "input_token": "NextMarker",
       "output_token": "NextMarker",
@@ -53,11 +11,23 @@
       "output_token": "NextMarker",
       "result_key": "ActivatedRules"
     },
+    "ListByteMatchSets": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "ByteMatchSets"
+    },
     "ListGeoMatchSets": {
       "input_token": "NextMarker",
       "limit_key": "Limit",
       "output_token": "NextMarker",
       "result_key": "GeoMatchSets"
+    },
+    "ListIPSets": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "IPSets"
     },
     "ListLoggingConfigurations": {
       "input_token": "NextMarker",
@@ -89,11 +59,41 @@
       "output_token": "NextMarker",
       "result_key": "RuleGroups"
     },
+    "ListRules": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "Rules"
+    },
+    "ListSizeConstraintSets": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "SizeConstraintSets"
+    },
+    "ListSqlInjectionMatchSets": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "SqlInjectionMatchSets"
+    },
     "ListSubscribedRuleGroups": {
       "input_token": "NextMarker",
       "limit_key": "Limit",
       "output_token": "NextMarker",
       "result_key": "RuleGroups"
+    },
+    "ListWebACLs": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "WebACLs"
+    },
+    "ListXssMatchSets": {
+      "input_token": "NextMarker",
+      "limit_key": "Limit",
+      "output_token": "NextMarker",
+      "result_key": "XssMatchSets"
     }
   }
 }

@@ -1,362 +1,359 @@
 {
   "version": 2,
   "waiters": {
-    "InstanceExists": {
-      "delay": 5,
-      "maxAttempts": 40,
-      "operation": "DescribeInstances",
-      "acceptors": [
-        {
-          "matcher": "path",
-          "expected": true,
-          "argument": "length(Reservations[]) > `0`",
-          "state": "success"
-        },
-        {
-          "matcher": "error",
-          "expected": "InvalidInstanceID.NotFound",
-          "state": "retry"
-        }
-      ]
-    },
     "BundleTaskComplete": {
-      "delay": 15,
-      "operation": "DescribeBundleTasks",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "BundleTasks[].State",
           "expected": "complete",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "BundleTasks[].State"
-        },
-        {
-          "expected": "failed",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "BundleTasks[].State"
-        }
-      ]
-    },
-    "ConsoleOutputAvailable": {
-      "operation": "GetConsoleOutput",
-      "maxAttempts": 40,
-      "delay": 15,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "path",
-          "argument": "length(Output || '') > `0`",
-          "expected": true
-        }
-      ]
-    },
-    "ConversionTaskCancelled": {
-      "delay": 15,
-      "operation": "DescribeConversionTasks",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "cancelled",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "ConversionTasks[].State"
-        }
-      ]
-    },
-    "ConversionTaskCompleted": {
-      "delay": 15,
-      "operation": "DescribeConversionTasks",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "completed",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "ConversionTasks[].State"
-        },
-        {
-          "expected": "cancelled",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ConversionTasks[].State"
-        },
-        {
-          "expected": "cancelling",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "ConversionTasks[].State"
-        }
-      ]
-    },
-    "ConversionTaskDeleted": {
-      "delay": 15,
-      "operation": "DescribeConversionTasks",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "deleted",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "ConversionTasks[].State"
-        }
-      ]
-    },
-    "CustomerGatewayAvailable": {
-      "delay": 15,
-      "operation": "DescribeCustomerGateways",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "available",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "CustomerGateways[].State"
-        },
-        {
-          "expected": "deleted",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CustomerGateways[].State"
-        },
-        {
-          "expected": "deleting",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "CustomerGateways[].State"
-        }
-      ]
-    },
-    "ExportTaskCancelled": {
-      "delay": 15,
-      "operation": "DescribeExportTasks",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "cancelled",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "ExportTasks[].State"
-        }
-      ]
-    },
-    "ExportTaskCompleted": {
-      "delay": 15,
-      "operation": "DescribeExportTasks",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "completed",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "ExportTasks[].State"
-        }
-      ]
-    },
-    "ImageExists": {
-      "operation": "DescribeImages",
-      "maxAttempts": 40,
-      "delay": 15,
-      "acceptors": [
-        {
-          "matcher": "path",
-          "expected": true,
-          "argument": "length(Images[]) > `0`",
           "state": "success"
         },
         {
-          "matcher": "error",
-          "expected": "InvalidAMIID.NotFound",
-          "state": "retry"
+          "argument": "BundleTasks[].State",
+          "expected": "failed",
+          "matcher": "pathAny",
+          "state": "failure"
         }
-      ]
-    },
-    "ImageAvailable": {
-      "operation": "DescribeImages",
-      "maxAttempts": 40,
+      ],
       "delay": 15,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "pathAll",
-          "argument": "Images[].State",
-          "expected": "available"
-        },
-        {
-          "state": "failure",
-          "matcher": "pathAny",
-          "argument": "Images[].State",
-          "expected": "failed"
-        }
-      ]
-    },
-    "InstanceRunning": {
-      "delay": 15,
-      "operation": "DescribeInstances",
       "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "running",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "shutting-down",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "terminated",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "stopping",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "matcher": "error",
-          "expected": "InvalidInstanceID.NotFound",
-          "state": "retry"
-        }
-      ]
+      "operation": "DescribeBundleTasks"
     },
-    "InstanceStatusOk": {
-      "operation": "DescribeInstanceStatus",
-      "maxAttempts": 40,
-      "delay": 15,
+    "ConsoleOutputAvailable": {
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "pathAll",
-          "argument": "InstanceStatuses[].InstanceStatus.Status",
-          "expected": "ok"
-        },
-        {
-          "matcher": "error",
-          "expected": "InvalidInstanceID.NotFound",
-          "state": "retry"
-        }
-      ]
-    },
-    "InstanceStopped": {
-      "delay": 15,
-      "operation": "DescribeInstances",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "stopped",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "pending",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "terminated",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        }
-      ]
-    },
-    "InstanceTerminated": {
-      "delay": 15,
-      "operation": "DescribeInstances",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "terminated",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "pending",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        },
-        {
-          "expected": "stopping",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Reservations[].Instances[].State.Name"
-        }
-      ]
-    },
-    "KeyPairExists": {
-      "operation": "DescribeKeyPairs",
-      "delay": 5,
-      "maxAttempts": 6,
-      "acceptors": [
-        {
+          "argument": "length(Output || '') > `0`",
           "expected": true,
           "matcher": "path",
-          "state": "success",
-          "argument": "length(KeyPairs[].KeyName) > `0`"
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "GetConsoleOutput"
+    },
+    "ConversionTaskCancelled": {
+      "acceptors": [
+        {
+          "argument": "ConversionTasks[].State",
+          "expected": "cancelled",
+          "matcher": "pathAll",
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeConversionTasks"
+    },
+    "ConversionTaskCompleted": {
+      "acceptors": [
+        {
+          "argument": "ConversionTasks[].State",
+          "expected": "completed",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "ConversionTasks[].State",
+          "expected": "cancelled",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "ConversionTasks[].State",
+          "expected": "cancelling",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeConversionTasks"
+    },
+    "ConversionTaskDeleted": {
+      "acceptors": [
+        {
+          "argument": "ConversionTasks[].State",
+          "expected": "deleted",
+          "matcher": "pathAll",
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeConversionTasks"
+    },
+    "CustomerGatewayAvailable": {
+      "acceptors": [
+        {
+          "argument": "CustomerGateways[].State",
+          "expected": "available",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "CustomerGateways[].State",
+          "expected": "deleted",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "CustomerGateways[].State",
+          "expected": "deleting",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeCustomerGateways"
+    },
+    "ExportTaskCancelled": {
+      "acceptors": [
+        {
+          "argument": "ExportTasks[].State",
+          "expected": "cancelled",
+          "matcher": "pathAll",
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeExportTasks"
+    },
+    "ExportTaskCompleted": {
+      "acceptors": [
+        {
+          "argument": "ExportTasks[].State",
+          "expected": "completed",
+          "matcher": "pathAll",
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeExportTasks"
+    },
+    "ImageAvailable": {
+      "acceptors": [
+        {
+          "argument": "Images[].State",
+          "expected": "available",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "Images[].State",
+          "expected": "failed",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeImages"
+    },
+    "ImageExists": {
+      "acceptors": [
+        {
+          "argument": "length(Images[]) > `0`",
+          "expected": true,
+          "matcher": "path",
+          "state": "success"
+        },
+        {
+          "expected": "InvalidAMIID.NotFound",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeImages"
+    },
+    "InstanceExists": {
+      "acceptors": [
+        {
+          "argument": "length(Reservations[]) > `0`",
+          "expected": true,
+          "matcher": "path",
+          "state": "success"
+        },
+        {
+          "expected": "InvalidInstanceID.NotFound",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 5,
+      "maxAttempts": 40,
+      "operation": "DescribeInstances"
+    },
+    "InstanceRunning": {
+      "acceptors": [
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "running",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "shutting-down",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "terminated",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "stopping",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "expected": "InvalidInstanceID.NotFound",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeInstances"
+    },
+    "InstanceStatusOk": {
+      "acceptors": [
+        {
+          "argument": "InstanceStatuses[].InstanceStatus.Status",
+          "expected": "ok",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "expected": "InvalidInstanceID.NotFound",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeInstanceStatus"
+    },
+    "InstanceStopped": {
+      "acceptors": [
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "stopped",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "pending",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "terminated",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeInstances"
+    },
+    "InstanceTerminated": {
+      "acceptors": [
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "terminated",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "pending",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "Reservations[].Instances[].State.Name",
+          "expected": "stopping",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeInstances"
+    },
+    "KeyPairExists": {
+      "acceptors": [
+        {
+          "argument": "length(KeyPairs[].KeyName) > `0`",
+          "expected": true,
+          "matcher": "path",
+          "state": "success"
         },
         {
           "expected": "InvalidKeyPair.NotFound",
           "matcher": "error",
           "state": "retry"
         }
-      ]
+      ],
+      "delay": 5,
+      "maxAttempts": 6,
+      "operation": "DescribeKeyPairs"
     },
     "NatGatewayAvailable": {
-      "operation": "DescribeNatGateways",
+      "acceptors": [
+        {
+          "argument": "NatGateways[].State",
+          "expected": "available",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "NatGateways[].State",
+          "expected": "failed",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "NatGateways[].State",
+          "expected": "deleting",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "NatGateways[].State",
+          "expected": "deleted",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "expected": "NatGatewayNotFound",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
       "delay": 15,
       "maxAttempts": 40,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "pathAll",
-          "argument": "NatGateways[].State",
-          "expected": "available"
-        },
-        {
-          "state": "failure",
-          "matcher": "pathAny",
-          "argument": "NatGateways[].State",
-          "expected": "failed"
-        },
-        {
-          "state": "failure",
-          "matcher": "pathAny",
-          "argument": "NatGateways[].State",
-          "expected": "deleting"
-        },
-        {
-          "state": "failure",
-          "matcher": "pathAny",
-          "argument": "NatGateways[].State",
-          "expected": "deleted"
-        },
-        {
-          "state": "retry",
-          "matcher": "error",
-          "expected": "NatGatewayNotFound"
-        }
-      ]
+      "operation": "DescribeNatGateways"
     },
     "NetworkAclExists": {
-      "operation": "DescribeNetworkAcls",
-      "delay": 20,
-      "maxAttempts": 10,
       "acceptors": [
         {
-          "matcher": "path",
-          "expected": true,
           "argument": "length(NetworkAcls[]) > `0`",
+          "expected": true,
+          "matcher": "path",
           "state": "success"
         },
         {
@@ -364,244 +361,247 @@
           "matcher": "error",
           "state": "retry"
         }
-      ]
-    },
-    "NetworkInterfaceAvailable": {
-      "operation": "DescribeNetworkInterfaces",
+      ],
       "delay": 20,
       "maxAttempts": 10,
+      "operation": "DescribeNetworkAcls"
+    },
+    "NetworkInterfaceAvailable": {
       "acceptors": [
         {
+          "argument": "NetworkInterfaces[].Status",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "NetworkInterfaces[].Status"
+          "state": "success"
         },
         {
           "expected": "InvalidNetworkInterfaceID.NotFound",
           "matcher": "error",
           "state": "failure"
         }
-      ]
+      ],
+      "delay": 20,
+      "maxAttempts": 10,
+      "operation": "DescribeNetworkInterfaces"
     },
     "PasswordDataAvailable": {
-      "operation": "GetPasswordData",
-      "maxAttempts": 40,
-      "delay": 15,
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "path",
           "argument": "length(PasswordData) > `0`",
-          "expected": true
+          "expected": true,
+          "matcher": "path",
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "GetPasswordData"
     },
     "SnapshotCompleted": {
-      "delay": 15,
-      "operation": "DescribeSnapshots",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "Snapshots[].State",
           "expected": "completed",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Snapshots[].State"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeSnapshots"
     },
     "SpotInstanceRequestFulfilled": {
-      "operation": "DescribeSpotInstanceRequests",
-      "maxAttempts": 40,
-      "delay": 15,
       "acceptors": [
         {
-          "state": "success",
+          "argument": "SpotInstanceRequests[].Status.Code",
+          "expected": "fulfilled",
           "matcher": "pathAll",
-          "argument": "SpotInstanceRequests[].Status.Code",
-          "expected": "fulfilled"
+          "state": "success"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "SpotInstanceRequests[].Status.Code",
-          "expected": "schedule-expired"
+          "expected": "schedule-expired",
+          "matcher": "pathAny",
+          "state": "failure"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "SpotInstanceRequests[].Status.Code",
-          "expected": "canceled-before-fulfillment"
+          "expected": "canceled-before-fulfillment",
+          "matcher": "pathAny",
+          "state": "failure"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "SpotInstanceRequests[].Status.Code",
-          "expected": "bad-parameters"
+          "expected": "bad-parameters",
+          "matcher": "pathAny",
+          "state": "failure"
         },
         {
-          "state": "failure",
-          "matcher": "pathAny",
           "argument": "SpotInstanceRequests[].Status.Code",
-          "expected": "system-error"
+          "expected": "system-error",
+          "matcher": "pathAny",
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeSpotInstanceRequests"
     },
     "SubnetAvailable": {
-      "delay": 15,
-      "operation": "DescribeSubnets",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "Subnets[].State",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Subnets[].State"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeSubnets"
     },
     "SystemStatusOk": {
-      "operation": "DescribeInstanceStatus",
-      "maxAttempts": 40,
-      "delay": 15,
       "acceptors": [
         {
-          "state": "success",
-          "matcher": "pathAll",
           "argument": "InstanceStatuses[].SystemStatus.Status",
-          "expected": "ok"
+          "expected": "ok",
+          "matcher": "pathAll",
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeInstanceStatus"
     },
     "VolumeAvailable": {
-      "delay": 15,
-      "operation": "DescribeVolumes",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "Volumes[].State",
           "expected": "available",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Volumes[].State"
+          "state": "success"
         },
         {
+          "argument": "Volumes[].State",
           "expected": "deleted",
           "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Volumes[].State"
+          "state": "failure"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVolumes"
     },
     "VolumeDeleted": {
-      "delay": 15,
-      "operation": "DescribeVolumes",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "Volumes[].State",
           "expected": "deleted",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Volumes[].State"
+          "state": "success"
         },
         {
-          "matcher": "error",
           "expected": "InvalidVolume.NotFound",
+          "matcher": "error",
           "state": "success"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVolumes"
     },
     "VolumeInUse": {
-      "delay": 15,
-      "operation": "DescribeVolumes",
-      "maxAttempts": 40,
       "acceptors": [
         {
+          "argument": "Volumes[].State",
           "expected": "in-use",
           "matcher": "pathAll",
-          "state": "success",
-          "argument": "Volumes[].State"
-        },
-        {
-          "expected": "deleted",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "Volumes[].State"
-        }
-      ]
-    },
-    "VpcAvailable": {
-      "delay": 15,
-      "operation": "DescribeVpcs",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "available",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "Vpcs[].State"
-        }
-      ]
-    },
-    "VpnConnectionAvailable": {
-      "delay": 60,
-      "operation": "DescribeVpnConnections",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "available",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "VpnConnections[].State"
-        },
-        {
-          "expected": "deleting",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "VpnConnections[].State"
-        },
-        {
-          "expected": "deleted",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "VpnConnections[].State"
-        }
-      ]
-    },
-    "VpnConnectionDeleted": {
-      "delay": 15,
-      "operation": "DescribeVpnConnections",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "expected": "deleted",
-          "matcher": "pathAll",
-          "state": "success",
-          "argument": "VpnConnections[].State"
-        },
-        {
-          "expected": "pending",
-          "matcher": "pathAny",
-          "state": "failure",
-          "argument": "VpnConnections[].State"
-        }
-      ]
-    },
-    "VpcPeeringConnectionExists": {
-      "delay": 15,
-      "operation": "DescribeVpcPeeringConnections",
-      "maxAttempts": 40,
-      "acceptors": [
-        {
-          "matcher": "status",
-          "expected": 200,
           "state": "success"
         },
         {
-          "matcher": "error",
+          "argument": "Volumes[].State",
+          "expected": "deleted",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVolumes"
+    },
+    "VpcAvailable": {
+      "acceptors": [
+        {
+          "argument": "Vpcs[].State",
+          "expected": "available",
+          "matcher": "pathAll",
+          "state": "success"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVpcs"
+    },
+    "VpcPeeringConnectionExists": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
           "expected": "InvalidVpcPeeringConnectionID.NotFound",
+          "matcher": "error",
           "state": "retry"
         }
-      ]
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVpcPeeringConnections"
+    },
+    "VpnConnectionAvailable": {
+      "acceptors": [
+        {
+          "argument": "VpnConnections[].State",
+          "expected": "available",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "VpnConnections[].State",
+          "expected": "deleting",
+          "matcher": "pathAny",
+          "state": "failure"
+        },
+        {
+          "argument": "VpnConnections[].State",
+          "expected": "deleted",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 60,
+      "maxAttempts": 40,
+      "operation": "DescribeVpnConnections"
+    },
+    "VpnConnectionDeleted": {
+      "acceptors": [
+        {
+          "argument": "VpnConnections[].State",
+          "expected": "deleted",
+          "matcher": "pathAll",
+          "state": "success"
+        },
+        {
+          "argument": "VpnConnections[].State",
+          "expected": "pending",
+          "matcher": "pathAny",
+          "state": "failure"
+        }
+      ],
+      "delay": 15,
+      "maxAttempts": 40,
+      "operation": "DescribeVpnConnections"
     }
   }
 }

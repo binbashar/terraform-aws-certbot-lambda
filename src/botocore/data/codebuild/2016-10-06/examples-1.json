@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "BatchGetBuilds": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example gets information about builds with the specified build IDs.",
+        "id": "to-get-information-about-builds-1501187184588",
         "input": {
           "ids": [
             "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
@@ -21,13 +26,11 @@
               "currentPhase": "COMPLETED",
               "endTime": 1479832474.764,
               "environment": {
-                "type": "LINUX_CONTAINER",
                 "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariables": [
-
-                ],
+                "environmentVariables": [],
                 "image": "aws/codebuild/java:openjdk-8",
-                "privilegedMode": false
+                "privilegedMode": false,
+                "type": "LINUX_CONTAINER"
               },
               "id": "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
               "initiator": "MyDemoUser",
@@ -45,9 +48,7 @@
                   "startTime": 1479832341.854
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 72,
                   "endTime": 1479832415.064,
                   "phaseStatus": "SUCCEEDED",
@@ -55,9 +56,7 @@
                   "startTime": 1479832342.23
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 46,
                   "endTime": 1479832461.261,
                   "phaseStatus": "SUCCEEDED",
@@ -65,9 +64,7 @@
                   "startTime": 1479832415.064
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479832461.354,
                   "phaseStatus": "SUCCEEDED",
@@ -75,9 +72,7 @@
                   "startTime": 1479832461.261
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479832461.448,
                   "phaseStatus": "SUCCEEDED",
@@ -85,9 +80,7 @@
                   "startTime": 1479832461.354
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 9,
                   "endTime": 1479832471.115,
                   "phaseStatus": "SUCCEEDED",
@@ -95,9 +88,7 @@
                   "startTime": 1479832461.448
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479832471.224,
                   "phaseStatus": "SUCCEEDED",
@@ -105,9 +96,7 @@
                   "startTime": 1479832471.115
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479832471.791,
                   "phaseStatus": "SUCCEEDED",
@@ -115,9 +104,7 @@
                   "startTime": 1479832471.224
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 2,
                   "endTime": 1479832474.764,
                   "phaseStatus": "SUCCEEDED",
@@ -131,9 +118,9 @@
               ],
               "projectName": "codebuild-demo-project",
               "source": {
-                "type": "S3",
                 "buildspec": "",
-                "location": "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip"
+                "location": "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip",
+                "type": "S3"
               },
               "startTime": 1479832341.854,
               "timeoutInMinutes": 60
@@ -148,13 +135,11 @@
               "currentPhase": "COMPLETED",
               "endTime": 1479401214.239,
               "environment": {
-                "type": "LINUX_CONTAINER",
                 "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariables": [
-
-                ],
+                "environmentVariables": [],
                 "image": "aws/codebuild/java:openjdk-8",
-                "privilegedMode": false
+                "privilegedMode": false,
+                "type": "LINUX_CONTAINER"
               },
               "id": "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX",
               "initiator": "MyDemoUser",
@@ -172,9 +157,7 @@
                   "startTime": 1479401081.869
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 71,
                   "endTime": 1479401154.129,
                   "phaseStatus": "SUCCEEDED",
@@ -182,9 +165,7 @@
                   "startTime": 1479401082.342
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 45,
                   "endTime": 1479401199.136,
                   "phaseStatus": "SUCCEEDED",
@@ -192,9 +173,7 @@
                   "startTime": 1479401154.129
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479401199.236,
                   "phaseStatus": "SUCCEEDED",
@@ -202,9 +181,7 @@
                   "startTime": 1479401199.136
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479401199.345,
                   "phaseStatus": "SUCCEEDED",
@@ -212,9 +189,7 @@
                   "startTime": 1479401199.236
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 9,
                   "endTime": 1479401208.68,
                   "phaseStatus": "SUCCEEDED",
@@ -222,9 +197,7 @@
                   "startTime": 1479401199.345
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479401208.783,
                   "phaseStatus": "SUCCEEDED",
@@ -232,9 +205,7 @@
                   "startTime": 1479401208.68
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 0,
                   "endTime": 1479401209.463,
                   "phaseStatus": "SUCCEEDED",
@@ -242,9 +213,7 @@
                   "startTime": 1479401208.783
                 },
                 {
-                  "contexts": [
-
-                  ],
+                  "contexts": [],
                   "durationInSeconds": 4,
                   "endTime": 1479401214.239,
                   "phaseStatus": "SUCCEEDED",
@@ -258,24 +227,17 @@
               ],
               "projectName": "codebuild-demo-project",
               "source": {
-                "type": "S3",
-                "location": "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip"
+                "location": "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip",
+                "type": "S3"
               },
               "startTime": 1479401081.869,
               "timeoutInMinutes": 60
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example gets information about builds with the specified build IDs.",
-        "id": "to-get-information-about-builds-1501187184588",
         "title": "To get information about builds"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

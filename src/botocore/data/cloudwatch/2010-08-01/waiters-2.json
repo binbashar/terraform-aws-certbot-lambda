@@ -2,30 +2,30 @@
   "version": 2,
   "waiters": {
     "AlarmExists": {
-      "delay": 5,
-      "maxAttempts": 40,
-      "operation": "DescribeAlarms",
       "acceptors": [
         {
-          "matcher": "path",
-          "expected": true,
           "argument": "length(MetricAlarms[]) > `0`",
+          "expected": true,
+          "matcher": "path",
           "state": "success"
         }
-      ]
+      ],
+      "delay": 5,
+      "maxAttempts": 40,
+      "operation": "DescribeAlarms"
     },
     "CompositeAlarmExists": {
-      "delay": 5,
-      "maxAttempts": 40,
-      "operation": "DescribeAlarms",
       "acceptors": [
         {
-          "matcher": "path",
-          "expected": true,
           "argument": "length(CompositeAlarms[]) > `0`",
+          "expected": true,
+          "matcher": "path",
           "state": "success"
         }
-      ]
+      ],
+      "delay": 5,
+      "maxAttempts": 40,
+      "operation": "DescribeAlarms"
     }
   }
 }

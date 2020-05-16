@@ -1,61 +1,61 @@
 {
-    "version": 2,
-    "waiters": {
-        "CertificateAuthorityCSRCreated": {
-            "description": "Wait until a Certificate Authority CSR is created",
-            "operation": "GetCertificateAuthorityCsr",
-            "delay": 3,
-            "maxAttempts": 60,
-            "acceptors": [
-                {
-                    "state": "success",
-                    "matcher": "status",
-                    "expected": 200
-                },
-                {
-                    "state": "retry",
-                    "matcher": "error",
-                    "expected": "RequestInProgressException"
-                }
-            ]
+  "version": 2,
+  "waiters": {
+    "AuditReportCreated": {
+      "acceptors": [
+        {
+          "argument": "AuditReportStatus",
+          "expected": "SUCCESS",
+          "matcher": "path",
+          "state": "success"
         },
-        "CertificateIssued": {
-            "description": "Wait until a certificate is issued",
-            "operation": "GetCertificate",
-            "delay": 3,
-            "maxAttempts": 60,
-            "acceptors": [
-                {
-                    "state": "success",
-                    "matcher": "status",
-                    "expected": 200
-                },
-                {
-                    "state": "retry",
-                    "matcher": "error",
-                    "expected": "RequestInProgressException"
-                }
-            ]
-        },
-        "AuditReportCreated": {
-            "description": "Wait until a Audit Report is created",
-            "operation": "DescribeCertificateAuthorityAuditReport",
-            "delay": 3,
-            "maxAttempts": 60,
-            "acceptors": [
-                {
-                    "state": "success",
-                    "matcher": "path",
-                    "argument": "AuditReportStatus",
-                    "expected": "SUCCESS"
-                },
-                {
-                    "state": "failure",
-                    "matcher": "path",
-                    "argument": "AuditReportStatus",
-                    "expected": "FAILED"
-                }
-            ]
+        {
+          "argument": "AuditReportStatus",
+          "expected": "FAILED",
+          "matcher": "path",
+          "state": "failure"
         }
+      ],
+      "delay": 3,
+      "description": "Wait until a Audit Report is created",
+      "maxAttempts": 60,
+      "operation": "DescribeCertificateAuthorityAuditReport"
+    },
+    "CertificateAuthorityCSRCreated": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "RequestInProgressException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 3,
+      "description": "Wait until a Certificate Authority CSR is created",
+      "maxAttempts": 60,
+      "operation": "GetCertificateAuthorityCsr"
+    },
+    "CertificateIssued": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "RequestInProgressException",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 3,
+      "description": "Wait until a certificate is issued",
+      "maxAttempts": 60,
+      "operation": "GetCertificate"
     }
+  }
 }

@@ -1,52 +1,52 @@
 {
   "pagination": {
-    "ListInputs": {
+    "DescribeSchedule": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
-      "result_key": "Inputs"
+      "output_token": "NextToken",
+      "result_key": "ScheduleActions"
     },
     "ListChannels": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "Channels"
     },
     "ListInputSecurityGroups": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "InputSecurityGroups"
     },
-    "ListOfferings": {
+    "ListInputs": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
-      "result_key": "Offerings"
-    },
-    "ListReservations": {
-      "input_token": "NextToken",
       "output_token": "NextToken",
-      "limit_key": "MaxResults",
-      "result_key": "Reservations"
-    },
-    "DescribeSchedule": {
-      "input_token": "NextToken",
-      "output_token": "NextToken",
-      "limit_key": "MaxResults",
-      "result_key": "ScheduleActions"
+      "result_key": "Inputs"
     },
     "ListMultiplexPrograms": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "MultiplexPrograms"
     },
     "ListMultiplexes": {
       "input_token": "NextToken",
-      "output_token": "NextToken",
       "limit_key": "MaxResults",
+      "output_token": "NextToken",
       "result_key": "Multiplexes"
+    },
+    "ListOfferings": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Offerings"
+    },
+    "ListReservations": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Reservations"
     }
   }
 }

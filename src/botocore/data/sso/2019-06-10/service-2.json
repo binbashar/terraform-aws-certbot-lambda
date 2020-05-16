@@ -1,346 +1,428 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2019-06-10",
-    "endpointPrefix":"portal.sso",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceAbbreviation":"SSO",
-    "serviceFullName":"AWS Single Sign-On",
-    "serviceId":"SSO",
-    "signatureVersion":"v4",
-    "signingName":"awsssoportal",
-    "uid":"sso-2019-06-10"
+  "documentation": "<p>AWS Single Sign-On Portal is a web service that makes it easy for you to assign user access to AWS SSO resources such as the user portal. Users can get AWS account applications and roles assigned to them and get federated into the application.</p> <p>For general information about AWS SSO, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html\">What is AWS Single Sign-On?</a> in the <i>AWS SSO User Guide</i>.</p> <p>This API reference guide describes the AWS SSO Portal operations that you can call programatically and includes detailed information on data types and errors.</p> <note> <p>AWS provides SDKs that consist of libraries and sample code for various programming languages and platforms, such as Java, Ruby, .Net, iOS, or Android. The SDKs provide a convenient way to create programmatic access to AWS SSO and other AWS services. For more information about the AWS SDKs, including how to download and install them, see <a href=\"http://aws.amazon.com/tools/\">Tools for Amazon Web Services</a>.</p> </note>",
+  "metadata": {
+    "apiVersion": "2019-06-10",
+    "endpointPrefix": "portal.sso",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceAbbreviation": "SSO",
+    "serviceFullName": "AWS Single Sign-On",
+    "serviceId": "SSO",
+    "signatureVersion": "v4",
+    "signingName": "awsssoportal",
+    "uid": "sso-2019-06-10"
   },
-  "operations":{
-    "GetRoleCredentials":{
-      "name":"GetRoleCredentials",
-      "http":{
-        "method":"GET",
-        "requestUri":"/federation/credentials"
-      },
-      "input":{"shape":"GetRoleCredentialsRequest"},
-      "output":{"shape":"GetRoleCredentialsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"UnauthorizedException"},
-        {"shape":"TooManyRequestsException"},
-        {"shape":"ResourceNotFoundException"}
+  "operations": {
+    "GetRoleCredentials": {
+      "authtype": "none",
+      "documentation": "<p>Returns the STS short-term credentials for a given role name that is assigned to the user.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Returns the STS short-term credentials for a given role name that is assigned to the user.</p>",
-      "authtype":"none"
+      "http": {
+        "method": "GET",
+        "requestUri": "/federation/credentials"
+      },
+      "input": {
+        "shape": "GetRoleCredentialsRequest"
+      },
+      "name": "GetRoleCredentials",
+      "output": {
+        "shape": "GetRoleCredentialsResponse"
+      }
     },
-    "ListAccountRoles":{
-      "name":"ListAccountRoles",
-      "http":{
-        "method":"GET",
-        "requestUri":"/assignment/roles"
-      },
-      "input":{"shape":"ListAccountRolesRequest"},
-      "output":{"shape":"ListAccountRolesResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"UnauthorizedException"},
-        {"shape":"TooManyRequestsException"},
-        {"shape":"ResourceNotFoundException"}
+    "ListAccountRoles": {
+      "authtype": "none",
+      "documentation": "<p>Lists all roles that are assigned to the user for a given AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Lists all roles that are assigned to the user for a given AWS account.</p>",
-      "authtype":"none"
+      "http": {
+        "method": "GET",
+        "requestUri": "/assignment/roles"
+      },
+      "input": {
+        "shape": "ListAccountRolesRequest"
+      },
+      "name": "ListAccountRoles",
+      "output": {
+        "shape": "ListAccountRolesResponse"
+      }
     },
-    "ListAccounts":{
-      "name":"ListAccounts",
-      "http":{
-        "method":"GET",
-        "requestUri":"/assignment/accounts"
-      },
-      "input":{"shape":"ListAccountsRequest"},
-      "output":{"shape":"ListAccountsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"UnauthorizedException"},
-        {"shape":"TooManyRequestsException"},
-        {"shape":"ResourceNotFoundException"}
+    "ListAccounts": {
+      "authtype": "none",
+      "documentation": "<p>Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers\">Assign User Access</a> in the <i>AWS SSO User Guide</i>. This operation returns a paginated response.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        }
       ],
-      "documentation":"<p>Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers\">Assign User Access</a> in the <i>AWS SSO User Guide</i>. This operation returns a paginated response.</p>",
-      "authtype":"none"
+      "http": {
+        "method": "GET",
+        "requestUri": "/assignment/accounts"
+      },
+      "input": {
+        "shape": "ListAccountsRequest"
+      },
+      "name": "ListAccounts",
+      "output": {
+        "shape": "ListAccountsResponse"
+      }
     },
-    "Logout":{
-      "name":"Logout",
-      "http":{
-        "method":"POST",
-        "requestUri":"/logout"
-      },
-      "input":{"shape":"LogoutRequest"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"UnauthorizedException"},
-        {"shape":"TooManyRequestsException"}
+    "Logout": {
+      "authtype": "none",
+      "documentation": "<p>Removes the client- and server-side session that is associated with the user.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
       ],
-      "documentation":"<p>Removes the client- and server-side session that is associated with the user.</p>",
-      "authtype":"none"
+      "http": {
+        "method": "POST",
+        "requestUri": "/logout"
+      },
+      "input": {
+        "shape": "LogoutRequest"
+      },
+      "name": "Logout"
     }
   },
-  "shapes":{
-    "AccessKeyType":{"type":"string"},
-    "AccessTokenType":{
-      "type":"string",
-      "sensitive":true
+  "shapes": {
+    "AccessKeyType": {
+      "type": "string"
     },
-    "AccountIdType":{"type":"string"},
-    "AccountInfo":{
-      "type":"structure",
-      "members":{
-        "accountId":{
-          "shape":"AccountIdType",
-          "documentation":"<p>The identifier of the AWS account that is assigned to the user.</p>"
+    "AccessTokenType": {
+      "sensitive": true,
+      "type": "string"
+    },
+    "AccountIdType": {
+      "type": "string"
+    },
+    "AccountInfo": {
+      "documentation": "<p>Provides information about your AWS account.</p>",
+      "members": {
+        "accountId": {
+          "documentation": "<p>The identifier of the AWS account that is assigned to the user.</p>",
+          "shape": "AccountIdType"
         },
-        "accountName":{
-          "shape":"AccountNameType",
-          "documentation":"<p>The display name of the AWS account that is assigned to the user.</p>"
+        "accountName": {
+          "documentation": "<p>The display name of the AWS account that is assigned to the user.</p>",
+          "shape": "AccountNameType"
         },
-        "emailAddress":{
-          "shape":"EmailAddressType",
-          "documentation":"<p>The email address of the AWS account that is assigned to the user.</p>"
+        "emailAddress": {
+          "documentation": "<p>The email address of the AWS account that is assigned to the user.</p>",
+          "shape": "EmailAddressType"
         }
       },
-      "documentation":"<p>Provides information about your AWS account.</p>"
+      "type": "structure"
     },
-    "AccountListType":{
-      "type":"list",
-      "member":{"shape":"AccountInfo"}
+    "AccountListType": {
+      "member": {
+        "shape": "AccountInfo"
+      },
+      "type": "list"
     },
-    "AccountNameType":{"type":"string"},
-    "EmailAddressType":{
-      "type":"string",
-      "max":254,
-      "min":1
+    "AccountNameType": {
+      "type": "string"
     },
-    "ErrorDescription":{"type":"string"},
-    "ExpirationTimestampType":{"type":"long"},
-    "GetRoleCredentialsRequest":{
-      "type":"structure",
-      "required":[
+    "EmailAddressType": {
+      "max": 254,
+      "min": 1,
+      "type": "string"
+    },
+    "ErrorDescription": {
+      "type": "string"
+    },
+    "ExpirationTimestampType": {
+      "type": "long"
+    },
+    "GetRoleCredentialsRequest": {
+      "members": {
+        "accessToken": {
+          "documentation": "<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
+          "location": "header",
+          "locationName": "x-amz-sso_bearer_token",
+          "shape": "AccessTokenType"
+        },
+        "accountId": {
+          "documentation": "<p>The identifier for the AWS account that is assigned to the user.</p>",
+          "location": "querystring",
+          "locationName": "account_id",
+          "shape": "AccountIdType"
+        },
+        "roleName": {
+          "documentation": "<p>The friendly name of the role that is assigned to the user.</p>",
+          "location": "querystring",
+          "locationName": "role_name",
+          "shape": "RoleNameType"
+        }
+      },
+      "required": [
         "roleName",
         "accountId",
         "accessToken"
       ],
-      "members":{
-        "roleName":{
-          "shape":"RoleNameType",
-          "documentation":"<p>The friendly name of the role that is assigned to the user.</p>",
-          "location":"querystring",
-          "locationName":"role_name"
-        },
-        "accountId":{
-          "shape":"AccountIdType",
-          "documentation":"<p>The identifier for the AWS account that is assigned to the user.</p>",
-          "location":"querystring",
-          "locationName":"account_id"
-        },
-        "accessToken":{
-          "shape":"AccessTokenType",
-          "documentation":"<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
-          "location":"header",
-          "locationName":"x-amz-sso_bearer_token"
-        }
-      }
+      "type": "structure"
     },
-    "GetRoleCredentialsResponse":{
-      "type":"structure",
-      "members":{
-        "roleCredentials":{
-          "shape":"RoleCredentials",
-          "documentation":"<p>The credentials for the role that is assigned to the user.</p>"
+    "GetRoleCredentialsResponse": {
+      "members": {
+        "roleCredentials": {
+          "documentation": "<p>The credentials for the role that is assigned to the user.</p>",
+          "shape": "RoleCredentials"
         }
-      }
-    },
-    "InvalidRequestException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorDescription"}
       },
-      "documentation":"<p>Indicates that a problem occurred with the input to the request. For example, a required parameter might be missing or out of range.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
     },
-    "ListAccountRolesRequest":{
-      "type":"structure",
-      "required":[
+    "InvalidRequestException": {
+      "documentation": "<p>Indicates that a problem occurred with the input to the request. For example, a required parameter might be missing or out of range.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorDescription"
+        }
+      },
+      "type": "structure"
+    },
+    "ListAccountRolesRequest": {
+      "members": {
+        "accessToken": {
+          "documentation": "<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
+          "location": "header",
+          "locationName": "x-amz-sso_bearer_token",
+          "shape": "AccessTokenType"
+        },
+        "accountId": {
+          "documentation": "<p>The identifier for the AWS account that is assigned to the user.</p>",
+          "location": "querystring",
+          "locationName": "account_id",
+          "shape": "AccountIdType"
+        },
+        "maxResults": {
+          "documentation": "<p>The number of items that clients can request per page.</p>",
+          "location": "querystring",
+          "locationName": "max_result",
+          "shape": "MaxResultType"
+        },
+        "nextToken": {
+          "documentation": "<p>The page token from the previous response output when you request subsequent pages.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextTokenType"
+        }
+      },
+      "required": [
         "accessToken",
         "accountId"
       ],
-      "members":{
-        "nextToken":{
-          "shape":"NextTokenType",
-          "documentation":"<p>The page token from the previous response output when you request subsequent pages.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        },
-        "maxResults":{
-          "shape":"MaxResultType",
-          "documentation":"<p>The number of items that clients can request per page.</p>",
-          "location":"querystring",
-          "locationName":"max_result"
-        },
-        "accessToken":{
-          "shape":"AccessTokenType",
-          "documentation":"<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
-          "location":"header",
-          "locationName":"x-amz-sso_bearer_token"
-        },
-        "accountId":{
-          "shape":"AccountIdType",
-          "documentation":"<p>The identifier for the AWS account that is assigned to the user.</p>",
-          "location":"querystring",
-          "locationName":"account_id"
-        }
-      }
+      "type": "structure"
     },
-    "ListAccountRolesResponse":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextTokenType",
-          "documentation":"<p>The page token client that is used to retrieve the list of accounts.</p>"
+    "ListAccountRolesResponse": {
+      "members": {
+        "nextToken": {
+          "documentation": "<p>The page token client that is used to retrieve the list of accounts.</p>",
+          "shape": "NextTokenType"
         },
-        "roleList":{
-          "shape":"RoleListType",
-          "documentation":"<p>A paginated response with the list of roles and the next token if more results are available.</p>"
-        }
-      }
-    },
-    "ListAccountsRequest":{
-      "type":"structure",
-      "required":["accessToken"],
-      "members":{
-        "nextToken":{
-          "shape":"NextTokenType",
-          "documentation":"<p>(Optional) When requesting subsequent pages, this is the page token from the previous response output.</p>",
-          "location":"querystring",
-          "locationName":"next_token"
-        },
-        "maxResults":{
-          "shape":"MaxResultType",
-          "documentation":"<p>This is the number of items clients can request per page.</p>",
-          "location":"querystring",
-          "locationName":"max_result"
-        },
-        "accessToken":{
-          "shape":"AccessTokenType",
-          "documentation":"<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
-          "location":"header",
-          "locationName":"x-amz-sso_bearer_token"
-        }
-      }
-    },
-    "ListAccountsResponse":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextTokenType",
-          "documentation":"<p>The page token client that is used to retrieve the list of accounts.</p>"
-        },
-        "accountList":{
-          "shape":"AccountListType",
-          "documentation":"<p>A paginated response with the list of account information and the next token if more results are available.</p>"
-        }
-      }
-    },
-    "LogoutRequest":{
-      "type":"structure",
-      "required":["accessToken"],
-      "members":{
-        "accessToken":{
-          "shape":"AccessTokenType",
-          "documentation":"<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
-          "location":"header",
-          "locationName":"x-amz-sso_bearer_token"
-        }
-      }
-    },
-    "MaxResultType":{
-      "type":"integer",
-      "box":true,
-      "max":100,
-      "min":1
-    },
-    "NextTokenType":{"type":"string"},
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorDescription"}
-      },
-      "documentation":"<p>The specified resource doesn't exist.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "RoleCredentials":{
-      "type":"structure",
-      "members":{
-        "accessKeyId":{
-          "shape":"AccessKeyType",
-          "documentation":"<p>The identifier used for the temporary security credentials. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>"
-        },
-        "secretAccessKey":{
-          "shape":"SecretAccessKeyType",
-          "documentation":"<p>The key that is used to sign the request. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>"
-        },
-        "sessionToken":{
-          "shape":"SessionTokenType",
-          "documentation":"<p>The token used for temporary credentials. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>"
-        },
-        "expiration":{
-          "shape":"ExpirationTimestampType",
-          "documentation":"<p>The date on which temporary security credentials expire.</p>"
+        "roleList": {
+          "documentation": "<p>A paginated response with the list of roles and the next token if more results are available.</p>",
+          "shape": "RoleListType"
         }
       },
-      "documentation":"<p>Provides information about the role credentials that are assigned to the user.</p>"
+      "type": "structure"
     },
-    "RoleInfo":{
-      "type":"structure",
-      "members":{
-        "roleName":{
-          "shape":"RoleNameType",
-          "documentation":"<p>The friendly name of the role that is assigned to the user.</p>"
+    "ListAccountsRequest": {
+      "members": {
+        "accessToken": {
+          "documentation": "<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
+          "location": "header",
+          "locationName": "x-amz-sso_bearer_token",
+          "shape": "AccessTokenType"
         },
-        "accountId":{
-          "shape":"AccountIdType",
-          "documentation":"<p>The identifier of the AWS account assigned to the user.</p>"
+        "maxResults": {
+          "documentation": "<p>This is the number of items clients can request per page.</p>",
+          "location": "querystring",
+          "locationName": "max_result",
+          "shape": "MaxResultType"
+        },
+        "nextToken": {
+          "documentation": "<p>(Optional) When requesting subsequent pages, this is the page token from the previous response output.</p>",
+          "location": "querystring",
+          "locationName": "next_token",
+          "shape": "NextTokenType"
         }
       },
-      "documentation":"<p>Provides information about the role that is assigned to the user.</p>"
+      "required": [
+        "accessToken"
+      ],
+      "type": "structure"
     },
-    "RoleListType":{
-      "type":"list",
-      "member":{"shape":"RoleInfo"}
-    },
-    "RoleNameType":{"type":"string"},
-    "SecretAccessKeyType":{
-      "type":"string",
-      "sensitive":true
-    },
-    "SessionTokenType":{
-      "type":"string",
-      "sensitive":true
-    },
-    "TooManyRequestsException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorDescription"}
+    "ListAccountsResponse": {
+      "members": {
+        "accountList": {
+          "documentation": "<p>A paginated response with the list of account information and the next token if more results are available.</p>",
+          "shape": "AccountListType"
+        },
+        "nextToken": {
+          "documentation": "<p>The page token client that is used to retrieve the list of accounts.</p>",
+          "shape": "NextTokenType"
+        }
       },
-      "documentation":"<p>Indicates that the request is being made too frequently and is more than what the server can handle.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "type": "structure"
     },
-    "UnauthorizedException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorDescription"}
+    "LogoutRequest": {
+      "members": {
+        "accessToken": {
+          "documentation": "<p>The token issued by the <code>CreateToken</code> API call. For more information, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html\">CreateToken</a> in the <i>AWS SSO OIDC API Reference Guide</i>.</p>",
+          "location": "header",
+          "locationName": "x-amz-sso_bearer_token",
+          "shape": "AccessTokenType"
+        }
       },
-      "documentation":"<p>Indicates that the request is not authorized. This can happen due to an invalid access token in the request.</p>",
-      "error":{"httpStatusCode":401},
-      "exception":true
+      "required": [
+        "accessToken"
+      ],
+      "type": "structure"
+    },
+    "MaxResultType": {
+      "box": true,
+      "max": 100,
+      "min": 1,
+      "type": "integer"
+    },
+    "NextTokenType": {
+      "type": "string"
+    },
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource doesn't exist.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorDescription"
+        }
+      },
+      "type": "structure"
+    },
+    "RoleCredentials": {
+      "documentation": "<p>Provides information about the role credentials that are assigned to the user.</p>",
+      "members": {
+        "accessKeyId": {
+          "documentation": "<p>The identifier used for the temporary security credentials. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>",
+          "shape": "AccessKeyType"
+        },
+        "expiration": {
+          "documentation": "<p>The date on which temporary security credentials expire.</p>",
+          "shape": "ExpirationTimestampType"
+        },
+        "secretAccessKey": {
+          "documentation": "<p>The key that is used to sign the request. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>",
+          "shape": "SecretAccessKeyType"
+        },
+        "sessionToken": {
+          "documentation": "<p>The token used for temporary credentials. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html\">Using Temporary Security Credentials to Request Access to AWS Resources</a> in the <i>AWS IAM User Guide</i>.</p>",
+          "shape": "SessionTokenType"
+        }
+      },
+      "type": "structure"
+    },
+    "RoleInfo": {
+      "documentation": "<p>Provides information about the role that is assigned to the user.</p>",
+      "members": {
+        "accountId": {
+          "documentation": "<p>The identifier of the AWS account assigned to the user.</p>",
+          "shape": "AccountIdType"
+        },
+        "roleName": {
+          "documentation": "<p>The friendly name of the role that is assigned to the user.</p>",
+          "shape": "RoleNameType"
+        }
+      },
+      "type": "structure"
+    },
+    "RoleListType": {
+      "member": {
+        "shape": "RoleInfo"
+      },
+      "type": "list"
+    },
+    "RoleNameType": {
+      "type": "string"
+    },
+    "SecretAccessKeyType": {
+      "sensitive": true,
+      "type": "string"
+    },
+    "SessionTokenType": {
+      "sensitive": true,
+      "type": "string"
+    },
+    "TooManyRequestsException": {
+      "documentation": "<p>Indicates that the request is being made too frequently and is more than what the server can handle.</p>",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorDescription"
+        }
+      },
+      "type": "structure"
+    },
+    "UnauthorizedException": {
+      "documentation": "<p>Indicates that the request is not authorized. This can happen due to an invalid access token in the request.</p>",
+      "error": {
+        "httpStatusCode": 401
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "shape": "ErrorDescription"
+        }
+      },
+      "type": "structure"
     }
   },
-  "documentation":"<p>AWS Single Sign-On Portal is a web service that makes it easy for you to assign user access to AWS SSO resources such as the user portal. Users can get AWS account applications and roles assigned to them and get federated into the application.</p> <p>For general information about AWS SSO, see <a href=\"https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html\">What is AWS Single Sign-On?</a> in the <i>AWS SSO User Guide</i>.</p> <p>This API reference guide describes the AWS SSO Portal operations that you can call programatically and includes detailed information on data types and errors.</p> <note> <p>AWS provides SDKs that consist of libraries and sample code for various programming languages and platforms, such as Java, Ruby, .Net, iOS, or Android. The SDKs provide a convenient way to create programmatic access to AWS SSO and other AWS services. For more information about the AWS SDKs, including how to download and install them, see <a href=\"http://aws.amazon.com/tools/\">Tools for Amazon Web Services</a>.</p> </note>"
+  "version": "2.0"
 }

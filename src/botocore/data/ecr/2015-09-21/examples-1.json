@@ -1,8 +1,10 @@
 {
-  "version": "1.0",
   "examples": {
     "BatchDeleteImage": [
       {
+        "comments": {},
+        "description": "This example deletes images with the tags precise and trusty in a repository called ubuntu in the default registry for an account.",
+        "id": "batchdeleteimages-example-1470860541707",
         "input": {
           "imageIds": [
             {
@@ -12,9 +14,7 @@
           "repositoryName": "ubuntu"
         },
         "output": {
-          "failures": [
-
-          ],
+          "failures": [],
           "imageIds": [
             {
               "imageDigest": "sha256:examplee6d1e504117a17000003d3753086354a38375961f2e665416ef4b1b2f",
@@ -22,15 +22,18 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This example deletes images with the tags precise and trusty in a repository called ubuntu in the default registry for an account.",
-        "id": "batchdeleteimages-example-1470860541707",
         "title": "To delete multiple images"
       }
     ],
     "BatchGetImage": [
       {
+        "comments": {
+          "output": {
+            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
+          }
+        },
+        "description": "This example obtains information for an image with a specified image digest ID from the repository named ubuntu in the current account.",
+        "id": "batchgetimage-example-1470862771437",
         "input": {
           "imageIds": [
             {
@@ -40,9 +43,7 @@
           "repositoryName": "ubuntu"
         },
         "output": {
-          "failures": [
-
-          ],
+          "failures": [],
           "images": [
             {
               "imageId": {
@@ -55,18 +56,18 @@
             }
           ]
         },
-        "comments": {
-          "output": {
-            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
-          }
-        },
-        "description": "This example obtains information for an image with a specified image digest ID from the repository named ubuntu in the current account.",
-        "id": "batchgetimage-example-1470862771437",
         "title": "To obtain multiple images in a single request"
       }
     ],
     "CreateRepository": [
       {
+        "comments": {
+          "output": {
+            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
+          }
+        },
+        "description": "This example creates a repository called nginx-web-app inside the project-a namespace in the default registry for an account.",
+        "id": "createrepository-example-1470863688724",
         "input": {
           "repositoryName": "project-a/nginx-web-app"
         },
@@ -77,18 +78,18 @@
             "repositoryName": "project-a/nginx-web-app"
           }
         },
-        "comments": {
-          "output": {
-            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
-          }
-        },
-        "description": "This example creates a repository called nginx-web-app inside the project-a namespace in the default registry for an account.",
-        "id": "createrepository-example-1470863688724",
         "title": "To create a new repository"
       }
     ],
     "DeleteRepository": [
       {
+        "comments": {
+          "output": {
+            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
+          }
+        },
+        "description": "This example force deletes a repository named ubuntu in the default registry for an account. The force parameter is required if the repository contains images.",
+        "id": "deleterepository-example-1470863805703",
         "input": {
           "force": true,
           "repositoryName": "ubuntu"
@@ -100,18 +101,14 @@
             "repositoryName": "ubuntu"
           }
         },
-        "comments": {
-          "output": {
-            "imageManifest": "In this example, the imageManifest in the output JSON has been truncated."
-          }
-        },
-        "description": "This example force deletes a repository named ubuntu in the default registry for an account. The force parameter is required if the repository contains images.",
-        "id": "deleterepository-example-1470863805703",
         "title": "To force delete a repository"
       }
     ],
     "DeleteRepositoryPolicy": [
       {
+        "comments": {},
+        "description": "This example deletes the policy associated with the repository named ubuntu in the current account.",
+        "id": "deleterepositorypolicy-example-1470866943748",
         "input": {
           "repositoryName": "ubuntu"
         },
@@ -120,17 +117,17 @@
           "registryId": "012345678901",
           "repositoryName": "ubuntu"
         },
-        "comments": {
-        },
-        "description": "This example deletes the policy associated with the repository named ubuntu in the current account.",
-        "id": "deleterepositorypolicy-example-1470866943748",
         "title": "To delete the policy associated with a repository"
       }
     ],
     "DescribeRepositories": [
       {
-        "input": {
+        "comments": {
+          "output": {}
         },
+        "description": "The following example obtains a list and description of all repositories in the default registry to which the current user has access.",
+        "id": "describe-repositories-1470856017467",
+        "input": {},
         "output": {
           "repositories": [
             {
@@ -145,17 +142,14 @@
             }
           ]
         },
-        "comments": {
-          "output": {
-          }
-        },
-        "description": "The following example obtains a list and description of all repositories in the default registry to which the current user has access.",
-        "id": "describe-repositories-1470856017467",
         "title": "To describe all repositories in the current account"
       }
     ],
     "GetRepositoryPolicy": [
       {
+        "comments": {},
+        "description": "This example obtains the repository policy for the repository named ubuntu.",
+        "id": "getrepositorypolicy-example-1470867669211",
         "input": {
           "repositoryName": "ubuntu"
         },
@@ -164,15 +158,14 @@
           "registryId": "012345678901",
           "repositoryName": "ubuntu"
         },
-        "comments": {
-        },
-        "description": "This example obtains the repository policy for the repository named ubuntu.",
-        "id": "getrepositorypolicy-example-1470867669211",
         "title": "To get the current policy for a repository"
       }
     ],
     "ListImages": [
       {
+        "comments": {},
+        "description": "This example lists all of the images in the repository named ubuntu in the default registry in the current account. ",
+        "id": "listimages-example-1470868161594",
         "input": {
           "repositoryName": "ubuntu"
         },
@@ -184,12 +177,9 @@
             }
           ]
         },
-        "comments": {
-        },
-        "description": "This example lists all of the images in the repository named ubuntu in the default registry in the current account. ",
-        "id": "listimages-example-1470868161594",
         "title": "To list all images in a repository"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

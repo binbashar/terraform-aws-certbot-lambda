@@ -1,71 +1,5 @@
 {
   "pagination": {
-    "ListCACertificates": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "certificates"
-    },
-    "ListCertificates": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "certificates"
-    },
-    "ListCertificatesByCA": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "certificates"
-    },
-    "ListOutgoingCertificates": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "outgoingCertificates"
-    },
-    "ListPolicies": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "policies"
-    },
-    "ListPolicyPrincipals": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "principals"
-    },
-    "ListPrincipalPolicies": {
-      "input_token": "marker",
-      "output_token": "nextMarker",
-      "limit_key": "pageSize",
-      "result_key": "policies"
-    },
-    "ListPrincipalThings": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "things"
-    },
-    "ListThingTypes": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "thingTypes"
-    },
-    "ListThings": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "things"
-    },
-    "ListTopicRules": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "rules"
-    },
     "ListActiveViolations": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
@@ -102,6 +36,24 @@
       "output_token": "nextToken",
       "result_key": "billingGroups"
     },
+    "ListCACertificates": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "certificates"
+    },
+    "ListCertificates": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "certificates"
+    },
+    "ListCertificatesByCA": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "certificates"
+    },
     "ListIndices": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
@@ -131,6 +83,36 @@
       "limit_key": "maxResults",
       "output_token": "nextToken",
       "result_key": "otaUpdates"
+    },
+    "ListOutgoingCertificates": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "outgoingCertificates"
+    },
+    "ListPolicies": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "policies"
+    },
+    "ListPolicyPrincipals": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "principals"
+    },
+    "ListPrincipalPolicies": {
+      "input_token": "marker",
+      "limit_key": "pageSize",
+      "output_token": "nextMarker",
+      "result_key": "policies"
+    },
+    "ListPrincipalThings": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "things"
     },
     "ListRoleAliases": {
       "input_token": "marker",
@@ -197,6 +179,18 @@
       "output_token": "nextToken",
       "result_key": "taskIds"
     },
+    "ListThingTypes": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "thingTypes"
+    },
+    "ListThings": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "things"
+    },
     "ListThingsInBillingGroup": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
@@ -208,6 +202,12 @@
       "limit_key": "maxResults",
       "output_token": "nextToken",
       "result_key": "things"
+    },
+    "ListTopicRules": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "rules"
     },
     "ListV2LoggingLevels": {
       "input_token": "nextToken",

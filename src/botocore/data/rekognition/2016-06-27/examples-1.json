@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "CompareFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation compares the largest face detected in the source image with each face detected in the target image.",
+        "id": "to-compare-two-images-1482181985581",
         "input": {
           "SimilarityThreshold": 90,
           "SourceImage": {
@@ -43,19 +48,17 @@
             "Confidence": 99.9991226196289
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation compares the largest face detected in the source image with each face detected in the target image.",
-        "id": "to-compare-two-images-1482181985581",
         "title": "To compare two images"
       }
     ],
     "CreateCollection": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation creates a Rekognition collection for storing image data.",
+        "id": "to-create-a-collection-1481833313674",
         "input": {
           "CollectionId": "myphotos"
         },
@@ -63,38 +66,34 @@
           "CollectionArn": "aws:rekognition:us-west-2:123456789012:collection/myphotos",
           "StatusCode": 200
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation creates a Rekognition collection for storing image data.",
-        "id": "to-create-a-collection-1481833313674",
         "title": "To create a collection"
       }
     ],
     "DeleteCollection": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation deletes a Rekognition collection.",
+        "id": "to-delete-a-collection-1481838179973",
         "input": {
           "CollectionId": "myphotos"
         },
         "output": {
           "StatusCode": 200
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation deletes a Rekognition collection.",
-        "id": "to-delete-a-collection-1481838179973",
         "title": "To delete a collection"
       }
     ],
     "DeleteFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation deletes one or more faces from a Rekognition collection.",
+        "id": "to-delete-a-face-1482182799377",
         "input": {
           "CollectionId": "myphotos",
           "FaceIds": [
@@ -106,19 +105,17 @@
             "ff43d742-0c13-5d16-a3e8-03d3f58e980b"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation deletes one or more faces from a Rekognition collection.",
-        "id": "to-delete-a-face-1482182799377",
         "title": "To delete a face"
       }
     ],
     "DetectFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation detects faces in an image stored in an AWS S3 bucket.",
+        "id": "to-detect-faces-in-an-image-1481841782793",
         "input": {
           "Image": {
             "S3Object": {
@@ -177,19 +174,17 @@
           ],
           "OrientationCorrection": "ROTATE_0"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation detects faces in an image stored in an AWS S3 bucket.",
-        "id": "to-detect-faces-in-an-image-1481841782793",
         "title": "To detect faces in an image"
       }
     ],
     "DetectLabels": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation detects labels in the supplied image",
+        "id": "to-detect-labels-1481834255770",
         "input": {
           "Image": {
             "S3Object": {
@@ -212,24 +207,20 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation detects labels in the supplied image",
-        "id": "to-detect-labels-1481834255770",
         "title": "To detect labels"
       }
     ],
     "IndexFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation detects faces in an image and adds them to the specified Rekognition collection.",
+        "id": "to-add-a-face-to-a-collection-1482179542923",
         "input": {
           "CollectionId": "myphotos",
-          "DetectionAttributes": [
-
-          ],
+          "DetectionAttributes": [],
           "ExternalImageId": "myphotoid",
           "Image": {
             "S3Object": {
@@ -359,39 +350,34 @@
           ],
           "OrientationCorrection": "ROTATE_0"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation detects faces in an image and adds them to the specified Rekognition collection.",
-        "id": "to-add-a-face-to-a-collection-1482179542923",
         "title": "To add a face to a collection"
       }
     ],
     "ListCollections": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "This operation returns a list of Rekognition collections.",
+        "id": "to-list-the-collections-1482179199088",
+        "input": {},
         "output": {
           "CollectionIds": [
             "myphotos"
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation returns a list of Rekognition collections.",
-        "id": "to-list-the-collections-1482179199088",
         "title": "To list the collections"
       }
     ],
     "ListFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation lists the faces in a Rekognition collection.",
+        "id": "to-list-the-faces-in-a-collection-1482181416530",
         "input": {
           "CollectionId": "myphotos",
           "MaxResults": 20
@@ -521,19 +507,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation lists the faces in a Rekognition collection.",
-        "id": "to-list-the-faces-in-a-collection-1482181416530",
         "title": "To list the faces in a collection"
       }
     ],
     "SearchFaces": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation searches for matching faces in the collection the supplied face belongs to.",
+        "id": "to-delete-a-face-1482182799377",
         "input": {
           "CollectionId": "myphotos",
           "FaceId": "70008e50-75e4-55d0-8e80-363fb73b3a14",
@@ -587,19 +571,17 @@
           ],
           "SearchedFaceId": "70008e50-75e4-55d0-8e80-363fb73b3a14"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation searches for matching faces in the collection the supplied face belongs to.",
-        "id": "to-delete-a-face-1482182799377",
         "title": "To delete a face"
       }
     ],
     "SearchFacesByImage": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This operation searches for faces in a Rekognition collection that match the largest face in an S3 bucket stored image.",
+        "id": "to-search-for-faces-matching-a-supplied-image-1482175994491",
         "input": {
           "CollectionId": "myphotos",
           "FaceMatchThreshold": 95,
@@ -636,16 +618,9 @@
           },
           "SearchedFaceConfidence": 99.9991226196289
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This operation searches for faces in a Rekognition collection that match the largest face in an S3 bucket stored image.",
-        "id": "to-search-for-faces-matching-a-supplied-image-1482175994491",
         "title": "To search for faces matching a supplied image"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

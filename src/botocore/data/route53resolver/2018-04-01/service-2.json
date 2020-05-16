@@ -1,884 +1,1241 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2018-04-01",
-    "endpointPrefix":"route53resolver",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"Route53Resolver",
-    "serviceFullName":"Amazon Route 53 Resolver",
-    "serviceId":"Route53Resolver",
-    "signatureVersion":"v4",
-    "targetPrefix":"Route53Resolver",
-    "uid":"route53resolver-2018-04-01"
+  "documentation": "<p>Here's how you set up to query an Amazon Route 53 private hosted zone from your network:</p> <ol> <li> <p>Connect your network to a VPC using AWS Direct Connect or a VPN.</p> </li> <li> <p>Run the following AWS CLI command to create a Resolver endpoint:</p> <p> <code>create-resolver-endpoint --name [endpoint_name] --direction INBOUND --creator-request-id [unique_string] --security-group-ids [security_group_with_inbound_rules] --ip-addresses SubnetId=[subnet_id] SubnetId=[subnet_id_in_different_AZ]</code> </p> <p>Note the resolver endpoint ID that appears in the response. You'll use it in step 3.</p> </li> <li> <p>Get the IP addresses for the Resolver endpoints:</p> <p> <code>get-resolver-endpoint --resolver-endpoint-id [resolver_endpoint_id]</code> </p> </li> <li> <p>In your network configuration, define the IP addresses that you got in step 3 as DNS servers.</p> <p>You can now query instance names in your VPCs and the names of records in your private hosted zone.</p> </li> </ol> <p>You can also perform the following operations using the AWS CLI:</p> <ul> <li> <p> <code>list-resolver-endpoints</code>: List all endpoints. The syntax includes options for pagination and filtering.</p> </li> <li> <p> <code>update-resolver-endpoints</code>: Add IP addresses to an endpoint or remove IP addresses from an endpoint. </p> </li> </ul> <p>To delete an endpoint, use the following AWS CLI command:</p> <p> <code>delete-resolver-endpoint --resolver-endpoint-id [resolver_endpoint_id]</code> </p>",
+  "metadata": {
+    "apiVersion": "2018-04-01",
+    "endpointPrefix": "route53resolver",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "Route53Resolver",
+    "serviceFullName": "Amazon Route 53 Resolver",
+    "serviceId": "Route53Resolver",
+    "signatureVersion": "v4",
+    "targetPrefix": "Route53Resolver",
+    "uid": "route53resolver-2018-04-01"
   },
-  "operations":{
-    "AssociateResolverEndpointIpAddress":{
-      "name":"AssociateResolverEndpointIpAddress",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"AssociateResolverEndpointIpAddressRequest"},
-      "output":{"shape":"AssociateResolverEndpointIpAddressResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ThrottlingException"}
+  "operations": {
+    "AssociateResolverEndpointIpAddress": {
+      "documentation": "<p>Adds IP addresses to an inbound or an outbound resolver endpoint. If you want to adding more than one IP address, submit one <code>AssociateResolverEndpointIpAddress</code> request for each IP address.</p> <p>To remove an IP address from an endpoint, see <a>DisassociateResolverEndpointIpAddress</a>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceExistsException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Adds IP addresses to an inbound or an outbound resolver endpoint. If you want to adding more than one IP address, submit one <code>AssociateResolverEndpointIpAddress</code> request for each IP address.</p> <p>To remove an IP address from an endpoint, see <a>DisassociateResolverEndpointIpAddress</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "AssociateResolverEndpointIpAddressRequest"
+      },
+      "name": "AssociateResolverEndpointIpAddress",
+      "output": {
+        "shape": "AssociateResolverEndpointIpAddressResponse"
+      }
     },
-    "AssociateResolverRule":{
-      "name":"AssociateResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"AssociateResolverRuleRequest"},
-      "output":{"shape":"AssociateResolverRuleResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceUnavailableException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "AssociateResolverRule": {
+      "documentation": "<p>Associates a resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see <a>CreateResolverRule</a>. </p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceUnavailableException"
+        },
+        {
+          "shape": "ResourceExistsException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Associates a resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see <a>CreateResolverRule</a>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "AssociateResolverRuleRequest"
+      },
+      "name": "AssociateResolverRule",
+      "output": {
+        "shape": "AssociateResolverRuleResponse"
+      }
     },
-    "CreateResolverEndpoint":{
-      "name":"CreateResolverEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateResolverEndpointRequest"},
-      "output":{"shape":"CreateResolverEndpointResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "CreateResolverEndpoint": {
+      "documentation": "<p>Creates a resolver endpoint. There are two types of resolver endpoints, inbound and outbound:</p> <ul> <li> <p>An <i>inbound resolver endpoint</i> forwards DNS queries to the DNS service for a VPC from your network or another VPC.</p> </li> <li> <p>An <i>outbound resolver endpoint</i> forwards DNS queries from the DNS service for a VPC to your network or another VPC.</p> </li> </ul>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceExistsException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Creates a resolver endpoint. There are two types of resolver endpoints, inbound and outbound:</p> <ul> <li> <p>An <i>inbound resolver endpoint</i> forwards DNS queries to the DNS service for a VPC from your network or another VPC.</p> </li> <li> <p>An <i>outbound resolver endpoint</i> forwards DNS queries from the DNS service for a VPC to your network or another VPC.</p> </li> </ul>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateResolverEndpointRequest"
+      },
+      "name": "CreateResolverEndpoint",
+      "output": {
+        "shape": "CreateResolverEndpointResponse"
+      }
     },
-    "CreateResolverRule":{
-      "name":"CreateResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"CreateResolverRuleRequest"},
-      "output":{"shape":"CreateResolverRuleResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"ResourceUnavailableException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "CreateResolverRule": {
+      "documentation": "<p>For DNS queries that originate in your VPCs, specifies which resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceExistsException"
+        },
+        {
+          "shape": "ResourceUnavailableException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>For DNS queries that originate in your VPCs, specifies which resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "CreateResolverRuleRequest"
+      },
+      "name": "CreateResolverRule",
+      "output": {
+        "shape": "CreateResolverRuleResponse"
+      }
     },
-    "DeleteResolverEndpoint":{
-      "name":"DeleteResolverEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteResolverEndpointRequest"},
-      "output":{"shape":"DeleteResolverEndpointResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "DeleteResolverEndpoint": {
+      "documentation": "<p>Deletes a resolver endpoint. The effect of deleting a resolver endpoint depends on whether it's an inbound or an outbound resolver endpoint:</p> <ul> <li> <p> <b>Inbound</b>: DNS queries from your network or another VPC are no longer routed to the DNS service for the specified VPC.</p> </li> <li> <p> <b>Outbound</b>: DNS queries from a VPC are no longer routed to your network or to another VPC.</p> </li> </ul>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Deletes a resolver endpoint. The effect of deleting a resolver endpoint depends on whether it's an inbound or an outbound resolver endpoint:</p> <ul> <li> <p> <b>Inbound</b>: DNS queries from your network or another VPC are no longer routed to the DNS service for the specified VPC.</p> </li> <li> <p> <b>Outbound</b>: DNS queries from a VPC are no longer routed to your network or to another VPC.</p> </li> </ul>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteResolverEndpointRequest"
+      },
+      "name": "DeleteResolverEndpoint",
+      "output": {
+        "shape": "DeleteResolverEndpointResponse"
+      }
     },
-    "DeleteResolverRule":{
-      "name":"DeleteResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeleteResolverRuleRequest"},
-      "output":{"shape":"DeleteResolverRuleResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "DeleteResolverRule": {
+      "documentation": "<p>Deletes a resolver rule. Before you can delete a resolver rule, you must disassociate it from all the VPCs that you associated the resolver rule with. For more infomation, see <a>DisassociateResolverRule</a>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Deletes a resolver rule. Before you can delete a resolver rule, you must disassociate it from all the VPCs that you associated the resolver rule with. For more infomation, see <a>DisassociateResolverRule</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeleteResolverRuleRequest"
+      },
+      "name": "DeleteResolverRule",
+      "output": {
+        "shape": "DeleteResolverRuleResponse"
+      }
     },
-    "DisassociateResolverEndpointIpAddress":{
-      "name":"DisassociateResolverEndpointIpAddress",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DisassociateResolverEndpointIpAddressRequest"},
-      "output":{"shape":"DisassociateResolverEndpointIpAddressResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "DisassociateResolverEndpointIpAddress": {
+      "documentation": "<p>Removes IP addresses from an inbound or an outbound resolver endpoint. If you want to remove more than one IP address, submit one <code>DisassociateResolverEndpointIpAddress</code> request for each IP address.</p> <p>To add an IP address to an endpoint, see <a>AssociateResolverEndpointIpAddress</a>.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceExistsException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Removes IP addresses from an inbound or an outbound resolver endpoint. If you want to remove more than one IP address, submit one <code>DisassociateResolverEndpointIpAddress</code> request for each IP address.</p> <p>To add an IP address to an endpoint, see <a>AssociateResolverEndpointIpAddress</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DisassociateResolverEndpointIpAddressRequest"
+      },
+      "name": "DisassociateResolverEndpointIpAddress",
+      "output": {
+        "shape": "DisassociateResolverEndpointIpAddressResponse"
+      }
     },
-    "DisassociateResolverRule":{
-      "name":"DisassociateResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DisassociateResolverRuleRequest"},
-      "output":{"shape":"DisassociateResolverRuleResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "DisassociateResolverRule": {
+      "documentation": "<p>Removes the association between a specified resolver rule and a specified VPC.</p> <important> <p>If you disassociate a resolver rule from a VPC, Resolver stops forwarding DNS queries for the domain name that you specified in the resolver rule. </p> </important>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Removes the association between a specified resolver rule and a specified VPC.</p> <important> <p>If you disassociate a resolver rule from a VPC, Resolver stops forwarding DNS queries for the domain name that you specified in the resolver rule. </p> </important>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DisassociateResolverRuleRequest"
+      },
+      "name": "DisassociateResolverRule",
+      "output": {
+        "shape": "DisassociateResolverRuleResponse"
+      }
     },
-    "GetResolverEndpoint":{
-      "name":"GetResolverEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetResolverEndpointRequest"},
-      "output":{"shape":"GetResolverEndpointResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "GetResolverEndpoint": {
+      "documentation": "<p>Gets information about a specified resolver endpoint, such as whether it's an inbound or an outbound resolver endpoint, and the current status of the endpoint.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets information about a specified resolver endpoint, such as whether it's an inbound or an outbound resolver endpoint, and the current status of the endpoint.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetResolverEndpointRequest"
+      },
+      "name": "GetResolverEndpoint",
+      "output": {
+        "shape": "GetResolverEndpointResponse"
+      }
     },
-    "GetResolverRule":{
-      "name":"GetResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetResolverRuleRequest"},
-      "output":{"shape":"GetResolverRuleResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "GetResolverRule": {
+      "documentation": "<p>Gets information about a specified resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound resolver endpoint that the rule is associated with.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets information about a specified resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound resolver endpoint that the rule is associated with.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetResolverRuleRequest"
+      },
+      "name": "GetResolverRule",
+      "output": {
+        "shape": "GetResolverRuleResponse"
+      }
     },
-    "GetResolverRuleAssociation":{
-      "name":"GetResolverRuleAssociation",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetResolverRuleAssociationRequest"},
-      "output":{"shape":"GetResolverRuleAssociationResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "GetResolverRuleAssociation": {
+      "documentation": "<p>Gets information about an association between a specified resolver rule and a VPC. You associate a resolver rule and a VPC using <a>AssociateResolverRule</a>. </p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets information about an association between a specified resolver rule and a VPC. You associate a resolver rule and a VPC using <a>AssociateResolverRule</a>. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetResolverRuleAssociationRequest"
+      },
+      "name": "GetResolverRuleAssociation",
+      "output": {
+        "shape": "GetResolverRuleAssociationResponse"
+      }
     },
-    "GetResolverRulePolicy":{
-      "name":"GetResolverRulePolicy",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetResolverRulePolicyRequest"},
-      "output":{"shape":"GetResolverRulePolicyResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"UnknownResourceException"},
-        {"shape":"InternalServiceErrorException"}
+    "GetResolverRulePolicy": {
+      "documentation": "<p>Gets information about a resolver rule policy. A resolver rule policy specifies the Resolver operations and resources that you want to allow another AWS account to be able to use. </p>",
+      "errors": [
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "UnknownResourceException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Gets information about a resolver rule policy. A resolver rule policy specifies the Resolver operations and resources that you want to allow another AWS account to be able to use. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetResolverRulePolicyRequest"
+      },
+      "name": "GetResolverRulePolicy",
+      "output": {
+        "shape": "GetResolverRulePolicyResponse"
+      }
     },
-    "ListResolverEndpointIpAddresses":{
-      "name":"ListResolverEndpointIpAddresses",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResolverEndpointIpAddressesRequest"},
-      "output":{"shape":"ListResolverEndpointIpAddressesResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"ThrottlingException"}
+    "ListResolverEndpointIpAddresses": {
+      "documentation": "<p>Gets the IP addresses for a specified resolver endpoint.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "InvalidNextTokenException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Gets the IP addresses for a specified resolver endpoint.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListResolverEndpointIpAddressesRequest"
+      },
+      "name": "ListResolverEndpointIpAddresses",
+      "output": {
+        "shape": "ListResolverEndpointIpAddressesResponse"
+      }
     },
-    "ListResolverEndpoints":{
-      "name":"ListResolverEndpoints",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResolverEndpointsRequest"},
-      "output":{"shape":"ListResolverEndpointsResponse"},
-      "errors":[
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "ListResolverEndpoints": {
+      "documentation": "<p>Lists all the resolver endpoints that were created using the current AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidNextTokenException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Lists all the resolver endpoints that were created using the current AWS account.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListResolverEndpointsRequest"
+      },
+      "name": "ListResolverEndpoints",
+      "output": {
+        "shape": "ListResolverEndpointsResponse"
+      }
     },
-    "ListResolverRuleAssociations":{
-      "name":"ListResolverRuleAssociations",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResolverRuleAssociationsRequest"},
-      "output":{"shape":"ListResolverRuleAssociationsResponse"},
-      "errors":[
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "ListResolverRuleAssociations": {
+      "documentation": "<p>Lists the associations that were created between resolver rules and VPCs using the current AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidNextTokenException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Lists the associations that were created between resolver rules and VPCs using the current AWS account.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListResolverRuleAssociationsRequest"
+      },
+      "name": "ListResolverRuleAssociations",
+      "output": {
+        "shape": "ListResolverRuleAssociationsResponse"
+      }
     },
-    "ListResolverRules":{
-      "name":"ListResolverRules",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResolverRulesRequest"},
-      "output":{"shape":"ListResolverRulesResponse"},
-      "errors":[
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "ListResolverRules": {
+      "documentation": "<p>Lists the resolver rules that were created using the current AWS account.</p>",
+      "errors": [
+        {
+          "shape": "InvalidNextTokenException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Lists the resolver rules that were created using the current AWS account.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListResolverRulesRequest"
+      },
+      "name": "ListResolverRules",
+      "output": {
+        "shape": "ListResolverRulesResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Lists the tags that you associated with the specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidNextTokenException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Lists the tags that you associated with the specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "PutResolverRulePolicy":{
-      "name":"PutResolverRulePolicy",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"PutResolverRulePolicyRequest"},
-      "output":{"shape":"PutResolverRulePolicyResponse"},
-      "errors":[
-        {"shape":"InvalidPolicyDocument"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"UnknownResourceException"},
-        {"shape":"InternalServiceErrorException"}
+    "PutResolverRulePolicy": {
+      "documentation": "<p>Specifies the Resolver operations and resources that you want to allow another AWS account to be able to use.</p>",
+      "errors": [
+        {
+          "shape": "InvalidPolicyDocument"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "UnknownResourceException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        }
       ],
-      "documentation":"<p>Specifies the Resolver operations and resources that you want to allow another AWS account to be able to use.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "PutResolverRulePolicyRequest"
+      },
+      "name": "PutResolverRulePolicy",
+      "output": {
+        "shape": "PutResolverRulePolicyResponse"
+      }
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidTagException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "TagResource": {
+      "documentation": "<p>Adds one or more tags to a specified resource.</p>",
+      "errors": [
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidTagException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Adds one or more tags to a specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "UntagResource": {
+      "documentation": "<p>Removes one or more tags from a specified resource.</p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Removes one or more tags from a specified resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateResolverEndpoint":{
-      "name":"UpdateResolverEndpoint",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateResolverEndpointRequest"},
-      "output":{"shape":"UpdateResolverEndpointResponse"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "UpdateResolverEndpoint": {
+      "documentation": "<p>Updates the name of an inbound or an outbound resolver endpoint. </p>",
+      "errors": [
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Updates the name of an inbound or an outbound resolver endpoint. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateResolverEndpointRequest"
+      },
+      "name": "UpdateResolverEndpoint",
+      "output": {
+        "shape": "UpdateResolverEndpointResponse"
+      }
     },
-    "UpdateResolverRule":{
-      "name":"UpdateResolverRule",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateResolverRuleRequest"},
-      "output":{"shape":"UpdateResolverRuleResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceUnavailableException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InternalServiceErrorException"},
-        {"shape":"ThrottlingException"}
+    "UpdateResolverRule": {
+      "documentation": "<p>Updates settings for a specified resolver rule. <code>ResolverRuleId</code> is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "InvalidParameterException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceUnavailableException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "InternalServiceErrorException"
+        },
+        {
+          "shape": "ThrottlingException"
+        }
       ],
-      "documentation":"<p>Updates settings for a specified resolver rule. <code>ResolverRuleId</code> is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateResolverRuleRequest"
+      },
+      "name": "UpdateResolverRule",
+      "output": {
+        "shape": "UpdateResolverRuleResponse"
+      }
     }
   },
-  "shapes":{
-    "AccountId":{
-      "type":"string",
-      "max":32,
-      "min":12
+  "shapes": {
+    "AccountId": {
+      "max": 32,
+      "min": 12,
+      "type": "string"
     },
-    "Arn":{
-      "type":"string",
-      "max":255,
-      "min":1
+    "Arn": {
+      "max": 255,
+      "min": 1,
+      "type": "string"
     },
-    "AssociateResolverEndpointIpAddressRequest":{
-      "type":"structure",
-      "required":[
+    "AssociateResolverEndpointIpAddressRequest": {
+      "members": {
+        "IpAddress": {
+          "documentation": "<p>Either the IPv4 address that you want to add to a resolver endpoint or a subnet ID. If you specify a subnet ID, Resolver chooses an IP address for you from the available IPs in the specified subnet.</p>",
+          "shape": "IpAddressUpdate"
+        },
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to associate IP addresses with.</p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
         "ResolverEndpointId",
         "IpAddress"
       ],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to associate IP addresses with.</p>"
+      "type": "structure"
+    },
+    "AssociateResolverEndpointIpAddressResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>The response to an <code>AssociateResolverEndpointIpAddress</code> request.</p>",
+          "shape": "ResolverEndpoint"
+        }
+      },
+      "type": "structure"
+    },
+    "AssociateResolverRuleRequest": {
+      "members": {
+        "Name": {
+          "documentation": "<p>A name for the association that you're creating between a resolver rule and a VPC.</p>",
+          "shape": "Name"
         },
-        "IpAddress":{
-          "shape":"IpAddressUpdate",
-          "documentation":"<p>Either the IPv4 address that you want to add to a resolver endpoint or a subnet ID. If you specify a subnet ID, Resolver chooses an IP address for you from the available IPs in the specified subnet.</p>"
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you want to associate with the VPC. To list the existing resolver rules, use <a>ListResolverRules</a>.</p>",
+          "shape": "ResourceId"
+        },
+        "VPCId": {
+          "documentation": "<p>The ID of the VPC that you want to associate the resolver rule with.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "AssociateResolverEndpointIpAddressResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>The response to an <code>AssociateResolverEndpointIpAddress</code> request.</p>"
-        }
-      }
-    },
-    "AssociateResolverRuleRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ResolverRuleId",
         "VPCId"
       ],
-      "members":{
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you want to associate with the VPC. To list the existing resolver rules, use <a>ListResolverRules</a>.</p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A name for the association that you're creating between a resolver rule and a VPC.</p>"
-        },
-        "VPCId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the VPC that you want to associate the resolver rule with.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "AssociateResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRuleAssociation":{
-          "shape":"ResolverRuleAssociation",
-          "documentation":"<p>Information about the <code>AssociateResolverRule</code> request, including the status of the request.</p>"
+    "AssociateResolverRuleResponse": {
+      "members": {
+        "ResolverRuleAssociation": {
+          "documentation": "<p>Information about the <code>AssociateResolverRule</code> request, including the status of the request.</p>",
+          "shape": "ResolverRuleAssociation"
         }
-      }
+      },
+      "type": "structure"
     },
-    "Boolean":{"type":"boolean"},
-    "CreateResolverEndpointRequest":{
-      "type":"structure",
-      "required":[
+    "Boolean": {
+      "type": "boolean"
+    },
+    "CreateResolverEndpointRequest": {
+      "members": {
+        "CreatorRequestId": {
+          "documentation": "<p>A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time stamp. </p>",
+          "shape": "CreatorRequestId"
+        },
+        "Direction": {
+          "documentation": "<p>Specify the applicable value:</p> <ul> <li> <p> <code>INBOUND</code>: Resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC</p> </li> <li> <p> <code>OUTBOUND</code>: Resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC</p> </li> </ul>",
+          "shape": "ResolverEndpointDirection"
+        },
+        "IpAddresses": {
+          "documentation": "<p>The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound resolver endpoints). </p>",
+          "shape": "IpAddressesRequest"
+        },
+        "Name": {
+          "documentation": "<p>A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.</p>",
+          "shape": "Name"
+        },
+        "SecurityGroupIds": {
+          "box": true,
+          "documentation": "<p>The ID of one or more security groups that you want to use to control access to this VPC. The security group that you specify must include one or more inbound rules (for inbound resolver endpoints) or outbound rules (for outbound resolver endpoints).</p>",
+          "shape": "SecurityGroupIds"
+        },
+        "Tags": {
+          "box": true,
+          "documentation": "<p>A list of the tag keys and values that you want to associate with the endpoint.</p>",
+          "shape": "TagList"
+        }
+      },
+      "required": [
         "CreatorRequestId",
         "SecurityGroupIds",
         "Direction",
         "IpAddresses"
       ],
-      "members":{
-        "CreatorRequestId":{
-          "shape":"CreatorRequestId",
-          "documentation":"<p>A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time stamp. </p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.</p>"
-        },
-        "SecurityGroupIds":{
-          "shape":"SecurityGroupIds",
-          "documentation":"<p>The ID of one or more security groups that you want to use to control access to this VPC. The security group that you specify must include one or more inbound rules (for inbound resolver endpoints) or outbound rules (for outbound resolver endpoints).</p>",
-          "box":true
-        },
-        "Direction":{
-          "shape":"ResolverEndpointDirection",
-          "documentation":"<p>Specify the applicable value:</p> <ul> <li> <p> <code>INBOUND</code>: Resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC</p> </li> <li> <p> <code>OUTBOUND</code>: Resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC</p> </li> </ul>"
-        },
-        "IpAddresses":{
-          "shape":"IpAddressesRequest",
-          "documentation":"<p>The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound resolver endpoints). </p>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of the tag keys and values that you want to associate with the endpoint.</p>",
-          "box":true
-        }
-      }
+      "type": "structure"
     },
-    "CreateResolverEndpointResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>Information about the <code>CreateResolverEndpoint</code> request, including the status of the request.</p>"
+    "CreateResolverEndpointResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>Information about the <code>CreateResolverEndpoint</code> request, including the status of the request.</p>",
+          "shape": "ResolverEndpoint"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateResolverRuleRequest":{
-      "type":"structure",
-      "required":[
+    "CreateResolverRuleRequest": {
+      "members": {
+        "CreatorRequestId": {
+          "documentation": "<p>A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time stamp. </p>",
+          "shape": "CreatorRequestId"
+        },
+        "DomainName": {
+          "documentation": "<p>DNS queries for this domain name are forwarded to the IP addresses that you specify in <code>TargetIps</code>. If a query matches multiple resolver rules (example.com and www.example.com), outbound DNS queries are routed using the resolver rule that contains the most specific domain name (www.example.com).</p>",
+          "shape": "DomainName"
+        },
+        "Name": {
+          "documentation": "<p>A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.</p>",
+          "shape": "Name"
+        },
+        "ResolverEndpointId": {
+          "box": true,
+          "documentation": "<p>The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify in <code>TargetIps</code>.</p>",
+          "shape": "ResourceId"
+        },
+        "RuleType": {
+          "documentation": "<p>Specify <code>FORWARD</code>. Other resolver rule types aren't supported.</p>",
+          "shape": "RuleTypeOption"
+        },
+        "Tags": {
+          "box": true,
+          "documentation": "<p>A list of the tag keys and values that you want to associate with the endpoint.</p>",
+          "shape": "TagList"
+        },
+        "TargetIps": {
+          "box": true,
+          "documentation": "<p>The IPs that you want Resolver to forward DNS queries to. You can specify only IPv4 addresses. Separate IP addresses with a comma.</p>",
+          "shape": "TargetList"
+        }
+      },
+      "required": [
         "CreatorRequestId",
         "RuleType",
         "DomainName"
       ],
-      "members":{
-        "CreatorRequestId":{
-          "shape":"CreatorRequestId",
-          "documentation":"<p>A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time stamp. </p>"
-        },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.</p>"
-        },
-        "RuleType":{
-          "shape":"RuleTypeOption",
-          "documentation":"<p>Specify <code>FORWARD</code>. Other resolver rule types aren't supported.</p>"
-        },
-        "DomainName":{
-          "shape":"DomainName",
-          "documentation":"<p>DNS queries for this domain name are forwarded to the IP addresses that you specify in <code>TargetIps</code>. If a query matches multiple resolver rules (example.com and www.example.com), outbound DNS queries are routed using the resolver rule that contains the most specific domain name (www.example.com).</p>"
-        },
-        "TargetIps":{
-          "shape":"TargetList",
-          "documentation":"<p>The IPs that you want Resolver to forward DNS queries to. You can specify only IPv4 addresses. Separate IP addresses with a comma.</p>",
-          "box":true
-        },
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify in <code>TargetIps</code>.</p>",
-          "box":true
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>A list of the tag keys and values that you want to associate with the endpoint.</p>",
-          "box":true
+      "type": "structure"
+    },
+    "CreateResolverRuleResponse": {
+      "members": {
+        "ResolverRule": {
+          "documentation": "<p>Information about the <code>CreateResolverRule</code> request, including the status of the request.</p>",
+          "shape": "ResolverRule"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRule":{
-          "shape":"ResolverRule",
-          "documentation":"<p>Information about the <code>CreateResolverRule</code> request, including the status of the request.</p>"
+    "CreatorRequestId": {
+      "max": 255,
+      "min": 1,
+      "type": "string"
+    },
+    "DeleteResolverEndpointRequest": {
+      "members": {
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to delete.</p>",
+          "shape": "ResourceId"
         }
-      }
+      },
+      "required": [
+        "ResolverEndpointId"
+      ],
+      "type": "structure"
     },
-    "CreatorRequestId":{
-      "type":"string",
-      "max":255,
-      "min":1
-    },
-    "DeleteResolverEndpointRequest":{
-      "type":"structure",
-      "required":["ResolverEndpointId"],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to delete.</p>"
+    "DeleteResolverEndpointResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>Information about the <code>DeleteResolverEndpoint</code> request, including the status of the request.</p>",
+          "shape": "ResolverEndpoint"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeleteResolverEndpointResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>Information about the <code>DeleteResolverEndpoint</code> request, including the status of the request.</p>"
+    "DeleteResolverRuleRequest": {
+      "members": {
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you want to delete.</p>",
+          "shape": "ResourceId"
         }
-      }
+      },
+      "required": [
+        "ResolverRuleId"
+      ],
+      "type": "structure"
     },
-    "DeleteResolverRuleRequest":{
-      "type":"structure",
-      "required":["ResolverRuleId"],
-      "members":{
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you want to delete.</p>"
+    "DeleteResolverRuleResponse": {
+      "members": {
+        "ResolverRule": {
+          "documentation": "<p>Information about the <code>DeleteResolverRule</code> request, including the status of the request.</p>",
+          "shape": "ResolverRule"
         }
-      }
+      },
+      "type": "structure"
     },
-    "DeleteResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRule":{
-          "shape":"ResolverRule",
-          "documentation":"<p>Information about the <code>DeleteResolverRule</code> request, including the status of the request.</p>"
+    "DisassociateResolverEndpointIpAddressRequest": {
+      "members": {
+        "IpAddress": {
+          "documentation": "<p>The IPv4 address that you want to remove from a resolver endpoint.</p>",
+          "shape": "IpAddressUpdate"
+        },
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to disassociate an IP address from.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "DisassociateResolverEndpointIpAddressRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ResolverEndpointId",
         "IpAddress"
       ],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to disassociate an IP address from.</p>"
+      "type": "structure"
+    },
+    "DisassociateResolverEndpointIpAddressResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>The response to an <code>DisassociateResolverEndpointIpAddress</code> request.</p>",
+          "shape": "ResolverEndpoint"
+        }
+      },
+      "type": "structure"
+    },
+    "DisassociateResolverRuleRequest": {
+      "members": {
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you want to disassociate from the specified VPC.</p>",
+          "shape": "ResourceId"
         },
-        "IpAddress":{
-          "shape":"IpAddressUpdate",
-          "documentation":"<p>The IPv4 address that you want to remove from a resolver endpoint.</p>"
+        "VPCId": {
+          "documentation": "<p>The ID of the VPC that you want to disassociate the resolver rule from.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "DisassociateResolverEndpointIpAddressResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>The response to an <code>DisassociateResolverEndpointIpAddress</code> request.</p>"
-        }
-      }
-    },
-    "DisassociateResolverRuleRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "VPCId",
         "ResolverRuleId"
       ],
-      "members":{
-        "VPCId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the VPC that you want to disassociate the resolver rule from.</p>"
-        },
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you want to disassociate from the specified VPC.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "DisassociateResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRuleAssociation":{
-          "shape":"ResolverRuleAssociation",
-          "documentation":"<p>Information about the <code>DisassociateResolverRule</code> request, including the status of the request.</p>"
-        }
-      }
-    },
-    "DomainName":{
-      "type":"string",
-      "max":256,
-      "min":1
-    },
-    "ExceptionMessage":{"type":"string"},
-    "Filter":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"FilterName",
-          "documentation":"<p>When you're using a <code>List</code> operation and you want the operation to return a subset of objects, such as resolver endpoints or resolver rules, the name of the parameter that you want to use to filter objects. For example, to list only inbound resolver endpoints, specify <code>Direction</code> for the value of <code>Name</code>.</p>"
-        },
-        "Values":{
-          "shape":"FilterValues",
-          "documentation":"<p>When you're using a <code>List</code> operation and you want the operation to return a subset of objects, such as resolver endpoints or resolver rules, the value of the parameter that you want to use to filter objects. For example, to list only inbound resolver endpoints, specify <code>INBOUND</code> for the value of <code>Values</code>.</p>"
+    "DisassociateResolverRuleResponse": {
+      "members": {
+        "ResolverRuleAssociation": {
+          "documentation": "<p>Information about the <code>DisassociateResolverRule</code> request, including the status of the request.</p>",
+          "shape": "ResolverRuleAssociation"
         }
       },
-      "documentation":"<p>For <code>List</code> operations, an optional specification to return a subset of objects, such as resolver endpoints or resolver rules.</p>"
+      "type": "structure"
     },
-    "FilterName":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "DomainName": {
+      "max": 256,
+      "min": 1,
+      "type": "string"
     },
-    "FilterValue":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "ExceptionMessage": {
+      "type": "string"
     },
-    "FilterValues":{
-      "type":"list",
-      "member":{"shape":"FilterValue"}
-    },
-    "Filters":{
-      "type":"list",
-      "member":{"shape":"Filter"}
-    },
-    "GetResolverEndpointRequest":{
-      "type":"structure",
-      "required":["ResolverEndpointId"],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to get information about.</p>"
-        }
-      }
-    },
-    "GetResolverEndpointResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>Information about the resolver endpoint that you specified in a <code>GetResolverEndpoint</code> request.</p>"
-        }
-      }
-    },
-    "GetResolverRuleAssociationRequest":{
-      "type":"structure",
-      "required":["ResolverRuleAssociationId"],
-      "members":{
-        "ResolverRuleAssociationId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule association that you want to get information about.</p>"
-        }
-      }
-    },
-    "GetResolverRuleAssociationResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRuleAssociation":{
-          "shape":"ResolverRuleAssociation",
-          "documentation":"<p>Information about the resolver rule association that you specified in a <code>GetResolverRuleAssociation</code> request.</p>"
-        }
-      }
-    },
-    "GetResolverRulePolicyRequest":{
-      "type":"structure",
-      "required":["Arn"],
-      "members":{
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ID of the resolver rule policy that you want to get information about.</p>"
-        }
-      }
-    },
-    "GetResolverRulePolicyResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRulePolicy":{
-          "shape":"ResolverRulePolicy",
-          "documentation":"<p>Information about the resolver rule policy that you specified in a <code>GetResolverRulePolicy</code> request.</p>"
-        }
-      }
-    },
-    "GetResolverRuleRequest":{
-      "type":"structure",
-      "required":["ResolverRuleId"],
-      "members":{
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you want to get information about.</p>"
-        }
-      }
-    },
-    "GetResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRule":{
-          "shape":"ResolverRule",
-          "documentation":"<p>Information about the resolver rule that you specified in a <code>GetResolverRule</code> request.</p>"
-        }
-      }
-    },
-    "InternalServiceErrorException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
-      },
-      "documentation":"<p>We encountered an unknown error. Try again in a few minutes.</p>",
-      "exception":true
-    },
-    "InvalidNextTokenException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"}
-      },
-      "documentation":"<p>The value that you specified for <code>NextToken</code> in a <code>List</code> request isn't valid.</p>",
-      "exception":true
-    },
-    "InvalidParameterException":{
-      "type":"structure",
-      "required":["Message"],
-      "members":{
-        "Message":{"shape":"ExceptionMessage"},
-        "FieldName":{
-          "shape":"String",
-          "documentation":"<p>For an <code>InvalidParameterException</code> error, the name of the parameter that's invalid.</p>"
-        }
-      },
-      "documentation":"<p>One or more parameters in this request are not valid.</p>",
-      "exception":true
-    },
-    "InvalidPolicyDocument":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
-      },
-      "documentation":"<p>The specified resolver rule policy is invalid.</p>",
-      "exception":true
-    },
-    "InvalidRequestException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
-      },
-      "documentation":"<p>The request is invalid.</p>",
-      "exception":true
-    },
-    "InvalidTagException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
-      },
-      "documentation":"<p>The specified tag is invalid.</p>",
-      "exception":true
-    },
-    "Ip":{
-      "type":"string",
-      "max":36,
-      "min":7
-    },
-    "IpAddressCount":{"type":"integer"},
-    "IpAddressRequest":{
-      "type":"structure",
-      "required":["SubnetId"],
-      "members":{
-        "SubnetId":{
-          "shape":"SubnetId",
-          "documentation":"<p>The subnet that contains the IP address.</p>"
+    "Filter": {
+      "documentation": "<p>For <code>List</code> operations, an optional specification to return a subset of objects, such as resolver endpoints or resolver rules.</p>",
+      "members": {
+        "Name": {
+          "documentation": "<p>When you're using a <code>List</code> operation and you want the operation to return a subset of objects, such as resolver endpoints or resolver rules, the name of the parameter that you want to use to filter objects. For example, to list only inbound resolver endpoints, specify <code>Direction</code> for the value of <code>Name</code>.</p>",
+          "shape": "FilterName"
         },
-        "Ip":{
-          "shape":"Ip",
-          "documentation":"<p>The IP address that you want to use for DNS queries.</p>",
-          "box":true
+        "Values": {
+          "documentation": "<p>When you're using a <code>List</code> operation and you want the operation to return a subset of objects, such as resolver endpoints or resolver rules, the value of the parameter that you want to use to filter objects. For example, to list only inbound resolver endpoints, specify <code>INBOUND</code> for the value of <code>Values</code>.</p>",
+          "shape": "FilterValues"
         }
       },
-      "documentation":"<p>In an <a>CreateResolverEndpoint</a> request, a subnet and IP address that you want to use for DNS queries.</p>"
+      "type": "structure"
     },
-    "IpAddressResponse":{
-      "type":"structure",
-      "members":{
-        "IpId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of one IP address.</p>"
-        },
-        "SubnetId":{
-          "shape":"SubnetId",
-          "documentation":"<p>The ID of one subnet.</p>"
-        },
-        "Ip":{
-          "shape":"Ip",
-          "documentation":"<p>One IP address that the resolver endpoint uses for DNS queries.</p>"
-        },
-        "Status":{
-          "shape":"IpAddressStatus",
-          "documentation":"<p>A status code that gives the current status of the request.</p>"
-        },
-        "StatusMessage":{
-          "shape":"StatusMessage",
-          "documentation":"<p>A message that provides additional information about the status of the request.</p>"
-        },
-        "CreationTime":{
-          "shape":"Rfc3339TimeString",
-          "documentation":"<p>The date and time that the IP address was created, in Unix time format and Coordinated Universal Time (UTC).</p>"
-        },
-        "ModificationTime":{
-          "shape":"Rfc3339TimeString",
-          "documentation":"<p>The date and time that the IP address was last modified, in Unix time format and Coordinated Universal Time (UTC).</p>"
+    "FilterName": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "FilterValue": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
+    },
+    "FilterValues": {
+      "member": {
+        "shape": "FilterValue"
+      },
+      "type": "list"
+    },
+    "Filters": {
+      "member": {
+        "shape": "Filter"
+      },
+      "type": "list"
+    },
+    "GetResolverEndpointRequest": {
+      "members": {
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to get information about.</p>",
+          "shape": "ResourceId"
         }
       },
-      "documentation":"<p>In the response to a <a>GetResolverEndpoint</a> request, information about the IP addresses that the resolver endpoint uses for DNS queries.</p>"
+      "required": [
+        "ResolverEndpointId"
+      ],
+      "type": "structure"
     },
-    "IpAddressStatus":{
-      "type":"string",
-      "enum":[
+    "GetResolverEndpointResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>Information about the resolver endpoint that you specified in a <code>GetResolverEndpoint</code> request.</p>",
+          "shape": "ResolverEndpoint"
+        }
+      },
+      "type": "structure"
+    },
+    "GetResolverRuleAssociationRequest": {
+      "members": {
+        "ResolverRuleAssociationId": {
+          "documentation": "<p>The ID of the resolver rule association that you want to get information about.</p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
+        "ResolverRuleAssociationId"
+      ],
+      "type": "structure"
+    },
+    "GetResolverRuleAssociationResponse": {
+      "members": {
+        "ResolverRuleAssociation": {
+          "documentation": "<p>Information about the resolver rule association that you specified in a <code>GetResolverRuleAssociation</code> request.</p>",
+          "shape": "ResolverRuleAssociation"
+        }
+      },
+      "type": "structure"
+    },
+    "GetResolverRulePolicyRequest": {
+      "members": {
+        "Arn": {
+          "documentation": "<p>The ID of the resolver rule policy that you want to get information about.</p>",
+          "shape": "Arn"
+        }
+      },
+      "required": [
+        "Arn"
+      ],
+      "type": "structure"
+    },
+    "GetResolverRulePolicyResponse": {
+      "members": {
+        "ResolverRulePolicy": {
+          "documentation": "<p>Information about the resolver rule policy that you specified in a <code>GetResolverRulePolicy</code> request.</p>",
+          "shape": "ResolverRulePolicy"
+        }
+      },
+      "type": "structure"
+    },
+    "GetResolverRuleRequest": {
+      "members": {
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you want to get information about.</p>",
+          "shape": "ResourceId"
+        }
+      },
+      "required": [
+        "ResolverRuleId"
+      ],
+      "type": "structure"
+    },
+    "GetResolverRuleResponse": {
+      "members": {
+        "ResolverRule": {
+          "documentation": "<p>Information about the resolver rule that you specified in a <code>GetResolverRule</code> request.</p>",
+          "shape": "ResolverRule"
+        }
+      },
+      "type": "structure"
+    },
+    "InternalServiceErrorException": {
+      "documentation": "<p>We encountered an unknown error. Try again in a few minutes.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidNextTokenException": {
+      "documentation": "<p>The value that you specified for <code>NextToken</code> in a <code>List</code> request isn't valid.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidParameterException": {
+      "documentation": "<p>One or more parameters in this request are not valid.</p>",
+      "exception": true,
+      "members": {
+        "FieldName": {
+          "documentation": "<p>For an <code>InvalidParameterException</code> error, the name of the parameter that's invalid.</p>",
+          "shape": "String"
+        },
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
+    },
+    "InvalidPolicyDocument": {
+      "documentation": "<p>The specified resolver rule policy is invalid.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidRequestException": {
+      "documentation": "<p>The request is invalid.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "InvalidTagException": {
+      "documentation": "<p>The specified tag is invalid.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "Ip": {
+      "max": 36,
+      "min": 7,
+      "type": "string"
+    },
+    "IpAddressCount": {
+      "type": "integer"
+    },
+    "IpAddressRequest": {
+      "documentation": "<p>In an <a>CreateResolverEndpoint</a> request, a subnet and IP address that you want to use for DNS queries.</p>",
+      "members": {
+        "Ip": {
+          "box": true,
+          "documentation": "<p>The IP address that you want to use for DNS queries.</p>",
+          "shape": "Ip"
+        },
+        "SubnetId": {
+          "documentation": "<p>The subnet that contains the IP address.</p>",
+          "shape": "SubnetId"
+        }
+      },
+      "required": [
+        "SubnetId"
+      ],
+      "type": "structure"
+    },
+    "IpAddressResponse": {
+      "documentation": "<p>In the response to a <a>GetResolverEndpoint</a> request, information about the IP addresses that the resolver endpoint uses for DNS queries.</p>",
+      "members": {
+        "CreationTime": {
+          "documentation": "<p>The date and time that the IP address was created, in Unix time format and Coordinated Universal Time (UTC).</p>",
+          "shape": "Rfc3339TimeString"
+        },
+        "Ip": {
+          "documentation": "<p>One IP address that the resolver endpoint uses for DNS queries.</p>",
+          "shape": "Ip"
+        },
+        "IpId": {
+          "documentation": "<p>The ID of one IP address.</p>",
+          "shape": "ResourceId"
+        },
+        "ModificationTime": {
+          "documentation": "<p>The date and time that the IP address was last modified, in Unix time format and Coordinated Universal Time (UTC).</p>",
+          "shape": "Rfc3339TimeString"
+        },
+        "Status": {
+          "documentation": "<p>A status code that gives the current status of the request.</p>",
+          "shape": "IpAddressStatus"
+        },
+        "StatusMessage": {
+          "documentation": "<p>A message that provides additional information about the status of the request.</p>",
+          "shape": "StatusMessage"
+        },
+        "SubnetId": {
+          "documentation": "<p>The ID of one subnet.</p>",
+          "shape": "SubnetId"
+        }
+      },
+      "type": "structure"
+    },
+    "IpAddressStatus": {
+      "enum": [
         "CREATING",
         "FAILED_CREATION",
         "ATTACHING",
@@ -889,727 +1246,774 @@
         "FAILED_RESOURCE_GONE",
         "DELETING",
         "DELETE_FAILED_FAS_EXPIRED"
-      ]
+      ],
+      "type": "string"
     },
-    "IpAddressUpdate":{
-      "type":"structure",
-      "members":{
-        "IpId":{
-          "shape":"ResourceId",
-          "documentation":"<p> <i>Only when removing an IP address from a resolver endpoint</i>: The ID of the IP address that you want to remove. To get this ID, use <a>GetResolverEndpoint</a>.</p>",
-          "box":true
+    "IpAddressUpdate": {
+      "documentation": "<p>In an <a>UpdateResolverEndpoint</a> request, information about an IP address to update.</p>",
+      "members": {
+        "Ip": {
+          "box": true,
+          "documentation": "<p>The new IP address.</p>",
+          "shape": "Ip"
         },
-        "SubnetId":{
-          "shape":"SubnetId",
-          "documentation":"<p>The ID of the subnet that includes the IP address that you want to update. To get this ID, use <a>GetResolverEndpoint</a>.</p>",
-          "box":true
+        "IpId": {
+          "box": true,
+          "documentation": "<p> <i>Only when removing an IP address from a resolver endpoint</i>: The ID of the IP address that you want to remove. To get this ID, use <a>GetResolverEndpoint</a>.</p>",
+          "shape": "ResourceId"
         },
-        "Ip":{
-          "shape":"Ip",
-          "documentation":"<p>The new IP address.</p>",
-          "box":true
+        "SubnetId": {
+          "box": true,
+          "documentation": "<p>The ID of the subnet that includes the IP address that you want to update. To get this ID, use <a>GetResolverEndpoint</a>.</p>",
+          "shape": "SubnetId"
         }
       },
-      "documentation":"<p>In an <a>UpdateResolverEndpoint</a> request, information about an IP address to update.</p>"
+      "type": "structure"
     },
-    "IpAddressesRequest":{
-      "type":"list",
-      "member":{"shape":"IpAddressRequest"},
-      "max":10,
-      "min":1
+    "IpAddressesRequest": {
+      "max": 10,
+      "member": {
+        "shape": "IpAddressRequest"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "IpAddressesResponse":{
-      "type":"list",
-      "member":{"shape":"IpAddressResponse"}
+    "IpAddressesResponse": {
+      "member": {
+        "shape": "IpAddressResponse"
+      },
+      "type": "list"
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>For a <code>LimitExceededException</code> error, the type of resource that exceeded the current limit.</p>"
+    "LimitExceededException": {
+      "documentation": "<p>The request caused one or more limits to be exceeded.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>For a <code>LimitExceededException</code> error, the type of resource that exceeded the current limit.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The request caused one or more limits to be exceeded.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "ListResolverEndpointIpAddressesRequest":{
-      "type":"structure",
-      "required":["ResolverEndpointId"],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to get IP addresses for.</p>"
+    "ListResolverEndpointIpAddressesRequest": {
+      "members": {
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of IP addresses that you want to return in the response to a <code>ListResolverEndpointIpAddresses</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 IP addresses. </p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of IP addresses that you want to return in the response to a <code>ListResolverEndpointIpAddresses</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 IP addresses. </p>",
-          "box":true
+        "NextToken": {
+          "box": true,
+          "documentation": "<p>For the first <code>ListResolverEndpointIpAddresses</code> request, omit this value.</p> <p>If the specified resolver endpoint has more than <code>MaxResults</code> IP addresses, you can submit another <code>ListResolverEndpointIpAddresses</code> request to get the next group of IP addresses. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>For the first <code>ListResolverEndpointIpAddresses</code> request, omit this value.</p> <p>If the specified resolver endpoint has more than <code>MaxResults</code> IP addresses, you can submit another <code>ListResolverEndpointIpAddresses</code> request to get the next group of IP addresses. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
-          "box":true
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to get IP addresses for.</p>",
+          "shape": "ResourceId"
         }
-      }
+      },
+      "required": [
+        "ResolverEndpointId"
+      ],
+      "type": "structure"
     },
-    "ListResolverEndpointIpAddressesResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If the specified endpoint has more than <code>MaxResults</code> IP addresses, you can submit another <code>ListResolverEndpointIpAddresses</code> request to get the next group of IP addresses. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>"
+    "ListResolverEndpointIpAddressesResponse": {
+      "members": {
+        "IpAddresses": {
+          "documentation": "<p>The IP addresses that DNS queries pass through on their way to your network (outbound endpoint) or on the way to Resolver (inbound endpoint).</p>",
+          "shape": "IpAddressesResponse"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The value that you specified for <code>MaxResults</code> in the request.</p>"
+        "MaxResults": {
+          "documentation": "<p>The value that you specified for <code>MaxResults</code> in the request.</p>",
+          "shape": "MaxResults"
         },
-        "IpAddresses":{
-          "shape":"IpAddressesResponse",
-          "documentation":"<p>The IP addresses that DNS queries pass through on their way to your network (outbound endpoint) or on the way to Resolver (inbound endpoint).</p>"
+        "NextToken": {
+          "documentation": "<p>If the specified endpoint has more than <code>MaxResults</code> IP addresses, you can submit another <code>ListResolverEndpointIpAddresses</code> request to get the next group of IP addresses. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverEndpointsRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of resolver endpoints that you want to return in the response to a <code>ListResolverEndpoints</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 resolver endpoints. </p>",
-          "box":true
+    "ListResolverEndpointsRequest": {
+      "members": {
+        "Filters": {
+          "box": true,
+          "documentation": "<p>An optional specification to return a subset of resolver endpoints, such as all inbound resolver endpoints.</p> <note> <p>If you submit a second or subsequent <code>ListResolverEndpoints</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
+          "shape": "Filters"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>For the first <code>ListResolverEndpoints</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> resolver endpoints, you can submit another <code>ListResolverEndpoints</code> request to get the next group of resolver endpoints. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
-          "box":true
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of resolver endpoints that you want to return in the response to a <code>ListResolverEndpoints</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 resolver endpoints. </p>",
+          "shape": "MaxResults"
         },
-        "Filters":{
-          "shape":"Filters",
-          "documentation":"<p>An optional specification to return a subset of resolver endpoints, such as all inbound resolver endpoints.</p> <note> <p>If you submit a second or subsequent <code>ListResolverEndpoints</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
-          "box":true
+        "NextToken": {
+          "box": true,
+          "documentation": "<p>For the first <code>ListResolverEndpoints</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> resolver endpoints, you can submit another <code>ListResolverEndpoints</code> request to get the next group of resolver endpoints. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverEndpointsResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If more than <code>MaxResults</code> IP addresses match the specified criteria, you can submit another <code>ListResolverEndpoint</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>"
+    "ListResolverEndpointsResponse": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The value that you specified for <code>MaxResults</code> in the request.</p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The value that you specified for <code>MaxResults</code> in the request.</p>"
+        "NextToken": {
+          "documentation": "<p>If more than <code>MaxResults</code> IP addresses match the specified criteria, you can submit another <code>ListResolverEndpoint</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "ResolverEndpoints":{
-          "shape":"ResolverEndpoints",
-          "documentation":"<p>The resolver endpoints that were created by using the current AWS account, and that match the specified filters, if any.</p>"
+        "ResolverEndpoints": {
+          "documentation": "<p>The resolver endpoints that were created by using the current AWS account, and that match the specified filters, if any.</p>",
+          "shape": "ResolverEndpoints"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverRuleAssociationsRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of rule associations that you want to return in the response to a <code>ListResolverRuleAssociations</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 rule associations. </p>",
-          "box":true
+    "ListResolverRuleAssociationsRequest": {
+      "members": {
+        "Filters": {
+          "box": true,
+          "documentation": "<p>An optional specification to return a subset of resolver rules, such as resolver rules that are associated with the same VPC ID.</p> <note> <p>If you submit a second or subsequent <code>ListResolverRuleAssociations</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
+          "shape": "Filters"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>For the first <code>ListResolverRuleAssociation</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> rule associations, you can submit another <code>ListResolverRuleAssociation</code> request to get the next group of rule associations. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
-          "box":true
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of rule associations that you want to return in the response to a <code>ListResolverRuleAssociations</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 rule associations. </p>",
+          "shape": "MaxResults"
         },
-        "Filters":{
-          "shape":"Filters",
-          "documentation":"<p>An optional specification to return a subset of resolver rules, such as resolver rules that are associated with the same VPC ID.</p> <note> <p>If you submit a second or subsequent <code>ListResolverRuleAssociations</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
-          "box":true
+        "NextToken": {
+          "box": true,
+          "documentation": "<p>For the first <code>ListResolverRuleAssociation</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> rule associations, you can submit another <code>ListResolverRuleAssociation</code> request to get the next group of rule associations. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverRuleAssociationsResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If more than <code>MaxResults</code> rule associations match the specified criteria, you can submit another <code>ListResolverRuleAssociation</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>"
+    "ListResolverRuleAssociationsResponse": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The value that you specified for <code>MaxResults</code> in the request.</p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The value that you specified for <code>MaxResults</code> in the request.</p>"
+        "NextToken": {
+          "documentation": "<p>If more than <code>MaxResults</code> rule associations match the specified criteria, you can submit another <code>ListResolverRuleAssociation</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "ResolverRuleAssociations":{
-          "shape":"ResolverRuleAssociations",
-          "documentation":"<p>The associations that were created between resolver rules and VPCs using the current AWS account, and that match the specified filters, if any.</p>"
+        "ResolverRuleAssociations": {
+          "documentation": "<p>The associations that were created between resolver rules and VPCs using the current AWS account, and that match the specified filters, if any.</p>",
+          "shape": "ResolverRuleAssociations"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverRulesRequest":{
-      "type":"structure",
-      "members":{
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of resolver rules that you want to return in the response to a <code>ListResolverRules</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 resolver rules.</p>",
-          "box":true
+    "ListResolverRulesRequest": {
+      "members": {
+        "Filters": {
+          "box": true,
+          "documentation": "<p>An optional specification to return a subset of resolver rules, such as all resolver rules that are associated with the same resolver endpoint.</p> <note> <p>If you submit a second or subsequent <code>ListResolverRules</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
+          "shape": "Filters"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>For the first <code>ListResolverRules</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> resolver rules, you can submit another <code>ListResolverRules</code> request to get the next group of resolver rules. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
-          "box":true
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of resolver rules that you want to return in the response to a <code>ListResolverRules</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 resolver rules.</p>",
+          "shape": "MaxResults"
         },
-        "Filters":{
-          "shape":"Filters",
-          "documentation":"<p>An optional specification to return a subset of resolver rules, such as all resolver rules that are associated with the same resolver endpoint.</p> <note> <p>If you submit a second or subsequent <code>ListResolverRules</code> request and specify the <code>NextToken</code> parameter, you must use the same values for <code>Filters</code>, if any, as in the previous request.</p> </note>",
-          "box":true
+        "NextToken": {
+          "box": true,
+          "documentation": "<p>For the first <code>ListResolverRules</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> resolver rules, you can submit another <code>ListResolverRules</code> request to get the next group of resolver rules. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListResolverRulesResponse":{
-      "type":"structure",
-      "members":{
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If more than <code>MaxResults</code> resolver rules match the specified criteria, you can submit another <code>ListResolverRules</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>"
+    "ListResolverRulesResponse": {
+      "members": {
+        "MaxResults": {
+          "documentation": "<p>The value that you specified for <code>MaxResults</code> in the request.</p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The value that you specified for <code>MaxResults</code> in the request.</p>"
+        "NextToken": {
+          "documentation": "<p>If more than <code>MaxResults</code> resolver rules match the specified criteria, you can submit another <code>ListResolverRules</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "ResolverRules":{
-          "shape":"ResolverRules",
-          "documentation":"<p>The resolver rules that were created using the current AWS account and that match the specified filters, if any.</p>"
+        "ResolverRules": {
+          "documentation": "<p>The resolver rules that were created using the current AWS account and that match the specified filters, if any.</p>",
+          "shape": "ResolverRules"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the resource that you want to list tags for.</p>"
+    "ListTagsForResourceRequest": {
+      "members": {
+        "MaxResults": {
+          "box": true,
+          "documentation": "<p>The maximum number of tags that you want to return in the response to a <code>ListTagsForResource</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 tags.</p>",
+          "shape": "MaxResults"
         },
-        "MaxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of tags that you want to return in the response to a <code>ListTagsForResource</code> request. If you don't specify a value for <code>MaxResults</code>, Resolver returns up to 100 tags.</p>",
-          "box":true
+        "NextToken": {
+          "box": true,
+          "documentation": "<p>For the first <code>ListTagsForResource</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> tags, you can submit another <code>ListTagsForResource</code> request to get the next group of tags for the resource. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>For the first <code>ListTagsForResource</code> request, omit this value.</p> <p>If you have more than <code>MaxResults</code> tags, you can submit another <code>ListTagsForResource</code> request to get the next group of tags for the resource. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
-          "box":true
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the resource that you want to list tags for.</p>",
+          "shape": "Arn"
         }
-      }
+      },
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags that are associated with the resource that you specified in the <code>ListTagsForResource</code> request.</p>"
+    "ListTagsForResourceResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>If more than <code>MaxResults</code> tags match the specified criteria, you can submit another <code>ListTagsForResource</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>",
+          "shape": "NextToken"
         },
-        "NextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>If more than <code>MaxResults</code> tags match the specified criteria, you can submit another <code>ListTagsForResource</code> request to get the next group of results. In the next request, specify the value of <code>NextToken</code> from the previous response. </p>"
+        "Tags": {
+          "documentation": "<p>The tags that are associated with the resource that you specified in the <code>ListTagsForResource</code> request.</p>",
+          "shape": "TagList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "MaxResults":{
-      "type":"integer",
-      "max":100,
-      "min":1
+    "MaxResults": {
+      "max": 100,
+      "min": 1,
+      "type": "integer"
     },
-    "Name":{
-      "type":"string",
-      "max":64,
-      "pattern":"(?!^[0-9]+$)([a-zA-Z0-9-_' ']+)"
+    "Name": {
+      "max": 64,
+      "pattern": "(?!^[0-9]+$)([a-zA-Z0-9-_' ']+)",
+      "type": "string"
     },
-    "NextToken":{"type":"string"},
-    "Port":{
-      "type":"integer",
-      "max":65535,
-      "min":0
+    "NextToken": {
+      "type": "string"
     },
-    "PutResolverRulePolicyRequest":{
-      "type":"structure",
-      "required":[
+    "Port": {
+      "max": 65535,
+      "min": 0,
+      "type": "integer"
+    },
+    "PutResolverRulePolicyRequest": {
+      "members": {
+        "Arn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the account that you want to grant permissions to.</p>",
+          "shape": "Arn"
+        },
+        "ResolverRulePolicy": {
+          "documentation": "<p>An AWS Identity and Access Management policy statement that lists the permissions that you want to grant to another AWS account.</p>",
+          "shape": "ResolverRulePolicy"
+        }
+      },
+      "required": [
         "Arn",
         "ResolverRulePolicy"
       ],
-      "members":{
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the account that you want to grant permissions to.</p>"
-        },
-        "ResolverRulePolicy":{
-          "shape":"ResolverRulePolicy",
-          "documentation":"<p>An AWS Identity and Access Management policy statement that lists the permissions that you want to grant to another AWS account.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "PutResolverRulePolicyResponse":{
-      "type":"structure",
-      "members":{
-        "ReturnValue":{
-          "shape":"Boolean",
-          "documentation":"<p>Whether the <code>PutResolverRulePolicy</code> request was successful.</p>"
+    "PutResolverRulePolicyResponse": {
+      "documentation": "<p>The response to a <code>PutResolverRulePolicy</code> request.</p>",
+      "members": {
+        "ReturnValue": {
+          "documentation": "<p>Whether the <code>PutResolverRulePolicy</code> request was successful.</p>",
+          "shape": "Boolean"
         }
       },
-      "documentation":"<p>The response to a <code>PutResolverRulePolicy</code> request.</p>"
+      "type": "structure"
     },
-    "ResolverEndpoint":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint.</p>"
+    "ResolverEndpoint": {
+      "documentation": "<p>In the response to a <a>CreateResolverEndpoint</a>, <a>DeleteResolverEndpoint</a>, <a>GetResolverEndpoint</a>, <a>ListResolverEndpoints</a>, or <a>UpdateResolverEndpoint</a> request, a complex type that contains settings for an existing inbound or outbound resolver endpoint.</p>",
+      "members": {
+        "Arn": {
+          "documentation": "<p>The ARN (Amazon Resource Name) for the resolver endpoint.</p>",
+          "shape": "Arn"
         },
-        "CreatorRequestId":{
-          "shape":"CreatorRequestId",
-          "documentation":"<p>A unique string that identifies the request that created the resolver endpoint. The <code>CreatorRequestId</code> allows failed requests to be retried without the risk of executing the operation twice.</p>"
+        "CreationTime": {
+          "documentation": "<p>The date and time that the endpoint was created, in Unix time format and Coordinated Universal Time (UTC).</p>",
+          "shape": "Rfc3339TimeString"
         },
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN (Amazon Resource Name) for the resolver endpoint.</p>"
+        "CreatorRequestId": {
+          "documentation": "<p>A unique string that identifies the request that created the resolver endpoint. The <code>CreatorRequestId</code> allows failed requests to be retried without the risk of executing the operation twice.</p>",
+          "shape": "CreatorRequestId"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name that you assigned to the resolver endpoint when you submitted a <a>CreateResolverEndpoint</a> request.</p>"
+        "Direction": {
+          "documentation": "<p>Indicates whether the resolver endpoint allows inbound or outbound DNS queries:</p> <ul> <li> <p> <code>INBOUND</code>: allows DNS queries to your VPC from your network or another VPC</p> </li> <li> <p> <code>OUTBOUND</code>: allows DNS queries from your VPC to your network or another VPC</p> </li> </ul>",
+          "shape": "ResolverEndpointDirection"
         },
-        "SecurityGroupIds":{
-          "shape":"SecurityGroupIds",
-          "documentation":"<p>The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound resolver rules.</p>"
+        "HostVPCId": {
+          "documentation": "<p>The ID of the VPC that you want to create the resolver endpoint in.</p>",
+          "shape": "ResourceId"
         },
-        "Direction":{
-          "shape":"ResolverEndpointDirection",
-          "documentation":"<p>Indicates whether the resolver endpoint allows inbound or outbound DNS queries:</p> <ul> <li> <p> <code>INBOUND</code>: allows DNS queries to your VPC from your network or another VPC</p> </li> <li> <p> <code>OUTBOUND</code>: allows DNS queries from your VPC to your network or another VPC</p> </li> </ul>"
+        "Id": {
+          "documentation": "<p>The ID of the resolver endpoint.</p>",
+          "shape": "ResourceId"
         },
-        "IpAddressCount":{
-          "shape":"IpAddressCount",
-          "documentation":"<p>The number of IP addresses that the resolver endpoint can use for DNS queries.</p>"
+        "IpAddressCount": {
+          "documentation": "<p>The number of IP addresses that the resolver endpoint can use for DNS queries.</p>",
+          "shape": "IpAddressCount"
         },
-        "HostVPCId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the VPC that you want to create the resolver endpoint in.</p>"
+        "ModificationTime": {
+          "documentation": "<p>The date and time that the endpoint was last modified, in Unix time format and Coordinated Universal Time (UTC).</p>",
+          "shape": "Rfc3339TimeString"
         },
-        "Status":{
-          "shape":"ResolverEndpointStatus",
-          "documentation":"<p>A code that specifies the current status of the resolver endpoint.</p>"
+        "Name": {
+          "documentation": "<p>The name that you assigned to the resolver endpoint when you submitted a <a>CreateResolverEndpoint</a> request.</p>",
+          "shape": "Name"
         },
-        "StatusMessage":{
-          "shape":"StatusMessage",
-          "documentation":"<p>A detailed description of the status of the resolver endpoint.</p>"
+        "SecurityGroupIds": {
+          "documentation": "<p>The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound resolver rules.</p>",
+          "shape": "SecurityGroupIds"
         },
-        "CreationTime":{
-          "shape":"Rfc3339TimeString",
-          "documentation":"<p>The date and time that the endpoint was created, in Unix time format and Coordinated Universal Time (UTC).</p>"
+        "Status": {
+          "documentation": "<p>A code that specifies the current status of the resolver endpoint.</p>",
+          "shape": "ResolverEndpointStatus"
         },
-        "ModificationTime":{
-          "shape":"Rfc3339TimeString",
-          "documentation":"<p>The date and time that the endpoint was last modified, in Unix time format and Coordinated Universal Time (UTC).</p>"
+        "StatusMessage": {
+          "documentation": "<p>A detailed description of the status of the resolver endpoint.</p>",
+          "shape": "StatusMessage"
         }
       },
-      "documentation":"<p>In the response to a <a>CreateResolverEndpoint</a>, <a>DeleteResolverEndpoint</a>, <a>GetResolverEndpoint</a>, <a>ListResolverEndpoints</a>, or <a>UpdateResolverEndpoint</a> request, a complex type that contains settings for an existing inbound or outbound resolver endpoint.</p>"
+      "type": "structure"
     },
-    "ResolverEndpointDirection":{
-      "type":"string",
-      "enum":[
+    "ResolverEndpointDirection": {
+      "enum": [
         "INBOUND",
         "OUTBOUND"
-      ]
+      ],
+      "type": "string"
     },
-    "ResolverEndpointStatus":{
-      "type":"string",
-      "enum":[
+    "ResolverEndpointStatus": {
+      "enum": [
         "CREATING",
         "OPERATIONAL",
         "UPDATING",
         "AUTO_RECOVERING",
         "ACTION_NEEDED",
         "DELETING"
-      ]
+      ],
+      "type": "string"
     },
-    "ResolverEndpoints":{
-      "type":"list",
-      "member":{"shape":"ResolverEndpoint"}
+    "ResolverEndpoints": {
+      "member": {
+        "shape": "ResolverEndpoint"
+      },
+      "type": "list"
     },
-    "ResolverRule":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID that Resolver assigned to the resolver rule when you created it.</p>"
+    "ResolverRule": {
+      "documentation": "<p>For queries that originate in your VPC, detailed information about a resolver rule, which specifies how to route DNS queries out of the VPC. The <code>ResolverRule</code> parameter appears in the response to a <a>CreateResolverRule</a>, <a>DeleteResolverRule</a>, <a>GetResolverRule</a>, <a>ListResolverRules</a>, or <a>UpdateResolverRule</a> request.</p>",
+      "members": {
+        "Arn": {
+          "documentation": "<p>The ARN (Amazon Resource Name) for the resolver rule specified by <code>Id</code>.</p>",
+          "shape": "Arn"
         },
-        "CreatorRequestId":{
-          "shape":"CreatorRequestId",
-          "documentation":"<p>A unique string that you specified when you created the resolver rule. <code>CreatorRequestId</code>identifies the request and allows failed requests to be retried without the risk of executing the operation twice. </p>"
+        "CreatorRequestId": {
+          "documentation": "<p>A unique string that you specified when you created the resolver rule. <code>CreatorRequestId</code>identifies the request and allows failed requests to be retried without the risk of executing the operation twice. </p>",
+          "shape": "CreatorRequestId"
         },
-        "Arn":{
-          "shape":"Arn",
-          "documentation":"<p>The ARN (Amazon Resource Name) for the resolver rule specified by <code>Id</code>.</p>"
+        "DomainName": {
+          "documentation": "<p>DNS queries for this domain name are forwarded to the IP addresses that are specified in <code>TargetIps</code>. If a query matches multiple resolver rules (example.com and www.example.com), the query is routed using the resolver rule that contains the most specific domain name (www.example.com).</p>",
+          "shape": "DomainName"
         },
-        "DomainName":{
-          "shape":"DomainName",
-          "documentation":"<p>DNS queries for this domain name are forwarded to the IP addresses that are specified in <code>TargetIps</code>. If a query matches multiple resolver rules (example.com and www.example.com), the query is routed using the resolver rule that contains the most specific domain name (www.example.com).</p>"
+        "Id": {
+          "documentation": "<p>The ID that Resolver assigned to the resolver rule when you created it.</p>",
+          "shape": "ResourceId"
         },
-        "Status":{
-          "shape":"ResolverRuleStatus",
-          "documentation":"<p>A code that specifies the current status of the resolver rule.</p>"
+        "Name": {
+          "documentation": "<p>The name for the resolver rule, which you specified when you created the resolver rule.</p>",
+          "shape": "Name"
         },
-        "StatusMessage":{
-          "shape":"StatusMessage",
-          "documentation":"<p>A detailed description of the status of a resolver rule.</p>"
+        "OwnerId": {
+          "documentation": "<p>When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.</p>",
+          "shape": "AccountId"
         },
-        "RuleType":{
-          "shape":"RuleTypeOption",
-          "documentation":"<p>This value is always <code>FORWARD</code>. Other resolver rule types aren't supported.</p>"
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the endpoint that the rule is associated with.</p>",
+          "shape": "ResourceId"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name for the resolver rule, which you specified when you created the resolver rule.</p>"
+        "RuleType": {
+          "documentation": "<p>This value is always <code>FORWARD</code>. Other resolver rule types aren't supported.</p>",
+          "shape": "RuleTypeOption"
         },
-        "TargetIps":{
-          "shape":"TargetList",
-          "documentation":"<p>An array that contains the IP addresses and ports that you want to forward </p>"
+        "ShareStatus": {
+          "documentation": "<p>Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.</p>",
+          "shape": "ShareStatus"
         },
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the endpoint that the rule is associated with.</p>"
+        "Status": {
+          "documentation": "<p>A code that specifies the current status of the resolver rule.</p>",
+          "shape": "ResolverRuleStatus"
         },
-        "OwnerId":{
-          "shape":"AccountId",
-          "documentation":"<p>When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.</p>"
+        "StatusMessage": {
+          "documentation": "<p>A detailed description of the status of a resolver rule.</p>",
+          "shape": "StatusMessage"
         },
-        "ShareStatus":{
-          "shape":"ShareStatus",
-          "documentation":"<p>Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.</p>"
+        "TargetIps": {
+          "documentation": "<p>An array that contains the IP addresses and ports that you want to forward </p>",
+          "shape": "TargetList"
         }
       },
-      "documentation":"<p>For queries that originate in your VPC, detailed information about a resolver rule, which specifies how to route DNS queries out of the VPC. The <code>ResolverRule</code> parameter appears in the response to a <a>CreateResolverRule</a>, <a>DeleteResolverRule</a>, <a>GetResolverRule</a>, <a>ListResolverRules</a>, or <a>UpdateResolverRule</a> request.</p>"
+      "type": "structure"
     },
-    "ResolverRuleAssociation":{
-      "type":"structure",
-      "members":{
-        "Id":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the association between a resolver rule and a VPC. Resolver assigns this value when you submit an <a>AssociateResolverRule</a> request.</p>"
+    "ResolverRuleAssociation": {
+      "documentation": "<p>In the response to an <a>AssociateResolverRule</a>, <a>DisassociateResolverRule</a>, or <a>ListResolverRuleAssociations</a> request, information about an association between a resolver rule and a VPC.</p>",
+      "members": {
+        "Id": {
+          "documentation": "<p>The ID of the association between a resolver rule and a VPC. Resolver assigns this value when you submit an <a>AssociateResolverRule</a> request.</p>",
+          "shape": "ResourceId"
         },
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you associated with the VPC that is specified by <code>VPCId</code>.</p>"
+        "Name": {
+          "documentation": "<p>The name of an association between a resolver rule and a VPC.</p>",
+          "shape": "Name"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of an association between a resolver rule and a VPC.</p>"
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you associated with the VPC that is specified by <code>VPCId</code>.</p>",
+          "shape": "ResourceId"
         },
-        "VPCId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the VPC that you associated the resolver rule with.</p>"
+        "Status": {
+          "documentation": "<p>A code that specifies the current status of the association between a resolver rule and a VPC.</p>",
+          "shape": "ResolverRuleAssociationStatus"
         },
-        "Status":{
-          "shape":"ResolverRuleAssociationStatus",
-          "documentation":"<p>A code that specifies the current status of the association between a resolver rule and a VPC.</p>"
+        "StatusMessage": {
+          "documentation": "<p>A detailed description of the status of the association between a resolver rule and a VPC.</p>",
+          "shape": "StatusMessage"
         },
-        "StatusMessage":{
-          "shape":"StatusMessage",
-          "documentation":"<p>A detailed description of the status of the association between a resolver rule and a VPC.</p>"
+        "VPCId": {
+          "documentation": "<p>The ID of the VPC that you associated the resolver rule with.</p>",
+          "shape": "ResourceId"
         }
       },
-      "documentation":"<p>In the response to an <a>AssociateResolverRule</a>, <a>DisassociateResolverRule</a>, or <a>ListResolverRuleAssociations</a> request, information about an association between a resolver rule and a VPC.</p>"
+      "type": "structure"
     },
-    "ResolverRuleAssociationStatus":{
-      "type":"string",
-      "enum":[
+    "ResolverRuleAssociationStatus": {
+      "enum": [
         "CREATING",
         "COMPLETE",
         "DELETING",
         "FAILED",
         "OVERRIDDEN"
-      ]
+      ],
+      "type": "string"
     },
-    "ResolverRuleAssociations":{
-      "type":"list",
-      "member":{"shape":"ResolverRuleAssociation"}
+    "ResolverRuleAssociations": {
+      "member": {
+        "shape": "ResolverRuleAssociation"
+      },
+      "type": "list"
     },
-    "ResolverRuleConfig":{
-      "type":"structure",
-      "members":{
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The new name for the resolver rule. The name that you specify appears in the Resolver dashboard in the Route 53 console. </p>"
+    "ResolverRuleConfig": {
+      "documentation": "<p>In an <a>UpdateResolverRule</a> request, information about the changes that you want to make.</p>",
+      "members": {
+        "Name": {
+          "documentation": "<p>The new name for the resolver rule. The name that you specify appears in the Resolver dashboard in the Route 53 console. </p>",
+          "shape": "Name"
         },
-        "TargetIps":{
-          "shape":"TargetList",
-          "documentation":"<p>For DNS queries that originate in your VPC, the new IP addresses that you want to route outbound DNS queries to.</p>"
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the new outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify in <code>TargetIps</code>.</p>",
+          "shape": "ResourceId"
         },
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the new outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify in <code>TargetIps</code>.</p>"
+        "TargetIps": {
+          "documentation": "<p>For DNS queries that originate in your VPC, the new IP addresses that you want to route outbound DNS queries to.</p>",
+          "shape": "TargetList"
         }
       },
-      "documentation":"<p>In an <a>UpdateResolverRule</a> request, information about the changes that you want to make.</p>"
+      "type": "structure"
     },
-    "ResolverRulePolicy":{
-      "type":"string",
-      "max":5000
+    "ResolverRulePolicy": {
+      "max": 5000,
+      "type": "string"
     },
-    "ResolverRuleStatus":{
-      "type":"string",
-      "enum":[
+    "ResolverRuleStatus": {
+      "enum": [
         "COMPLETE",
         "DELETING",
         "UPDATING",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "ResolverRules":{
-      "type":"list",
-      "member":{"shape":"ResolverRule"}
+    "ResolverRules": {
+      "member": {
+        "shape": "ResolverRule"
+      },
+      "type": "list"
     },
-    "ResourceExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>For a <code>ResourceExistsException</code> error, the type of resource that the error applies to.</p>"
+    "ResourceExistsException": {
+      "documentation": "<p>The resource that you tried to create already exists.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>For a <code>ResourceExistsException</code> error, the type of resource that the error applies to.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The resource that you tried to create already exists.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "ResourceId":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "ResourceId": {
+      "max": 64,
+      "min": 1,
+      "type": "string"
     },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>For a <code>ResourceInUseException</code> error, the type of resource that is currently in use.</p>"
+    "ResourceInUseException": {
+      "documentation": "<p>The resource that you tried to update or delete is currently in use.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>For a <code>ResourceInUseException</code> error, the type of resource that is currently in use.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The resource that you tried to update or delete is currently in use.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>For a <code>ResourceNotFoundException</code> error, the type of resource that doesn't exist.</p>"
+    "ResourceNotFoundException": {
+      "documentation": "<p>The specified resource doesn't exist.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>For a <code>ResourceNotFoundException</code> error, the type of resource that doesn't exist.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The specified resource doesn't exist.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "ResourceUnavailableException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"String"},
-        "ResourceType":{
-          "shape":"String",
-          "documentation":"<p>For a <code>ResourceUnavailableException</code> error, the type of resource that isn't available.</p>"
+    "ResourceUnavailableException": {
+      "documentation": "<p>The specified resource isn't available.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "String"
+        },
+        "ResourceType": {
+          "documentation": "<p>For a <code>ResourceUnavailableException</code> error, the type of resource that isn't available.</p>",
+          "shape": "String"
         }
       },
-      "documentation":"<p>The specified resource isn't available.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "Rfc3339TimeString":{
-      "type":"string",
-      "max":40,
-      "min":20
+    "Rfc3339TimeString": {
+      "max": 40,
+      "min": 20,
+      "type": "string"
     },
-    "RuleTypeOption":{
-      "type":"string",
-      "enum":[
+    "RuleTypeOption": {
+      "enum": [
         "FORWARD",
         "SYSTEM",
         "RECURSIVE"
-      ]
+      ],
+      "type": "string"
     },
-    "SecurityGroupIds":{
-      "type":"list",
-      "member":{"shape":"ResourceId"}
+    "SecurityGroupIds": {
+      "member": {
+        "shape": "ResourceId"
+      },
+      "type": "list"
     },
-    "ShareStatus":{
-      "type":"string",
-      "enum":[
+    "ShareStatus": {
+      "enum": [
         "NOT_SHARED",
         "SHARED_WITH_ME",
         "SHARED_BY_ME"
-      ]
+      ],
+      "type": "string"
     },
-    "StatusMessage":{
-      "type":"string",
-      "max":255
+    "StatusMessage": {
+      "max": 255,
+      "type": "string"
     },
-    "String":{"type":"string"},
-    "SubnetId":{
-      "type":"string",
-      "max":32,
-      "min":1
+    "String": {
+      "type": "string"
     },
-    "Tag":{
-      "type":"structure",
-      "members":{
-        "Key":{
-          "shape":"TagKey",
-          "documentation":"<p>The name for the tag. For example, if you want to associate Resolver resources with the account IDs of your customers for billing purposes, the value of <code>Key</code> might be <code>account-id</code>.</p>"
+    "SubnetId": {
+      "max": 32,
+      "min": 1,
+      "type": "string"
+    },
+    "Tag": {
+      "documentation": "<p>One tag that you want to add to the specified resource. A tag consists of a <code>Key</code> (a name for the tag) and a <code>Value</code>.</p>",
+      "members": {
+        "Key": {
+          "documentation": "<p>The name for the tag. For example, if you want to associate Resolver resources with the account IDs of your customers for billing purposes, the value of <code>Key</code> might be <code>account-id</code>.</p>",
+          "shape": "TagKey"
         },
-        "Value":{
-          "shape":"TagValue",
-          "documentation":"<p>The value for the tag. For example, if <code>Key</code> is <code>account-id</code>, then <code>Value</code> might be the ID of the customer account that you're creating the resource for.</p>"
+        "Value": {
+          "documentation": "<p>The value for the tag. For example, if <code>Key</code> is <code>account-id</code>, then <code>Value</code> might be the ID of the customer account that you're creating the resource for.</p>",
+          "shape": "TagValue"
         }
       },
-      "documentation":"<p>One tag that you want to add to the specified resource. A tag consists of a <code>Key</code> (a name for the tag) and a <code>Value</code>.</p>"
+      "type": "structure"
     },
-    "TagKey":{"type":"string"},
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKey"}
+    "TagKey": {
+      "type": "string"
     },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"}
+    "TagKeyList": {
+      "member": {
+        "shape": "TagKey"
+      },
+      "type": "list"
     },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "TagList": {
+      "member": {
+        "shape": "Tag"
+      },
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the resource that you want to add tags to. To get the ARN for a resource, use the applicable <code>Get</code> or <code>List</code> command: </p> <ul> <li> <p> <a>GetResolverEndpoint</a> </p> </li> <li> <p> <a>GetResolverRule</a> </p> </li> <li> <p> <a>GetResolverRuleAssociation</a> </p> </li> <li> <p> <a>ListResolverEndpoints</a> </p> </li> <li> <p> <a>ListResolverRuleAssociations</a> </p> </li> <li> <p> <a>ListResolverRules</a> </p> </li> </ul>",
+          "shape": "Arn"
+        },
+        "Tags": {
+          "documentation": "<p>The tags that you want to add to the specified resource.</p>",
+          "shape": "TagList"
+        }
+      },
+      "required": [
         "ResourceArn",
         "Tags"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the resource that you want to add tags to. To get the ARN for a resource, use the applicable <code>Get</code> or <code>List</code> command: </p> <ul> <li> <p> <a>GetResolverEndpoint</a> </p> </li> <li> <p> <a>GetResolverRule</a> </p> </li> <li> <p> <a>GetResolverRuleAssociation</a> </p> </li> <li> <p> <a>ListResolverEndpoints</a> </p> </li> <li> <p> <a>ListResolverRuleAssociations</a> </p> </li> <li> <p> <a>ListResolverRules</a> </p> </li> </ul>"
-        },
-        "Tags":{
-          "shape":"TagList",
-          "documentation":"<p>The tags that you want to add to the specified resource.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "TagValue":{"type":"string"},
-    "TargetAddress":{
-      "type":"structure",
-      "required":["Ip"],
-      "members":{
-        "Ip":{
-          "shape":"Ip",
-          "documentation":"<p>One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.</p>"
+    "TagValue": {
+      "type": "string"
+    },
+    "TargetAddress": {
+      "documentation": "<p>In a <a>CreateResolverRule</a> request, an array of the IPs that you want to forward DNS queries to.</p>",
+      "members": {
+        "Ip": {
+          "documentation": "<p>One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.</p>",
+          "shape": "Ip"
         },
-        "Port":{
-          "shape":"Port",
-          "documentation":"<p>The port at <code>Ip</code> that you want to forward DNS queries to.</p>",
-          "box":true
+        "Port": {
+          "box": true,
+          "documentation": "<p>The port at <code>Ip</code> that you want to forward DNS queries to.</p>",
+          "shape": "Port"
         }
       },
-      "documentation":"<p>In a <a>CreateResolverRule</a> request, an array of the IPs that you want to forward DNS queries to.</p>"
+      "required": [
+        "Ip"
+      ],
+      "type": "structure"
     },
-    "TargetList":{
-      "type":"list",
-      "member":{"shape":"TargetAddress"},
-      "min":1
-    },
-    "ThrottlingException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
+    "TargetList": {
+      "member": {
+        "shape": "TargetAddress"
       },
-      "documentation":"<p>The request was throttled. Try again in a few minutes.</p>",
-      "exception":true
+      "min": 1,
+      "type": "list"
     },
-    "UnknownResourceException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ExceptionMessage"}
+    "ThrottlingException": {
+      "documentation": "<p>The request was throttled. Try again in a few minutes.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
       },
-      "documentation":"<p>The specified resource doesn't exist.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+    "UnknownResourceException": {
+      "documentation": "<p>The specified resource doesn't exist.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "shape": "ExceptionMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "UntagResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) for the resource that you want to remove tags from. To get the ARN for a resource, use the applicable <code>Get</code> or <code>List</code> command: </p> <ul> <li> <p> <a>GetResolverEndpoint</a> </p> </li> <li> <p> <a>GetResolverRule</a> </p> </li> <li> <p> <a>GetResolverRuleAssociation</a> </p> </li> <li> <p> <a>ListResolverEndpoints</a> </p> </li> <li> <p> <a>ListResolverRuleAssociations</a> </p> </li> <li> <p> <a>ListResolverRules</a> </p> </li> </ul>",
+          "shape": "Arn"
+        },
+        "TagKeys": {
+          "documentation": "<p>The tags that you want to remove to the specified resource.</p>",
+          "shape": "TagKeyList"
+        }
+      },
+      "required": [
         "ResourceArn",
         "TagKeys"
       ],
-      "members":{
-        "ResourceArn":{
-          "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) for the resource that you want to remove tags from. To get the ARN for a resource, use the applicable <code>Get</code> or <code>List</code> command: </p> <ul> <li> <p> <a>GetResolverEndpoint</a> </p> </li> <li> <p> <a>GetResolverRule</a> </p> </li> <li> <p> <a>GetResolverRuleAssociation</a> </p> </li> <li> <p> <a>ListResolverEndpoints</a> </p> </li> <li> <p> <a>ListResolverRuleAssociations</a> </p> </li> <li> <p> <a>ListResolverRules</a> </p> </li> </ul>"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateResolverEndpointRequest": {
+      "members": {
+        "Name": {
+          "box": true,
+          "documentation": "<p>The name of the resolver endpoint that you want to update.</p>",
+          "shape": "Name"
         },
-        "TagKeys":{
-          "shape":"TagKeyList",
-          "documentation":"<p>The tags that you want to remove to the specified resource.</p>"
+        "ResolverEndpointId": {
+          "documentation": "<p>The ID of the resolver endpoint that you want to update.</p>",
+          "shape": "ResourceId"
         }
-      }
+      },
+      "required": [
+        "ResolverEndpointId"
+      ],
+      "type": "structure"
     },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "UpdateResolverEndpointResponse": {
+      "members": {
+        "ResolverEndpoint": {
+          "documentation": "<p>The response to an <code>UpdateResolverEndpoint</code> request.</p>",
+          "shape": "ResolverEndpoint"
+        }
+      },
+      "type": "structure"
     },
-    "UpdateResolverEndpointRequest":{
-      "type":"structure",
-      "required":["ResolverEndpointId"],
-      "members":{
-        "ResolverEndpointId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver endpoint that you want to update.</p>"
+    "UpdateResolverRuleRequest": {
+      "members": {
+        "Config": {
+          "documentation": "<p>The new settings for the resolver rule.</p>",
+          "shape": "ResolverRuleConfig"
         },
-        "Name":{
-          "shape":"Name",
-          "documentation":"<p>The name of the resolver endpoint that you want to update.</p>",
-          "box":true
+        "ResolverRuleId": {
+          "documentation": "<p>The ID of the resolver rule that you want to update.</p>",
+          "shape": "ResourceId"
         }
-      }
-    },
-    "UpdateResolverEndpointResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverEndpoint":{
-          "shape":"ResolverEndpoint",
-          "documentation":"<p>The response to an <code>UpdateResolverEndpoint</code> request.</p>"
-        }
-      }
-    },
-    "UpdateResolverRuleRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "ResolverRuleId",
         "Config"
       ],
-      "members":{
-        "ResolverRuleId":{
-          "shape":"ResourceId",
-          "documentation":"<p>The ID of the resolver rule that you want to update.</p>"
-        },
-        "Config":{
-          "shape":"ResolverRuleConfig",
-          "documentation":"<p>The new settings for the resolver rule.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateResolverRuleResponse":{
-      "type":"structure",
-      "members":{
-        "ResolverRule":{
-          "shape":"ResolverRule",
-          "documentation":"<p>The response to an <code>UpdateResolverRule</code> request.</p>"
+    "UpdateResolverRuleResponse": {
+      "members": {
+        "ResolverRule": {
+          "documentation": "<p>The response to an <code>UpdateResolverRule</code> request.</p>",
+          "shape": "ResolverRule"
         }
-      }
+      },
+      "type": "structure"
     }
   },
-  "documentation":"<p>Here's how you set up to query an Amazon Route 53 private hosted zone from your network:</p> <ol> <li> <p>Connect your network to a VPC using AWS Direct Connect or a VPN.</p> </li> <li> <p>Run the following AWS CLI command to create a Resolver endpoint:</p> <p> <code>create-resolver-endpoint --name [endpoint_name] --direction INBOUND --creator-request-id [unique_string] --security-group-ids [security_group_with_inbound_rules] --ip-addresses SubnetId=[subnet_id] SubnetId=[subnet_id_in_different_AZ]</code> </p> <p>Note the resolver endpoint ID that appears in the response. You'll use it in step 3.</p> </li> <li> <p>Get the IP addresses for the Resolver endpoints:</p> <p> <code>get-resolver-endpoint --resolver-endpoint-id [resolver_endpoint_id]</code> </p> </li> <li> <p>In your network configuration, define the IP addresses that you got in step 3 as DNS servers.</p> <p>You can now query instance names in your VPCs and the names of records in your private hosted zone.</p> </li> </ol> <p>You can also perform the following operations using the AWS CLI:</p> <ul> <li> <p> <code>list-resolver-endpoints</code>: List all endpoints. The syntax includes options for pagination and filtering.</p> </li> <li> <p> <code>update-resolver-endpoints</code>: Add IP addresses to an endpoint or remove IP addresses from an endpoint. </p> </li> </ul> <p>To delete an endpoint, use the following AWS CLI command:</p> <p> <code>delete-resolver-endpoint --resolver-endpoint-id [resolver_endpoint_id]</code> </p>"
+  "version": "2.0"
 }

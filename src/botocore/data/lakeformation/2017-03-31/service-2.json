@@ -1,352 +1,496 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2017-03-31",
-    "endpointPrefix":"lakeformation",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceFullName":"AWS Lake Formation",
-    "serviceId":"LakeFormation",
-    "signatureVersion":"v4",
-    "signingName":"lakeformation",
-    "targetPrefix":"AWSLakeFormation",
-    "uid":"lakeformation-2017-03-31"
+  "documentation": "<fullname>AWS Lake Formation</fullname> <p>Defines the public endpoint for the AWS Lake Formation service.</p>",
+  "metadata": {
+    "apiVersion": "2017-03-31",
+    "endpointPrefix": "lakeformation",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceFullName": "AWS Lake Formation",
+    "serviceId": "LakeFormation",
+    "signatureVersion": "v4",
+    "signingName": "lakeformation",
+    "targetPrefix": "AWSLakeFormation",
+    "uid": "lakeformation-2017-03-31"
   },
-  "operations":{
-    "BatchGrantPermissions":{
-      "name":"BatchGrantPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"BatchGrantPermissionsRequest"},
-      "output":{"shape":"BatchGrantPermissionsResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"OperationTimeoutException"}
+  "operations": {
+    "BatchGrantPermissions": {
+      "documentation": "<p>Batch operation to grant permissions to the principal.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        }
       ],
-      "documentation":"<p>Batch operation to grant permissions to the principal.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "BatchGrantPermissionsRequest"
+      },
+      "name": "BatchGrantPermissions",
+      "output": {
+        "shape": "BatchGrantPermissionsResponse"
+      }
     },
-    "BatchRevokePermissions":{
-      "name":"BatchRevokePermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"BatchRevokePermissionsRequest"},
-      "output":{"shape":"BatchRevokePermissionsResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"OperationTimeoutException"}
+    "BatchRevokePermissions": {
+      "documentation": "<p>Batch operation to revoke permissions from the principal.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        }
       ],
-      "documentation":"<p>Batch operation to revoke permissions from the principal.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "BatchRevokePermissionsRequest"
+      },
+      "name": "BatchRevokePermissions",
+      "output": {
+        "shape": "BatchRevokePermissionsResponse"
+      }
     },
-    "DeregisterResource":{
-      "name":"DeregisterResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DeregisterResourceRequest"},
-      "output":{"shape":"DeregisterResourceResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"InternalServiceException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"EntityNotFoundException"}
+    "DeregisterResource": {
+      "documentation": "<p>Deregisters the resource as managed by the Data Catalog.</p> <p>When you deregister a path, Lake Formation removes the path from the inline policy attached to your service-linked role.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        }
       ],
-      "documentation":"<p>Deregisters the resource as managed by the Data Catalog.</p> <p>When you deregister a path, Lake Formation removes the path from the inline policy attached to your service-linked role.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DeregisterResourceRequest"
+      },
+      "name": "DeregisterResource",
+      "output": {
+        "shape": "DeregisterResourceResponse"
+      }
     },
-    "DescribeResource":{
-      "name":"DescribeResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"DescribeResourceRequest"},
-      "output":{"shape":"DescribeResourceResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"InternalServiceException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"EntityNotFoundException"}
+    "DescribeResource": {
+      "documentation": "<p>Retrieves the current data access role for the given resource registered in AWS Lake Formation.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        }
       ],
-      "documentation":"<p>Retrieves the current data access role for the given resource registered in AWS Lake Formation.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "DescribeResourceRequest"
+      },
+      "name": "DescribeResource",
+      "output": {
+        "shape": "DescribeResourceResponse"
+      }
     },
-    "GetDataLakeSettings":{
-      "name":"GetDataLakeSettings",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetDataLakeSettingsRequest"},
-      "output":{"shape":"GetDataLakeSettingsResponse"},
-      "errors":[
-        {"shape":"InternalServiceException"},
-        {"shape":"InvalidInputException"},
-        {"shape":"EntityNotFoundException"}
+    "GetDataLakeSettings": {
+      "documentation": "<p>The AWS Lake Formation principal.</p>",
+      "errors": [
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        }
       ],
-      "documentation":"<p>The AWS Lake Formation principal.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetDataLakeSettingsRequest"
+      },
+      "name": "GetDataLakeSettings",
+      "output": {
+        "shape": "GetDataLakeSettingsResponse"
+      }
     },
-    "GetEffectivePermissionsForPath":{
-      "name":"GetEffectivePermissionsForPath",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GetEffectivePermissionsForPathRequest"},
-      "output":{"shape":"GetEffectivePermissionsForPathResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"InternalServiceException"}
+    "GetEffectivePermissionsForPath": {
+      "documentation": "<p>Returns the permissions for a specified table or database resource located at a path in Amazon S3.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "InternalServiceException"
+        }
       ],
-      "documentation":"<p>Returns the permissions for a specified table or database resource located at a path in Amazon S3.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GetEffectivePermissionsForPathRequest"
+      },
+      "name": "GetEffectivePermissionsForPath",
+      "output": {
+        "shape": "GetEffectivePermissionsForPathResponse"
+      }
     },
-    "GrantPermissions":{
-      "name":"GrantPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"GrantPermissionsRequest"},
-      "output":{"shape":"GrantPermissionsResponse"},
-      "errors":[
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidInputException"}
+    "GrantPermissions": {
+      "documentation": "<p>Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.</p> <p>For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>",
+      "errors": [
+        {
+          "shape": "ConcurrentModificationException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidInputException"
+        }
       ],
-      "documentation":"<p>Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.</p> <p>For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "GrantPermissionsRequest"
+      },
+      "name": "GrantPermissions",
+      "output": {
+        "shape": "GrantPermissionsResponse"
+      }
     },
-    "ListPermissions":{
-      "name":"ListPermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListPermissionsRequest"},
-      "output":{"shape":"ListPermissionsResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"InternalServiceException"}
+    "ListPermissions": {
+      "documentation": "<p>Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.</p> <p>This operation returns only those permissions that have been explicitly granted.</p> <p>For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "InternalServiceException"
+        }
       ],
-      "documentation":"<p>Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.</p> <p>This operation returns only those permissions that have been explicitly granted.</p> <p>For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListPermissionsRequest"
+      },
+      "name": "ListPermissions",
+      "output": {
+        "shape": "ListPermissionsResponse"
+      }
     },
-    "ListResources":{
-      "name":"ListResources",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListResourcesRequest"},
-      "output":{"shape":"ListResourcesResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"InternalServiceException"},
-        {"shape":"OperationTimeoutException"}
+    "ListResources": {
+      "documentation": "<p>Lists the resources registered to be managed by the Data Catalog.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        }
       ],
-      "documentation":"<p>Lists the resources registered to be managed by the Data Catalog.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "ListResourcesRequest"
+      },
+      "name": "ListResources",
+      "output": {
+        "shape": "ListResourcesResponse"
+      }
     },
-    "PutDataLakeSettings":{
-      "name":"PutDataLakeSettings",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"PutDataLakeSettingsRequest"},
-      "output":{"shape":"PutDataLakeSettingsResponse"},
-      "errors":[
-        {"shape":"InternalServiceException"},
-        {"shape":"InvalidInputException"}
+    "PutDataLakeSettings": {
+      "documentation": "<p>The AWS Lake Formation principal.</p>",
+      "errors": [
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "InvalidInputException"
+        }
       ],
-      "documentation":"<p>The AWS Lake Formation principal.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "PutDataLakeSettingsRequest"
+      },
+      "name": "PutDataLakeSettings",
+      "output": {
+        "shape": "PutDataLakeSettingsResponse"
+      }
     },
-    "RegisterResource":{
-      "name":"RegisterResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"RegisterResourceRequest"},
-      "output":{"shape":"RegisterResourceResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"InternalServiceException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"AlreadyExistsException"}
+    "RegisterResource": {
+      "documentation": "<p>Registers the resource as managed by the Data Catalog.</p> <p>To add or update data, Lake Formation needs read/write access to the chosen Amazon S3 path. Choose a role that you know has permission to do this, or choose the AWSServiceRoleForLakeFormationDataAccess service-linked role. When you register the first Amazon S3 path, the service-linked role and a new inline policy are created on your behalf. Lake Formation adds the first path to the inline policy and attaches it to the service-linked role. When you register subsequent paths, Lake Formation adds the path to the existing policy.</p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "AlreadyExistsException"
+        }
       ],
-      "documentation":"<p>Registers the resource as managed by the Data Catalog.</p> <p>To add or update data, Lake Formation needs read/write access to the chosen Amazon S3 path. Choose a role that you know has permission to do this, or choose the AWSServiceRoleForLakeFormationDataAccess service-linked role. When you register the first Amazon S3 path, the service-linked role and a new inline policy are created on your behalf. Lake Formation adds the first path to the inline policy and attaches it to the service-linked role. When you register subsequent paths, Lake Formation adds the path to the existing policy.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "RegisterResourceRequest"
+      },
+      "name": "RegisterResource",
+      "output": {
+        "shape": "RegisterResourceResponse"
+      }
     },
-    "RevokePermissions":{
-      "name":"RevokePermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"RevokePermissionsRequest"},
-      "output":{"shape":"RevokePermissionsResponse"},
-      "errors":[
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"EntityNotFoundException"},
-        {"shape":"InvalidInputException"}
+    "RevokePermissions": {
+      "documentation": "<p>Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.</p>",
+      "errors": [
+        {
+          "shape": "ConcurrentModificationException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        },
+        {
+          "shape": "InvalidInputException"
+        }
       ],
-      "documentation":"<p>Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "RevokePermissionsRequest"
+      },
+      "name": "RevokePermissions",
+      "output": {
+        "shape": "RevokePermissionsResponse"
+      }
     },
-    "UpdateResource":{
-      "name":"UpdateResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateResourceRequest"},
-      "output":{"shape":"UpdateResourceResponse"},
-      "errors":[
-        {"shape":"InvalidInputException"},
-        {"shape":"InternalServiceException"},
-        {"shape":"OperationTimeoutException"},
-        {"shape":"EntityNotFoundException"}
+    "UpdateResource": {
+      "documentation": "<p>Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation. </p>",
+      "errors": [
+        {
+          "shape": "InvalidInputException"
+        },
+        {
+          "shape": "InternalServiceException"
+        },
+        {
+          "shape": "OperationTimeoutException"
+        },
+        {
+          "shape": "EntityNotFoundException"
+        }
       ],
-      "documentation":"<p>Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation. </p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": {
+        "shape": "UpdateResourceRequest"
+      },
+      "name": "UpdateResource",
+      "output": {
+        "shape": "UpdateResourceResponse"
+      }
     }
   },
-  "shapes":{
-    "AlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+  "shapes": {
+    "AlreadyExistsException": {
+      "documentation": "<p>A resource to be created or added already exists.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
         }
       },
-      "documentation":"<p>A resource to be created or added already exists.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "BatchGrantPermissionsRequest":{
-      "type":"structure",
-      "required":["Entries"],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+    "BatchGrantPermissionsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
         },
-        "Entries":{
-          "shape":"BatchPermissionsRequestEntryList",
-          "documentation":"<p>A list of up to 20 entries for resource permissions to be granted by batch operation to the principal.</p>"
-        }
-      }
-    },
-    "BatchGrantPermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "Failures":{
-          "shape":"BatchPermissionsFailureList",
-          "documentation":"<p>A list of failures to grant permissions to the resources.</p>"
-        }
-      }
-    },
-    "BatchPermissionsFailureEntry":{
-      "type":"structure",
-      "members":{
-        "RequestEntry":{
-          "shape":"BatchPermissionsRequestEntry",
-          "documentation":"<p>An identifier for an entry of the batch request.</p>"
-        },
-        "Error":{
-          "shape":"ErrorDetail",
-          "documentation":"<p>An error message that applies to the failure of the entry.</p>"
+        "Entries": {
+          "documentation": "<p>A list of up to 20 entries for resource permissions to be granted by batch operation to the principal.</p>",
+          "shape": "BatchPermissionsRequestEntryList"
         }
       },
-      "documentation":"<p>A list of failures when performing a batch grant or batch revoke operation.</p>"
+      "required": [
+        "Entries"
+      ],
+      "type": "structure"
     },
-    "BatchPermissionsFailureList":{
-      "type":"list",
-      "member":{"shape":"BatchPermissionsFailureEntry"}
-    },
-    "BatchPermissionsRequestEntry":{
-      "type":"structure",
-      "required":["Id"],
-      "members":{
-        "Id":{
-          "shape":"Identifier",
-          "documentation":"<p>A unique identifier for the batch permissions request entry.</p>"
-        },
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>The principal to be granted a permission.</p>"
-        },
-        "Resource":{
-          "shape":"Resource",
-          "documentation":"<p>The resource to which the principal is to be granted a permission.</p>"
-        },
-        "Permissions":{
-          "shape":"PermissionList",
-          "documentation":"<p>The permissions to be granted.</p>"
-        },
-        "PermissionsWithGrantOption":{
-          "shape":"PermissionList",
-          "documentation":"<p>Indicates if the option to pass permissions is granted.</p>"
+    "BatchGrantPermissionsResponse": {
+      "members": {
+        "Failures": {
+          "documentation": "<p>A list of failures to grant permissions to the resources.</p>",
+          "shape": "BatchPermissionsFailureList"
         }
       },
-      "documentation":"<p>A permission to a resource granted by batch operation to the principal.</p>"
+      "type": "structure"
     },
-    "BatchPermissionsRequestEntryList":{
-      "type":"list",
-      "member":{"shape":"BatchPermissionsRequestEntry"}
-    },
-    "BatchRevokePermissionsRequest":{
-      "type":"structure",
-      "required":["Entries"],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+    "BatchPermissionsFailureEntry": {
+      "documentation": "<p>A list of failures when performing a batch grant or batch revoke operation.</p>",
+      "members": {
+        "Error": {
+          "documentation": "<p>An error message that applies to the failure of the entry.</p>",
+          "shape": "ErrorDetail"
         },
-        "Entries":{
-          "shape":"BatchPermissionsRequestEntryList",
-          "documentation":"<p>A list of up to 20 entries for resource permissions to be revoked by batch operation to the principal.</p>"
-        }
-      }
-    },
-    "BatchRevokePermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "Failures":{
-          "shape":"BatchPermissionsFailureList",
-          "documentation":"<p>A list of failures to revoke permissions to the resources.</p>"
-        }
-      }
-    },
-    "CatalogIdString":{
-      "type":"string",
-      "max":255,
-      "min":1,
-      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*"
-    },
-    "CatalogResource":{
-      "type":"structure",
-      "members":{
-      },
-      "documentation":"<p>A structure for the catalog object.</p>"
-    },
-    "ColumnNames":{
-      "type":"list",
-      "member":{"shape":"NameString"}
-    },
-    "ColumnWildcard":{
-      "type":"structure",
-      "members":{
-        "ExcludedColumnNames":{
-          "shape":"ColumnNames",
-          "documentation":"<p>Excludes column names. Any column with this name will be excluded.</p>"
+        "RequestEntry": {
+          "documentation": "<p>An identifier for an entry of the batch request.</p>",
+          "shape": "BatchPermissionsRequestEntry"
         }
       },
-      "documentation":"<p>A wildcard object, consisting of an optional list of excluded column names or indexes.</p>"
+      "type": "structure"
     },
-    "ComparisonOperator":{
-      "type":"string",
-      "enum":[
+    "BatchPermissionsFailureList": {
+      "member": {
+        "shape": "BatchPermissionsFailureEntry"
+      },
+      "type": "list"
+    },
+    "BatchPermissionsRequestEntry": {
+      "documentation": "<p>A permission to a resource granted by batch operation to the principal.</p>",
+      "members": {
+        "Id": {
+          "documentation": "<p>A unique identifier for the batch permissions request entry.</p>",
+          "shape": "Identifier"
+        },
+        "Permissions": {
+          "documentation": "<p>The permissions to be granted.</p>",
+          "shape": "PermissionList"
+        },
+        "PermissionsWithGrantOption": {
+          "documentation": "<p>Indicates if the option to pass permissions is granted.</p>",
+          "shape": "PermissionList"
+        },
+        "Principal": {
+          "documentation": "<p>The principal to be granted a permission.</p>",
+          "shape": "DataLakePrincipal"
+        },
+        "Resource": {
+          "documentation": "<p>The resource to which the principal is to be granted a permission.</p>",
+          "shape": "Resource"
+        }
+      },
+      "required": [
+        "Id"
+      ],
+      "type": "structure"
+    },
+    "BatchPermissionsRequestEntryList": {
+      "member": {
+        "shape": "BatchPermissionsRequestEntry"
+      },
+      "type": "list"
+    },
+    "BatchRevokePermissionsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
+        },
+        "Entries": {
+          "documentation": "<p>A list of up to 20 entries for resource permissions to be revoked by batch operation to the principal.</p>",
+          "shape": "BatchPermissionsRequestEntryList"
+        }
+      },
+      "required": [
+        "Entries"
+      ],
+      "type": "structure"
+    },
+    "BatchRevokePermissionsResponse": {
+      "members": {
+        "Failures": {
+          "documentation": "<p>A list of failures to revoke permissions to the resources.</p>",
+          "shape": "BatchPermissionsFailureList"
+        }
+      },
+      "type": "structure"
+    },
+    "CatalogIdString": {
+      "max": 255,
+      "min": 1,
+      "pattern": "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*",
+      "type": "string"
+    },
+    "CatalogResource": {
+      "documentation": "<p>A structure for the catalog object.</p>",
+      "members": {},
+      "type": "structure"
+    },
+    "ColumnNames": {
+      "member": {
+        "shape": "NameString"
+      },
+      "type": "list"
+    },
+    "ColumnWildcard": {
+      "documentation": "<p>A wildcard object, consisting of an optional list of excluded column names or indexes.</p>",
+      "members": {
+        "ExcludedColumnNames": {
+          "documentation": "<p>Excludes column names. Any column with this name will be excluded.</p>",
+          "shape": "ColumnNames"
+        }
+      },
+      "type": "structure"
+    },
+    "ComparisonOperator": {
+      "enum": [
         "EQ",
         "NE",
         "LE",
@@ -358,410 +502,426 @@
         "BEGINS_WITH",
         "IN",
         "BETWEEN"
-      ]
+      ],
+      "type": "string"
     },
-    "ConcurrentModificationException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+    "ConcurrentModificationException": {
+      "documentation": "<p>Two processes are trying to modify a resource simultaneously.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
         }
       },
-      "documentation":"<p>Two processes are trying to modify a resource simultaneously.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "DataLakePrincipal":{
-      "type":"structure",
-      "members":{
-        "DataLakePrincipalIdentifier":{
-          "shape":"DataLakePrincipalString",
-          "documentation":"<p>An identifier for the AWS Lake Formation principal.</p>"
+    "DataLakePrincipal": {
+      "documentation": "<p>The AWS Lake Formation principal.</p>",
+      "members": {
+        "DataLakePrincipalIdentifier": {
+          "documentation": "<p>An identifier for the AWS Lake Formation principal.</p>",
+          "shape": "DataLakePrincipalString"
         }
       },
-      "documentation":"<p>The AWS Lake Formation principal.</p>"
+      "type": "structure"
     },
-    "DataLakePrincipalList":{
-      "type":"list",
-      "member":{"shape":"DataLakePrincipal"},
-      "max":10,
-      "min":0
+    "DataLakePrincipalList": {
+      "max": 10,
+      "member": {
+        "shape": "DataLakePrincipal"
+      },
+      "min": 0,
+      "type": "list"
     },
-    "DataLakePrincipalString":{
-      "type":"string",
-      "max":255,
-      "min":1
+    "DataLakePrincipalString": {
+      "max": 255,
+      "min": 1,
+      "type": "string"
     },
-    "DataLakeResourceType":{
-      "type":"string",
-      "enum":[
+    "DataLakeResourceType": {
+      "enum": [
         "CATALOG",
         "DATABASE",
         "TABLE",
         "DATA_LOCATION"
-      ]
+      ],
+      "type": "string"
     },
-    "DataLakeSettings":{
-      "type":"structure",
-      "members":{
-        "DataLakeAdmins":{
-          "shape":"DataLakePrincipalList",
-          "documentation":"<p>A list of AWS Lake Formation principals.</p>"
+    "DataLakeSettings": {
+      "documentation": "<p>The AWS Lake Formation principal.</p>",
+      "members": {
+        "CreateDatabaseDefaultPermissions": {
+          "documentation": "<p>A list of up to three principal permissions entries for default create database permissions.</p>",
+          "shape": "PrincipalPermissionsList"
         },
-        "CreateDatabaseDefaultPermissions":{
-          "shape":"PrincipalPermissionsList",
-          "documentation":"<p>A list of up to three principal permissions entries for default create database permissions.</p>"
+        "CreateTableDefaultPermissions": {
+          "documentation": "<p>A list of up to three principal permissions entries for default create table permissions.</p>",
+          "shape": "PrincipalPermissionsList"
         },
-        "CreateTableDefaultPermissions":{
-          "shape":"PrincipalPermissionsList",
-          "documentation":"<p>A list of up to three principal permissions entries for default create table permissions.</p>"
+        "DataLakeAdmins": {
+          "documentation": "<p>A list of AWS Lake Formation principals.</p>",
+          "shape": "DataLakePrincipalList"
         }
       },
-      "documentation":"<p>The AWS Lake Formation principal.</p>"
+      "type": "structure"
     },
-    "DataLocationResource":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The Amazon Resource Name (ARN) that uniquely identifies the data location resource.</p>"
+    "DataLocationResource": {
+      "documentation": "<p>A structure for a data location object where permissions are granted or revoked. </p>",
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) that uniquely identifies the data location resource.</p>",
+          "shape": "ResourceArnString"
         }
       },
-      "documentation":"<p>A structure for a data location object where permissions are granted or revoked. </p>"
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "DatabaseResource":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the database resource. Unique to the Data Catalog.</p>"
+    "DatabaseResource": {
+      "documentation": "<p>A structure for the database object.</p>",
+      "members": {
+        "Name": {
+          "documentation": "<p>The name of the database resource. Unique to the Data Catalog.</p>",
+          "shape": "NameString"
         }
       },
-      "documentation":"<p>A structure for the database object.</p>"
+      "required": [
+        "Name"
+      ],
+      "type": "structure"
     },
-    "DeregisterResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource that you want to deregister.</p>"
-        }
-      }
-    },
-    "DeregisterResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DescribeResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The resource ARN.</p>"
-        }
-      }
-    },
-    "DescribeResourceResponse":{
-      "type":"structure",
-      "members":{
-        "ResourceInfo":{
-          "shape":"ResourceInfo",
-          "documentation":"<p>A structure containing information about an AWS Lake Formation resource.</p>"
-        }
-      }
-    },
-    "DescriptionString":{
-      "type":"string",
-      "max":2048,
-      "min":0,
-      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
-    },
-    "EntityNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+    "DeregisterResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource that you want to deregister.</p>",
+          "shape": "ResourceArnString"
         }
       },
-      "documentation":"<p>A specified entity does not exist</p>",
-      "exception":true
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "ErrorDetail":{
-      "type":"structure",
-      "members":{
-        "ErrorCode":{
-          "shape":"NameString",
-          "documentation":"<p>The code associated with this error.</p>"
+    "DeregisterResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DescribeResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "ResourceArnString"
+        }
+      },
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
+    },
+    "DescribeResourceResponse": {
+      "members": {
+        "ResourceInfo": {
+          "documentation": "<p>A structure containing information about an AWS Lake Formation resource.</p>",
+          "shape": "ResourceInfo"
+        }
+      },
+      "type": "structure"
+    },
+    "DescriptionString": {
+      "max": 2048,
+      "min": 0,
+      "pattern": "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*",
+      "type": "string"
+    },
+    "EntityNotFoundException": {
+      "documentation": "<p>A specified entity does not exist</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
+        }
+      },
+      "type": "structure"
+    },
+    "ErrorDetail": {
+      "documentation": "<p>Contains details about an error.</p>",
+      "members": {
+        "ErrorCode": {
+          "documentation": "<p>The code associated with this error.</p>",
+          "shape": "NameString"
         },
-        "ErrorMessage":{
-          "shape":"DescriptionString",
-          "documentation":"<p>A message describing the error.</p>"
+        "ErrorMessage": {
+          "documentation": "<p>A message describing the error.</p>",
+          "shape": "DescriptionString"
         }
       },
-      "documentation":"<p>Contains details about an error.</p>"
+      "type": "structure"
     },
-    "FieldNameString":{
-      "type":"string",
-      "enum":[
+    "FieldNameString": {
+      "enum": [
         "RESOURCE_ARN",
         "ROLE_ARN",
         "LAST_MODIFIED"
-      ]
+      ],
+      "type": "string"
     },
-    "FilterCondition":{
-      "type":"structure",
-      "members":{
-        "Field":{
-          "shape":"FieldNameString",
-          "documentation":"<p>The field to filter in the filter condition.</p>"
+    "FilterCondition": {
+      "documentation": "<p>This structure describes the filtering of columns in a table based on a filter condition.</p>",
+      "members": {
+        "ComparisonOperator": {
+          "documentation": "<p>The comparison operator used in the filter condition.</p>",
+          "shape": "ComparisonOperator"
         },
-        "ComparisonOperator":{
-          "shape":"ComparisonOperator",
-          "documentation":"<p>The comparison operator used in the filter condition.</p>"
+        "Field": {
+          "documentation": "<p>The field to filter in the filter condition.</p>",
+          "shape": "FieldNameString"
         },
-        "StringValueList":{
-          "shape":"StringValueList",
-          "documentation":"<p>A string with values used in evaluating the filter condition.</p>"
+        "StringValueList": {
+          "documentation": "<p>A string with values used in evaluating the filter condition.</p>",
+          "shape": "StringValueList"
         }
       },
-      "documentation":"<p>This structure describes the filtering of columns in a table based on a filter condition.</p>"
+      "type": "structure"
     },
-    "FilterConditionList":{
-      "type":"list",
-      "member":{"shape":"FilterCondition"},
-      "max":20,
-      "min":1
+    "FilterConditionList": {
+      "max": 20,
+      "member": {
+        "shape": "FilterCondition"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "GetDataLakeSettingsRequest":{
-      "type":"structure",
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+    "GetDataLakeSettingsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetDataLakeSettingsResponse":{
-      "type":"structure",
-      "members":{
-        "DataLakeSettings":{
-          "shape":"DataLakeSettings",
-          "documentation":"<p>A list of AWS Lake Formation principals. </p>"
+    "GetDataLakeSettingsResponse": {
+      "members": {
+        "DataLakeSettings": {
+          "documentation": "<p>A list of AWS Lake Formation principals. </p>",
+          "shape": "DataLakeSettings"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GetEffectivePermissionsForPathRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+    "GetEffectivePermissionsForPathRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
         },
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource for which you want to get permissions.</p>"
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "shape": "PageSize"
         },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve this list.</p>"
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve this list.</p>",
+          "shape": "Token"
         },
-        "MaxResults":{
-          "shape":"PageSize",
-          "documentation":"<p>The maximum number of results to return.</p>"
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource for which you want to get permissions.</p>",
+          "shape": "ResourceArnString"
         }
-      }
+      },
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "GetEffectivePermissionsForPathResponse":{
-      "type":"structure",
-      "members":{
-        "Permissions":{
-          "shape":"PrincipalResourcePermissionsList",
-          "documentation":"<p>A list of the permissions for the specified table or database resource located at the path in Amazon S3.</p>"
+    "GetEffectivePermissionsForPathResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve this list.</p>",
+          "shape": "Token"
         },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve this list.</p>"
+        "Permissions": {
+          "documentation": "<p>A list of the permissions for the specified table or database resource located at the path in Amazon S3.</p>",
+          "shape": "PrincipalResourcePermissionsList"
         }
-      }
+      },
+      "type": "structure"
     },
-    "GrantPermissionsRequest":{
-      "type":"structure",
-      "required":[
+    "GrantPermissionsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
+        },
+        "Permissions": {
+          "documentation": "<p>The permissions granted to the principal on the resource. AWS Lake Formation defines privileges to grant and revoke access to metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3. AWS Lake Formation requires that each principal be authorized to perform a specific task on AWS Lake Formation resources. </p>",
+          "shape": "PermissionList"
+        },
+        "PermissionsWithGrantOption": {
+          "documentation": "<p>Indicates a list of the granted permissions that the principal may pass to other users. These permissions may only be a subset of the permissions granted in the <code>Privileges</code>.</p>",
+          "shape": "PermissionList"
+        },
+        "Principal": {
+          "documentation": "<p>The principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles, and they are defined by their principal type and their ARN.</p> <p>Note that if you define a resource with a particular ARN, then later delete, and recreate a resource with that same ARN, the resource maintains the permissions already granted. </p>",
+          "shape": "DataLakePrincipal"
+        },
+        "Resource": {
+          "documentation": "<p>The resource to which permissions are to be granted. Resources in AWS Lake Formation are the Data Catalog, databases, and tables.</p>",
+          "shape": "Resource"
+        }
+      },
+      "required": [
         "Principal",
         "Resource",
         "Permissions"
       ],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
-        },
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>The principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles, and they are defined by their principal type and their ARN.</p> <p>Note that if you define a resource with a particular ARN, then later delete, and recreate a resource with that same ARN, the resource maintains the permissions already granted. </p>"
-        },
-        "Resource":{
-          "shape":"Resource",
-          "documentation":"<p>The resource to which permissions are to be granted. Resources in AWS Lake Formation are the Data Catalog, databases, and tables.</p>"
-        },
-        "Permissions":{
-          "shape":"PermissionList",
-          "documentation":"<p>The permissions granted to the principal on the resource. AWS Lake Formation defines privileges to grant and revoke access to metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3. AWS Lake Formation requires that each principal be authorized to perform a specific task on AWS Lake Formation resources. </p>"
-        },
-        "PermissionsWithGrantOption":{
-          "shape":"PermissionList",
-          "documentation":"<p>Indicates a list of the granted permissions that the principal may pass to other users. These permissions may only be a subset of the permissions granted in the <code>Privileges</code>.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "GrantPermissionsResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "GrantPermissionsResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "IAMRoleArn":{
-      "type":"string",
-      "pattern":"arn:aws:iam::[0-9]*:role/.*"
+    "IAMRoleArn": {
+      "pattern": "arn:aws:iam::[0-9]*:role/.*",
+      "type": "string"
     },
-    "Identifier":{
-      "type":"string",
-      "max":255,
-      "min":1
+    "Identifier": {
+      "max": 255,
+      "min": 1,
+      "type": "string"
     },
-    "InternalServiceException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+    "InternalServiceException": {
+      "documentation": "<p>An internal service error occurred.</p>",
+      "exception": true,
+      "fault": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
         }
       },
-      "documentation":"<p>An internal service error occurred.</p>",
-      "exception":true,
-      "fault":true
+      "type": "structure"
     },
-    "InvalidInputException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+    "InvalidInputException": {
+      "documentation": "<p>The input provided was not valid.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
         }
       },
-      "documentation":"<p>The input provided was not valid.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "LastModifiedTimestamp":{"type":"timestamp"},
-    "ListPermissionsRequest":{
-      "type":"structure",
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
-        },
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>Specifies a principal to filter the permissions returned.</p>"
-        },
-        "ResourceType":{
-          "shape":"DataLakeResourceType",
-          "documentation":"<p>Specifies a resource type to filter the permissions returned.</p>"
-        },
-        "Resource":{
-          "shape":"Resource",
-          "documentation":"<p>A resource where you will get a list of the principal permissions.</p> <p>This operation does not support getting privileges on a table with columns. Instead, call this operation on the table, and the operation returns the table and the table w columns.</p>"
-        },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve this list.</p>"
-        },
-        "MaxResults":{
-          "shape":"PageSize",
-          "documentation":"<p>The maximum number of results to return.</p>"
-        }
-      }
+    "LastModifiedTimestamp": {
+      "type": "timestamp"
     },
-    "ListPermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "PrincipalResourcePermissions":{
-          "shape":"PrincipalResourcePermissionsList",
-          "documentation":"<p>A list of principals and their permissions on the resource for the specified principal and resource types.</p>"
+    "ListPermissionsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
         },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve this list.</p>"
-        }
-      }
-    },
-    "ListResourcesRequest":{
-      "type":"structure",
-      "members":{
-        "FilterConditionList":{
-          "shape":"FilterConditionList",
-          "documentation":"<p>Any applicable row-level and/or column-level filtering conditions for the resources.</p>"
+        "MaxResults": {
+          "documentation": "<p>The maximum number of results to return.</p>",
+          "shape": "PageSize"
         },
-        "MaxResults":{
-          "shape":"PageSize",
-          "documentation":"<p>The maximum number of resource results.</p>"
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve this list.</p>",
+          "shape": "Token"
         },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve these resources.</p>"
-        }
-      }
-    },
-    "ListResourcesResponse":{
-      "type":"structure",
-      "members":{
-        "ResourceInfoList":{
-          "shape":"ResourceInfoList",
-          "documentation":"<p>A summary of the data lake resources.</p>"
+        "Principal": {
+          "documentation": "<p>Specifies a principal to filter the permissions returned.</p>",
+          "shape": "DataLakePrincipal"
         },
-        "NextToken":{
-          "shape":"Token",
-          "documentation":"<p>A continuation token, if this is not the first call to retrieve these resources.</p>"
-        }
-      }
-    },
-    "MessageString":{"type":"string"},
-    "NameString":{
-      "type":"string",
-      "max":255,
-      "min":1,
-      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*"
-    },
-    "NullableBoolean":{
-      "type":"boolean",
-      "box":true
-    },
-    "OperationTimeoutException":{
-      "type":"structure",
-      "members":{
-        "Message":{
-          "shape":"MessageString",
-          "documentation":"<p>A message describing the problem.</p>"
+        "Resource": {
+          "documentation": "<p>A resource where you will get a list of the principal permissions.</p> <p>This operation does not support getting privileges on a table with columns. Instead, call this operation on the table, and the operation returns the table and the table w columns.</p>",
+          "shape": "Resource"
+        },
+        "ResourceType": {
+          "documentation": "<p>Specifies a resource type to filter the permissions returned.</p>",
+          "shape": "DataLakeResourceType"
         }
       },
-      "documentation":"<p>The operation timed out.</p>",
-      "exception":true
+      "type": "structure"
     },
-    "PageSize":{
-      "type":"integer",
-      "box":true,
-      "max":1000,
-      "min":1
+    "ListPermissionsResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve this list.</p>",
+          "shape": "Token"
+        },
+        "PrincipalResourcePermissions": {
+          "documentation": "<p>A list of principals and their permissions on the resource for the specified principal and resource types.</p>",
+          "shape": "PrincipalResourcePermissionsList"
+        }
+      },
+      "type": "structure"
     },
-    "Permission":{
-      "type":"string",
-      "enum":[
+    "ListResourcesRequest": {
+      "members": {
+        "FilterConditionList": {
+          "documentation": "<p>Any applicable row-level and/or column-level filtering conditions for the resources.</p>",
+          "shape": "FilterConditionList"
+        },
+        "MaxResults": {
+          "documentation": "<p>The maximum number of resource results.</p>",
+          "shape": "PageSize"
+        },
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve these resources.</p>",
+          "shape": "Token"
+        }
+      },
+      "type": "structure"
+    },
+    "ListResourcesResponse": {
+      "members": {
+        "NextToken": {
+          "documentation": "<p>A continuation token, if this is not the first call to retrieve these resources.</p>",
+          "shape": "Token"
+        },
+        "ResourceInfoList": {
+          "documentation": "<p>A summary of the data lake resources.</p>",
+          "shape": "ResourceInfoList"
+        }
+      },
+      "type": "structure"
+    },
+    "MessageString": {
+      "type": "string"
+    },
+    "NameString": {
+      "max": 255,
+      "min": 1,
+      "pattern": "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*",
+      "type": "string"
+    },
+    "NullableBoolean": {
+      "box": true,
+      "type": "boolean"
+    },
+    "OperationTimeoutException": {
+      "documentation": "<p>The operation timed out.</p>",
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "<p>A message describing the problem.</p>",
+          "shape": "MessageString"
+        }
+      },
+      "type": "structure"
+    },
+    "PageSize": {
+      "box": true,
+      "max": 1000,
+      "min": 1,
+      "type": "integer"
+    },
+    "Permission": {
+      "enum": [
         "ALL",
         "SELECT",
         "ALTER",
@@ -771,250 +931,267 @@
         "CREATE_DATABASE",
         "CREATE_TABLE",
         "DATA_LOCATION_ACCESS"
-      ]
+      ],
+      "type": "string"
     },
-    "PermissionList":{
-      "type":"list",
-      "member":{"shape":"Permission"}
+    "PermissionList": {
+      "member": {
+        "shape": "Permission"
+      },
+      "type": "list"
     },
-    "PrincipalPermissions":{
-      "type":"structure",
-      "members":{
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>The principal who is granted permissions.</p>"
+    "PrincipalPermissions": {
+      "documentation": "<p>Permissions granted to a principal.</p>",
+      "members": {
+        "Permissions": {
+          "documentation": "<p>The permissions that are granted to the principal.</p>",
+          "shape": "PermissionList"
         },
-        "Permissions":{
-          "shape":"PermissionList",
-          "documentation":"<p>The permissions that are granted to the principal.</p>"
+        "Principal": {
+          "documentation": "<p>The principal who is granted permissions.</p>",
+          "shape": "DataLakePrincipal"
         }
       },
-      "documentation":"<p>Permissions granted to a principal.</p>"
+      "type": "structure"
     },
-    "PrincipalPermissionsList":{
-      "type":"list",
-      "member":{"shape":"PrincipalPermissions"}
+    "PrincipalPermissionsList": {
+      "member": {
+        "shape": "PrincipalPermissions"
+      },
+      "type": "list"
     },
-    "PrincipalResourcePermissions":{
-      "type":"structure",
-      "members":{
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>The Data Lake principal to be granted or revoked permissions.</p>"
+    "PrincipalResourcePermissions": {
+      "documentation": "<p>The permissions granted or revoked on a resource.</p>",
+      "members": {
+        "Permissions": {
+          "documentation": "<p>The permissions to be granted or revoked on the resource.</p>",
+          "shape": "PermissionList"
         },
-        "Resource":{
-          "shape":"Resource",
-          "documentation":"<p>The resource where permissions are to be granted or revoked.</p>"
+        "PermissionsWithGrantOption": {
+          "documentation": "<p>Indicates whether to grant the ability to grant permissions (as a subset of permissions granted).</p>",
+          "shape": "PermissionList"
         },
-        "Permissions":{
-          "shape":"PermissionList",
-          "documentation":"<p>The permissions to be granted or revoked on the resource.</p>"
+        "Principal": {
+          "documentation": "<p>The Data Lake principal to be granted or revoked permissions.</p>",
+          "shape": "DataLakePrincipal"
         },
-        "PermissionsWithGrantOption":{
-          "shape":"PermissionList",
-          "documentation":"<p>Indicates whether to grant the ability to grant permissions (as a subset of permissions granted).</p>"
+        "Resource": {
+          "documentation": "<p>The resource where permissions are to be granted or revoked.</p>",
+          "shape": "Resource"
         }
       },
-      "documentation":"<p>The permissions granted or revoked on a resource.</p>"
+      "type": "structure"
     },
-    "PrincipalResourcePermissionsList":{
-      "type":"list",
-      "member":{"shape":"PrincipalResourcePermissions"}
+    "PrincipalResourcePermissionsList": {
+      "member": {
+        "shape": "PrincipalResourcePermissions"
+      },
+      "type": "list"
     },
-    "PutDataLakeSettingsRequest":{
-      "type":"structure",
-      "required":["DataLakeSettings"],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+    "PutDataLakeSettingsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
         },
-        "DataLakeSettings":{
-          "shape":"DataLakeSettings",
-          "documentation":"<p>A list of AWS Lake Formation principals.</p>"
-        }
-      }
-    },
-    "PutDataLakeSettingsResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "RegisterResourceRequest":{
-      "type":"structure",
-      "required":["ResourceArn"],
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource that you want to register.</p>"
-        },
-        "UseServiceLinkedRole":{
-          "shape":"NullableBoolean",
-          "documentation":"<p>Designates a trusted caller, an IAM principal, by registering this caller with the Data Catalog. </p>"
-        },
-        "RoleArn":{
-          "shape":"IAMRoleArn",
-          "documentation":"<p>The identifier for the role.</p>"
-        }
-      }
-    },
-    "RegisterResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "Resource":{
-      "type":"structure",
-      "members":{
-        "Catalog":{
-          "shape":"CatalogResource",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
-        },
-        "Database":{
-          "shape":"DatabaseResource",
-          "documentation":"<p>The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal. </p>"
-        },
-        "Table":{
-          "shape":"TableResource",
-          "documentation":"<p>The table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>"
-        },
-        "TableWithColumns":{
-          "shape":"TableWithColumnsResource",
-          "documentation":"<p>The table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3.</p>"
-        },
-        "DataLocation":{
-          "shape":"DataLocationResource",
-          "documentation":"<p>The location of an Amazon S3 path where permissions are granted or revoked. </p>"
+        "DataLakeSettings": {
+          "documentation": "<p>A list of AWS Lake Formation principals.</p>",
+          "shape": "DataLakeSettings"
         }
       },
-      "documentation":"<p>A structure for the resource.</p>"
+      "required": [
+        "DataLakeSettings"
+      ],
+      "type": "structure"
     },
-    "ResourceArnString":{"type":"string"},
-    "ResourceInfo":{
-      "type":"structure",
-      "members":{
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the resource.</p>"
+    "PutDataLakeSettingsResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "RegisterResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource that you want to register.</p>",
+          "shape": "ResourceArnString"
         },
-        "RoleArn":{
-          "shape":"IAMRoleArn",
-          "documentation":"<p>The IAM role that registered a resource.</p>"
+        "RoleArn": {
+          "documentation": "<p>The identifier for the role.</p>",
+          "shape": "IAMRoleArn"
         },
-        "LastModified":{
-          "shape":"LastModifiedTimestamp",
-          "documentation":"<p>The date and time the resource was last modified.</p>"
+        "UseServiceLinkedRole": {
+          "documentation": "<p>Designates a trusted caller, an IAM principal, by registering this caller with the Data Catalog. </p>",
+          "shape": "NullableBoolean"
         }
       },
-      "documentation":"<p>A structure containing information about an AWS Lake Formation resource.</p>"
+      "required": [
+        "ResourceArn"
+      ],
+      "type": "structure"
     },
-    "ResourceInfoList":{
-      "type":"list",
-      "member":{"shape":"ResourceInfo"}
+    "RegisterResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "RevokePermissionsRequest":{
-      "type":"structure",
-      "required":[
+    "Resource": {
+      "documentation": "<p>A structure for the resource.</p>",
+      "members": {
+        "Catalog": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogResource"
+        },
+        "DataLocation": {
+          "documentation": "<p>The location of an Amazon S3 path where permissions are granted or revoked. </p>",
+          "shape": "DataLocationResource"
+        },
+        "Database": {
+          "documentation": "<p>The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal. </p>",
+          "shape": "DatabaseResource"
+        },
+        "Table": {
+          "documentation": "<p>The table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>",
+          "shape": "TableResource"
+        },
+        "TableWithColumns": {
+          "documentation": "<p>The table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3.</p>",
+          "shape": "TableWithColumnsResource"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceArnString": {
+      "type": "string"
+    },
+    "ResourceInfo": {
+      "documentation": "<p>A structure containing information about an AWS Lake Formation resource.</p>",
+      "members": {
+        "LastModified": {
+          "documentation": "<p>The date and time the resource was last modified.</p>",
+          "shape": "LastModifiedTimestamp"
+        },
+        "ResourceArn": {
+          "documentation": "<p>The Amazon Resource Name (ARN) of the resource.</p>",
+          "shape": "ResourceArnString"
+        },
+        "RoleArn": {
+          "documentation": "<p>The IAM role that registered a resource.</p>",
+          "shape": "IAMRoleArn"
+        }
+      },
+      "type": "structure"
+    },
+    "ResourceInfoList": {
+      "member": {
+        "shape": "ResourceInfo"
+      },
+      "type": "list"
+    },
+    "RevokePermissionsRequest": {
+      "members": {
+        "CatalogId": {
+          "documentation": "<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>",
+          "shape": "CatalogIdString"
+        },
+        "Permissions": {
+          "documentation": "<p>The permissions revoked to the principal on the resource. For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>",
+          "shape": "PermissionList"
+        },
+        "PermissionsWithGrantOption": {
+          "documentation": "<p>Indicates a list of permissions for which to revoke the grant option allowing the principal to pass permissions to other principals.</p>",
+          "shape": "PermissionList"
+        },
+        "Principal": {
+          "documentation": "<p>The principal to be revoked permissions on the resource.</p>",
+          "shape": "DataLakePrincipal"
+        },
+        "Resource": {
+          "documentation": "<p>The resource to which permissions are to be revoked.</p>",
+          "shape": "Resource"
+        }
+      },
+      "required": [
         "Principal",
         "Resource",
         "Permissions"
       ],
-      "members":{
-        "CatalogId":{
-          "shape":"CatalogIdString",
-          "documentation":"<p>The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment. </p>"
+      "type": "structure"
+    },
+    "RevokePermissionsResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "StringValue": {
+      "type": "string"
+    },
+    "StringValueList": {
+      "member": {
+        "shape": "StringValue"
+      },
+      "type": "list"
+    },
+    "TableResource": {
+      "documentation": "<p>A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>",
+      "members": {
+        "DatabaseName": {
+          "documentation": "<p>The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal. </p>",
+          "shape": "NameString"
         },
-        "Principal":{
-          "shape":"DataLakePrincipal",
-          "documentation":"<p>The principal to be revoked permissions on the resource.</p>"
-        },
-        "Resource":{
-          "shape":"Resource",
-          "documentation":"<p>The resource to which permissions are to be revoked.</p>"
-        },
-        "Permissions":{
-          "shape":"PermissionList",
-          "documentation":"<p>The permissions revoked to the principal on the resource. For information about permissions, see <a href=\"https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html\">Security and Access Control to Metadata and Data</a>.</p>"
-        },
-        "PermissionsWithGrantOption":{
-          "shape":"PermissionList",
-          "documentation":"<p>Indicates a list of permissions for which to revoke the grant option allowing the principal to pass permissions to other principals.</p>"
+        "Name": {
+          "documentation": "<p>The name of the table.</p>",
+          "shape": "NameString"
         }
-      }
-    },
-    "RevokePermissionsResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "StringValue":{"type":"string"},
-    "StringValueList":{
-      "type":"list",
-      "member":{"shape":"StringValue"}
-    },
-    "TableResource":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "DatabaseName",
         "Name"
       ],
-      "members":{
-        "DatabaseName":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal. </p>"
+      "type": "structure"
+    },
+    "TableWithColumnsResource": {
+      "documentation": "<p>A structure for a table with columns object. This object is only used when granting a SELECT permission.</p> <p>This object must take a value for at least one of <code>ColumnsNames</code>, <code>ColumnsIndexes</code>, or <code>ColumnsWildcard</code>.</p>",
+      "members": {
+        "ColumnNames": {
+          "documentation": "<p>The list of column names for the table. At least one of <code>ColumnNames</code> or <code>ColumnWildcard</code> is required.</p>",
+          "shape": "ColumnNames"
         },
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the table.</p>"
+        "ColumnWildcard": {
+          "documentation": "<p>A wildcard specified by a <code>ColumnWildcard</code> object. At least one of <code>ColumnNames</code> or <code>ColumnWildcard</code> is required.</p>",
+          "shape": "ColumnWildcard"
+        },
+        "DatabaseName": {
+          "documentation": "<p>The name of the database for the table with columns resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal. </p>",
+          "shape": "NameString"
+        },
+        "Name": {
+          "documentation": "<p>The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>",
+          "shape": "NameString"
         }
       },
-      "documentation":"<p>A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>"
+      "type": "structure"
     },
-    "TableWithColumnsResource":{
-      "type":"structure",
-      "members":{
-        "DatabaseName":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the database for the table with columns resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal. </p>"
+    "Token": {
+      "type": "string"
+    },
+    "UpdateResourceRequest": {
+      "members": {
+        "ResourceArn": {
+          "documentation": "<p>The resource ARN.</p>",
+          "shape": "ResourceArnString"
         },
-        "Name":{
-          "shape":"NameString",
-          "documentation":"<p>The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. </p>"
-        },
-        "ColumnNames":{
-          "shape":"ColumnNames",
-          "documentation":"<p>The list of column names for the table. At least one of <code>ColumnNames</code> or <code>ColumnWildcard</code> is required.</p>"
-        },
-        "ColumnWildcard":{
-          "shape":"ColumnWildcard",
-          "documentation":"<p>A wildcard specified by a <code>ColumnWildcard</code> object. At least one of <code>ColumnNames</code> or <code>ColumnWildcard</code> is required.</p>"
+        "RoleArn": {
+          "documentation": "<p>The new role to use for the given resource registered in AWS Lake Formation.</p>",
+          "shape": "IAMRoleArn"
         }
       },
-      "documentation":"<p>A structure for a table with columns object. This object is only used when granting a SELECT permission.</p> <p>This object must take a value for at least one of <code>ColumnsNames</code>, <code>ColumnsIndexes</code>, or <code>ColumnsWildcard</code>.</p>"
-    },
-    "Token":{"type":"string"},
-    "UpdateResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "RoleArn",
         "ResourceArn"
       ],
-      "members":{
-        "RoleArn":{
-          "shape":"IAMRoleArn",
-          "documentation":"<p>The new role to use for the given resource registered in AWS Lake Formation.</p>"
-        },
-        "ResourceArn":{
-          "shape":"ResourceArnString",
-          "documentation":"<p>The resource ARN.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "UpdateResourceResponse": {
+      "members": {},
+      "type": "structure"
     }
   },
-  "documentation":"<fullname>AWS Lake Formation</fullname> <p>Defines the public endpoint for the AWS Lake Formation service.</p>"
+  "version": "2.0"
 }

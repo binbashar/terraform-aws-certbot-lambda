@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "CreateIPSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates an IP match set named MyIPSetFriendlyName.",
+        "id": "createipset-1472501003122",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "Name": "MyIPSetFriendlyName"
@@ -20,19 +25,17 @@
             "Name": "MyIPSetFriendlyName"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates an IP match set named MyIPSetFriendlyName.",
-        "id": "createipset-1472501003122",
         "title": "To create an IP set"
       }
     ],
     "CreateRule": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates a rule named WAFByteHeaderRule.",
+        "id": "createrule-1474072675555",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "MetricName": "WAFByteHeaderRule",
@@ -53,19 +56,17 @@
             "RuleId": "WAFRule-1-Example"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates a rule named WAFByteHeaderRule.",
-        "id": "createrule-1474072675555",
         "title": "To create a rule"
       }
     ],
     "CreateSizeConstraintSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates size constraint set named MySampleSizeConstraintSet.",
+        "id": "createsizeconstraint-1474299140754",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "Name": "MySampleSizeConstraintSet"
@@ -87,19 +88,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates size constraint set named MySampleSizeConstraintSet.",
-        "id": "createsizeconstraint-1474299140754",
         "title": "To create a size constraint"
       }
     ],
     "CreateSqlInjectionMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates a SQL injection match set named MySQLInjectionMatchSet.",
+        "id": "createsqlinjectionmatchset-1474492796105",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "Name": "MySQLInjectionMatchSet"
@@ -119,19 +118,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates a SQL injection match set named MySQLInjectionMatchSet.",
-        "id": "createsqlinjectionmatchset-1474492796105",
         "title": "To create a SQL injection match set"
       }
     ],
     "CreateWebACL": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates a web ACL named CreateExample.",
+        "id": "createwebacl-1472061481310",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "DefaultAction": {
@@ -160,19 +157,17 @@
             "WebACLId": "example-46da-4444-5555-example"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates a web ACL named CreateExample.",
-        "id": "createwebacl-1472061481310",
         "title": "To create a web ACL"
       }
     ],
     "CreateXssMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example creates an XSS match set named MySampleXssMatchSet.",
+        "id": "createxssmatchset-1474560868500",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "Name": "MySampleXssMatchSet"
@@ -192,19 +187,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example creates an XSS match set named MySampleXssMatchSet.",
-        "id": "createxssmatchset-1474560868500",
         "title": "To create an XSS match set"
       }
     ],
     "DeleteByteMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "deletebytematchset-1473367566229",
         "input": {
           "ByteMatchSetId": "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
@@ -212,19 +205,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "deletebytematchset-1473367566229",
         "title": "To delete a byte match set"
       }
     ],
     "DeleteIPSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an IP match set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "deleteipset-1472767434306",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "IPSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
@@ -232,19 +223,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an IP match set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "deleteipset-1472767434306",
         "title": "To delete an IP set"
       }
     ],
     "DeleteRule": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a rule with the ID WAFRule-1-Example.",
+        "id": "deleterule-1474073108749",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "RuleId": "WAFRule-1-Example"
@@ -252,19 +241,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a rule with the ID WAFRule-1-Example.",
-        "id": "deleterule-1474073108749",
         "title": "To delete a rule"
       }
     ],
     "DeleteSizeConstraintSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a size constraint set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "deletesizeconstraintset-1474299857905",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "SizeConstraintSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
@@ -272,19 +259,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a size constraint set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "deletesizeconstraintset-1474299857905",
         "title": "To delete a size constraint set"
       }
     ],
     "DeleteSqlInjectionMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a SQL injection match set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "deletesqlinjectionmatchset-1474493373197",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "SqlInjectionMatchSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
@@ -292,19 +277,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a SQL injection match set  with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "deletesqlinjectionmatchset-1474493373197",
         "title": "To delete a SQL injection match set"
       }
     ],
     "DeleteWebACL": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a web ACL with the ID example-46da-4444-5555-example.",
+        "id": "deletewebacl-1472767755931",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "WebACLId": "example-46da-4444-5555-example"
@@ -312,19 +295,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a web ACL with the ID example-46da-4444-5555-example.",
-        "id": "deletewebacl-1472767755931",
         "title": "To delete a web ACL"
       }
     ],
     "DeleteXssMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an XSS match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "deletexssmatchset-1474561302618",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "XssMatchSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
@@ -332,19 +313,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an XSS match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "deletexssmatchset-1474561302618",
         "title": "To delete an XSS match set"
       }
     ],
     "GetByteMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of a byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getbytematchset-1473273311532",
         "input": {
           "ByteMatchSetId": "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -365,56 +344,49 @@
             "Name": "ByteMatchNameExample"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of a byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getbytematchset-1473273311532",
         "title": "To get a byte match set"
       }
     ],
     "GetChangeToken": [
       {
-        "input": {
-        },
-        "output": {
-          "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "The following example returns a change token to use for a create, update or delete operation.",
         "id": "get-change-token-example-1471635120794",
+        "input": {},
+        "output": {
+          "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
+        },
         "title": "To get a change token"
       }
     ],
     "GetChangeTokenStatus": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the status of a change token with the ID abcd12f2-46da-4fdb-b8d5-fbd4c466928f.",
+        "id": "getchangetokenstatus-1474658417107",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
         "output": {
           "ChangeTokenStatus": "PENDING"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the status of a change token with the ID abcd12f2-46da-4fdb-b8d5-fbd4c466928f.",
-        "id": "getchangetokenstatus-1474658417107",
         "title": "To get the change token status"
       }
     ],
     "GetIPSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of an IP match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getipset-1474658688675",
         "input": {
           "IPSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -430,19 +402,17 @@
             "Name": "MyIPSetFriendlyName"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of an IP match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getipset-1474658688675",
         "title": "To get an IP set"
       }
     ],
     "GetRule": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of a rule with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getrule-1474659238790",
         "input": {
           "RuleId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -460,19 +430,17 @@
             "RuleId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of a rule with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getrule-1474659238790",
         "title": "To get a rule"
       }
     ],
     "GetSampledRequests": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns detailed information about 100 requests --a sample-- that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received between the time period 2016-09-27T15:50Z to 2016-09-27T15:50Z.",
+        "id": "getsampledrequests-1474927997195",
         "input": {
           "MaxItems": 100,
           "RuleId": "WAFRule-1-Example",
@@ -508,19 +476,17 @@
             "StartTime": "2016-09-27T14:50Z"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns detailed information about 100 requests --a sample-- that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received between the time period 2016-09-27T15:50Z to 2016-09-27T15:50Z.",
-        "id": "getsampledrequests-1474927997195",
         "title": "To get a sampled requests"
       }
     ],
     "GetSizeConstraintSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of a size constraint match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getsizeconstraintset-1475005422493",
         "input": {
           "SizeConstraintSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -540,19 +506,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of a size constraint match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getsizeconstraintset-1475005422493",
         "title": "To get a size constraint set"
       }
     ],
     "GetSqlInjectionMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of a SQL injection match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getsqlinjectionmatchset-1475005940137",
         "input": {
           "SqlInjectionMatchSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -570,19 +534,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of a SQL injection match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getsqlinjectionmatchset-1475005940137",
         "title": "To get a SQL injection match set"
       }
     ],
     "GetWebACL": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of a web ACL with the ID createwebacl-1472061481310.",
+        "id": "getwebacl-1475006348525",
         "input": {
           "WebACLId": "createwebacl-1472061481310"
         },
@@ -605,19 +567,17 @@
             "WebACLId": "createwebacl-1472061481310"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of a web ACL with the ID createwebacl-1472061481310.",
-        "id": "getwebacl-1475006348525",
         "title": "To get a web ACL"
       }
     ],
     "GetXssMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns the details of an XSS match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "getxssmatchset-1475187879017",
         "input": {
           "XssMatchSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
         },
@@ -635,19 +595,17 @@
             ]
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns the details of an XSS match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "getxssmatchset-1475187879017",
         "title": "To get an XSS match set"
       }
     ],
     "ListIPSets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 IP match sets.",
+        "id": "listipsets-1472235676229",
         "input": {
           "Limit": 100
         },
@@ -659,19 +617,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 IP match sets.",
-        "id": "listipsets-1472235676229",
         "title": "To list IP sets"
       }
     ],
     "ListRules": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 rules.",
+        "id": "listrules-1475258406433",
         "input": {
           "Limit": 100
         },
@@ -683,19 +639,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 rules.",
-        "id": "listrules-1475258406433",
         "title": "To list rules"
       }
     ],
     "ListSizeConstraintSets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 size contraint match sets.",
+        "id": "listsizeconstraintsets-1474300067597",
         "input": {
           "Limit": 100
         },
@@ -707,19 +661,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 size contraint match sets.",
-        "id": "listsizeconstraintsets-1474300067597",
         "title": "To list a size constraint sets"
       }
     ],
     "ListSqlInjectionMatchSets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 SQL injection match sets.",
+        "id": "listsqlinjectionmatchset-1474493560103",
         "input": {
           "Limit": 100
         },
@@ -731,19 +683,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 SQL injection match sets.",
-        "id": "listsqlinjectionmatchset-1474493560103",
         "title": "To list SQL injection match sets"
       }
     ],
     "ListWebACLs": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 web ACLs.",
+        "id": "listwebacls-1475258732691",
         "input": {
           "Limit": 100
         },
@@ -755,19 +705,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 web ACLs.",
-        "id": "listwebacls-1475258732691",
         "title": "To list Web ACLs"
       }
     ],
     "ListXssMatchSets": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns an array of up to 100 XSS match sets.",
+        "id": "listxssmatchsets-1474561481168",
         "input": {
           "Limit": 100
         },
@@ -779,19 +727,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns an array of up to 100 XSS match sets.",
-        "id": "listxssmatchsets-1474561481168",
         "title": "To list XSS match sets"
       }
     ],
     "UpdateByteMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a ByteMatchTuple object (filters) in an byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updatebytematchset-1475259074558",
         "input": {
           "ByteMatchSetId": "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
@@ -813,19 +759,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a ByteMatchTuple object (filters) in an byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updatebytematchset-1475259074558",
         "title": "To update a byte match set"
       }
     ],
     "UpdateIPSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an IPSetDescriptor object in an IP match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updateipset-1475259733625",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "IPSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
@@ -842,19 +786,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an IPSetDescriptor object in an IP match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updateipset-1475259733625",
         "title": "To update an IP set"
       }
     ],
     "UpdateRule": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a Predicate object in a rule with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updaterule-1475260064720",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "RuleId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
@@ -872,19 +814,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a Predicate object in a rule with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updaterule-1475260064720",
         "title": "To update a rule"
       }
     ],
     "UpdateSizeConstraintSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a SizeConstraint object (filters) in a size constraint set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updatesizeconstraintset-1475531697891",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "SizeConstraintSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
@@ -905,19 +845,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a SizeConstraint object (filters) in a size constraint set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updatesizeconstraintset-1475531697891",
         "title": "To update a size constraint set"
       }
     ],
     "UpdateSqlInjectionMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes a SqlInjectionMatchTuple object (filters) in a SQL injection match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updatesqlinjectionmatchset-1475532094686",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "SqlInjectionMatchSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
@@ -936,19 +874,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes a SqlInjectionMatchTuple object (filters) in a SQL injection match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updatesqlinjectionmatchset-1475532094686",
         "title": "To update a SQL injection match set"
       }
     ],
     "UpdateWebACL": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an ActivatedRule object in a WebACL with the ID webacl-1472061481310.",
+        "id": "updatewebacl-1475533627385",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "DefaultAction": {
@@ -971,19 +907,17 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an ActivatedRule object in a WebACL with the ID webacl-1472061481310.",
-        "id": "updatewebacl-1475533627385",
         "title": "To update a Web ACL"
       }
     ],
     "UpdateXssMatchSet": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example deletes an XssMatchTuple object (filters) in an XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
+        "id": "updatexssmatchset-1475534098881",
         "input": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
           "Updates": [
@@ -1002,16 +936,9 @@
         "output": {
           "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example deletes an XssMatchTuple object (filters) in an XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.",
-        "id": "updatexssmatchset-1475534098881",
         "title": "To update an XSS match set"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

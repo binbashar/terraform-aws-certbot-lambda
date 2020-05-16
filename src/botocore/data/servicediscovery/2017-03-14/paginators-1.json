@@ -1,28 +1,28 @@
 {
   "pagination": {
-    "ListServices": {
-      "result_key": "Services",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
     "ListInstances": {
-      "result_key": "Instances",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Instances"
     },
     "ListNamespaces": {
-      "result_key": "Namespaces",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Namespaces"
     },
     "ListOperations": {
-      "result_key": "Operations",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Operations"
+    },
+    "ListServices": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Services"
     }
   }
 }

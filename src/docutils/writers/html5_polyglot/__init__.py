@@ -167,7 +167,7 @@ class HTMLTranslator(writers._html_base.HTMLTranslator):
     def visit_authors(self, node):
         self.visit_docinfo_item(node, 'authors', meta=False)
         for subnode in node:
-            self.add_meta('<meta name="author" content="%s" />\n' % 
+            self.add_meta('<meta name="author" content="%s" />\n' %
                           self.attval(subnode.astext()))
     def depart_authors(self, node):
         self.depart_docinfo_item()

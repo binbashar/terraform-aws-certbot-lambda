@@ -1,88 +1,88 @@
 {
   "pagination": {
-    "GetJobs": {
-      "result_key": "Jobs",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetPartitions": {
-      "result_key": "Partitions",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetDatabases": {
-      "result_key": "DatabaseList",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
     "GetClassifiers": {
-      "result_key": "Classifiers",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetTableVersions": {
-      "result_key": "TableVersions",
+      "limit_key": "MaxResults",
       "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetCrawlers": {
-      "result_key": "Crawlers",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetDevEndpoints": {
-      "result_key": "DevEndpoints",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetJobRuns": {
-      "result_key": "JobRuns",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetTriggers": {
-      "result_key": "Triggers",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetTables": {
-      "result_key": "TableList",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetUserDefinedFunctions": {
-      "result_key": "UserDefinedFunctions",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "GetCrawlerMetrics": {
-      "result_key": "CrawlerMetricsList",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "result_key": "Classifiers"
     },
     "GetConnections": {
-      "result_key": "ConnectionList",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "ConnectionList"
+    },
+    "GetCrawlerMetrics": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "CrawlerMetricsList"
+    },
+    "GetCrawlers": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Crawlers"
+    },
+    "GetDatabases": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "DatabaseList"
+    },
+    "GetDevEndpoints": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "DevEndpoints"
+    },
+    "GetJobRuns": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "JobRuns"
+    },
+    "GetJobs": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Jobs"
+    },
+    "GetPartitions": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Partitions"
     },
     "GetSecurityConfigurations": {
       "input_token": "NextToken",
       "limit_key": "MaxResults",
       "output_token": "NextToken",
       "result_key": "SecurityConfigurations"
+    },
+    "GetTableVersions": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "TableVersions"
+    },
+    "GetTables": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "TableList"
+    },
+    "GetTriggers": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Triggers"
+    },
+    "GetUserDefinedFunctions": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "UserDefinedFunctions"
     }
   }
 }

@@ -1,8 +1,16 @@
 {
-  "version": "1.0",
   "examples": {
     "AssociateVPCWithHostedZone": [
       {
+        "comments": {
+          "input": {},
+          "output": {
+            "Status": "Valid values are PENDING and INSYNC.",
+            "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
+          }
+        },
+        "description": "The following example associates the VPC with ID vpc-1a2b3c4d with the hosted zone with ID Z3M3LMPEXAMPLE.",
+        "id": "to-associate-a-vpc-with-a-hosted-zone-1484069228699",
         "input": {
           "Comment": "",
           "HostedZoneId": "Z3M3LMPEXAMPLE",
@@ -19,21 +27,23 @@
             "SubmittedAt": "2017-01-31T01:36:41.958Z"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-            "Status": "Valid values are PENDING and INSYNC.",
-            "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
-          }
-        },
-        "description": "The following example associates the VPC with ID vpc-1a2b3c4d with the hosted zone with ID Z3M3LMPEXAMPLE.",
-        "id": "to-associate-a-vpc-with-a-hosted-zone-1484069228699",
         "title": "To associate a VPC with a hosted zone"
       }
     ],
     "ChangeResourceRecordSets": [
       {
+        "comments": {
+          "input": {
+            "Action": "Valid values: CREATE, DELETE, UPSERT",
+            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
+            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
+          },
+          "output": {
+            "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
+          }
+        },
+        "description": "The following example creates a resource record set that routes Internet traffic to a resource with an IP address of 192.0.2.44.",
+        "id": "to-create-update-or-delete-resource-record-sets-1484344703668",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -63,21 +73,21 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create a basic resource record set"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
+            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53. TTLs must be the same for all weighted resource record sets that have the same name and type.",
             "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates a resource record set that routes Internet traffic to a resource with an IP address of 192.0.2.44.",
-        "id": "to-create-update-or-delete-resource-record-sets-1484344703668",
-        "title": "To create a basic resource record set"
-      },
-      {
+        "description": "The following example creates two weighted resource record sets. The resource with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other resource will get the rest of the traffic for example.com.",
+        "id": "to-create-weighted-resource-record-sets-1484348208522",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -126,21 +136,22 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create weighted resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53. TTLs must be the same for all weighted resource record sets that have the same name and type.",
-            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
+            "DNSName": "The DNS name assigned to the resource",
+            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
+            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates two weighted resource record sets. The resource with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other resource will get the rest of the traffic for example.com.",
-        "id": "to-create-weighted-resource-record-sets-1484348208522",
-        "title": "To create weighted resource record sets"
-      },
-      {
+        "description": "The following example creates an alias resource record set that routes traffic to a CloudFront distribution.",
+        "id": "to-create-an-alias-resource-record-set-1484348404062",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -169,6 +180,9 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create an alias resource record set"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
@@ -180,11 +194,8 @@
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates an alias resource record set that routes traffic to a CloudFront distribution.",
-        "id": "to-create-an-alias-resource-record-set-1484348404062",
-        "title": "To create an alias resource record set"
-      },
-      {
+        "description": "The following example creates two weighted alias resource record sets that route traffic to ELB load balancers. The resource with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other resource will get the rest of the traffic for example.com.",
+        "id": "to-create-weighted-alias-resource-record-sets-1484349467416",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -229,22 +240,21 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create weighted alias resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "DNSName": "The DNS name assigned to the resource",
-            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
-            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
+            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
+            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates two weighted alias resource record sets that route traffic to ELB load balancers. The resource with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other resource will get the rest of the traffic for example.com.",
-        "id": "to-create-weighted-alias-resource-record-sets-1484349467416",
-        "title": "To create weighted alias resource record sets"
-      },
-      {
+        "description": "The following example creates two latency resource record sets that route traffic to EC2 instances. Traffic for example.com is routed either to the Ohio region or the Oregon region, depending on the latency between the user and those regions.",
+        "id": "to-create-latency-resource-record-sets-1484350219917",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -293,21 +303,22 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create latency resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
-            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
+            "DNSName": "The DNS name assigned to the resource",
+            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
+            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates two latency resource record sets that route traffic to EC2 instances. Traffic for example.com is routed either to the Ohio region or the Oregon region, depending on the latency between the user and those regions.",
-        "id": "to-create-latency-resource-record-sets-1484350219917",
-        "title": "To create latency resource record sets"
-      },
-      {
+        "description": "The following example creates two latency alias resource record sets that route traffic for example.com to ELB load balancers. Requests are routed either to the Ohio region or the Oregon region, depending on the latency between the user and those regions.",
+        "id": "to-create-latency-alias-resource-record-sets-1484601774179",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -352,22 +363,21 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create latency alias resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "DNSName": "The DNS name assigned to the resource",
-            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
-            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
+            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
+            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates two latency alias resource record sets that route traffic for example.com to ELB load balancers. Requests are routed either to the Ohio region or the Oregon region, depending on the latency between the user and those regions.",
-        "id": "to-create-latency-alias-resource-record-sets-1484601774179",
-        "title": "To create latency alias resource record sets"
-      },
-      {
+        "description": "The following example creates primary and secondary failover resource record sets that route traffic to EC2 instances. Traffic is generally routed to the primary resource, in the Ohio region. If that resource is unavailable, traffic is routed to the secondary resource, in the Oregon region.",
+        "id": "to-create-failover-resource-record-sets-1484604541740",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -416,21 +426,22 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create failover resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
-            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
+            "DNSName": "The DNS name assigned to the resource",
+            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
+            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates primary and secondary failover resource record sets that route traffic to EC2 instances. Traffic is generally routed to the primary resource, in the Ohio region. If that resource is unavailable, traffic is routed to the secondary resource, in the Oregon region.",
-        "id": "to-create-failover-resource-record-sets-1484604541740",
-        "title": "To create failover resource record sets"
-      },
-      {
+        "description": "The following example creates primary and secondary failover alias resource record sets that route traffic to ELB load balancers. Traffic is generally routed to the primary resource, in the Ohio region. If that resource is unavailable, traffic is routed to the secondary resource, in the Oregon region.",
+        "id": "to-create-failover-alias-resource-record-sets-1484607497724",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -475,22 +486,21 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create failover alias resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "DNSName": "The DNS name assigned to the resource",
-            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
-            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
+            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
+            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates primary and secondary failover alias resource record sets that route traffic to ELB load balancers. Traffic is generally routed to the primary resource, in the Ohio region. If that resource is unavailable, traffic is routed to the secondary resource, in the Oregon region.",
-        "id": "to-create-failover-alias-resource-record-sets-1484607497724",
-        "title": "To create failover alias resource record sets"
-      },
-      {
+        "description": "The following example creates four geolocation resource record sets that use IPv4 addresses to route traffic to resources such as web servers running on EC2 instances. Traffic is routed to one of four IP addresses, for North America (NA), for South America (SA), for Europe (EU), and for all other locations (*).",
+        "id": "to-create-geolocation-resource-record-sets-1484612462466",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -575,21 +585,22 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
+        "title": "To create geolocation resource record sets"
+      },
+      {
         "comments": {
           "input": {
             "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "TTL": "The amount of time in seconds that you want DNS resolvers to cache the values in this resource record set before submitting another request to Route 53",
-            "Value": "The value that is applicable to the value of Type. For example, if Type is A, Value is an IPv4 address"
+            "DNSName": "The DNS name assigned to the resource",
+            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
+            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
           },
           "output": {
             "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
           }
         },
-        "description": "The following example creates four geolocation resource record sets that use IPv4 addresses to route traffic to resources such as web servers running on EC2 instances. Traffic is routed to one of four IP addresses, for North America (NA), for South America (SA), for Europe (EU), and for all other locations (*).",
-        "id": "to-create-geolocation-resource-record-sets-1484612462466",
-        "title": "To create geolocation resource record sets"
-      },
-      {
+        "description": "The following example creates four geolocation alias resource record sets that route traffic to ELB load balancers. Traffic is routed to one of four IP addresses, for North America (NA), for South America (SA), for Europe (EU), and for all other locations (*).",
+        "id": "to-create-geolocation-alias-resource-record-sets-1484612871203",
         "input": {
           "ChangeBatch": {
             "Changes": [
@@ -670,24 +681,19 @@
             "SubmittedAt": "2017-02-10T01:36:41.958Z"
           }
         },
-        "comments": {
-          "input": {
-            "Action": "Valid values: CREATE, DELETE, UPSERT",
-            "DNSName": "The DNS name assigned to the resource",
-            "HostedZoneId": "Depends on the type of resource that you want to route traffic to",
-            "Type": "A or AAAA, depending on the type of resource that you want to route traffic to"
-          },
-          "output": {
-            "SubmittedAt": "The date and time are in Coordinated Universal Time (UTC) and ISO 8601 format."
-          }
-        },
-        "description": "The following example creates four geolocation alias resource record sets that route traffic to ELB load balancers. Traffic is routed to one of four IP addresses, for North America (NA), for South America (SA), for Europe (EU), and for all other locations (*).",
-        "id": "to-create-geolocation-alias-resource-record-sets-1484612871203",
         "title": "To create geolocation alias resource record sets"
       }
     ],
     "ChangeTagsForResource": [
       {
+        "comments": {
+          "input": {
+            "ResourceType": "Valid values are healthcheck and hostedzone."
+          },
+          "output": {}
+        },
+        "description": "The following example adds two tags and removes one tag from the hosted zone with ID Z3M3LMPEXAMPLE.",
+        "id": "to-add-or-remove-tags-from-a-hosted-zone-or-health-check-1484084752409",
         "input": {
           "AddTags": [
             {
@@ -705,22 +711,23 @@
           "ResourceId": "Z3M3LMPEXAMPLE",
           "ResourceType": "hostedzone"
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-            "ResourceType": "Valid values are healthcheck and hostedzone."
-          },
-          "output": {
-          }
-        },
-        "description": "The following example adds two tags and removes one tag from the hosted zone with ID Z3M3LMPEXAMPLE.",
-        "id": "to-add-or-remove-tags-from-a-hosted-zone-or-health-check-1484084752409",
+        "output": {},
         "title": "To add or remove tags from a hosted zone or health check"
       }
     ],
     "GetHostedZone": [
       {
+        "comments": {
+          "input": {},
+          "output": {
+            "Id": "The ID of the hosted zone that you specified in the GetHostedZone request.",
+            "Name": "The name of the hosted zone.",
+            "NameServers": "The servers that you specify in your domain configuration.",
+            "PrivateZone": "True if this is a private hosted zone, false if it's a public hosted zone."
+          }
+        },
+        "description": "The following example gets information about the Z3M3LMPEXAMPLE hosted zone.",
+        "id": "to-get-information-about-a-hosted-zone-1481752361124",
         "input": {
           "Id": "Z3M3LMPEXAMPLE"
         },
@@ -743,20 +750,9 @@
             "ResourceRecordSetCount": 8
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-            "Id": "The ID of the hosted zone that you specified in the GetHostedZone request.",
-            "Name": "The name of the hosted zone.",
-            "NameServers": "The servers that you specify in your domain configuration.",
-            "PrivateZone": "True if this is a private hosted zone, false if it's a public hosted zone."
-          }
-        },
-        "description": "The following example gets information about the Z3M3LMPEXAMPLE hosted zone.",
-        "id": "to-get-information-about-a-hosted-zone-1481752361124",
         "title": "To get information about a hosted zone"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

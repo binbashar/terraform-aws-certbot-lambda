@@ -305,7 +305,7 @@ class OSUtils(object):
         suffix = os.extsep + random_file_extension()
         path = os.path.dirname(filename)
         name = os.path.basename(filename)
-        temp_filename = name[:self._MAX_FILENAME_LEN - len(suffix)] + suffix 
+        temp_filename = name[:self._MAX_FILENAME_LEN - len(suffix)] + suffix
         return os.path.join(path, temp_filename)
 
     def allocate(self, filename, size):

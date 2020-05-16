@@ -1,34 +1,16 @@
 {
   "pagination": {
-    "DescribeAffectedEntities": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "entities"
-    },
-    "DescribeEventAggregates": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "eventAggregates"
-    },
-    "DescribeEvents": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "events"
-    },
-    "DescribeEventTypes": {
-      "input_token": "nextToken",
-      "output_token": "nextToken",
-      "limit_key": "maxResults",
-      "result_key": "eventTypes"
-    },
     "DescribeAffectedAccountsForOrganization": {
       "input_token": "nextToken",
       "limit_key": "maxResults",
       "output_token": "nextToken",
       "result_key": "affectedAccounts"
+    },
+    "DescribeAffectedEntities": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "entities"
     },
     "DescribeAffectedEntitiesForOrganization": {
       "input_token": "nextToken",
@@ -38,6 +20,24 @@
       ],
       "output_token": "nextToken",
       "result_key": "entities"
+    },
+    "DescribeEventAggregates": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "eventAggregates"
+    },
+    "DescribeEventTypes": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "eventTypes"
+    },
+    "DescribeEvents": {
+      "input_token": "nextToken",
+      "limit_key": "maxResults",
+      "output_token": "nextToken",
+      "result_key": "events"
     },
     "DescribeEventsForOrganization": {
       "input_token": "nextToken",

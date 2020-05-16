@@ -118,7 +118,7 @@ def flatten(x):
 
 def _hack_at_distutils():
     # Windows-only workaround for some configurations: see
-    # https://bugs.python.org/issue23246 (Python 2.7 with 
+    # https://bugs.python.org/issue23246 (Python 2.7 with
     # a specific MS compiler suite download)
     if sys.platform == "win32":
         try:

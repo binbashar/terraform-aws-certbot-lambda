@@ -1,8 +1,13 @@
 {
-  "version": "1.0",
   "examples": {
     "DescribeStream": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example describes a stream with a given stream ARN.",
+        "id": "to-describe-a-stream-with-a-given-stream-arn-1473457835200",
         "input": {
           "StreamArn": "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252"
         },
@@ -58,19 +63,17 @@
             "TableName": "Forum"
           }
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example describes a stream with a given stream ARN.",
-        "id": "to-describe-a-stream-with-a-given-stream-arn-1473457835200",
         "title": "To describe a stream with a given stream ARN"
       }
     ],
     "GetRecords": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example retrieves all the stream records from a shard.",
+        "id": "to-retrieve-all-the-stream-records-from-a-shard-1473707781419",
         "input": {
           "ShardIterator": "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252|1|AAAAAAAAAAEvJp6D+zaQ...  <remaining characters omitted> ..."
         },
@@ -142,19 +145,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example retrieves all the stream records from a shard.",
-        "id": "to-retrieve-all-the-stream-records-from-a-shard-1473707781419",
         "title": "To retrieve all the stream records from a shard"
       }
     ],
     "GetShardIterator": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "The following example returns a shard iterator for the provided stream ARN and shard ID.",
+        "id": "to-obtain-a-shard-iterator-for-the-provided-stream-arn-and-shard-id-1473459941476",
         "input": {
           "ShardId": "00000001414576573621-f55eea83",
           "ShardIteratorType": "TRIM_HORIZON",
@@ -163,21 +164,18 @@
         "output": {
           "ShardIterator": "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252|1|AAAAAAAAAAEvJp6D+zaQ...  <remaining characters omitted> ..."
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example returns a shard iterator for the provided stream ARN and shard ID.",
-        "id": "to-obtain-a-shard-iterator-for-the-provided-stream-arn-and-shard-id-1473459941476",
         "title": "To obtain a shard iterator for the provided stream ARN and shard ID"
       }
     ],
     "ListStreams": [
       {
-        "input": {
+        "comments": {
+          "input": {},
+          "output": {}
         },
+        "description": "The following example lists all of the stream ARNs.",
+        "id": "to-list-all-of-the-stream-arns--1473459534285",
+        "input": {},
         "output": {
           "Streams": [
             {
@@ -197,16 +195,9 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "The following example lists all of the stream ARNs.",
-        "id": "to-list-all-of-the-stream-arns--1473459534285",
         "title": "To list all of the stream ARNs "
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

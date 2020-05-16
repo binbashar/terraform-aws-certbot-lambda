@@ -24,24 +24,6 @@
       "output_token": "Marker",
       "result_key": "VTLDevices"
     },
-    "ListGateways": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "Gateways"
-    },
-    "ListVolumes": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "VolumeInfos"
-    },
-    "ListTapes": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "TapeInfos"
-    },
     "ListFileShares": {
       "input_token": "Marker",
       "limit_key": "Limit",
@@ -51,6 +33,12 @@
       "output_token": "NextMarker",
       "result_key": "FileShareInfoList"
     },
+    "ListGateways": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "Gateways"
+    },
     "ListTagsForResource": {
       "input_token": "Marker",
       "limit_key": "Limit",
@@ -59,6 +47,18 @@
       ],
       "output_token": "Marker",
       "result_key": "Tags"
+    },
+    "ListTapes": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "TapeInfos"
+    },
+    "ListVolumes": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "VolumeInfos"
     }
   }
 }

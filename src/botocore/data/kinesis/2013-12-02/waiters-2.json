@@ -2,29 +2,29 @@
   "version": 2,
   "waiters": {
     "StreamExists": {
-      "delay": 10,
-      "operation": "DescribeStream",
-      "maxAttempts": 18,
       "acceptors": [
         {
+          "argument": "StreamDescription.StreamStatus",
           "expected": "ACTIVE",
           "matcher": "path",
-          "state": "success",
-          "argument": "StreamDescription.StreamStatus"
+          "state": "success"
         }
-      ]
+      ],
+      "delay": 10,
+      "maxAttempts": 18,
+      "operation": "DescribeStream"
     },
     "StreamNotExists": {
-      "delay": 10,
-      "operation": "DescribeStream",
-      "maxAttempts": 18,
       "acceptors": [
         {
           "expected": "ResourceNotFoundException",
           "matcher": "error",
           "state": "success"
         }
-      ]
+      ],
+      "delay": 10,
+      "maxAttempts": 18,
+      "operation": "DescribeStream"
     }
   }
 }

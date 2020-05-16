@@ -1,708 +1,966 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2018-07-27",
-    "endpointPrefix":"iotevents",
-    "protocol":"rest-json",
-    "serviceFullName":"AWS IoT Events",
-    "serviceId":"IoT Events",
-    "signatureVersion":"v4",
-    "signingName":"iotevents",
-    "uid":"iotevents-2018-07-27"
+  "documentation": "<p>AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and triggers actions when such events occur. You can use AWS IoT Events API commands to create, read, update, and delete inputs and detector models, and to list their versions.</p>",
+  "metadata": {
+    "apiVersion": "2018-07-27",
+    "endpointPrefix": "iotevents",
+    "protocol": "rest-json",
+    "serviceFullName": "AWS IoT Events",
+    "serviceId": "IoT Events",
+    "signatureVersion": "v4",
+    "signingName": "iotevents",
+    "uid": "iotevents-2018-07-27"
   },
-  "operations":{
-    "CreateDetectorModel":{
-      "name":"CreateDetectorModel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/detector-models"
-      },
-      "input":{"shape":"CreateDetectorModelRequest"},
-      "output":{"shape":"CreateDetectorModelResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+  "operations": {
+    "CreateDetectorModel": {
+      "documentation": "<p>Creates a detector model.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Creates a detector model.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/detector-models"
+      },
+      "input": {
+        "shape": "CreateDetectorModelRequest"
+      },
+      "name": "CreateDetectorModel",
+      "output": {
+        "shape": "CreateDetectorModelResponse"
+      }
     },
-    "CreateInput":{
-      "name":"CreateInput",
-      "http":{
-        "method":"POST",
-        "requestUri":"/inputs",
-        "responseCode":201
-      },
-      "input":{"shape":"CreateInputRequest"},
-      "output":{"shape":"CreateInputResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ResourceAlreadyExistsException"}
+    "CreateInput": {
+      "documentation": "<p>Creates an input.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "ResourceAlreadyExistsException"
+        }
       ],
-      "documentation":"<p>Creates an input.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/inputs",
+        "responseCode": 201
+      },
+      "input": {
+        "shape": "CreateInputRequest"
+      },
+      "name": "CreateInput",
+      "output": {
+        "shape": "CreateInputResponse"
+      }
     },
-    "DeleteDetectorModel":{
-      "name":"DeleteDetectorModel",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/detector-models/{detectorModelName}",
-        "responseCode":204
-      },
-      "input":{"shape":"DeleteDetectorModelRequest"},
-      "output":{"shape":"DeleteDetectorModelResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "DeleteDetectorModel": {
+      "documentation": "<p>Deletes a detector model. Any active instances of the detector model are also deleted.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Deletes a detector model. Any active instances of the detector model are also deleted.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/detector-models/{detectorModelName}",
+        "responseCode": 204
+      },
+      "input": {
+        "shape": "DeleteDetectorModelRequest"
+      },
+      "name": "DeleteDetectorModel",
+      "output": {
+        "shape": "DeleteDetectorModelResponse"
+      }
     },
-    "DeleteInput":{
-      "name":"DeleteInput",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/inputs/{inputName}"
-      },
-      "input":{"shape":"DeleteInputRequest"},
-      "output":{"shape":"DeleteInputResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ResourceInUseException"}
+    "DeleteInput": {
+      "documentation": "<p>Deletes an input.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Deletes an input.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/inputs/{inputName}"
+      },
+      "input": {
+        "shape": "DeleteInputRequest"
+      },
+      "name": "DeleteInput",
+      "output": {
+        "shape": "DeleteInputResponse"
+      }
     },
-    "DescribeDetectorModel":{
-      "name":"DescribeDetectorModel",
-      "http":{
-        "method":"GET",
-        "requestUri":"/detector-models/{detectorModelName}"
-      },
-      "input":{"shape":"DescribeDetectorModelRequest"},
-      "output":{"shape":"DescribeDetectorModelResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "DescribeDetectorModel": {
+      "documentation": "<p>Describes a detector model. If the <code>version</code> parameter is not specified, information about the latest version is returned.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Describes a detector model. If the <code>version</code> parameter is not specified, information about the latest version is returned.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/detector-models/{detectorModelName}"
+      },
+      "input": {
+        "shape": "DescribeDetectorModelRequest"
+      },
+      "name": "DescribeDetectorModel",
+      "output": {
+        "shape": "DescribeDetectorModelResponse"
+      }
     },
-    "DescribeInput":{
-      "name":"DescribeInput",
-      "http":{
-        "method":"GET",
-        "requestUri":"/inputs/{inputName}"
-      },
-      "input":{"shape":"DescribeInputRequest"},
-      "output":{"shape":"DescribeInputResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "DescribeInput": {
+      "documentation": "<p>Describes an input.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Describes an input.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/inputs/{inputName}"
+      },
+      "input": {
+        "shape": "DescribeInputRequest"
+      },
+      "name": "DescribeInput",
+      "output": {
+        "shape": "DescribeInputResponse"
+      }
     },
-    "DescribeLoggingOptions":{
-      "name":"DescribeLoggingOptions",
-      "http":{
-        "method":"GET",
-        "requestUri":"/logging"
-      },
-      "input":{"shape":"DescribeLoggingOptionsRequest"},
-      "output":{"shape":"DescribeLoggingOptionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"UnsupportedOperationException"}
+    "DescribeLoggingOptions": {
+      "documentation": "<p>Retrieves the current settings of the AWS IoT Events logging options.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        }
       ],
-      "documentation":"<p>Retrieves the current settings of the AWS IoT Events logging options.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/logging"
+      },
+      "input": {
+        "shape": "DescribeLoggingOptionsRequest"
+      },
+      "name": "DescribeLoggingOptions",
+      "output": {
+        "shape": "DescribeLoggingOptionsResponse"
+      }
     },
-    "ListDetectorModelVersions":{
-      "name":"ListDetectorModelVersions",
-      "http":{
-        "method":"GET",
-        "requestUri":"/detector-models/{detectorModelName}/versions"
-      },
-      "input":{"shape":"ListDetectorModelVersionsRequest"},
-      "output":{"shape":"ListDetectorModelVersionsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "ListDetectorModelVersions": {
+      "documentation": "<p>Lists all the versions of a detector model. Only the metadata associated with each detector model version is returned.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Lists all the versions of a detector model. Only the metadata associated with each detector model version is returned.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/detector-models/{detectorModelName}/versions"
+      },
+      "input": {
+        "shape": "ListDetectorModelVersionsRequest"
+      },
+      "name": "ListDetectorModelVersions",
+      "output": {
+        "shape": "ListDetectorModelVersionsResponse"
+      }
     },
-    "ListDetectorModels":{
-      "name":"ListDetectorModels",
-      "http":{
-        "method":"GET",
-        "requestUri":"/detector-models"
-      },
-      "input":{"shape":"ListDetectorModelsRequest"},
-      "output":{"shape":"ListDetectorModelsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "ListDetectorModels": {
+      "documentation": "<p>Lists the detector models you have created. Only the metadata associated with each detector model is returned.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Lists the detector models you have created. Only the metadata associated with each detector model is returned.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/detector-models"
+      },
+      "input": {
+        "shape": "ListDetectorModelsRequest"
+      },
+      "name": "ListDetectorModels",
+      "output": {
+        "shape": "ListDetectorModelsResponse"
+      }
     },
-    "ListInputs":{
-      "name":"ListInputs",
-      "http":{
-        "method":"GET",
-        "requestUri":"/inputs"
-      },
-      "input":{"shape":"ListInputsRequest"},
-      "output":{"shape":"ListInputsResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "ListInputs": {
+      "documentation": "<p>Lists the inputs you have created.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Lists the inputs you have created.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/inputs"
+      },
+      "input": {
+        "shape": "ListInputsRequest"
+      },
+      "name": "ListInputs",
+      "output": {
+        "shape": "ListInputsResponse"
+      }
     },
-    "ListTagsForResource":{
-      "name":"ListTagsForResource",
-      "http":{
-        "method":"GET",
-        "requestUri":"/tags"
-      },
-      "input":{"shape":"ListTagsForResourceRequest"},
-      "output":{"shape":"ListTagsForResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "ListTagsForResource": {
+      "documentation": "<p>Lists the tags (metadata) you have assigned to the resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Lists the tags (metadata) you have assigned to the resource.</p>"
+      "http": {
+        "method": "GET",
+        "requestUri": "/tags"
+      },
+      "input": {
+        "shape": "ListTagsForResourceRequest"
+      },
+      "name": "ListTagsForResource",
+      "output": {
+        "shape": "ListTagsForResourceResponse"
+      }
     },
-    "PutLoggingOptions":{
-      "name":"PutLoggingOptions",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/logging"
-      },
-      "input":{"shape":"PutLoggingOptionsRequest"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"ResourceInUseException"}
+    "PutLoggingOptions": {
+      "documentation": "<p>Sets or updates the AWS IoT Events logging options.</p> <p>If you update the value of any <code>loggingOptions</code> field, it takes up to one minute for the change to take effect. If you change the policy attached to the role you specified in the <code>roleArn</code> field (for example, to correct an invalid policy), it takes up to five minutes for that change to take effect.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "UnsupportedOperationException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Sets or updates the AWS IoT Events logging options.</p> <p>If you update the value of any <code>loggingOptions</code> field, it takes up to one minute for the change to take effect. If you change the policy attached to the role you specified in the <code>roleArn</code> field (for example, to correct an invalid policy), it takes up to five minutes for that change to take effect.</p>"
+      "http": {
+        "method": "PUT",
+        "requestUri": "/logging"
+      },
+      "input": {
+        "shape": "PutLoggingOptionsRequest"
+      },
+      "name": "PutLoggingOptions"
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/tags"
-      },
-      "input":{"shape":"TagResourceRequest"},
-      "output":{"shape":"TagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InternalFailureException"}
+    "TagResource": {
+      "documentation": "<p>Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "LimitExceededException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/tags"
+      },
+      "input": {
+        "shape": "TagResourceRequest"
+      },
+      "name": "TagResource",
+      "output": {
+        "shape": "TagResourceResponse"
+      }
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/tags"
-      },
-      "input":{"shape":"UntagResourceRequest"},
-      "output":{"shape":"UntagResourceResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"}
+    "UntagResource": {
+      "documentation": "<p>Removes the given tags (metadata) from the resource.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        }
       ],
-      "documentation":"<p>Removes the given tags (metadata) from the resource.</p>"
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/tags"
+      },
+      "input": {
+        "shape": "UntagResourceRequest"
+      },
+      "name": "UntagResource",
+      "output": {
+        "shape": "UntagResourceResponse"
+      }
     },
-    "UpdateDetectorModel":{
-      "name":"UpdateDetectorModel",
-      "http":{
-        "method":"POST",
-        "requestUri":"/detector-models/{detectorModelName}"
-      },
-      "input":{"shape":"UpdateDetectorModelRequest"},
-      "output":{"shape":"UpdateDetectorModelResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"}
+    "UpdateDetectorModel": {
+      "documentation": "<p>Updates a detector model. Detectors (instances) spawned by the previous version are deleted and then re-created as new inputs arrive.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
       ],
-      "documentation":"<p>Updates a detector model. Detectors (instances) spawned by the previous version are deleted and then re-created as new inputs arrive.</p>"
+      "http": {
+        "method": "POST",
+        "requestUri": "/detector-models/{detectorModelName}"
+      },
+      "input": {
+        "shape": "UpdateDetectorModelRequest"
+      },
+      "name": "UpdateDetectorModel",
+      "output": {
+        "shape": "UpdateDetectorModelResponse"
+      }
     },
-    "UpdateInput":{
-      "name":"UpdateInput",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/inputs/{inputName}"
-      },
-      "input":{"shape":"UpdateInputRequest"},
-      "output":{"shape":"UpdateInputResponse"},
-      "errors":[
-        {"shape":"InvalidRequestException"},
-        {"shape":"ThrottlingException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InternalFailureException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ResourceInUseException"}
+    "UpdateInput": {
+      "documentation": "<p>Updates an input.</p>",
+      "errors": [
+        {
+          "shape": "InvalidRequestException"
+        },
+        {
+          "shape": "ThrottlingException"
+        },
+        {
+          "shape": "ResourceNotFoundException"
+        },
+        {
+          "shape": "InternalFailureException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "ResourceInUseException"
+        }
       ],
-      "documentation":"<p>Updates an input.</p>"
+      "http": {
+        "method": "PUT",
+        "requestUri": "/inputs/{inputName}"
+      },
+      "input": {
+        "shape": "UpdateInputRequest"
+      },
+      "name": "UpdateInput",
+      "output": {
+        "shape": "UpdateInputResponse"
+      }
     }
   },
-  "shapes":{
-    "Action":{
-      "type":"structure",
-      "members":{
-        "setVariable":{
-          "shape":"SetVariableAction",
-          "documentation":"<p>Sets a variable to a specified value.</p>"
+  "shapes": {
+    "Action": {
+      "documentation": "<p>An action to be performed when the <code>condition</code> is TRUE.</p>",
+      "members": {
+        "clearTimer": {
+          "documentation": "<p>Information needed to clear the timer.</p>",
+          "shape": "ClearTimerAction"
         },
-        "sns":{
-          "shape":"SNSTopicPublishAction",
-          "documentation":"<p>Sends an Amazon SNS message.</p>"
+        "firehose": {
+          "documentation": "<p>Sends information about the detector model instance and the event that triggered the action to an Amazon Kinesis Data Firehose delivery stream.</p>",
+          "shape": "FirehoseAction"
         },
-        "iotTopicPublish":{
-          "shape":"IotTopicPublishAction",
-          "documentation":"<p>Publishes an MQTT message with the given topic to the AWS IoT message broker.</p>"
+        "iotEvents": {
+          "documentation": "<p>Sends an AWS IoT Events input, passing in information about the detector model instance and the event that triggered the action.</p>",
+          "shape": "IotEventsAction"
         },
-        "setTimer":{
-          "shape":"SetTimerAction",
-          "documentation":"<p>Information needed to set the timer.</p>"
+        "iotTopicPublish": {
+          "documentation": "<p>Publishes an MQTT message with the given topic to the AWS IoT message broker.</p>",
+          "shape": "IotTopicPublishAction"
         },
-        "clearTimer":{
-          "shape":"ClearTimerAction",
-          "documentation":"<p>Information needed to clear the timer.</p>"
+        "lambda": {
+          "documentation": "<p>Calls a Lambda function, passing in information about the detector model instance and the event that triggered the action.</p>",
+          "shape": "LambdaAction"
         },
-        "resetTimer":{
-          "shape":"ResetTimerAction",
-          "documentation":"<p>Information needed to reset the timer.</p>"
+        "resetTimer": {
+          "documentation": "<p>Information needed to reset the timer.</p>",
+          "shape": "ResetTimerAction"
         },
-        "lambda":{
-          "shape":"LambdaAction",
-          "documentation":"<p>Calls a Lambda function, passing in information about the detector model instance and the event that triggered the action.</p>"
+        "setTimer": {
+          "documentation": "<p>Information needed to set the timer.</p>",
+          "shape": "SetTimerAction"
         },
-        "iotEvents":{
-          "shape":"IotEventsAction",
-          "documentation":"<p>Sends an AWS IoT Events input, passing in information about the detector model instance and the event that triggered the action.</p>"
+        "setVariable": {
+          "documentation": "<p>Sets a variable to a specified value.</p>",
+          "shape": "SetVariableAction"
         },
-        "sqs":{
-          "shape":"SqsAction",
-          "documentation":"<p>Sends information about the detector model instance and the event that triggered the action to an Amazon SQS queue.</p>"
+        "sns": {
+          "documentation": "<p>Sends an Amazon SNS message.</p>",
+          "shape": "SNSTopicPublishAction"
         },
-        "firehose":{
-          "shape":"FirehoseAction",
-          "documentation":"<p>Sends information about the detector model instance and the event that triggered the action to an Amazon Kinesis Data Firehose delivery stream.</p>"
+        "sqs": {
+          "documentation": "<p>Sends information about the detector model instance and the event that triggered the action to an Amazon SQS queue.</p>",
+          "shape": "SqsAction"
         }
       },
-      "documentation":"<p>An action to be performed when the <code>condition</code> is TRUE.</p>"
+      "type": "structure"
     },
-    "Actions":{
-      "type":"list",
-      "member":{"shape":"Action"}
+    "Actions": {
+      "member": {
+        "shape": "Action"
+      },
+      "type": "list"
     },
-    "AmazonResourceName":{
-      "type":"string",
-      "max":2048,
-      "min":1
+    "AmazonResourceName": {
+      "max": 2048,
+      "min": 1,
+      "type": "string"
     },
-    "Attribute":{
-      "type":"structure",
-      "required":["jsonPath"],
-      "members":{
-        "jsonPath":{
-          "shape":"AttributeJsonPath",
-          "documentation":"<p>An expression that specifies an attribute-value pair in a JSON structure. Use this to specify an attribute from the JSON payload that is made available by the input. Inputs are derived from messages sent to AWS IoT Events (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The attribute (and its paired value) specified here are available for use in the <code>condition</code> expressions used by detectors. </p> <p>Syntax: <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>"
+    "Attribute": {
+      "documentation": "<p>The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using <code>BatchPutMessage</code>. Each such message contains a JSON payload. Those attributes (and their paired values) specified here are available for use in the <code>condition</code> expressions used by detectors. </p>",
+      "members": {
+        "jsonPath": {
+          "documentation": "<p>An expression that specifies an attribute-value pair in a JSON structure. Use this to specify an attribute from the JSON payload that is made available by the input. Inputs are derived from messages sent to AWS IoT Events (<code>BatchPutMessage</code>). Each such message contains a JSON payload. The attribute (and its paired value) specified here are available for use in the <code>condition</code> expressions used by detectors. </p> <p>Syntax: <code>&lt;field-name&gt;.&lt;field-name&gt;...</code> </p>",
+          "shape": "AttributeJsonPath"
         }
       },
-      "documentation":"<p>The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using <code>BatchPutMessage</code>. Each such message contains a JSON payload. Those attributes (and their paired values) specified here are available for use in the <code>condition</code> expressions used by detectors. </p>"
+      "required": [
+        "jsonPath"
+      ],
+      "type": "structure"
     },
-    "AttributeJsonPath":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^((`[\\w\\- ]+`)|([\\w\\-]+))(\\.((`[\\w- ]+`)|([\\w\\-]+)))*$"
+    "AttributeJsonPath": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^((`[\\w\\- ]+`)|([\\w\\-]+))(\\.((`[\\w- ]+`)|([\\w\\-]+)))*$",
+      "type": "string"
     },
-    "Attributes":{
-      "type":"list",
-      "member":{"shape":"Attribute"},
-      "max":200,
-      "min":1
+    "Attributes": {
+      "max": 200,
+      "member": {
+        "shape": "Attribute"
+      },
+      "min": 1,
+      "type": "list"
     },
-    "ClearTimerAction":{
-      "type":"structure",
-      "required":["timerName"],
-      "members":{
-        "timerName":{
-          "shape":"TimerName",
-          "documentation":"<p>The name of the timer to clear.</p>"
+    "ClearTimerAction": {
+      "documentation": "<p>Information needed to clear the timer.</p>",
+      "members": {
+        "timerName": {
+          "documentation": "<p>The name of the timer to clear.</p>",
+          "shape": "TimerName"
         }
       },
-      "documentation":"<p>Information needed to clear the timer.</p>"
+      "required": [
+        "timerName"
+      ],
+      "type": "structure"
     },
-    "Condition":{
-      "type":"string",
-      "max":512
+    "Condition": {
+      "max": 512,
+      "type": "string"
     },
-    "CreateDetectorModelRequest":{
-      "type":"structure",
-      "required":[
+    "CreateDetectorModelRequest": {
+      "members": {
+        "detectorModelDefinition": {
+          "documentation": "<p>Information that defines how the detectors operate.</p>",
+          "shape": "DetectorModelDefinition"
+        },
+        "detectorModelDescription": {
+          "documentation": "<p>A brief description of the detector model.</p>",
+          "shape": "DetectorModelDescription"
+        },
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "shape": "DetectorModelName"
+        },
+        "evaluationMethod": {
+          "documentation": "<p>Information about the order in which events are evaluated and how actions are executed. </p>",
+          "shape": "EvaluationMethod"
+        },
+        "key": {
+          "documentation": "<p>The input attribute key used to identify a device or system to create a detector (an instance of the detector model) and then to route each input received to the appropriate detector (instance). This parameter uses a JSON-path expression in the message payload of each input to specify the attribute-value pair that is used to identify the device associated with the input.</p>",
+          "shape": "AttributeJsonPath"
+        },
+        "roleArn": {
+          "documentation": "<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>",
+          "shape": "AmazonResourceName"
+        },
+        "tags": {
+          "documentation": "<p>Metadata that can be used to manage the detector model.</p>",
+          "shape": "Tags"
+        }
+      },
+      "required": [
         "detectorModelName",
         "detectorModelDefinition",
         "roleArn"
       ],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>"
-        },
-        "detectorModelDefinition":{
-          "shape":"DetectorModelDefinition",
-          "documentation":"<p>Information that defines how the detectors operate.</p>"
-        },
-        "detectorModelDescription":{
-          "shape":"DetectorModelDescription",
-          "documentation":"<p>A brief description of the detector model.</p>"
-        },
-        "key":{
-          "shape":"AttributeJsonPath",
-          "documentation":"<p>The input attribute key used to identify a device or system to create a detector (an instance of the detector model) and then to route each input received to the appropriate detector (instance). This parameter uses a JSON-path expression in the message payload of each input to specify the attribute-value pair that is used to identify the device associated with the input.</p>"
-        },
-        "roleArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>"
-        },
-        "tags":{
-          "shape":"Tags",
-          "documentation":"<p>Metadata that can be used to manage the detector model.</p>"
-        },
-        "evaluationMethod":{
-          "shape":"EvaluationMethod",
-          "documentation":"<p>Information about the order in which events are evaluated and how actions are executed. </p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateDetectorModelResponse":{
-      "type":"structure",
-      "members":{
-        "detectorModelConfiguration":{
-          "shape":"DetectorModelConfiguration",
-          "documentation":"<p>Information about how the detector model is configured.</p>"
+    "CreateDetectorModelResponse": {
+      "members": {
+        "detectorModelConfiguration": {
+          "documentation": "<p>Information about how the detector model is configured.</p>",
+          "shape": "DetectorModelConfiguration"
         }
-      }
+      },
+      "type": "structure"
     },
-    "CreateInputRequest":{
-      "type":"structure",
-      "required":[
+    "CreateInputRequest": {
+      "members": {
+        "inputDefinition": {
+          "documentation": "<p>The definition of the input.</p>",
+          "shape": "InputDefinition"
+        },
+        "inputDescription": {
+          "documentation": "<p>A brief description of the input.</p>",
+          "shape": "InputDescription"
+        },
+        "inputName": {
+          "documentation": "<p>The name you want to give to the input.</p>",
+          "shape": "InputName"
+        },
+        "tags": {
+          "documentation": "<p>Metadata that can be used to manage the input.</p>",
+          "shape": "Tags"
+        }
+      },
+      "required": [
         "inputName",
         "inputDefinition"
       ],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name you want to give to the input.</p>"
-        },
-        "inputDescription":{
-          "shape":"InputDescription",
-          "documentation":"<p>A brief description of the input.</p>"
-        },
-        "inputDefinition":{
-          "shape":"InputDefinition",
-          "documentation":"<p>The definition of the input.</p>"
-        },
-        "tags":{
-          "shape":"Tags",
-          "documentation":"<p>Metadata that can be used to manage the input.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "CreateInputResponse":{
-      "type":"structure",
-      "members":{
-        "inputConfiguration":{
-          "shape":"InputConfiguration",
-          "documentation":"<p>Information about the configuration of the input.</p>"
-        }
-      }
-    },
-    "DeleteDetectorModelRequest":{
-      "type":"structure",
-      "required":["detectorModelName"],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model to be deleted.</p>",
-          "location":"uri",
-          "locationName":"detectorModelName"
-        }
-      }
-    },
-    "DeleteDetectorModelResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteInputRequest":{
-      "type":"structure",
-      "required":["inputName"],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the input to delete.</p>",
-          "location":"uri",
-          "locationName":"inputName"
-        }
-      }
-    },
-    "DeleteInputResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeliveryStreamName":{"type":"string"},
-    "DescribeDetectorModelRequest":{
-      "type":"structure",
-      "required":["detectorModelName"],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>",
-          "location":"uri",
-          "locationName":"detectorModelName"
-        },
-        "detectorModelVersion":{
-          "shape":"DetectorModelVersion",
-          "documentation":"<p>The version of the detector model.</p>",
-          "location":"querystring",
-          "locationName":"version"
-        }
-      }
-    },
-    "DescribeDetectorModelResponse":{
-      "type":"structure",
-      "members":{
-        "detectorModel":{
-          "shape":"DetectorModel",
-          "documentation":"<p>Information about the detector model.</p>"
-        }
-      }
-    },
-    "DescribeInputRequest":{
-      "type":"structure",
-      "required":["inputName"],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the input.</p>",
-          "location":"uri",
-          "locationName":"inputName"
-        }
-      }
-    },
-    "DescribeInputResponse":{
-      "type":"structure",
-      "members":{
-        "input":{
-          "shape":"Input",
-          "documentation":"<p>Information about the input.</p>"
-        }
-      }
-    },
-    "DescribeLoggingOptionsRequest":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DescribeLoggingOptionsResponse":{
-      "type":"structure",
-      "members":{
-        "loggingOptions":{
-          "shape":"LoggingOptions",
-          "documentation":"<p>The current settings of the AWS IoT Events logging options.</p>"
-        }
-      }
-    },
-    "DetectorDebugOption":{
-      "type":"structure",
-      "required":["detectorModelName"],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>"
-        },
-        "keyValue":{
-          "shape":"KeyValue",
-          "documentation":"<p>The value of the input attribute key used to create the detector (the instance of the detector model).</p>"
+    "CreateInputResponse": {
+      "members": {
+        "inputConfiguration": {
+          "documentation": "<p>Information about the configuration of the input.</p>",
+          "shape": "InputConfiguration"
         }
       },
-      "documentation":"<p>The detector model and the specific detectors (instances) for which the logging level is given.</p>"
+      "type": "structure"
     },
-    "DetectorDebugOptions":{
-      "type":"list",
-      "member":{"shape":"DetectorDebugOption"},
-      "min":1
-    },
-    "DetectorModel":{
-      "type":"structure",
-      "members":{
-        "detectorModelDefinition":{
-          "shape":"DetectorModelDefinition",
-          "documentation":"<p>Information that defines how a detector operates.</p>"
-        },
-        "detectorModelConfiguration":{
-          "shape":"DetectorModelConfiguration",
-          "documentation":"<p>Information about how the detector is configured.</p>"
+    "DeleteDetectorModelRequest": {
+      "members": {
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model to be deleted.</p>",
+          "location": "uri",
+          "locationName": "detectorModelName",
+          "shape": "DetectorModelName"
         }
       },
-      "documentation":"<p>Information about the detector model.</p>"
+      "required": [
+        "detectorModelName"
+      ],
+      "type": "structure"
     },
-    "DetectorModelArn":{"type":"string"},
-    "DetectorModelConfiguration":{
-      "type":"structure",
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>"
-        },
-        "detectorModelVersion":{
-          "shape":"DetectorModelVersion",
-          "documentation":"<p>The version of the detector model.</p>"
-        },
-        "detectorModelDescription":{
-          "shape":"DetectorModelDescription",
-          "documentation":"<p>A brief description of the detector model.</p>"
-        },
-        "detectorModelArn":{
-          "shape":"DetectorModelArn",
-          "documentation":"<p>The ARN of the detector model.</p>"
-        },
-        "roleArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>"
-        },
-        "creationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the detector model was created.</p>"
-        },
-        "lastUpdateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the detector model was last updated.</p>"
-        },
-        "status":{
-          "shape":"DetectorModelVersionStatus",
-          "documentation":"<p>The status of the detector model.</p>"
-        },
-        "key":{
-          "shape":"AttributeJsonPath",
-          "documentation":"<p>The input attribute key used to identify a device or system to create a detector (an instance of the detector model) and then to route each input received to the appropriate detector (instance). This parameter uses a JSON-path expression in the message payload of each input to specify the attribute-value pair that is used to identify the device associated with the input.</p>"
-        },
-        "evaluationMethod":{
-          "shape":"EvaluationMethod",
-          "documentation":"<p>Information about the order in which events are evaluated and how actions are executed. </p>"
+    "DeleteDetectorModelResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeleteInputRequest": {
+      "members": {
+        "inputName": {
+          "documentation": "<p>The name of the input to delete.</p>",
+          "location": "uri",
+          "locationName": "inputName",
+          "shape": "InputName"
         }
       },
-      "documentation":"<p>Information about how the detector model is configured.</p>"
+      "required": [
+        "inputName"
+      ],
+      "type": "structure"
     },
-    "DetectorModelDefinition":{
-      "type":"structure",
-      "required":[
+    "DeleteInputResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "DeliveryStreamName": {
+      "type": "string"
+    },
+    "DescribeDetectorModelRequest": {
+      "members": {
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "location": "uri",
+          "locationName": "detectorModelName",
+          "shape": "DetectorModelName"
+        },
+        "detectorModelVersion": {
+          "documentation": "<p>The version of the detector model.</p>",
+          "location": "querystring",
+          "locationName": "version",
+          "shape": "DetectorModelVersion"
+        }
+      },
+      "required": [
+        "detectorModelName"
+      ],
+      "type": "structure"
+    },
+    "DescribeDetectorModelResponse": {
+      "members": {
+        "detectorModel": {
+          "documentation": "<p>Information about the detector model.</p>",
+          "shape": "DetectorModel"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeInputRequest": {
+      "members": {
+        "inputName": {
+          "documentation": "<p>The name of the input.</p>",
+          "location": "uri",
+          "locationName": "inputName",
+          "shape": "InputName"
+        }
+      },
+      "required": [
+        "inputName"
+      ],
+      "type": "structure"
+    },
+    "DescribeInputResponse": {
+      "members": {
+        "input": {
+          "documentation": "<p>Information about the input.</p>",
+          "shape": "Input"
+        }
+      },
+      "type": "structure"
+    },
+    "DescribeLoggingOptionsRequest": {
+      "members": {},
+      "type": "structure"
+    },
+    "DescribeLoggingOptionsResponse": {
+      "members": {
+        "loggingOptions": {
+          "documentation": "<p>The current settings of the AWS IoT Events logging options.</p>",
+          "shape": "LoggingOptions"
+        }
+      },
+      "type": "structure"
+    },
+    "DetectorDebugOption": {
+      "documentation": "<p>The detector model and the specific detectors (instances) for which the logging level is given.</p>",
+      "members": {
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "shape": "DetectorModelName"
+        },
+        "keyValue": {
+          "documentation": "<p>The value of the input attribute key used to create the detector (the instance of the detector model).</p>",
+          "shape": "KeyValue"
+        }
+      },
+      "required": [
+        "detectorModelName"
+      ],
+      "type": "structure"
+    },
+    "DetectorDebugOptions": {
+      "member": {
+        "shape": "DetectorDebugOption"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "DetectorModel": {
+      "documentation": "<p>Information about the detector model.</p>",
+      "members": {
+        "detectorModelConfiguration": {
+          "documentation": "<p>Information about how the detector is configured.</p>",
+          "shape": "DetectorModelConfiguration"
+        },
+        "detectorModelDefinition": {
+          "documentation": "<p>Information that defines how a detector operates.</p>",
+          "shape": "DetectorModelDefinition"
+        }
+      },
+      "type": "structure"
+    },
+    "DetectorModelArn": {
+      "type": "string"
+    },
+    "DetectorModelConfiguration": {
+      "documentation": "<p>Information about how the detector model is configured.</p>",
+      "members": {
+        "creationTime": {
+          "documentation": "<p>The time the detector model was created.</p>",
+          "shape": "Timestamp"
+        },
+        "detectorModelArn": {
+          "documentation": "<p>The ARN of the detector model.</p>",
+          "shape": "DetectorModelArn"
+        },
+        "detectorModelDescription": {
+          "documentation": "<p>A brief description of the detector model.</p>",
+          "shape": "DetectorModelDescription"
+        },
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "shape": "DetectorModelName"
+        },
+        "detectorModelVersion": {
+          "documentation": "<p>The version of the detector model.</p>",
+          "shape": "DetectorModelVersion"
+        },
+        "evaluationMethod": {
+          "documentation": "<p>Information about the order in which events are evaluated and how actions are executed. </p>",
+          "shape": "EvaluationMethod"
+        },
+        "key": {
+          "documentation": "<p>The input attribute key used to identify a device or system to create a detector (an instance of the detector model) and then to route each input received to the appropriate detector (instance). This parameter uses a JSON-path expression in the message payload of each input to specify the attribute-value pair that is used to identify the device associated with the input.</p>",
+          "shape": "AttributeJsonPath"
+        },
+        "lastUpdateTime": {
+          "documentation": "<p>The time the detector model was last updated.</p>",
+          "shape": "Timestamp"
+        },
+        "roleArn": {
+          "documentation": "<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>",
+          "shape": "AmazonResourceName"
+        },
+        "status": {
+          "documentation": "<p>The status of the detector model.</p>",
+          "shape": "DetectorModelVersionStatus"
+        }
+      },
+      "type": "structure"
+    },
+    "DetectorModelDefinition": {
+      "documentation": "<p>Information that defines how a detector operates.</p>",
+      "members": {
+        "initialStateName": {
+          "documentation": "<p>The state that is entered at the creation of each detector (instance).</p>",
+          "shape": "StateName"
+        },
+        "states": {
+          "documentation": "<p>Information about the states of the detector.</p>",
+          "shape": "States"
+        }
+      },
+      "required": [
         "states",
         "initialStateName"
       ],
-      "members":{
-        "states":{
-          "shape":"States",
-          "documentation":"<p>Information about the states of the detector.</p>"
+      "type": "structure"
+    },
+    "DetectorModelDescription": {
+      "max": 128,
+      "type": "string"
+    },
+    "DetectorModelName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "type": "string"
+    },
+    "DetectorModelSummaries": {
+      "member": {
+        "shape": "DetectorModelSummary"
+      },
+      "type": "list"
+    },
+    "DetectorModelSummary": {
+      "documentation": "<p>Information about the detector model.</p>",
+      "members": {
+        "creationTime": {
+          "documentation": "<p>The time the detector model was created.</p>",
+          "shape": "Timestamp"
         },
-        "initialStateName":{
-          "shape":"StateName",
-          "documentation":"<p>The state that is entered at the creation of each detector (instance).</p>"
+        "detectorModelDescription": {
+          "documentation": "<p>A brief description of the detector model.</p>",
+          "shape": "DetectorModelDescription"
+        },
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "shape": "DetectorModelName"
         }
       },
-      "documentation":"<p>Information that defines how a detector operates.</p>"
+      "type": "structure"
     },
-    "DetectorModelDescription":{
-      "type":"string",
-      "max":128
+    "DetectorModelVersion": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
     },
-    "DetectorModelName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^[a-zA-Z0-9_-]+$"
-    },
-    "DetectorModelSummaries":{
-      "type":"list",
-      "member":{"shape":"DetectorModelSummary"}
-    },
-    "DetectorModelSummary":{
-      "type":"structure",
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>"
-        },
-        "detectorModelDescription":{
-          "shape":"DetectorModelDescription",
-          "documentation":"<p>A brief description of the detector model.</p>"
-        },
-        "creationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the detector model was created.</p>"
-        }
-      },
-      "documentation":"<p>Information about the detector model.</p>"
-    },
-    "DetectorModelVersion":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "DetectorModelVersionStatus":{
-      "type":"string",
-      "enum":[
+    "DetectorModelVersionStatus": {
+      "enum": [
         "ACTIVE",
         "ACTIVATING",
         "INACTIVE",
@@ -710,912 +968,989 @@
         "DRAFT",
         "PAUSED",
         "FAILED"
-      ]
+      ],
+      "type": "string"
     },
-    "DetectorModelVersionSummaries":{
-      "type":"list",
-      "member":{"shape":"DetectorModelVersionSummary"}
+    "DetectorModelVersionSummaries": {
+      "member": {
+        "shape": "DetectorModelVersionSummary"
+      },
+      "type": "list"
     },
-    "DetectorModelVersionSummary":{
-      "type":"structure",
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model.</p>"
+    "DetectorModelVersionSummary": {
+      "documentation": "<p>Information about the detector model version.</p>",
+      "members": {
+        "creationTime": {
+          "documentation": "<p>The time the detector model version was created.</p>",
+          "shape": "Timestamp"
         },
-        "detectorModelVersion":{
-          "shape":"DetectorModelVersion",
-          "documentation":"<p>The ID of the detector model version.</p>"
+        "detectorModelArn": {
+          "documentation": "<p>The ARN of the detector model version.</p>",
+          "shape": "DetectorModelArn"
         },
-        "detectorModelArn":{
-          "shape":"DetectorModelArn",
-          "documentation":"<p>The ARN of the detector model version.</p>"
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model.</p>",
+          "shape": "DetectorModelName"
         },
-        "roleArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the role that grants the detector model permission to perform its tasks.</p>"
+        "detectorModelVersion": {
+          "documentation": "<p>The ID of the detector model version.</p>",
+          "shape": "DetectorModelVersion"
         },
-        "creationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the detector model version was created.</p>"
+        "evaluationMethod": {
+          "documentation": "<p>Information about the order in which events are evaluated and how actions are executed. </p>",
+          "shape": "EvaluationMethod"
         },
-        "lastUpdateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The last time the detector model version was updated.</p>"
+        "lastUpdateTime": {
+          "documentation": "<p>The last time the detector model version was updated.</p>",
+          "shape": "Timestamp"
         },
-        "status":{
-          "shape":"DetectorModelVersionStatus",
-          "documentation":"<p>The status of the detector model version.</p>"
+        "roleArn": {
+          "documentation": "<p>The ARN of the role that grants the detector model permission to perform its tasks.</p>",
+          "shape": "AmazonResourceName"
         },
-        "evaluationMethod":{
-          "shape":"EvaluationMethod",
-          "documentation":"<p>Information about the order in which events are evaluated and how actions are executed. </p>"
+        "status": {
+          "documentation": "<p>The status of the detector model version.</p>",
+          "shape": "DetectorModelVersionStatus"
         }
       },
-      "documentation":"<p>Information about the detector model version.</p>"
+      "type": "structure"
     },
-    "EvaluationMethod":{
-      "type":"string",
-      "enum":[
+    "EvaluationMethod": {
+      "enum": [
         "BATCH",
         "SERIAL"
-      ]
+      ],
+      "type": "string"
     },
-    "Event":{
-      "type":"structure",
-      "required":["eventName"],
-      "members":{
-        "eventName":{
-          "shape":"EventName",
-          "documentation":"<p>The name of the event.</p>"
+    "Event": {
+      "documentation": "<p>Specifies the <code>actions</code> to be performed when the <code>condition</code> evaluates to TRUE.</p>",
+      "members": {
+        "actions": {
+          "documentation": "<p>The actions to be performed.</p>",
+          "shape": "Actions"
         },
-        "condition":{
-          "shape":"Condition",
-          "documentation":"<p>Optional. The Boolean expression that, when TRUE, causes the <code>actions</code> to be performed. If not present, the actions are performed (=TRUE). If the expression result is not a Boolean value, the actions are not performed (=FALSE).</p>"
+        "condition": {
+          "documentation": "<p>Optional. The Boolean expression that, when TRUE, causes the <code>actions</code> to be performed. If not present, the actions are performed (=TRUE). If the expression result is not a Boolean value, the actions are not performed (=FALSE).</p>",
+          "shape": "Condition"
         },
-        "actions":{
-          "shape":"Actions",
-          "documentation":"<p>The actions to be performed.</p>"
+        "eventName": {
+          "documentation": "<p>The name of the event.</p>",
+          "shape": "EventName"
         }
       },
-      "documentation":"<p>Specifies the <code>actions</code> to be performed when the <code>condition</code> evaluates to TRUE.</p>"
+      "required": [
+        "eventName"
+      ],
+      "type": "structure"
     },
-    "EventName":{
-      "type":"string",
-      "max":128
+    "EventName": {
+      "max": 128,
+      "type": "string"
     },
-    "Events":{
-      "type":"list",
-      "member":{"shape":"Event"}
+    "Events": {
+      "member": {
+        "shape": "Event"
+      },
+      "type": "list"
     },
-    "FirehoseAction":{
-      "type":"structure",
-      "required":["deliveryStreamName"],
-      "members":{
-        "deliveryStreamName":{
-          "shape":"DeliveryStreamName",
-          "documentation":"<p>The name of the Kinesis Data Firehose delivery stream where the data is written.</p>"
+    "FirehoseAction": {
+      "documentation": "<p>Sends information about the detector model instance and the event that triggered the action to an Amazon Kinesis Data Firehose delivery stream.</p>",
+      "members": {
+        "deliveryStreamName": {
+          "documentation": "<p>The name of the Kinesis Data Firehose delivery stream where the data is written.</p>",
+          "shape": "DeliveryStreamName"
         },
-        "separator":{
-          "shape":"FirehoseSeparator",
-          "documentation":"<p>A character separator that is used to separate records written to the Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).</p>"
+        "separator": {
+          "documentation": "<p>A character separator that is used to separate records written to the Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).</p>",
+          "shape": "FirehoseSeparator"
         }
       },
-      "documentation":"<p>Sends information about the detector model instance and the event that triggered the action to an Amazon Kinesis Data Firehose delivery stream.</p>"
+      "required": [
+        "deliveryStreamName"
+      ],
+      "type": "structure"
     },
-    "FirehoseSeparator":{
-      "type":"string",
-      "pattern":"([\\n\\t])|(\\r\\n)|(,)"
+    "FirehoseSeparator": {
+      "pattern": "([\\n\\t])|(\\r\\n)|(,)",
+      "type": "string"
     },
-    "Input":{
-      "type":"structure",
-      "members":{
-        "inputConfiguration":{
-          "shape":"InputConfiguration",
-          "documentation":"<p>Information about the configuration of an input.</p>"
+    "Input": {
+      "documentation": "<p>Information about the input.</p>",
+      "members": {
+        "inputConfiguration": {
+          "documentation": "<p>Information about the configuration of an input.</p>",
+          "shape": "InputConfiguration"
         },
-        "inputDefinition":{
-          "shape":"InputDefinition",
-          "documentation":"<p>The definition of the input.</p>"
+        "inputDefinition": {
+          "documentation": "<p>The definition of the input.</p>",
+          "shape": "InputDefinition"
         }
       },
-      "documentation":"<p>Information about the input.</p>"
+      "type": "structure"
     },
-    "InputArn":{"type":"string"},
-    "InputConfiguration":{
-      "type":"structure",
-      "required":[
+    "InputArn": {
+      "type": "string"
+    },
+    "InputConfiguration": {
+      "documentation": "<p>Information about the configuration of an input.</p>",
+      "members": {
+        "creationTime": {
+          "documentation": "<p>The time the input was created.</p>",
+          "shape": "Timestamp"
+        },
+        "inputArn": {
+          "documentation": "<p>The ARN of the input.</p>",
+          "shape": "InputArn"
+        },
+        "inputDescription": {
+          "documentation": "<p>A brief description of the input.</p>",
+          "shape": "InputDescription"
+        },
+        "inputName": {
+          "documentation": "<p>The name of the input.</p>",
+          "shape": "InputName"
+        },
+        "lastUpdateTime": {
+          "documentation": "<p>The last time the input was updated.</p>",
+          "shape": "Timestamp"
+        },
+        "status": {
+          "documentation": "<p>The status of the input.</p>",
+          "shape": "InputStatus"
+        }
+      },
+      "required": [
         "inputName",
         "inputArn",
         "creationTime",
         "lastUpdateTime",
         "status"
       ],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the input.</p>"
-        },
-        "inputDescription":{
-          "shape":"InputDescription",
-          "documentation":"<p>A brief description of the input.</p>"
-        },
-        "inputArn":{
-          "shape":"InputArn",
-          "documentation":"<p>The ARN of the input.</p>"
-        },
-        "creationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the input was created.</p>"
-        },
-        "lastUpdateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The last time the input was updated.</p>"
-        },
-        "status":{
-          "shape":"InputStatus",
-          "documentation":"<p>The status of the input.</p>"
+      "type": "structure"
+    },
+    "InputDefinition": {
+      "documentation": "<p>The definition of the input.</p>",
+      "members": {
+        "attributes": {
+          "documentation": "<p>The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using <code>BatchPutMessage</code>. Each such message contains a JSON payload, and those attributes (and their paired values) specified here are available for use in the <code>condition</code> expressions used by detectors that monitor this input. </p>",
+          "shape": "Attributes"
         }
       },
-      "documentation":"<p>Information about the configuration of an input.</p>"
+      "required": [
+        "attributes"
+      ],
+      "type": "structure"
     },
-    "InputDefinition":{
-      "type":"structure",
-      "required":["attributes"],
-      "members":{
-        "attributes":{
-          "shape":"Attributes",
-          "documentation":"<p>The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using <code>BatchPutMessage</code>. Each such message contains a JSON payload, and those attributes (and their paired values) specified here are available for use in the <code>condition</code> expressions used by detectors that monitor this input. </p>"
-        }
-      },
-      "documentation":"<p>The definition of the input.</p>"
+    "InputDescription": {
+      "max": 128,
+      "type": "string"
     },
-    "InputDescription":{
-      "type":"string",
-      "max":128
+    "InputName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$",
+      "type": "string"
     },
-    "InputName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^[a-zA-Z][a-zA-Z0-9_]*$"
-    },
-    "InputStatus":{
-      "type":"string",
-      "enum":[
+    "InputStatus": {
+      "enum": [
         "CREATING",
         "UPDATING",
         "ACTIVE",
         "DELETING"
-      ]
+      ],
+      "type": "string"
     },
-    "InputSummaries":{
-      "type":"list",
-      "member":{"shape":"InputSummary"}
+    "InputSummaries": {
+      "member": {
+        "shape": "InputSummary"
+      },
+      "type": "list"
     },
-    "InputSummary":{
-      "type":"structure",
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the input.</p>"
+    "InputSummary": {
+      "documentation": "<p>Information about the input.</p>",
+      "members": {
+        "creationTime": {
+          "documentation": "<p>The time the input was created.</p>",
+          "shape": "Timestamp"
         },
-        "inputDescription":{
-          "shape":"InputDescription",
-          "documentation":"<p>A brief description of the input.</p>"
+        "inputArn": {
+          "documentation": "<p>The ARN of the input.</p>",
+          "shape": "InputArn"
         },
-        "inputArn":{
-          "shape":"InputArn",
-          "documentation":"<p>The ARN of the input.</p>"
+        "inputDescription": {
+          "documentation": "<p>A brief description of the input.</p>",
+          "shape": "InputDescription"
         },
-        "creationTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The time the input was created.</p>"
+        "inputName": {
+          "documentation": "<p>The name of the input.</p>",
+          "shape": "InputName"
         },
-        "lastUpdateTime":{
-          "shape":"Timestamp",
-          "documentation":"<p>The last time the input was updated.</p>"
+        "lastUpdateTime": {
+          "documentation": "<p>The last time the input was updated.</p>",
+          "shape": "Timestamp"
         },
-        "status":{
-          "shape":"InputStatus",
-          "documentation":"<p>The status of the input.</p>"
+        "status": {
+          "documentation": "<p>The status of the input.</p>",
+          "shape": "InputStatus"
         }
       },
-      "documentation":"<p>Information about the input.</p>"
+      "type": "structure"
     },
-    "InternalFailureException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+    "InternalFailureException": {
+      "documentation": "<p>An internal failure occurred.</p>",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>An internal failure occurred.</p>",
-      "error":{"httpStatusCode":500},
-      "exception":true,
-      "fault":true
+      "type": "structure"
     },
-    "InvalidRequestException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+    "InvalidRequestException": {
+      "documentation": "<p>The request was invalid.</p>",
+      "error": {
+        "httpStatusCode": 400
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>The request was invalid.</p>",
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "type": "structure"
     },
-    "IotEventsAction":{
-      "type":"structure",
-      "required":["inputName"],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the AWS IoT Events input where the data is sent.</p>"
+    "IotEventsAction": {
+      "documentation": "<p>Sends an AWS IoT Events input, passing in information about the detector model instance and the event that triggered the action.</p>",
+      "members": {
+        "inputName": {
+          "documentation": "<p>The name of the AWS IoT Events input where the data is sent.</p>",
+          "shape": "InputName"
         }
       },
-      "documentation":"<p>Sends an AWS IoT Events input, passing in information about the detector model instance and the event that triggered the action.</p>"
+      "required": [
+        "inputName"
+      ],
+      "type": "structure"
     },
-    "IotTopicPublishAction":{
-      "type":"structure",
-      "required":["mqttTopic"],
-      "members":{
-        "mqttTopic":{
-          "shape":"MQTTTopic",
-          "documentation":"<p>The MQTT topic of the message. You can use a string expression that includes variables (<code>$variable.&lt;variable-name&gt;</code>) and input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as the topic string.</p>"
+    "IotTopicPublishAction": {
+      "documentation": "<p>Information required to publish the MQTT message through the AWS IoT message broker.</p>",
+      "members": {
+        "mqttTopic": {
+          "documentation": "<p>The MQTT topic of the message. You can use a string expression that includes variables (<code>$variable.&lt;variable-name&gt;</code>) and input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as the topic string.</p>",
+          "shape": "MQTTTopic"
         }
       },
-      "documentation":"<p>Information required to publish the MQTT message through the AWS IoT message broker.</p>"
+      "required": [
+        "mqttTopic"
+      ],
+      "type": "structure"
     },
-    "KeyValue":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^[a-zA-Z0-9\\-_:]+$"
+    "KeyValue": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^[a-zA-Z0-9\\-_:]+$",
+      "type": "string"
     },
-    "LambdaAction":{
-      "type":"structure",
-      "required":["functionArn"],
-      "members":{
-        "functionArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the Lambda function that is executed.</p>"
+    "LambdaAction": {
+      "documentation": "<p>Calls a Lambda function, passing in information about the detector model instance and the event that triggered the action.</p>",
+      "members": {
+        "functionArn": {
+          "documentation": "<p>The ARN of the Lambda function that is executed.</p>",
+          "shape": "AmazonResourceName"
         }
       },
-      "documentation":"<p>Calls a Lambda function, passing in information about the detector model instance and the event that triggered the action.</p>"
+      "required": [
+        "functionArn"
+      ],
+      "type": "structure"
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+    "LimitExceededException": {
+      "documentation": "<p>A limit was exceeded.</p>",
+      "error": {
+        "httpStatusCode": 410
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>A limit was exceeded.</p>",
-      "error":{"httpStatusCode":410},
-      "exception":true
+      "type": "structure"
     },
-    "ListDetectorModelVersionsRequest":{
-      "type":"structure",
-      "required":["detectorModelName"],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model whose versions are returned.</p>",
-          "location":"uri",
-          "locationName":"detectorModelName"
+    "ListDetectorModelVersionsRequest": {
+      "members": {
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model whose versions are returned.</p>",
+          "location": "uri",
+          "locationName": "detectorModelName",
+          "shape": "DetectorModelName"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return at one time.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return at one time.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+        "nextToken": {
+          "documentation": "<p>The token for the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "NextToken"
         }
-      }
+      },
+      "required": [
+        "detectorModelName"
+      ],
+      "type": "structure"
     },
-    "ListDetectorModelVersionsResponse":{
-      "type":"structure",
-      "members":{
-        "detectorModelVersionSummaries":{
-          "shape":"DetectorModelVersionSummaries",
-          "documentation":"<p>Summary information about the detector model versions.</p>"
+    "ListDetectorModelVersionsResponse": {
+      "members": {
+        "detectorModelVersionSummaries": {
+          "documentation": "<p>Summary information about the detector model versions.</p>",
+          "shape": "DetectorModelVersionSummaries"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>"
+        "nextToken": {
+          "documentation": "<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListDetectorModelsRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+    "ListDetectorModelsRequest": {
+      "members": {
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return at one time.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return at one time.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+        "nextToken": {
+          "documentation": "<p>The token for the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListDetectorModelsResponse":{
-      "type":"structure",
-      "members":{
-        "detectorModelSummaries":{
-          "shape":"DetectorModelSummaries",
-          "documentation":"<p>Summary information about the detector models.</p>"
+    "ListDetectorModelsResponse": {
+      "members": {
+        "detectorModelSummaries": {
+          "documentation": "<p>Summary information about the detector models.</p>",
+          "shape": "DetectorModelSummaries"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>"
+        "nextToken": {
+          "documentation": "<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListInputsRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>The token for the next set of results.</p>",
-          "location":"querystring",
-          "locationName":"nextToken"
+    "ListInputsRequest": {
+      "members": {
+        "maxResults": {
+          "documentation": "<p>The maximum number of results to return at one time.</p>",
+          "location": "querystring",
+          "locationName": "maxResults",
+          "shape": "MaxResults"
         },
-        "maxResults":{
-          "shape":"MaxResults",
-          "documentation":"<p>The maximum number of results to return at one time.</p>",
-          "location":"querystring",
-          "locationName":"maxResults"
+        "nextToken": {
+          "documentation": "<p>The token for the next set of results.</p>",
+          "location": "querystring",
+          "locationName": "nextToken",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListInputsResponse":{
-      "type":"structure",
-      "members":{
-        "inputSummaries":{
-          "shape":"InputSummaries",
-          "documentation":"<p>Summary information about the inputs.</p>"
+    "ListInputsResponse": {
+      "members": {
+        "inputSummaries": {
+          "documentation": "<p>Summary information about the inputs.</p>",
+          "shape": "InputSummaries"
         },
-        "nextToken":{
-          "shape":"NextToken",
-          "documentation":"<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>"
+        "nextToken": {
+          "documentation": "<p>A token to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>",
+          "shape": "NextToken"
         }
-      }
+      },
+      "type": "structure"
     },
-    "ListTagsForResourceRequest":{
-      "type":"structure",
-      "required":["resourceArn"],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the resource.</p>",
-          "location":"querystring",
-          "locationName":"resourceArn"
+    "ListTagsForResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource.</p>",
+          "location": "querystring",
+          "locationName": "resourceArn",
+          "shape": "AmazonResourceName"
         }
-      }
+      },
+      "required": [
+        "resourceArn"
+      ],
+      "type": "structure"
     },
-    "ListTagsForResourceResponse":{
-      "type":"structure",
-      "members":{
-        "tags":{
-          "shape":"Tags",
-          "documentation":"<p>The list of tags assigned to the resource.</p>"
+    "ListTagsForResourceResponse": {
+      "members": {
+        "tags": {
+          "documentation": "<p>The list of tags assigned to the resource.</p>",
+          "shape": "Tags"
         }
-      }
+      },
+      "type": "structure"
     },
-    "LoggingEnabled":{"type":"boolean"},
-    "LoggingLevel":{
-      "type":"string",
-      "enum":[
+    "LoggingEnabled": {
+      "type": "boolean"
+    },
+    "LoggingLevel": {
+      "enum": [
         "ERROR",
         "INFO",
         "DEBUG"
-      ]
+      ],
+      "type": "string"
     },
-    "LoggingOptions":{
-      "type":"structure",
-      "required":[
+    "LoggingOptions": {
+      "documentation": "<p>The values of the AWS IoT Events logging options.</p>",
+      "members": {
+        "detectorDebugOptions": {
+          "documentation": "<p>Information that identifies those detector models and their detectors (instances) for which the logging level is given.</p>",
+          "shape": "DetectorDebugOptions"
+        },
+        "enabled": {
+          "documentation": "<p>If TRUE, logging is enabled for AWS IoT Events.</p>",
+          "shape": "LoggingEnabled"
+        },
+        "level": {
+          "documentation": "<p>The logging level.</p>",
+          "shape": "LoggingLevel"
+        },
+        "roleArn": {
+          "documentation": "<p>The ARN of the role that grants permission to AWS IoT Events to perform logging.</p>",
+          "shape": "AmazonResourceName"
+        }
+      },
+      "required": [
         "roleArn",
         "level",
         "enabled"
       ],
-      "members":{
-        "roleArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the role that grants permission to AWS IoT Events to perform logging.</p>"
+      "type": "structure"
+    },
+    "MQTTTopic": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
+    },
+    "MaxResults": {
+      "max": 250,
+      "min": 1,
+      "type": "integer"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "OnEnterLifecycle": {
+      "documentation": "<p>When entering this state, perform these <code>actions</code> if the <code>condition</code> is TRUE.</p>",
+      "members": {
+        "events": {
+          "documentation": "<p>Specifies the actions that are performed when the state is entered and the <code>condition</code> is TRUE.</p>",
+          "shape": "Events"
+        }
+      },
+      "type": "structure"
+    },
+    "OnExitLifecycle": {
+      "documentation": "<p>When exiting this state, perform these <code>actions</code> if the specified <code>condition</code> is TRUE.</p>",
+      "members": {
+        "events": {
+          "documentation": "<p>Specifies the <code>actions</code> that are performed when the state is exited and the <code>condition</code> is TRUE.</p>",
+          "shape": "Events"
+        }
+      },
+      "type": "structure"
+    },
+    "OnInputLifecycle": {
+      "documentation": "<p>Specifies the actions performed when the <code>condition</code> evaluates to TRUE.</p>",
+      "members": {
+        "events": {
+          "documentation": "<p>Specifies the actions performed when the <code>condition</code> evaluates to TRUE.</p>",
+          "shape": "Events"
         },
-        "level":{
-          "shape":"LoggingLevel",
-          "documentation":"<p>The logging level.</p>"
+        "transitionEvents": {
+          "documentation": "<p>Specifies the actions performed, and the next state entered, when a <code>condition</code> evaluates to TRUE.</p>",
+          "shape": "TransitionEvents"
+        }
+      },
+      "type": "structure"
+    },
+    "PutLoggingOptionsRequest": {
+      "members": {
+        "loggingOptions": {
+          "documentation": "<p>The new values of the AWS IoT Events logging options.</p>",
+          "shape": "LoggingOptions"
+        }
+      },
+      "required": [
+        "loggingOptions"
+      ],
+      "type": "structure"
+    },
+    "QueueUrl": {
+      "type": "string"
+    },
+    "ResetTimerAction": {
+      "documentation": "<p>Information required to reset the timer. The timer is reset to the previously evaluated result of the duration. </p>",
+      "members": {
+        "timerName": {
+          "documentation": "<p>The name of the timer to reset.</p>",
+          "shape": "TimerName"
+        }
+      },
+      "required": [
+        "timerName"
+      ],
+      "type": "structure"
+    },
+    "ResourceAlreadyExistsException": {
+      "documentation": "<p>The resource already exists.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         },
-        "enabled":{
-          "shape":"LoggingEnabled",
-          "documentation":"<p>If TRUE, logging is enabled for AWS IoT Events.</p>"
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource.</p>",
+          "shape": "resourceArn"
         },
-        "detectorDebugOptions":{
-          "shape":"DetectorDebugOptions",
-          "documentation":"<p>Information that identifies those detector models and their detectors (instances) for which the logging level is given.</p>"
+        "resourceId": {
+          "documentation": "<p>The ID of the resource.</p>",
+          "shape": "resourceId"
         }
       },
-      "documentation":"<p>The values of the AWS IoT Events logging options.</p>"
+      "type": "structure"
     },
-    "MQTTTopic":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "MaxResults":{
-      "type":"integer",
-      "max":250,
-      "min":1
-    },
-    "NextToken":{"type":"string"},
-    "OnEnterLifecycle":{
-      "type":"structure",
-      "members":{
-        "events":{
-          "shape":"Events",
-          "documentation":"<p>Specifies the actions that are performed when the state is entered and the <code>condition</code> is TRUE.</p>"
+    "ResourceInUseException": {
+      "documentation": "<p>The resource is in use.</p>",
+      "error": {
+        "httpStatusCode": 409
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>When entering this state, perform these <code>actions</code> if the <code>condition</code> is TRUE.</p>"
+      "type": "structure"
     },
-    "OnExitLifecycle":{
-      "type":"structure",
-      "members":{
-        "events":{
-          "shape":"Events",
-          "documentation":"<p>Specifies the <code>actions</code> that are performed when the state is exited and the <code>condition</code> is TRUE.</p>"
+    "ResourceNotFoundException": {
+      "documentation": "<p>The resource was not found.</p>",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>When exiting this state, perform these <code>actions</code> if the specified <code>condition</code> is TRUE.</p>"
+      "type": "structure"
     },
-    "OnInputLifecycle":{
-      "type":"structure",
-      "members":{
-        "events":{
-          "shape":"Events",
-          "documentation":"<p>Specifies the actions performed when the <code>condition</code> evaluates to TRUE.</p>"
+    "SNSTopicPublishAction": {
+      "documentation": "<p>Information required to publish the Amazon SNS message.</p>",
+      "members": {
+        "targetArn": {
+          "documentation": "<p>The ARN of the Amazon SNS target where the message is sent.</p>",
+          "shape": "AmazonResourceName"
+        }
+      },
+      "required": [
+        "targetArn"
+      ],
+      "type": "structure"
+    },
+    "Seconds": {
+      "max": 31622400,
+      "min": 1,
+      "type": "integer"
+    },
+    "ServiceUnavailableException": {
+      "documentation": "<p>The service is currently unavailable.</p>",
+      "error": {
+        "httpStatusCode": 503
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
+        }
+      },
+      "type": "structure"
+    },
+    "SetTimerAction": {
+      "documentation": "<p>Information needed to set the timer.</p>",
+      "members": {
+        "durationExpression": {
+          "documentation": "<p>The duration of the timer, in seconds. You can use a string expression that includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as the duration. The range of the duration is 1-31622400 seconds. To ensure accuracy, the minimum duration is 60 seconds. The evaluated result of the duration is rounded down to the nearest whole number. </p>",
+          "shape": "VariableValue"
         },
-        "transitionEvents":{
-          "shape":"TransitionEvents",
-          "documentation":"<p>Specifies the actions performed, and the next state entered, when a <code>condition</code> evaluates to TRUE.</p>"
-        }
-      },
-      "documentation":"<p>Specifies the actions performed when the <code>condition</code> evaluates to TRUE.</p>"
-    },
-    "PutLoggingOptionsRequest":{
-      "type":"structure",
-      "required":["loggingOptions"],
-      "members":{
-        "loggingOptions":{
-          "shape":"LoggingOptions",
-          "documentation":"<p>The new values of the AWS IoT Events logging options.</p>"
-        }
-      }
-    },
-    "QueueUrl":{"type":"string"},
-    "ResetTimerAction":{
-      "type":"structure",
-      "required":["timerName"],
-      "members":{
-        "timerName":{
-          "shape":"TimerName",
-          "documentation":"<p>The name of the timer to reset.</p>"
-        }
-      },
-      "documentation":"<p>Information required to reset the timer. The timer is reset to the previously evaluated result of the duration. </p>"
-    },
-    "ResourceAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+        "seconds": {
+          "deprecated": true,
+          "deprecatedMessage": "seconds is deprecated. You can use durationExpression for SetTimerAction. The value of seconds can be used as a string expression for durationExpression.",
+          "documentation": "<p>The number of seconds until the timer expires. The minimum value is 60 seconds to ensure accuracy.</p>",
+          "shape": "Seconds"
         },
-        "resourceId":{
-          "shape":"resourceId",
-          "documentation":"<p>The ID of the resource.</p>"
+        "timerName": {
+          "documentation": "<p>The name of the timer.</p>",
+          "shape": "TimerName"
+        }
+      },
+      "required": [
+        "timerName"
+      ],
+      "type": "structure"
+    },
+    "SetVariableAction": {
+      "documentation": "<p>Information about the variable and its new value.</p>",
+      "members": {
+        "value": {
+          "documentation": "<p>The new value of the variable.</p>",
+          "shape": "VariableValue"
         },
-        "resourceArn":{
-          "shape":"resourceArn",
-          "documentation":"<p>The ARN of the resource.</p>"
+        "variableName": {
+          "documentation": "<p>The name of the variable.</p>",
+          "shape": "VariableName"
         }
       },
-      "documentation":"<p>The resource already exists.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
-    },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
-        }
-      },
-      "documentation":"<p>The resource is in use.</p>",
-      "error":{"httpStatusCode":409},
-      "exception":true
-    },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
-        }
-      },
-      "documentation":"<p>The resource was not found.</p>",
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "SNSTopicPublishAction":{
-      "type":"structure",
-      "required":["targetArn"],
-      "members":{
-        "targetArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the Amazon SNS target where the message is sent.</p>"
-        }
-      },
-      "documentation":"<p>Information required to publish the Amazon SNS message.</p>"
-    },
-    "Seconds":{
-      "type":"integer",
-      "max":31622400,
-      "min":1
-    },
-    "ServiceUnavailableException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
-        }
-      },
-      "documentation":"<p>The service is currently unavailable.</p>",
-      "error":{"httpStatusCode":503},
-      "exception":true,
-      "fault":true
-    },
-    "SetTimerAction":{
-      "type":"structure",
-      "required":["timerName"],
-      "members":{
-        "timerName":{
-          "shape":"TimerName",
-          "documentation":"<p>The name of the timer.</p>"
-        },
-        "seconds":{
-          "shape":"Seconds",
-          "documentation":"<p>The number of seconds until the timer expires. The minimum value is 60 seconds to ensure accuracy.</p>",
-          "deprecated":true,
-          "deprecatedMessage":"seconds is deprecated. You can use durationExpression for SetTimerAction. The value of seconds can be used as a string expression for durationExpression."
-        },
-        "durationExpression":{
-          "shape":"VariableValue",
-          "documentation":"<p>The duration of the timer, in seconds. You can use a string expression that includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as the duration. The range of the duration is 1-31622400 seconds. To ensure accuracy, the minimum duration is 60 seconds. The evaluated result of the duration is rounded down to the nearest whole number. </p>"
-        }
-      },
-      "documentation":"<p>Information needed to set the timer.</p>"
-    },
-    "SetVariableAction":{
-      "type":"structure",
-      "required":[
+      "required": [
         "variableName",
         "value"
       ],
-      "members":{
-        "variableName":{
-          "shape":"VariableName",
-          "documentation":"<p>The name of the variable.</p>"
+      "type": "structure"
+    },
+    "SqsAction": {
+      "documentation": "<p>Sends information about the detector model instance and the event that triggered the action to an Amazon SQS queue.</p>",
+      "members": {
+        "queueUrl": {
+          "documentation": "<p>The URL of the SQS queue where the data is written.</p>",
+          "shape": "QueueUrl"
         },
-        "value":{
-          "shape":"VariableValue",
-          "documentation":"<p>The new value of the variable.</p>"
+        "useBase64": {
+          "documentation": "<p>Set this to TRUE if you want the data to be base-64 encoded before it is written to the queue.</p>",
+          "shape": "UseBase64"
         }
       },
-      "documentation":"<p>Information about the variable and its new value.</p>"
+      "required": [
+        "queueUrl"
+      ],
+      "type": "structure"
     },
-    "SqsAction":{
-      "type":"structure",
-      "required":["queueUrl"],
-      "members":{
-        "queueUrl":{
-          "shape":"QueueUrl",
-          "documentation":"<p>The URL of the SQS queue where the data is written.</p>"
+    "State": {
+      "documentation": "<p>Information that defines a state of a detector.</p>",
+      "members": {
+        "onEnter": {
+          "documentation": "<p>When entering this state, perform these <code>actions</code> if the <code>condition</code> is TRUE.</p>",
+          "shape": "OnEnterLifecycle"
         },
-        "useBase64":{
-          "shape":"UseBase64",
-          "documentation":"<p>Set this to TRUE if you want the data to be base-64 encoded before it is written to the queue.</p>"
+        "onExit": {
+          "documentation": "<p>When exiting this state, perform these <code>actions</code> if the specified <code>condition</code> is TRUE.</p>",
+          "shape": "OnExitLifecycle"
+        },
+        "onInput": {
+          "documentation": "<p>When an input is received and the <code>condition</code> is TRUE, perform the specified <code>actions</code>.</p>",
+          "shape": "OnInputLifecycle"
+        },
+        "stateName": {
+          "documentation": "<p>The name of the state.</p>",
+          "shape": "StateName"
         }
       },
-      "documentation":"<p>Sends information about the detector model instance and the event that triggered the action to an Amazon SQS queue.</p>"
+      "required": [
+        "stateName"
+      ],
+      "type": "structure"
     },
-    "State":{
-      "type":"structure",
-      "required":["stateName"],
-      "members":{
-        "stateName":{
-          "shape":"StateName",
-          "documentation":"<p>The name of the state.</p>"
+    "StateName": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
+    },
+    "States": {
+      "member": {
+        "shape": "State"
+      },
+      "min": 1,
+      "type": "list"
+    },
+    "Tag": {
+      "documentation": "<p>Metadata that can be used to manage the resource.</p>",
+      "members": {
+        "key": {
+          "documentation": "<p>The tag's key.</p>",
+          "shape": "TagKey"
         },
-        "onInput":{
-          "shape":"OnInputLifecycle",
-          "documentation":"<p>When an input is received and the <code>condition</code> is TRUE, perform the specified <code>actions</code>.</p>"
-        },
-        "onEnter":{
-          "shape":"OnEnterLifecycle",
-          "documentation":"<p>When entering this state, perform these <code>actions</code> if the <code>condition</code> is TRUE.</p>"
-        },
-        "onExit":{
-          "shape":"OnExitLifecycle",
-          "documentation":"<p>When exiting this state, perform these <code>actions</code> if the specified <code>condition</code> is TRUE.</p>"
+        "value": {
+          "documentation": "<p>The tag's value.</p>",
+          "shape": "TagValue"
         }
       },
-      "documentation":"<p>Information that defines a state of a detector.</p>"
-    },
-    "StateName":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "States":{
-      "type":"list",
-      "member":{"shape":"State"},
-      "min":1
-    },
-    "Tag":{
-      "type":"structure",
-      "required":[
+      "required": [
         "key",
         "value"
       ],
-      "members":{
-        "key":{
-          "shape":"TagKey",
-          "documentation":"<p>The tag's key.</p>"
+      "type": "structure"
+    },
+    "TagKey": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
+    },
+    "TagKeys": {
+      "member": {
+        "shape": "TagKey"
+      },
+      "type": "list"
+    },
+    "TagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource.</p>",
+          "location": "querystring",
+          "locationName": "resourceArn",
+          "shape": "AmazonResourceName"
         },
-        "value":{
-          "shape":"TagValue",
-          "documentation":"<p>The tag's value.</p>"
+        "tags": {
+          "documentation": "<p>The new or modified tags for the resource.</p>",
+          "shape": "Tags"
         }
       },
-      "documentation":"<p>Metadata that can be used to manage the resource.</p>"
-    },
-    "TagKey":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "TagKeys":{
-      "type":"list",
-      "member":{"shape":"TagKey"}
-    },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "tags"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the resource.</p>",
-          "location":"querystring",
-          "locationName":"resourceArn"
-        },
-        "tags":{
-          "shape":"Tags",
-          "documentation":"<p>The new or modified tags for the resource.</p>"
-        }
-      }
+      "type": "structure"
     },
-    "TagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "TagResourceResponse": {
+      "members": {},
+      "type": "structure"
     },
-    "TagValue":{
-      "type":"string",
-      "max":256,
-      "min":0
+    "TagValue": {
+      "max": 256,
+      "min": 0,
+      "type": "string"
     },
-    "Tags":{
-      "type":"list",
-      "member":{"shape":"Tag"}
+    "Tags": {
+      "member": {
+        "shape": "Tag"
+      },
+      "type": "list"
     },
-    "ThrottlingException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+    "ThrottlingException": {
+      "documentation": "<p>The request could not be completed due to throttling.</p>",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>The request could not be completed due to throttling.</p>",
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "type": "structure"
     },
-    "TimerName":{
-      "type":"string",
-      "max":128,
-      "min":1
+    "TimerName": {
+      "max": 128,
+      "min": 1,
+      "type": "string"
     },
-    "Timestamp":{"type":"timestamp"},
-    "TransitionEvent":{
-      "type":"structure",
-      "required":[
+    "Timestamp": {
+      "type": "timestamp"
+    },
+    "TransitionEvent": {
+      "documentation": "<p>Specifies the actions performed and the next state entered when a <code>condition</code> evaluates to TRUE.</p>",
+      "members": {
+        "actions": {
+          "documentation": "<p>The actions to be performed.</p>",
+          "shape": "Actions"
+        },
+        "condition": {
+          "documentation": "<p>Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code> to be entered.</p>",
+          "shape": "Condition"
+        },
+        "eventName": {
+          "documentation": "<p>The name of the transition event.</p>",
+          "shape": "EventName"
+        },
+        "nextState": {
+          "documentation": "<p>The next state to enter.</p>",
+          "shape": "StateName"
+        }
+      },
+      "required": [
         "eventName",
         "condition",
         "nextState"
       ],
-      "members":{
-        "eventName":{
-          "shape":"EventName",
-          "documentation":"<p>The name of the transition event.</p>"
-        },
-        "condition":{
-          "shape":"Condition",
-          "documentation":"<p>Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code> to be entered.</p>"
-        },
-        "actions":{
-          "shape":"Actions",
-          "documentation":"<p>The actions to be performed.</p>"
-        },
-        "nextState":{
-          "shape":"StateName",
-          "documentation":"<p>The next state to enter.</p>"
+      "type": "structure"
+    },
+    "TransitionEvents": {
+      "member": {
+        "shape": "TransitionEvent"
+      },
+      "type": "list"
+    },
+    "UnsupportedOperationException": {
+      "documentation": "<p>The requested operation is not supported.</p>",
+      "error": {
+        "httpStatusCode": 501
+      },
+      "exception": true,
+      "fault": true,
+      "members": {
+        "message": {
+          "documentation": "<p>The message for the exception.</p>",
+          "shape": "errorMessage"
         }
       },
-      "documentation":"<p>Specifies the actions performed and the next state entered when a <code>condition</code> evaluates to TRUE.</p>"
+      "type": "structure"
     },
-    "TransitionEvents":{
-      "type":"list",
-      "member":{"shape":"TransitionEvent"}
-    },
-    "UnsupportedOperationException":{
-      "type":"structure",
-      "members":{
-        "message":{
-          "shape":"errorMessage",
-          "documentation":"<p>The message for the exception.</p>"
+    "UntagResourceRequest": {
+      "members": {
+        "resourceArn": {
+          "documentation": "<p>The ARN of the resource.</p>",
+          "location": "querystring",
+          "locationName": "resourceArn",
+          "shape": "AmazonResourceName"
+        },
+        "tagKeys": {
+          "documentation": "<p>A list of the keys of the tags to be removed from the resource.</p>",
+          "location": "querystring",
+          "locationName": "tagKeys",
+          "shape": "TagKeys"
         }
       },
-      "documentation":"<p>The requested operation is not supported.</p>",
-      "error":{"httpStatusCode":501},
-      "exception":true,
-      "fault":true
-    },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
+      "required": [
         "resourceArn",
         "tagKeys"
       ],
-      "members":{
-        "resourceArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the resource.</p>",
-          "location":"querystring",
-          "locationName":"resourceArn"
+      "type": "structure"
+    },
+    "UntagResourceResponse": {
+      "members": {},
+      "type": "structure"
+    },
+    "UpdateDetectorModelRequest": {
+      "members": {
+        "detectorModelDefinition": {
+          "documentation": "<p>Information that defines how a detector operates.</p>",
+          "shape": "DetectorModelDefinition"
         },
-        "tagKeys":{
-          "shape":"TagKeys",
-          "documentation":"<p>A list of the keys of the tags to be removed from the resource.</p>",
-          "location":"querystring",
-          "locationName":"tagKeys"
+        "detectorModelDescription": {
+          "documentation": "<p>A brief description of the detector model.</p>",
+          "shape": "DetectorModelDescription"
+        },
+        "detectorModelName": {
+          "documentation": "<p>The name of the detector model that is updated.</p>",
+          "location": "uri",
+          "locationName": "detectorModelName",
+          "shape": "DetectorModelName"
+        },
+        "evaluationMethod": {
+          "documentation": "<p>Information about the order in which events are evaluated and how actions are executed. </p>",
+          "shape": "EvaluationMethod"
+        },
+        "roleArn": {
+          "documentation": "<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>",
+          "shape": "AmazonResourceName"
         }
-      }
-    },
-    "UntagResourceResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "UpdateDetectorModelRequest":{
-      "type":"structure",
-      "required":[
+      },
+      "required": [
         "detectorModelName",
         "detectorModelDefinition",
         "roleArn"
       ],
-      "members":{
-        "detectorModelName":{
-          "shape":"DetectorModelName",
-          "documentation":"<p>The name of the detector model that is updated.</p>",
-          "location":"uri",
-          "locationName":"detectorModelName"
-        },
-        "detectorModelDefinition":{
-          "shape":"DetectorModelDefinition",
-          "documentation":"<p>Information that defines how a detector operates.</p>"
-        },
-        "detectorModelDescription":{
-          "shape":"DetectorModelDescription",
-          "documentation":"<p>A brief description of the detector model.</p>"
-        },
-        "roleArn":{
-          "shape":"AmazonResourceName",
-          "documentation":"<p>The ARN of the role that grants permission to AWS IoT Events to perform its operations.</p>"
-        },
-        "evaluationMethod":{
-          "shape":"EvaluationMethod",
-          "documentation":"<p>Information about the order in which events are evaluated and how actions are executed. </p>"
-        }
-      }
+      "type": "structure"
     },
-    "UpdateDetectorModelResponse":{
-      "type":"structure",
-      "members":{
-        "detectorModelConfiguration":{
-          "shape":"DetectorModelConfiguration",
-          "documentation":"<p>Information about how the detector model is configured.</p>"
+    "UpdateDetectorModelResponse": {
+      "members": {
+        "detectorModelConfiguration": {
+          "documentation": "<p>Information about how the detector model is configured.</p>",
+          "shape": "DetectorModelConfiguration"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateInputRequest":{
-      "type":"structure",
-      "required":[
+    "UpdateInputRequest": {
+      "members": {
+        "inputDefinition": {
+          "documentation": "<p>The definition of the input.</p>",
+          "shape": "InputDefinition"
+        },
+        "inputDescription": {
+          "documentation": "<p>A brief description of the input.</p>",
+          "shape": "InputDescription"
+        },
+        "inputName": {
+          "documentation": "<p>The name of the input you want to update.</p>",
+          "location": "uri",
+          "locationName": "inputName",
+          "shape": "InputName"
+        }
+      },
+      "required": [
         "inputName",
         "inputDefinition"
       ],
-      "members":{
-        "inputName":{
-          "shape":"InputName",
-          "documentation":"<p>The name of the input you want to update.</p>",
-          "location":"uri",
-          "locationName":"inputName"
-        },
-        "inputDescription":{
-          "shape":"InputDescription",
-          "documentation":"<p>A brief description of the input.</p>"
-        },
-        "inputDefinition":{
-          "shape":"InputDefinition",
-          "documentation":"<p>The definition of the input.</p>"
+      "type": "structure"
+    },
+    "UpdateInputResponse": {
+      "members": {
+        "inputConfiguration": {
+          "documentation": "<p>Information about the configuration of the input.</p>",
+          "shape": "InputConfiguration"
         }
-      }
+      },
+      "type": "structure"
     },
-    "UpdateInputResponse":{
-      "type":"structure",
-      "members":{
-        "inputConfiguration":{
-          "shape":"InputConfiguration",
-          "documentation":"<p>Information about the configuration of the input.</p>"
-        }
-      }
+    "UseBase64": {
+      "type": "boolean"
     },
-    "UseBase64":{"type":"boolean"},
-    "VariableName":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"^[a-zA-Z][a-zA-Z0-9_]*$"
+    "VariableName": {
+      "max": 128,
+      "min": 1,
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$",
+      "type": "string"
     },
-    "VariableValue":{
-      "type":"string",
-      "max":1024,
-      "min":1
+    "VariableValue": {
+      "max": 1024,
+      "min": 1,
+      "type": "string"
     },
-    "errorMessage":{"type":"string"},
-    "resourceArn":{"type":"string"},
-    "resourceId":{"type":"string"}
+    "errorMessage": {
+      "type": "string"
+    },
+    "resourceArn": {
+      "type": "string"
+    },
+    "resourceId": {
+      "type": "string"
+    }
   },
-  "documentation":"<p>AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and triggers actions when such events occur. You can use AWS IoT Events API commands to create, read, update, and delete inputs and detector models, and to list their versions.</p>"
+  "version": "2.0"
 }

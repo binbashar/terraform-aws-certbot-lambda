@@ -2,9 +2,6 @@
   "version": 2,
   "waiters": {
     "InstanceProfileExists": {
-      "delay": 1,
-      "operation": "GetInstanceProfile",
-      "maxAttempts": 40,
       "acceptors": [
         {
           "expected": 200,
@@ -12,62 +9,65 @@
           "state": "success"
         },
         {
-          "state": "retry",
+          "expected": 404,
           "matcher": "status",
-          "expected": 404
+          "state": "retry"
         }
-      ]
-    },
-    "UserExists": {
+      ],
       "delay": 1,
-      "operation": "GetUser",
-      "maxAttempts": 20,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "status",
-          "expected": 200
-        },
-        {
-          "state": "retry",
-          "matcher": "error",
-          "expected": "NoSuchEntity"
-        }
-      ]
-    },
-    "RoleExists": {
-      "delay": 1,
-      "operation": "GetRole",
-      "maxAttempts": 20,
-      "acceptors": [
-        {
-          "state": "success",
-          "matcher": "status",
-          "expected": 200
-        },
-        {
-          "state": "retry",
-          "matcher": "error",
-          "expected": "NoSuchEntity"
-        }
-      ]
+      "maxAttempts": 40,
+      "operation": "GetInstanceProfile"
     },
     "PolicyExists": {
-      "delay": 1,
-      "operation": "GetPolicy",
-      "maxAttempts": 20,
       "acceptors": [
         {
-          "state": "success",
+          "expected": 200,
           "matcher": "status",
-          "expected": 200
+          "state": "success"
         },
         {
-          "state": "retry",
+          "expected": "NoSuchEntity",
           "matcher": "error",
-          "expected": "NoSuchEntity"
+          "state": "retry"
         }
-      ]
+      ],
+      "delay": 1,
+      "maxAttempts": 20,
+      "operation": "GetPolicy"
+    },
+    "RoleExists": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "NoSuchEntity",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 1,
+      "maxAttempts": 20,
+      "operation": "GetRole"
+    },
+    "UserExists": {
+      "acceptors": [
+        {
+          "expected": 200,
+          "matcher": "status",
+          "state": "success"
+        },
+        {
+          "expected": "NoSuchEntity",
+          "matcher": "error",
+          "state": "retry"
+        }
+      ],
+      "delay": 1,
+      "maxAttempts": 20,
+      "operation": "GetUser"
     }
   }
 }

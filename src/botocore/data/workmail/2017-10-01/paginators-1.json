@@ -1,40 +1,22 @@
 {
   "pagination": {
-    "ListUsers": {
-      "result_key": "Users",
-      "output_token": "NextToken",
+    "ListAliases": {
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Aliases"
     },
     "ListGroupMembers": {
-      "result_key": "Members",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListOrganizations": {
-      "result_key": "OrganizationSummaries",
+      "limit_key": "MaxResults",
       "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "result_key": "Members"
     },
     "ListGroups": {
-      "result_key": "Groups",
-      "output_token": "NextToken",
       "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListResources": {
-      "result_key": "Resources",
+      "limit_key": "MaxResults",
       "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
-    },
-    "ListAliases": {
-      "result_key": "Aliases",
-      "output_token": "NextToken",
-      "input_token": "NextToken",
-      "limit_key": "MaxResults"
+      "result_key": "Groups"
     },
     "ListMailboxPermissions": {
       "input_token": "NextToken",
@@ -42,11 +24,29 @@
       "output_token": "NextToken",
       "result_key": "Permissions"
     },
+    "ListOrganizations": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "OrganizationSummaries"
+    },
     "ListResourceDelegates": {
       "input_token": "NextToken",
       "limit_key": "MaxResults",
       "output_token": "NextToken",
       "result_key": "Delegates"
+    },
+    "ListResources": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Resources"
+    },
+    "ListUsers": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken",
+      "result_key": "Users"
     }
   }
 }

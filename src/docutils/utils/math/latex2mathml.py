@@ -6,12 +6,12 @@
 #             Based on rst2mathml.py from the latex_math sandbox project
 #             © 2005 Jens Jørgen Mortensen
 # :License: Released under the terms of the `2-Clause BSD license`_, in short:
-# 
+#
 #    Copying and distribution of this file, with or without modification,
 #    are permitted in any medium without royalty provided the copyright
 #    notice and this notice are preserved.
 #    This file is offered as-is, without any warranty.
-# 
+#
 # .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause
 
 
@@ -560,12 +560,12 @@ def handle_keyword(name, node, string):
     return node, skip
 
 def tex2mathml(tex_math, inline=True):
-    """Return string with MathML code corresponding to `tex_math`. 
-    
+    """Return string with MathML code corresponding to `tex_math`.
+
     `inline`=True is for inline math and `inline`=False for displayed math.
     """
-    
+
     mathml_tree = parse_latex_math(tex_math, inline=inline)
     return ''.join(mathml_tree.xml())
 
-    
+

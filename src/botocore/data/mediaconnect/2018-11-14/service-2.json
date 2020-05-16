@@ -1,18 +1,49 @@
 {
+  "documentation": "API for AWS Elemental MediaConnect",
   "metadata": {
     "apiVersion": "2018-11-14",
     "endpointPrefix": "mediaconnect",
-    "signingName": "mediaconnect",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
     "serviceFullName": "AWS MediaConnect",
     "serviceId": "MediaConnect",
-    "protocol": "rest-json",
-    "jsonVersion": "1.1",
-    "uid": "mediaconnect-2018-11-14",
-    "signatureVersion": "v4"
+    "signatureVersion": "v4",
+    "signingName": "mediaconnect",
+    "uid": "mediaconnect-2018-11-14"
   },
   "operations": {
     "AddFlowOutputs": {
-      "name": "AddFlowOutputs",
+      "documentation": "Adds outputs to an existing flow. You can create up to 50 outputs per flow.",
+      "errors": [
+        {
+          "documentation": "AWS Elemental MediaConnect can't complete this request because this flow already has the maximum number of allowed outputs (50). For more information, contact AWS Customer Support.",
+          "shape": "AddFlowOutputs420Exception"
+        },
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/{flowArn}/outputs",
@@ -21,44 +52,40 @@
       "input": {
         "shape": "AddFlowOutputsRequest"
       },
+      "name": "AddFlowOutputs",
       "output": {
-        "shape": "AddFlowOutputsResponse",
-        "documentation": "AWS Elemental MediaConnect added the outputs successfully."
-      },
-      "errors": [
-        {
-          "shape": "AddFlowOutputs420Exception",
-          "documentation": "AWS Elemental MediaConnect can't complete this request because this flow already has the maximum number of allowed outputs (50). For more information, contact AWS Customer Support."
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Adds outputs to an existing flow. You can create up to 50 outputs per flow."
+        "documentation": "AWS Elemental MediaConnect added the outputs successfully.",
+        "shape": "AddFlowOutputsResponse"
+      }
     },
     "AddFlowSources": {
-      "name": "AddFlowSources",
+      "documentation": "Adds Sources to flow",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/{flowArn}/source",
@@ -67,40 +94,40 @@
       "input": {
         "shape": "AddFlowSourcesRequest"
       },
+      "name": "AddFlowSources",
       "output": {
-        "shape": "AddFlowSourcesResponse",
-        "documentation": "AWS Elemental MediaConnect added sources to the flow successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Adds Sources to flow"
+        "documentation": "AWS Elemental MediaConnect added sources to the flow successfully.",
+        "shape": "AddFlowSourcesResponse"
+      }
     },
     "AddFlowVpcInterfaces": {
-      "name": "AddFlowVpcInterfaces",
+      "documentation": "Adds VPC interfaces to flow",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/{flowArn}/vpcInterfaces",
@@ -109,40 +136,40 @@
       "input": {
         "shape": "AddFlowVpcInterfacesRequest"
       },
+      "name": "AddFlowVpcInterfaces",
       "output": {
-        "shape": "AddFlowVpcInterfacesResponse",
-        "documentation": "The following VPC interface was added to the Flow configuration."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Adds VPC interfaces to flow"
+        "documentation": "The following VPC interface was added to the Flow configuration.",
+        "shape": "AddFlowVpcInterfacesResponse"
+      }
     },
     "CreateFlow": {
-      "name": "CreateFlow",
+      "documentation": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).",
+      "errors": [
+        {
+          "documentation": "Your account already contains the maximum number of 20 flows per account, per Region. For more information, contact AWS Customer Support.",
+          "shape": "CreateFlow420Exception"
+        },
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows",
@@ -151,40 +178,40 @@
       "input": {
         "shape": "CreateFlowRequest"
       },
+      "name": "CreateFlow",
       "output": {
-        "shape": "CreateFlowResponse",
-        "documentation": "AWS Elemental MediaConnect created the new flow successfully."
-      },
-      "errors": [
-        {
-          "shape": "CreateFlow420Exception",
-          "documentation": "Your account already contains the maximum number of 20 flows per account, per Region. For more information, contact AWS Customer Support."
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50)."
+        "documentation": "AWS Elemental MediaConnect created the new flow successfully.",
+        "shape": "CreateFlowResponse"
+      }
     },
     "DeleteFlow": {
-      "name": "DeleteFlow",
+      "documentation": "Deletes a flow. Before you can delete a flow, you must stop the flow.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/flows/{flowArn}",
@@ -193,40 +220,40 @@
       "input": {
         "shape": "DeleteFlowRequest"
       },
+      "name": "DeleteFlow",
       "output": {
-        "shape": "DeleteFlowResponse",
-        "documentation": "AWS Elemental MediaConnect is deleting the flow."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Deletes a flow. Before you can delete a flow, you must stop the flow."
+        "documentation": "AWS Elemental MediaConnect is deleting the flow.",
+        "shape": "DeleteFlowResponse"
+      }
     },
     "DescribeFlow": {
-      "name": "DescribeFlow",
+      "documentation": "Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/flows/{flowArn}",
@@ -235,40 +262,44 @@
       "input": {
         "shape": "DescribeFlowRequest"
       },
+      "name": "DescribeFlow",
       "output": {
-        "shape": "DescribeFlowResponse",
-        "documentation": "AWS Elemental MediaConnect returned the flow details successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements."
+        "documentation": "AWS Elemental MediaConnect returned the flow details successfully.",
+        "shape": "DescribeFlowResponse"
+      }
     },
     "GrantFlowEntitlements": {
-      "name": "GrantFlowEntitlements",
+      "documentation": "Grants entitlements to an existing flow.",
+      "errors": [
+        {
+          "documentation": "AWS Elemental MediaConnect can't complete this request because this flow already has the maximum number of allowed entitlements (50). For more information, contact AWS Customer Support.",
+          "shape": "GrantFlowEntitlements420Exception"
+        },
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/{flowArn}/entitlements",
@@ -277,44 +308,32 @@
       "input": {
         "shape": "GrantFlowEntitlementsRequest"
       },
+      "name": "GrantFlowEntitlements",
       "output": {
-        "shape": "GrantFlowEntitlementsResponse",
-        "documentation": "AWS Elemental MediaConnect granted the entitlements successfully."
-      },
-      "errors": [
-        {
-          "shape": "GrantFlowEntitlements420Exception",
-          "documentation": "AWS Elemental MediaConnect can't complete this request because this flow already has the maximum number of allowed entitlements (50). For more information, contact AWS Customer Support."
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Grants entitlements to an existing flow."
+        "documentation": "AWS Elemental MediaConnect granted the entitlements successfully.",
+        "shape": "GrantFlowEntitlementsResponse"
+      }
     },
     "ListEntitlements": {
-      "name": "ListEntitlements",
+      "documentation": "Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.",
+      "errors": [
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/entitlements",
@@ -323,32 +342,32 @@
       "input": {
         "shape": "ListEntitlementsRequest"
       },
+      "name": "ListEntitlements",
       "output": {
-        "shape": "ListEntitlementsResponse",
-        "documentation": "AWS Elemental MediaConnect returned the list of entitlements successfully."
-      },
-      "errors": [
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        }
-      ],
-      "documentation": "Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page."
+        "documentation": "AWS Elemental MediaConnect returned the list of entitlements successfully.",
+        "shape": "ListEntitlementsResponse"
+      }
     },
     "ListFlows": {
-      "name": "ListFlows",
+      "documentation": "Displays a list of flows that are associated with this account. This request returns a paginated result.",
+      "errors": [
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/v1/flows",
@@ -357,32 +376,28 @@
       "input": {
         "shape": "ListFlowsRequest"
       },
+      "name": "ListFlows",
       "output": {
-        "shape": "ListFlowsResponse",
-        "documentation": "AWS Elemental MediaConnect returned the list of flows successfully."
-      },
-      "errors": [
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        }
-      ],
-      "documentation": "Displays a list of flows that are associated with this account. This request returns a paginated result."
+        "documentation": "AWS Elemental MediaConnect returned the list of flows successfully.",
+        "shape": "ListFlowsResponse"
+      }
     },
     "ListTagsForResource": {
-      "name": "ListTagsForResource",
+      "documentation": "List all tags on an AWS Elemental MediaConnect resource",
+      "errors": [
+        {
+          "documentation": "The requested resource was not found",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "The client performed an invalid request",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "Internal service error",
+          "shape": "InternalServerErrorException"
+        }
+      ],
       "http": {
         "method": "GET",
         "requestUri": "/tags/{resourceArn}",
@@ -391,28 +406,40 @@
       "input": {
         "shape": "ListTagsForResourceRequest"
       },
+      "name": "ListTagsForResource",
       "output": {
-        "shape": "ListTagsForResourceResponse",
-        "documentation": "The tags for the resource"
-      },
-      "errors": [
-        {
-          "shape": "NotFoundException",
-          "documentation": "The requested resource was not found"
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The client performed an invalid request"
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "Internal service error"
-        }
-      ],
-      "documentation": "List all tags on an AWS Elemental MediaConnect resource"
+        "documentation": "The tags for the resource",
+        "shape": "ListTagsForResourceResponse"
+      }
     },
     "RemoveFlowOutput": {
-      "name": "RemoveFlowOutput",
+      "documentation": "Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/flows/{flowArn}/outputs/{outputArn}",
@@ -421,40 +448,40 @@
       "input": {
         "shape": "RemoveFlowOutputRequest"
       },
+      "name": "RemoveFlowOutput",
       "output": {
-        "shape": "RemoveFlowOutputResponse",
-        "documentation": "output successfully removed from flow configuration."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output."
+        "documentation": "output successfully removed from flow configuration.",
+        "shape": "RemoveFlowOutputResponse"
+      }
     },
     "RemoveFlowSource": {
-      "name": "RemoveFlowSource",
+      "documentation": "Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/flows/{flowArn}/source/{sourceArn}",
@@ -463,40 +490,40 @@
       "input": {
         "shape": "RemoveFlowSourceRequest"
       },
+      "name": "RemoveFlowSource",
       "output": {
-        "shape": "RemoveFlowSourceResponse",
-        "documentation": "source successfully removed from flow configuration."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Removes a source from an existing flow. This request can be made only if there is more than one source on the flow."
+        "documentation": "source successfully removed from flow configuration.",
+        "shape": "RemoveFlowSourceResponse"
+      }
     },
     "RemoveFlowVpcInterface": {
-      "name": "RemoveFlowVpcInterface",
+      "documentation": "Removes a VPC Interface from an existing flow. This request can be made only on a VPC interface that does not have a Source or Output associated with it. If the VPC interface is referenced by a Source or Output, you must first delete or update the Source or Output to no longer reference the VPC interface.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/flows/{flowArn}/vpcInterfaces/{vpcInterfaceName}",
@@ -505,40 +532,40 @@
       "input": {
         "shape": "RemoveFlowVpcInterfaceRequest"
       },
+      "name": "RemoveFlowVpcInterface",
       "output": {
-        "shape": "RemoveFlowVpcInterfaceResponse",
-        "documentation": "VPC interface successfully removed from flow configuration."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Removes a VPC Interface from an existing flow. This request can be made only on a VPC interface that does not have a Source or Output associated with it. If the VPC interface is referenced by a Source or Output, you must first delete or update the Source or Output to no longer reference the VPC interface."
+        "documentation": "VPC interface successfully removed from flow configuration.",
+        "shape": "RemoveFlowVpcInterfaceResponse"
+      }
     },
     "RevokeFlowEntitlement": {
-      "name": "RevokeFlowEntitlement",
+      "documentation": "Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/v1/flows/{flowArn}/entitlements/{entitlementArn}",
@@ -547,40 +574,40 @@
       "input": {
         "shape": "RevokeFlowEntitlementRequest"
       },
+      "name": "RevokeFlowEntitlement",
       "output": {
-        "shape": "RevokeFlowEntitlementResponse",
-        "documentation": "AWS Elemental MediaConnect revoked the entitlement successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed."
+        "documentation": "AWS Elemental MediaConnect revoked the entitlement successfully.",
+        "shape": "RevokeFlowEntitlementResponse"
+      }
     },
     "StartFlow": {
-      "name": "StartFlow",
+      "documentation": "Starts a flow.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/start/{flowArn}",
@@ -589,40 +616,40 @@
       "input": {
         "shape": "StartFlowRequest"
       },
+      "name": "StartFlow",
       "output": {
-        "shape": "StartFlowResponse",
-        "documentation": "AWS Elemental MediaConnect is starting the flow."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Starts a flow."
+        "documentation": "AWS Elemental MediaConnect is starting the flow.",
+        "shape": "StartFlowResponse"
+      }
     },
     "StopFlow": {
-      "name": "StopFlow",
+      "documentation": "Stops a flow.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/v1/flows/stop/{flowArn}",
@@ -631,40 +658,28 @@
       "input": {
         "shape": "StopFlowRequest"
       },
+      "name": "StopFlow",
       "output": {
-        "shape": "StopFlowResponse",
-        "documentation": "AWS Elemental MediaConnect is stopping the flow."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Stops a flow."
+        "documentation": "AWS Elemental MediaConnect is stopping the flow.",
+        "shape": "StopFlowResponse"
+      }
     },
     "TagResource": {
-      "name": "TagResource",
+      "documentation": "Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.",
+      "errors": [
+        {
+          "documentation": "The requested resource was not found",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "The client performed an invalid request",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "Internal service error",
+          "shape": "InternalServerErrorException"
+        }
+      ],
       "http": {
         "method": "POST",
         "requestUri": "/tags/{resourceArn}",
@@ -673,24 +688,24 @@
       "input": {
         "shape": "TagResourceRequest"
       },
-      "errors": [
-        {
-          "shape": "NotFoundException",
-          "documentation": "The requested resource was not found"
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The client performed an invalid request"
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "Internal service error"
-        }
-      ],
-      "documentation": "Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well."
+      "name": "TagResource"
     },
     "UntagResource": {
-      "name": "UntagResource",
+      "documentation": "Deletes specified tags from a resource.",
+      "errors": [
+        {
+          "documentation": "The requested resource was not found",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "The client performed an invalid request",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "Internal service error",
+          "shape": "InternalServerErrorException"
+        }
+      ],
       "http": {
         "method": "DELETE",
         "requestUri": "/tags/{resourceArn}",
@@ -699,24 +714,36 @@
       "input": {
         "shape": "UntagResourceRequest"
       },
-      "errors": [
-        {
-          "shape": "NotFoundException",
-          "documentation": "The requested resource was not found"
-        },
-        {
-          "shape": "BadRequestException",
-          "documentation": "The client performed an invalid request"
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "Internal service error"
-        }
-      ],
-      "documentation": "Deletes specified tags from a resource."
+      "name": "UntagResource"
     },
     "UpdateFlow": {
-      "name": "UpdateFlow",
+      "documentation": "Updates flow",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "PUT",
         "requestUri": "/v1/flows/{flowArn}",
@@ -725,40 +752,40 @@
       "input": {
         "shape": "UpdateFlowRequest"
       },
+      "name": "UpdateFlow",
       "output": {
-        "shape": "UpdateFlowResponse",
-        "documentation": "AWS Elemental MediaConnect updated the flow successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Updates flow"
+        "documentation": "AWS Elemental MediaConnect updated the flow successfully.",
+        "shape": "UpdateFlowResponse"
+      }
     },
     "UpdateFlowEntitlement": {
-      "name": "UpdateFlowEntitlement",
+      "documentation": "You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "PUT",
         "requestUri": "/v1/flows/{flowArn}/entitlements/{entitlementArn}",
@@ -767,40 +794,40 @@
       "input": {
         "shape": "UpdateFlowEntitlementRequest"
       },
+      "name": "UpdateFlowEntitlement",
       "output": {
-        "shape": "UpdateFlowEntitlementResponse",
-        "documentation": "AWS Elemental MediaConnect updated the entitlement successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed."
+        "documentation": "AWS Elemental MediaConnect updated the entitlement successfully.",
+        "shape": "UpdateFlowEntitlementResponse"
+      }
     },
     "UpdateFlowOutput": {
-      "name": "UpdateFlowOutput",
+      "documentation": "Updates an existing flow output.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "PUT",
         "requestUri": "/v1/flows/{flowArn}/outputs/{outputArn}",
@@ -809,40 +836,40 @@
       "input": {
         "shape": "UpdateFlowOutputRequest"
       },
+      "name": "UpdateFlowOutput",
       "output": {
-        "shape": "UpdateFlowOutputResponse",
-        "documentation": "AWS Elemental MediaConnect updated the output successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Updates an existing flow output."
+        "documentation": "AWS Elemental MediaConnect updated the output successfully.",
+        "shape": "UpdateFlowOutputResponse"
+      }
     },
     "UpdateFlowSource": {
-      "name": "UpdateFlowSource",
+      "documentation": "Updates the source of a flow.",
+      "errors": [
+        {
+          "documentation": "The request that you submitted is not valid.",
+          "shape": "BadRequestException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition.",
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "documentation": "You don't have the required permissions to perform this operation.",
+          "shape": "ForbiddenException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request.",
+          "shape": "NotFoundException"
+        },
+        {
+          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later.",
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account.",
+          "shape": "TooManyRequestsException"
+        }
+      ],
       "http": {
         "method": "PUT",
         "requestUri": "/v1/flows/{flowArn}/source/{sourceArn}",
@@ -851,558 +878,531 @@
       "input": {
         "shape": "UpdateFlowSourceRequest"
       },
+      "name": "UpdateFlowSource",
       "output": {
-        "shape": "UpdateFlowSourceResponse",
-        "documentation": "AWS Elemental MediaConnect updated the flow successfully."
-      },
-      "errors": [
-        {
-          "shape": "BadRequestException",
-          "documentation": "The request that you submitted is not valid."
-        },
-        {
-          "shape": "InternalServerErrorException",
-          "documentation": "AWS Elemental MediaConnect can't fulfill your request because it encountered an unexpected condition."
-        },
-        {
-          "shape": "ForbiddenException",
-          "documentation": "You don't have the required permissions to perform this operation."
-        },
-        {
-          "shape": "NotFoundException",
-          "documentation": "AWS Elemental MediaConnect did not find the resource that you specified in the request."
-        },
-        {
-          "shape": "ServiceUnavailableException",
-          "documentation": "AWS Elemental MediaConnect is currently unavailable. Try again later."
-        },
-        {
-          "shape": "TooManyRequestsException",
-          "documentation": "You have exceeded the service request rate limit for your AWS Elemental MediaConnect account."
-        }
-      ],
-      "documentation": "Updates the source of a flow."
+        "documentation": "AWS Elemental MediaConnect updated the flow successfully.",
+        "shape": "UpdateFlowSourceResponse"
+      }
     }
   },
   "shapes": {
     "AddFlowOutputs420Exception": {
-      "type": "structure",
+      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 420
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
           "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
-      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 420
-      }
+      "type": "structure"
     },
     "AddFlowOutputsRequest": {
-      "type": "structure",
+      "documentation": "A request to add outputs to the specified flow.",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to add outputs to.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to add outputs to."
+          "shape": "__string"
         },
         "Outputs": {
-          "shape": "__listOfAddOutputRequest",
+          "documentation": "A list of outputs that you want to add.",
           "locationName": "outputs",
-          "documentation": "A list of outputs that you want to add."
+          "shape": "__listOfAddOutputRequest"
         }
       },
-      "documentation": "A request to add outputs to the specified flow.",
       "required": [
         "FlowArn",
         "Outputs"
-      ]
+      ],
+      "type": "structure"
     },
     "AddFlowOutputsResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that these outputs were added to.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that these outputs were added to."
+          "shape": "__string"
         },
         "Outputs": {
-          "shape": "__listOfOutput",
+          "documentation": "The details of the newly added outputs.",
           "locationName": "outputs",
-          "documentation": "The details of the newly added outputs."
-        }
-      }
-    },
-    "AddFlowSourcesRequest": {
-      "type": "structure",
-      "members": {
-        "FlowArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "flowArn",
-          "documentation": "The flow that you want to mutate."
-        },
-        "Sources": {
-          "shape": "__listOfSetSourceRequest",
-          "locationName": "sources",
-          "documentation": "A list of sources that you want to add."
+          "shape": "__listOfOutput"
         }
       },
+      "type": "structure"
+    },
+    "AddFlowSourcesRequest": {
       "documentation": "A request to add sources to the flow.",
+      "members": {
+        "FlowArn": {
+          "documentation": "The flow that you want to mutate.",
+          "location": "uri",
+          "locationName": "flowArn",
+          "shape": "__string"
+        },
+        "Sources": {
+          "documentation": "A list of sources that you want to add.",
+          "locationName": "sources",
+          "shape": "__listOfSetSourceRequest"
+        }
+      },
       "required": [
         "FlowArn",
         "Sources"
-      ]
+      ],
+      "type": "structure"
     },
     "AddFlowSourcesResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that these sources were added to.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that these sources were added to."
+          "shape": "__string"
         },
         "Sources": {
-          "shape": "__listOfSource",
+          "documentation": "The details of the newly added sources.",
           "locationName": "sources",
-          "documentation": "The details of the newly added sources."
-        }
-      }
-    },
-    "AddFlowVpcInterfacesRequest": {
-      "type": "structure",
-      "members": {
-        "FlowArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "flowArn",
-          "documentation": "The flow that you want to mutate."
-        },
-        "VpcInterfaces": {
-          "shape": "__listOfVpcInterfaceRequest",
-          "locationName": "vpcInterfaces",
-          "documentation": "A list of VPC interfaces that you want to add."
+          "shape": "__listOfSource"
         }
       },
+      "type": "structure"
+    },
+    "AddFlowVpcInterfacesRequest": {
       "documentation": "A request to add VPC interfaces to the flow.",
+      "members": {
+        "FlowArn": {
+          "documentation": "The flow that you want to mutate.",
+          "location": "uri",
+          "locationName": "flowArn",
+          "shape": "__string"
+        },
+        "VpcInterfaces": {
+          "documentation": "A list of VPC interfaces that you want to add.",
+          "locationName": "vpcInterfaces",
+          "shape": "__listOfVpcInterfaceRequest"
+        }
+      },
       "required": [
         "FlowArn",
         "VpcInterfaces"
-      ]
+      ],
+      "type": "structure"
     },
     "AddFlowVpcInterfacesResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that these VPC interfaces were added to.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that these VPC interfaces were added to."
+          "shape": "__string"
         },
         "VpcInterfaces": {
-          "shape": "__listOfVpcInterface",
+          "documentation": "The details of the newly added VPC interfaces.",
           "locationName": "vpcInterfaces",
-          "documentation": "The details of the newly added VPC interfaces."
-        }
-      }
-    },
-    "AddOutputRequest": {
-      "type": "structure",
-      "members": {
-        "CidrAllowList": {
-          "shape": "__listOf__string",
-          "locationName": "cidrAllowList",
-          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
-        },
-        "Description": {
-          "shape": "__string",
-          "locationName": "description",
-          "documentation": "A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user."
-        },
-        "Destination": {
-          "shape": "__string",
-          "locationName": "destination",
-          "documentation": "The IP address from which video will be sent to output destinations."
-        },
-        "Encryption": {
-          "shape": "Encryption",
-          "locationName": "encryption",
-          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key)."
-        },
-        "MaxLatency": {
-          "shape": "__integer",
-          "locationName": "maxLatency",
-          "documentation": "The maximum latency in milliseconds for Zixi-based streams."
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "The name of the output. This value must be unique within the current flow."
-        },
-        "Port": {
-          "shape": "__integer",
-          "locationName": "port",
-          "documentation": "The port to use when content is distributed to this output."
-        },
-        "Protocol": {
-          "shape": "Protocol",
-          "locationName": "protocol",
-          "documentation": "The protocol to use for the output."
-        },
-        "RemoteId": {
-          "shape": "__string",
-          "locationName": "remoteId",
-          "documentation": "The remote ID for the Zixi-pull output stream."
-        },
-        "SmoothingLatency": {
-          "shape": "__integer",
-          "locationName": "smoothingLatency",
-          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams."
-        },
-        "StreamId": {
-          "shape": "__string",
-          "locationName": "streamId",
-          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
+          "shape": "__listOfVpcInterface"
         }
       },
+      "type": "structure"
+    },
+    "AddOutputRequest": {
       "documentation": "The output that you want to add to this flow.",
+      "members": {
+        "CidrAllowList": {
+          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
+          "locationName": "cidrAllowList",
+          "shape": "__listOf__string"
+        },
+        "Description": {
+          "documentation": "A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.",
+          "locationName": "description",
+          "shape": "__string"
+        },
+        "Destination": {
+          "documentation": "The IP address from which video will be sent to output destinations.",
+          "locationName": "destination",
+          "shape": "__string"
+        },
+        "Encryption": {
+          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
+          "locationName": "encryption",
+          "shape": "Encryption"
+        },
+        "MaxLatency": {
+          "documentation": "The maximum latency in milliseconds for Zixi-based streams.",
+          "locationName": "maxLatency",
+          "shape": "__integer"
+        },
+        "Name": {
+          "documentation": "The name of the output. This value must be unique within the current flow.",
+          "locationName": "name",
+          "shape": "__string"
+        },
+        "Port": {
+          "documentation": "The port to use when content is distributed to this output.",
+          "locationName": "port",
+          "shape": "__integer"
+        },
+        "Protocol": {
+          "documentation": "The protocol to use for the output.",
+          "locationName": "protocol",
+          "shape": "Protocol"
+        },
+        "RemoteId": {
+          "documentation": "The remote ID for the Zixi-pull output stream.",
+          "locationName": "remoteId",
+          "shape": "__string"
+        },
+        "SmoothingLatency": {
+          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.",
+          "locationName": "smoothingLatency",
+          "shape": "__integer"
+        },
+        "StreamId": {
+          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
+          "locationName": "streamId",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Protocol"
-      ]
+      ],
+      "type": "structure"
     },
     "Algorithm": {
-      "type": "string",
       "enum": [
         "aes128",
         "aes192",
         "aes256"
-      ]
+      ],
+      "type": "string"
     },
     "BadRequestException": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
-        }
-      },
       "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
-      "required": [
-        "Message"
-      ],
-      "exception": true,
       "error": {
         "httpStatusCode": 400
-      }
-    },
-    "CreateFlow420Exception": {
-      "type": "structure",
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
           "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
-      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "required": [
         "Message"
       ],
-      "exception": true,
+      "type": "structure"
+    },
+    "CreateFlow420Exception": {
+      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "error": {
         "httpStatusCode": 420
-      }
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
+          "locationName": "message",
+          "shape": "__string"
+        }
+      },
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
     },
     "CreateFlowRequest": {
-      "type": "structure",
+      "documentation": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).",
       "members": {
         "AvailabilityZone": {
-          "shape": "__string",
+          "documentation": "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region.",
           "locationName": "availabilityZone",
-          "documentation": "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region."
+          "shape": "__string"
         },
         "Entitlements": {
-          "shape": "__listOfGrantEntitlementRequest",
+          "documentation": "The entitlements that you want to grant on a flow.",
           "locationName": "entitlements",
-          "documentation": "The entitlements that you want to grant on a flow."
+          "shape": "__listOfGrantEntitlementRequest"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the flow.",
           "locationName": "name",
-          "documentation": "The name of the flow."
+          "shape": "__string"
         },
         "Outputs": {
-          "shape": "__listOfAddOutputRequest",
+          "documentation": "The outputs that you want to add to this flow.",
           "locationName": "outputs",
-          "documentation": "The outputs that you want to add to this flow."
+          "shape": "__listOfAddOutputRequest"
         },
         "Source": {
-          "shape": "SetSourceRequest",
-          "locationName": "source"
+          "locationName": "source",
+          "shape": "SetSourceRequest"
         },
         "SourceFailoverConfig": {
-          "shape": "FailoverConfig",
-          "locationName": "sourceFailoverConfig"
+          "locationName": "sourceFailoverConfig",
+          "shape": "FailoverConfig"
         },
         "Sources": {
-          "shape": "__listOfSetSourceRequest",
-          "locationName": "sources"
+          "locationName": "sources",
+          "shape": "__listOfSetSourceRequest"
         },
         "VpcInterfaces": {
-          "shape": "__listOfVpcInterfaceRequest",
+          "documentation": "The VPC interfaces you want on the flow.",
           "locationName": "vpcInterfaces",
-          "documentation": "The VPC interfaces you want on the flow."
+          "shape": "__listOfVpcInterfaceRequest"
         }
       },
-      "documentation": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).",
       "required": [
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "CreateFlowResponse": {
-      "type": "structure",
       "members": {
         "Flow": {
-          "shape": "Flow",
-          "locationName": "flow"
+          "locationName": "flow",
+          "shape": "Flow"
         }
-      }
+      },
+      "type": "structure"
     },
     "DeleteFlowRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you want to delete.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you want to delete."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn"
-      ]
+      ],
+      "type": "structure"
     },
     "DeleteFlowResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that was deleted.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that was deleted."
+          "shape": "__string"
         },
         "Status": {
-          "shape": "Status",
+          "documentation": "The status of the flow when the DeleteFlow process begins.",
           "locationName": "status",
-          "documentation": "The status of the flow when the DeleteFlow process begins."
+          "shape": "Status"
         }
-      }
+      },
+      "type": "structure"
     },
     "DescribeFlowRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you want to describe.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you want to describe."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn"
-      ]
+      ],
+      "type": "structure"
     },
     "DescribeFlowResponse": {
-      "type": "structure",
       "members": {
         "Flow": {
-          "shape": "Flow",
-          "locationName": "flow"
+          "locationName": "flow",
+          "shape": "Flow"
         },
         "Messages": {
-          "shape": "Messages",
-          "locationName": "messages"
-        }
-      }
-    },
-    "Encryption": {
-      "type": "structure",
-      "members": {
-        "Algorithm": {
-          "shape": "Algorithm",
-          "locationName": "algorithm",
-          "documentation": "The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256)."
-        },
-        "ConstantInitializationVector": {
-          "shape": "__string",
-          "locationName": "constantInitializationVector",
-          "documentation": "A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption."
-        },
-        "DeviceId": {
-          "shape": "__string",
-          "locationName": "deviceId",
-          "documentation": "The value of one of the devices that you configured with your digital rights management (DRM) platform key provider. This parameter is required for SPEKE encryption and is not valid for static key encryption."
-        },
-        "KeyType": {
-          "shape": "KeyType",
-          "locationName": "keyType",
-          "documentation": "The type of key that is used for the encryption. If no keyType is provided, the service will use the default setting (static-key)."
-        },
-        "Region": {
-          "shape": "__string",
-          "locationName": "region",
-          "documentation": "The AWS Region that the API Gateway proxy endpoint was created in. This parameter is required for SPEKE encryption and is not valid for static key encryption."
-        },
-        "ResourceId": {
-          "shape": "__string",
-          "locationName": "resourceId",
-          "documentation": "An identifier for the content. The service sends this value to the key server to identify the current endpoint. The resource ID is also known as the content ID. This parameter is required for SPEKE encryption and is not valid for static key encryption."
-        },
-        "RoleArn": {
-          "shape": "__string",
-          "locationName": "roleArn",
-          "documentation": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity)."
-        },
-        "SecretArn": {
-          "shape": "__string",
-          "locationName": "secretArn",
-          "documentation": "The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption."
-        },
-        "Url": {
-          "shape": "__string",
-          "locationName": "url",
-          "documentation": "The URL from the API Gateway proxy that you set up to talk to your key server. This parameter is required for SPEKE encryption and is not valid for static key encryption."
+          "locationName": "messages",
+          "shape": "Messages"
         }
       },
+      "type": "structure"
+    },
+    "Encryption": {
       "documentation": "Information about the encryption of the flow.",
+      "members": {
+        "Algorithm": {
+          "documentation": "The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256).",
+          "locationName": "algorithm",
+          "shape": "Algorithm"
+        },
+        "ConstantInitializationVector": {
+          "documentation": "A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption.",
+          "locationName": "constantInitializationVector",
+          "shape": "__string"
+        },
+        "DeviceId": {
+          "documentation": "The value of one of the devices that you configured with your digital rights management (DRM) platform key provider. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "locationName": "deviceId",
+          "shape": "__string"
+        },
+        "KeyType": {
+          "documentation": "The type of key that is used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
+          "locationName": "keyType",
+          "shape": "KeyType"
+        },
+        "Region": {
+          "documentation": "The AWS Region that the API Gateway proxy endpoint was created in. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "locationName": "region",
+          "shape": "__string"
+        },
+        "ResourceId": {
+          "documentation": "An identifier for the content. The service sends this value to the key server to identify the current endpoint. The resource ID is also known as the content ID. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "locationName": "resourceId",
+          "shape": "__string"
+        },
+        "RoleArn": {
+          "documentation": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
+          "locationName": "roleArn",
+          "shape": "__string"
+        },
+        "SecretArn": {
+          "documentation": "The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
+          "locationName": "secretArn",
+          "shape": "__string"
+        },
+        "Url": {
+          "documentation": "The URL from the API Gateway proxy that you set up to talk to your key server. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "locationName": "url",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Algorithm",
         "RoleArn"
-      ]
+      ],
+      "type": "structure"
     },
     "Entitlement": {
-      "type": "structure",
+      "documentation": "The settings for a flow entitlement.",
       "members": {
         "DataTransferSubscriberFeePercent": {
-          "shape": "__integer",
+          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber.",
           "locationName": "dataTransferSubscriberFeePercent",
-          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
+          "shape": "__integer"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description of the entitlement.",
           "locationName": "description",
-          "documentation": "A description of the entitlement."
+          "shape": "__string"
         },
         "Encryption": {
-          "shape": "Encryption",
+          "documentation": "The type of encryption that will be used on the output that is associated with this entitlement.",
           "locationName": "encryption",
-          "documentation": "The type of encryption that will be used on the output that is associated with this entitlement."
+          "shape": "Encryption"
         },
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement.",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement."
+          "shape": "__string"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the entitlement.",
           "locationName": "name",
-          "documentation": "The name of the entitlement."
+          "shape": "__string"
         },
         "Subscribers": {
-          "shape": "__listOf__string",
+          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.",
           "locationName": "subscribers",
-          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source."
+          "shape": "__listOf__string"
         }
       },
-      "documentation": "The settings for a flow entitlement.",
       "required": [
         "EntitlementArn",
         "Subscribers",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "FailoverConfig": {
-      "type": "structure",
+      "documentation": "The settings for source failover",
       "members": {
         "RecoveryWindow": {
-          "shape": "__integer",
+          "documentation": "Search window time to look for dash-7 packets",
           "locationName": "recoveryWindow",
-          "documentation": "Search window time to look for dash-7 packets"
+          "shape": "__integer"
         },
         "State": {
-          "shape": "State",
-          "locationName": "state"
+          "locationName": "state",
+          "shape": "State"
         }
       },
-      "documentation": "The settings for source failover"
+      "type": "structure"
     },
     "Flow": {
-      "type": "structure",
+      "documentation": "The settings for a flow, including its source, outputs, and entitlements.",
       "members": {
         "AvailabilityZone": {
-          "shape": "__string",
+          "documentation": "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS.",
           "locationName": "availabilityZone",
-          "documentation": "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS."
+          "shape": "__string"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description of the flow. This value is not used or seen outside of the current AWS Elemental MediaConnect account.",
           "locationName": "description",
-          "documentation": "A description of the flow. This value is not used or seen outside of the current AWS Elemental MediaConnect account."
+          "shape": "__string"
         },
         "EgressIp": {
-          "shape": "__string",
+          "documentation": "The IP address from which video will be sent to output destinations.",
           "locationName": "egressIp",
-          "documentation": "The IP address from which video will be sent to output destinations."
+          "shape": "__string"
         },
         "Entitlements": {
-          "shape": "__listOfEntitlement",
+          "documentation": "The entitlements in this flow.",
           "locationName": "entitlements",
-          "documentation": "The entitlements in this flow."
+          "shape": "__listOfEntitlement"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow.",
           "locationName": "flowArn",
-          "documentation": "The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow."
+          "shape": "__string"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the flow.",
           "locationName": "name",
-          "documentation": "The name of the flow."
+          "shape": "__string"
         },
         "Outputs": {
-          "shape": "__listOfOutput",
+          "documentation": "The outputs in this flow.",
           "locationName": "outputs",
-          "documentation": "The outputs in this flow."
+          "shape": "__listOfOutput"
         },
         "Source": {
-          "shape": "Source",
-          "locationName": "source"
+          "locationName": "source",
+          "shape": "Source"
         },
         "SourceFailoverConfig": {
-          "shape": "FailoverConfig",
-          "locationName": "sourceFailoverConfig"
+          "locationName": "sourceFailoverConfig",
+          "shape": "FailoverConfig"
         },
         "Sources": {
-          "shape": "__listOfSource",
-          "locationName": "sources"
+          "locationName": "sources",
+          "shape": "__listOfSource"
         },
         "Status": {
-          "shape": "Status",
+          "documentation": "The current status of the flow.",
           "locationName": "status",
-          "documentation": "The current status of the flow."
+          "shape": "Status"
         },
         "VpcInterfaces": {
-          "shape": "__listOfVpcInterface",
+          "documentation": "The VPC Interfaces for this flow.",
           "locationName": "vpcInterfaces",
-          "documentation": "The VPC Interfaces for this flow."
+          "shape": "__listOfVpcInterface"
         }
       },
-      "documentation": "The settings for a flow, including its source, outputs, and entitlements.",
       "required": [
         "Status",
         "Entitlements",
@@ -1411,287 +1411,287 @@
         "FlowArn",
         "Source",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "ForbiddenException": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
-        }
-      },
       "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
-      "required": [
-        "Message"
-      ],
-      "exception": true,
       "error": {
         "httpStatusCode": 403
-      }
-    },
-    "GrantEntitlementRequest": {
-      "type": "structure",
-      "members": {
-        "DataTransferSubscriberFeePercent": {
-          "shape": "__integer",
-          "locationName": "dataTransferSubscriberFeePercent",
-          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
-        },
-        "Description": {
-          "shape": "__string",
-          "locationName": "description",
-          "documentation": "A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user."
-        },
-        "Encryption": {
-          "shape": "Encryption",
-          "locationName": "encryption",
-          "documentation": "The type of encryption that will be used on the output that is associated with this entitlement."
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "The name of the entitlement. This value must be unique within the current flow."
-        },
-        "Subscribers": {
-          "shape": "__listOf__string",
-          "locationName": "subscribers",
-          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flows using your content as the source."
-        }
       },
-      "documentation": "The entitlements that you want to grant on a flow.",
-      "required": [
-        "Subscribers"
-      ]
-    },
-    "GrantFlowEntitlements420Exception": {
-      "type": "structure",
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
           "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
-      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 420
-      }
+      "type": "structure"
     },
-    "GrantFlowEntitlementsRequest": {
-      "type": "structure",
+    "GrantEntitlementRequest": {
+      "documentation": "The entitlements that you want to grant on a flow.",
       "members": {
-        "Entitlements": {
-          "shape": "__listOfGrantEntitlementRequest",
-          "locationName": "entitlements",
-          "documentation": "The list of entitlements that you want to grant."
+        "DataTransferSubscriberFeePercent": {
+          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber.",
+          "locationName": "dataTransferSubscriberFeePercent",
+          "shape": "__integer"
         },
-        "FlowArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "flowArn",
-          "documentation": "The flow that you want to grant entitlements on."
+        "Description": {
+          "documentation": "A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.",
+          "locationName": "description",
+          "shape": "__string"
+        },
+        "Encryption": {
+          "documentation": "The type of encryption that will be used on the output that is associated with this entitlement.",
+          "locationName": "encryption",
+          "shape": "Encryption"
+        },
+        "Name": {
+          "documentation": "The name of the entitlement. This value must be unique within the current flow.",
+          "locationName": "name",
+          "shape": "__string"
+        },
+        "Subscribers": {
+          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flows using your content as the source.",
+          "locationName": "subscribers",
+          "shape": "__listOf__string"
         }
       },
+      "required": [
+        "Subscribers"
+      ],
+      "type": "structure"
+    },
+    "GrantFlowEntitlements420Exception": {
+      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 420
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
+          "locationName": "message",
+          "shape": "__string"
+        }
+      },
+      "required": [
+        "Message"
+      ],
+      "type": "structure"
+    },
+    "GrantFlowEntitlementsRequest": {
       "documentation": "A request to grant entitlements on a flow.",
+      "members": {
+        "Entitlements": {
+          "documentation": "The list of entitlements that you want to grant.",
+          "locationName": "entitlements",
+          "shape": "__listOfGrantEntitlementRequest"
+        },
+        "FlowArn": {
+          "documentation": "The flow that you want to grant entitlements on.",
+          "location": "uri",
+          "locationName": "flowArn",
+          "shape": "__string"
+        }
+      },
       "required": [
         "FlowArn",
         "Entitlements"
-      ]
+      ],
+      "type": "structure"
     },
     "GrantFlowEntitlementsResponse": {
-      "type": "structure",
       "members": {
         "Entitlements": {
-          "shape": "__listOfEntitlement",
+          "documentation": "The entitlements that were just granted.",
           "locationName": "entitlements",
-          "documentation": "The entitlements that were just granted."
+          "shape": "__listOfEntitlement"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that these entitlements were granted to.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that these entitlements were granted to."
-        }
-      }
-    },
-    "InternalServerErrorException": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
+      "type": "structure"
+    },
+    "InternalServerErrorException": {
       "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 500
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
+          "locationName": "message",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 500
-      }
+      "type": "structure"
     },
     "KeyType": {
-      "type": "string",
       "enum": [
         "speke",
         "static-key"
-      ]
+      ],
+      "type": "string"
     },
     "ListEntitlementsRequest": {
-      "type": "structure",
       "members": {
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "The maximum number of results to return per API request. For example, you submit a ListEntitlements request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 20 results per page.",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "The maximum number of results to return per API request. For example, you submit a ListEntitlements request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 20 results per page."
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListEntitlements request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListEntitlements request a second time and specify the NextToken value.",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListEntitlements request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListEntitlements request a second time and specify the NextToken value."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListEntitlementsResponse": {
-      "type": "structure",
       "members": {
         "Entitlements": {
-          "shape": "__listOfListedEntitlement",
+          "documentation": "A list of entitlements that have been granted to you from other AWS accounts.",
           "locationName": "entitlements",
-          "documentation": "A list of entitlements that have been granted to you from other AWS accounts."
+          "shape": "__listOfListedEntitlement"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListEntitlements request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListEntitlements request a second time and specify the NextToken value.",
           "locationName": "nextToken",
-          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListEntitlements request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListEntitlements request a second time and specify the NextToken value."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListFlowsRequest": {
-      "type": "structure",
       "members": {
         "MaxResults": {
-          "shape": "MaxResults",
+          "documentation": "The maximum number of results to return per API request. For example, you submit a ListFlows request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.",
           "location": "querystring",
           "locationName": "maxResults",
-          "documentation": "The maximum number of results to return per API request. For example, you submit a ListFlows request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page."
+          "shape": "MaxResults"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListFlows request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFlows request a second time and specify the NextToken value.",
           "location": "querystring",
           "locationName": "nextToken",
-          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListFlows request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFlows request a second time and specify the NextToken value."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListFlowsResponse": {
-      "type": "structure",
       "members": {
         "Flows": {
-          "shape": "__listOfListedFlow",
+          "documentation": "A list of flow summaries.",
           "locationName": "flows",
-          "documentation": "A list of flow summaries."
+          "shape": "__listOfListedFlow"
         },
         "NextToken": {
-          "shape": "__string",
+          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListFlows request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFlows request a second time and specify the NextToken value.",
           "locationName": "nextToken",
-          "documentation": "The token that identifies which batch of results that you want to see. For example, you submit a ListFlows request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFlows request a second time and specify the NextToken value."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "ListTagsForResourceRequest": {
-      "type": "structure",
       "members": {
         "ResourceArn": {
-          "shape": "__string",
+          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.",
           "location": "uri",
           "locationName": "resourceArn",
-          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags."
+          "shape": "__string"
         }
       },
       "required": [
         "ResourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "ListTagsForResourceResponse": {
-      "type": "structure",
       "members": {
         "Tags": {
-          "shape": "__mapOf__string",
+          "documentation": "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
           "locationName": "tags",
-          "documentation": "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters."
-        }
-      }
-    },
-    "ListedEntitlement": {
-      "type": "structure",
-      "members": {
-        "DataTransferSubscriberFeePercent": {
-          "shape": "__integer",
-          "locationName": "dataTransferSubscriberFeePercent",
-          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
-        },
-        "EntitlementArn": {
-          "shape": "__string",
-          "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement."
-        },
-        "EntitlementName": {
-          "shape": "__string",
-          "locationName": "entitlementName",
-          "documentation": "The name of the entitlement."
+          "shape": "__mapOf__string"
         }
       },
+      "type": "structure"
+    },
+    "ListedEntitlement": {
       "documentation": "An entitlement that has been granted to you from other AWS accounts.",
+      "members": {
+        "DataTransferSubscriberFeePercent": {
+          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber.",
+          "locationName": "dataTransferSubscriberFeePercent",
+          "shape": "__integer"
+        },
+        "EntitlementArn": {
+          "documentation": "The ARN of the entitlement.",
+          "locationName": "entitlementArn",
+          "shape": "__string"
+        },
+        "EntitlementName": {
+          "documentation": "The name of the entitlement.",
+          "locationName": "entitlementName",
+          "shape": "__string"
+        }
+      },
       "required": [
         "EntitlementArn",
         "EntitlementName"
-      ]
+      ],
+      "type": "structure"
     },
     "ListedFlow": {
-      "type": "structure",
+      "documentation": "Provides a summary of a flow, including its ARN, Availability Zone, and source type.",
       "members": {
         "AvailabilityZone": {
-          "shape": "__string",
+          "documentation": "The Availability Zone that the flow was created in.",
           "locationName": "availabilityZone",
-          "documentation": "The Availability Zone that the flow was created in."
+          "shape": "__string"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description of the flow.",
           "locationName": "description",
-          "documentation": "A description of the flow."
+          "shape": "__string"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow."
+          "shape": "__string"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the flow.",
           "locationName": "name",
-          "documentation": "The name of the flow."
+          "shape": "__string"
         },
         "SourceType": {
-          "shape": "SourceType",
+          "documentation": "The type of source. This value is either owned (originated somewhere other than an AWS Elemental MediaConnect flow owned by another AWS account) or entitled (originated at an AWS Elemental MediaConnect flow owned by another AWS account).",
           "locationName": "sourceType",
-          "documentation": "The type of source. This value is either owned (originated somewhere other than an AWS Elemental MediaConnect flow owned by another AWS account) or entitled (originated at an AWS Elemental MediaConnect flow owned by another AWS account)."
+          "shape": "SourceType"
         },
         "Status": {
-          "shape": "Status",
+          "documentation": "The current status of the flow.",
           "locationName": "status",
-          "documentation": "The current status of the flow."
+          "shape": "Status"
         }
       },
-      "documentation": "Provides a summary of a flow, including its ARN, Availability Zone, and source type.",
       "required": [
         "Status",
         "Description",
@@ -1699,467 +1699,467 @@
         "AvailabilityZone",
         "FlowArn",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "MaxResults": {
-      "type": "integer",
+      "max": 1000,
       "min": 1,
-      "max": 1000
+      "type": "integer"
     },
     "Messages": {
-      "type": "structure",
+      "documentation": "Messages that provide the state of the flow.",
       "members": {
         "Errors": {
-          "shape": "__listOf__string",
+          "documentation": "A list of errors that might have been generated from processes on this flow.",
           "locationName": "errors",
-          "documentation": "A list of errors that might have been generated from processes on this flow."
+          "shape": "__listOf__string"
         }
       },
-      "documentation": "Messages that provide the state of the flow.",
       "required": [
         "Errors"
-      ]
+      ],
+      "type": "structure"
     },
     "NotFoundException": {
-      "type": "structure",
+      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 404
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
           "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
-      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 404
-      }
+      "type": "structure"
     },
     "Output": {
-      "type": "structure",
+      "documentation": "The settings for an output.",
       "members": {
         "DataTransferSubscriberFeePercent": {
-          "shape": "__integer",
+          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber.",
           "locationName": "dataTransferSubscriberFeePercent",
-          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
+          "shape": "__integer"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description of the output.",
           "locationName": "description",
-          "documentation": "A description of the output."
+          "shape": "__string"
         },
         "Destination": {
-          "shape": "__string",
+          "documentation": "The address where you want to send the output.",
           "locationName": "destination",
-          "documentation": "The address where you want to send the output."
+          "shape": "__string"
         },
         "Encryption": {
-          "shape": "Encryption",
+          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
           "locationName": "encryption",
-          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key)."
+          "shape": "Encryption"
         },
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement on the originator''s flow. This value is relevant only on entitled flows.",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement on the originator''s flow. This value is relevant only on entitled flows."
+          "shape": "__string"
         },
         "MediaLiveInputArn": {
-          "shape": "__string",
+          "documentation": "The input ARN of the AWS Elemental MediaLive channel. This parameter is relevant only for outputs that were added by creating a MediaLive input.",
           "locationName": "mediaLiveInputArn",
-          "documentation": "The input ARN of the AWS Elemental MediaLive channel. This parameter is relevant only for outputs that were added by creating a MediaLive input."
+          "shape": "__string"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the output. This value must be unique within the current flow.",
           "locationName": "name",
-          "documentation": "The name of the output. This value must be unique within the current flow."
+          "shape": "__string"
         },
         "OutputArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the output.",
           "locationName": "outputArn",
-          "documentation": "The ARN of the output."
+          "shape": "__string"
         },
         "Port": {
-          "shape": "__integer",
+          "documentation": "The port to use when content is distributed to this output.",
           "locationName": "port",
-          "documentation": "The port to use when content is distributed to this output."
+          "shape": "__integer"
         },
         "Transport": {
-          "shape": "Transport",
+          "documentation": "Attributes related to the transport stream that are used in the output.",
           "locationName": "transport",
-          "documentation": "Attributes related to the transport stream that are used in the output."
+          "shape": "Transport"
         }
       },
-      "documentation": "The settings for an output.",
       "required": [
         "OutputArn",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "Protocol": {
-      "type": "string",
       "enum": [
         "zixi-push",
         "rtp-fec",
         "rtp",
         "zixi-pull",
         "rist"
-      ]
+      ],
+      "type": "string"
     },
     "RemoveFlowOutputRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to remove an output from.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to remove an output from."
+          "shape": "__string"
         },
         "OutputArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the output that you want to remove.",
           "location": "uri",
           "locationName": "outputArn",
-          "documentation": "The ARN of the output that you want to remove."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn",
         "OutputArn"
-      ]
+      ],
+      "type": "structure"
     },
     "RemoveFlowOutputResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that is associated with the output you removed.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that is associated with the output you removed."
+          "shape": "__string"
         },
         "OutputArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the output that was removed.",
           "locationName": "outputArn",
-          "documentation": "The ARN of the output that was removed."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "RemoveFlowSourceRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to remove a source from.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to remove a source from."
+          "shape": "__string"
         },
         "SourceArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the source that you want to remove.",
           "location": "uri",
           "locationName": "sourceArn",
-          "documentation": "The ARN of the source that you want to remove."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn",
         "SourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "RemoveFlowSourceResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that is associated with the source you removed.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that is associated with the source you removed."
+          "shape": "__string"
         },
         "SourceArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the source that was removed.",
           "locationName": "sourceArn",
-          "documentation": "The ARN of the source that was removed."
+          "shape": "__string"
         }
-      }
+      },
+      "type": "structure"
     },
     "RemoveFlowVpcInterfaceRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to remove a VPC interface from.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to remove a VPC interface from."
+          "shape": "__string"
         },
         "VpcInterfaceName": {
-          "shape": "__string",
+          "documentation": "The name of the VPC interface that you want to remove.",
           "location": "uri",
           "locationName": "vpcInterfaceName",
-          "documentation": "The name of the VPC interface that you want to remove."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn",
         "VpcInterfaceName"
-      ]
+      ],
+      "type": "structure"
     },
     "RemoveFlowVpcInterfaceResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that is associated with the VPC interface you removed.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that is associated with the VPC interface you removed."
+          "shape": "__string"
         },
         "NonDeletedNetworkInterfaceIds": {
-          "shape": "__listOf__string",
+          "documentation": "IDs of network interfaces associated with the removed VPC interface that Media Connect was unable to remove.",
           "locationName": "nonDeletedNetworkInterfaceIds",
-          "documentation": "IDs of network interfaces associated with the removed VPC interface that Media Connect was unable to remove."
+          "shape": "__listOf__string"
         },
         "VpcInterfaceName": {
-          "shape": "__string",
+          "documentation": "The name of the VPC interface that was removed.",
           "locationName": "vpcInterfaceName",
-          "documentation": "The name of the VPC interface that was removed."
-        }
-      }
-    },
-    "ResponseError": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
+      "type": "structure"
+    },
+    "ResponseError": {
       "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "members": {
+        "Message": {
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
+          "locationName": "message",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Message"
-      ]
+      ],
+      "type": "structure"
     },
     "RevokeFlowEntitlementRequest": {
-      "type": "structure",
       "members": {
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement that you want to revoke.",
           "location": "uri",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that you want to revoke."
+          "shape": "__string"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to revoke an entitlement from.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to revoke an entitlement from."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn",
         "EntitlementArn"
-      ]
+      ],
+      "type": "structure"
     },
     "RevokeFlowEntitlementResponse": {
-      "type": "structure",
       "members": {
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement that was revoked.",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that was revoked."
+          "shape": "__string"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that the entitlement was revoked from.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that the entitlement was revoked from."
-        }
-      }
-    },
-    "ServiceUnavailableException": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "shape": "__string",
-          "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
+      "type": "structure"
+    },
+    "ServiceUnavailableException": {
       "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 503
+      },
+      "exception": true,
+      "members": {
+        "Message": {
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
+          "locationName": "message",
+          "shape": "__string"
+        }
+      },
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 503
-      }
+      "type": "structure"
     },
     "SetSourceRequest": {
-      "type": "structure",
+      "documentation": "The settings for the source of the flow.",
       "members": {
         "Decryption": {
-          "shape": "Encryption",
+          "documentation": "The type of encryption that is used on the content ingested from this source.",
           "locationName": "decryption",
-          "documentation": "The type of encryption that is used on the content ingested from this source."
+          "shape": "Encryption"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.",
           "locationName": "description",
-          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account."
+          "shape": "__string"
         },
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow.",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow."
+          "shape": "__string"
         },
         "IngestPort": {
-          "shape": "__integer",
+          "documentation": "The port that the flow will be listening on for incoming content.",
           "locationName": "ingestPort",
-          "documentation": "The port that the flow will be listening on for incoming content."
+          "shape": "__integer"
         },
         "MaxBitrate": {
-          "shape": "__integer",
+          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.",
           "locationName": "maxBitrate",
-          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams."
+          "shape": "__integer"
         },
         "MaxLatency": {
-          "shape": "__integer",
+          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.",
           "locationName": "maxLatency",
-          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams."
+          "shape": "__integer"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the source.",
           "locationName": "name",
-          "documentation": "The name of the source."
+          "shape": "__string"
         },
         "Protocol": {
-          "shape": "Protocol",
+          "documentation": "The protocol that is used by the source.",
           "locationName": "protocol",
-          "documentation": "The protocol that is used by the source."
+          "shape": "Protocol"
         },
         "StreamId": {
-          "shape": "__string",
+          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
           "locationName": "streamId",
-          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
+          "shape": "__string"
         },
         "VpcInterfaceName": {
-          "shape": "__string",
+          "documentation": "The name of the VPC interface to use for this source.",
           "locationName": "vpcInterfaceName",
-          "documentation": "The name of the VPC interface to use for this source."
+          "shape": "__string"
         },
         "WhitelistCidr": {
-          "shape": "__string",
+          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
           "locationName": "whitelistCidr",
-          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
+          "shape": "__string"
         }
       },
-      "documentation": "The settings for the source of the flow."
+      "type": "structure"
     },
     "Source": {
-      "type": "structure",
+      "documentation": "The settings for the source of the flow.",
       "members": {
         "DataTransferSubscriberFeePercent": {
-          "shape": "__integer",
+          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber.",
           "locationName": "dataTransferSubscriberFeePercent",
-          "documentation": "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
+          "shape": "__integer"
         },
         "Decryption": {
-          "shape": "Encryption",
+          "documentation": "The type of encryption that is used on the content ingested from this source.",
           "locationName": "decryption",
-          "documentation": "The type of encryption that is used on the content ingested from this source."
+          "shape": "Encryption"
         },
         "Description": {
-          "shape": "__string",
+          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.",
           "locationName": "description",
-          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account."
+          "shape": "__string"
         },
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow.",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow."
+          "shape": "__string"
         },
         "IngestIp": {
-          "shape": "__string",
+          "documentation": "The IP address that the flow will be listening on for incoming content.",
           "locationName": "ingestIp",
-          "documentation": "The IP address that the flow will be listening on for incoming content."
+          "shape": "__string"
         },
         "IngestPort": {
-          "shape": "__integer",
+          "documentation": "The port that the flow will be listening on for incoming content.",
           "locationName": "ingestPort",
-          "documentation": "The port that the flow will be listening on for incoming content."
+          "shape": "__integer"
         },
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the source.",
           "locationName": "name",
-          "documentation": "The name of the source."
+          "shape": "__string"
         },
         "SourceArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the source.",
           "locationName": "sourceArn",
-          "documentation": "The ARN of the source."
+          "shape": "__string"
         },
         "Transport": {
-          "shape": "Transport",
+          "documentation": "Attributes related to the transport stream that are used in the source.",
           "locationName": "transport",
-          "documentation": "Attributes related to the transport stream that are used in the source."
+          "shape": "Transport"
         },
         "VpcInterfaceName": {
-          "shape": "__string",
+          "documentation": "The name of the VPC Interface this Source is configured with.",
           "locationName": "vpcInterfaceName",
-          "documentation": "The name of the VPC Interface this Source is configured with."
+          "shape": "__string"
         },
         "WhitelistCidr": {
-          "shape": "__string",
+          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
           "locationName": "whitelistCidr",
-          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
+          "shape": "__string"
         }
       },
-      "documentation": "The settings for the source of the flow.",
       "required": [
         "SourceArn",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "SourceType": {
-      "type": "string",
       "enum": [
         "OWNED",
         "ENTITLED"
-      ]
+      ],
+      "type": "string"
     },
     "StartFlowRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you want to start.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you want to start."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn"
-      ]
+      ],
+      "type": "structure"
     },
     "StartFlowResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you started.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you started."
+          "shape": "__string"
         },
         "Status": {
-          "shape": "Status",
+          "documentation": "The status of the flow when the StartFlow process begins.",
           "locationName": "status",
-          "documentation": "The status of the flow when the StartFlow process begins."
+          "shape": "Status"
         }
-      }
+      },
+      "type": "structure"
     },
     "State": {
-      "type": "string",
       "enum": [
         "ENABLED",
         "DISABLED"
-      ]
+      ],
+      "type": "string"
     },
     "Status": {
-      "type": "string",
       "enum": [
         "STANDBY",
         "ACTIVE",
@@ -2168,528 +2168,529 @@
         "STARTING",
         "STOPPING",
         "ERROR"
-      ]
+      ],
+      "type": "string"
     },
     "StopFlowRequest": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you want to stop.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you want to stop."
+          "shape": "__string"
         }
       },
       "required": [
         "FlowArn"
-      ]
+      ],
+      "type": "structure"
     },
     "StopFlowResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you stopped.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you stopped."
+          "shape": "__string"
         },
         "Status": {
-          "shape": "Status",
+          "documentation": "The status of the flow when the StopFlow process begins.",
           "locationName": "status",
-          "documentation": "The status of the flow when the StopFlow process begins."
-        }
-      }
-    },
-    "TagResourceRequest": {
-      "type": "structure",
-      "members": {
-        "ResourceArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "resourceArn",
-          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags."
-        },
-        "Tags": {
-          "shape": "__mapOf__string",
-          "locationName": "tags",
-          "documentation": "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters."
+          "shape": "Status"
         }
       },
+      "type": "structure"
+    },
+    "TagResourceRequest": {
       "documentation": "The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+      "members": {
+        "ResourceArn": {
+          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.",
+          "location": "uri",
+          "locationName": "resourceArn",
+          "shape": "__string"
+        },
+        "Tags": {
+          "documentation": "A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.",
+          "locationName": "tags",
+          "shape": "__mapOf__string"
+        }
+      },
       "required": [
         "ResourceArn",
         "Tags"
-      ]
+      ],
+      "type": "structure"
     },
     "TooManyRequestsException": {
-      "type": "structure",
+      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
+      "error": {
+        "httpStatusCode": 429
+      },
+      "exception": true,
       "members": {
         "Message": {
-          "shape": "__string",
+          "documentation": "The error message returned by AWS Elemental MediaConnect.",
           "locationName": "message",
-          "documentation": "The error message returned by AWS Elemental MediaConnect."
+          "shape": "__string"
         }
       },
-      "documentation": "Exception raised by AWS Elemental MediaConnect. See the error message and documentation for the operation for more information on the cause of this exception.",
       "required": [
         "Message"
       ],
-      "exception": true,
-      "error": {
-        "httpStatusCode": 429
-      }
+      "type": "structure"
     },
     "Transport": {
-      "type": "structure",
+      "documentation": "Attributes related to the transport stream that are used in a source or output.",
       "members": {
         "CidrAllowList": {
-          "shape": "__listOf__string",
+          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
           "locationName": "cidrAllowList",
-          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
+          "shape": "__listOf__string"
         },
         "MaxBitrate": {
-          "shape": "__integer",
+          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.",
           "locationName": "maxBitrate",
-          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams."
+          "shape": "__integer"
         },
         "MaxLatency": {
-          "shape": "__integer",
+          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.",
           "locationName": "maxLatency",
-          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams."
+          "shape": "__integer"
         },
         "Protocol": {
-          "shape": "Protocol",
+          "documentation": "The protocol that is used by the source or output.",
           "locationName": "protocol",
-          "documentation": "The protocol that is used by the source or output."
+          "shape": "Protocol"
         },
         "RemoteId": {
-          "shape": "__string",
+          "documentation": "The remote ID for the Zixi-pull stream.",
           "locationName": "remoteId",
-          "documentation": "The remote ID for the Zixi-pull stream."
+          "shape": "__string"
         },
         "SmoothingLatency": {
-          "shape": "__integer",
+          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.",
           "locationName": "smoothingLatency",
-          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams."
+          "shape": "__integer"
         },
         "StreamId": {
-          "shape": "__string",
+          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
           "locationName": "streamId",
-          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
+          "shape": "__string"
         }
       },
-      "documentation": "Attributes related to the transport stream that are used in a source or output.",
       "required": [
         "Protocol"
-      ]
+      ],
+      "type": "structure"
     },
     "UntagResourceRequest": {
-      "type": "structure",
       "members": {
         "ResourceArn": {
-          "shape": "__string",
+          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.",
           "location": "uri",
           "locationName": "resourceArn",
-          "documentation": "The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags."
+          "shape": "__string"
         },
         "TagKeys": {
-          "shape": "__listOf__string",
+          "documentation": "The keys of the tags to be removed.",
           "location": "querystring",
           "locationName": "tagKeys",
-          "documentation": "The keys of the tags to be removed."
+          "shape": "__listOf__string"
         }
       },
       "required": [
         "TagKeys",
         "ResourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateEncryption": {
-      "type": "structure",
+      "documentation": "Information about the encryption of the flow.",
       "members": {
         "Algorithm": {
-          "shape": "Algorithm",
+          "documentation": "The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256).",
           "locationName": "algorithm",
-          "documentation": "The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256)."
+          "shape": "Algorithm"
         },
         "ConstantInitializationVector": {
-          "shape": "__string",
+          "documentation": "A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption.",
           "locationName": "constantInitializationVector",
-          "documentation": "A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption."
+          "shape": "__string"
         },
         "DeviceId": {
-          "shape": "__string",
+          "documentation": "The value of one of the devices that you configured with your digital rights management (DRM) platform key provider. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
           "locationName": "deviceId",
-          "documentation": "The value of one of the devices that you configured with your digital rights management (DRM) platform key provider. This parameter is required for SPEKE encryption and is not valid for static key encryption."
+          "shape": "__string"
         },
         "KeyType": {
-          "shape": "KeyType",
+          "documentation": "The type of key that is used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
           "locationName": "keyType",
-          "documentation": "The type of key that is used for the encryption. If no keyType is provided, the service will use the default setting (static-key)."
+          "shape": "KeyType"
         },
         "Region": {
-          "shape": "__string",
+          "documentation": "The AWS Region that the API Gateway proxy endpoint was created in. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
           "locationName": "region",
-          "documentation": "The AWS Region that the API Gateway proxy endpoint was created in. This parameter is required for SPEKE encryption and is not valid for static key encryption."
+          "shape": "__string"
         },
         "ResourceId": {
-          "shape": "__string",
+          "documentation": "An identifier for the content. The service sends this value to the key server to identify the current endpoint. The resource ID is also known as the content ID. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
           "locationName": "resourceId",
-          "documentation": "An identifier for the content. The service sends this value to the key server to identify the current endpoint. The resource ID is also known as the content ID. This parameter is required for SPEKE encryption and is not valid for static key encryption."
+          "shape": "__string"
         },
         "RoleArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
           "locationName": "roleArn",
-          "documentation": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity)."
+          "shape": "__string"
         },
         "SecretArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
           "locationName": "secretArn",
-          "documentation": "The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption."
+          "shape": "__string"
         },
         "Url": {
-          "shape": "__string",
+          "documentation": "The URL from the API Gateway proxy that you set up to talk to your key server. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
           "locationName": "url",
-          "documentation": "The URL from the API Gateway proxy that you set up to talk to your key server. This parameter is required for SPEKE encryption and is not valid for static key encryption."
+          "shape": "__string"
         }
       },
-      "documentation": "Information about the encryption of the flow."
+      "type": "structure"
     },
     "UpdateFailoverConfig": {
-      "type": "structure",
+      "documentation": "The settings for source failover",
       "members": {
         "RecoveryWindow": {
-          "shape": "__integer",
+          "documentation": "Recovery window time to look for dash-7 packets",
           "locationName": "recoveryWindow",
-          "documentation": "Recovery window time to look for dash-7 packets"
+          "shape": "__integer"
         },
         "State": {
-          "shape": "State",
-          "locationName": "state"
+          "locationName": "state",
+          "shape": "State"
         }
       },
-      "documentation": "The settings for source failover"
+      "type": "structure"
     },
     "UpdateFlowEntitlementRequest": {
-      "type": "structure",
+      "documentation": "The entitlement fields that you want to update.",
       "members": {
         "Description": {
-          "shape": "__string",
+          "documentation": "A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.",
           "locationName": "description",
-          "documentation": "A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user."
+          "shape": "__string"
         },
         "Encryption": {
-          "shape": "UpdateEncryption",
+          "documentation": "The type of encryption that will be used on the output associated with this entitlement.",
           "locationName": "encryption",
-          "documentation": "The type of encryption that will be used on the output associated with this entitlement."
+          "shape": "UpdateEncryption"
         },
         "EntitlementArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the entitlement that you want to update.",
           "location": "uri",
           "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that you want to update."
+          "shape": "__string"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that is associated with the entitlement that you want to update.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that is associated with the entitlement that you want to update."
+          "shape": "__string"
         },
         "Subscribers": {
-          "shape": "__listOf__string",
+          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.",
           "locationName": "subscribers",
-          "documentation": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source."
+          "shape": "__listOf__string"
         }
       },
-      "documentation": "The entitlement fields that you want to update.",
       "required": [
         "FlowArn",
         "EntitlementArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateFlowEntitlementResponse": {
-      "type": "structure",
       "members": {
         "Entitlement": {
-          "shape": "Entitlement",
-          "locationName": "entitlement"
+          "locationName": "entitlement",
+          "shape": "Entitlement"
         },
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that this entitlement was granted on.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that this entitlement was granted on."
-        }
-      }
-    },
-    "UpdateFlowOutputRequest": {
-      "type": "structure",
-      "members": {
-        "CidrAllowList": {
-          "shape": "__listOf__string",
-          "locationName": "cidrAllowList",
-          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
-        },
-        "Description": {
-          "shape": "__string",
-          "locationName": "description",
-          "documentation": "A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user."
-        },
-        "Destination": {
-          "shape": "__string",
-          "locationName": "destination",
-          "documentation": "The IP address where you want to send the output."
-        },
-        "Encryption": {
-          "shape": "UpdateEncryption",
-          "locationName": "encryption",
-          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key)."
-        },
-        "FlowArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "flowArn",
-          "documentation": "The flow that is associated with the output that you want to update."
-        },
-        "MaxLatency": {
-          "shape": "__integer",
-          "locationName": "maxLatency",
-          "documentation": "The maximum latency in milliseconds for Zixi-based streams."
-        },
-        "OutputArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "outputArn",
-          "documentation": "The ARN of the output that you want to update."
-        },
-        "Port": {
-          "shape": "__integer",
-          "locationName": "port",
-          "documentation": "The port to use when content is distributed to this output."
-        },
-        "Protocol": {
-          "shape": "Protocol",
-          "locationName": "protocol",
-          "documentation": "The protocol to use for the output."
-        },
-        "RemoteId": {
-          "shape": "__string",
-          "locationName": "remoteId",
-          "documentation": "The remote ID for the Zixi-pull stream."
-        },
-        "SmoothingLatency": {
-          "shape": "__integer",
-          "locationName": "smoothingLatency",
-          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams."
-        },
-        "StreamId": {
-          "shape": "__string",
-          "locationName": "streamId",
-          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
+          "shape": "__string"
         }
       },
+      "type": "structure"
+    },
+    "UpdateFlowOutputRequest": {
       "documentation": "The fields that you want to update in the output.",
+      "members": {
+        "CidrAllowList": {
+          "documentation": "The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
+          "locationName": "cidrAllowList",
+          "shape": "__listOf__string"
+        },
+        "Description": {
+          "documentation": "A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.",
+          "locationName": "description",
+          "shape": "__string"
+        },
+        "Destination": {
+          "documentation": "The IP address where you want to send the output.",
+          "locationName": "destination",
+          "shape": "__string"
+        },
+        "Encryption": {
+          "documentation": "The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
+          "locationName": "encryption",
+          "shape": "UpdateEncryption"
+        },
+        "FlowArn": {
+          "documentation": "The flow that is associated with the output that you want to update.",
+          "location": "uri",
+          "locationName": "flowArn",
+          "shape": "__string"
+        },
+        "MaxLatency": {
+          "documentation": "The maximum latency in milliseconds for Zixi-based streams.",
+          "locationName": "maxLatency",
+          "shape": "__integer"
+        },
+        "OutputArn": {
+          "documentation": "The ARN of the output that you want to update.",
+          "location": "uri",
+          "locationName": "outputArn",
+          "shape": "__string"
+        },
+        "Port": {
+          "documentation": "The port to use when content is distributed to this output.",
+          "locationName": "port",
+          "shape": "__integer"
+        },
+        "Protocol": {
+          "documentation": "The protocol to use for the output.",
+          "locationName": "protocol",
+          "shape": "Protocol"
+        },
+        "RemoteId": {
+          "documentation": "The remote ID for the Zixi-pull stream.",
+          "locationName": "remoteId",
+          "shape": "__string"
+        },
+        "SmoothingLatency": {
+          "documentation": "The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.",
+          "locationName": "smoothingLatency",
+          "shape": "__integer"
+        },
+        "StreamId": {
+          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
+          "locationName": "streamId",
+          "shape": "__string"
+        }
+      },
       "required": [
         "FlowArn",
         "OutputArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateFlowOutputResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that is associated with the updated output.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that is associated with the updated output."
+          "shape": "__string"
         },
         "Output": {
-          "shape": "Output",
-          "locationName": "output"
+          "locationName": "output",
+          "shape": "Output"
         }
-      }
+      },
+      "type": "structure"
     },
     "UpdateFlowRequest": {
-      "type": "structure",
+      "documentation": "A request to update flow.",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The flow that you want to update.",
           "location": "uri",
           "locationName": "flowArn",
-          "documentation": "The flow that you want to update."
+          "shape": "__string"
         },
         "SourceFailoverConfig": {
-          "shape": "UpdateFailoverConfig",
-          "locationName": "sourceFailoverConfig"
+          "locationName": "sourceFailoverConfig",
+          "shape": "UpdateFailoverConfig"
         }
       },
-      "documentation": "A request to update flow.",
       "required": [
         "FlowArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateFlowResponse": {
-      "type": "structure",
       "members": {
         "Flow": {
-          "shape": "Flow",
-          "locationName": "flow"
-        }
-      }
-    },
-    "UpdateFlowSourceRequest": {
-      "type": "structure",
-      "members": {
-        "Decryption": {
-          "shape": "UpdateEncryption",
-          "locationName": "decryption",
-          "documentation": "The type of encryption used on the content ingested from this source."
-        },
-        "Description": {
-          "shape": "__string",
-          "locationName": "description",
-          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account."
-        },
-        "EntitlementArn": {
-          "shape": "__string",
-          "locationName": "entitlementArn",
-          "documentation": "The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow."
-        },
-        "FlowArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "flowArn",
-          "documentation": "The flow that is associated with the source that you want to update."
-        },
-        "IngestPort": {
-          "shape": "__integer",
-          "locationName": "ingestPort",
-          "documentation": "The port that the flow will be listening on for incoming content."
-        },
-        "MaxBitrate": {
-          "shape": "__integer",
-          "locationName": "maxBitrate",
-          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams."
-        },
-        "MaxLatency": {
-          "shape": "__integer",
-          "locationName": "maxLatency",
-          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams."
-        },
-        "Protocol": {
-          "shape": "Protocol",
-          "locationName": "protocol",
-          "documentation": "The protocol that is used by the source."
-        },
-        "SourceArn": {
-          "shape": "__string",
-          "location": "uri",
-          "locationName": "sourceArn",
-          "documentation": "The ARN of the source that you want to update."
-        },
-        "StreamId": {
-          "shape": "__string",
-          "locationName": "streamId",
-          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
-        },
-        "VpcInterfaceName": {
-          "shape": "__string",
-          "locationName": "vpcInterfaceName",
-          "documentation": "The name of the VPC Interface to configure this Source with."
-        },
-        "WhitelistCidr": {
-          "shape": "__string",
-          "locationName": "whitelistCidr",
-          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
+          "locationName": "flow",
+          "shape": "Flow"
         }
       },
+      "type": "structure"
+    },
+    "UpdateFlowSourceRequest": {
       "documentation": "A request to update the source of a flow.",
+      "members": {
+        "Decryption": {
+          "documentation": "The type of encryption used on the content ingested from this source.",
+          "locationName": "decryption",
+          "shape": "UpdateEncryption"
+        },
+        "Description": {
+          "documentation": "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.",
+          "locationName": "description",
+          "shape": "__string"
+        },
+        "EntitlementArn": {
+          "documentation": "The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow.",
+          "locationName": "entitlementArn",
+          "shape": "__string"
+        },
+        "FlowArn": {
+          "documentation": "The flow that is associated with the source that you want to update.",
+          "location": "uri",
+          "locationName": "flowArn",
+          "shape": "__string"
+        },
+        "IngestPort": {
+          "documentation": "The port that the flow will be listening on for incoming content.",
+          "locationName": "ingestPort",
+          "shape": "__integer"
+        },
+        "MaxBitrate": {
+          "documentation": "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.",
+          "locationName": "maxBitrate",
+          "shape": "__integer"
+        },
+        "MaxLatency": {
+          "documentation": "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.",
+          "locationName": "maxLatency",
+          "shape": "__integer"
+        },
+        "Protocol": {
+          "documentation": "The protocol that is used by the source.",
+          "locationName": "protocol",
+          "shape": "Protocol"
+        },
+        "SourceArn": {
+          "documentation": "The ARN of the source that you want to update.",
+          "location": "uri",
+          "locationName": "sourceArn",
+          "shape": "__string"
+        },
+        "StreamId": {
+          "documentation": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
+          "locationName": "streamId",
+          "shape": "__string"
+        },
+        "VpcInterfaceName": {
+          "documentation": "The name of the VPC Interface to configure this Source with.",
+          "locationName": "vpcInterfaceName",
+          "shape": "__string"
+        },
+        "WhitelistCidr": {
+          "documentation": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
+          "locationName": "whitelistCidr",
+          "shape": "__string"
+        }
+      },
       "required": [
         "FlowArn",
         "SourceArn"
-      ]
+      ],
+      "type": "structure"
     },
     "UpdateFlowSourceResponse": {
-      "type": "structure",
       "members": {
         "FlowArn": {
-          "shape": "__string",
+          "documentation": "The ARN of the flow that you want to update.",
           "locationName": "flowArn",
-          "documentation": "The ARN of the flow that you want to update."
+          "shape": "__string"
         },
         "Source": {
-          "shape": "Source",
+          "documentation": "The settings for the source of the flow.",
           "locationName": "source",
-          "documentation": "The settings for the source of the flow."
-        }
-      }
-    },
-    "VpcInterface": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Immutable and has to be a unique against other VpcInterfaces in this Flow"
-        },
-        "NetworkInterfaceIds": {
-          "shape": "__listOf__string",
-          "locationName": "networkInterfaceIds",
-          "documentation": "IDs of the network interfaces created in customer's account by MediaConnect."
-        },
-        "RoleArn": {
-          "shape": "__string",
-          "locationName": "roleArn",
-          "documentation": "Role Arn MediaConnect can assumes to create ENIs in customer's account"
-        },
-        "SecurityGroupIds": {
-          "shape": "__listOf__string",
-          "locationName": "securityGroupIds",
-          "documentation": "Security Group IDs to be used on ENI."
-        },
-        "SubnetId": {
-          "shape": "__string",
-          "locationName": "subnetId",
-          "documentation": "Subnet must be in the AZ of the Flow"
+          "shape": "Source"
         }
       },
+      "type": "structure"
+    },
+    "VpcInterface": {
       "documentation": "The settings for a VPC Source.",
+      "members": {
+        "Name": {
+          "documentation": "Immutable and has to be a unique against other VpcInterfaces in this Flow",
+          "locationName": "name",
+          "shape": "__string"
+        },
+        "NetworkInterfaceIds": {
+          "documentation": "IDs of the network interfaces created in customer's account by MediaConnect.",
+          "locationName": "networkInterfaceIds",
+          "shape": "__listOf__string"
+        },
+        "RoleArn": {
+          "documentation": "Role Arn MediaConnect can assumes to create ENIs in customer's account",
+          "locationName": "roleArn",
+          "shape": "__string"
+        },
+        "SecurityGroupIds": {
+          "documentation": "Security Group IDs to be used on ENI.",
+          "locationName": "securityGroupIds",
+          "shape": "__listOf__string"
+        },
+        "SubnetId": {
+          "documentation": "Subnet must be in the AZ of the Flow",
+          "locationName": "subnetId",
+          "shape": "__string"
+        }
+      },
       "required": [
         "NetworkInterfaceIds",
         "SubnetId",
         "SecurityGroupIds",
         "RoleArn",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "VpcInterfaceRequest": {
-      "type": "structure",
+      "documentation": "Desired VPC Interface for a Flow",
       "members": {
         "Name": {
-          "shape": "__string",
+          "documentation": "The name of the VPC Interface. This value must be unique within the current flow.",
           "locationName": "name",
-          "documentation": "The name of the VPC Interface. This value must be unique within the current flow."
+          "shape": "__string"
         },
         "RoleArn": {
-          "shape": "__string",
+          "documentation": "Role Arn MediaConnect can assumes to create ENIs in customer's account",
           "locationName": "roleArn",
-          "documentation": "Role Arn MediaConnect can assumes to create ENIs in customer's account"
+          "shape": "__string"
         },
         "SecurityGroupIds": {
-          "shape": "__listOf__string",
+          "documentation": "Security Group IDs to be used on ENI.",
           "locationName": "securityGroupIds",
-          "documentation": "Security Group IDs to be used on ENI."
+          "shape": "__listOf__string"
         },
         "SubnetId": {
-          "shape": "__string",
+          "documentation": "Subnet must be in the AZ of the Flow",
           "locationName": "subnetId",
-          "documentation": "Subnet must be in the AZ of the Flow"
+          "shape": "__string"
         }
       },
-      "documentation": "Desired VPC Interface for a Flow",
       "required": [
         "SubnetId",
         "SecurityGroupIds",
         "RoleArn",
         "Name"
-      ]
+      ],
+      "type": "structure"
     },
     "__boolean": {
       "type": "boolean"
@@ -2701,85 +2702,85 @@
       "type": "integer"
     },
     "__listOfAddOutputRequest": {
-      "type": "list",
       "member": {
         "shape": "AddOutputRequest"
-      }
+      },
+      "type": "list"
     },
     "__listOfEntitlement": {
-      "type": "list",
       "member": {
         "shape": "Entitlement"
-      }
+      },
+      "type": "list"
     },
     "__listOfGrantEntitlementRequest": {
-      "type": "list",
       "member": {
         "shape": "GrantEntitlementRequest"
-      }
+      },
+      "type": "list"
     },
     "__listOfListedEntitlement": {
-      "type": "list",
       "member": {
         "shape": "ListedEntitlement"
-      }
+      },
+      "type": "list"
     },
     "__listOfListedFlow": {
-      "type": "list",
       "member": {
         "shape": "ListedFlow"
-      }
+      },
+      "type": "list"
     },
     "__listOfOutput": {
-      "type": "list",
       "member": {
         "shape": "Output"
-      }
+      },
+      "type": "list"
     },
     "__listOfSetSourceRequest": {
-      "type": "list",
       "member": {
         "shape": "SetSourceRequest"
-      }
+      },
+      "type": "list"
     },
     "__listOfSource": {
-      "type": "list",
       "member": {
         "shape": "Source"
-      }
+      },
+      "type": "list"
     },
     "__listOfVpcInterface": {
-      "type": "list",
       "member": {
         "shape": "VpcInterface"
-      }
+      },
+      "type": "list"
     },
     "__listOfVpcInterfaceRequest": {
-      "type": "list",
       "member": {
         "shape": "VpcInterfaceRequest"
-      }
+      },
+      "type": "list"
     },
     "__listOf__integer": {
-      "type": "list",
       "member": {
         "shape": "__integer"
-      }
+      },
+      "type": "list"
     },
     "__listOf__string": {
-      "type": "list",
       "member": {
         "shape": "__string"
-      }
+      },
+      "type": "list"
     },
     "__long": {
       "type": "long"
     },
     "__mapOf__string": {
-      "type": "map",
       "key": {
         "shape": "__string"
       },
+      "type": "map",
       "value": {
         "shape": "__string"
       }
@@ -2788,13 +2789,12 @@
       "type": "string"
     },
     "__timestampIso8601": {
-      "type": "timestamp",
-      "timestampFormat": "iso8601"
+      "timestampFormat": "iso8601",
+      "type": "timestamp"
     },
     "__timestampUnix": {
-      "type": "timestamp",
-      "timestampFormat": "unixTimestamp"
+      "timestampFormat": "unixTimestamp",
+      "type": "timestamp"
     }
-  },
-  "documentation": "API for AWS Elemental MediaConnect"
+  }
 }

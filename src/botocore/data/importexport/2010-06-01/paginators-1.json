@@ -2,9 +2,9 @@
   "pagination": {
     "ListJobs": {
       "input_token": "Marker",
-      "output_token": "Jobs[-1].JobId",
-      "more_results": "IsTruncated",
       "limit_key": "MaxJobs",
+      "more_results": "IsTruncated",
+      "output_token": "Jobs[-1].JobId",
       "result_key": "Jobs"
     }
   }

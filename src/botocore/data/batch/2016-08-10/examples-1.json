@@ -1,32 +1,32 @@
 {
-  "version": "1.0",
   "examples": {
     "CancelJob": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example cancels a job with the specified job ID.",
+        "id": "to-cancel-a-job-1481152314733",
         "input": {
           "jobId": "1d828f65-7a4d-42e8-996d-3b900ed59dc4",
           "reason": "Cancelling job."
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example cancels a job with the specified job ID.",
-        "id": "to-cancel-a-job-1481152314733",
+        "output": {},
         "title": "To cancel a job"
       }
     ],
     "CreateComputeEnvironment": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a managed compute environment with specific C4 instance types that are launched on demand. The compute environment is called C4OnDemand.",
+        "id": "to-create-a-managed-ec2-compute-environment-1481152600017",
         "input": {
-          "type": "MANAGED",
           "computeEnvironmentName": "C4OnDemand",
           "computeResources": {
-            "type": "EC2",
             "desiredvCpus": 48,
             "ec2KeyPair": "id_rsa",
             "instanceRole": "ecsInstanceRole",
@@ -49,31 +49,29 @@
             ],
             "tags": {
               "Name": "Batch Instance - C4OnDemand"
-            }
+            },
+            "type": "EC2"
           },
           "serviceRole": "arn:aws:iam::012345678910:role/AWSBatchServiceRole",
-          "state": "ENABLED"
+          "state": "ENABLED",
+          "type": "MANAGED"
         },
         "output": {
           "computeEnvironmentArn": "arn:aws:batch:us-east-1:012345678910:compute-environment/C4OnDemand",
           "computeEnvironmentName": "C4OnDemand"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a managed compute environment with specific C4 instance types that are launched on demand. The compute environment is called C4OnDemand.",
-        "id": "to-create-a-managed-ec2-compute-environment-1481152600017",
         "title": "To create a managed EC2 compute environment"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a managed compute environment with the M4 instance type that is launched when the Spot bid price is at or below 20% of the On-Demand price for the instance type. The compute environment is called M4Spot.",
+        "id": "to-create-a-managed-ec2-spot-compute-environment-1481152844190",
         "input": {
-          "type": "MANAGED",
           "computeEnvironmentName": "M4Spot",
           "computeResources": {
-            "type": "SPOT",
             "bidPercentage": 20,
             "desiredvCpus": 4,
             "ec2KeyPair": "id_rsa",
@@ -94,28 +92,28 @@
             ],
             "tags": {
               "Name": "Batch Instance - M4Spot"
-            }
+            },
+            "type": "SPOT"
           },
           "serviceRole": "arn:aws:iam::012345678910:role/AWSBatchServiceRole",
-          "state": "ENABLED"
+          "state": "ENABLED",
+          "type": "MANAGED"
         },
         "output": {
           "computeEnvironmentArn": "arn:aws:batch:us-east-1:012345678910:compute-environment/M4Spot",
           "computeEnvironmentName": "M4Spot"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a managed compute environment with the M4 instance type that is launched when the Spot bid price is at or below 20% of the On-Demand price for the instance type. The compute environment is called M4Spot.",
-        "id": "to-create-a-managed-ec2-spot-compute-environment-1481152844190",
         "title": "To create a managed EC2 Spot compute environment"
       }
     ],
     "CreateJobQueue": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a job queue called LowPriority that uses the M4Spot compute environment.",
+        "id": "to-create-a-job-queue-with-a-single-compute-environment-1481152967946",
         "input": {
           "computeEnvironmentOrder": [
             {
@@ -131,17 +129,15 @@
           "jobQueueArn": "arn:aws:batch:us-east-1:012345678910:job-queue/LowPriority",
           "jobQueueName": "LowPriority"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a job queue called LowPriority that uses the M4Spot compute environment.",
-        "id": "to-create-a-job-queue-with-a-single-compute-environment-1481152967946",
         "title": "To create a job queue with a single compute environment"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example creates a job queue called HighPriority that uses the C4OnDemand compute environment with an order of 1 and the M4Spot compute environment with an order of 2.",
+        "id": "to-create-a-job-queue-with-multiple-compute-environments-1481153027051",
         "input": {
           "computeEnvironmentOrder": [
             {
@@ -161,73 +157,62 @@
           "jobQueueArn": "arn:aws:batch:us-east-1:012345678910:job-queue/HighPriority",
           "jobQueueName": "HighPriority"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example creates a job queue called HighPriority that uses the C4OnDemand compute environment with an order of 1 and the M4Spot compute environment with an order of 2.",
-        "id": "to-create-a-job-queue-with-multiple-compute-environments-1481153027051",
         "title": "To create a job queue with multiple compute environments"
       }
     ],
     "DeleteComputeEnvironment": [
       {
-        "input": {
-          "computeEnvironment": "P2OnDemand"
-        },
-        "output": {
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example deletes the P2OnDemand compute environment.",
         "id": "to-delete-a-compute-environment-1481153105644",
+        "input": {
+          "computeEnvironment": "P2OnDemand"
+        },
+        "output": {},
         "title": "To delete a compute environment"
       }
     ],
     "DeleteJobQueue": [
       {
-        "input": {
-          "jobQueue": "GPGPU"
-        },
-        "output": {
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example deletes the GPGPU job queue.",
         "id": "to-delete-a-job-queue-1481153508134",
+        "input": {
+          "jobQueue": "GPGPU"
+        },
+        "output": {},
         "title": "To delete a job queue"
       }
     ],
     "DeregisterJobDefinition": [
       {
-        "input": {
-          "jobDefinition": "sleep10"
-        },
-        "output": {
-        },
         "comments": {
-          "input": {
-          },
-          "output": {
-          }
+          "input": {},
+          "output": {}
         },
         "description": "This example deregisters a job definition called sleep10.",
         "id": "to-deregister-a-job-definition-1481153579565",
+        "input": {
+          "jobDefinition": "sleep10"
+        },
+        "output": {},
         "title": "To deregister a job definition"
       }
     ],
     "DescribeComputeEnvironments": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the P2OnDemand compute environment.",
+        "id": "to-describe-a-compute-environment-1481153713334",
         "input": {
           "computeEnvironments": [
             "P2OnDemand"
@@ -236,11 +221,9 @@
         "output": {
           "computeEnvironments": [
             {
-              "type": "MANAGED",
               "computeEnvironmentArn": "arn:aws:batch:us-east-1:012345678910:compute-environment/P2OnDemand",
               "computeEnvironmentName": "P2OnDemand",
               "computeResources": {
-                "type": "EC2",
                 "desiredvCpus": 48,
                 "ec2KeyPair": "id_rsa",
                 "instanceRole": "ecsInstanceRole",
@@ -259,77 +242,67 @@
                 ],
                 "tags": {
                   "Name": "Batch Instance - P2OnDemand"
-                }
+                },
+                "type": "EC2"
               },
               "ecsClusterArn": "arn:aws:ecs:us-east-1:012345678910:cluster/P2OnDemand_Batch_2c06f29d-d1fe-3a49-879d-42394c86effc",
               "serviceRole": "arn:aws:iam::012345678910:role/AWSBatchServiceRole",
               "state": "ENABLED",
               "status": "VALID",
-              "statusReason": "ComputeEnvironment Healthy"
+              "statusReason": "ComputeEnvironment Healthy",
+              "type": "MANAGED"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the P2OnDemand compute environment.",
-        "id": "to-describe-a-compute-environment-1481153713334",
         "title": "To describe a compute environment"
       }
     ],
     "DescribeJobDefinitions": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes all of your active job definitions.",
+        "id": "to-describe-active-job-definitions-1481153895831",
         "input": {
           "status": "ACTIVE"
         },
         "output": {
           "jobDefinitions": [
             {
-              "type": "container",
               "containerProperties": {
                 "command": [
                   "sleep",
                   "60"
                 ],
-                "environment": [
-
-                ],
+                "environment": [],
                 "image": "busybox",
                 "memory": 128,
-                "mountPoints": [
-
-                ],
-                "ulimits": [
-
-                ],
+                "mountPoints": [],
+                "ulimits": [],
                 "vcpus": 1,
-                "volumes": [
-
-                ]
+                "volumes": []
               },
               "jobDefinitionArn": "arn:aws:batch:us-east-1:012345678910:job-definition/sleep60:1",
               "jobDefinitionName": "sleep60",
               "revision": 1,
-              "status": "ACTIVE"
+              "status": "ACTIVE",
+              "type": "container"
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes all of your active job definitions.",
-        "id": "to-describe-active-job-definitions-1481153895831",
         "title": "To describe active job definitions"
       }
     ],
     "DescribeJobQueues": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes the HighPriority job queue.",
+        "id": "to-describe-a-job-queue-1481153995804",
         "input": {
           "jobQueues": [
             "HighPriority"
@@ -353,19 +326,17 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes the HighPriority job queue.",
-        "id": "to-describe-a-job-queue-1481153995804",
         "title": "To describe a job queue"
       }
     ],
     "DescribeJobs": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example describes a job with the specified job ID.",
+        "id": "to-describe-a-specific-job-1481154090490",
         "input": {
           "jobs": [
             "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9"
@@ -380,52 +351,39 @@
                   "60"
                 ],
                 "containerInstanceArn": "arn:aws:ecs:us-east-1:012345678910:container-instance/5406d7cd-58bd-4b8f-9936-48d7c6b1526c",
-                "environment": [
-
-                ],
+                "environment": [],
                 "exitCode": 0,
                 "image": "busybox",
                 "memory": 128,
-                "mountPoints": [
-
-                ],
-                "ulimits": [
-
-                ],
+                "mountPoints": [],
+                "ulimits": [],
                 "vcpus": 1,
-                "volumes": [
-
-                ]
+                "volumes": []
               },
               "createdAt": 1480460782010,
-              "dependsOn": [
-
-              ],
+              "dependsOn": [],
               "jobDefinition": "sleep60",
               "jobId": "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9",
               "jobName": "example",
               "jobQueue": "arn:aws:batch:us-east-1:012345678910:job-queue/HighPriority",
-              "parameters": {
-              },
+              "parameters": {},
               "startedAt": 1480460816500,
               "status": "SUCCEEDED",
               "stoppedAt": 1480460880699
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example describes a job with the specified job ID.",
-        "id": "to-describe-a-specific-job-1481154090490",
         "title": "To describe a specific job"
       }
     ],
     "ListJobs": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example lists the running jobs in the HighPriority job queue.",
+        "id": "to-list-running-jobs-1481154202164",
         "input": {
           "jobQueue": "HighPriority"
         },
@@ -437,17 +395,15 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example lists the running jobs in the HighPriority job queue.",
-        "id": "to-list-running-jobs-1481154202164",
         "title": "To list running jobs"
       },
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example lists jobs in the HighPriority job queue that are in the SUBMITTED job status.",
+        "id": "to-list-submitted-jobs-1481154251623",
         "input": {
           "jobQueue": "HighPriority",
           "jobStatus": "SUBMITTED"
@@ -460,21 +416,18 @@
             }
           ]
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example lists jobs in the HighPriority job queue that are in the SUBMITTED job status.",
-        "id": "to-list-submitted-jobs-1481154251623",
         "title": "To list submitted jobs"
       }
     ],
     "RegisterJobDefinition": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example registers a job definition for a simple container job.",
+        "id": "to-register-a-job-definition-1481154325325",
         "input": {
-          "type": "container",
           "containerProperties": {
             "command": [
               "sleep",
@@ -484,26 +437,25 @@
             "memory": 128,
             "vcpus": 1
           },
-          "jobDefinitionName": "sleep10"
+          "jobDefinitionName": "sleep10",
+          "type": "container"
         },
         "output": {
           "jobDefinitionArn": "arn:aws:batch:us-east-1:012345678910:job-definition/sleep10:1",
           "jobDefinitionName": "sleep10",
           "revision": 1
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example registers a job definition for a simple container job.",
-        "id": "to-register-a-job-definition-1481154325325",
         "title": "To register a job definition"
       }
     ],
     "SubmitJob": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example submits a simple container job called example to the HighPriority job queue.",
+        "id": "to-submit-a-job-to-a-queue-1481154481673",
         "input": {
           "jobDefinition": "sleep60",
           "jobName": "example",
@@ -513,38 +465,33 @@
           "jobId": "876da822-4198-45f2-a252-6cea32512ea8",
           "jobName": "example"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example submits a simple container job called example to the HighPriority job queue.",
-        "id": "to-submit-a-job-to-a-queue-1481154481673",
         "title": "To submit a job to a queue"
       }
     ],
     "TerminateJob": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example terminates a job with the specified job ID.",
+        "id": "to-terminate-a-job-1481154558276",
         "input": {
           "jobId": "61e743ed-35e4-48da-b2de-5c8333821c84",
           "reason": "Terminating job."
         },
-        "output": {
-        },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example terminates a job with the specified job ID.",
-        "id": "to-terminate-a-job-1481154558276",
+        "output": {},
         "title": "To terminate a job"
       }
     ],
     "UpdateComputeEnvironment": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example disables the P2OnDemand compute environment so it can be deleted.",
+        "id": "to-update-a-compute-environment-1481154702731",
         "input": {
           "computeEnvironment": "P2OnDemand",
           "state": "DISABLED"
@@ -553,19 +500,17 @@
           "computeEnvironmentArn": "arn:aws:batch:us-east-1:012345678910:compute-environment/P2OnDemand",
           "computeEnvironmentName": "P2OnDemand"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example disables the P2OnDemand compute environment so it can be deleted.",
-        "id": "to-update-a-compute-environment-1481154702731",
         "title": "To update a compute environment"
       }
     ],
     "UpdateJobQueue": [
       {
+        "comments": {
+          "input": {},
+          "output": {}
+        },
+        "description": "This example disables a job queue so that it can be deleted.",
+        "id": "to-update-a-job-queue-1481154806981",
         "input": {
           "jobQueue": "GPGPU",
           "state": "DISABLED"
@@ -574,16 +519,9 @@
           "jobQueueArn": "arn:aws:batch:us-east-1:012345678910:job-queue/GPGPU",
           "jobQueueName": "GPGPU"
         },
-        "comments": {
-          "input": {
-          },
-          "output": {
-          }
-        },
-        "description": "This example disables a job queue so that it can be deleted.",
-        "id": "to-update-a-job-queue-1481154806981",
         "title": "To update a job queue"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

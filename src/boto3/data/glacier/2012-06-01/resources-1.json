@@ -1,81 +1,50 @@
 {
-  "service": {
-    "actions": {
-      "CreateVault": {
-        "request": {
-          "operation": "CreateVault",
-          "params": [
-            { "target": "accountId", "source": "string", "value": "-" }
-          ]
-        },
-        "resource": {
-          "type": "Vault",
-          "identifiers": [
-            { "target": "AccountId", "source": "requestParameter", "path": "accountId" },
-            { "target": "Name", "source": "requestParameter", "path": "vaultName" }
-          ]
-        }
-      }
-    },
-    "has": {
-      "Account": {
-        "resource": {
-          "type": "Account",
-          "identifiers": [
-            { "target": "Id", "source": "input" }
-          ]
-        }
-      }
-    },
-    "hasMany": {
-      "Vaults": {
-        "request": {
-          "operation": "ListVaults",
-          "params": [
-            { "target": "accountId", "source": "string", "value": "-" }
-          ]
-        },
-        "resource": {
-          "type": "Vault",
-          "identifiers": [
-            { "target": "AccountId", "source": "requestParameter", "path": "accountId" },
-            { "target": "Name", "source": "response", "path": "VaultList[].VaultName" }
-          ],
-          "path": "VaultList[]"
-        }
-      }
-    }
-  },
   "resources": {
     "Account": {
-      "identifiers": [
-        { "name": "Id" }
-      ],
       "actions": {
         "CreateVault": {
           "request": {
             "operation": "CreateVault",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "Id" }
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "Id" },
-              { "target": "Name", "source": "requestParameter", "path": "vaultName" }
-            ]
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "path": "vaultName",
+                "source": "requestParameter",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
       },
       "has": {
         "Vault": {
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "Id" },
-              { "target": "Name", "source": "input" }
-            ]
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "source": "input",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
       },
@@ -84,34 +53,58 @@
           "request": {
             "operation": "ListVaults",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "Id" }
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "Id" },
-              { "target": "Name", "source": "response", "path": "VaultList[].VaultName" }
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "path": "VaultList[].VaultName",
+                "source": "response",
+                "target": "Name"
+              }
             ],
-            "path": "VaultList[]"
+            "path": "VaultList[]",
+            "type": "Vault"
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "Id"
+        }
+      ]
     },
     "Archive": {
-      "identifiers": [
-        { "name": "AccountId" },
-        { "name": "VaultName" },
-        { "name": "Id" }
-      ],
       "actions": {
         "Delete": {
           "request": {
             "operation": "DeleteArchive",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "archiveId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "archiveId"
+              }
             ]
           }
         },
@@ -119,63 +112,102 @@
           "request": {
             "operation": "InitiateJob",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "jobParameters.Type", "source": "string", "value": "archive-retrieval" },
-              { "target": "jobParameters.ArchiveId", "source": "identifier", "name": "Id" }
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "source": "string",
+                "target": "jobParameters.Type",
+                "value": "archive-retrieval"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "jobParameters.ArchiveId"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "Id", "source": "response", "path": "jobId" },
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "VaultName" }
-            ]
+              {
+                "path": "jobId",
+                "source": "response",
+                "target": "Id"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "VaultName"
+              }
+            ],
+            "type": "Job"
           }
         }
       },
       "has": {
         "Vault": {
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "Name", "source": "identifier", "name": "VaultName" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "AccountId"
+        },
+        {
+          "name": "VaultName"
+        },
+        {
+          "name": "Id"
+        }
+      ]
     },
     "Job": {
-      "identifiers": [
-        { "name": "AccountId" },
-        { "name": "VaultName" },
-        {
-          "name": "Id",
-          "memberName": "JobId"
-        }
-      ],
-      "shape": "GlacierJobDescription",
-      "load": {
-        "request": {
-          "operation": "DescribeJob",
-          "params": [
-            { "target": "accountId", "source": "identifier", "name": "AccountId" },
-            { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-            { "target": "jobId", "source": "identifier", "name": "Id" }
-          ]
-        },
-        "path": "@"
-      },
       "actions": {
         "GetOutput": {
           "request": {
             "operation": "GetJobOutput",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "jobId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "jobId"
+              }
             ]
           }
         }
@@ -183,33 +215,80 @@
       "has": {
         "Vault": {
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "Name", "source": "identifier", "name": "VaultName" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
-      }
-    },
-    "MultipartUpload": {
+      },
       "identifiers": [
-        { "name": "AccountId" },
-        { "name": "VaultName" },
         {
-          "name": "Id",
-          "memberName": "MultipartUploadId"
+          "name": "AccountId"
+        },
+        {
+          "name": "VaultName"
+        },
+        {
+          "memberName": "JobId",
+          "name": "Id"
         }
       ],
-      "shape": "UploadListElement",
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "DescribeJob",
+          "params": [
+            {
+              "name": "AccountId",
+              "source": "identifier",
+              "target": "accountId"
+            },
+            {
+              "name": "VaultName",
+              "source": "identifier",
+              "target": "vaultName"
+            },
+            {
+              "name": "Id",
+              "source": "identifier",
+              "target": "jobId"
+            }
+          ]
+        }
+      },
+      "shape": "GlacierJobDescription"
+    },
+    "MultipartUpload": {
       "actions": {
         "Abort": {
           "request": {
             "operation": "AbortMultipartUpload",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "uploadId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "uploadId"
+              }
             ]
           }
         },
@@ -217,9 +296,21 @@
           "request": {
             "operation": "CompleteMultipartUpload",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "uploadId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "uploadId"
+              }
             ]
           }
         },
@@ -227,9 +318,21 @@
           "request": {
             "operation": "ListParts",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "uploadId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "uploadId"
+              }
             ]
           }
         },
@@ -237,9 +340,21 @@
           "request": {
             "operation": "UploadMultipartPart",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" },
-              { "target": "uploadId", "source": "identifier", "name": "Id" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "Id",
+                "source": "identifier",
+                "target": "uploadId"
+              }
             ]
           }
         }
@@ -247,38 +362,52 @@
       "has": {
         "Vault": {
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "Name", "source": "identifier", "name": "VaultName" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
-      }
+      },
+      "identifiers": [
+        {
+          "name": "AccountId"
+        },
+        {
+          "name": "VaultName"
+        },
+        {
+          "memberName": "MultipartUploadId",
+          "name": "Id"
+        }
+      ],
+      "shape": "UploadListElement"
     },
     "Notification": {
-      "identifiers": [
-        { "name": "AccountId" },
-        { "name": "VaultName" }
-      ],
-      "shape": "VaultNotificationConfig",
-      "load": {
-        "request": {
-          "operation": "GetVaultNotifications",
-          "params": [
-            { "target": "accountId", "source": "identifier", "name": "AccountId" },
-            { "target": "vaultName", "source": "identifier", "name": "VaultName" }
-          ]
-        },
-        "path": "vaultNotificationConfig"
-      },
       "actions": {
         "Delete": {
           "request": {
             "operation": "DeleteVaultNotifications",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              }
             ]
           }
         },
@@ -286,8 +415,16 @@
           "request": {
             "operation": "SetVaultNotifications",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "VaultName" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "vaultName"
+              }
             ]
           }
         }
@@ -295,41 +432,66 @@
       "has": {
         "Vault": {
           "resource": {
-            "type": "Vault",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "Name", "source": "identifier", "name": "VaultName" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "VaultName",
+                "source": "identifier",
+                "target": "Name"
+              }
+            ],
+            "type": "Vault"
           }
         }
-      }
-    },
-    "Vault": {
+      },
       "identifiers": [
-        { "name": "AccountId" },
         {
-          "name": "Name",
-          "memberName": "VaultName"
+          "name": "AccountId"
+        },
+        {
+          "name": "VaultName"
         }
       ],
-      "shape": "DescribeVaultOutput",
       "load": {
+        "path": "vaultNotificationConfig",
         "request": {
-          "operation": "DescribeVault",
+          "operation": "GetVaultNotifications",
           "params": [
-            { "target": "vaultName", "source": "identifier", "name": "Name" },
-            { "target": "accountId", "source": "identifier", "name": "AccountId" }
+            {
+              "name": "AccountId",
+              "source": "identifier",
+              "target": "accountId"
+            },
+            {
+              "name": "VaultName",
+              "source": "identifier",
+              "target": "vaultName"
+            }
           ]
-        },
-        "path": "@"
+        }
       },
+      "shape": "VaultNotificationConfig"
+    },
+    "Vault": {
       "actions": {
         "Create": {
           "request": {
             "operation": "CreateVault",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           }
         },
@@ -337,8 +499,16 @@
           "request": {
             "operation": "DeleteVault",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           }
         },
@@ -346,101 +516,210 @@
           "request": {
             "operation": "InitiateJob",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "jobParameters.Type", "source": "string", "value": "inventory-retrieval" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "source": "string",
+                "target": "jobParameters.Type",
+                "value": "inventory-retrieval"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "Id", "source": "response", "path": "jobId" },
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" }
-            ]
+              {
+                "path": "jobId",
+                "source": "response",
+                "target": "Id"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              }
+            ],
+            "type": "Job"
           }
         },
         "InitiateMultipartUpload": {
           "request": {
             "operation": "InitiateMultipartUpload",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "MultipartUpload",
             "identifiers": [
-              { "target": "Id", "source": "response", "path": "uploadId" },
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" }
-            ]
+              {
+                "path": "uploadId",
+                "source": "response",
+                "target": "Id"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              }
+            ],
+            "type": "MultipartUpload"
           }
         },
         "UploadArchive": {
           "request": {
             "operation": "UploadArchive",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "Archive",
             "identifiers": [
-              { "target": "Id", "source": "response", "path": "archiveId" },
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" }
-            ]
+              {
+                "path": "archiveId",
+                "source": "response",
+                "target": "Id"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              }
+            ],
+            "type": "Archive"
           }
         }
       },
       "has": {
         "Account": {
           "resource": {
-            "type": "Account",
             "identifiers": [
-              { "target": "Id", "source": "identifier", "name": "AccountId" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "Id"
+              }
+            ],
+            "type": "Account"
           }
         },
         "Archive": {
           "resource": {
-            "type": "Archive",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "input" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "source": "input",
+                "target": "Id"
+              }
+            ],
+            "type": "Archive"
           }
         },
         "Job": {
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "input" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "source": "input",
+                "target": "Id"
+              }
+            ],
+            "type": "Job"
           }
         },
         "MultipartUpload": {
           "resource": {
-            "type": "MultipartUpload",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "input" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "source": "input",
+                "target": "Id"
+              }
+            ],
+            "type": "MultipartUpload"
           }
         },
         "Notification": {
           "resource": {
-            "type": "Notification",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" }
-            ]
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              }
+            ],
+            "type": "Notification"
           }
         }
       },
@@ -449,131 +728,389 @@
           "request": {
             "operation": "ListJobs",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "completed", "source": "string", "value": "true" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "source": "string",
+                "target": "completed",
+                "value": "true"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "JobList[].JobId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "JobList[].JobId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "JobList[]"
+            "path": "JobList[]",
+            "type": "Job"
           }
         },
         "FailedJobs": {
           "request": {
             "operation": "ListJobs",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "statuscode", "source": "string", "value": "Failed" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "source": "string",
+                "target": "statuscode",
+                "value": "Failed"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "JobList[].JobId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "JobList[].JobId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "JobList[]"
+            "path": "JobList[]",
+            "type": "Job"
           }
         },
         "Jobs": {
           "request": {
             "operation": "ListJobs",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "Name" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "JobList[].JobId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "JobList[].JobId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "JobList[]"
+            "path": "JobList[]",
+            "type": "Job"
           }
         },
         "JobsInProgress": {
           "request": {
             "operation": "ListJobs",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "statuscode", "source": "string", "value": "InProgress" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "source": "string",
+                "target": "statuscode",
+                "value": "InProgress"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "JobList[].JobId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "JobList[].JobId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "JobList[]"
+            "path": "JobList[]",
+            "type": "Job"
           }
         },
         "MultipartUplaods": {
           "request": {
             "operation": "ListMultipartUploads",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "MultipartUpload",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "UploadsList[].MultipartUploadId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "UploadsList[].MultipartUploadId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "UploadsList[]"
+            "path": "UploadsList[]",
+            "type": "MultipartUpload"
           }
         },
         "MultipartUploads": {
           "request": {
             "operation": "ListMultipartUploads",
             "params": [
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "accountId", "source": "identifier", "name": "AccountId" }
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              }
             ]
           },
           "resource": {
-            "type": "MultipartUpload",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "UploadsList[].MultipartUploadId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "UploadsList[].MultipartUploadId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "UploadsList[]"
+            "path": "UploadsList[]",
+            "type": "MultipartUpload"
           }
         },
         "SucceededJobs": {
           "request": {
             "operation": "ListJobs",
             "params": [
-              { "target": "accountId", "source": "identifier", "name": "AccountId" },
-              { "target": "vaultName", "source": "identifier", "name": "Name" },
-              { "target": "statuscode", "source": "string", "value": "Succeeded" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "accountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "vaultName"
+              },
+              {
+                "source": "string",
+                "target": "statuscode",
+                "value": "Succeeded"
+              }
             ]
           },
           "resource": {
-            "type": "Job",
             "identifiers": [
-              { "target": "AccountId", "source": "identifier", "name": "AccountId" },
-              { "target": "VaultName", "source": "identifier", "name": "Name" },
-              { "target": "Id", "source": "response", "path": "JobList[].JobId" }
+              {
+                "name": "AccountId",
+                "source": "identifier",
+                "target": "AccountId"
+              },
+              {
+                "name": "Name",
+                "source": "identifier",
+                "target": "VaultName"
+              },
+              {
+                "path": "JobList[].JobId",
+                "source": "response",
+                "target": "Id"
+              }
             ],
-            "path": "JobList[]"
+            "path": "JobList[]",
+            "type": "Job"
           }
+        }
+      },
+      "identifiers": [
+        {
+          "name": "AccountId"
+        },
+        {
+          "memberName": "VaultName",
+          "name": "Name"
+        }
+      ],
+      "load": {
+        "path": "@",
+        "request": {
+          "operation": "DescribeVault",
+          "params": [
+            {
+              "name": "Name",
+              "source": "identifier",
+              "target": "vaultName"
+            },
+            {
+              "name": "AccountId",
+              "source": "identifier",
+              "target": "accountId"
+            }
+          ]
+        }
+      },
+      "shape": "DescribeVaultOutput"
+    }
+  },
+  "service": {
+    "actions": {
+      "CreateVault": {
+        "request": {
+          "operation": "CreateVault",
+          "params": [
+            {
+              "source": "string",
+              "target": "accountId",
+              "value": "-"
+            }
+          ]
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "accountId",
+              "source": "requestParameter",
+              "target": "AccountId"
+            },
+            {
+              "path": "vaultName",
+              "source": "requestParameter",
+              "target": "Name"
+            }
+          ],
+          "type": "Vault"
+        }
+      }
+    },
+    "has": {
+      "Account": {
+        "resource": {
+          "identifiers": [
+            {
+              "source": "input",
+              "target": "Id"
+            }
+          ],
+          "type": "Account"
+        }
+      }
+    },
+    "hasMany": {
+      "Vaults": {
+        "request": {
+          "operation": "ListVaults",
+          "params": [
+            {
+              "source": "string",
+              "target": "accountId",
+              "value": "-"
+            }
+          ]
+        },
+        "resource": {
+          "identifiers": [
+            {
+              "path": "accountId",
+              "source": "requestParameter",
+              "target": "AccountId"
+            },
+            {
+              "path": "VaultList[].VaultName",
+              "source": "response",
+              "target": "Name"
+            }
+          ],
+          "path": "VaultList[]",
+          "type": "Vault"
         }
       }
     }

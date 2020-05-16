@@ -1,5 +1,17 @@
 {
   "pagination": {
+    "DescribeActivities": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "UserActivities"
+    },
+    "DescribeComments": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "Comments"
+    },
     "DescribeDocumentVersions": {
       "input_token": "Marker",
       "limit_key": "Limit",
@@ -14,24 +26,6 @@
         "Folders",
         "Documents"
       ]
-    },
-    "DescribeUsers": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "Users"
-    },
-    "DescribeActivities": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "UserActivities"
-    },
-    "DescribeComments": {
-      "input_token": "Marker",
-      "limit_key": "Limit",
-      "output_token": "Marker",
-      "result_key": "Comments"
     },
     "DescribeGroups": {
       "input_token": "Marker",
@@ -56,6 +50,12 @@
       "limit_key": "Limit",
       "output_token": "Marker",
       "result_key": "Folders"
+    },
+    "DescribeUsers": {
+      "input_token": "Marker",
+      "limit_key": "Limit",
+      "output_token": "Marker",
+      "result_key": "Users"
     }
   }
 }
