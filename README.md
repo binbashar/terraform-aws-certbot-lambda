@@ -1,5 +1,6 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-certbot-lambda/master/figures/binbash-logo.png" alt="binbash" width="250"/>
+    <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-certbot-lambda/master/figures/binbash-logo.png"
+     alt="binbash" width="250"/>
 </div>
 <div align="right">
   <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-certbot-lambda/master/figures/binbash-leverage-terraform-logo.png"
@@ -15,17 +16,37 @@ The Lambda is triggered by a CloudWatch event rule whose schedule can be set thr
 The original pyhton source code was taken from https://github.com/kingsoftgames/certbot-lambda and
 was adapted to the needs of the project at hand.
 
-## Inputs
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements  
 
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| certificate\_domains | Domains that will be included in the certificate | string | n/a | yes |
-| contact\_email | Contact email for LetsEncrypt notifications | string | n/a | yes |
-| hosted\_zone\_id | The id of the hosted zone that will be modified to prove ownership of the domain | string | n/a | yes |
-| name | A name for naming resources | string | n/a | yes |
-| function\_trigger\_schedule\_expression | A cron-like expression that determines when the function is triggered | string | `"cron(0 */12 * * ? *)"` | no |
-| name\_prefix | A prefix used for naming resources | string | `"certbot-lambda"` | no |
-| tags | Resource Tags | map | `{}` | no |
+| Name | Version |  
+|------|---------|  
+| terraform | >= 0.12.28 |  
+| aws | ~> 2.70 |  
+
+## Providers  
+
+| Name | Version |  
+|------|---------|  
+| aws | ~> 2.70 |  
+
+## Inputs  
+
+| Name | Description | Type | Default | Required |  
+|------|-------------|------|---------|:--------:|  
+| certificate\_domains | Domains that will be included in the certificate | `any` | n/a | yes |  
+| contact\_email | Contact email for LetsEncrypt notifications | `any` | n/a | yes |  
+| hosted\_zone\_id | The id of the hosted zone that will be modified to prove ownership of the domain | `any` | n/a | yes |  
+| name | A name for naming resources | `any` | n/a | yes |  
+| function\_trigger\_schedule\_expression | A cron-like expression that determines when the function is triggered | `string` | `"cron(0 */12 * * ? *)"` | no |  
+| name\_prefix | A prefix used for naming resources | `string` | `"certbot-lambda"` | no |  
+| tags | Resource Tags | `map` | `{}` | no |  
+
+## Outputs
+
+No output.
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Examples
 The following example will deploy a Lambda that will generate certificates for *test.example.com*:
@@ -53,11 +74,53 @@ module "certbot_lambda_test" {
 ## TODO
 - Add examples and tests (terratests)
 
+---
+
+## Binbash Leverage | DevOps Automation Code Library Integration
+
+In order to get the full automated potential of the
+[Binbash Leverage DevOps Automation Code Library](https://leverage.binbash.com.ar/how-it-works/code-library/code-library/)  
+you should initialize all the necessary helper **Makefiles**.
+
+#### How?
+You must execute the `make init-makefiles` command  at the root context
+
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make
+Available Commands:
+ - init-makefiles     initialize makefiles
+
+```
+
+### Why?
+You'll get all the necessary commands to automatically operate this module via a dockerized approach,
+example shown below
+
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make
+Available Commands:
+ - circleci-validate-config  ## Validate A CircleCI Config (https
+ - format-check        ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
+ - format              ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
+ - tf-dir-chmod        ## run chown in ./.terraform to gran that the docker mounted dir has the right permissions
+ - version             ## Show terraform version
+ - init-makefiles      ## initialize makefiles
+```
+
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make format-check
+docker run --rm -v /home/delivery/Binbash/repos/Leverage/terraform/terraform-aws-backup-by-tags:"/go/src/project/":rw -v :/config -v /common.config:/common-config/common.config -v ~/.ssh:/root/.ssh -v ~/.gitconfig:/etc/gitconfig -v ~/.aws/bb:/root/.aws/bb -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/bb/credentials -e AWS_CONFIG_FILE=/root/.aws/bb/config --entrypoint=/bin/terraform -w "/go/src/project/" -it binbash/terraform-awscli-slim:0.12.28 fmt -check
+```
+
 # Release Management
 ### CircleCi PR auto-release job
 
 <div align="left">
-  <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-certbot-lambda/master/figures/circleci-logo.png" alt="circleci" width="130"/>
+  <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-certbot-lambda/master/figures/circleci-logo.png"
+   alt="circleci" width="130"/>
 </div>
 
 - [**pipeline-job**](https://circleci.com/gh/binbashar/terraform-aws-certbot-lambda) (**NOTE:** Will only run after merged PR)
