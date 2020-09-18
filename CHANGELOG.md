@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.4"></a>
+## [v0.0.4] - 2020-09-18
+
+- BBL-381 | adding Makefile must have commented lines
+- BBL-381 | std repo structure + standalone makefile approach + README.md update
+
+
 <a name="v0.0.3"></a>
 ## [v0.0.3] - 2020-08-20
 
@@ -35,6 +42,7 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-certbot-lambda/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-certbot-lambda/compare/v0.0.4...HEAD
+[v0.0.4]: https://github.com/binbashar/terraform-aws-certbot-lambda/compare/v0.0.3...v0.0.4
 [v0.0.3]: https://github.com/binbashar/terraform-aws-certbot-lambda/compare/v0.0.2...v0.0.3
 [v0.0.2]: https://github.com/binbashar/terraform-aws-certbot-lambda/compare/v0.0.1...v0.0.2
