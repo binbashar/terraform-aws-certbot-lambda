@@ -20,14 +20,25 @@ jobs:
           command: pwd && ls -ltra && git branch
 
       - run:
+          name: Initialize Repo Makefiles
+          command: |
+            make init-makefiles
+            git update-index --assume-unchanged "Makefile"
+
+      - run:
           name: test1-terraform-format
           command: make format-check
 
       - run:
+          name: Install awscli
+          command: sudo -H pip install awscli
+
+      - run:
           name: Configure awscli
           command: |
-            echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
-            echo "AWS_PROFILE_NAME - $AWS_PROFILE_NAME"
+            # AWS credentials dir
+            mkdir --parents /home/circleci/.aws/bb
+            sudo chown -R $USER:$USER /home/circleci/.aws
 
             # AWS defautl awscli profile
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
@@ -36,12 +47,70 @@ jobs:
             aws configure set output json
 
             # AWS dev awscli profile
-            aws configure set role_arn arn:aws:iam::$AWS_ACCOUNT_ID_SHARED:role/DeployMaster --profile $AWS_PROFILE_NAME
+            aws configure set role_arn arn:aws:iam::$AWS_ACCOUNT_ID_DEV:role/DeployMaster --profile $AWS_PROFILE_NAME
             aws configure set source_profile default --profile $AWS_PROFILE_NAME
+
+            # moving credentials to specific project folder
+            cp /home/circleci/.aws/credentials /home/circleci/.aws/bb/credentials
+            cp /home/circleci/.aws/config /home/circleci/.aws/bb/config
 
       - run:
           name: test2-terraform-linting
           command: make tflint-deep
+
+  #
+  # Test 3
+  #
+  test-e2e-terratests:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: false
+
+    steps:
+      - checkout
+
+      - run:
+          name: Context Info Cmds
+          command: pwd && ls -ltra && git branch
+
+      - run:
+          name: Initialize Repo Makefiles
+          command: |
+            make init-makefiles
+            git update-index --assume-unchanged "Makefile"
+
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+      - run:
+          name: Configure awscli
+          command: |
+            # AWS defautl awscli profile
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set region us-east-1
+            aws configure set output json
+
+            # AWS dev awscli profile
+            aws configure set role_arn arn:aws:iam::$AWS_ACCOUNT_ID_DEV:role/DeployMaster --profile $AWS_PROFILE_NAME
+            aws configure set source_profile default --profile $AWS_PROFILE_NAME
+            # moving credentials to specific project folder
+            mkdir --parents /home/circleci/.aws/bb
+            cp /home/circleci/.aws/credentials /home/circleci/.aws/bb/credentials
+            cp /home/circleci/.aws/config /home/circleci/.aws/bb/config
+
+      - run:
+          name: Test AWS permissions
+          command: aws ec2 describe-instances --region us-east-1 --profile $AWS_PROFILE_NAME
+
+      - run:
+          name: test3-terratests-dep-init
+          command: make terratest-dep-init
+
+      - run:
+          name: test3-terratests-go-test
+          command: make terratest-go-test
 
   #
   # Release
@@ -62,6 +131,12 @@ jobs:
           command: pwd && ls -ltra && git branch
 
       - run:
+          name: Initialize Repo Makefiles
+          command: |
+            make init-makefiles
+            git update-index --assume-unchanged "Makefile"
+
+      - run:
           name: Release New Version
           command: |
             if git status | grep 'nothing to commit, working tree clean'; then
@@ -70,7 +145,7 @@ jobs:
               echo "==============================================================================================="
               git config --global user.email "$GIT_USER_EMAIL"
               git config --global user.name "$GIT_USER_NAME"
-              make -f Makefile.release release-$VERSION_NUMBER-with-changelog-circleci
+              make release-$VERSION_NUMBER-with-changelog-circleci
             else
               echo "==============================================================================================="
               echo "Changes in working directory pending to be pushed - please check 'git status' cmd output below "
@@ -92,6 +167,12 @@ workflows:
             branches:
              ignore: # only branches matching the below regex filters will run
                - master
+#      - test-e2e-terratests:
+#          context: binbashar-org-global-context
+#          filters:
+#            branches:
+#             ignore: # only branches matching the below regex filters will run
+#               - master
       - release-version-with-changelog:
           context: binbashar-org-global-context
           filters:
