@@ -17,30 +17,30 @@ The original pyhton source code was taken from https://github.com/kingsoftgames/
 was adapted to the needs of the project at hand.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements  
+## Requirements
 
-| Name | Version |  
-|------|---------|  
-| terraform | >= 0.12.28 |  
-| aws | ~> 2.70 |  
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.28 |
+| aws | ~> 2.70 |
 
-## Providers  
+## Providers
 
-| Name | Version |  
-|------|---------|  
-| aws | ~> 2.70 |  
+| Name | Version |
+|------|---------|
+| aws | ~> 2.70 |
 
-## Inputs  
+## Inputs
 
-| Name | Description | Type | Default | Required |  
-|------|-------------|------|---------|:--------:|  
-| certificate\_domains | Domains that will be included in the certificate | `any` | n/a | yes |  
-| contact\_email | Contact email for LetsEncrypt notifications | `any` | n/a | yes |  
-| hosted\_zone\_id | The id of the hosted zone that will be modified to prove ownership of the domain | `any` | n/a | yes |  
-| name | A name for naming resources | `any` | n/a | yes |  
-| function\_trigger\_schedule\_expression | A cron-like expression that determines when the function is triggered | `string` | `"cron(0 */12 * * ? *)"` | no |  
-| name\_prefix | A prefix used for naming resources | `string` | `"certbot-lambda"` | no |  
-| tags | Resource Tags | `map` | `{}` | no |  
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| certificate\_domains | Domains that will be included in the certificate | `any` | n/a | yes |
+| contact\_email | Contact email for LetsEncrypt notifications | `any` | n/a | yes |
+| function\_trigger\_schedule\_expression | A cron-like expression that determines when the function is triggered | `string` | `"cron(0 */12 * * ? *)"` | no |
+| hosted\_zone\_id | The id of the hosted zone that will be modified to prove ownership of the domain | `any` | n/a | yes |
+| name | A name for naming resources | `any` | n/a | yes |
+| name\_prefix | A prefix used for naming resources | `string` | `"certbot-lambda"` | no |
+| tags | Resource Tags | `map` | `{}` | no |
 
 ## Outputs
 
